@@ -1,0 +1,194 @@
+/* ======= CARDS ======= */
+
+.card,
+.dcard,
+.flexcard {
+    display: inline-block;
+    width: 100%;
+    background: $white;
+    box-shadow: $level1;
+    color: $darkgrey;
+}
+
+@media screen and (min-width: $maxcardwidth) {
+    .card,
+    .dcard {
+        max-width: $maxcardwidth;
+    }
+}
+
+.cols .card,
+.cols .dcard {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card h1,
+.cols .card h1,
+.flexcard h1 {
+    font-family: $header;
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1.6rem;
+    color: $black;
+    padding: 1.8rem 1.2rem 0;
+    margin: 0;
+    text-transform: initial;
+}
+
+.card p,
+.cols .card p,
+.flexcard p {
+    padding: 1rem 1.2rem 0;
+    font-size: .8rem;
+}
+
+.card p:first-of-type,
+.cols .card p:first-of-type,
+.flexcard p:first-of-type {
+    padding-top: 1.2rem;
+}
+
+.card p:last-child,
+.cols .card p:last-child,
+.flexcard p:last-child {
+    padding-bottom: 2rem;
+}
+
+/* Standard Cards */
+
+.card img,
+.cols .card img {
+    width: 100%;
+    height: auto;
+}
+
+/* Flex Cards */
+
+.flexcard { 
+    display: block;
+    max-width: $maxcardwidth;
+    margin-bottom: 40px;
+}
+.flexcard article,
+.flexcard figure { 
+    position: relative; 
+    display: block; 
+    overflow: hidden;
+    width: 100%;
+    flex: none;
+}
+.flexcard img { 
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width: $break1) {
+    .flexcard { 
+        display: flex; 
+        max-width: 100%;
+    }
+    .flexcard article,
+    .flexcard figure { 
+        width: auto;
+        flex: 1;
+    }
+    .flexcard img { 
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+    }
+    .flexcard article { 
+        order: 1; 
+    }
+    .flexcard figure {
+        order: 2;
+    }
+    .flexcard.rtl article { 
+        order: 2; 
+    }
+    .flexcard.rtl figure {
+        order: 1;
+    }
+    .flexcard h1 {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .flexcard p {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}
+
+
+/* Detail Cards */
+
+.dcard:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.dcard img,
+.cols .dcard img {
+    float: right;
+    width: 30%;
+    margin: .5rem .5rem .5rem 1rem;
+}
+
+.dcard h1,
+.cols .dcard h1 {
+    font-family: $header;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $black;
+    padding: 1rem 1rem 0;
+    margin: 0;
+}
+
+.dcard p,
+.cols .dcard p {
+    padding: .5rem 1rem .1rem;
+    font-size: .7rem;
+}
+
+.dcard p:last-child,
+.cols .dcard p:last-child {
+    padding-bottom: 1rem;
+}
+
+/* Buttons */
+
+.card a.button,
+.flexcard a.button {
+    margin-top: 2rem;
+    padding: calc(1.5% + 1em) 0;
+    background: transparent;
+    border-top: 1px solid $lightgrey;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: $blue;
+    transition: all .2s;
+}
+
+@media screen and (min-width: $break1) {
+    .flexcard a.button {
+        margin-top: 3rem;
+    }
+}
+
+.card a.button:hover,
+.card a.button:focus,
+.flexcard a.button:hover,
+.flexcard a.button:focus {
+    background: $blue;
+    border-top: 1px solid $blue;
+    color: $white;
+    transition: all .1s;
+}

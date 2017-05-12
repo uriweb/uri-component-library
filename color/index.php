@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Colors</title>
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../nextgen/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+    </head>
+	
+	<body class="nav-color">
+        
+        <nav>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>      
+        
+        <main>
+            
+            <h1>Color</h1>
+            <p>Color theory, palletes, and usability information</p>
+            
+            <ul id="localnav">
+                <li><a href="#palettes">Palettes</a></li>
+                <li><a href="#usability">Usability</a></li>
+            </ul>
+            
+            <section id="palettes">
+                
+                <h2>Palettes</h2>
+                
+                <p>Color palettes define all the usable colors in the theme.  Using colors outside these palettes detracts from the brand and compromises user experience, consistency, and cohesion of pages across the site.</p>
+                <p>Colors are listed with their SASS variable name and hex code.</p>
+                <article>
+                    <div class="cols thirds">
+                        <div>
+                            <ul class="palette">
+                                <li style="background: #002147">
+                                    <span>Blue</span>
+                                    <span>Primary</span>
+                                    <span>$blue #002147</span>
+                                </li>
+                                <li class="dark" style="background: #C0DDF2">
+                                    <span>Light</span>
+                                    <span>$lightblue #c0ddf2</span>
+                                </li>
+                                <li style="background: #2277b3">
+                                    <span>Keaney</span>
+                                    <span>$keaneyblue #2277b3</span>
+                                </li>
+                                <li style="background: #30557e">
+                                    <span>Mid</span>
+                                    <span>$midblue #30557e</span>
+                                </li>
+                                <li style="background: #002147">
+                                    <span>Primary</span>
+                                    <span>$blue #002147</span>
+                                </li>
+                                <li style="background: #001228">
+                                    <span>Dark</span>
+                                    <span>$darkblue #001228</span>
+                                </li>
+                            </ul>
+                            <ul class="palette spaced">
+                                <li class="dark" style="background: #fff">
+                                    <span>Supplemental</span>
+                                    <span>Colors for specific use cases</span>
+                                </li>
+                                <li style="background: #0047c2">
+                                    <span>a</span>
+                                    <span>$link #0047c2</span>
+                                </li>
+                                <li style="background: #003287">
+                                    <span>a:hover</span>
+                                    <span>$linkhover #003287</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="palette">
+                                <li class="dark" style="background: #B5985A">
+                                    <span>Gold</span>
+                                    <span>Primary</span>
+                                    <span>$gold #B5985A</span>
+                                </li>
+                                <li class="dark" style="background: #FEFADA">
+                                    <span>Light</span>
+                                    <span>$lightgold #fefada</span>
+                                </li>
+                                <li class="dark" style="background: #FFD453">
+                                    <span>Mid</span>
+                                    <span>$midgold #ffd453</span>
+                                </li>
+                                <!-- <li class="dark" style="background: #d9b655">
+                                    <span>Semi</span>
+                                    <span>$semigold #d9b655</span>
+                                </li> -->
+                                <li class="dark" style="background: #B5985A">
+                                    <span>Primary</span>
+                                    <span>$gold #b5985a</span>
+                                </li>
+                            </ul>
+                            <p>The Gold palette purposly does not contain a dark shade.  Shades of Primary Gold are muddy and detract from the brand.</p>
+                        </div>
+                        <div>
+                            <ul class="palette">
+                                <li class="dark" style="background: #ddd">
+                                    <span>Grey</span>
+                                    <span>Primary</span>
+                                    <span>$grey #dddddd</span>
+                                </li>
+                                <li class="dark" style="background: #fff">
+                                    <span>White</span>
+                                    <span>$white #ffffff</span>
+                                </li>
+                                <li class="dark" style="background: #f8f8f8">
+                                    <span>Light</span>
+                                    <span>$lightgrey #f8f8f8</span>
+                                </li>
+                                <li class="dark" style="background: #ddd">
+                                    <span>Primary</span>
+                                    <span>$grey #dddddd</span>
+                                </li>
+                                <li class="dark" style="background: #999">
+                                    <span>Mid</span>
+                                    <span>$midgrey #999999</span>
+                                </li>
+                                <li style="background: #555">
+                                    <span>Dark</span>
+                                    <span>$darkgrey #555555</span>
+                                </li>
+                                <li style="background: #000">
+                                    <span>Black</span>
+                                    <span>$black #000000</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </article>
+                    
+            </section><!-- end pallets -->
+                
+            <section id="usability">
+                
+                <h2>Usability</h2>
+                
+                <h3>Contrast Ratios</h3>
+                <p>The contrast ratio is a measurement of how dissimilar two colors are from one another, based on their luminance. Ratios range from 1 to 21, where higher ratios correlate with easier-to-read text.</p>
+                <p>In order to be <a href="https://www.w3.org/TR/WCAG20/" title="WCAG 2.0">WCAG 2.0</a> level AA compliant, small text must have a contrast ratio of at least 4.5:1 and large text must have a ratio of 3:1.  Level AAA compliance requires a contrast ratio of 7:1 for small text and 4.5:1 for large text.  Large text is definied as 14pt and bold or larger, or 18pt and larger.</p>
+                
+                <article>
+                    <div class="contrast-scale">
+                        <span class="acceptable" style="width:55%">AA Compliant</span>
+                        <span class="unacceptable" style="width:45%">Non-compliant</span>
+                        <div class="scale">This is a line of normal text, meaning it is of normal weight and less than 18pt, or bold and less than 14pt. It should become much harder to read as the phrase continues.</div>
+                    </div>
+                    <div class="contrast-scale">
+                        <span class="acceptable" style="width:42%">AAA Compliant</span>
+                        <span class="unacceptable" style="width:58%">Non-compliant</span>
+                        <div class="scale">This is a line of normal text, meaning it is of normal weight and less than 18pt, or bold and less than 14pt. It should become much harder to read as the phrase continues.</div>
+                    </div>
+                    <div class="contrast-scale">
+                        <span class="acceptable" style="width:65%">AA Compliant</span>
+                        <span class="unacceptable" style="width:35%">Non-compliant</span>
+                        <div class="scale large">This is a line of large text, meaning it is bold and at least 14pt, or of normal weight and at least 18pt. It should become much harder to read as the phrase continues.</div>
+                    </div>
+                    <div class="contrast-scale">
+                        <span class="acceptable" style="width:55%">AAA Compliant</span>
+                        <span class="unacceptable" style="width:45%">Non-compliant</span>
+                        <div class="scale large">This is a line of large text, meaning it is bold and at least 14pt, or of normal weight and at least 18pt. It should become much harder to read as the phrase continues.</div>
+                    </div>
+                </article>
+                
+                <article>
+                
+                    <h3>Color Combinations</h3>
+
+                    <p>Text and background color combinations use colors from the palettes, and are designed to <b>meet WCAG 2.0 level AAA standards</b>.  Using color combinations other than those below detracts from the brand and reduces consistency and compliance.</p>
+                    <p>Combinations are grouped by background color and listed in order of contrast, from highest to lowest.</p>
+                    <article>
+                        <div class="cols thirds">
+                            <div>
+                                <ul class="contrasts">
+                                    <li style="background: #002147">
+                                        <span>$white #ffffff<br />$blue #002147</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 16.05</span>
+                                    </li>
+                                    <li style="background: #C0DDF2; color: #000;">
+                                        <span>$black #000000<br />$lightblue #c0ddf2</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 14.87</span>
+                                    </li>
+                                    <li style="background: #002147; color: #ddd;">
+                                        <span>$grey #dddddd<br />$blue #002147</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.82</span>
+                                    </li>
+                                    <li style="background: #002147; color: #C0DDF2;">
+                                        <span>$lightblue #c0ddf2<br />$blue #002147</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.36</span>
+                                    </li>
+                                    <li style="background: #002147; color: #FFD453">
+                                        <span>$midgold #ffd453<br />$blue #002147</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.31</span>
+                                    </li>
+                                    <li style="background: #30557e; color: #fff;">
+                                        <span>$white #ffffff<br />$midblue #30557e</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 7.7</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="contrasts">
+                                    <li style="background: #fefada; color: #002147;">
+                                        <span>$blue #002147<br />$lightgold #fefada</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.31</span>
+                                    </li>
+                                    <li style="background: #FFD453; color: #002147;">
+                                        <span>$blue #002147<br />$midgold #ffd453</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.31</span>
+                                    </li>
+                                    <li style="background: #B5985A; color: #000000;">
+                                        <span>$black #000000<br />$gold #B5985A</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 7.6</span>
+                                    </li>
+                                </ul>
+                                <p>Gold backgrounds and instances of reverse type (the majority of Blue backgrounds) should not be used over large areas, and be reserved for either specific design elements or special circumstances.</p>
+                            </div>
+                            <div>
+                                <ul class="contrasts">
+                                    <li style="background: #fff; color: #000;">
+                                        <span>$black #000000<br />$white #ffffff</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 21</span>
+                                    </li>
+                                    <li style="background: #fff; color: #002147;">
+                                        <span>$blue #002147<br />$white #ffffff</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 16.05</span>
+                                    </li>
+                                    <li style="background: #f8f8f8; color: #002147;">
+                                        <span>$blue #002147<br />$lightgrey #f8f8f8</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 15.11</span>
+                                    </li>
+                                    
+                                    <li style="background: #ddd; color: #002147;">
+                                        <span>$blue #002147<br />$grey #dddddd</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 11.82</span>
+                                    </li>
+                                    
+                                    <li style="background: #fff; color: #30557e;">
+                                        <span>$midblue #30557e<br />$white #ffffff</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 7.7</span>
+                                    </li>
+                                    <li style="background: #fff; color: #555;">
+                                        <span>$darkgrey #555555<br />$white #ffffff</span>
+                                        <span>Normal text</span>
+                                        <span class="large">Large text</span>
+                                        <span>CR 7.46</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                    </article>
+                    
+                    <article>
+                        <p>Contrasts for links are grouped by background color.</p>
+                    </article>
+                    
+                    <article>
+                        <div class="cols thirds">
+                            <div>
+                                <ul class="contrasts">
+                                    <li style="background: #fff; color: #0047c2;">
+                                        <span>$link #0047c2<br />$white #ffffff</span>
+                                        <span style="text-decoration: underline">Normal link</span>
+                                        <span class="large">Large link</span>
+                                        <span>CR 7.83</span>
+                                    </li>
+                                    <li style="background: #fff; color: #003287; text-decoration: underline">
+                                        <span>$linkhover #003287<br />$white #ffffff</span>
+                                        <span>Normal hover</span>
+                                        <span class="large">Large hover</span>
+                                        <span>CR 11.63</span>
+                                    </li>
+                                    <li style="background: #f8f8f8; color: #0047c2;">
+                                        <span>$link #0047c2<br />$lightgrey #f8f8f8</span>
+                                        <span style="text-decoration: underline">Normal link</span>
+                                        <span class="large">Large link</span>
+                                        <span>CR 7.38</span>
+                                    </li>
+                                    <li style="background: #f8f8f8; color: #003287; text-decoration: underline">
+                                        <span>$linkhover #003287<br />$lightgrey #f8f8f8</span>
+                                        <span>Normal hover</span>
+                                        <span class="large">Large hover</span>
+                                        <span>CR 10.95</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </article>
+                </article>
+                                                
+            </section><!-- end usability -->
+
+            
+        </main>
+        
+        <footer>
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>

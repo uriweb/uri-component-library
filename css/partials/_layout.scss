@@ -1,0 +1,103 @@
+/* ==============================
+   LAYOUT
+   ============================== */
+
+body {
+    background: #f8f8f8;
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    color: #000;
+}
+
+main { 
+    width: 1250px; 
+    margin: 150px auto 60px;
+    padding-left: 250px;
+    transition: all .2s ease-in-out;
+}
+@media screen and (max-width: 1350px) {
+    main {
+        width: 1000px;
+        padding-left: 0;
+    }
+}
+@media screen and (max-width: 1050px) {
+    main {
+        width: 100%;
+        padding: 0 25px;
+        box-sizing: border-box;
+    }
+}
+@media screen and (max-width: 600px) {
+    main {
+        margin: 130px auto 50px;
+    }
+}
+
+section {
+    margin-top: 120px;
+    padding-top: 80px;
+    border-top: 1px solid #ccc;
+}
+
+section>article,
+section>article>article {
+    margin-top: 80px;
+}
+
+#pg-identity {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    top: -70px;
+    right: 0;
+}
+
+img.wireframe {
+    display: block;
+    width: 300px;
+    height: auto;
+    margin: 3rem 0;
+}
+
+img.wireframe.right {
+    float: right;
+    margin: 0 0 0 3rem;
+}
+
+@media screen and (max-width: 700px) {
+    img.wireframe,
+    img.wireframe.right {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 500px; 
+        margin: 3rem 0;
+    }
+}
+
+img.figure {
+    width: 100%;
+}
+
+ul.construction-list {
+    margin-bottom: 20px;
+}
+ul.construction-list li {
+    padding: .2rem 0;
+    font-size: .8rem;
+}
+ul.construction-list span {
+    font-family: monospace;
+    font-size: 1rem;
+}
+ul.construction-list li.section {
+    margin-top: .6rem;
+    font-weight: 700;
+}
+
+xmp {
+    width: 50%;
+    margin: 30px 0;
+}

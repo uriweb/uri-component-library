@@ -1,0 +1,61 @@
+/* ======= VARIABLES ======= */
+
+/* -- Breakpoints -- */
+
+$break1: 600px; // Catch phones/phablets (default, most of the time...)
+$break2: 800px; // Catch small tablets
+$break3: 1000px; // Catch full displays/large tablets
+
+/* -- Colors --  */
+
+$lightblue: #c0ddf2;
+$keaneyblue: #2277b3;
+$midblue: #30557e;
+$blue: #002147;
+$darkblue: #001228;
+
+$lightgold: #fefada;
+$midgold: #ffd453;
+$gold: #c4960c;
+
+$white: #ffffff;
+$lightgrey: #f8f8f8;
+$grey: #dddddd;
+$midgrey: #999999;
+$darkgrey: #555555;
+$black: #000000;
+
+$link: #0047c2;
+$linkhover: #003287;
+
+/* -- Fonts -- */
+
+@import url('https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700') all;
+
+$header: "Hind", sans-serif;
+
+/* -- Levels -- */
+
+$level1: 0 .1rem .3rem rgba(0,0,0,0.15);
+$level2: 0 .3rem .5rem rgba(0,0,0,0.2);
+
+/* -- Widths -- */
+
+$maxcardwidth: 400px; /* Maximum width for cards at narrow screen sizes */
+
+
+/* ======= PARTIALS ======= */
+
+@import 'columns';
+@import 'tiles';
+@import 'typography';
+@import 'localnav';
+@import 'buttons';
+@import 'cards';
+
+
+/* ======= GLOBAL STYLES ======= */
+
+* {
+    box-sizing: border-box;
+}

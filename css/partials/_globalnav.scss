@@ -1,0 +1,168 @@
+/* ==============================
+   GLOBAL NAV
+   ============================== */
+
+header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    line-height: 80px;
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: none;
+    padding-left: 250px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    transition: all .2s ease-in-out;
+}
+
+header.transparent {
+    background-color: rgba(256,256,256,0.9);
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    header.transparent {
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(256,256,256,0.8)
+    }
+}
+
+#menu-button {
+    display: inline;
+    position: relative;
+    top: 3px;
+    opacity: 0;
+    padding-right: 25px;
+    transition: opacity .1s;
+    transition-delay: .2s;
+    cursor: pointer;
+}
+
+header h1 {
+    display: inline;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header h1 a {
+    color: #0047c2;
+}
+    
+#globalnav { 
+    position: fixed;
+    display: block;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 250px;
+    background: #0047c2;
+    font-size: .9rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,.2);
+    transition: all .2s ease-in-out;
+}
+
+#globalnav.revealed {
+    left: 0;
+}
+
+#identity {
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-image: url(../media/assets/identity.svg);
+    background-size: auto 50px;
+    background-position: 35px 25px;
+    background-repeat: no-repeat;
+}
+
+#globalnav ul {
+    margin: auto;
+    padding: 40px 0;
+}
+
+#globalnav li {
+    display: block;
+}
+
+#globalnav li.section {
+    padding: 20px 20px 20px 35px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#globalnav li.section:not(:first-child) {
+    border-top: 1px solid rgba(256,256,256,.3);
+}
+
+#globalnav li a {
+    display: block;
+    padding: 20px 20px 20px 60px;
+    color: #fff;
+    transition: background .1s ease-in-out;
+}
+
+#globalnav li a:hover,
+#globalnav li a:focus {
+    background: rgba(256,256,256,.2);
+}
+
+body.nav-columns #gn-columns a,
+body.nav-tiles #gn-tiles a,
+body.nav-cards #gn-cards a,
+body.nav-color #gn-color a {
+    color: #002147;
+    background: #fff;
+}
+
+#window-mask {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0,0,0,.3);
+    transition: all .3s; 
+}
+#window-mask.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 1350px) {
+    header {
+        padding-left: 25px;
+    }
+    #menu-button {
+        opacity: 1;
+    }
+    #globalnav {
+        left: -270px;
+        box-shadow: 5px 0 20px rgba(0,0,0,.3);
+    }
+    @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+        #globalnav {
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(0,51,215,.8)
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        height: 60px;
+        line-height: 60px;
+    }
+}

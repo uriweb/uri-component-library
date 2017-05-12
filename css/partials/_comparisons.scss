@@ -1,0 +1,34 @@
+/* ==============================
+   COMPARISONS
+   ============================== */
+
+
+.comparison img {
+    width: 100%;
+    max-width: 400px;
+    border: 1px dashed #ccc;
+}
+
+.comparison span {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-weight: 700;
+}
+
+.comparison.do span {
+    border-top: 10px solid #389f3c;
+    color: #389f3c;
+}
+
+.comparison.instead span {
+    border-top: 10px solid #0097c4;
+    color: #0097c4;
+}
+
+.comparison.dont span {
+    border-top: 10px solid #be3535;
+    color: #be3535;
+}
