@@ -4,7 +4,7 @@
 	<head>
         <title>Tiles</title>	
         <link rel="stylesheet" type="text/css" href="../css/playground.css">
-        <link rel="stylesheet" type="text/css" href="../nextgen/style.css">
+        <link rel="stylesheet" type="text/css" href="../cl/cl.built.css">
         <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../js/main.js"></script>
@@ -21,7 +21,7 @@
             
             <h1>Tiles</h1>
             <img class="wireframe right" src="../media/wireframes/tiles.svg" alt="Tiles">
-            <p>Tiles are a layout framework for organizing square content blocks along two axes, with a fixed number of blocks along the x-axis.</p>
+            <p>Tiles are a layout framework for organizing content blocks along two axes, with a fixed number of blocks along the x-axis.</p>
             
             <ul id="localnav">
                 <li><a href="#usage">Usage</a></li>
@@ -109,6 +109,32 @@
                         <div></div>
                         <div></div>
                         <div></div>
+                    </div>
+                </article>
+                
+                <article>
+                    <h3>Fitting tiles to their content</h3>
+                    <p>By default, tiles are square, and any content overflow is hidden.  To override this format and force tiles to adjust to the size of their contents, add the class <code class="class">fitted</code>.</p>
+                    <xmp class="prettyprint">
+<div class="tiles fourths fitted">
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    ...
+</div>     
+                    </xmp>
+                    <div class="tiles fourths fitted">
+                        <div style="height: 300px;"></div>
+                        <div style="height: 250px;"></div>
+                        <div style="height: 275px;"></div>
+                        <div style="height: 310px;"></div>
+                        <div style="height: 290px;"></div>
+                        <div style="height: 320px;"></div>
+                        <div style="height: 250px;"></div>
                     </div>
                 </article>
                 

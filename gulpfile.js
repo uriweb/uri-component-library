@@ -57,10 +57,12 @@ function themeStyles(done) {
     var banner = ['/*',
   '===========================================',
   '',
-  'NEXT GENERATION STYLES',
+  'COMPONENT LIBRARY',
   '',
   'PORTED FROM THE PLAYGROUND DEVELOPMENT SITE',
   'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
+  '',
+  'See documentation at uriweb.bitbucket.io',
   '',
   '==============================================',
   '*/',
@@ -71,10 +73,10 @@ function themeStyles(done) {
 		.pipe(sourcemaps.init())
 		.pipe(sass(themeSassOptions).on('error', sass.logError))
 		.pipe(autoprefixer(autoprefixerOptions))
-		.pipe(concat('style.css'))
+		.pipe(concat('cl.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./nextgen/'));
+		.pipe(gulp.dest('./cl/'));
 
   done();
   //console.log('styles ran');
@@ -91,7 +93,7 @@ function themeScripts(done) {
     .pipe(concat('script.min.js'))
     //.pipe(stripDebug())
     .pipe(uglify())
-    .pipe(gulp.dest('./nextgen/'));
+    .pipe(gulp.dest('./cl/'));
     
 	done();
  // console.log('scripts ran');

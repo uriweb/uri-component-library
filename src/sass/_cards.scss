@@ -5,9 +5,9 @@
 .flexcard {
     display: inline-block;
     width: 100%;
-    background: $white;
+    background: $white !important;
     box-shadow: $level1;
-    color: $darkgrey;
+    color: $darkgrey !important;
 }
 
 @media screen and (min-width: $maxcardwidth) {
@@ -27,41 +27,41 @@
 .card h1,
 .cols .card h1,
 .flexcard h1 {
-    font-family: $header;
-    font-size: 1.3rem;
-    font-weight: normal;
-    line-height: 1.6rem;
-    color: $black;
-    padding: 1.8rem 1.2rem 0;
-    margin: 0;
-    text-transform: initial;
+    font-family: $header !important;
+    font-size: 1.3rem !important;
+    font-weight: normal !important;
+    line-height: 1.6rem !important;
+    color: $black !important;
+    padding: 1.8rem 1.2rem 0 !important;
+    margin: 0 !important;
+    text-transform: initial !important;
 }
 
 .card p,
 .cols .card p,
 .flexcard p {
-    padding: 1rem 1.2rem 0;
-    font-size: .8rem;
+    padding: 1rem 1.2rem 0 !important;
+    font-size: .8rem !important;
 }
 
 .card p:first-of-type,
 .cols .card p:first-of-type,
 .flexcard p:first-of-type {
-    padding-top: 1.2rem;
+    padding-top: 1.2rem !important;
 }
 
 .card p:last-child,
 .cols .card p:last-child,
 .flexcard p:last-child {
-    padding-bottom: 2rem;
+    padding-bottom: 2rem !important;
 }
 
 /* Standard Cards */
 
 .card img,
 .cols .card img {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
 }
 
 /* Flex Cards */
@@ -73,16 +73,16 @@
 }
 .flexcard article,
 .flexcard figure { 
-    position: relative; 
-    display: block; 
-    overflow: hidden;
-    width: 100%;
-    flex: none;
+    position: relative !important; 
+    display: block !important; 
+    overflow: hidden !important;
+    width: 100% !important;
+    flex: none !important;
 }
 .flexcard img { 
-    position: relative;
-    width: 100%;
-    height: auto;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
 }
 
 @media screen and (min-width: $break1) {
@@ -92,33 +92,33 @@
     }
     .flexcard article,
     .flexcard figure { 
-        width: auto;
-        flex: 1;
+        width: auto !important;
+        flex: 1 !important;
     }
     .flexcard img { 
-        position: absolute;
-        height: 100%;
-        object-fit: cover;
+        position: absolute !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
     .flexcard article { 
-        order: 1; 
+        order: 1 !important; 
     }
     .flexcard figure {
-        order: 2;
+        order: 2 !important;
     }
     .flexcard.rtl article { 
-        order: 2; 
+        order: 2 !important; 
     }
     .flexcard.rtl figure {
-        order: 1;
+        order: 1 !important;
     }
     .flexcard h1 {
-        padding-left: 6%;
-        padding-right: 6%;
+        padding-left: 6% !important;
+        padding-right: 6% !important;
     }
     .flexcard p {
-        padding-left: 6%;
-        padding-right: 6%;
+        padding-left: 6% !important;
+        padding-right: 6% !important;
     }
 }
 
@@ -133,53 +133,54 @@
 
 .dcard img,
 .cols .dcard img {
-    float: right;
-    width: 30%;
-    margin: .5rem .5rem .5rem 1rem;
+    float: right !important;
+    width: 30% !important;
+    margin: .5rem .5rem .5rem 1rem !important;
 }
 
 .dcard h1,
 .cols .dcard h1 {
-    font-family: $header;
-    font-size: .8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: $black;
-    padding: 1rem 1rem 0;
-    margin: 0;
+    font-family: $header !important;
+    font-size: .8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: $black !important;
+    padding: 1rem 1rem 0 !important;
+    margin: 0 !important;
 }
 
 .dcard p,
 .cols .dcard p {
-    padding: .5rem 1rem .1rem;
-    font-size: .7rem;
+    padding: .5rem 1rem .1rem !important;
+    font-size: .7rem !important;
 }
 
 .dcard p:last-child,
 .cols .dcard p:last-child {
-    padding-bottom: 1rem;
+    padding-bottom: 1rem !important;
 }
 
 /* Buttons */
 
 .card a.button,
 .flexcard a.button {
-    margin-top: 2rem;
-    padding: calc(1.5% + 1em) 0;
-    background: transparent;
-    border-top: 1px solid $lightgrey;
-    font-size: .7rem;
-    font-weight: 700;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-    text-align: center;
-    color: $blue;
-    transition: all .2s;
+    width: 100% !important;
+    margin-top: 2rem !important;
+    padding: calc(1.5% + 1em) 0 !important;
+    background: inherit !important;
+    border-top: 1px solid $lightgrey !important;
+    font-size: .7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: .1rem !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    color: $blue !important;
+    transition: all .2s !important;
 }
 
 @media screen and (min-width: $break1) {
     .flexcard a.button {
-        margin-top: 3rem;
+        margin-top: 3rem !important;
     }
 }
 
@@ -187,8 +188,8 @@
 .card a.button:focus,
 .flexcard a.button:hover,
 .flexcard a.button:focus {
-    background: $blue;
-    border-top: 1px solid $blue;
-    color: $white;
-    transition: all .1s;
+    background: $blue !important;
+    border-top: 1px solid $blue !important;
+    color: $white !important;
+    transition: all .1s !important;
 }

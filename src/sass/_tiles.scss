@@ -25,6 +25,12 @@
     margin-right: 1%;
 }
 
+.tiles.thirds>div:nth-child(3n+1),
+.tiles.fourths>div:nth-child(4n+1),
+.tiles.fifths>div:nth-child(5n+1) {
+    clear: both;
+}
+
 .tiles.thirds>div {
     width: 32.66%;
     padding-bottom: 32.66%;
@@ -38,6 +44,11 @@
 .tiles.fifths>div {
     width: 19.2%;
     padding-bottom: 19.2%;
+}
+
+.tiles.fitted>div {
+    height: auto;
+    padding-bottom: 0 !important;
 }
 
 .tiles p {
