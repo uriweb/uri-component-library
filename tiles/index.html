@@ -114,7 +114,7 @@
                 
                 <article>
                     <h3>Fitting tiles to their content</h3>
-                    <p>By default, tiles are square, and any content overflow is hidden.  To override this format and force tiles to adjust to the size of their contents, add the class <code class="class">fitted</code>.</p>
+                    <p>By default, tiles are square, and any content overflow is hidden.  To override this format and force tiles to adjust to the size of their contents, add the class <code class="class">fitted</code></p>
                     <xmp class="prettyprint">
 <div class="tiles fourths fitted">
     <div>...</div>
@@ -136,6 +136,23 @@
                         <div style="height: 320px;"></div>
                         <div style="height: 250px;"></div>
                     </div>
+                </article>
+                
+                <article>
+                    <h3>Animating tile loading</h3>
+                    <p>In some cases, especially when tiles are dynamically generated, the display of each tile can be delayed via the generating script. To animate this, add the class <code class="class">reveal</code></p>
+                    <xmp class="prettyprint">
+<div class="tiles fifths reveal">
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    ...
+</div>     
+                    </xmp>
                 </article>
                 
             </section><!-- end usage -->
