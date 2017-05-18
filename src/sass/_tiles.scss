@@ -11,7 +11,7 @@
     display: block;
 }
 
-.tiles>div {
+.tiles>* {
     float: left;
     clear: none;
     overflow: hidden;
@@ -28,25 +28,25 @@
     to   { transform: rotateY(0deg); }
 }
 
-.tiles.reveal>div {
+.tiles.reveal>* {
     animation: tileReveal .5s;
 }
 
-.tiles.fitted>div {
+.tiles.fitted>* {
     height: auto;
     overflow: visible;
     padding-bottom: 0 !important;
 }
 
-.tiles.fifths>div:not(:nth-child(2n)) {
+.tiles.fifths>*:not(:nth-child(2n)) {
     margin-right: 1%;
 }
 
-.tiles.fifths>div:nth-child(2n+1) {
+.tiles.fifths>*:nth-child(2n+1) {
     clear: both;
 }
 
-.tiles.fifths>div {
+.tiles.fifths>* {
     width: 49.5%;
     padding-bottom: 49.5%;
 }
@@ -55,40 +55,40 @@
     padding: 1rem 1.2rem 0;
 }
 
-.tiles>div>img {
+.tiles>*>img {
     display: block;
     width: 100%;
 }
 
 @media screen and (min-width: $break0) {
     
-    .tiles.fifths>div:not(:nth-child(2n)) {
+    .tiles.fifths>*:not(:nth-child(2n)) {
         margin-right: 0;
     }
 
-    .tiles.fifths>div:nth-child(2n+1) {
+    .tiles.fifths>*:nth-child(2n+1) {
         clear: none;
     }
     
-    .tiles.thirds>div:not(:nth-child(2n)),
-    .tiles.fourths>div:not(:nth-child(2n)),  
-    .tiles.fifths>div:not(:nth-child(3n)) {
+    .tiles.thirds>*:not(:nth-child(2n)),
+    .tiles.fourths>*:not(:nth-child(2n)),  
+    .tiles.fifths>*:not(:nth-child(3n)) {
         margin-right: 1%;
     }
 
-    .tiles.thirds>div:nth-child(2n+1),
-    .tiles.fourths>div:nth-child(2n+1),
-    .tiles.fifths>div:nth-child(3n+1) {
+    .tiles.thirds>*:nth-child(2n+1),
+    .tiles.fourths>*:nth-child(2n+1),
+    .tiles.fifths>*:nth-child(3n+1) {
         clear: both;
     }
     
-    .tiles.thirds>div,
-    .tiles.fourths>div {
+    .tiles.thirds>*,
+    .tiles.fourths>* {
         width: 49.5%;
         padding-bottom: 49.5%;
     }
     
-    .tiles.fifths>div {
+    .tiles.fifths>* {
         width: 32.66%;
         padding-bottom: 32.66%;
     }
@@ -97,32 +97,32 @@
 
 @media screen and (min-width: $break1) {
     
-    .tiles.fourths>div:not(:nth-child(2n)),  
-    .tiles.fifths>div:not(:nth-child(3n)) {
+    .tiles.fourths>*:not(:nth-child(2n)),  
+    .tiles.fifths>*:not(:nth-child(3n)) {
         margin-right: 0;
     }
 
-    .tiles.fourths>div:nth-child(2n+1),
-    .tiles.fifths>div:nth-child(3n+1) {
+    .tiles.fourths>*:nth-child(2n+1),
+    .tiles.fifths>*:nth-child(3n+1) {
         clear: none;
     }
     
-    .tiles.fourths>div:not(:nth-child(3n)),  
-    .tiles.fifths>div:not(:nth-child(4n)) {
+    .tiles.fourths>*:not(:nth-child(3n)),  
+    .tiles.fifths>*:not(:nth-child(4n)) {
         margin-right: 1%;
     }
 
-    .tiles.fourths>div:nth-child(3n+1),
-    .tiles.fifths>div:nth-child(4n+1) {
+    .tiles.fourths>*:nth-child(3n+1),
+    .tiles.fifths>*:nth-child(4n+1) {
         clear: both;
     }
     
-    .tiles.fourths>div {
+    .tiles.fourths>* {
         width: 32.66%;
         padding-bottom: 32.66%;
     }
     
-    .tiles.fifths>div {
+    .tiles.fifths>* {
         width: 24.25%;
         padding-bottom: 24.25%;
     }
@@ -131,41 +131,41 @@
 
 @media screen and (min-width: $break2) {
     
-    .tiles.thirds>div:not(:nth-child(2n)),
-    .tiles.fourths>div:not(:nth-child(3n)),
-    .tiles.fifths>div:not(:nth-child(4n)) {
+    .tiles.thirds>*:not(:nth-child(2n)),
+    .tiles.fourths>*:not(:nth-child(3n)),
+    .tiles.fifths>*:not(:nth-child(4n)) {
         margin-right: 0;
     }
     
-    .tiles.thirds>div:nth-child(2n+1),
-    .tiles.fourths>div:nth-child(3n+1),
-    .tiles.fifths>div:nth-child(4n+1) {
+    .tiles.thirds>*:nth-child(2n+1),
+    .tiles.fourths>*:nth-child(3n+1),
+    .tiles.fifths>*:nth-child(4n+1) {
         clear: none;
     }
     
-    .tiles.thirds>div:not(:nth-child(3n)),
-    .tiles.fourths>div:not(:nth-child(4n)),
-    .tiles.fifths>div:not(:nth-child(5n)) {
+    .tiles.thirds>*:not(:nth-child(3n)),
+    .tiles.fourths>*:not(:nth-child(4n)),
+    .tiles.fifths>*:not(:nth-child(5n)) {
         margin-right: 1%;
     }
 
-    .tiles.thirds>div:nth-child(3n+1),
-    .tiles.fourths>div:nth-child(4n+1),
-    .tiles.fifths>div:nth-child(5n+1) {
+    .tiles.thirds>*:nth-child(3n+1),
+    .tiles.fourths>*:nth-child(4n+1),
+    .tiles.fifths>*:nth-child(5n+1) {
         clear: both;
     }
     
-    .tiles.thirds>div {
+    .tiles.thirds>* {
         width: 32.66%;
         padding-bottom: 32.66%;
     }
     
-    .tiles.fourths>div {
+    .tiles.fourths>* {
         width: 24.25%;
         padding-bottom: 24.25%;
     }
     
-    .tiles.fifths>div {
+    .tiles.fifths>* {
         width: 19.2%;
         padding-bottom: 19.2%;
     }

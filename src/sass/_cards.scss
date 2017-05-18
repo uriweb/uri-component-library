@@ -8,6 +8,7 @@
     background: $white !important;
     box-shadow: $level1;
     color: $darkgrey !important;
+    font-family: "Open Sans", sans-serif !important;
 }
 
 @media screen and (min-width: $maxcardwidth) {
@@ -162,8 +163,9 @@
 
 /* Buttons */
 
-.card a.button,
-.flexcard a.button {
+.card .button,
+.flexcard .button {
+    display: block !important;
     width: 100% !important;
     margin-top: 2rem !important;
     padding: calc(1.5% + 1em) 0 !important;
@@ -184,10 +186,12 @@
     }
 }
 
-.card a.button:hover,
-.card a.button:focus,
-.flexcard a.button:hover,
-.flexcard a.button:focus {
+a.card:hover .button,
+a.card:focus .button,
+.card .button:hover,
+.card .button:focus,
+.flexcard .button:hover,
+.flexcard .button:focus {
     background: $blue !important;
     border-top: 1px solid $blue !important;
     color: $white !important;
