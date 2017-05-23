@@ -11,7 +11,7 @@
         <?php endif; ?>
         <?php if ($content!=null): ?>
         <p><?php print $content; ?></p>
-        <?php endif; ?>
+        <?php endif; ?> 
 <?php if ($atts['link']!=''): ?>
     </a>
 <?php else: ?>
