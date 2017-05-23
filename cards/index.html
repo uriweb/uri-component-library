@@ -40,7 +40,7 @@
                     
                 <article>
                     <h3>Standard Card</h3>
-                    <p>Standard cards are narrow cards that can live both inside and outside of a column framework.  A image is optional.</p>
+                    <p>Standard cards are narrow cards that can live both inside and outside of a column framework.  An image is optional.</p>
                     <p>Standard cards are implemented with the class <code class="class">card</code></p>
 
                     <div class="cols thirds">
@@ -77,6 +77,20 @@
                         <div></div><!-- spacer column -->
                     </div>
                     <p>Standard cards preserve the original aspect ratio of any image used.</p>
+                    <h4>Shortcode Support</h4>
+                    <p>Standard cards can be implemented with the shortcode <code class='shortcode'>cl-card</code></p>
+                    <p class="code">[cl-card title="A Great Title" link="sample.html"]The body text[/cl-card]</p>
+                    <h5>Parameters</h5>
+                    <p><b>link</b> <i>(string) (required)</i></p>
+                    <p class='indent'>The URL for the button (or card, if <b>clickable</b> is set to <code class='bool'>true</code>)</p>
+                    <p><b>img</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
+                    <p><b>title</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                    <p><b>button</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for the button<br /><i>(default value: 'Explore')</i></p>
+                    <p><b>clickable</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to make the entire card clickable<br /><i>(default value: <code class='bool'>false</code>)</i></p>
                 </article>
                 
                 <article>
@@ -108,10 +122,10 @@
                     </div>
                     <p>Note that the image must be nested in <code class="tag">&lt;figure&gt;</code> tags. In the full-width layout, the height of the figure is dependent on the height of the article, and image covers the figure.  At narrow widths, the image behaves as though it is in a standard card, and is not cropped.</p>
                     <h4>Flex card layouts can be reversed</h4>
-                    <p>By default, text displays on the left side and the image displays on the right.  The layout can be reversed by adding the class <code class="class">rtl</code> to the flex card. This will not change how the card behaves at narrow browser widths.</p>
+                    <p>By default, text displays on the left side and the image displays on the right.  The layout can be reversed by adding the class <code class="class">reverse</code> to the flex card. This will not change how the card behaves at narrow browser widths.</p>
                     <p>Note that the figure block must always come before the article block, regardless of layout.</p>
                     <xmp class="prettyprint">
-<div class="flexcard rtl">
+<div class="flexcard reverse">
     <figure>
         <img>
     </figure>
@@ -122,7 +136,7 @@
     </article>
 </div>                       
                     </xmp>
-                    <div class="flexcard rtl">
+                    <div class="flexcard reverse">
                         <figure>
                             <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
                         </figure>
@@ -133,8 +147,22 @@
                             <a class="button" href="">Learn More</a>
                         </article>
                     </div>
+                    <h4>Shortcode Support</h4>
+                    <p>Flex cards can be implemented with the shortcode <code class='shortcode'>cl-flexcard</code></p>
+                    <p class="code">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]Some longer body text.[/cl-flexcard]</p>
+                    <h5>Parameters</h5>
+                    <p><b>link</b> <i>(string) (required)</i></p>
+                    <p class='indent'>The URL for the button</p>
+                    <p><b>img</b> <i>(string) (required)</i></p>
+                    <p class='indent'>The source URL for the image</p>
+                    <p><b>title</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                    <p><b>button</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for the button<br /><i>(default value: 'Explore')</i></p>
+                    <p><b>reverse</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to reverse the card layout<br /><i>(default value: <code class="bool">false</code>)</i></p>
                 </article>
-                
+            
             </section>
             
             <section id="detail">
@@ -171,7 +199,16 @@
                     <div></div>
                 </div>
                 <p>Detail cards preserve the original aspect ratio of the image used, but square images are recommended and preferred.</p>
-                
+                <h4>Shortcode Support</h4>
+                    <p>Detail cards can be implemented with the shortcode <code class='shortcode'>cl-dcard</code></p>
+                    <p class="code">[cl-dcard title="A Great Title"]The body text[/cl-dcard]</p>
+                    <h5>Parameters</h5>
+                    <p><b>title</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                    <p><b>img</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
+                    <p><b>link</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a URL to make the entire card clickable<br /><i>(default value: none)</i></p>
             </section><!-- End Detail Card -->
             
             <section id="usage">

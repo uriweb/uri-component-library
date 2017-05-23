@@ -35,6 +35,16 @@ h4 {
     font-size: 1rem;
     margin: 2.5rem 0 1.3rem;
 }
+h5 {
+    font-family: "Hind", sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #555;
+    margin: 2.5rem 0 .8rem;
+    width: 50%;
+    border-bottom: 1px solid #ccc;
+    
+}
 
 a.component {
     font-weight: 700;
@@ -60,6 +70,10 @@ b {
     font-weight: 700;
 }
 
+i {
+    color: rgba(0,0,0,.5);
+}
+
 em {
     color: #c71616;
 }
@@ -71,6 +85,10 @@ section {
 p {
     line-height: 1.5;
     padding-top: 1rem;
+}
+p.indent {
+    padding-top: .5rem;
+    margin-left: 1rem;
 }
 
 main>p,
@@ -87,11 +105,20 @@ section>article>p {
     }
 }
 
-code {
+xmp {
+    display: block;
+    width: 90%;
+}
+
+code, p.code {
     font-family: Courier;
     font-weight: normal;
     font-size: .8rem;
     padding: 0 .2rem;
+    width: 100%;
+}
+p.code {
+    padding-top: 1rem;
 }
 code.tag,
 .prettyprint .tag {
@@ -109,7 +136,20 @@ code.class {
 code.class.second {
     background: #24a0aa;
 }
-
+code.shortcode {
+    position: relative;
+    top: -.1rem;
+    padding: .1rem .3rem;
+    margin: 0 .1rem;
+    border-radius: .2rem;
+    background: #d02566;
+    color: #fff;
+}
+code.bool {
+    font-size: inherit;
+    padding: .1rem .2rem;
+    color: #008360;
+}
 .prettyprint .atn {
     color: #ba0cba;
 }
