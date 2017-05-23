@@ -4,7 +4,7 @@
 
 $(function(){
     
-    $('#menu-button').click(function(event){
+    $(document).on('click', '#menu-button', function(event){
         event.stopPropagation();
         $('#globalnav').addClass('revealed');
         $('#window-mask').addClass('visible');
@@ -15,7 +15,7 @@ $(function(){
         $('#window-mask').removeClass('visible');
     });
 
-    $('#globalnav').click(function(event){
+    $(document).on('click', '#globalnav', function(event){
         event.stopPropagation();
     });
     
