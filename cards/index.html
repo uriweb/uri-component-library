@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <article>
-                    <h4>Flex cards and detail cards can live inside columns.</h4>
+                    <h4>Standard cards and detail cards can live inside columns.</h4>
                     <p>A card collection can be created by placing cards into the <a class="component" href="../columns/">column</a> framework.</p>
                     <xmp class="prettyprint">
 <div class="cols thirds">
@@ -315,55 +315,33 @@
                 </article>
                 
                 <article>
-                    <h4>Card images can be clickable.</h4>
-                    <p>To make the image clickable, nest the image in <code class="tag">&lt;a&gt;</code> tags.</p>
-                    <p>In action cards, the image should link to the same destination as the button.</p>
+                    <h4>Standard cards and detail cards can be clickable.</h4>
+                    <p>To make the card clickable, create the card with an <code class="tag">&lt;a&gt;</code> tag instead of a <code class="tag">&lt;div&gt;</code> tag.</p>
+                    <p>Making standard cards clickable also requires that the button be created with a <code class="tag">&lt;span&gt;</code> tag instead of an <code class="tag">&lt;a&gt;</code> tag.</p>
                     <xmp class="prettyprint">
-<div class="card">
-    <a href=""><img></a>
+<a class="card" href="">
     ...
-</div>           
+    <span class="button">Button</span>
+</a>           
                     </xmp>
-                    <div class="card">
-                        <a href=""><img src="../media/native/hero_1.jpg" alt="Card Hero 1"></a>
+                    <a class="card" href="">
+                        <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
                         <h1>Lorem Ipsum Dolor</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis aliquet diam, vel bibendum velit scelerisque in. Curabitur ut velit sapien.</p>
-                        <a href="" class="button">Learn more</a>
-                    </div>
+                        <span class="button">Learn more</span>
+                    </a>
                     <xmp class="prettyprint">
-<div class="flexcard">
-    <figure>
-        <a href=""><img></a>
-    </figure>
+<a class="dcard" href="">
     ...
-</div>                       
+</a>           
                     </xmp>
-                    <div class="flexcard">
+                    <a class="dcard" href="">
                         <figure>
-                            <a href=""><img src="../media/native/hero_1.jpg" alt="Card Hero 1"></a>
-                        </figure>
-                        <article>
-                            <h1>Lorem Ipsum Dolor</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat blandit dui ultrices cursus in vel odio. Phasellus molestie ultricies pulvinar. Nullam malesuada libero a nibh tristique ultricies.</p>
-                            <p>Vivamus elementum metus massa, et molestie nisl porttitor ac. Suspendisse nec mi ante. In sed dictum quam. Morbi in nulla fermentum, semper enim in, rhoncus diam. Integer lobortis dictum faucibus.</p>
-                            <a class="button" href="">Learn More</a>
-                        </article>
-                    </div>
-                    <xmp class="prettyprint">
-<div class="dcard">
-    <figure>
-        <a href=""><img></a>
-    </figure>
-    ...
-</div>           
-                    </xmp>
-                    <div class="dcard">
-                        <figure>
-                            <a href=""><img src="../media/commons/profile_1.jpg" alt="Profile 1"></a>
+                            <img src="../media/commons/profile_1.jpg" alt="Profile 1">
                         </figure>
                         <h1>Lorem ipsum</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+                    </a>
                 </article>
 
             </section><!-- end usage -->
