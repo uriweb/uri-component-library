@@ -25,6 +25,27 @@
     display: block;
 }
 
+a.card,
+a.dcard {
+    position: relative;
+    top: 0;
+    transition: top .1s ease-in-out, box-shadow .1s ease-in-out,;
+}
+
+a.card:hover,
+a.card:focus,
+a.dcard:hover,
+a.dcard:focus {
+    top: -2px;
+    box-shadow: $level2;
+    cursor: pointer;
+}
+
+a.card:active,
+a.dcard:active {
+    box-shadow: 0 .3rem 1rem rgba(0,0,0,0.35);
+}
+    
 .card h1,
 .cols .card h1,
 .flexcard h1 {
