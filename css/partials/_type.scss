@@ -108,17 +108,24 @@ section>article>p {
 xmp {
     display: block;
     width: 90%;
+    font-family: 'Roboto Mono', Courier, monospace;
+    font-size: .75rem;
+}
+
+xmp>span {
+    line-height: .9rem;
 }
 
 code, p.code {
-    font-family: Courier;
+    font-family: 'Roboto Mono', Courier, monospace;
     font-weight: normal;
-    font-size: .8rem;
+    font-size: .75rem;
     padding: 0 .2rem;
     width: 100%;
 }
 p.code {
     padding-top: 1rem;
+    color: #d02566;
 }
 code.tag,
 .prettyprint .tag {
@@ -146,7 +153,7 @@ code.shortcode {
     color: #fff;
 }
 code.bool {
-    font-size: inherit;
+    font-size: 90%;
     padding: .1rem .2rem;
     color: #008360;
 }

@@ -10,7 +10,7 @@
     color: $darkgrey !important;
     font-family: "Open Sans", sans-serif !important;
     border-radius: .15rem;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 @media screen and (min-width: $maxcardwidth) {
