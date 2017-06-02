@@ -1,19 +1,25 @@
-<?php if ($atts['link']!=''): ?>
-    <a class="dcard" href="<?php print $atts['link']; ?>">
-<?php else: ?>
-    <div class="dcard">
-<?php endif; ?>
-        <?php if ($atts['img']!=''): ?>
-        <img src="<?php print $atts['img']; ?>">
-        <?php endif; ?>
-        <?php if ($atts['title']!=''): ?>
-        <h1><?php print $atts['title']; ?></h1>
-        <?php endif; ?>
-        <?php if ($atts['body']!=''): ?>
-        <p><?php print $atts['body']; ?></p>
-        <?php endif; ?> 
-<?php if ($atts['link']!=''): ?>
-    </a>
-<?php else: ?>
-    </div>
-<?php endif; ?>
+<?php
+
+// Build inner content
+$inner = '';
+
+if (!empty($img)) {
+    $inner .= '<img src="' . $img . '">';
+}
+if (!empty($title)) {
+    $inner .= '<h1>' . $title . '</h1>';
+}
+if (!empty($body)) {
+    $inner .= '<p>' . $body . '</p>';
+}
+
+// Build wrapper around inner content
+if (!empty($link)) {
+    $output = '<a class="dcard" href="'. $link .'">';
+    $output .= $inner;
+    $output .= '</a>';
+} else {
+    $output = '<div class="dcard">';
+    $output .= $inner;
+    $output .= '</div>';
+}

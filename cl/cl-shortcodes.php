@@ -14,7 +14,7 @@
 /**
  * Standard Card
  */
-function uri_cl_shortcode_card( $atts, $content = null ) {
+function uri_cl_shortcode_card( $atts ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -29,10 +29,9 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 		$atts
 	);
     
-    ob_start();
+    extract($atts);
     include 'templates/cl-template-card.php';
-    $html = ob_get_clean();
-    return $html;
+    return $output;
 
 }
 add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
@@ -55,10 +54,9 @@ function uri_cl_shortcode_flexcard( $atts, $content = null ) {
 		$atts
 	);
     
-    ob_start();
+    extract($atts);
     include 'templates/cl-template-flexcard.php';
-    $html = ob_get_clean();
-    return $html;
+    return $output;
 
 }
 add_shortcode( 'cl-flexcard', 'uri_cl_shortcode_flexcard' );
@@ -67,7 +65,7 @@ add_shortcode( 'cl-flexcard', 'uri_cl_shortcode_flexcard' );
 /**
  * Detail Card
  */
-function uri_cl_shortcode_dcard( $atts, $content = null ) {
+function uri_cl_shortcode_dcard( $atts ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -80,10 +78,9 @@ function uri_cl_shortcode_dcard( $atts, $content = null ) {
 		$atts
 	);
     
-    ob_start();
+    extract($atts);
     include 'templates/cl-template-dcard.php';
-    $html = ob_get_clean();
-    return $html;
+    return $output;
 
 }
 add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );

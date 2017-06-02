@@ -1,14 +1,23 @@
-<div class="flexcard<?php if ($atts['reverse']): ?> reverse<?php endif; ?>">
-    <figure>
-        <img src="<?php print $atts['img']; ?>">
-    </figure>
-    <article>
-        <?php if ($atts['title']!=''): ?>
-        <h1><?php print $atts['title']; ?></h1>
-        <?php endif; ?>
-        <?php if ($content!=null): ?>
-        <p><?php print $content; ?></p>
-        <?php endif; ?>
-        <a class="button" href="<?php print $atts['link']; ?>"><?php print $atts['button']; ?></a>
-    </article>
-</div>
+<?php
+
+$classes = 'flexcard';
+if ($reverse) {
+    $classes = 'flexcard reverse';
+}
+
+$output = '<div class="' . $classes . '">';
+$output .= '<figure>';
+$output .= '<img src="' . $img . '">';
+$output .= '</figure>';
+$output .= '<article>';
+
+if (!empty($title)) {
+    $output .= '<h1>' . $title . '</h1>';
+}
+if (isset($content)) {
+    $output .= '<p>' . $content . '</p>';
+}
+    
+$output .= '<a class="button" href="' . $link . '">' . $button . '</a>';
+$output .= '</article>';
+$output .= '</div>';
