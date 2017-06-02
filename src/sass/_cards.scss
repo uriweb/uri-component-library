@@ -9,6 +9,8 @@
     box-shadow: $level1;
     color: $darkgrey !important;
     font-family: "Open Sans", sans-serif !important;
+    border-radius: .15rem;
+    overflow: hidden;
 }
 
 @media screen and (min-width: $maxcardwidth) {

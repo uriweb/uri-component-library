@@ -9,8 +9,8 @@
         <?php if ($atts['title']!=''): ?>
         <h1><?php print $atts['title']; ?></h1>
         <?php endif; ?>
-        <?php if ($content!=null): ?>
-        <p><?php print $content; ?></p>
+        <?php if ($atts['body']!=''): ?>
+        <p><?php print $atts['body']; ?></p>
         <?php endif; ?> 
 <?php if ($atts['link']!=''): ?>
     </a>

@@ -79,7 +79,7 @@
                     <p>Standard cards preserve the original aspect ratio of any image used.</p>
                     <h4>Shortcode Support</h4>
                     <p>Standard cards can be implemented with the shortcode <code class='shortcode'>cl-card</code></p>
-                    <p class="code">[cl-card title="A Great Title" link="sample.html"]The body text[/cl-card]</p>
+                    <p class="code">[cl-card title="A Great Title" body="The body text" link="sample.html"]</p>
                     <h5>Attributes</h5>
                     <p><b>link</b> <i>(string) (required)</i></p>
                     <p class='indent'>The URL for the button (or card, if <b>clickable</b> is set to <code class='bool'>true</code>)</p>
@@ -87,6 +87,8 @@
                     <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
                     <p><b>title</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                    <p><b>body</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The body text<br /><i>(default value: none)</i></p>
                     <p><b>button</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The text for the button<br /><i>(default value: 'Explore')</i></p>
                     <p><b>clickable</b> <i>(bool) (optional)</i></p>
@@ -150,6 +152,8 @@
                     <h4>Shortcode Support</h4>
                     <p>Flex cards can be implemented with the shortcode <code class='shortcode'>cl-flexcard</code></p>
                     <p class="code">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]Some longer body text.[/cl-flexcard]</p>
+                    <p>The flex card shortcode wraps the content in <code class="tag">&lt;p&gt;</code> tags.  To include multiple paragraphs, place <code class="tag">&lt;/p&gt;&lt;p&gt;</code> between each one.</p>
+                    <p class="code">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]This is the first paragraph.&lt;/p&gt;&lt;p&gt;This is the second paragraph.&lt;/p&gt;&lt;p&gt;Why not a third?[/cl-flexcard]</p>
                     <h5>Attributes</h5>
                     <p><b>link</b> <i>(string) (required)</i></p>
                     <p class='indent'>The URL for the button</p>
@@ -201,10 +205,12 @@
                 <p>Detail cards preserve the original aspect ratio of the image used, but square images are recommended and preferred.</p>
                 <h4>Shortcode Support</h4>
                     <p>Detail cards can be implemented with the shortcode <code class='shortcode'>cl-dcard</code></p>
-                    <p class="code">[cl-dcard title="A Great Title"]The body text[/cl-dcard]</p>
+                    <p class="code">[cl-dcard title="A Great Title" body="The body text"]</p>
                     <h5>Attributes</h5>
                     <p><b>title</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                    <p><b>body</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The body text<br /><i>(default value: none)</i></p>
                     <p><b>img</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
                     <p><b>link</b> <i>(string) (optional)</i></p>

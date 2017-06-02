@@ -63,7 +63,7 @@ header h1 a {
     overflow-x: hidden;
     overflow-y: auto;
     width: 250px;
-    background: #0047c2;
+    background: linear-gradient(135deg, #0047c2 0%,#409fed 100%);
     font-size: .9rem;
     box-shadow: 2px 0 5px rgba(0,0,0,.2);
     transition: all .2s ease-in-out;
@@ -150,13 +150,6 @@ body.nav-color #gn-color a {
     #globalnav {
         left: -270px;
         box-shadow: 5px 0 20px rgba(0,0,0,.3);
-    }
-    @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-        #globalnav {
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            backdrop-filter: saturate(180%) blur(20px);
-            background-color: rgba(0,51,215,.8)
-        }
     }
 }
 

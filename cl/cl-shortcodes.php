@@ -1,6 +1,14 @@
 <?php
 
-// COMPONENT LIBRARY SHORTCODES
+/* COMPONENT LIBRARY SHORTCODES
+ *
+ * CONTENTS
+ *
+ * - Standard Card
+ * - Flex Card
+ * - Detail Card
+ *
+ */
 
 
 /**
@@ -13,6 +21,7 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 		array(
 			'img' => '',
 			'title' => '',
+            'body' => '',
             'button' => 'Explore',
             'link' => '#',
             'clickable' => false
@@ -65,6 +74,7 @@ function uri_cl_shortcode_dcard( $atts, $content = null ) {
 		array(
 			'img' => '',
 			'title' => '',
+            'body' => '',
             'link' => ''
 		),
 		$atts
