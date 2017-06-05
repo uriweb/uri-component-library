@@ -31,6 +31,10 @@
     text-transform: initial;
 }
 
+.cols>div>h1:first-child {
+    padding-top: 0;
+}
+
 .cols>div>h2 {
     font-family: $header;
     font-size: 1.1rem;
@@ -104,42 +108,5 @@
 @media screen and (min-width: $break3){
     .cols>div>p {
         line-height: 1.5rem;
-    }
-}
-
-// Buttons
-
-.cols>div>a.button {
-    margin: 1.2rem 0;
-    padding: calc(1% + 1em) 0;
-    width: 100%;
-    background: $white;
-    border: 1px solid $grey;
-    font-size: .7rem;
-    font-weight: 700;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-    text-align: center;
-    color: $blue;
-    transition: all .2s;
-}
-
-.cols>div>a.button:hover,
-.cols>div>a.button:focus {
-    background: $blue;
-    border: 1px solid $blue;
-    color: $white;
-    transition: all .1s;
-}
-
-@media screen and (min-width: $break1) {
-    .cols>div>a.button {
-        width: 45%;
-    }
-}
-
-@media screen and (min-width: $break2) {
-    .cols>div>a.button {
-        width: 100%;
     }
 }

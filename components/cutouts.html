@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cutouts - Components - Digital Content Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../cl/cl.built.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </head>
+	
+	<body class="nav-cutouts">
+        
+        <nav>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1>Cutouts</h1>
+            <!-- <img class="wireframe right" src="../media/wireframes/cards.svg" alt="Cards"> -->
+            <p>Cutouts group multiple action links or buttons together, with some brief explantory text.</p>
+            
+            <ul id="localnav">
+                <li><a href="#design">Design</a></li>
+                <li><a href="#usage">Usage</a></li>
+            </ul>
+            
+            <section id="design">
+                
+                <h2>Design</h2>
+                <p>Cutouts are implemented with the class <code class="class">cutout</code></p>
+                <xmp class="prettyprint">
+<div class="cutout">
+    <h1>Title</h1>
+    <p>Paragraph text with a <a>link</a>.</p> 
+    <a class="button">Button</a>
+    <a class="button">Another Button</a>
+</div>    
+                </xmp>
+                
+                <div class="cutout">
+                    <h1>Here's a title</h1>
+                    <p>Cutouts can contain little snippets of text, or full-fledged paragraphs.</p>
+                    <p>Here's some text with an <a href="#">inline</a> link.</p>
+                    <a class="button" href="#">Click me</a>
+                    <a class="button" href="#">Another Button</a>
+                </div>
+            
+            </section>
+            
+            <section id="usage">
+                
+                <h2>Usage</h2>
+                <h4>Cutouts can live in columns, but cannot be a column.</h4>
+                <p>To place a cutout in a column, use the <a href="../layout/columns.html" class="component">column</a> framework.</p>
+                <p>Always nest a cutout inside a column.  Do not create a column with a cutout.</p>
+                    
+                <xmp class="prettyprint">
+<div class="cols thirds">
+    <div>
+        ...
+        <div class="cutout">...</div>
+        ...
+    </div>
+    ...
+</div>           
+                </xmp>
+                
+                <div class="cols thirds">
+
+                    <div>
+                        <h1>Multiple Actions</h1>
+                        <p>Cutouts in columns are best used to provide multiple actions at the bottom of column.</p>
+                        <div class="cutout">
+                            <h1>Go exploring</h1>
+                            <p>Cutouts are a good way to set aside some content that includes a <a href="#">link</a> or some more major actions:</p>
+                            <a class="button" href="#">Take Action</a>
+                            <a class="button" href="#">Go Elsewhere</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h1>Column 2</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a commodo ante. Integer ut dolor quis tellus porta blandit. Suspendisse lobortis orci eu augue sagittis, ornare volutpat diam elementum.</p>
+                        <p>Ad fugiat lorem ut admodum, eu ubi sunt dolor labore, e commodo illustriora, iis eram commodo fidelissimae. E anim fugiat ne offendit. Duis commodo qui sempiternum ad dolor voluptate do nostrud. Velit quamquam ut eram fore, cernantur do enim sed ut noster cupidatat, senserit a elit pariatur, amet ne non legam consequat, doctrina dolor non doctrina praesentibus, voluptate quis summis ita sunt, appellat quid eram non quem.</p>
+                    </div>
+                    <div>
+                        <h1>Column 3</h1>
+                        <p>Quisque eu odio eu metus finibus bibendum nec vel lorem. In consequat diam in orci molestie molestie. Phasellus nulla quam, tempor et hendrerit eget, laoreet id ligula. Fusce suscipit sem at lacus auctor malesuada.</p>
+                        <p>Arbitror velit nisi ex lorem iis mandaremus de expetendis. Nisi mentitum cupidatat an aut ea magna velit quid. Admodum et nescius. Aliqua exercitation vidisse labore deserunt et incididunt nam probant an tamen nescius sed labore fore, a a tractavissent.</p>
+                    </div>
+
+                </div>
+                
+            </section>
+            
+        </main>
+                
+        <footer>
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>

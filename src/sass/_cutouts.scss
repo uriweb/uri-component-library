@@ -1,0 +1,49 @@
+/* ======= CUTOUTS ======= */
+
+.cutout {
+    display: block;
+    width: 100%;
+    padding: 6% 5%;
+    background: #eee; //#e5ebf4;
+    border-radius: .2rem;
+    box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
+    border-bottom: 1px solid #fff;
+    color: $black !important;
+}
+
+.cols .cutout:not(:first-child) {
+    margin-top: 1.5rem;
+}
+
+.cutout img {
+    width: 100%;
+    margin: 1.2rem 0 !important;
+    border-radius: 2px;
+}
+
+.cutout img:first-child {
+    margin-top: 0 !important;
+}
+
+.cutout h1 {
+    font-family: $header;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.cutout p {
+    font-size: .8rem;
+    width: 100% !important;
+}
+
+@media screen and (min-width: $break1) {
+    .cutout {
+        width: 300px;
+        padding: 20px;
+    }
+    .cols .cutout {
+        width: 100%;
+    }
+}
