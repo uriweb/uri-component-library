@@ -17,7 +17,7 @@
 function uri_cl_shortcode_card( $atts ) {
 
 	// Attributes
-	$atts = shortcode_atts(
+	extract( shortcode_atts(
 		array(
 			'img' => '',
 			'title' => '',
@@ -25,11 +25,9 @@ function uri_cl_shortcode_card( $atts ) {
             'button' => 'Explore',
             'link' => '#',
             'clickable' => false
-		),
-		$atts
+		), $atts )
 	);
     
-    extract($atts);
     include 'templates/cl-template-card.php';
     return $output;
 
@@ -43,18 +41,16 @@ add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
 function uri_cl_shortcode_flexcard( $atts, $content = null ) {
 
 	// Attributes
-	$atts = shortcode_atts(
+	extract( shortcode_atts(
 		array(
 			'img' => '',
 			'title' => '',
             'button' => 'Explore',
             'link' => '#',
             'reverse' => false
-		),
-		$atts
+		), $atts )
 	);
     
-    extract($atts);
     include 'templates/cl-template-flexcard.php';
     return $output;
 
@@ -68,17 +64,15 @@ add_shortcode( 'cl-flexcard', 'uri_cl_shortcode_flexcard' );
 function uri_cl_shortcode_dcard( $atts ) {
 
 	// Attributes
-	$atts = shortcode_atts(
+	extract( shortcode_atts(
 		array(
 			'img' => '',
 			'title' => '',
             'body' => '',
             'link' => ''
-		),
-		$atts
+		), $atts )
 	);
     
-    extract($atts);
     include 'templates/cl-template-dcard.php';
     return $output;
 

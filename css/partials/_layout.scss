@@ -50,8 +50,14 @@ section>article>article {
     position: relative;
     width: 100%;
     max-width: 500px;
-    top: -70px;
-    right: 0;
+    left: -20px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    #pg-identity {
+        left: -3vw;
+    }
 }
 
 img.wireframe {

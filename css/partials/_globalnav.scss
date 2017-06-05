@@ -11,7 +11,7 @@ header {
     height: 80px;
     line-height: 80px;
     z-index: 1;
-    background-color: #fff;
+    background: #fff;
     box-shadow: none;
     padding-left: 250px;
     box-sizing: border-box;
@@ -50,7 +50,7 @@ header h1 {
 }
 
 header h1 a {
-    color: #0047c2;
+    color: #409fed;
 }
     
 #globalnav { 
@@ -63,9 +63,9 @@ header h1 a {
     overflow-x: hidden;
     overflow-y: auto;
     width: 250px;
-    background: linear-gradient(135deg, #0047c2 0%,#409fed 100%);
-    font-size: .9rem;
-    box-shadow: 2px 0 5px rgba(0,0,0,.2);
+    background: #fff;
+    border-right: 1px solid #ddd;
+    font-size: .8rem;
     transition: all .2s ease-in-out;
 }
 
@@ -94,33 +94,32 @@ header h1 a {
 
 #globalnav li.section {
     padding: 20px 20px 20px 35px;
-    color: #fff;
+    color: #555;
     font-weight: 700;
-    text-transform: uppercase;
 }
 
 #globalnav li.section:not(:first-child) {
-    border-top: 1px solid rgba(256,256,256,.3);
+    border-top: 1px solid #eee;
 }
 
 #globalnav li a {
     display: block;
     padding: 20px 20px 20px 60px;
-    color: #fff;
+    color: #555;
     transition: background .1s ease-in-out;
 }
 
 #globalnav li a:hover,
 #globalnav li a:focus {
-    background: rgba(256,256,256,.2);
+    background: #eee;
 }
 
 body.nav-columns #gn-columns a,
 body.nav-tiles #gn-tiles a,
 body.nav-cards #gn-cards a,
 body.nav-color #gn-color a {
-    color: #002147;
-    background: #fff;
+    color: #fff;
+    background: linear-gradient(135deg, #0047c2 0%,#409fed 100%);
 }
 
 #window-mask {
@@ -149,7 +148,7 @@ body.nav-color #gn-color a {
     }
     #globalnav {
         left: -270px;
-        box-shadow: 5px 0 20px rgba(0,0,0,.3);
+        border-right: none;
     }
 }
 
@@ -158,4 +157,9 @@ body.nav-color #gn-color a {
         height: 60px;
         line-height: 60px;
     }
+    
+    header h1 {
+        font-size: 4vw;
+    }
+    
 }
