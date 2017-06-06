@@ -9,15 +9,9 @@
     box-shadow: $level1;
     color: $darkgrey !important;
     font-family: "Open Sans", sans-serif !important;
-    border-radius: .15rem;
+    border-radius: .2rem;
     overflow: hidden !important;
-}
-
-@media screen and (min-width: $maxcardwidth) {
-    .card,
-    .dcard {
-        max-width: $maxcardwidth;
-    }
+    transition: width .2s ease-in-out;
 }
 
 .cols .card,
@@ -25,6 +19,27 @@
     width: 100%;
     margin-bottom: 1rem;
     display: block;
+}
+
+@media screen and (min-width: $break1) {
+    .cols .card,
+    .cols .dcard {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: $break2) {
+    .cols .card,
+    .cols .dcard {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $maxcardwidth) {
+    .card,
+    .dcard {
+        max-width: $maxcardwidth;
+    }
 }
 
 a.card,
@@ -193,7 +208,7 @@ a.dcard:active {
     margin-top: 2rem !important;
     padding: calc(1.5% + 1em) 0 !important;
     background: inherit !important;
-    border-top: 1px solid $lightgrey !important;
+    border-top: 1px solid #eee !important;
     font-size: .7rem !important;
     font-weight: 700 !important;
     letter-spacing: .1rem !important;

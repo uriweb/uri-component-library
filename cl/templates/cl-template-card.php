@@ -15,13 +15,13 @@ if (!empty($body)) {
 
 // Build wrapper around inner content
 if ($clickable) {
-    $output = '<a class="card" href="'. $link .'">';
+    $output = '<a class="card" href="'. $link .'" title="' . $tooltip . '">';
     $output .= $inner;
     $output .= '<span class="button">' . $button . '</span>';
     $output .= '</a>';
 } else {
     $output = '<div class="card">';
     $output .= $inner;
-    $output .= '<a class="button" href="' . $link . '">' . $button . '</a>';
+    $output .= '<a class="button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
     $output .= '</div>';
 }

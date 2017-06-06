@@ -5,52 +5,65 @@ a.button {
     display: block !important;
 }
 
-// Buttons
+.cols>div>,
+.cutout> {
 
-.cols>div>a.button,
-.cutout>a.button {
-    margin: 1.2rem 0;
-    padding: calc(1% + 1em) 0;
-    width: 100%;
-    background: $white;
-    border: 1px solid $grey;
-    font-size: .7rem;
-    font-weight: 700;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-    text-align: center;
-    color: $blue;
-    transition: all .2s;
+    a.button {
+        margin: 1.2rem 0;
+        padding: calc(1% + 1em) 0;
+        width: 100%;
+        background: $white;
+        border: 1px solid $grey;
+        font-size: .7rem;
+        font-weight: 700;
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: $blue;
+        transition: all .2s;
+    }
+    
+    a.button.prominent {
+        background: $link;
+        color: $white;
+        border: 1px solid $link;
+    }
+    
+    a.button:last-child {
+        margin-bottom: 0;
+    }
+    
+    a.button:hover,
+    a.button:focus {
+        background: $blue;
+        border: 1px solid $blue;
+        color: $white;
+        transition: all .1s;
+    }
+    
 }
 
 .cutout>a.button {
     border-radius: 2px;
 }
 
-.cols>div>a.button:last-child,
-.cutout>a.button:last-child {
-    margin-bottom: 0;
-}
-
-.cols>div>a.button:hover,
-.cols>div>a.button:focus,
-.cutout>a.button:hover,
-.cutout>a.button:focus {
-    background: $blue;
-    border: 1px solid $blue;
-    color: $white;
-    transition: all .1s;
-}
-
 @media screen and (min-width: $break1) {
+    
     .cols>div>a.button {
         width: 45%;
     }
+    
 }
 
 @media screen and (min-width: $break2) {
-    .cols>div>a.button,
-    .cutout>a.button {
-        width: 100%;
+    
+    .cols>div>,
+    .cutout> {
+        
+        a.button {
+            width: 100%;
+        }
+        
     }
+    
 }

@@ -47,11 +47,11 @@ h5 {
 }
 
 a.component {
-    font-weight: 700;
+    font-weight: 600;
     font-size: .8rem;
-    color: #0047c2;
+    color: #2065dd;
     text-decoration: none;
-    padding: 3px 5px;
+    padding: 2px 7px;
     margin: 0 .1rem;
     border-radius: .25rem;
     border: 1px solid #e5e5e5;
@@ -62,8 +62,8 @@ a.component {
 a.component:hover,
 a.component:focus {
     color: #fff;
-    background: #0047c2;
-    border: 1px solid #0047c2;
+    background: #2065dd;
+    border: 1px solid #2065dd;
 }   
 
 b {
@@ -123,7 +123,7 @@ code, p.code {
     padding: 0 .2rem;
     width: 100%;
 }
-p.code {
+p.code.shortcode {
     padding-top: 1rem;
     color: #d02566;
 }
@@ -155,7 +155,12 @@ code.shortcode {
 code.bool {
     font-size: 90%;
     padding: .1rem .2rem;
-    color: #008360;
+    color: #d96d00;
+}
+code.string {
+    font-size: 90%;
+    padding: .1rem .2rem;
+    color: #080;
 }
 .prettyprint .atn {
     color: #ba0cba;

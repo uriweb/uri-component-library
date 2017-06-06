@@ -39,8 +39,8 @@
 <div class="cutout">
     <h1>Title</h1>
     <p>Paragraph text with a <a>link</a>.</p> 
+    <a class="button prominent">Prominent Button</a>
     <a class="button">Button</a>
-    <a class="button">Another Button</a>
 </div>    
                 </xmp>
                 
@@ -48,9 +48,20 @@
                     <h1>Here's a title</h1>
                     <p>Cutouts can contain little snippets of text, or full-fledged paragraphs.</p>
                     <p>Here's some text with an <a href="#">inline</a> link.</p>
-                    <a class="button" href="#">Click me</a>
+                    <a class="button prominent" href="#">Click me</a>
                     <a class="button" href="#">Another Button</a>
                 </div>
+                
+                <h4>Shortcode Support</h4>
+                <p>Cutouts can be implemented with the shortcode <code class='shortcode'>cl-cutout</code></p>
+                <p class="code shortcode">[cl-cutout title="A Great Title"]The body text, html, or other shortcodes[/cl-cutout]</p>
+                <p>The cutout shortcode supports nested shortcodes, which makes adding <a href="../components/buttons.html" class="component">buttons</a> easy.</p>
+                <p class="code shortcode">[cl-cutout title="A Great Title"]The body text. [cl-button ...][/cl-cutout]</p>
+                <h5>Attributes</h5>
+                <p><b>title</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                <p><b>float</b> <i>(string) (optional) (values: <code class="string">'left'</code>, <code class="string">'right'</code>)</i></p>
+                <p class='indent'>Set to float the cutout either left or right<br /><i>(default value: none)</i></p>
             
             </section>
             
@@ -80,7 +91,7 @@
                         <div class="cutout">
                             <h1>Go exploring</h1>
                             <p>Cutouts are a good way to set aside some content that includes a <a href="#">link</a> or some more major actions:</p>
-                            <a class="button" href="#">Take Action</a>
+                            <a class="button prominent" href="#">Take Action</a>
                             <a class="button" href="#">Go Elsewhere</a>
                         </div>
                     </div>

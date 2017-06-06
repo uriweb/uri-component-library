@@ -24,17 +24,17 @@
             
             <h1>Cards</h1>
             <img class="wireframe right" src="../media/wireframes/cards.svg" alt="Cards">
-            <p>A card is a container with abridged contents, serving as an entry-point to more detailed information.</p>
+            <p>A card is an elevated container with abridged contents and a single action, serving as an entry-point to more detailed information.</p>
             
             <ul id="localnav">
-                <li><a href="#action">Action Card</a></li>
+                <li><a href="#action">Action Cards</a></li>
                 <li><a href="#detail">Detail Card</a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="#construction">Construction</a></li>
             </ul>
             
             <section id="action">
-                <h2>Action Card</h2>
+                <h2>Action Cards</h2>
                 <h4>Action cards prompt user action with summary language and a button.</h4>
                 <p>Two types of action cards can be used depending on layout and content.</p>
                     
@@ -76,10 +76,11 @@
                         </div>
                         <div></div><!-- spacer column -->
                     </div>
+                    <p>Standard cards should not contain any links. Clicking the button (or entire card, when enabled) should be the only action a user can take when interacting with a standard card.</p>
                     <p>Standard cards preserve the original aspect ratio of any image used.</p>
                     <h4>Shortcode Support</h4>
                     <p>Standard cards can be implemented with the shortcode <code class='shortcode'>cl-card</code></p>
-                    <p class="code">[cl-card title="A Great Title" body="The body text" link="sample.html"]</p>
+                    <p class="code shortcode">[cl-card title="A Great Title" body="The body text" link="sample.html"]</p>
                     <h5>Attributes</h5>
                     <p><b>link</b> <i>(string) (required)</i></p>
                     <p class='indent'>The URL for the button (or card, if <b>clickable</b> is set to <code class='bool'>true</code>)</p>
@@ -90,7 +91,9 @@
                     <p><b>body</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The body text<br /><i>(default value: none)</i></p>
                     <p><b>button</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for the button<br /><i>(default value: 'Explore')</i></p>
+                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
+                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The title attribute for the link<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
                     <p><b>clickable</b> <i>(bool) (optional)</i></p>
                     <p class='indent'>Set to make the entire card clickable<br /><i>(default value: <code class='bool'>false</code>)</i></p>
                 </article>
@@ -151,9 +154,9 @@
                     </div>
                     <h4>Shortcode Support</h4>
                     <p>Flex cards can be implemented with the shortcode <code class='shortcode'>cl-flexcard</code></p>
-                    <p class="code">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]Some longer body text.[/cl-flexcard]</p>
+                    <p class="code shortcode">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]Some longer body text.[/cl-flexcard]</p>
                     <p>The flex card shortcode wraps the content in <code class="tag">&lt;p&gt;</code> tags.  To include multiple paragraphs, place <code class="tag">&lt;/p&gt;&lt;p&gt;</code> between each one.</p>
-                    <p class="code">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]This is the first paragraph.&lt;/p&gt;&lt;p&gt;This is the second paragraph.&lt;/p&gt;&lt;p&gt;Why not a third?[/cl-flexcard]</p>
+                    <p class="code shortcode">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]This is the first paragraph.&lt;/p&gt;&lt;p&gt;This is the second paragraph.&lt;/p&gt;&lt;p&gt;Why not a third?[/cl-flexcard]</p>
                     <h5>Attributes</h5>
                     <p><b>link</b> <i>(string) (required)</i></p>
                     <p class='indent'>The URL for the button</p>
@@ -162,7 +165,9 @@
                     <p><b>title</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
                     <p><b>button</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for the button<br /><i>(default value: 'Explore')</i></p>
+                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
+                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The title attribute for the link<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
                     <p><b>reverse</b> <i>(bool) (optional)</i></p>
                     <p class='indent'>Set to reverse the card layout<br /><i>(default value: <code class="bool">false</code>)</i></p>
                 </article>
@@ -171,50 +176,53 @@
             
             <section id="detail">
                 <h2>Detail Card</h2>
-                <h4>Detail cards have text and an optional thumbnail image on the right-hand side.</h4>
+                <h4>Detail cards are always clickable and have an optional thumbnail image on the right-hand side.</h4>
                 <p>Detail cards are implemented with the class <code class="class">dcard</code>
                 <div class="cols thirds">
                     <div>
                         <xmp class="prettyprint">
-<div class="dcard">
+<a class="dcard" href="">
     <h1>Title</h1>
     <p>Brief phrase.</p>
-</div>                  
+</a>                  
                         </xmp>
-                        <div class="dcard">
+                        <a class="dcard" href="#">
                             <h1>Lorem ipsum</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
+                        </a>
                     </div>
                     <div>
                         <xmp class="prettyprint">
-<div class="dcard">
+<a class="dcard" href="">
     <img>
     <h1>Title</h1>
     <p>Brief phrase.</p>
-</div>   
+</a>   
                         </xmp>
-                        <div class="dcard">
+                        <a class="dcard" href="#">
                             <img src="../media/commons/profile_1.jpg" alt="Profile 1">
                             <h1>Lorem ipsum</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
+                        </a>
                     </div>
                     <div></div>
                 </div>
+                <p>Detail cards cannot contain any links. Clicking the card should be the only action a user can take when interacting with a detail card.</p>
                 <p>Detail cards preserve the original aspect ratio of the image used, but square images are recommended and preferred.</p>
                 <h4>Shortcode Support</h4>
                     <p>Detail cards can be implemented with the shortcode <code class='shortcode'>cl-dcard</code></p>
-                    <p class="code">[cl-dcard title="A Great Title" body="The body text"]</p>
+                    <p class="code shortcode">[cl-dcard link="sample.html" title="A Great Title" body="The body text"]</p>
                     <h5>Attributes</h5>
+                    <p><b>link</b> <i>(string) (required)</i></p>
+                    <p class='indent'>The URL for the card</p>
                     <p><b>title</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
                     <p><b>body</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The body text<br /><i>(default value: none)</i></p>
                     <p><b>img</b> <i>(string) (optional)</i></p>
                     <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
-                    <p><b>link</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>Set a URL to make the entire card clickable<br /><i>(default value: none)</i></p>
+                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The tooltip for the card<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
             </section><!-- End Detail Card -->
             
             <section id="usage">
@@ -293,35 +301,35 @@
                     </xmp>
                     <div class="cols thirds">
                         <div>
-                            <div class="dcard">
+                            <a class="dcard" href="#">
                                 <img src="../media/commons/profile_1.jpg" alt="Profile 1">
                                 <h1>Lorem ipsum</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <p><a href="#">someone@uri.edu</a></p>
-                            </div>
+                                <p>401.555.7962</p>
+                            </a>
                         </div>
                         <div>
-                            <div class="dcard">
+                            <a class="dcard" href="#">
                                 <img src="../media/commons/profile_2.jpg" alt="Profile 2">
                                 <h1>Lorem ipsum</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <p>401.555.3792</p>
-                            </div>
+                            </a>
                         </div>
                         <div>
-                            <div class="dcard">
+                            <a class="dcard" href="#">
                                 <img src="../media/commons/profile_3.jpg" alt="Profile 3">
                                 <h1>Lorem ipsum</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <p><a href="">today.uri.edu</a></p>
-                            </div>
+                                <p>401.555.0785</p>
+                            </a>
                         </div>
                     </div>
                 
                 </article>
                 
                 <article>
-                    <h4>Standard cards and detail cards can be clickable.</h4>
+                    <h4>Standard cards can be clickable.</h4>
                     <p>To make the card clickable, create the card with an <code class="tag">&lt;a&gt;</code> tag instead of a <code class="tag">&lt;div&gt;</code> tag.</p>
                     <p>Making standard cards clickable also requires that the button be created with a <code class="tag">&lt;span&gt;</code> tag instead of an <code class="tag">&lt;a&gt;</code> tag.</p>
                     <xmp class="prettyprint">
@@ -335,20 +343,6 @@
                         <h1>Lorem Ipsum Dolor</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis aliquet diam, vel bibendum velit scelerisque in. Curabitur ut velit sapien.</p>
                         <span class="button">Learn more</span>
-                    </a>
-                    <p></p>
-                    <p>When making detail cards clickable, do not include links inside the card.</p>
-                    <xmp class="prettyprint">
-<a class="dcard" href="">
-    ...
-</a>           
-                    </xmp>
-                    <a class="dcard" href="">
-                        <figure>
-                            <img src="../media/commons/profile_1.jpg" alt="Profile 1">
-                        </figure>
-                        <h1>Lorem ipsum</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </a>
                 </article>
 

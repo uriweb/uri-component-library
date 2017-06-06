@@ -39,11 +39,13 @@ section {
     margin-top: 120px;
     padding-top: 80px;
     border-top: 1px solid #ccc;
+    clear: both;
 }
 
 section>article,
 section>article>article {
     margin-top: 80px;
+    clear: both;
 }
 
 #pg-identity {

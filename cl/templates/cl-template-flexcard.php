@@ -18,6 +18,6 @@ if (isset($content)) {
     $output .= '<p>' . $content . '</p>';
 }
     
-$output .= '<a class="button" href="' . $link . '">' . $button . '</a>';
+$output .= '<a class="button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
 $output .= '</article>';
 $output .= '</div>';
