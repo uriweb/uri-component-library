@@ -3,7 +3,7 @@
 $classes = 'button';
 
 if($prominant) {
-    $classes .= ' prominant';
+    $classes .= ' prominent';
 }
 
 $output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">';

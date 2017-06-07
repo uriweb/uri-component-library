@@ -17,6 +17,7 @@
 	<body class="nav-cards">
         
         <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
             <script>$('nav').load('../includes/nav.html');</script>
         </nav>
             
@@ -43,7 +44,7 @@
                     <p>Standard cards are narrow cards that can live both inside and outside of a column framework.  An image is optional.</p>
                     <p>Standard cards are implemented with the class <code class="class">card</code></p>
 
-                    <div class="cols thirds">
+                    <div class="tiles thirds">
                         <div>
                             <xmp class="prettyprint">
 <div class="card">
@@ -74,7 +75,6 @@
                                 <a href="" class="button">Explore</a>
                             </div>
                         </div>
-                        <div></div><!-- spacer column -->
                     </div>
                     <p>Standard cards should not contain any links. Clicking the button (or entire card, when enabled) should be the only action a user can take when interacting with a standard card.</p>
                     <p>Standard cards preserve the original aspect ratio of any image used.</p>
@@ -178,7 +178,7 @@
                 <h2>Detail Card</h2>
                 <h4>Detail cards are always clickable and have an optional thumbnail image on the right-hand side.</h4>
                 <p>Detail cards are implemented with the class <code class="class">dcard</code>
-                <div class="cols thirds">
+                <div class="tiles thirds">
                     <div>
                         <xmp class="prettyprint">
 <a class="dcard" href="">
@@ -205,7 +205,6 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </a>
                     </div>
-                    <div></div>
                 </div>
                 <p>Detail cards cannot contain any links. Clicking the card should be the only action a user can take when interacting with a detail card.</p>
                 <p>Detail cards preserve the original aspect ratio of the image used, but square images are recommended and preferred.</p>
@@ -228,7 +227,7 @@
             <section id="usage">
                 <h2>Usage</h2>
                 <h4>Card content is isolated.</h4>
-                <div class="cols thirds">
+                <div class="tiles thirds">
                     <div>
                         <p>The purpose of cards is to highlight information with the goal of enticing user action.  Cards should not be used simply to emphasize some content or act as a header.</p>
                         <p><b>A good test is this:</b> If removing the card from the page makes it more difficult to understand other page content, the card is not being used properly.</p>
@@ -245,78 +244,51 @@
                     </div>
                 </div>
                 <article>
-                    <h4>Standard cards and detail cards can live inside columns.</h4>
-                    <p>A card collection can be created by placing cards into the <a class="component" href="../columns/">column</a> framework.</p>
+                    <h4>Standard cards and detail cards can be tiles, or live inside them.</h4>
+                    <p>To create a tile with a card or place a card in a tile, use the <a class="component" href="../tiles/">tile</a> framework.  If a card will be the only content in a given tile, the tile can be created with the card itself.</p>
                     <xmp class="prettyprint">
-<div class="cols thirds">
-    <div>
-        <div class="card">...</div>
-        ...
-    </div>
-    <div>
-        <div class="card">...</div>
-        ...
-    </div>
+<div class="tiles thirds">
+    <div class="card">...</div>
+    <div class="card">...</div>
     ...
 </div>           
                     </xmp>
-                    <div class="cols thirds">
-                        <div>
-                            <div class="card">
-                                <a href=""><img src="../media/native/uritoday_1.jpg" alt="URI Today 1"></a>
-                                <h1>A Great Story</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. Ut id dolor aliquet, consectetur libero vitae, placerat mauris. Proin placerat tortor id est dignissim, a pulvinar metus blandit.</p>
-                                <a href="" class="button">Read Story</a>
-                            </div>
+                    <div class="tiles thirds">
+                        <div class="card">
+                            <a href=""><img src="../media/native/uritoday_1.jpg" alt="URI Today 1"></a>
+                            <h1>A Great Story</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. Ut id dolor aliquet, consectetur libero vitae, placerat mauris. Proin placerat tortor id est dignissim, a pulvinar metus blandit.</p>
+                            <a href="" class="button">Read Story</a>
                         </div>
-                        <div>
-                            <div class="card">
-                                <a href=""><img src="../media/native/uritoday_2.jpg" alt="URI Today 2"></a>
-                                <h1>Wait, There's More</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. </p>
-                                <a href="" class="button">Read Story</a>
-                            </div>
+                        <div class="card">
+                            <a href=""><img src="../media/native/uritoday_2.jpg" alt="URI Today 2"></a>
+                            <h1>Wait, There's More</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. </p>
+                            <a href="" class="button">Read Story</a>
                         </div>
-                        <div>
-                            <div class="card">
-                                <a href=""><img src="../media/native/uritoday_3.jpg" alt="URI Today 3"></a>
-                                <h1>Third Time's A Charm</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. Ut id dolor aliquet, consectetur libero vitae, placerat mauris.</p>
-                                <a href="" class="button">Read Story</a>
-                            </div>
+                        <div class="card">
+                            <a href=""><img src="../media/native/uritoday_3.jpg" alt="URI Today 3"></a>
+                            <h1>Third Time's A Charm</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac hendrerit diam. Cras facilisis sem non magna placerat tincidunt. Ut id dolor aliquet, consectetur libero vitae, placerat mauris.</p>
+                            <a href="" class="button">Read Story</a>
                         </div>
                     </div>
                     <xmp class="prettyprint">
-<div class="cols thirds">
+<div class="tiles thirds">
     <div>
-        <div class="dcard">...</div>
+        ...
+        <a class="dcard">...</a>
         ...
     </div>
-    <div>
-        <div class="dcard">...</div>
-        ...
-    </div>
+    <a class="dcard">...</a>
+    <a class="dcard">...</a>
     ...
 </div>           
                     </xmp>
-                    <div class="cols thirds">
+                    <div class="tiles thirds">
                         <div>
-                            <a class="dcard" href="#">
-                                <img src="../media/commons/profile_1.jpg" alt="Profile 1">
-                                <h1>Lorem ipsum</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <p>401.555.7962</p>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dcard" href="#">
-                                <img src="../media/commons/profile_2.jpg" alt="Profile 2">
-                                <h1>Lorem ipsum</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <p>401.555.3792</p>
-                            </a>
-                        </div>
-                        <div>
+                            <h1>A Tile</h1>
+                            <p>The card below is living in a tile, along with the header and this text.</p>
                             <a class="dcard" href="#">
                                 <img src="../media/commons/profile_3.jpg" alt="Profile 3">
                                 <h1>Lorem ipsum</h1>
@@ -324,6 +296,18 @@
                                 <p>401.555.0785</p>
                             </a>
                         </div>
+                        <a class="dcard" href="#">
+                            <img src="../media/commons/profile_1.jpg" alt="Profile 1">
+                            <h1>Lorem ipsum</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>401.555.7962</p>
+                        </a>
+                        <a class="dcard" href="#">
+                            <img src="../media/commons/profile_2.jpg" alt="Profile 2">
+                            <h1>Lorem ipsum</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>401.555.3792</p>
+                        </a>
                     </div>
                 
                 </article>
@@ -360,7 +344,7 @@
                     <li>Radius: 0.3rem</li>
                     <li>Color: $black #000, 15% alpha</li>
                 </ul>
-                <div class="cols thirds">
+                <div class="tiles thirds">
                     <div class="comparison do">
                         <img src="../media/comparisons/card-usage-elevation-do.jpg" alt="What to do with elevation">
                         <span>Do</span>
@@ -378,7 +362,7 @@
                     </div>
                 </div>
                 <article>
-                    <div class="cols halves">
+                    <div class="tiles halves">
                         <div>
                             <h3>Standard Card</h3>
                             <h4>Dimensions</h4>
@@ -419,7 +403,7 @@
                 <article>
                     <h3>Flex Card</h3>
                     <p>The dimensions below apply to flex cards at full-width.  At narrow browser widths, flex cards assume the construction of standard cards.</p>
-                    <div class="cols halves">
+                    <div class="tiles halves">
                         <div>
                             <h4>Dimensions</h4>
                             <ul class="construction-list">

@@ -12,11 +12,19 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../js/main.js"></script>
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        
+        <style>
+            .tiles.demo>div {
+                background: #ddd;
+            }
+        </style>
+        
     </head>
 	
 	<body class="nav-tiles">
         
         <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
             <script>$('nav').load('../includes/nav.html');</script>
         </nav>
         
@@ -33,8 +41,33 @@
             <section id="usage">
                 <h2>Usage</h2>
                 <p>Tiles are implemented with the class <code class="class">tiles</code></p>
-                <p>Tiles support grids with three, four, or five tiles in width. The number of tiles across the page can be controled by the classes <code class="class second">thirds</code>, <code class="class second">fourths</code>, and <code class="class second">fifths</code>, respecively.  Tile grids can contain an infinite number of tiles.</p>
+                <p>Tiles support grids with two, three, four, or five tiles in width. The number of tiles across the page can be controled by the classes <code class="class second">halves</code>, <code class="class second">thirds</code>, <code class="class second">fourths</code>, and <code class="class second">fifths</code>, respecively.  Tile grids can contain an infinite number of tiles.</p>
 
+                <article>
+                    <h4>2 Tiles Across</h4>
+                    <xmp class="prettyprint">
+<div class="tiles halves">
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    ...
+</div>     
+                    </xmp>
+                    <div class="tiles halves square demo">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </article>
+                
                 <article>
                     <h4>3 Tiles Across</h4>
                     <xmp class="prettyprint">
@@ -49,7 +82,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles thirds">
+                    <div class="tiles thirds square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -74,7 +107,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fourths">
+                    <div class="tiles fourths square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -102,7 +135,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fifths">
+                    <div class="tiles fifths square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -116,29 +149,16 @@
                 </article>
                 
                 <article>
-                    <h3>Fitting tiles to their content</h3>
-                    <p>By default, tiles are square, and any content overflow is hidden.  To override this format and force tiles to adjust to the size of their contents, add the class <code class="class">fitted</code></p>
+                    <h3>Creating a square grid</h3>
+                    <p>By default, tiles adjust to the size of their content. To override this format and force tiles be square, and crop their content accordingly, add the class <code class="class">square</code></p>
                     <xmp class="prettyprint">
-<div class="tiles fourths fitted">
-    <div>...</div>
-    <div>...</div>
-    <div>...</div>
-    <div>...</div>
+<div class="tiles fourths square">
     <div>...</div>
     <div>...</div>
     <div>...</div>
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fourths fitted">
-                        <div style="height: 300px;"></div>
-                        <div style="height: 250px;"></div>
-                        <div style="height: 275px;"></div>
-                        <div style="height: 310px;"></div>
-                        <div style="height: 290px;"></div>
-                        <div style="height: 320px;"></div>
-                        <div style="height: 250px;"></div>
-                    </div>
                 </article>
                 
                 <article>
@@ -149,13 +169,23 @@
     <div>...</div>
     <div>...</div>
     <div>...</div>
-    <div>...</div>
-    <div>...</div>
-    <div>...</div>
-    <div>...</div>
     ...
 </div>     
                     </xmp>
+                </article>
+                
+                <article>
+                    <h4>Shortcode Support</h4>
+                    <p>Tiles can be implemented with the shortcode <code class='shortcode'>cl-tiles</code></p>
+                    <p class="code shortcode">[cl-tiles across=4]...[/cl-tiles]</p>
+                    <p>The tiles shortcode supports nested shortcodes, which makes it easy to include other components within the tile framework via shortcode.</p>
+                    <h5>Attributes</h5>
+                    <p><b>accross</b> <i>(num) (optional) (values: <code class="num">2</code>, <code class="num">3</code>, <code class="num">4</code>, <code class="num">5</code>)</i></p>
+                    <p class='indent'>The maximum number of tiles to display per row<br /><i>(default value: <code class="num">3</code>)</i></p>
+                    <p><b>square</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to force tiles be square and crop their content accordingly<br /><i>(default value: <code class="bool">false</code>)</i></p>
+                    <p><b>animated</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to animate tiles when added to the page<br /><i>(default value: <code class="bool">false</code>)</i></p>
                 </article>
                 
             </section><!-- end usage -->

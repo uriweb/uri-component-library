@@ -17,6 +17,7 @@
 	<body class="nav-cutouts">
         
         <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
             <script>$('nav').load('../includes/nav.html');</script>
         </nav>
             
@@ -39,8 +40,9 @@
 <div class="cutout">
     <h1>Title</h1>
     <p>Paragraph text with a <a>link</a>.</p> 
-    <a class="button prominent">Prominent Button</a>
     <a class="button">Button</a>
+    <a class="button">Button</a>
+    ...
 </div>    
                 </xmp>
                 
@@ -48,7 +50,7 @@
                     <h1>Here's a title</h1>
                     <p>Cutouts can contain little snippets of text, or full-fledged paragraphs.</p>
                     <p>Here's some text with an <a href="#">inline</a> link.</p>
-                    <a class="button prominent" href="#">Click me</a>
+                    <a class="button" href="#">Click me</a>
                     <a class="button" href="#">Another Button</a>
                 </div>
                 
@@ -68,12 +70,11 @@
             <section id="usage">
                 
                 <h2>Usage</h2>
-                <h4>Cutouts can live in columns, but cannot be a column.</h4>
-                <p>To place a cutout in a column, use the <a href="../layout/columns.html" class="component">column</a> framework.</p>
-                <p>Always nest a cutout inside a column.  Do not create a column with a cutout.</p>
+                <h4>Cutouts can be tiles, or live inside them.</h4>
+                <p>To create a tile with a cutout or place a cutout in a tile, use the <a href="../layout/tiles.html" class="component">tile</a> framework.</p>
                     
                 <xmp class="prettyprint">
-<div class="cols thirds">
+<div class="tiles thirds">
     <div>
         ...
         <div class="cutout">...</div>
@@ -83,7 +84,7 @@
 </div>           
                 </xmp>
                 
-                <div class="cols thirds">
+                <div class="tiles thirds">
 
                     <div>
                         <h1>Multiple Actions</h1>

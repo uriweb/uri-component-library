@@ -1,0 +1,52 @@
+/* ==============================
+   REFERENCE
+   ============================== */
+
+
+.reference ul {
+    float: right;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.reference ul li {
+    display: inline-block;
+    margin-left: .5rem;
+    color: #999;
+    padding: 3px 7px;
+    border-radius: 5px;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+}
+
+.reference ul li.on,
+.reference ul li:hover,
+.reference ul li:focus {
+    color: #fff;
+    background: #d02566;
+}
+
+.reference ul li.on {
+    cursor: default;
+}
+
+.reference {
+    display: block;
+    clear: both;
+}
+
+.reference .block:not(:first-of-type) {
+    display: none;
+}
+
+.reference pre {
+    display: block;
+    background: #eee;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.reference xmp {
+    margin: 0;
+}

@@ -3,6 +3,12 @@
 
 .tiles {
     width: 100%;
+    margin-bottom: 50px;
+    margin-top: -10%;
+}
+
+.tiles.square {
+    margin-top: -1%;
 }
 
 .tiles:after {
@@ -14,13 +20,18 @@
 .tiles>* {
     float: left;
     clear: none;
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
-    height: 0;
-    margin-top: 1%;
+    height: auto;
+    margin-top: 10%;
     margin-right: 0;
-    padding-bottom: 100%;
-    background: $grey;
+    padding-bottom: 0;
+}
+
+.tiles.square>* {
+    height: 0;
+    overflow: hidden;
+    margin-top: 1%;
 }
 
 @keyframes tileReveal {
@@ -32,142 +43,276 @@
     animation: tileReveal .5s;
 }
 
-.tiles.fitted>* {
-    height: auto;
-    overflow: visible;
-    padding-bottom: 0 !important;
-}
-
-.tiles.fifths>*:not(:nth-child(2n)) {
-    margin-right: 1%;
-}
-
-.tiles.fifths>*:nth-child(2n+1) {
-    clear: both;
-}
-
-.tiles.fifths>* {
-    width: 49.5%;
-    padding-bottom: 49.5%;
-}
-
-.tiles p {
-    padding: 1rem 1.2rem 0;
-}
-
 .tiles>*>img {
     display: block;
     width: 100%;
 }
 
-@media screen and (min-width: $break0) {
-    
-    .tiles.fifths>*:not(:nth-child(2n)) {
-        margin-right: 0;
-    }
+.tiles>div {
+    color: $darkgrey;
+}
 
-    .tiles.fifths>*:nth-child(2n+1) {
-        clear: none;
-    }
-    
-    .tiles.thirds>*:not(:nth-child(2n)),
-    .tiles.fourths>*:not(:nth-child(2n)),  
-    .tiles.fifths>*:not(:nth-child(3n)) {
-        margin-right: 1%;
-    }
+.tiles>div>h1,
+.tiles>div>p {
+    max-width: 500px;
+}
 
-    .tiles.thirds>*:nth-child(2n+1),
-    .tiles.fourths>*:nth-child(2n+1),
-    .tiles.fifths>*:nth-child(3n+1) {
+.tiles>div>h1 {
+    font-family: $header;
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1.6rem;
+    color: $black;
+    padding: 1.8rem 0 .2rem;
+    margin: 0;
+    text-transform: initial;
+}
+
+.tiles>div>h1:first-child {
+    padding-top: 0;
+}
+
+.tiles>div>h2 {
+    font-family: $header;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.4rem;
+    color: $midblue;
+    padding: 1.6rem 0 .8rem;
+    margin: 0;
+}
+
+.tiles>div>p {
+    width: 95%;
+    font-size: .8rem;
+    // Calculate line-height based on viewport width
+    line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
+}
+
+.tiles>div>p:first-child {
+    padding-top: 0;
+}
+
+.tiles>div>p:last-child {
+    padding-bottom: 2rem;
+}
+
+// Set up tiles.fifths at most narrow width
+.tiles.fifths>* {
+    &:not(:nth-child(2n)) {
+        margin-right: 3%;
+    }
+    &:nth-child(2n+1) {
         clear: both;
     }
-    
-    .tiles.thirds>*,
-    .tiles.fourths>* {
+    & {
+        width: 48.5%;
+    } 
+}
+
+.tiles.square.fifths>* {
+    &:not(:nth-child(2n)) {
+        margin-right: 1%;
+    }
+    & {
         width: 49.5%;
         padding-bottom: 49.5%;
     }
     
+}
+
+@media screen and (min-width: $break0) {
+    
+    // Reset previous break
     .tiles.fifths>* {
-        width: 32.66%;
-        padding-bottom: 32.66%;
+        &:not(:nth-child(2n)) {
+            margin-right: 0;
+        }
+        &:nth-child(2n+1) {
+            clear: none;
+        }
+    }
+    
+    .tiles {
+        &.thirds>*:nth-child(2n+1),
+        &.fourths>*:nth-child(2n+1),
+        &.fifths>*:nth-child(3n+1) {
+            clear: both;
+        }
+    }
+    
+    // Set up default tiles for this break
+    .tiles {
+        &.thirds>*:not(:nth-child(2n)),
+        &.fourths>*:not(:nth-child(2n)),  
+        &.fifths>*:not(:nth-child(3n)) {
+            margin-right: 3%;
+        }
+        &.thirds>*,
+        &.fourths>* {
+            width: 48.5%;
+        }
+        &.fifths>* {
+            width: 31.33%;
+        }
+    }
+
+    // Set up square tiles for this break
+    .tiles.square {
+        &.thirds>*:not(:nth-child(2n)),
+        &.fourths>*:not(:nth-child(2n)),  
+        &.fifths>*:not(:nth-child(3n)) {
+            margin-right: 1%;
+        }
+        &.thirds>*,
+        &.fourths>* {
+            width: 49.5%;
+            padding-bottom: 49.5%;
+        }
+        &.fifths>* {
+            width: 32.66%;
+            padding-bottom: 32.66%;
+        }
     }
     
 }
 
 @media screen and (min-width: $break1) {
     
-    .tiles.fourths>*:not(:nth-child(2n)),  
-    .tiles.fifths>*:not(:nth-child(3n)) {
-        margin-right: 0;
-    }
-
-    .tiles.fourths>*:nth-child(2n+1),
-    .tiles.fifths>*:nth-child(3n+1) {
-        clear: none;
-    }
-    
-    .tiles.fourths>*:not(:nth-child(3n)),  
-    .tiles.fifths>*:not(:nth-child(4n)) {
-        margin-right: 1%;
-    }
-
-    .tiles.fourths>*:nth-child(3n+1),
-    .tiles.fifths>*:nth-child(4n+1) {
-        clear: both;
+    // Reset previous break
+    .tiles, .tiles.square {
+        &.fourths>*:not(:nth-child(2n)),  
+        &.fifths>*:not(:nth-child(3n)) {
+            margin-right: 0;
+        }
+        &.fourths>*:nth-child(2n+1),
+        &.fifths>*:nth-child(3n+1) {
+            clear: none;
+        }
     }
     
-    .tiles.fourths>* {
-        width: 32.66%;
-        padding-bottom: 32.66%;
+    .tiles {
+        &.fourths>*:nth-child(3n+1),
+        &.fifths>*:nth-child(4n+1) {
+            clear: both;
+        }
     }
     
-    .tiles.fifths>* {
-        width: 24.25%;
-        padding-bottom: 24.25%;
+    // Set up default tiles for this break
+    .tiles {
+        &.fourths>*:not(:nth-child(3n)),  
+        &.fifths>*:not(:nth-child(4n)) {
+            margin-right: 3%;
+        }
+        &.fourths>* {
+            width: 31.33%;
+        }
+        &.fifths>* {
+            width: 22.75%;
+        }
+    }
+    
+    // Set up square tiles for this break
+    .tiles.square {
+        &.fourths>*:not(:nth-child(3n)),  
+        &.fifths>*:not(:nth-child(4n)) {
+            margin-right: 1%;
+        }
+        &.fourths>* {
+            width: 32.66%;
+            padding-bottom: 32.66%;
+        }
+        &.fifths>* {
+            width: 24.25%;
+            padding-bottom: 24.25%;
+        }
     }
     
 }
 
 @media screen and (min-width: $break2) {
     
-    .tiles.thirds>*:not(:nth-child(2n)),
-    .tiles.fourths>*:not(:nth-child(3n)),
-    .tiles.fifths>*:not(:nth-child(4n)) {
-        margin-right: 0;
+    // Reset previous break
+    .tiles, .tiles.square {
+        &.thirds>*:not(:nth-child(2n)),
+        &.fourths>*:not(:nth-child(3n)),
+        &.fifths>*:not(:nth-child(4n)) {
+            margin-right: 0;
+        }
+        &.thirds>*:nth-child(2n+1),
+        &.fourths>*:nth-child(3n+1),
+        &.fifths>*:nth-child(4n+1) {
+            clear: none;
+        }
     }
     
-    .tiles.thirds>*:nth-child(2n+1),
-    .tiles.fourths>*:nth-child(3n+1),
-    .tiles.fifths>*:nth-child(4n+1) {
-        clear: none;
+    .tiles {
+        &.halves>*:nth-child(2n+1),
+        &.thirds>*:nth-child(3n+1),
+        &.fourths>*:nth-child(4n+1),
+        &.fifths>*:nth-child(5n+1) {
+            clear: both;
+        }
     }
     
-    .tiles.thirds>*:not(:nth-child(3n)),
-    .tiles.fourths>*:not(:nth-child(4n)),
-    .tiles.fifths>*:not(:nth-child(5n)) {
-        margin-right: 1%;
+    // Set up default tiles for this break
+    .tiles {
+        &.halves>*:not(:nth-child(2n)),
+        &.thirds>*:not(:nth-child(3n)),
+        &.fourths>*:not(:nth-child(4n)),
+        &.fifths>*:not(:nth-child(5n)) {
+            margin-right: 3%;
+        }
+        &.halves>* {
+            width: 48.5%;
+        }
+        &.thirds>* {
+            width: 31.33%;
+        }
+        &.fourths>* {
+            width: 22.75%;
+        }
+        &.fifths>* {
+            width: 17.6%;
+        }
     }
+    
+    // Set up square tiles for this break
+    .tiles.square {
+        &.halves>*:not(:nth-child(2n)),
+        &.thirds>*:not(:nth-child(3n)),
+        &.fourths>*:not(:nth-child(4n)),
+        &.fifths>*:not(:nth-child(5n)) {
+            margin-right: 1%;
+        }
+        &.halves>* {
+            width: 49.5%;
+            padding-bottom: 49.5%;
+        }
+        &.thirds>* {
+            width: 32.66%;
+            padding-bottom: 32.66%;
+        }
+        &.fourths>* {
+            width: 24.25%;
+            padding-bottom: 24.25%;
+        }
+        &.fifths>* {
+            width: 19.2%;
+            padding-bottom: 19.2%;
+        }
+    }
+    
+    // Typography
+    .tiles>div>h1 {
+        padding: 1.8rem 0 .2rem;
+    }
+    
+}
 
-    .tiles.thirds>*:nth-child(3n+1),
-    .tiles.fourths>*:nth-child(4n+1),
-    .tiles.fifths>*:nth-child(5n+1) {
-        clear: both;
+// Static p line-height at full width
+@media screen and (min-width: $break3){
+    .tiles>div>p {
+        line-height: 1.5rem;
     }
-    
-    .tiles.thirds>* {
-        width: 32.66%;
-        padding-bottom: 32.66%;
-    }
-    
-    .tiles.fourths>* {
-        width: 24.25%;
-        padding-bottom: 24.25%;
-    }
-    
-    .tiles.fifths>* {
-        width: 19.2%;
-        padding-bottom: 19.2%;
-    }
-    
 }

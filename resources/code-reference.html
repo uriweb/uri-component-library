@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Code Reference - Resources - Digital Content Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../cl/cl.built.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/swapper.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </head>
+	
+	<body class="nav-code-reference">
+        
+        <nav>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1>Code Reference</h1>
+            <p>Want to build a component and just need the code?  You've come to the right place.</p>
+            
+            <ul id="localnav">
+                <li><a href="#button">Button</a></li>
+            </ul>
+            
+            <section id="button">
+                <h2>Button</h2>
+                <div class="reference">
+                    <ul>
+                        <li class="html on">HTML</li>
+                        <li class="sc">Shortcode</li>
+                    </ul>
+                    <div class="block html">
+                        <h3>HTML Syntax</h3>
+                        <pre>
+                            <xmp class="prettyprint">
+<a class="button" href="#">Explore</a>  
+                            </xmp>
+                        </pre>
+                    </div>
+                    <div class="block sc">
+                        <h3>Shortcode Syntax</h3>
+                        <pre>
+                            <p class="code shortcode">[cl-button link="sample.html"]</p>
+                        </pre>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+                
+        <footer>
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>

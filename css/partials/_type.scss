@@ -127,44 +127,57 @@ p.code.shortcode {
     padding-top: 1rem;
     color: #d02566;
 }
-code.tag,
-.prettyprint .tag {
-    color: #0545ac;
+
+code {
+    &.class {
+        position: relative;
+        top: -.1rem;
+        padding: .1rem .3rem;
+        margin: 0 .1rem;
+        border-radius: .2rem;
+        background: #0eb454;
+        color: #fff;
+    }
+    &.class.second {
+        background: #24a0aa;
+    }
+    &.shortcode {
+        position: relative;
+        top: -.1rem;
+        padding: .1rem .3rem;
+        margin: 0 .1rem;
+        border-radius: .2rem;
+        background: #d02566;
+        color: #fff;
+    }
+    &.tag {
+        color: #0545ac;
+    }
+    &.bool,
+    &.string,
+    &.num {
+        font-size: 90%;
+        padding: .1rem .2rem;
+    }
+    &.bool {
+        color: #0085ad;
+    }
+    &.string {
+        color: #080;
+    }
+    &.num {
+        color: #d86c00;
+    }
 }
-code.class {
-    position: relative;
-    top: -.1rem;
-    padding: .1rem .3rem;
-    margin: 0 .1rem;
-    border-radius: .2rem;
-    background: #0eb454;
-    color: #fff;
-}
-code.class.second {
-    background: #24a0aa;
-}
-code.shortcode {
-    position: relative;
-    top: -.1rem;
-    padding: .1rem .3rem;
-    margin: 0 .1rem;
-    border-radius: .2rem;
-    background: #d02566;
-    color: #fff;
-}
-code.bool {
-    font-size: 90%;
-    padding: .1rem .2rem;
-    color: #d96d00;
-}
-code.string {
-    font-size: 90%;
-    padding: .1rem .2rem;
-    color: #080;
-}
-.prettyprint .atn {
-    color: #ba0cba;
-}
-.prettyprint .com {
-    color: #aaa;
+
+.prettyprint {
+    .atn {
+        color: #ba0cba;
+    }
+    .com {
+        color: #aaa;
+    }
+    .tag {
+        color: #0545ac;
+    }
 }

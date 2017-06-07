@@ -14,11 +14,20 @@
     transition: width .2s ease-in-out;
 }
 
-.cols .card,
-.cols .dcard {
-    width: 100%;
-    margin-bottom: 1rem;
-    display: block;
+.cols, .tiles {
+    .card,
+    .dcard {
+        margin-bottom: 1rem;
+        display: block;
+    }
+    &>*>.card,
+    &>*>.dcard {
+        width: 100%;
+    }
+    &>*>.card:not(:first-child),
+    &>*>.dcard:not(:first-child) {
+        margin-top: 1.5rem;
+    }
 }
 
 @media screen and (min-width: $break1) {
@@ -171,14 +180,16 @@ a.dcard:active {
 }
 
 .dcard img,
-.cols .dcard img {
+.cols .dcard img,
+.tiles .dcard img {
     float: right !important;
     width: 30% !important;
     margin: .5rem .5rem .5rem 1rem !important;
 }
 
 .dcard h1,
-.cols .dcard h1 {
+.cols .dcard h1,
+.tiles .dcard h1 {
     font-family: $header !important;
     font-size: .8rem !important;
     font-weight: 700 !important;
@@ -189,13 +200,15 @@ a.dcard:active {
 }
 
 .dcard p,
-.cols .dcard p {
+.cols .dcard p,
+.tiles .dcard p {
     padding: .5rem 1rem .1rem !important;
     font-size: .7rem !important;
 }
 
 .dcard p:last-child,
-.cols .dcard p:last-child {
+.cols .dcard p:last-child,
+.tiles .dcard p:last-child {
     padding-bottom: 1rem !important;
 }
 
@@ -208,6 +221,7 @@ a.dcard:active {
     margin-top: 2rem !important;
     padding: calc(1.5% + 1em) 0 !important;
     background: inherit !important;
+    border: none !important;
     border-top: 1px solid #eee !important;
     font-size: .7rem !important;
     font-weight: 700 !important;

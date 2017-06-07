@@ -44,8 +44,10 @@
     }
 }
     
-.cols .cutout:not(:first-child) {
-    margin-top: 1.5rem;
+.cols, .tiles {
+    .cutout:not(:first-child) {
+        margin-top: 1.5rem;
+    }
 }
 
 .cutout img {

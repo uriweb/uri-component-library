@@ -17,6 +17,7 @@
 	<body class="nav-buttons">
         
         <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
             <script>$('nav').load('../includes/nav.html');</script>
         </nav>
             
@@ -36,26 +37,22 @@
                 <h2>Usage</h2>
                 <p>Buttons are implemented with the class <code class="class">button</code></p>
                 <xmp class="prettyprint">
-<a class="button" href="#">A Button</a>   
+<a class="button" href="#">Explore</a>   
                 </xmp>
-                <div class="cols thirds">
+                <div class="tiles thirds">
                     <div>
                         <a class="button" href="#">Explore</a>
                     </div>
-                    <div></div>
-                    <div></div>
                 </div>
                 
                 <p>To give a button emphasis over others, use the class <code class="class second">prominent</code></p>
                 <xmp class="prettyprint">
-<a class="button prominent" href="#">A Button</a>   
+<a class="button prominent" href="#">Explore</a>   
                 </xmp>
-                <div class="cols thirds">
+                <div class="tiles thirds">
                     <div>
                         <a class="button prominent" href="#">Explore</a>
                     </div>
-                    <div></div>
-                    <div></div>
                 </div>
                 
                 <article>
@@ -81,10 +78,10 @@
                 <h4>A button's appearance depends on the layout framework or component it's in.</h4>
                 <p>Note that buttons in cards are never prominent.</p>
                 <article>
-                    <div class="cols thirds">
+                    <div class="tiles thirds">
                         <div>
-                            <h1>A Column</h1>
-                            <p>Here is a default button living in a column.  Column buttons are descret objects, span the full width of the column, and have sharp corners.</p>
+                            <h1>A Tile</h1>
+                            <p>Here is a default button living in a tile.  Tile buttons are descret objects, span the full width of the tile, and have sharp corners.</p>
                             <a class="button" href="#">Explore</a>
                         </div>
                         <div>
@@ -97,9 +94,9 @@
                         <div>
                             <div class="cutout">
                                 <h1>A Cutout</h1>
-                                <p>Here is a prominent button and a default button living in a cutout.  Cutout buttons are descrete objects, span the content width of the cutout, and have slightly rounded corners.</p>
-                                <a class="button prominent" href="#">Be Daring</a>
+                                <p>Here is a default button and a prominent button living in a cutout.  Cutout buttons are descrete objects, span the content width of the cutout, and have slightly rounded corners.</p>
                                 <a class="button" href="#">Be Humble</a>
+                                <a class="button prominent" href="#">Be Daring</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 $classes = 'flexcard';
 if ($reverse) {
-    $classes = 'flexcard reverse';
+    $classes .= ' reverse';
 }
 
 $output = '<div class="' . $classes . '">';
