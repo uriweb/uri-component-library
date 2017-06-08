@@ -5,6 +5,7 @@
 #localnav {
     margin: 40px 0;
     border-left: 8px solid #0047c2;
+    border-image: linear-gradient(to bottom, #0047c2 0%, #409fed 100%) 8;
     font-size: 1.2rem;
 }
 
@@ -13,5 +14,11 @@
 }
 
 #localnav a {
+    color: #096ec4;
+    transition: all .1s ease-in-out;
+}
+
+#localnav a:hover,
+#localnav a:focus {
     color: #0047c2;
 }

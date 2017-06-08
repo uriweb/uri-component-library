@@ -25,9 +25,10 @@ a.button {
     }
     
     a.button.prominent {
-        background: $link;
+        background: linear-gradient(315deg, $blue, $midblue);
         color: $white;
-        border: 1px solid $link;
+        border: none;
+        padding: calc(1% + 1.09em) 0;
     }
     
     a.button:last-child {
@@ -40,6 +41,12 @@ a.button {
         border: 1px solid $blue;
         color: $white;
         transition: all .1s;
+    }
+    
+    a.button.prominent:hover,
+    a.button.prominent:focus {
+        background: linear-gradient(315deg, $darkblue, $blue);
+        border: none;
     }
     
 }

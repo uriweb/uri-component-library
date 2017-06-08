@@ -45,6 +45,13 @@
 }
     
 .cols, .tiles {
+    .cutout {
+        margin-bottom: 1rem;
+        display: block;
+    }
+    &>*>.cutout {
+        width: 100%;
+    }
     .cutout:not(:first-child) {
         margin-top: 1.5rem;
     }
