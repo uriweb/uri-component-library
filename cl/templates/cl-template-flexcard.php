@@ -5,7 +5,7 @@ if ($reverse) {
     $classes .= ' reverse';
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">';
 $output .= '<figure>';
 $output .= '<img src="' . $img . '">';
 $output .= '</figure>';
@@ -18,6 +18,6 @@ if (isset($content)) {
     $output .= '<p>' . $content . '</p>';
 }
     
-$output .= '<a class="button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
+$output .= '<span class="button">' . $button . '</span>';
 $output .= '</article>';
-$output .= '</div>';
+$output .= '</a>';

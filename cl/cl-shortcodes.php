@@ -50,9 +50,8 @@ function uri_cl_shortcode_card( $atts ) {
             'body' => '',
             'button' => 'Explore',
             'link' => '#',
-            'tooltip' => 'Explore',
-            'clickable' => false
-		), $atts )
+            'tooltip' => 'Explore'
+        ), $atts )
 	);
     
     include 'templates/cl-template-card.php';

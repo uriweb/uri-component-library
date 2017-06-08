@@ -37,8 +37,10 @@ $header: "Hind", sans-serif;
 
 /* -- Levels -- */
 
+// [x-offset y-offset blur-radius color]
 $level1: 0 .1rem .3rem rgba(0,0,0,0.15);
 $level2: 0 .3rem 1rem rgba(0,0,0,0.2);
+$level3: 0 .3rem 1rem rgba(0,0,0,0.35);
 
 /* -- Widths -- */
 

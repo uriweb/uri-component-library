@@ -7,6 +7,10 @@
     margin-top: -10%;
 }
 
+.tiles:not(:first-child) {
+    margin-top: calc(-10% + 30px);
+}
+
 .tiles.square {
     margin-top: -1%;
 }
