@@ -116,7 +116,7 @@ function uri_cl_shortcode_cutout( $atts, $content = null ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-            'title' => '';
+            'title' => '',
 			'float' => ''
 		), $atts )
 	);
@@ -136,7 +136,7 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-            'across' => 3;
+            'across' => 3,
 			'square' => false,
             'animated' => false
 		), $atts )
