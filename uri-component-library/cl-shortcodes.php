@@ -4,15 +4,34 @@
  *
  * CONTENTS
  *
+ * - Boxout
  * - Button
  * - Card (Standard)
  * - Card (Flex)
  * - Card (Detail)
- * - Cutout
  * - Tiles
  *
  */
 
+
+/**
+ * Boxout
+ */
+function uri_cl_shortcode_boxout( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'title' => '',
+			'float' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-boxout.php';
+    return $output;
+
+}
+add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
 
 
 /**
@@ -26,7 +45,7 @@ function uri_cl_shortcode_button( $atts ) {
             'text' => 'Explore',
 			'link' => '#',
             'tooltip' => 'Explore',
-            'prominant' => false
+            'prominent' => false
 		), $atts )
 	);
     
@@ -106,26 +125,6 @@ function uri_cl_shortcode_dcard( $atts ) {
 
 }
 add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
-
-
-/**
- * Cutout
- */
-function uri_cl_shortcode_cutout( $atts, $content = null ) {
-
-	// Attributes
-	extract( shortcode_atts(
-		array(
-            'title' => '',
-			'float' => ''
-		), $atts )
-	);
-    
-    include 'templates/cl-template-cutout.php';
-    return $output;
-
-}
-add_shortcode( 'cl-cutout', 'uri_cl_shortcode_cutout' );
 
 
 /**

@@ -7,7 +7,7 @@ a.button {
 
 .cols>div>,
 .tiles>div>,
-.cutout> {
+.boxout> {
 
     a.button {
         margin: 1.2rem 0;
@@ -51,7 +51,7 @@ a.button {
     
 }
 
-.cutout>a.button {
+.boxout>a.button {
     border-radius: 2px;
 }
 
@@ -66,7 +66,7 @@ a.button {
 @media screen and (min-width: $break2) {
     
     .cols>div>,
-    .cutout> {
+    .boxout> {
         
         a.button {
             width: 100%;

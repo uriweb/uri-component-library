@@ -4,15 +4,6 @@
 .tiles {
     width: 100%;
     margin-bottom: 50px;
-    margin-top: -10%;
-}
-
-.tiles:not(:first-child) {
-    margin-top: calc(-10% + 30px);
-}
-
-.tiles.square {
-    margin-top: -1%;
 }
 
 .tiles:after {
@@ -27,7 +18,7 @@
     overflow: visible;
     width: 100%;
     height: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-right: 0;
     padding-bottom: 0;
 }

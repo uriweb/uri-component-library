@@ -59,7 +59,6 @@ function themeStyles(done) {
   '',
   'COMPONENT LIBRARY',
   '',
-  'PORTED FROM THE PLAYGROUND DEVELOPMENT SITE',
   'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
   '',
   'See documentation at uriweb.bitbucket.io',
@@ -76,7 +75,7 @@ function themeStyles(done) {
 		.pipe(concat('cl.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./cl/'));
+		.pipe(gulp.dest('./uri-component-library/'));
 
   done();
   //console.log('styles ran');
@@ -93,7 +92,7 @@ function themeScripts(done) {
     .pipe(concat('script.min.js'))
     //.pipe(stripDebug())
     .pipe(uglify())
-    .pipe(gulp.dest('./cl/'));
+    .pipe(gulp.dest('./uri-component-library/'));
     
 	done();
  // console.log('scripts ran');
