@@ -128,10 +128,17 @@ code, p.code {
     font-size: .75rem;
     padding: 0 .2rem;
     width: 100%;
+    white-space: pre-wrap;
 }
 p.code.shortcode {
     padding-top: 1rem;
     color: #d02566;
+}
+p.code.comment {
+    color: #999;
+}
+pre p.code.shortcode {
+    padding-top: 0;
 }
 
 code {
@@ -186,4 +193,8 @@ code {
     .tag {
         color: #0545ac;
     }
+}
+
+pre .prettyprint .com {
+    color: #999;
 }

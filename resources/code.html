@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Code Reference - Resources - Digital Content Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/cl.built.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/swapper.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </head>
+	
+	<body class="nav-code">
+        
+        <nav>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1>Code Reference</h1>
+            <p>Want to build a component and just need the code?  You've come to the right place.</p>
+            
+            <ul id="localnav">
+                <li><a href="#boxout">Boxout</a></li>
+                <li><a href="#button">Button</a></li>
+            </ul>
+            
+            <section id="boxout">
+                <h2>Boxout</h2>
+                <div class="reference">
+                    <ul>
+                        <li class="sc on">Shortcode</li>
+                        <li class="html">HTML</li>  
+                    </ul>
+                    <div class="block sc">
+                        <h3>Shortcode Syntax</h3>
+                        <pre>
+                            <p class="code shortcode">[cl-boxout title="Title"]Body text, html, or shortcodes[/cl-boxout]</p>
+                            <p class="code comment">&lt;!-- OPTIONS:<br>* Add attribute "float" to float the boxout (values: "left", "right"; default: none)<br>--&gt;</p>
+                        </pre>
+                    </div>
+                    <div class="block html">
+                        <h3>HTML Syntax</h3>
+                        <pre>
+                            <xmp class="prettyprint"><div class="boxout">
+    <h1>Title</h1>
+    <p>Paragraph text.</p> 
+    ...
+</div>
+
+<!-- OPTIONS
+* Add classes "left" or "right" to float the boxout
+--></xmp>
+                        </pre>
+                    </div>
+                </div>
+                <div class="more-reference">
+                    <a class="component" href="../components/boxouts.html#design">Learn more</a>
+                </div>
+            </section>
+            
+            <section id="button">
+                <h2>Button</h2>
+                <div class="reference">
+                    <ul>
+                        <li class="sc on">Shortcode</li>
+                        <li class="html">HTML</li>  
+                    </ul>
+                    <div class="block sc">
+                        <h3>Shortcode Syntax</h3>
+                        <pre>
+                            <p class="code shortcode">[cl-button link="sample.html"]</p>
+                            <p class="code comment">&lt;!-- OPTIONS:<br>* Add attribute "prominent" to float the boxout (values: "true", "false"; default: "false")<br>--&gt;</p>
+                        </pre>
+                    </div>
+                    <div class="block html">
+                        <h3>HTML Syntax</h3>
+                        <pre>
+                            <xmp class="prettyprint"><a class="button" href="#">Explore</a> 
+
+<!-- OPTIONS
+* Add class "prominent" to make the button emphasized
+--></xmp>
+                        </pre>
+                    </div>
+                </div>
+                <div class="more-reference">
+                    <a class="component" href="../components/buttons.html#usage">Learn more</a>
+                </div>
+            </section>
+            
+        </main>
+                
+        <footer>
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>

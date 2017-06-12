@@ -4,20 +4,29 @@
 
 
 .reference ul {
-    float: right;
     position: relative;
     top: 0;
     left: 0;
+    margin-bottom: 15px;
 }
 
 .reference ul li {
     display: inline-block;
-    margin-left: .5rem;
     color: #999;
     padding: 3px 7px;
     border-radius: 5px;
     transition: all .1s ease-in-out;
     cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+    .reference ul {
+        float: right;
+        margin-bottom: 0;
+    }
+    .reference ul li:first-child {
+        margin-left: .5rem;
+    }
 }
 
 .reference ul li.on,
@@ -49,4 +58,8 @@
 
 .reference xmp {
     margin: 0;
+}
+
+.more-reference {
+    margin-top: 20px;
 }

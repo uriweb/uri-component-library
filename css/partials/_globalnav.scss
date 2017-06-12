@@ -139,13 +139,20 @@ header h1 a {
 #gn-cards .gn-icon {
     background-image: url(../media/assets/icon-cards.svg);
 }
-
+#gn-bugs .gn-icon {
+    background-image: url(../media/assets/icon-bugs.svg);
+}
+#gn-code .gn-icon {
+    background-image: url(../media/assets/icon-code.svg);
+}
 body.nav-buttons #gn-buttons,
 body.nav-cards #gn-cards,
 body.nav-color #gn-color,
 body.nav-columns #gn-columns,
 body.nav-boxouts #gn-boxouts,
-body.nav-tiles #gn-tiles {
+body.nav-tiles #gn-tiles,
+body.nav-bugs #gn-bugs,
+body.nav-code #gn-code {
     a {
         color: #fff;
         background: #2277b3;
