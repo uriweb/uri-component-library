@@ -108,13 +108,18 @@ section>article>p {
 
 xmp {
     display: block;
-    width: 90%;
+    width: 100%;
+    white-space: pre-wrap;
     font-family: 'Roboto Mono', Courier, monospace;
     font-size: .75rem;
 }
 
 xmp>span {
     line-height: .9rem;
+}
+
+xmp li {
+    padding: 3px 5px;
 }
 
 code, p.code {

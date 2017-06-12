@@ -5,9 +5,9 @@ a.button {
     display: block !important;
 }
 
-.cols>div>,
-.tiles>div>,
-.boxout> {
+.cols>div,
+.tiles>div,
+.boxout {
 
     a.button {
         margin: 1.2rem 0;
@@ -18,9 +18,11 @@ a.button {
         font-size: .7rem;
         font-weight: 700;
         letter-spacing: .1rem;
+        line-height: normal;
         text-transform: uppercase;
         text-align: center;
         color: $blue;
+        text-decoration: none;
         transition: all .2s;
     }
     
@@ -51,13 +53,13 @@ a.button {
     
 }
 
-.boxout>a.button {
+.boxout a.button {
     border-radius: 2px;
 }
 
 @media screen and (min-width: $break1) {
     
-    .cols>div>a.button {
+    .cols>div a.button {
         width: 45%;
     }
     
@@ -65,8 +67,8 @@ a.button {
 
 @media screen and (min-width: $break2) {
     
-    .cols>div>,
-    .boxout> {
+    .cols>div,
+    .boxout {
         
         a.button {
             width: 100%;
