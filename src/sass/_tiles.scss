@@ -3,7 +3,6 @@
 
 .tiles {
     width: 100%;
-    margin-bottom: 50px;
 }
 
 .tiles:after {
@@ -18,7 +17,7 @@
     overflow: visible;
     width: 100%;
     height: auto;
-    margin-top: 5%;
+    margin-bottom: 8%;
     margin-right: 0;
     padding-bottom: 0;
 }
@@ -26,7 +25,7 @@
 .tiles.square>* {
     height: 0;
     overflow: hidden;
-    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 @keyframes tileReveal {
