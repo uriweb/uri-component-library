@@ -1,11 +1,11 @@
 <?php
 
-$classes = 'flexcard';
+$classes = 'panel';
 if ($reverse) {
     $classes .= ' reverse';
 }
 
-$output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">';
+$output = '<div class="' . $classes . '">';
 $output .= '<figure>';
 $output .= '<img src="' . $img . '" alt="' . $alt . '">';
 $output .= '</figure>';
@@ -18,6 +18,5 @@ if (isset($content)) {
     $output .= '<p>' . $content . '</p>';
 }
     
-$output .= '<span class="button">' . $button . '</span>';
 $output .= '</article>';
-$output .= '</a>';
+$output .= '</div>';

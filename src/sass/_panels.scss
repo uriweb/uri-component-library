@@ -1,0 +1,83 @@
+/* ======= PANELS ======= */
+
+.panel {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    background: #eee !important;
+    border: 2px solid $white;
+    color: $black !important;
+    font-family: "Open Sans", sans-serif !important;
+    border-radius: .4rem;
+    overflow: hidden !important;
+}
+    
+.panel h1 {
+    font-family: $header !important;
+    font-size: 1.3rem !important;
+    font-weight: normal !important;
+    line-height: 1.6rem !important;
+    color: $black !important;
+    margin: 0 !important;
+    text-transform: initial !important;
+}
+
+.panel p {
+    padding-top: 1rem !important;
+    font-size: .8rem !important;
+}
+
+.panel p:first-of-type {
+    padding-top: 1.2rem !important;
+}
+
+.panel article,
+.panel figure { 
+    position: relative !important; 
+    display: block !important; 
+    overflow: hidden !important;
+    width: 100% !important;
+    flex: none !important;
+}
+
+.panel article {
+    padding: 1.8rem 1.2rem 1.5rem;
+}
+
+.panel img { 
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+@media screen and (min-width: $break1) {
+    .panel { 
+        display: flex; 
+        max-width: 100%;
+    }
+    .panel article,
+    .panel figure { 
+        width: auto !important;
+    }
+    .panel article { 
+        flex: 44 !important;
+        order: 1 !important;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .panel figure {
+        flex: 50 !important;
+        order: 2 !important;
+    }
+    .panel.reverse article { 
+        order: 2 !important; 
+    }
+    .panel.reverse figure {
+        order: 1 !important;
+    }
+    .panel img { 
+        position: absolute !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+}

@@ -9,6 +9,7 @@
  * - Card (Standard)
  * - Card (Flex)
  * - Card (Detail)
+ * - Panel
  * - Tiles
  *
  */
@@ -65,6 +66,7 @@ function uri_cl_shortcode_card( $atts ) {
 	extract( shortcode_atts(
 		array(
 			'img' => '',
+            'alt' => '',
 			'title' => '',
             'body' => '',
             'button' => 'Explore',
@@ -89,6 +91,7 @@ function uri_cl_shortcode_flexcard( $atts, $content = null ) {
 	extract( shortcode_atts(
 		array(
 			'img' => '',
+            'alt' => '',
 			'title' => '',
             'button' => 'Explore',
             'link' => '#',
@@ -114,6 +117,7 @@ function uri_cl_shortcode_dcard( $atts ) {
 		array(
             'link' => '#',
 			'img' => '',
+            'alt' => '',
 			'title' => '',
             'body' => '',
             'tooltip' => 'Explore',
@@ -125,6 +129,28 @@ function uri_cl_shortcode_dcard( $atts ) {
 
 }
 add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
+
+
+/**
+ * Panel
+ */
+function uri_cl_shortcode_panel( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'img' => '',
+            'alt' => '',
+			'title' => '',
+            'reverse' => false
+		), $atts )
+	);
+    
+    include 'templates/cl-template-panel.php';
+    return $output;
+
+}
+add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
 
 
 /**

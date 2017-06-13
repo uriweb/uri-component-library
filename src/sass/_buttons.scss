@@ -7,7 +7,8 @@ a.button {
 
 .cols>div,
 .tiles>div,
-.boxout {
+.boxout,
+.panel {
 
     a.button {
         margin: 1.2rem 0;
@@ -53,8 +54,11 @@ a.button {
     
 }
 
-.boxout a.button {
-    border-radius: 2px;
+.boxout,
+.panel {
+    a.button {
+        border-radius: 2px;
+    }
 }
 
 @media screen and (min-width: $break1) {
