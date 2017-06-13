@@ -16,6 +16,7 @@
         <style>
             .tiles.demo>div {
                 background: #ddd;
+                border: 1px solid #ccc;
             }
         </style>
         
@@ -162,6 +163,28 @@
                 </article>
                 
                 <article>
+                    <h4>Tiles can be compact</h4>
+                    <p>By default, each tile has a small margin that separates it from other surrounding tiles. To eliminate this margin and force tiles to but up against one another, add the class <code class="class">compact</code></p>
+                    <p>Both default tiles and square tiles can be compact.</p>
+                    <xmp class="prettyprint">
+<div class="tiles fourths compact">
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    ...
+</div>     
+                    </xmp>
+                    <div class="tiles fourths square compact demo">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </article>
+                
+                <article>
                     <h4>Tile loading can be animated</h4>
                     <p>In some cases, especially when tiles are dynamically generated, the display of each tile can be delayed via the generating script. To animate this, add the class <code class="class">reveal</code></p>
                     <xmp class="prettyprint">
@@ -184,6 +207,8 @@
                     <p class='indent'>The maximum number of tiles to display per row<br /><i>(default value: <code class="num">3</code>)</i></p>
                     <p><b>square</b> <i>(bool) (optional)</i></p>
                     <p class='indent'>Set to force tiles be square and crop their content accordingly<br /><i>(default value: <code class="bool">false</code>)</i></p>
+                    <p><b>compact</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to eliminate margins around tiles<br /><i>(default value: <code class="bool">false</code>)</i></p>
                     <p><b>animated</b> <i>(bool) (optional)</i></p>
                     <p class='indent'>Set to animate tiles when added to the page<br /><i>(default value: <code class="bool">false</code>)</i></p>
                 </article>

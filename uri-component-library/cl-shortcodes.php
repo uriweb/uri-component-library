@@ -137,6 +137,7 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 		array(
             'across' => 3,
 			'square' => false,
+            'compact' => false,
             'animated' => false
 		), $atts )
 	);

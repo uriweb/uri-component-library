@@ -31,9 +31,6 @@
             <g transform="matrix(0.916667,0,0,0.916463,328.111,652.15)">
                 <rect x="50" y="50" width="275.031" height="275" style="fill:rgb(85,85,85);"/>
             </g>
-            <g transform="matrix(0.916667,0,0,0.916463,652.055,652.15)">
-                <rect x="50" y="50" width="275.031" height="275" style="fill:rgb(85,85,85);"/>
-            </g>
         </g>
         <g id="B1" transform="matrix(1,0,0,1,1000,0.1)">
             <g transform="matrix(0.916667,0,0,0.916463,4.16667,4.17685)">
@@ -58,9 +55,6 @@
                 <rect x="50" y="50" width="275.031" height="275" style="fill:white;"/>
             </g>
             <g transform="matrix(0.916667,0,0,0.916463,328.111,652.15)">
-                <rect x="50" y="50" width="275.031" height="275" style="fill:white;"/>
-            </g>
-            <g transform="matrix(0.916667,0,0,0.916463,652.055,652.15)">
                 <rect x="50" y="50" width="275.031" height="275" style="fill:white;"/>
             </g>
         </g>

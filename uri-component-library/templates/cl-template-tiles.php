@@ -23,6 +23,10 @@ if($square) {
     $classes .= ' square';
 }
 
+if($compact) {
+    $classes .= ' compact';
+}
+
 if($animated) {
     $classes .= ' reveal';
 }

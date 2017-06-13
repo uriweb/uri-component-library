@@ -21,6 +21,7 @@
     margin-bottom: 8%;
     margin-right: 0;
     padding-bottom: 0;
+    box-sizing: border-box;
 }
 
 .tiles.square>div,
@@ -28,6 +29,12 @@
     height: 0;
     overflow: hidden;
     margin-bottom: 1%;
+    padding-bottom: 100%;
+}
+
+.tiles.compact>div,
+.tiles.compact>a {
+    margin-bottom: 0;
 }
 
 @keyframes tileReveal {
@@ -118,18 +125,29 @@
         width: 49.5%;
         padding-bottom: 49.5%;
     }
-    
+}
+
+.tiles.compact.fifths>div,
+.tiles.compact.fifths>a {
+    &:not(:nth-child(2n)) {
+        margin-right: 0;
+    }
+    & {
+        width: 50%;
+        padding-bottom: 50%;
+    }
 }
 
 @media screen and (min-width: $break0) {
     
     // Reset previous break
-    .tiles.fifths>div,
-    .tiles.fifths>a {
-        &:not(:nth-child(2n)) {
+    .tiles, .tiles.square {
+        &.fifths>div:not(:nth-child(2n)),
+        &.fifths>a:not(:nth-child(2n)) {
             margin-right: 0;
         }
-        &:nth-child(2n+1) {
+        &.fifths>div:nth-child(2n+1),
+        &.fifths>a:nth-child(2n+1) {
             clear: none;
         }
     }
@@ -188,6 +206,30 @@
         &.fifths>a {
             width: 32.66%;
             padding-bottom: 32.66%;
+        }
+    }
+    
+    // Set up compact tiles for this break
+    .tiles.compact {
+        &.thirds>div:not(:nth-child(2n)),
+        &.thirds>a:not(:nth-child(2n)),
+        &.fourths>div:not(:nth-child(2n)),
+        &.fourths>a:not(:nth-child(2n)),
+        &.fifths>div:not(:nth-child(3n)),
+        &.fifths>a:not(:nth-child(3n)) {
+            margin-right: 0;
+        }
+        &.thirds>div,
+        &.thirds>a,
+        &.fourths>div,
+        &.fourths>a {
+            width: 50%;
+            padding-bottom: 50%;
+        }
+        &.fifths>div,
+        &.fifths>a {
+            width: 33.33%;
+            padding-bottom: 33.33%;
         }
     }
     
@@ -255,6 +297,26 @@
         &.fifths>a {
             width: 24.25%;
             padding-bottom: 24.25%;
+        }
+    }
+    
+    // Set up compact tiles for this break
+    .tiles.compact {
+        &.fourths>div:not(:nth-child(3n)),
+        &.fourths>a:not(:nth-child(3n)),
+        &.fifths>div:not(:nth-child(4n)),
+        &.fifths>a:not(:nth-child(4n)) {
+            margin-right: 0;
+        }
+        &.fourths>div,
+        &.fourths>a {
+            width: 33.33%;
+            padding-bottom: 33.33%;
+        }
+        &.fifths>div,
+        &.fifths>a {
+            width: 25%;
+            padding-bottom: 25%;
         }
     }
     
@@ -356,6 +418,40 @@
         &.fifths>a {
             width: 19.2%;
             padding-bottom: 19.2%;
+        }
+    }
+    
+    // Set up compact tiles for this break
+    .tiles.compact {
+        &.halves>div:not(:nth-child(2n)),
+        &.halves>a:not(:nth-child(2n)),
+        &.thirds>div:not(:nth-child(3n)),
+        &.thirds>a:not(:nth-child(3n)),
+        &.fourths>div:not(:nth-child(4n)),
+        &.fourths>a:not(:nth-child(4n)),
+        &.fifths>div:not(:nth-child(5n)),
+        &.fifths>a:not(:nth-child(5n)) {
+            margin-right: 0;
+        }
+        &.halves>div,
+        &.halves>a {
+            width: 50%;
+            padding-bottom: 50%;
+        }
+        &.thirds>div,
+        &.thirds>a {
+            width: 33.33%;
+            padding-bottom: 33.33%;
+        }
+        &.fourths>div,
+        &.fourths>a {
+            width: 25%;
+            padding-bottom: 25%;
+        }
+        &.fifths>div,
+        &.fifths>a {
+            width: 20%;
+            padding-bottom: 20%;
         }
     }
     
