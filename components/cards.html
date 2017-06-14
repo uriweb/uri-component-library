@@ -38,7 +38,7 @@
             <section id="action">
                 <h2>Action Card</h2>
                 <h4>Action cards are vertical cards that prompt user action with an optional image, summary language, and a button.</h4>
-                <p>Standard cards are implemented with the class <code class="class">card</code></p>
+                <p>Action cards are implemented with the class <code class="class">card</code></p>
 
                 <div class="tiles thirds">
                     <div>
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <article>
-                    <h4>Standard cards and detail cards can be tiles, or live inside them.</h4>
+                    <h4>Action cards and detail cards can be tiles, or live inside them.</h4>
                     <p>To create a tile with a card or place a card in a tile, use the <a class="component" href="../tiles/">tile</a> framework.  If a card will be the only content in a given tile, the tile can be created with the card itself.</p>
                     <xmp class="prettyprint">
 <div class="tiles thirds">
@@ -239,24 +239,25 @@
                 <h2>Construction</h2>
                 <h4>Cards are elevated.</h4>
                 <p>Cards exist above the page, not on it.  A box shadow is used to achieve this appearance.</p>
-                
-                <div class="tiles thirds">
-                    <div class="comparison do">
-                        <img src="../media/comparisons/card-usage-elevation-do.jpg" alt="What to do with elevation">
-                        <span>Do</span>
-                        <p>Use a box shadow to elevate the card.</p>
+                <article>
+                    <div class="tiles thirds">
+                        <div class="comparison do">
+                            <img src="../media/comparisons/card-usage-elevation-do.jpg" alt="What to do with elevation">
+                            <span>Do</span>
+                            <p>Use a box shadow to elevate the card.</p>
+                        </div>
+                        <div class="comparison dont">
+                            <img src="../media/comparisons/card-usage-elevation-dont.jpg" alt="What not to do with elevation">
+                            <span>Don't</span>
+                            <p>This is not a card. There is no indication that the content exists above the page.</p>
+                        </div>
+                        <div class="comparison dont">
+                            <img src="../media/comparisons/card-usage-elevation-dont-border.jpg" alt="What also not to do with elevation">
+                            <span>Don't</span>
+                            <p>Do not place a border around the content to emulate a card.  This content still exists on the page plane.</p>
+                        </div>
                     </div>
-                    <div class="comparison dont">
-                        <img src="../media/comparisons/card-usage-elevation-dont.jpg" alt="What not to do with elevation">
-                        <span>Don't</span>
-                        <p>This is not a card. There is no indication that the content exists above the page.</p>
-                    </div>
-                    <div class="comparison dont">
-                        <img src="../media/comparisons/card-usage-elevation-dont-border.jpg" alt="What also not to do with elevation">
-                        <span>Don't</span>
-                        <p>Do not place a border around the content to emulate a card.  This content still exists on the page plane.</p>
-                    </div>
-                </div>
+                </article>
                 
                 <h4>Card elevation changes when hovering over and clicking them.</h4>
                 <p>Increasing elevation upon hover and clicking provides the user with feedback for their actions and improves user experience.  Elevation changes are achieved with a box shadow and position shift.</p>
@@ -317,7 +318,7 @@
                 <article>
                     <div class="tiles halves">
                         <div>
-                            <h3>Standard Card</h3>
+                            <h3>Action Card</h3>
                             <h4>Dimensions</h4>
                             <ul class="construction-list">
                                 <li class="section">Container</li>
@@ -350,7 +351,7 @@
                             </ul>
                         </div>
                          <div>
-                            <img src="../media/constructions/card-construction.jpg" class="figure" style="max-width: 477px;" alt="Standard card construction">
+                            <img src="../media/constructions/card-construction.jpg" class="figure" style="max-width: 477px;" alt="Action card construction">
                         </div>
                     </div>
                 </article>
