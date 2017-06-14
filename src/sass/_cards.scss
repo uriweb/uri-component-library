@@ -1,8 +1,7 @@
 /* ======= CARDS ======= */
 
 .card,
-.dcard,
-.flexcard {
+.dcard {
     display: inline-block;
     width: 100%;
     background: $white !important;
@@ -53,8 +52,7 @@
 
 a {
     &.card,
-    &.dcard,
-    &.flexcard {
+    &.dcard {
         position: relative;
         top: 0;
         transition: top .1s ease-in-out, box-shadow .1s ease-in-out;
@@ -63,25 +61,21 @@ a {
     &.card:hover,
     &.card:focus,
     &.dcard:hover,
-    &.dcard:focus,
-    &.flexcard:hover,
-    &.flexcard:focus {
+    &.dcard:focus{
         top: -2px;
         box-shadow: $level2;
         cursor: pointer;
     }
 
     &.card:active,
-    &.dcard:active,
-    &.flexcard:active {
+    &.dcard:active {
         box-shadow: $level3;
     }
 }
     
 .card h1,
 .cols .card h1,
-.tiles .card h1,
-.flexcard h1 {
+.tiles .card h1 {
     font-family: $header !important;
     font-size: 1.3rem !important;
     font-weight: normal !important;
@@ -94,91 +88,31 @@ a {
 
 .card p,
 .cols .card p,
-.tiles .card p,
-.flexcard p {
+.tiles .card p {
     padding: 1rem 1.2rem 0 !important;
     font-size: .8rem !important;
 }
 
 .card p:first-of-type,
 .cols .card p:first-of-type,
-.tiles .card p:first-of-type,
-.flexcard p:first-of-type {
+.tiles .card p:first-of-type {
     padding-top: 1.2rem !important;
 }
 
 .card p:last-child,
 .cols .card p:last-child,
-.tiles .card p:last-child,
-.flexcard p:last-child {
+.tiles .card p:last-child {
     padding-bottom: 2rem !important;
 }
 
-/* Standard Cards */
+
+/* Action Cards */
 
 .card img,
 .cols .card img,
 .tiles .card img {
     width: 100% !important;
     height: auto !important;
-}
-
-/* Flex Cards */
-
-.flexcard { 
-    display: block;
-    max-width: $maxcardwidth;
-    margin-bottom: 40px;
-}
-.flexcard article,
-.flexcard figure { 
-    position: relative !important; 
-    display: block !important; 
-    overflow: hidden !important;
-    width: 100% !important;
-    flex: none !important;
-}
-.flexcard img { 
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-}
-
-@media screen and (min-width: $break1) {
-    .flexcard { 
-        display: flex; 
-        max-width: 100%;
-    }
-    .flexcard article,
-    .flexcard figure { 
-        width: auto !important;
-        flex: 1 !important;
-    }
-    .flexcard img { 
-        position: absolute !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-    .flexcard article { 
-        order: 1 !important; 
-    }
-    .flexcard figure {
-        order: 2 !important;
-    }
-    .flexcard.reverse article { 
-        order: 2 !important; 
-    }
-    .flexcard.reverse figure {
-        order: 1 !important;
-    }
-    .flexcard h1 {
-        padding-left: 6% !important;
-        padding-right: 6% !important;
-    }
-    .flexcard p {
-        padding-left: 6% !important;
-        padding-right: 6% !important;
-    }
 }
 
 
@@ -225,8 +159,7 @@ a {
 
 /* Buttons */
 
-.card .button,
-.flexcard .button {
+.card .button {
     display: block !important;
     width: 100% !important;
     margin-top: 2rem !important;
@@ -243,20 +176,10 @@ a {
     transition: all .2s !important;
 }
 
-@media screen and (min-width: $break1) {
-    .flexcard a.button {
-        margin-top: 3rem !important;
-    }
-}
-
 a.card:hover .button,
 a.card:focus .button,
 .card .button:hover,
-.card .button:focus,
-a.flexcard:hover .button,
-a.flexcard:focus .button,
-.flexcard .button:hover,
-.flexcard .button:focus {
+.card .button:focus {
     background: $blue !important;
     border-top: 1px solid $blue !important;
     color: $white !important;

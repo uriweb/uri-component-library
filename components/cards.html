@@ -29,151 +29,69 @@
             <p>Cards do not contain any links. Clicking the card is the only action a user can take.</p>
             
             <ul id="localnav">
-                <li><a href="#action">Action Cards</a></li>
+                <li><a href="#action">Action Card</a></li>
                 <li><a href="#detail">Detail Card</a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="#construction">Construction</a></li>
             </ul>
             
             <section id="action">
-                <h2>Action Cards</h2>
-                <h4>Action cards prompt user action with summary language and a button.</h4>
-                <p>Two types of action cards can be used depending on layout and content.</p>
-                    
-                <article>
-                    <h3>Standard Card</h3>
-                    <p>Standard cards are narrow, and have an optional image.</p>
-                    <p>Standard cards are implemented with the class <code class="class">card</code></p>
+                <h2>Action Card</h2>
+                <h4>Action cards are vertical cards that prompt user action with an optional image, summary language, and a button.</h4>
+                <p>Standard cards are implemented with the class <code class="class">card</code></p>
 
-                    <div class="tiles thirds">
-                        <div>
-                            <xmp class="prettyprint">
+                <div class="tiles thirds">
+                    <div>
+                        <xmp class="prettyprint">
 <a class="card" href="">
     <h1>Title</h1>
     <p>Paragraph text.</p> 
     <span class="button">Button</span>
 </a>    
                             </xmp>
-                            <a class="card" href="#">
-                                <h1>Simple</h1>
-                                <p>This is the most basic action card.</p>
-                                <span class="button">Learn more</span>
-                            </a>
-                        </div>
-                        <div>
-                            <xmp class="prettyprint">
+                        <a class="card" href="#">
+                            <h1>Simple</h1>
+                            <p>This is the most basic action card.</p>
+                            <span class="button">Learn more</span>
+                        </a>
+                    </div>
+                    <div>
+                        <xmp class="prettyprint">
 <a class="card" href="">
     <img>
     <h1>Title</h1>
     <p>Paragraph text.</p>
     <span class="button">Button</span>
 </a>                       
-                            </xmp>
-                            <a class="card" href="#">
-                                <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
-                                <h1>The Real Deal</h1>
-                                <p>This is a more elaborate card, with a banner image and longer text.  Text should not be too long though&mdash;two or three sentences should be enough to entice user action.</p>
-                                <span class="button">Explore</span>
-                            </a>
-                        </div>
+                        </xmp>
+                        <a class="card" href="#">
+                            <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
+                            <h1>The Real Deal</h1>
+                            <p>This is a more elaborate card, with a banner image and longer text.  Text should not be too long though&mdash;two or three sentences should be enough to entice user action.</p>
+                            <span class="button">Explore</span>
+                        </a>
                     </div>
-                    <p>Standard cards preserve the original aspect ratio of any image used.</p>
-                    <h4>Shortcode Support</h4>
-                    <p>Standard cards can be implemented with the shortcode <code class='shortcode'>cl-card</code></p>
-                    <p class="code shortcode">[cl-card title="A Great Title" body="The body text" link="sample.html"]</p>
-                    <h5>Attributes</h5>
-                    <p><b>link</b> <i>(string) (required)</i></p>
-                    <p class='indent'>The URL for the card</p>
-                    <p><b>img</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
-                    <p><b>alt</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>Set alternate text for the image<br /><i>(default value: none)</i></p>
-                    <p><b>title</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
-                    <p><b>body</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The body text<br /><i>(default value: none)</i></p>
-                    <p><b>button</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
-                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The title attribute for the link<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
-                </article>
+                </div>
+                <p>Action cards preserve the original aspect ratio of any image used.</p>
+                <h4>Shortcode Support</h4>
+                <p>Action cards can be implemented with the shortcode <code class='shortcode'>cl-card</code></p>
+                <p class="code shortcode">[cl-card title="A Great Title" body="The body text" link="sample.html"]</p>
+                <h5>Attributes</h5>
+                <p><b>link</b> <i>(string) (required)</i></p>
+                <p class='indent'>The URL for the card</p>
+                <p><b>img</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The source URL for an image<br /><i>(default value: none)</i></p>
+                <p><b>alt</b> <i>(string) (optional)</i></p>
+                <p class='indent'>Set alternate text for the image<br /><i>(default value: none)</i></p>
+                <p><b>title</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
+                <p><b>body</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The body text<br /><i>(default value: none)</i></p>
+                <p><b>button</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
+                <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                <p class='indent'>The title attribute for the link<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
                 
-                <article>
-                    <h3>Flex Card</h3>
-                    <p>Flex cards display text and an image side-by-side when space allows, and collapse into the standard card format at narrow browser widths.  Unlike standard cards, flex cards must have an image and cannot live in tiles.</p>
-                    <p>Flex cards are implemented with the class <code class="class">flexcard</code></p>
-                    <xmp class="prettyprint">
-<a class="flexcard" href="">
-    <figure>
-        <img>
-    </figure>
-    <article>
-        <h1>Title</h1>
-        <p>Paragraph text.</p>
-        <span class="button">Button</span>
-    </article>
-</a>                       
-                    </xmp>
-                    <a class="flexcard" href="#">
-                        <figure>
-                            <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
-                        </figure>
-                        <article>
-                            <h1>Lorem Ipsum Dolor</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat blandit dui ultrices cursus in vel odio. Phasellus molestie ultricies pulvinar. Nullam malesuada libero a nibh tristique ultricies.</p>
-                            <p>Vivamus elementum metus massa, et molestie nisl porttitor ac. Suspendisse nec mi ante. In sed dictum quam. Morbi in nulla fermentum, semper enim in, rhoncus diam. Integer lobortis dictum faucibus.</p>
-                            <span class="button">Learn More</span>
-                        </article>
-                    </a>
-                    <p>Note that the image must be nested in <code class="tag">&lt;figure&gt;</code> tags. In the full-width layout, the height of the figure is dependent on the height of the article, and image covers the figure.  At narrow widths, the image behaves as though it is in a standard card, and is not cropped.</p>
-                    <h4>Flex card layouts can be reversed</h4>
-                    <p>By default, text displays on the left side and the image displays on the right.  The layout can be reversed by adding the class <code class="class">reverse</code> to the flex card. This will not change how the card behaves at narrow browser widths.</p>
-                    <p>Note that the figure block must always come before the article block, regardless of layout.</p>
-                    <xmp class="prettyprint">
-<a class="flexcard reverse" href="">
-    <figure>
-        <img>
-    </figure>
-    <article>
-        <h1>Title</h1>
-        <p>Paragraph text.</p>
-        <span class="button">Button</span>
-    </article>
-</a>                       
-                    </xmp>
-                    <a class="flexcard reverse" href="#">
-                        <figure>
-                            <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
-                        </figure>
-                        <article>
-                            <h1>Lorem Ipsum Dolor</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat blandit dui ultrices cursus in vel odio. Phasellus molestie ultricies pulvinar. Nullam malesuada libero a nibh tristique ultricies.</p>
-                            <p>Vivamus elementum metus massa, et molestie nisl porttitor ac. Suspendisse nec mi ante. In sed dictum quam. Morbi in nulla fermentum, semper enim in, rhoncus diam. Integer lobortis dictum faucibus.</p>
-                            <span class="button">Learn More</span>
-                        </article>
-                    </a>
-                    <h4>Shortcode Support</h4>
-                    <p>Flex cards can be implemented with the shortcode <code class='shortcode'>cl-flexcard</code></p>
-                    <p class="code shortcode">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]Some longer body text.[/cl-flexcard]</p>
-                    <p>The flex card shortcode wraps the content in <code class="tag">&lt;p&gt;</code> tags.  To include multiple paragraphs, place <code class="tag">&lt;/p&gt;&lt;p&gt;</code> between each one.</p>
-                    <p class="code shortcode">[cl-flexcard title="A Great Card" link="sample.html" img="sampleimage.jpg"]This is the first paragraph.&lt;/p&gt;&lt;p&gt;This is the second paragraph.&lt;/p&gt;&lt;p&gt;Why not a third?[/cl-flexcard]</p>
-                    <h5>Attributes</h5>
-                    <p><b>link</b> <i>(string) (required)</i></p>
-                    <p class='indent'>The URL for the card</p>
-                    <p><b>img</b> <i>(string) (required)</i></p>
-                    <p class='indent'>The source URL for the image</p>
-                    <p><b>alt</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>Set alternate text for the image<br /><i>(default value: none)</i></p>
-                    <p><b>title</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for a title<br /><i>(default value: none)</i></p>
-                    <p><b>button</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
-                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The title attribute for the link<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
-                    <p><b>reverse</b> <i>(bool) (optional)</i></p>
-                    <p class='indent'>Set to reverse the card layout<br /><i>(default value: <code class="bool">false</code>)</i></p>
-                </article>
-            
             </section>
             
             <section id="detail">
@@ -208,7 +126,6 @@
                         </a>
                     </div>
                 </div>
-                <p>Detail cards cannot contain any links. Clicking the card should be the only action a user can take when interacting with a detail card.</p>
                 <p>Detail cards preserve the original aspect ratio of the image used, but square images are recommended and preferred.</p>
                 <h4>Shortcode Support</h4>
                     <p>Detail cards can be implemented with the shortcode <code class='shortcode'>cl-dcard</code></p>
@@ -436,49 +353,6 @@
                             <img src="../media/constructions/card-construction.jpg" class="figure" style="max-width: 477px;" alt="Standard card construction">
                         </div>
                     </div>
-                </article>
-                
-                <article>
-                    <h3>Flex Card</h3>
-                    <p>The dimensions below apply to flex cards at full-width.  At narrow browser widths, flex cards assume the construction of standard cards.</p>
-                    <div class="tiles halves">
-                        <div>
-                            <h4>Dimensions</h4>
-                            <ul class="construction-list">
-                                <li class="section">Container</li>
-                                <li>Border radius: 0.2rem</li>
-                                <li class="section">Title</li>
-                                <li>Top padding: 1.3rem</li>
-                                <li>Side padding: 1.2rem</li>
-                                <li>Line height: 1.6rem</li>
-                                <li class="section">Pharagraphs</li>
-                                <li>First top padding: 1.2rem</li>
-                                <li>Subsequent top padding: 1rem</li>
-                                <li>Side padding: 1.2rem</li>
-                                <li class="section">Button</li>
-                                <li>Top margin: 3rem</li>
-                                <li>Top border: 1px</li>
-                                <li>Top padding: 1.5% article width + 1rem</li>
-                                <li>Bottom padding: 1.5% article width + 1rem</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Typography</h4>
-                            <ul class="construction-list">
-                                <li class="section">Title</li>
-                                <li>Font size: 1.3rem</li>
-                                <li>Line height: 1.6rem</li>
-                                <li class="section">Paragraph</li>
-                                <li>Font size: 0.8rem</li>
-                                <li>Line height: 1.5rem</li>
-                                <li class="section">Button</li>
-                                <li>Font size: 0.7rem</li>
-                                <li>Case: uppercase</li>
-                                <li>Tracking: 0.1rem</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <img src="../media/constructions/flexcard-construction.jpg" class="figure" style="max-width: 996px;" alt="Flex card construction">
                 </article>
             
             </section><!-- end construction -->

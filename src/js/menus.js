@@ -10,21 +10,12 @@ $(function(){
         $(this).hide();
     });
     
-    $('.menu span').append('<div class="arrow"></div>');
-    
-    // Bind click event to nested menu triggers
-    $('.menu span').click(function(){
-        submenuControl($(this).parent());
-    });
-    
-    
-    /*
-     * Toggle submenu visibility
-     * @param obj el the li containing the submenu
-     */
-    function submenuControl(el) {
-        $(el).find('.arrow').toggleClass('up');
-        $(el).find('ul').slideToggle(150);
-    }
+    // Append dropdown arrows, bind click event to submenu triggers, and control the submenu
+    $('.menu span').append('<div class="arrow"></div>')
+        .click(function(){
+            var el = $(this).parent();
+            $(el).find('.arrow').eq(0).toggleClass('on');
+            $(el).find('ul').eq(0).slideToggle(150);
+        });
     
 });

@@ -6,8 +6,7 @@
  *
  * - Boxout
  * - Button
- * - Card (Standard)
- * - Card (Flex)
+ * - Card (Action)
  * - Card (Detail)
  * - Panel
  * - Tiles
@@ -58,7 +57,7 @@ add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
 
 
 /**
- * Standard Card
+ * Action Card
  */
 function uri_cl_shortcode_card( $atts ) {
 
@@ -80,31 +79,6 @@ function uri_cl_shortcode_card( $atts ) {
 
 }
 add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
-
-
-/**
- * Flex Card
- */
-function uri_cl_shortcode_flexcard( $atts, $content = null ) {
-
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			'img' => '',
-            'alt' => '',
-			'title' => '',
-            'button' => 'Explore',
-            'link' => '#',
-            'tooltip' => 'Explore',
-            'reverse' => false
-		), $atts )
-	);
-    
-    include 'templates/cl-template-flexcard.php';
-    return $output;
-
-}
-add_shortcode( 'cl-flexcard', 'uri_cl_shortcode_flexcard' );
 
 
 /**
