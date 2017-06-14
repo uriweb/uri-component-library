@@ -4,6 +4,8 @@
 
 $(function(){
     
+    'use strict';
+    
     $(document).on('click', '#menu-button', function(event){
         event.stopPropagation();
         $('#globalnav').addClass('revealed');

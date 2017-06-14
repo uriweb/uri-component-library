@@ -75,7 +75,7 @@ function themeStyles(done) {
 		.pipe(concat('cl.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./uri-component-library/'));
+		.pipe(gulp.dest('./uri-component-library/css/'));
 
   done();
   //console.log('styles ran');
@@ -89,10 +89,10 @@ function themeScripts(done) {
     .pipe(jshint(done))
     .pipe(jshint.reporter('default'));
 	gulp.src('./src/js/*.js')
-    .pipe(concat('script.min.js'))
+    .pipe(concat('cl.built.js'))
     //.pipe(stripDebug())
     .pipe(uglify())
-    .pipe(gulp.dest('./uri-component-library/'));
+    .pipe(gulp.dest('./uri-component-library/js/'));
     
 	done();
  // console.log('scripts ran');

@@ -1,0 +1,115 @@
+/* ======= MENUS ======= */
+
+
+ul.menu {
+
+    & {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    li:not(:first-child) {
+        border-top: 1px solid $grey;
+    }
+
+    a {
+        display: block;
+        padding: 5%;
+        color: $black;
+        transition: all .1s ease-in-out;
+    }
+    
+    a:hover,
+    a:focus {
+        background: #002147;
+        color: $white;
+    }
+
+    span {
+        display: block;
+        padding: 5%;
+        font-weight: 700;
+        color: $midblue;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+    }
+    
+    .arrow {
+        float: right;
+        margin-top: .2rem;
+        margin-left: 1rem;
+        width: 0; 
+        height: 0; 
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid $midblue;
+        transform: rotate(0);
+        transition: border-top .1s ease-in-out, transform 150ms ease-in-out;
+    }
+    
+    .arrow.up {
+        transform: rotate(180deg);
+    }
+    
+    span:hover,
+    span:focus {
+        & {
+            color: $darkgrey;
+            background: $grey;
+        }
+        .arrow {
+            border-top: 8px solid $darkgrey;
+        }
+    }
+
+    ul {
+        margin-left: 5%;
+    }
+
+}
+
+ul.menu.bar {
+    
+    & {
+        max-width: 100%;
+    }
+    
+    &:after {
+        clear: both;
+        display: block;
+        content: '';
+    }
+    
+    li {
+        float: left;
+        border-top: none;
+        position: relative;
+    }
+    
+    li:not(:first-child) {
+        border-left: 1px solid $grey;
+    }
+    
+    a, span {
+        padding: .8rem 1.2rem;
+    }
+    
+    ul {
+        margin-left: 0;
+        position: absolute;
+        background: $white;
+        min-width: 100%;
+    }
+    
+    ul li {
+        display: block;
+        float: none;
+        border-left: none !important;
+    }
+    
+    ul li:not(:first-child) {
+        border-top: 1px solid $grey;
+    }
+    
+}

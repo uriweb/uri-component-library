@@ -13,11 +13,12 @@ Author URI:
 if ( !defined('ABSPATH') )
 	die('-1');
 
-// Include stylesheet
-function uri_cl_styles() { 
-    wp_enqueue_style( 'uricl', plugins_url( 'cl.built.css', __FILE__ ), array(), $version, 'all' );
+// Include css and js
+function uri_cl_enqueues() { 
+    wp_enqueue_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ) );
+    wp_register_script( 'urlcl-js', plugins_url( '/js/cl.built.js', __FILE__ ) );
 }
-add_action('wp_enqueue_scripts', 'uri_cl_styles');
+add_action('wp_enqueue_scripts', 'uri_cl_enqueues');
 
 // Include shortcodes
-include( plugin_dir_path( __FILE__ ) . 'cl-shortcodes.php');
+include( plugin_dir_path( __FILE__ ) . 'inc/cl-shortcodes.php');

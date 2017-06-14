@@ -1,0 +1,1 @@
+$(function(){"use strict";function n(n){$(n).find(".arrow").toggleClass("up"),$(n).find("ul").slideToggle(150)}$(".menu ul").each(function(){console.log("ok"),$(this).hide()}),$(".menu span").append('<div class="arrow"></div>'),$(".menu span").click(function(){n($(this).parent())})});

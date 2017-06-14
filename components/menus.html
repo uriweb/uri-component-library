@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Menus - Components - Digital Content Style Guide</title>
         <link rel="stylesheet" type="text/css" href="../css/playground.css">
-        <link rel="stylesheet" type="text/css" href="../uri-component-library/cl.built.css">
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
         <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../js/main.js"></script>
+        <script src="../uri-component-library/js/cl.built.js"></script>
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     </head>
 	
@@ -35,14 +36,89 @@
                 
                 <h2>Design</h2>
                 <p>Menus are implemented with the class <code class="class">menu</code></p>
+                <xmp class="prettyprint">
+<ul class="menu">
+    <li><a href="#">Item 1</a></li>
+    <li><a href="#">Item 2</a></li>
+    <li>
+        <span>List A</span>
+        <ul>
+            <li><a href="#">Subitem A1</a></li>
+            ...
+        </ul>
+    </li>
+    ...
+</ul> 
+                </xmp>
+    
+                <ul class="menu">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li>
+                        <span>List A</span>
+                        <ul>
+                            <li><a href="#">Subitem A1</a></li>
+                            <li><a href="#">Subitem A2</a></li>
+                            <li><a href="#">Subitem A3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Item 3</a></li>
+                    <li><a href="#">Item 4</a></li>
+                    <li>
+                        <span>List B</span>
+                        <ul>
+                            <li><a href="#">Subitem B1</a></li>
+                            <li><a href="#">Subitem B2</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 
-                
+                <article>
+                    <p>Menus are vertical by default.  To create a horizontal menu, add the class <code class="class second">bar</code></p>
+                    <xmp class="prettyprint">
+<ul class="menu bar">
+    <li><a href="#">Item 1</a></li>
+    <li><a href="#">Item 2</a></li>
+    <li>
+        <span>List A</span>
+        <ul>
+            <li><a href="#">Subitem A1</a></li>
+            ...
+        </ul>
+    </li>
+    ...
+</ul> 
+                    </xmp>
+
+                    <ul class="menu bar">
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li>
+                            <span>List A</span>
+                            <ul>
+                                <li><a href="#">Subitem A1</a></li>
+                                <li><a href="#">Subitem A2</a></li>
+                                <li><a href="#">Subitem A3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Item 3</a></li>
+                        <li><a href="#">Item 4</a></li>
+                        <li>
+                            <span>List B</span>
+                            <ul>
+                                <li><a href="#">Subitem B1</a></li>
+                                <li><a href="#">Subitem B2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+            
             </section>
             
         </main>
                 
         <footer>
-            <script>$('footer').load('../includes/footer.html');</script>
+            <script>$('Itemter').load('../includes/Itemter.html');</script>
         </footer>
         
     </body>
