@@ -36,8 +36,8 @@ function loadYouTubeAPI() {
  */
 function onYouTubePlayerAPIReady() {
     hero.player = new YT.Player(hero.vidID, {
-        width: '2000',
-        height: '1124',
+        width: '0',
+        height: '0',
         videoId: hero.vidID,
         playerVars: {
             autoplay: 1,
@@ -52,7 +52,37 @@ function onYouTubePlayerAPIReady() {
             'onError' : onPlayerError
         }
     });
+    
+    $(window).resize(function(){
+        resizePlayer();
+    }); resizePlayer();
+    
+}
 
+
+/*
+ * Set the YT player height and position based on width
+ */
+function resizePlayer() {
+    var w = $('#hero').width();
+    var h = $('#hero').height();
+    console.log(w/h);
+    if (w/h > 16/9) {
+        $('#' + hero.vidID).css({
+            'height' : w * 9 / 16,
+            'width' : '100%',
+            'left' : 0,
+            'margin-left' : 0
+        });
+    } else {
+        w = h * 16 / 9;
+        $('#' + hero.vidID).css({
+            'height' : '100%',
+            'width' : w,
+            'left' : 0 - w / 2,
+            'margin-left' : '50%'
+        });
+    }
 }
 
 
