@@ -35,16 +35,17 @@
     right: 0;
     bottom: 0;
     margin: 0;
-    padding: 2rem 2rem 4rem;
+    padding: 2rem 2rem 3rem;
     text-align: center;
-    background: rgba(0,33,71,.8);
-    border-top: 2px solid #fff;
+    background: rgba(0,33,71,.9);
+    border-top: 5px solid $lightgrey;
     color: #fff;
+    //text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
     #heromask h1 { 
-        backdrop-filter: saturate(0%) blur(10px); 
-        background-color: rgba(0,33,71,.7);
+        backdrop-filter: saturate(180%) blur(20px); 
+        background-color: rgba(0,33,71,.5);
     }
 }
