@@ -11,9 +11,9 @@ var hero = {
  * Get video ID and determine the API to load
  */
 $(function() {
-    // Use the target img id as the vid ID
     hero.poster = document.querySelector('#hero .youtube');
     if(hero.poster) { 
+        // Use the target img id as the vid ID
         hero.vidID = hero.poster.getAttribute('id');
         loadYouTubeAPI();
     };
@@ -40,7 +40,7 @@ function onYouTubePlayerAPIReady() {
         height: '1124',
         videoId: hero.vidID,
         playerVars: {
-            //autoplay: 1,
+            autoplay: 1,
             //end: 30,
             controls: 0,
             showinfo: 0,
@@ -49,6 +49,7 @@ function onYouTubePlayerAPIReady() {
         events: {
             'onReady': onPlayerReady,
             'onStateChange' : onPlayerStateChange,
+            'onError' : onPlayerError
         }
     });
 
@@ -70,7 +71,7 @@ function onPlayerStateChange(event) {
     var state = event.target.getPlayerState();
     console.log(state);
     switch (state) {
-        case 2: // paused
+        case 0: // ended
             playVideo(event);
             break;
         default:
@@ -83,6 +84,14 @@ function onPlayerStateChange(event) {
  */
 function playVideo(event) {
     event.target.playVideo();
+}
+
+
+/*
+ * Revert to poster if there's an error with the video
+*/
+function onPlayerError() {
+    $('#' + hero.vidID).replaceWith(hero.poster);
 }
 /* ======= MENUS ======= */
 
