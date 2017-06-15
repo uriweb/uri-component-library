@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../js/main.js"></script>
+        <script src="../uri-component-library/js/cl.built.js"></script>
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     </head>
 	
@@ -34,8 +35,52 @@
             <section id="design">
                 
                 <h2>Design</h2>
-                <p>Heros are implemented with the class <code class="class">hero</code></p>
+                <p>Heros are implemented with the id <code class="id">hero</code></p>
                 
+                <!--
+                <article>
+                    <div id="hero">
+                        <img src="../media/native/hero_1@2x.jpg" alt="hero" title="Hero image">
+                    </div>
+                </article>
+                -->
+                
+                <article>
+                    <div id="hero">
+                        <div id="heromask">
+                            <h1>Begin here.</h1>
+                        </div>
+                        <img id="ydD1Wg2B8Vk" class="yt" src="../media/commons/hero_vid_poster.jpg">
+                        <script>
+                            // Load the IFrame Player API code asynchronously.
+                            var tag = document.createElement('script');
+                            tag.src = "https://www.youtube.com/player_api";
+                            var firstScriptTag = document.getElementsByTagName('script')[0];
+                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                            // Use the target div id as the vid ID
+                            var vidID = document.querySelector('#hero .yt').getAttribute('id');
+
+                            // Load up the player...
+                            var player;
+                            function onYouTubePlayerAPIReady() {
+                                player = new YT.Player(vidID, {
+                                    width: '1000',
+                                    height: '562',
+                                    videoId: vidID,
+                                    playerVars: {
+                                        autoplay: 1,
+                                        controls: 0,
+                                        showinfo: 0,
+                                        modestbranding: 1,
+                                        loop: 1,
+                                        playlist: vidID // A playlist is required for looping to work
+                                    }
+                                });
+                            }
+                        </script>
+                    </div>
+                </article>
                 
             </section>
             

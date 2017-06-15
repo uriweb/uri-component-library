@@ -142,17 +142,23 @@ pre p.code.shortcode {
 }
 
 code {
-    &.class {
+    &.class,
+    &.id {
         position: relative;
         top: -.1rem;
         padding: .1rem .3rem;
         margin: 0 .1rem;
         border-radius: .2rem;
-        background: #0eb454;
         color: #fff;
+    }
+    &.class {
+        background: #0eb454;
     }
     &.class.second {
         background: #24a0aa;
+    }
+    &.id {
+        background: #ed6510;
     }
     &.shortcode {
         position: relative;

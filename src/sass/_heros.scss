@@ -1,0 +1,50 @@
+/* ======= HEROS ======= */
+
+
+#hero {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    position: relative;
+}
+
+#hero img {
+    width: 100%;
+}
+
+#hero iframe {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#heromask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
+
+#heromask h1 {
+    font-family: 'trajan';
+    text-transform: lowercase;
+    font-weight: 400;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 2rem 2rem 4rem;
+    text-align: center;
+    background: rgba(0,33,71,.8);
+    border-top: 2px solid #fff;
+    color: #fff;
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    #heromask h1 { 
+        backdrop-filter: saturate(0%) blur(10px); 
+        background-color: rgba(0,33,71,.7);
+    }
+}
