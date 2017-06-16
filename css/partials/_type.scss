@@ -160,6 +160,12 @@ code {
     &.id {
         background: #ed6510;
     }
+    &.attr {
+        color: #ba0cba;
+    }
+    &.link {
+        color: #555;
+    }
     &.shortcode {
         position: relative;
         top: -.1rem;
@@ -186,7 +192,7 @@ code {
     }
     &.num {
         color: #d86c00;
-    }
+    } 
 }
 
 .prettyprint {

@@ -35,15 +35,40 @@
             <section id="design">
                 
                 <h2>Design</h2>
-                <p>Heros are implemented with the id <code class="id">hero</code></p>
+                <p>Heros are implemented with the class <code class="class">hero</code></p>
+                <h4>For video heros, an overlay and poster image are required.</h4>
+                <p>Create an overlay with the class <code class="class">overlay</code>.  In its most basic form, the overlay prevents any user interaction with the video.  The overlay <code class="tag">&lt;div&gt;</code> can be empty, or it can contain text and graphics to be superimposed over the video.</p>
+                <p>Create a poster with the class <code class="class">poster</code>.  The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
+                <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=ydD1Wg2B8Vk</code>, create the poster with the id <code class="id">ydD1Wg2B8Vk</code>.</p>
+                <xmp class="prettyprint">
+<div class="hero">
+    <div class="overlay">
+        <h1>Hero title</h1>
+    </div>
+    <img id="[video id]" class="poster" src="poster.jpg">
+</div>
+                </xmp>
+                
+                <div class="hero">
+                    <div class="overlay">
+                        <h1>Success starts here.</h1>
+                    </div>
+                    <img id="ydD1Wg2B8Vk" class="poster" src="../media/commons/hero_vid_poster.jpg">
+                </div>
+                
                 <article>
-                    <div id="hero">
-                        <div id="heromask">
-                            <h1>Success starts here.</h1>
+                    <h4>Multiple instances are allowed.</h4>
+                </article>
+                
+                <article style="width: 60%;">
+                    <div class="hero">
+                        <div class="overlay">
+                            <h1>Begin your journey.</h1>
                         </div>
-                        <img id="ydD1Wg2B8Vk" class="poster youtube" src="../media/commons/hero_vid_poster.jpg">
+                        <img id="57rVDNAGCMs" class="poster" src="../media/commons/hero_vid_poster.jpg">
                     </div>
                 </article>
+
                 
             </section>
             

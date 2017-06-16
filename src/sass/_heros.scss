@@ -1,30 +1,31 @@
 /* ======= HEROS ======= */
 
 
-#hero {
+.hero {
     width: 100%;
-    height: 500px;
+    height: 0;
+    padding-bottom: 50%;
     overflow: hidden;
     position: relative;
 }
 
-#hero img {
+.hero img {
     width: 100%;
 }
 
-#hero iframe {
+.hero iframe {
     z-index: 1;
     position: relative;
 }
 
-#heromask {
+.hero .overlay {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: 3;
 }
 
-#heromask h1 {
+.hero .overlay h1 {
     font-family: 'trajan';
     text-transform: lowercase;
     font-weight: 400;
@@ -33,16 +34,16 @@
     right: 0;
     bottom: 0;
     margin: 0;
-    padding: 2rem 2rem 3rem;
+    padding: 3% 3% 5%;
     text-align: center;
     background: rgba(0,33,71,.9);
-    border-top: 5px solid $lightgrey;
+    //border-top: 5px solid $lightgrey;
     color: #fff;
     //text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    #heromask h1 { 
+    .hero .overlay h1 { 
         backdrop-filter: saturate(180%) blur(20px); 
         background-color: rgba(0,33,71,.5);
     }
