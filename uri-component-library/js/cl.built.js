@@ -55,7 +55,7 @@ function onYouTubePlayerAPIReady() {
                 'onError' : onPlayerError(i)
             }
         });
-
+        
         $(window).resize(function(){
             resizePlayer(i);
         }); 
@@ -98,6 +98,7 @@ function resizePlayer(i) {
  */
 function onPlayerReady(event) {
     event.target.mute();
+    event.target.setPlaybackQuality('hd720');
     playVideo(event);
 }
 
@@ -129,7 +130,7 @@ function playVideo(event) {
 /*
  * Revert to poster if there's an error with the video
  * @param int i the index of the hero to manipulate
-*/
+ */
 function onPlayerError(i) {
     $('#' + hero[i].vidID).replaceWith(hero[i].poster);
 }

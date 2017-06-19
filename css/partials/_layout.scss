@@ -10,6 +10,13 @@ body {
     color: #000;
 }
 
+header#hero {
+    width: 100%;
+    margin-top: 80px;
+    padding-left: 250px;
+    transition: all .2s ease-in-out;
+}
+
 main { 
     width: 1250px; 
     margin: 150px auto 60px;
@@ -19,6 +26,9 @@ main {
 @media screen and (max-width: 1350px) {
     main {
         width: 1000px;
+        padding-left: 0;
+    }
+    header#hero {
         padding-left: 0;
     }
 }
@@ -32,6 +42,9 @@ main {
 @media screen and (max-width: 600px) {
     main {
         margin: 130px auto 50px;
+    }
+    header#hero {
+        margin-top: 60px;
     }
 }
 

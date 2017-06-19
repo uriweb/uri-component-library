@@ -2,7 +2,7 @@
    GLOBAL NAV
    ============================== */
 
-header {
+#globalheader {
     display: block;
     position: fixed;
     top: 0;
@@ -19,7 +19,7 @@ header {
     transition: all .2s ease-in-out;
 }
 
-header.transparent {
+#globalheader.transparent {
     background-color: rgba(256,256,256,0.9);
 }
 
@@ -42,14 +42,14 @@ header.transparent {
     cursor: pointer;
 }
 
-header h1 {
+#globalheader h1 {
     display: inline;
     font-size: 1.3em;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-header h1 a {
+#globalheader h1 a {
     color: #2277b3;
 }
     
@@ -192,7 +192,7 @@ body.nav-code #gn-code {
 }
 
 @media screen and (max-width: 1350px) {
-    header {
+    #globalheader {
         padding-left: 25px;
     }
     #menu-button {
@@ -205,12 +205,12 @@ body.nav-code #gn-code {
 }
 
 @media screen and (max-width: 600px) {
-    header {
+    #globalheader {
         height: 60px;
         line-height: 60px;
     }
     
-    header h1 {
+    #globalheader h1 {
         font-size: 4vw;
     }
     
