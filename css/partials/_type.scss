@@ -34,6 +34,7 @@ h4 {
     font-family: "Hind", sans-serif;
     font-weight: 700;
     font-size: 1rem;
+    color: #000;
     margin: 2.5rem 0 1.3rem;
 }
 h5 {
@@ -210,3 +211,45 @@ code {
 pre .prettyprint .com {
     color: #999;
 }
+
+.type {
+    margin-bottom: 40px;
+    color: #999;
+}
+
+.type.display li {
+    line-height: 60px;
+}
+
+.type.display {
+    h1,h2,h3,h4 {
+        display: inline-block;
+        margin: 0;
+        margin-left: 20px;
+    }
+    h1 {
+        font-family: 'trajan', serif;
+    }
+}
+
+.type.text li {
+    line-height: 40px;
+}
+
+.type.text li.initial {
+    color: #20c77a;
+}
+
+.type.text span {
+    margin-left: 20px;
+    color: #000;
+}
+
+.type.text.bold span {
+    font-weight: 600;
+}
+
+.type.text.italic span {
+    font-style: italic;
+}
+

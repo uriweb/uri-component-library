@@ -104,7 +104,7 @@
     display: block;
     padding: 15px 20px 15px 40px;
     line-height: 16px;
-    color: #555;
+    color: #333;
     transition: background .1s ease-in-out;
 }
 
@@ -129,6 +129,9 @@
 }
 #gn-color .gn-icon {
     background-image: url(../media/assets/icon-color.svg);
+}
+#gn-typography .gn-icon {
+    background-image: url(../media/assets/icon-type.svg);
 }
 #gn-boxouts .gn-icon {
     background-image: url(../media/assets/icon-boxouts.svg);
@@ -157,6 +160,7 @@
 body.nav-buttons #gn-buttons,
 body.nav-cards #gn-cards,
 body.nav-color #gn-color,
+body.nav-typography #gn-typography,
 body.nav-columns #gn-columns,
 body.nav-boxouts #gn-boxouts,
 body.nav-heros #gn-heros,

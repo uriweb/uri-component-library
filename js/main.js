@@ -1,11 +1,11 @@
 /* General scripts for the playground */
 
+'use strict';
+
 /* MENU CONTROL */
 
 $(function(){
-    
-    'use strict';
-    
+        
     $(document).on('click', '#menu-button', function(event){
         event.stopPropagation();
         $('#globalnav').addClass('revealed');
@@ -31,9 +31,9 @@ $(function(){
 // Blur hero on scroll
 
 $(function(){
-    
+        
     var overlay = $('#hero .overlay'),
-        header = $('#globalheader'),
+        header = $('header'),
         blur = 0,
         h,r,p;
     
@@ -42,8 +42,11 @@ $(function(){
     function blurHero() {
         p = $(document).scrollTop();
         h = overlay.height() + header.height();
+        console.log(header.height());
+        console.log(p,h);
         if (p < h) {
             r = p/h*50;
+            console.log(r);
             overlay.css('backdrop-filter','blur('+r+'px)');
         } else {
             overlay.css('backdrop-filter','blur(50px)');
