@@ -15,6 +15,10 @@
     transition: height .2s ease-in-out;
 }
 
+#hero .hero.fullscreen {
+    height: 100vh;
+}
+
 .hero img {
     width: 100%;
 }
