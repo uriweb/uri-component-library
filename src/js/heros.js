@@ -60,8 +60,15 @@ function onYouTubePlayerAPIReady() {
             resizePlayer(i);
         });
         
+        $(window).scroll(function(){
+            determinePlayState(i);
+        });
+        
         resizePlayer(i);
         
+        // This shouldn't be called from here, but it is for now
+        determinePlayState(i);
+
     });
     
 }
@@ -94,7 +101,29 @@ function resizePlayer(i) {
 
 
 /*
+ * Pause the video when it's completely out of the viewport
+ * @param int i the index of the hero to manipulate
+ * @TODO this needs some work, it should ideally be called from
+ * onPlayerReady() and the scroll listener only.
+ */
+function determinePlayState(i) {
+    var height = $(hero[i].parent).height(),
+        offset = $(hero[i].parent).offset().top,
+        windowH = $(window).height(),
+        position = $(document).scrollTop();
+
+    if (windowH + position < offset || position > offset + height) {
+        hero[i].player.pauseVideo();
+    } else {
+        hero[i].player.playVideo();
+    }
+}
+
+
+/*
  * Do things with the player when it's loaded
+ * @TODO this should ideally call determinePlayState() instead of
+ * calling playVideo() -- See @todo for determinePlayState()
  */
 function onPlayerReady(event) {
     event.target.mute();
@@ -106,7 +135,7 @@ function onPlayerReady(event) {
  * Get player state and decide what to do
  */
 function onPlayerStateChange(event) {
-    if (event.target.getPlayerState() == 0) {
+    if (event.target.getPlayerState() === 0) {
         playVideo(event);
     };
 }
