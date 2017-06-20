@@ -58,7 +58,7 @@ function onYouTubePlayerAPIReady() {
         
         $(window).resize(function(){
             resizePlayer(i);
-        }); 
+        });
         
         resizePlayer(i);
         
@@ -98,7 +98,6 @@ function resizePlayer(i) {
  */
 function onPlayerReady(event) {
     event.target.mute();
-    event.target.setPlaybackQuality('hd720');
     playVideo(event);
 }
 
@@ -107,15 +106,9 @@ function onPlayerReady(event) {
  * Get player state and decide what to do
  */
 function onPlayerStateChange(event) {
-    var state = event.target.getPlayerState();
-    //console.log('player state', state);
-    switch (state) {
-        case 0: // ended
-            playVideo(event);
-            break;
-        default:
-            return;
-    }
+    if (event.target.getPlayerState() == 0) {
+        playVideo(event);
+    };
 }
 
 
