@@ -134,6 +134,32 @@ function playVideo(event) {
 function onPlayerError(i) {
     $('#' + hero[i].vidID).replaceWith(hero[i].poster);
 }
+
+
+/* 
+ * Blur hero on scroll
+ */
+$(function(){
+        
+    var overlay = $('#hero .overlay'),
+        offset = overlay.offset().top,
+        radius = 50, // Set the desired blur radius, in pixels
+        h,b,p;
+    
+    function blurHero() {
+        p = $(document).scrollTop();
+        h = overlay.height() + offset;
+        b = Math.min(p/h*radius, radius);
+        overlay.css('backdrop-filter','blur(' + b + 'px)');
+    }
+    
+    blurHero();
+    
+    $(window).scroll(function(){
+        blurHero();
+    });
+    
+});
 /* ======= MENUS ======= */
 
 $(function(){
