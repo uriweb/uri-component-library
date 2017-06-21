@@ -5,7 +5,7 @@
 /* MENU CONTROL */
 
 $(function(){
-        
+            
     $(document).on('click', '#menu-button', function(event){
         event.stopPropagation();
         $('#globalnav').addClass('revealed');
@@ -23,6 +23,10 @@ $(function(){
     
     $(window).scroll(function(){
         $(document).scrollTop() > $('header').height() ? $('header').addClass('transparent') : $('header').removeClass('transparent');
+    });
+    
+    $(document).on('click', '#gn>li', function(){
+        $(this).next().slideToggle('fast');
     });
     
 });

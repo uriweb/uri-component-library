@@ -151,6 +151,7 @@ function determinePlayState(event) {
  * Do things with the player when it's loaded
  */
 function onPlayerReady(event) {
+    console.log(event);
     event.target.mute();
     
     $(window).resize(function(){

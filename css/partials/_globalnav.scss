@@ -83,7 +83,7 @@
     background-repeat: no-repeat;
 }
 
-#globalnav ul {
+#globalnav #gn {
     margin: auto;
     padding: 40px 0;
 }
@@ -92,12 +92,19 @@
     display: block;
 }
 
-#globalnav li.section {
+#globalnav #gn>li {
     padding: 30px 20px 20px 35px;
-    color: #2277b3;
+    color: #333;
     font-size: .8rem;
     font-weight: 600;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: color .1s ease-in-out;
+}
+
+#globalnav #gn>li:hover,
+#globalnav #gn>li:focus {
+    color: #2277b3;
 }
 
 #globalnav li a {
@@ -113,6 +120,18 @@
     background: #eee;
 }
 
+#globalnav #gn ul {
+    display: none;
+}
+
+body.nav-layout #gn-layout,
+body.nav-style #gn-style,
+body.nav-components #gn-components,
+body.nav-resources #gn-resources,
+body.nav-demos #gn-demos {
+    display: block !important;
+}
+
 #globalnav .gn-icon {
     display: block;
     float: left;
@@ -124,65 +143,60 @@
     background-repeat: no-repeat;
 }
 
-#gn-tiles .gn-icon {
+#gn-layout-tiles .gn-icon {
     background-image: url(../media/assets/icon-tiles.svg);
 }
-#gn-color .gn-icon {
+#gn-style-color .gn-icon {
     background-image: url(../media/assets/icon-color.svg);
 }
-#gn-typography .gn-icon {
+#gn-style-typography .gn-icon {
     background-image: url(../media/assets/icon-type.svg);
 }
-#gn-boxouts .gn-icon {
+#gn-components-boxouts .gn-icon {
     background-image: url(../media/assets/icon-boxouts.svg);
 }
-#gn-buttons .gn-icon {
+#gn-components-buttons .gn-icon {
     background-image: url(../media/assets/icon-buttons.svg);
 }
-#gn-cards .gn-icon {
+#gn-components-cards .gn-icon {
     background-image: url(../media/assets/icon-cards.svg);
 }
-#gn-heros .gn-icon {
+#gn-components-heros .gn-icon {
     background-image: url(../media/assets/icon-heros.svg);
 }
-#gn-menus .gn-icon {
+#gn-components-menus .gn-icon {
     background-image: url(../media/assets/icon-menus.svg);
 }
-#gn-panels .gn-icon {
+#gn-components-panels .gn-icon {
     background-image: url(../media/assets/icon-panels.svg);
 }
-#gn-bugs .gn-icon {
+#gn-resources-bugs .gn-icon {
     background-image: url(../media/assets/icon-bugs.svg);
 }
-#gn-code .gn-icon {
+#gn-resources-code .gn-icon {
     background-image: url(../media/assets/icon-code.svg);
 }
-body.nav-buttons #gn-buttons,
-body.nav-cards #gn-cards,
-body.nav-color #gn-color,
-body.nav-typography #gn-typography,
-body.nav-columns #gn-columns,
-body.nav-boxouts #gn-boxouts,
-body.nav-heros #gn-heros,
-body.nav-menus #gn-menus,
-body.nav-panels #gn-panels,
-body.nav-tiles #gn-tiles,
-body.nav-bugs #gn-bugs,
-body.nav-code #gn-code {
+body.nav-buttons #gn-components-buttons,
+body.nav-cards #gn-components-cards,
+body.nav-color #gn-style-color,
+body.nav-typography #gn-style-typography,
+body.nav-columns #gn-components-columns,
+body.nav-boxouts #gn-components-boxouts,
+body.nav-heros #gn-components-heros,
+body.nav-menus #gn-components-menus,
+body.nav-panels #gn-components-panels,
+body.nav-tiles #gn-layout-tiles,
+body.nav-bugs #gn-resources-bugs,
+body.nav-code #gn-resources-code,
+body.nav-card-tiles #gn-demos-card-tiles,
+body.nav-dynamic-image-hero #gn-demos-dynamic-image-hero,
+body.nav-video-hero #gn-demos-video-hero {
     a {
-        color: #fff;
-        background: #2277b3;
+        color: #2277b3;
+        font-weight: 600;
     }
     .gn-icon {
         background-position: -16px 0;
-    }
-}
-
-body.nav-demo-dynamic-image-hero #gn-demo-dynamic-image-hero,
-body.nav-demo-video-hero #gn-demo-video-hero {
-    a {
-        color: #7fc2f2;
-        background: #333;
     }
 }
 
