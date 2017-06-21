@@ -107,7 +107,7 @@ function onYouTubePlayerAPIReady() {
 function resizePlayer(event) {
     var el = $('#' + event.target.a.id),
         w = el.parent().width(),
-        h = el.parent().height();
+        h = el.parent().innerHeight();
     
     if (w/h > 16/9) {
         el.css({
