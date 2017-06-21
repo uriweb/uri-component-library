@@ -1,22 +1,55 @@
+/* ======= HEROS ======= */
+
+
+/* 
+ * Blur header hero on scroll
+ */
+$(function(){
+        
+    if ($('#hero').length) {
+        
+        var overlay = $('#hero .overlay'),
+            offset = overlay.offset().top,
+            radius = 50, // Set the desired blur radius, in pixels
+            h,b,p;
+        
+        blurHero();
+
+        $(window).scroll(function(){
+            blurHero();
+        });
+        
+    }
+    
+    function blurHero() {
+        p = $(document).scrollTop();
+        h = overlay.height() + offset;
+        b = Math.min(p/h*radius, radius);
+        overlay.css('backdrop-filter','blur(' + b + 'px)');
+    }
+    
+});
+
+
+
 /* ======= VIDEO HEROS ======= */
 
 var uri_vid_heros = [];
-
 
 /*
  * Get video ID(s) and load the API
  */
 $(function() {
     
-    document.querySelectorAll('.hero .poster').forEach(function(el) {
+    $('.hero .poster').each(function(i,el) {
 
         uri_vid_heros.push({
             'poster' : el,
             'w' : $(el).parent().width(),
             'h' : $(el).parent().height(),
-            'vidID' : el.getAttribute('id'),
-            'start' : el.getAttribute('data-start') ? el.getAttribute('data-start') : 0,
-            'end' : el.getAttribute('data-end') ? el.getAttribute('data-end') : -1
+            'vidID' : $(el).attr('id'),
+            'start' : $(el).data('start') ? $(el).data('start') : 0,
+            'end' : $(el).data('end') ? $(el).data('end') : -1
         });
                         
     });
@@ -42,7 +75,7 @@ function loadYouTubeAPI() {
  */
 function onYouTubePlayerAPIReady() {
         
-    uri_vid_heros.forEach(function(el,i){
+    $(uri_vid_heros).each(function(i,el){
 
         el.player = new YT.Player(el.vidID, {
             width: el.w,
@@ -102,11 +135,11 @@ function determinePlayState(event) {
     
     var parent = $('#' + event.target.a.id).parent();
     
-    var h = parent.height(),
+    var h = parent.innerHeight(),
         o = parent.offset().top,
         v = $(window).height(),
         p = $(document).scrollTop();
-
+    
     v + p < o || p > o + h ? event.target.pauseVideo() : event.target.playVideo();
     
 }
@@ -149,37 +182,12 @@ function onPlayerError(i) {
 }
 
 
-/* 
- * Blur hero on scroll
- */
-$(function(){
-        
-    var overlay = $('#hero .overlay'),
-        offset = overlay.offset().top,
-        radius = 50, // Set the desired blur radius, in pixels
-        h,b,p;
-    
-    function blurHero() {
-        p = $(document).scrollTop();
-        h = overlay.height() + offset;
-        b = Math.min(p/h*radius, radius);
-        overlay.css('backdrop-filter','blur(' + b + 'px)');
-    }
-    
-    blurHero();
-    
-    $(window).scroll(function(){
-        blurHero();
-    });
-    
-});
-
 
 /* ======= DYNAMIC IMAGE HEROS ======= */
 
 $(function(){
     
-    document.querySelectorAll('.hero .dynamic').forEach(function(el){
+    $('.hero .dynamic').each(function(i,el){
             
         factor = $(el).data('zoom') ? $(el).data('zoom') : 1.25; // The default zoom factor
         $(el).css('position','relative');
