@@ -8,7 +8,8 @@ a.button {
 .cols>div,
 .tiles>div,
 .boxout,
-.panel {
+.panel,
+.hero {
 
     a.button {
         margin: 1.2rem 0;
@@ -24,7 +25,8 @@ a.button {
         text-align: center;
         color: $blue;
         text-decoration: none;
-        transition: all .2s;
+        transition: all .2s ease-in-out;
+        text-shadow: none;
     }
     
     a.button.prominent {
@@ -52,6 +54,26 @@ a.button {
         border: none;
     }
     
+}
+
+.hero {
+    a.button {
+        margin-top: 2rem;
+        padding: 1rem 0;
+        max-width: 300px;
+        border-color: $white;
+        box-shadow: $level3;
+        position: relative;
+        top: 0;
+    }
+
+    a.button:hover,
+    a.button:focus {
+        background: $white;
+        border-color: $white;
+        color: $blue;
+        top: -3px;
+    }
 }
 
 .boxout,
