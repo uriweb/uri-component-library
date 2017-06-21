@@ -178,6 +178,14 @@ body.nav-code #gn-code {
     }
 }
 
+body.nav-demo-dynamic-image-hero #gn-demo-dynamic-image-hero,
+body.nav-demo-video-hero #gn-demo-video-hero {
+    a {
+        color: #7fc2f2;
+        background: #333;
+    }
+}
+
 #window-mask {
     position: fixed;
     z-index: 9998;

@@ -1,6 +1,6 @@
-/* ======= HEROS ======= */
+/* ======= VIDEO HEROS ======= */
 
-var hero = [];
+var uri_vid_heros = [];
 
 
 /*
@@ -10,13 +10,15 @@ $(function() {
     
     document.querySelectorAll('.hero .poster').forEach(function(el) {
 
-        hero.push({
+        uri_vid_heros.push({
             'poster' : el,
-            'w' : el.parentNode.width,
-            'h' : el.parentNode.height,
-            'vidID' : el.getAttribute('id')
+            'w' : $(el).parent().width(),
+            'h' : $(el).parent().height(),
+            'vidID' : el.getAttribute('id'),
+            'start' : el.getAttribute('data-start') ? el.getAttribute('data-start') : 0,
+            'end' : el.getAttribute('data-end') ? el.getAttribute('data-end') : -1
         });
-        
+                        
     });
     
     loadYouTubeAPI();
@@ -40,7 +42,7 @@ function loadYouTubeAPI() {
  */
 function onYouTubePlayerAPIReady() {
         
-    hero.forEach(function(el,i){
+    uri_vid_heros.forEach(function(el,i){
 
         el.player = new YT.Player(el.vidID, {
             width: el.w,
@@ -50,6 +52,8 @@ function onYouTubePlayerAPIReady() {
                 autoplay: 1,
                 controls: 0,
                 showinfo: 0,
+                start: el.start,
+                end: el.end,
                 modestbranding: 1,
             },
             events: {
@@ -141,7 +145,7 @@ function onPlayerStateChange(event) {
  * @param int i the index of the hero to manipulate
  */
 function onPlayerError(i) {
-    $('#' + hero[i].vidID).replaceWith(hero[i].poster);
+    $('#' + uri_vid_heros[i].vidID).replaceWith(uri_vid_heros[i].poster);
 }
 
 
@@ -166,6 +170,26 @@ $(function(){
     
     $(window).scroll(function(){
         blurHero();
+    });
+    
+});
+
+
+/* ======= DYNAMIC IMAGE HEROS ======= */
+
+$(function(){
+    
+    document.querySelectorAll('.hero .dynamic').forEach(function(el){
+            
+        factor = $(el).data('zoom') ? $(el).data('zoom') : 1.25; // The default zoom factor
+        $(el).css('position','relative');
+        
+        $(el).animate({
+            width: factor*100 + '%',
+            top: (1-factor)*100/4 + '%',
+            left: (1-factor)*100/8 + '%'
+        }, 10000);
+        
     });
     
 });
