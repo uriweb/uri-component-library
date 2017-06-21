@@ -114,7 +114,8 @@ function resizePlayer(event) {
             'height' : w * 9 / 16,
             'width' : '100%',
             'left' : 0,
-            'margin-left' : 0
+            'top' : (h - (w*9/16)) / 2,
+            'margin-left' : 0,
         });
     } else {
         w = h * 16 / 9;
@@ -122,7 +123,8 @@ function resizePlayer(event) {
             'height' : '100%',
             'width' : w,
             'left' : 0 - w / 2,
-            'margin-left' : '50%'
+            'top' : 0,
+            'margin-left' : '50%',
         });
     }
 }
