@@ -12,7 +12,8 @@ $(function() {
 
         hero.push({
             'poster' : el,
-            'parent' : el.parentNode,
+            'w' : el.parentNode.width,
+            'h' : el.parentNode.height,
             'vidID' : el.getAttribute('id')
         });
         
@@ -38,10 +39,12 @@ function loadYouTubeAPI() {
  * Create the player
  */
 function onYouTubePlayerAPIReady() {
-    
-    hero.forEach(function(el,i){
         
-        el['player'] = new YT.Player(el.vidID, {
+    hero.forEach(function(el,i){
+
+        el.player = new YT.Player(el.vidID, {
+            width: el.w,
+            height: el.h,
             videoId: el.vidID,
             playerVars: {
                 autoplay: 1,
@@ -50,25 +53,12 @@ function onYouTubePlayerAPIReady() {
                 modestbranding: 1,
             },
             events: {
-                'onReady': onPlayerReady,
+                'onReady' : onPlayerReady,
                 'onStateChange' : onPlayerStateChange,
                 'onError' : onPlayerError(i)
             }
         });
         
-        $(window).resize(function(){
-            resizePlayer(i);
-        });
-        
-        $(window).scroll(function(){
-            determinePlayState(i);
-        });
-        
-        resizePlayer(i);
-        
-        // This shouldn't be called from here, but it is for now
-        determinePlayState(i);
-
     });
     
 }
@@ -76,13 +66,14 @@ function onYouTubePlayerAPIReady() {
 
 /*
  * Dynamically set the player height and position based on width
- * @param int i the index of the hero to manipulate
  */
-function resizePlayer(i) {
-    var w = $(hero[i].parent).width(),
-        h = $(hero[i].parent).height();
+function resizePlayer(event) {
+    var el = $('#' + event.target.a.id),
+        w = el.parent().width(),
+        h = el.parent().height();
+    
     if (w/h > 16/9) {
-        $('#' + hero[i].vidID).css({
+        el.css({
             'height' : w * 9 / 16,
             'width' : '100%',
             'left' : 0,
@@ -90,7 +81,7 @@ function resizePlayer(i) {
         });
     } else {
         w = h * 16 / 9;
-        $('#' + hero[i].vidID).css({
+        el.css({
             'height' : '100%',
             'width' : w,
             'left' : 0 - w / 2,
@@ -102,32 +93,36 @@ function resizePlayer(i) {
 
 /*
  * Pause the video when it's completely out of the viewport
- * @param int i the index of the hero to manipulate
- * @TODO this needs some work, it should ideally be called from
- * onPlayerReady() and the scroll listener only.
  */
-function determinePlayState(i) {
-    var height = $(hero[i].parent).height(),
-        offset = $(hero[i].parent).offset().top,
-        windowH = $(window).height(),
-        position = $(document).scrollTop();
+function determinePlayState(event) {
+    
+    var parent = $('#' + event.target.a.id).parent();
+    
+    var h = parent.height(),
+        o = parent.offset().top,
+        v = $(window).height(),
+        p = $(document).scrollTop();
 
-    if (windowH + position < offset || position > offset + height) {
-        hero[i].player.pauseVideo();
-    } else {
-        hero[i].player.playVideo();
-    }
+    v + p < o || p > o + h ? event.target.pauseVideo() : event.target.playVideo();
+    
 }
 
 
 /*
  * Do things with the player when it's loaded
- * @TODO this should ideally call determinePlayState() instead of
- * calling playVideo() -- See @todo for determinePlayState()
  */
 function onPlayerReady(event) {
     event.target.mute();
-    playVideo(event);
+    
+    $(window).resize(function(){
+        resizePlayer(event);
+    });
+    resizePlayer(event);
+
+    $(window).scroll(function(){
+        determinePlayState(event);
+    });
+    determinePlayState(event);
 }
 
 
@@ -136,16 +131,8 @@ function onPlayerReady(event) {
  */
 function onPlayerStateChange(event) {
     if (event.target.getPlayerState() === 0) {
-        playVideo(event);
-    };
-}
-
-
-/*
- * Play the video
- */
-function playVideo(event) {
-    event.target.playVideo();
+        event.target.playVideo();
+    }
 }
 
 
