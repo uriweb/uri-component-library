@@ -467,3 +467,9 @@
         line-height: 1.5rem;
     }
 }
+
+// Don't distort iframes
+.tiles iframe {
+    width: 100%;
+    height: auto;
+}
