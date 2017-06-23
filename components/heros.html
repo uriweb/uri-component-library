@@ -39,32 +39,28 @@
                 <h4>For video heros, an overlay and poster image are required.</h4>
                 <p>Create an overlay with the class <code class="class">overlay</code>, and a poster with the class <code class="class">poster</code>.</p>
                 <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=ydD1Wg2B8Vk</code>, create the poster with the id <code class="id">ydD1Wg2B8Vk</code>.</p>
-                <p>In its most basic form, the overlay prevents any user interaction with the video.  The overlay <code class="tag">&lt;div&gt;</code> can be empty, contain a header, or contain a larger block of content as discussed below. The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
                 <xmp class="prettyprint">
 <div class="hero">
-    <div class="overlay">
-        <h1>Hero title</h1>
-    </div>
+    <div class="overlay"></div>
     <img id="[video id]" class="poster" src="poster.jpg">
 </div>
                 </xmp>
                 
                 <div class="hero">
-                    <div class="overlay">
-                        <h1>Success starts here.</h1>
-                    </div>
-                    <img id="ydD1Wg2B8Vk" class="poster" src="../media/commons/hero_vid_poster.jpg">
+                    <div class="overlay"></div>
+                    <img id="aK9iLeL5l_c" class="poster" src="../media/commons/hero_vid_poster.jpg">
                 </div>
                 
                 <article>
-                    <h4>Add complex, vertically-centered overlay content.</h4>
-                    <p>To overlay more complex content, such as a title, paragraph, and button, create a content block inside the overlay using the class <code class="class">block</code>.  The content will appear vertically centered over the video.</p>
+                    <p>In its most basic form, the overlay prevents any user interaction with the video.  The overlay <code class="tag">&lt;div&gt;</code> can be empty, or it can contain a block of content as described below. The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
+                    <h4>Add overlay content.</h4>
+                    <p>To overlay content, such as a headline, subheading, and button, create a content block inside the overlay using the class <code class="class">block</code>.  The content will appear superimposed on the video.</p>
                     <xmp class="prettyprint">
 <div class="hero">
     <div class="overlay">
         <div class="block">
-            <h1>Hero title</h1>
-            <p>A tagline or paragraph</p>
+            <h1>Headline</h1>
+            <p>Subheading</p>
             <a class="button" href="#">Button</a>
         </div>
     </div>
@@ -74,12 +70,12 @@
                     <div class="hero">
                         <div class="overlay">
                             <div class="block">
-                                <h1>Small state.  Big talent.</h1>
+                                <h1>Small state.  Global impact.</h1>
                                 <p>Think big at the University of Rhode Island</p>
-                                <a class='button' href="#">Dive In</a>
+                                <a class='button' href="#">Explore</a>
                             </div>
                         </div>
-                        <img id="57rVDNAGCMs" class="poster" src="../media/commons/hero_vid_poster.jpg">
+                        <img id="K4YDMmWBac4" class="poster" src="../media/commons/hero_vid_poster.jpg">
                     </div>
                 </article>
                 
