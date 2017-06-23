@@ -1,4 +1,4 @@
-/* ======= HEROS ======= */
+/* ======= FULL-WIDTH HEROS ======= */
 
 
 /* 
@@ -31,10 +31,12 @@ $(function(){
 });
 
 
+/* ======= HERO VIDS / VIDEOS ======= */
 
-/* ======= VIDEO HEROS ======= */
+var uri_vid_heros = [],
+    uri_videos = [],
+    requireYouTube;
 
-var uri_vid_heros = [];
 
 /*
  * Get video ID(s) and load the API
@@ -51,10 +53,31 @@ $(function() {
             'start' : $(el).data('start') ? $(el).data('start') : 0,
             'end' : $(el).data('end') ? $(el).data('end') : -1
         });
+        
+        requireYouTube = true;
                         
     });
     
-    loadYouTubeAPI();
+    $('.video img').each(function(i,el) {
+        
+        var aspect = 16/9; // Set default aspect
+        
+        if ( $(el).data('aspect') ) {
+            aspect = $(el).data('aspect').split(':');
+            aspect = aspect[0]/aspect[1];
+        }
+
+        uri_videos.push({
+            'poster' : el,
+            'vidID' : $(el).attr('id'),
+            'aspect' : aspect
+        });
+        
+        requireYouTube = true;
+                        
+    });
+    
+    if ( requireYouTube ) { loadYouTubeAPI(); }
     
 });
 
@@ -71,7 +94,7 @@ function loadYouTubeAPI() {
   
 
 /*
- * Create the player
+ * Create the player(s)
  */
 function onYouTubePlayerAPIReady() {
         
@@ -90,9 +113,28 @@ function onYouTubePlayerAPIReady() {
                 modestbranding: 1,
             },
             events: {
-                'onReady' : onPlayerReady,
-                'onStateChange' : onPlayerStateChange,
-                'onError' : onPlayerError(i)
+                'onReady' : onHeroReady,
+                'onStateChange' : onHeroStateChange,
+                'onError' : onHeroError(i)
+            }
+        });
+        
+    });
+    
+    $(uri_videos).each(function(i,el){
+
+        el.player = new YT.Player(el.vidID, {
+            videoId: el.vidID,
+            playerVars: {
+                autoplay: 0,
+                controls: 1,
+                showinfo: 0,
+                color: 'white',
+                modestbranding: 1
+            },
+            events: {
+                'onReady' : onVideoReady(i),
+                'onError' : onVideoError(i)
             }
         });
         
@@ -102,9 +144,9 @@ function onYouTubePlayerAPIReady() {
 
 
 /*
- * Dynamically set the player height and position based on width
+ * Dynamically set the hero height and position based on width
  */
-function resizePlayer(event) {
+function resizeHero(event) {
     var el = $('#' + event.target.a.id),
         w = el.parent().width(),
         h = el.parent().innerHeight();
@@ -115,7 +157,7 @@ function resizePlayer(event) {
             'width' : '100%',
             'left' : 0,
             'top' : (h - (w*9/16)) / 2,
-            'margin-left' : 0,
+            'margin-left' : 0
         });
     } else {
         w = h * 16 / 9;
@@ -124,14 +166,28 @@ function resizePlayer(event) {
             'width' : w,
             'left' : 0 - w / 2,
             'top' : 0,
-            'margin-left' : '50%',
+            'margin-left' : '50%'
         });
     }
 }
 
 
 /*
- * Pause the video when it's completely out of the viewport
+ * Dynamically set the video height and position based on width
+ */
+function resizeVideo(i) {
+    var el = $('#' + uri_videos[i].vidID),
+        w = el.parent().width();
+    
+    el.css({
+        'width' : '100%',
+        'height' : w / uri_videos[i].aspect
+    });
+}
+
+
+/*
+ * Pause the hero when it's completely out of the viewport
  */
 function determinePlayState(event) {
     
@@ -148,16 +204,15 @@ function determinePlayState(event) {
 
 
 /*
- * Do things with the player when it's loaded
+ * Do things with the hero when it's loaded
  */
-function onPlayerReady(event) {
-    console.log(event);
+function onHeroReady(event) {
     event.target.mute();
     
     $(window).resize(function(){
-        resizePlayer(event);
+        resizeHero(event);
     });
-    resizePlayer(event);
+    resizeHero(event);
 
     $(window).scroll(function(){
         determinePlayState(event);
@@ -167,9 +222,22 @@ function onPlayerReady(event) {
 
 
 /*
- * Get player state and decide what to do
+ * Do things with the video when it's loaded
  */
-function onPlayerStateChange(event) {
+function onVideoReady(i) {
+    
+    $(window).resize(function(){
+        resizeVideo(i);
+    });
+    resizeVideo(i);
+
+}
+
+
+/*
+ * Get hero state and decide what to do
+ */
+function onHeroStateChange(event) {
     if (event.target.getPlayerState() === 0) {
         event.target.playVideo();
     }
@@ -180,10 +248,18 @@ function onPlayerStateChange(event) {
  * Revert to poster if there's an error with the video
  * @param int i the index of the hero to manipulate
  */
-function onPlayerError(i) {
+function onHeroError(i) {
     $('#' + uri_vid_heros[i].vidID).replaceWith(uri_vid_heros[i].poster);
 }
 
+
+/*
+ * Revert to poster if there's an error with the video
+ * @param int i the index of the video to manipulate
+ */
+function onVideoError(i) {
+    $('#' + uri_videos[i].vidID).replaceWith(uri_videos[i].poster);
+}
 
 
 /* ======= DYNAMIC IMAGE HEROS ======= */
@@ -192,7 +268,7 @@ $(function(){
     
     $('.hero .dynamic').each(function(i,el){
             
-        factor = $(el).data('zoom') ? $(el).data('zoom') : 1.25; // The default zoom factor
+        var factor = $(el).data('zoom') ? $(el).data('zoom') : 1.25; // The default zoom factor
         $(el).css('position','relative');
         
         $(el).animate({

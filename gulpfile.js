@@ -20,7 +20,7 @@ var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'compressed' //expanded, nested, compact, compressed
 };
-var themeSassOptions = {
+var CLSassOptions = {
   errLogToConsole: true,
   outputStyle: 'compressed' //expanded, nested, compact, compressed
 };
@@ -49,10 +49,10 @@ function styles(done) {
   //console.log('styles ran');
 }
 
-// Theme CSS concat, auto-prefix and minify
-gulp.task('themeStyles', themeStyles);
+// Component Library CSS concat, auto-prefix and minify
+gulp.task('CLStyles', CLStyles);
 
-function themeStyles(done) {
+function CLStyles(done) {
     
     var banner = ['/*',
   '===========================================',
@@ -70,7 +70,7 @@ function themeStyles(done) {
     
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass(themeSassOptions).on('error', sass.logError))
+		.pipe(sass(CLSassOptions).on('error', sass.logError))
 		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(concat('cl.built.css'))
         .pipe(header(banner))
@@ -81,17 +81,17 @@ function themeStyles(done) {
   //console.log('styles ran');
 }
 
-// Theme JS concat, strip debugging and minify
-gulp.task('themeScripts', themeScripts);
+// Component Library JS concat, strip debugging and minify
+gulp.task('CLScripts', CLScripts);
 
-function themeScripts(done) {
+function CLScripts(done) {
   gulp.src('./src/js/*.js')
     .pipe(jshint(done))
     .pipe(jshint.reporter('default'));
 	gulp.src('./src/js/*.js')
     .pipe(concat('cl.built.js'))
     //.pipe(stripDebug())
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('./uri-component-library/js/'));
     
 	done();
@@ -107,16 +107,16 @@ function watcher(done) {
 	gulp.watch('./css/**/*.scss', styles);
 
 	// watch for Theme CSS changes
-	gulp.watch('./src/sass/*.scss', themeStyles);
+	gulp.watch('./src/sass/*.scss', CLStyles);
     
     // watch for Theme JS changes
-	gulp.watch('./src/js/*.js', themeScripts);
+	gulp.watch('./src/js/*.js', CLScripts);
 
 	done();
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'themeStyles', 'themeScripts', 'watcher', function(done){
+	gulp.parallel('styles', 'CLStyles', 'CLScripts', 'watcher', function(done){
 		done();
 	})
 );

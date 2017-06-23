@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Videos - Components - Digital Content Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../uri-component-library/js/cl.built.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </head>
+	
+	<body class="nav-components nav-videos">
+        
+        <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1>Videos</h1>
+            <!--<img class="wireframe right" src="../media/wireframes/videos.svg" alt="Videos">-->
+            <p>Videos description</p>
+            
+            <ul id="localnav">
+                <li><a href="#usage">Usage</a></li>
+            </ul>
+            
+            <section id="usage">
+                
+                <h2>Usage</h2>
+                <p>Videos are implemented with the class <code class="class">video</code></p>
+                <p>Videos require a poster image.  Create a poster with the class <code class="class">poster</code>.  The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
+                <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=nHlHUqevKcg</code>, create the poster with the id <code class="id">nHlHUqevKcg</code>.</p>
+                <xmp class="prettyprint">
+<div class="video">
+    <img id="[video id]" src="poster.jpg">
+</div>
+                </xmp>
+                
+                <div class="video">
+                    <img id="nHlHUqevKcg" src="../media/assets/video-default.jpg">
+                </div>
+                
+                <article>
+                    <h4>Set custom aspect ratios.</h4>
+                    <p>Videos assume a default aspect ratio of 16:9.  To specifiy a different aspect ratio, so that the video does not have vertical or horizontal black bars, set a <code class="attr">data-aspect</code> attribute on the poster using the format <code class="string">width:height</code>.</p>
+                    <xmp class="prettyprint">
+<div class="video">
+    <img id="[video id]" src="poster.jpg" data-aspect="4:3">
+</div>
+                    </xmp>
+                </article>
+                
+                <article>
+                    <h4>Videos can be tiles, or live inside them.</h4>
+                    <xmp class="prettyprint">
+<div class="tiles thirds">
+    <div class="video">
+        <img id="[video id]" src="poster.jpg">
+    </div>
+    <div class="video">
+        <img id="[video id]" src="poster.jpg">
+    </div>
+    ...
+</div>
+                    </xmp>
+                    <div class="tiles thirds">
+                        <div class="video">
+                            <img id="N4Ipqca9scU" src="../media/assets/video-default.jpg">
+                        </div>
+                        <div class="video">
+                            <img id="edcPdZfi5X8" src="../media/assets/video-default.jpg">
+                        </div>
+                        <div class="video">
+                            <img id="nptwT57w12U" src="../media/assets/video-default.jpg">
+                        </div>
+                    </div>
+                </article>
+                
+                
+            </section>
+            
+        </main>
+                
+        <footer>
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>
