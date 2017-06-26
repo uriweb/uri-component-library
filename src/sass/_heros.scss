@@ -8,6 +8,7 @@
     position: relative;
     background: #000;
     transition: height .2s ease-in-out;
+    z-index: 1;
 }
 
 .hero.fullscreen {
@@ -16,6 +17,7 @@
 
 .hero img {
     width: 100%;
+    z-index: 1;
 }
 
 .hero iframe {
@@ -27,9 +29,10 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: 3;
+    z-index: 2;
 }
-.hero .overlay .block {
+.hero .block {
+    z-index: 3;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -39,7 +42,7 @@
     background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.4) 3rem);
 }
 
-.hero .overlay h1 {
+.hero h1 {
     position: relative;
     text-align: left;
     font-family: 'trajan';
@@ -52,10 +55,36 @@
     margin: 0;
 }
 
-.hero .overlay p {
+.hero p {
     color: #fff;
     font-weight: 400;
     font-size: 1rem;
+}
+
+.hero .overlay .motionswitch {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    z-index: 5;
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    opacity: 0;
+    padding: .5rem;
+    font-size: .5rem;
+    border-radius: 1rem;
+    transition: opacity .2s ease-in-out;
+}
+
+.hero .overlay:hover .motionswitch,
+.hero .overlay:focus .motionswitch {
+    opacity: .4;
+}
+
+.hero .overlay .motionswitch:hover,
+.hero .overlay .motionswitch:focus {
+    cursor: pointer;
+    opacity: .8;
 }
 
 
@@ -63,11 +92,14 @@
     .hero {
         height: 400px;
     }
-    .hero .overlay h1 {
+    .hero h1 {
         font-size: 2.2rem;
     }
-    .hero .overlay p {
+    .hero p {
         font-size: 1.2rem;
+    }
+    .hero .overlay .motionswitch {
+        font-size: .6rem;
     }
 }
 
@@ -75,10 +107,13 @@
     .hero {
         height: 500px;
     }
-    .hero .overlay h1 {
+    .hero h1 {
         font-size: 2.8rem;
     }
-    .hero .overlay p {
+    .hero p {
         font-size: 1.5rem;
+    }
+    .hero .overlay .motionswitch {
+        font-size: .7rem;
     }
 }
