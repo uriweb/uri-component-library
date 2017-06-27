@@ -211,7 +211,7 @@ function onHeroReady(event) {
  */
 function onVideoReady(i) {
     
-    var el = $('#' + event.target.a.id),
+    var el = $('#' + uri_videos[i].vidID),
         parent = el.parent();
     
     $(window).resize(function(){
