@@ -57,8 +57,14 @@ $(function(){
  */
 $(function(){
     
+    var html;
+    
+    html = '<div class="motionswitch" title="Pause">';
+    html += '<div></div><div></div>';
+    html += '</div>';
+    
     $('.hero .poster').each(function(){
-        $(this).parent().find('.overlay').append('<div class="motionswitch">Pause Motion</div>');
+        $(this).parent().find('.overlay').append(html);
     });
     
 });

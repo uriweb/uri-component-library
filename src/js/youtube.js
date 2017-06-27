@@ -190,17 +190,7 @@ function onHeroReady(event) {
     determinePlayState(event);
     
     $('#' + event.target.a.id).parent().find('.motionswitch').click(function(){
-        switch (event.target.getPlayerState()) {
-            default:
-            case 1:
-                event.target.pauseVideo();
-                $(this).html('Resume motion');
-                break;
-            case 2: 
-                event.target.playVideo();
-                $(this).html('Pause motion');
-                break;
-        }
+        heroControl(event,$(this));
     });
     
 }
@@ -216,6 +206,28 @@ function onVideoReady(i) {
     });
     resizeVideo(i);
 
+}
+
+
+/*
+ * Control the hero video
+ * @param obj event the hero player to control
+ * @param el el the .motionswitch element
+ */
+function heroControl(event,el) {
+    switch (event.target.getPlayerState()) {
+        default:
+        case 1:
+            event.target.pauseVideo();
+            $(el).addClass('paused');
+            $(el).attr('title','Play');
+            break;
+        case 2: 
+            event.target.playVideo();
+            $(el).removeClass('paused');
+            $(el).attr('title','Pause');
+            break;
+    } 
 }
 
 
