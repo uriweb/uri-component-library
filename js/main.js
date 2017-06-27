@@ -22,7 +22,7 @@ $(function(){
     });
     
     $(window).scroll(function(){
-        $(document).scrollTop() > $('header').height() ? $('header').addClass('transparent') : $('header').removeClass('transparent');
+        $(document).scrollTop() > $('#globalheader').height() ? $('#globalheader').addClass('transparent') : $('#globalheader').removeClass('transparent');
     });
     
     $(document).on('click', '#gn>li', function(){

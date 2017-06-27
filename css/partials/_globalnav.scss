@@ -24,7 +24,7 @@
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    header.transparent {
+    #globalheader.transparent {
         -webkit-backdrop-filter: saturate(180%) blur(20px);
         backdrop-filter: saturate(180%) blur(20px);
         background-color: rgba(256,256,256,0.8)
