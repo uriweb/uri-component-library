@@ -185,7 +185,7 @@ function onHeroReady(event) {
     resizeHero(event, el, parent);
 
     $(window).scroll(function(){
-        if(!parent.hasClass('userpaused')) {
+        if(!parent.hasClass('paused')) {
             determinePlayState(event, parent);
         }
     });
