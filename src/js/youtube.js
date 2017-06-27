@@ -116,10 +116,9 @@ function onYouTubePlayerAPIReady() {
 /*
  * Dynamically set the hero height and position based on width
  */
-function resizeHero(event) {
-    var el = $('#' + event.target.a.id),
-        w = el.parent().width(),
-        h = el.parent().innerHeight();
+function resizeHero(event, el, parent) {
+    var w = parent.width(),
+        h = parent.innerHeight();
     
     if (w/h > 16/9) {
         el.css({
@@ -159,9 +158,7 @@ function resizeVideo(i) {
 /*
  * Pause the hero when it's completely out of the viewport
  */
-function determinePlayState(event) {
-    
-    var parent = $('#' + event.target.a.id).parent();
+function determinePlayState(event, parent) {
     
     var h = parent.innerHeight(),
         o = parent.offset().top,
@@ -179,18 +176,23 @@ function determinePlayState(event) {
 function onHeroReady(event) {
     event.target.mute();
     
+    var el = $('#' + event.target.a.id),
+        parent = el.parent();
+    
     $(window).resize(function(){
-        resizeHero(event);
+        resizeHero(event, el, parent);
     });
-    resizeHero(event);
+    resizeHero(event, el, parent);
 
     $(window).scroll(function(){
-        determinePlayState(event);
+        if(!parent.hasClass('userpaused')) {
+            determinePlayState(event, parent);
+        }
     });
-    determinePlayState(event);
+    determinePlayState(event, parent);
     
-    $('#' + event.target.a.id).parent().find('.motionswitch').click(function(){
-        heroControl(event,$(this));
+    parent.find('.motionswitch').click(function(){
+        heroControl(event, parent, $(this));
     });
     
 }
@@ -210,22 +212,23 @@ function onVideoReady(i) {
 
 
 /*
- * Control the hero video
+ * User control of the hero video
  * @param obj event the hero player to control
+ * @param el parent the hero parent container
  * @param el el the .motionswitch element
  */
-function heroControl(event,el) {
+function heroControl(event, parent, el) {
     switch (event.target.getPlayerState()) {
         default:
         case 1:
             event.target.pauseVideo();
-            $(el).addClass('paused');
-            $(el).attr('title','Play');
+            parent.addClass('paused');
+            el.attr('title','Play');
             break;
         case 2: 
             event.target.playVideo();
-            $(el).removeClass('paused');
-            $(el).attr('title','Pause');
+            parent.removeClass('paused');
+            el.attr('title','Pause');
             break;
     } 
 }

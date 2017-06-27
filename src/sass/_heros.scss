@@ -68,13 +68,13 @@
             right: 5%;
             top: 5%;
             z-index: 5;
-            background: #000;
-            border: 1px solid #fff;
             opacity: 0;
-            padding: 9px 0 0 11px;
-            border-radius: 50%;
             width: 40px;
             height: 40px;
+            padding: 9px 0 0 11px;
+            background: #000;
+            border: 1px solid #fff;
+            border-radius: 50%;
             transition: all .3s ease-in-out;
         }
         div:first-child,
@@ -91,16 +91,19 @@
         div:first-child {
             margin-right: 4px;
         }
-        &.paused {
+    }
+
+    &.paused .motionswitch {
+        & {
             transform: rotateZ(90deg);
             padding: 7px 0 0 9px;
         }
-        &.paused div:first-child {
+        div:first-child {
             border-width: 0 0 20px 10px;
             border-color: transparent transparent #fff transparent;
             margin-right: 0;
         }
-        &.paused div:last-child {
+        div:last-child {
             border-width: 20px 0 0 10px;
             border-color: transparent transparent transparent #fff;
         }
