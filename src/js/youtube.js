@@ -115,8 +115,10 @@ function onYouTubePlayerAPIReady() {
 
 /*
  * Dynamically set the hero height and position based on width
+ * @param el el the hero
+ * @param el parent the hero parent container
  */
-function resizeHero(event, el, parent) {
+function resizeHero(el, parent) {
     var w = parent.width(),
         h = parent.innerHeight();
     
@@ -143,10 +145,12 @@ function resizeHero(event, el, parent) {
 
 /*
  * Dynamically set the video height and position based on width
+ * @param num i the index of the video in uri_videos
+ * @param el el the video
+ * @param el parent the video parent container
  */
-function resizeVideo(i) {
-    var el = $('#' + uri_videos[i].vidID),
-        w = el.parent().width();
+function resizeVideo(i, el, parent) {
+    var w = parent.width();
     
     el.css({
         'width' : '100%',
@@ -157,6 +161,8 @@ function resizeVideo(i) {
 
 /*
  * Pause the hero when it's completely out of the viewport
+ * @param obj event the hero player
+ * @param el parent the hero parent container
  */
 function determinePlayState(event, parent) {
     
@@ -172,6 +178,7 @@ function determinePlayState(event, parent) {
 
 /*
  * Do things with the hero when it's loaded
+ * @param obj event the hero player
  */
 function onHeroReady(event) {
     event.target.mute();
@@ -180,9 +187,9 @@ function onHeroReady(event) {
         parent = el.parent();
     
     $(window).resize(function(){
-        resizeHero(event, el, parent);
+        resizeHero(el, parent);
     });
-    resizeHero(event, el, parent);
+    resizeHero(el, parent);
 
     $(window).scroll(function(){
         if(!parent.hasClass('paused')) {
@@ -200,20 +207,24 @@ function onHeroReady(event) {
 
 /*
  * Do things with the video when it's loaded
+ * @param num i the index of the video in uri_videos
  */
 function onVideoReady(i) {
     
+    var el = $('#' + event.target.a.id),
+        parent = el.parent();
+    
     $(window).resize(function(){
-        resizeVideo(i);
+        resizeVideo(i,el,parent);
     });
-    resizeVideo(i);
+    resizeVideo(i,el,parent);
 
 }
 
 
 /*
  * User control of the hero video
- * @param obj event the hero player to control
+ * @param obj event the hero player
  * @param el parent the hero parent container
  * @param el el the .motionswitch element
  */
@@ -236,6 +247,7 @@ function heroControl(event, parent, el) {
 
 /*
  * Get hero state and decide what to do
+ * @param obj event the hero player
  */
 function onHeroStateChange(event) {
     if (event.target.getPlayerState() === 0) {
@@ -246,7 +258,7 @@ function onHeroStateChange(event) {
 
 /*
  * Revert to poster if there's an error with the video
- * @param int i the index of the hero to manipulate
+ * @param int i the index of the hero in uri_vid_heros
  */
 function onHeroError(i) {
     $('#' + uri_vid_heros[i].vidID).replaceWith(uri_vid_heros[i].poster);
@@ -255,7 +267,7 @@ function onHeroError(i) {
 
 /*
  * Revert to poster if there's an error with the video
- * @param int i the index of the video to manipulate
+ * @param int i the index of the video in uri_videos
  */
 function onVideoError(i) {
     $('#' + uri_videos[i].vidID).replaceWith(uri_videos[i].poster);
