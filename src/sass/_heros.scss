@@ -46,11 +46,11 @@
     h1 {
         position: relative;
         text-align: left;
-        font-family: 'trajan';
-        text-transform: lowercase;
+        //font-family: 'trajan';
+        text-transform: uppercase;
         font-weight: 400;
         font-size: 1.8rem;
-        color: $white;
+        color: $white !important;
         transform: all .2s ease-in-out;
         padding: 0;
         margin: 0;

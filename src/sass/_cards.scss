@@ -7,7 +7,7 @@
     background: $white !important;
     box-shadow: $level1;
     color: $darkgrey !important;
-    font-family: "Open Sans", sans-serif !important;
+    //font-family: "Open Sans", sans-serif !important;
     border-radius: .2rem;
     overflow: hidden !important;
     transition: width .2s ease-in-out;
@@ -76,11 +76,11 @@ a {
 .card h1,
 .cols .card h1,
 .tiles .card h1 {
-    font-family: $header !important;
+    //font-family: $header !important;
     font-size: 1.3rem !important;
     font-weight: normal !important;
     line-height: 1.6rem !important;
-    color: $black !important;
+    //color: $black !important;
     padding: 1.8rem 1.2rem 0 !important;
     margin: 0 !important;
     text-transform: initial !important;
@@ -135,11 +135,11 @@ a {
 .dcard h1,
 .cols .dcard h1,
 .tiles .dcard h1 {
-    font-family: $header !important;
+    //font-family: $header !important;
     font-size: .8rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    color: $black !important;
+    //color: $black !important;
     padding: 1rem 1rem 0 !important;
     margin: 0 !important;
 }

@@ -16,14 +16,14 @@ a.button {
         padding: calc(1% + 1em) 0;
         width: 100%;
         background: $white;
-        border: 1px solid $grey;
+        border: 1px solid $grey !important;
         font-size: .7rem;
         font-weight: 700;
         letter-spacing: .1rem;
         line-height: normal;
         text-transform: uppercase;
         text-align: center;
-        color: $blue;
+        color: $blue !important;
         text-decoration: none;
         transition: all .2s ease-in-out;
         text-shadow: none;
@@ -31,8 +31,8 @@ a.button {
     
     a.button.prominent {
         background: linear-gradient(315deg, $blue, $midblue);
-        color: $white;
-        border: none;
+        color: $white !important;
+        border: none !important;
         padding: calc(1% + 1.09em) 0;
     }
     
@@ -43,15 +43,15 @@ a.button {
     a.button:hover,
     a.button:focus {
         background: $blue;
-        border: 1px solid $blue;
-        color: $white;
+        border: 1px solid $blue !important;
+        color: $white !important;
         transition: all .1s;
     }
     
     a.button.prominent:hover,
     a.button.prominent:focus {
         background: linear-gradient(315deg, $darkblue, $blue);
-        border: none;
+        border: none !important;
     }
     
 }
@@ -61,7 +61,7 @@ a.button {
         margin-top: 2rem;
         padding: 1rem 0;
         max-width: 300px;
-        border: none;
+        border: none !important;
         background: rgba(255,255,255,.9);
         box-shadow: $level3;
         position: relative;
@@ -71,8 +71,8 @@ a.button {
     a.button:hover,
     a.button:focus {
         background: $white;
-        border: none;
-        color: $blue;
+        border: none !important;
+        color: $blue !important;
         top: -3px;
     }
 }

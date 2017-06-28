@@ -53,7 +53,7 @@
 }
 
 .tiles>div {
-    color: $darkgrey;
+    //color: $darkgrey;
 }
 
 .tiles>div>h1,
@@ -62,11 +62,11 @@
 }
 
 .tiles>div>h1 {
-    font-family: $header;
+    //font-family: $header;
     font-size: 1.3rem;
     font-weight: normal;
     line-height: 1.6rem;
-    color: $black;
+    //color: $black;
     padding: 1.8rem 0 .2rem;
     margin: 0;
     text-transform: initial;
@@ -77,11 +77,11 @@
 }
 
 .tiles>div>h2 {
-    font-family: $header;
+    //font-family: $header;
     font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.4rem;
-    color: $midblue;
+    //color: $midblue;
     padding: 1.6rem 0 .8rem;
     margin: 0;
 }
