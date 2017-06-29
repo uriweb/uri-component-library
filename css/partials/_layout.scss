@@ -92,6 +92,15 @@ section>article>article {
     }
 }
 
+div.breakout {
+    background: #000;
+    color: #fff;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin: 2rem 0 2rem -50vw;
+}
+
 img.wireframe {
     display: block;
     width: 300px;

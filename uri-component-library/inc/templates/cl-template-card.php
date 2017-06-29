@@ -1,6 +1,6 @@
 <?php
 
-$output = '<a class="card" href="'. $link .'" title="' . $tooltip . '">';
+$output = '<a class="cl-card" href="'. $link .'" title="' . $tooltip . '">';
 
 if (!empty($img)) {
     $output .= '<img src="' . $img . '" alt="' . $alt . '">';
@@ -12,5 +12,5 @@ if (!empty($body)) {
     $output .= '<p>' . $body . '</p>';
 }
 
-$output .= '<span class="button">' . $button . '</span>';
+$output .= '<span class="cl-button">' . $button . '</span>';
 $output .= '</a>';

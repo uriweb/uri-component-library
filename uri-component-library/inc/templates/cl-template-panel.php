@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'panel';
+$classes = 'cl-panel';
 if ($reverse) {
     $classes .= ' reverse';
 }

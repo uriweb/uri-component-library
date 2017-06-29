@@ -1,7 +1,7 @@
 /* ======= HEROS ======= */
 
 
-.hero {
+.cl-hero {
     & {
         width: 100%;
         height: 300px;
@@ -122,31 +122,31 @@
 
 
 @media screen and (min-width: $break1) {
-    .hero {
+    .cl-hero {
         height: 400px;
     }
-    .hero h1 {
+    .cl-hero h1 {
         font-size: 2.2rem;
     }
-    .hero p {
+    .cl-hero p {
         font-size: 1.2rem;
     }
-    .hero .overlay .motionswitch {
+    .cl-hero .overlay .motionswitch {
         font-size: .6rem;
     }
 }
 
 @media screen and (min-width: $break2) {
-    .hero {
+    .cl-hero {
         height: 500px;
     }
-    .hero h1 {
+    .cl-hero h1 {
         font-size: 2.8rem;
     }
-    .hero p {
+    .cl-hero p {
         font-size: 1.5rem;
     }
-    .hero .overlay .motionswitch {
+    .cl-hero .overlay .motionswitch {
         font-size: .7rem;
     }
 }

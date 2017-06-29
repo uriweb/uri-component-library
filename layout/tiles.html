@@ -14,7 +14,7 @@
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
         
         <style>
-            .tiles.demo>div {
+            .cl-tiles.demo>div {
                 background: #ddd;
                 border: 1px solid #ccc;
             }
@@ -41,13 +41,13 @@
             
             <section id="usage">
                 <h2>Usage</h2>
-                <p>Tiles are implemented with the class <code class="class">tiles</code></p>
+                <p>Tiles are implemented with the class <code class="class">cl-tiles</code></p>
                 <p>Tiles support grids with two, three, four, or five tiles in width. The number of tiles across the page can be controled by the classes <code class="class second">halves</code>, <code class="class second">thirds</code>, <code class="class second">fourths</code>, and <code class="class second">fifths</code>, respecively.  Tile grids can contain an infinite number of tiles.</p>
 
                 <article>
                     <h4>2 Tiles Across</h4>
                     <xmp class="prettyprint">
-<div class="tiles halves">
+<div class="cl-tiles halves">
     <div>...</div>
     <div>...</div>
     <div>...</div>
@@ -58,7 +58,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles halves square demo">
+                    <div class="cl-tiles halves square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -72,7 +72,7 @@
                 <article>
                     <h4>3 Tiles Across</h4>
                     <xmp class="prettyprint">
-<div class="tiles thirds">
+<div class="cl-tiles thirds">
     <div>...</div>
     <div>...</div>
     <div>...</div>
@@ -83,7 +83,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles thirds square demo">
+                    <div class="cl-tiles thirds square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -97,7 +97,7 @@
                 <article>
                     <h4>4 Tiles Across</h4>
                     <xmp class="prettyprint">
-<div class="tiles fourths">
+<div class="cl-tiles fourths">
     <div>...</div>
     <div>...</div>
     <div>...</div>
@@ -108,7 +108,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fourths square demo">
+                    <div class="cl-tiles fourths square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -125,7 +125,7 @@
                 <article>
                     <h4>5 Tiles Across</h4>
                     <xmp class="prettyprint">
-<div class="tiles fifths">
+<div class="cl-tiles fifths">
     <div>...</div>
     <div>...</div>
     <div>...</div>
@@ -136,7 +136,7 @@
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fifths square demo">
+                    <div class="cl-tiles fifths square demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -153,7 +153,7 @@
                     <h4>Tiles can be square</h4>
                     <p>By default, tiles adjust to the size of their content. To override this format and force tiles be square, and crop their content accordingly, add the class <code class="class">square</code></p>
                     <xmp class="prettyprint">
-<div class="tiles fourths square">
+<div class="cl-tiles fourths square">
     <div>...</div>
     <div>...</div>
     <div>...</div>
@@ -167,14 +167,14 @@
                     <p>By default, each tile has a small margin that separates it from other surrounding tiles. To eliminate this margin and force tiles to but up against one another, add the class <code class="class">compact</code></p>
                     <p>Both default tiles and square tiles can be compact.</p>
                     <xmp class="prettyprint">
-<div class="tiles fourths compact">
+<div class="cl-tiles fourths compact">
     <div>...</div>
     <div>...</div>
     <div>...</div>
     ...
 </div>     
                     </xmp>
-                    <div class="tiles fourths square compact demo">
+                    <div class="cl-tiles fourths square compact demo">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -188,7 +188,7 @@
                     <h4>Tile loading can be animated</h4>
                     <p>In some cases, especially when tiles are dynamically generated, the display of each tile can be delayed via the generating script. To animate this, add the class <code class="class">reveal</code></p>
                     <xmp class="prettyprint">
-<div class="tiles fifths reveal">
+<div class="cl-tiles fifths reveal">
     <div>...</div>
     <div>...</div>
     <div>...</div>

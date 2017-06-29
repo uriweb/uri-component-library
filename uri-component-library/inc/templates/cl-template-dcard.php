@@ -1,6 +1,6 @@
 <?php
 
-$output = '<a class="dcard" href="'. $link .'" title="' . $tooltip . '">';
+$output = '<a class="cl-dcard" href="'. $link .'" title="' . $tooltip . '">';
 
 if (!empty($img)) {
     $output .= '<img src="' . $img . '" alt="' . $alt . '">';

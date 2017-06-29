@@ -1,6 +1,6 @@
 /* ======= BOXOUTS ======= */
 
-.boxout {
+.cl-boxout {
     display: block;
     width: 100%;
     padding: 6% 5%;
@@ -13,59 +13,59 @@
 }
 
 @media screen and (min-width: $break1) {
-    .boxout {
+    .cl-boxout {
         width: 300px;
         padding: 20px;
     }
-    .boxout.left {
+    .cl-boxout.left {
         float: left;
         margin: 0 2rem 2rem 0;
     }
-    .boxout.right {
+    .cl-boxout.right {
         float: right;
         margin: 0 0 2rem 2rem;
     }
-    .cols .boxout {
+    .cl-cols .cl-boxout {
         width: 45%;
     }
 }
 
 @media screen and (min-width: $break2) {
-    .cols .boxout {
+    .cl-cols .cl-boxout {
         width: 100%;
     }
 }
 
 @media screen and (min-width: $maxcardwidth) {
-    .boxout {
+    .cl-boxout {
         max-width: $maxcardwidth;
     }
 }
     
-.cols, .tiles {
-    .boxout {
+.cl-cols, .cl-tiles {
+    .cl-boxout {
         margin-bottom: 1rem;
         display: block;
     }
-    &>*>.boxout {
+    &>*>.cl-boxout {
         width: 100%;
     }
-    .boxout:not(:first-child) {
+    .cl-boxout:not(:first-child) {
         margin-top: 1.5rem;
     }
 }
 
-.boxout img {
+.cl-boxout img {
     width: 100%;
     margin: 1.2rem 0 !important;
     border-radius: 2px;
 }
 
-.boxout img:first-child {
+.cl-boxout img:first-child {
     margin-top: 0 !important;
 }
 
-.boxout h1 {
+.cl-boxout h1 {
     //font-family: $header;
     font-size: 1.2rem !important;
     font-weight: 600 !important;
@@ -73,7 +73,7 @@
     padding: 0 !important;
 }
 
-.boxout p {
+.cl-boxout p {
     font-size: .8rem;
     width: 100% !important;
 }

@@ -10,7 +10,7 @@ var uri_vid_heros = [],
  */
 $(function() {
     
-    $('.hero .poster').each(function(i,el) {
+    $('.cl-hero .poster').each(function(i,el) {
 
         uri_vid_heros.push({
             'poster' : el,
@@ -25,7 +25,7 @@ $(function() {
                         
     });
     
-    $('.video img').each(function(i,el) {
+    $('.cl-video img').each(function(i,el) {
         
         var aspect = 16/9; // Set default aspect
         

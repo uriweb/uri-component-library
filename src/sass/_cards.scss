@@ -1,7 +1,7 @@
 /* ======= CARDS ======= */
 
-.card,
-.dcard {
+.cl-card,
+.cl-dcard {
     display: inline-block;
     width: 100%;
     background: $white !important;
@@ -13,69 +13,69 @@
     transition: width .2s ease-in-out;
 }
 
-.cols, .tiles {
-    .card,
-    .dcard {
+.cl-cols, .cl-tiles {
+    .cl-card,
+    .cl-dcard {
         margin-bottom: 1rem;
         display: block;
     }
-    &>*>.card,
-    &>*>.dcard {
+    &>*>.cl-card,
+    &>*>.cl-dcard {
         width: 100%;
     }
-    &>*>.card:not(:first-child),
-    &>*>.dcard:not(:first-child) {
+    &>*>.cl-card:not(:first-child),
+    &>*>.cl-dcard:not(:first-child) {
         margin-top: 1.5rem;
     }
 }
 
 @media screen and (min-width: $break1) {
-    .cols .card,
-    .cols .dcard {
+    .cl-cols .cl-card,
+    .cl-cols .cl-dcard {
         width: 45%;
     }
 }
 
 @media screen and (min-width: $break2) {
-    .cols .card,
-    .cols .dcard {
+    .cl-cols .cl-card,
+    .cl-cols .cl-dcard {
         width: 100%;
     }
 }
 
 @media screen and (min-width: $maxcardwidth) {
-    .card,
-    .dcard {
+    .cl-card,
+    .cl-dcard {
         max-width: $maxcardwidth;
     }
 }
 
 a {
-    &.card,
-    &.dcard {
+    &.cl-card,
+    &.cl-dcard {
         position: relative;
         top: 0;
         transition: top .1s ease-in-out, box-shadow .1s ease-in-out;
     }
 
-    &.card:hover,
-    &.card:focus,
-    &.dcard:hover,
-    &.dcard:focus{
+    &.cl-card:hover,
+    &.cl-card:focus,
+    &.cl-dcard:hover,
+    &.cl-dcard:focus{
         top: -2px;
         box-shadow: $level2;
         cursor: pointer;
     }
 
-    &.card:active,
-    &.dcard:active {
+    &.cl-card:active,
+    &.cl-dcard:active {
         box-shadow: $level3;
     }
 }
     
-.card h1,
-.cols .card h1,
-.tiles .card h1 {
+.cl-card h1,
+.cl-cols .cl-card h1,
+.cl-tiles .cl-card h1 {
     //font-family: $header !important;
     font-size: 1.3rem !important;
     font-weight: normal !important;
@@ -86,31 +86,31 @@ a {
     text-transform: initial !important;
 }
 
-.card p,
-.cols .card p,
-.tiles .card p {
+.cl-card p,
+.cl-cols .cl-card p,
+.cl-tiles .cl-card p {
     padding: 1rem 1.2rem 0 !important;
     font-size: .8rem !important;
 }
 
-.card p:first-of-type,
-.cols .card p:first-of-type,
-.tiles .card p:first-of-type {
+.cl-card p:first-of-type,
+.cl-cols .cl-card p:first-of-type,
+.cl-tiles .cl-card p:first-of-type {
     padding-top: 1.2rem !important;
 }
 
-.card p:last-child,
-.cols .card p:last-child,
-.tiles .card p:last-child {
+.cl-card p:last-child,
+.cl-cols .cl-card p:last-child,
+.cl-tiles .cl-card p:last-child {
     padding-bottom: 2rem !important;
 }
 
 
 /* Action Cards */
 
-.card img,
-.cols .card img,
-.tiles .card img {
+.cl-card img,
+.cl-cols .cl-card img,
+.cl-tiles .cl-card img {
     width: 100% !important;
     height: auto !important;
 }
@@ -118,23 +118,23 @@ a {
 
 /* Detail Cards */
 
-.dcard:after {
+.cl-dcard:after {
     content: '';
     display: block;
     clear: both;
 }
 
-.dcard img,
-.cols .dcard img,
-.tiles .dcard img {
+.cl-dcard img,
+.cl-cols .cl-dcard img,
+.cl-tiles .cl-dcard img {
     float: right !important;
     width: 30% !important;
     margin: .5rem .5rem .5rem 1rem !important;
 }
 
-.dcard h1,
-.cols .dcard h1,
-.tiles .dcard h1 {
+.cl-dcard h1,
+.cl-cols .cl-dcard h1,
+.cl-tiles .cl-dcard h1 {
     //font-family: $header !important;
     font-size: .8rem !important;
     font-weight: 700 !important;
@@ -144,22 +144,22 @@ a {
     margin: 0 !important;
 }
 
-.dcard p,
-.cols .dcard p,
-.tiles .dcard p {
+.cl-dcard p,
+.cl-cols .cl-dcard p,
+.cl-tiles .cl-dcard p {
     padding: .5rem 1rem .1rem !important;
     font-size: .7rem !important;
 }
 
-.dcard p:last-child,
-.cols .dcard p:last-child,
-.tiles .dcard p:last-child {
+.cl-dcard p:last-child,
+.cl-cols .cl-dcard p:last-child,
+.cl-tiles .cl-dcard p:last-child {
     padding-bottom: 1rem !important;
 }
 
 /* Buttons */
 
-.card .button {
+.cl-card .cl-button {
     display: block !important;
     width: 100% !important;
     margin-top: 2rem !important;
@@ -176,10 +176,10 @@ a {
     transition: all .2s !important;
 }
 
-a.card:hover .button,
-a.card:focus .button,
-.card .button:hover,
-.card .button:focus {
+a.cl-card:hover .cl-button,
+a.cl-card:focus .cl-button,
+.cl-card .cl-button:hover,
+.cl-card .cl-button:focus {
     background: $blue !important;
     border-top: 1px solid $blue !important;
     color: $white !important;

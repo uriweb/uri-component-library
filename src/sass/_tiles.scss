@@ -1,18 +1,18 @@
 /* ======= TILES ======= */
 
 
-.tiles {
+.cl-tiles {
     width: 100%;
 }
 
-.tiles:after {
+.cl-tiles:after {
     content: '';
     clear: both;
     display: block;
 }
 
-.tiles>div,
-.tiles>a {
+.cl-tiles>div,
+.cl-tiles>a {
     float: left;
     clear: none;
     overflow: visible;
@@ -23,16 +23,16 @@
     padding-bottom: 0;
 }
 
-.tiles.square>div,
-.tiles.square>a {
+.cl-tiles.square>div,
+.cl-tiles.square>a {
     height: 0;
     overflow: hidden;
     margin-bottom: 1%;
     padding-bottom: 100%;
 }
 
-.tiles.compact>div,
-.tiles.compact>a {
+.cl-tiles.compact>div,
+.cl-tiles.compact>a {
     margin-bottom: 0;
 }
 
@@ -41,27 +41,27 @@
     to   { transform: rotateY(0deg); }
 }
 
-.tiles.reveal>div,
-.tiles.reveal>a {
+.cl-tiles.reveal>div,
+.cl-tiles.reveal>a {
     animation: tileReveal .5s;
 }
 
-.tiles>div>img,
-.tiles>a>img {
+.cl-tiles>div>img,
+.cl-tiles>a>img {
     display: block;
     width: 100%;
 }
 
-.tiles>div {
+.cl-tiles>div {
     //color: $darkgrey;
 }
 
-.tiles>div>h1,
-.tiles>div>p {
+.cl-tiles>div>h1,
+.cl-tiles>div>p {
     max-width: 500px;
 }
 
-.tiles>div>h1 {
+.cl-tiles>div>h1 {
     //font-family: $header;
     font-size: 1.3rem;
     font-weight: normal;
@@ -72,11 +72,11 @@
     text-transform: initial;
 }
 
-.tiles>div>h1:first-child {
+.cl-tiles>div>h1:first-child {
     padding-top: 0;
 }
 
-.tiles>div>h2 {
+.cl-tiles>div>h2 {
     //font-family: $header;
     font-size: 1.1rem;
     font-weight: 500;
@@ -86,24 +86,24 @@
     margin: 0;
 }
 
-.tiles>div>p {
+.cl-tiles>div>p {
     width: 95%;
     font-size: .8rem;
     // Calculate line-height based on viewport width
     line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
 }
 
-.tiles>div>p:first-child {
+.cl-tiles>div>p:first-child {
     padding-top: 0;
 }
 
-.tiles>div>p:last-child {
+.cl-tiles>div>p:last-child {
     padding-bottom: 2rem;
 }
 
 // Set up tiles.fifths at most narrow width
-.tiles.fifths>div,
-.tiles.fifths>a {
+.cl-tiles.fifths>div,
+.cl-tiles.fifths>a {
     &:not(:nth-child(2n)) {
         margin-right: 3%;
     }
@@ -115,8 +115,8 @@
     } 
 }
 
-.tiles.square.fifths>div,
-.tiles.square.fifths>a {
+.cl-tiles.square.fifths>div,
+.cl-tiles.square.fifths>a {
     &:not(:nth-child(2n)) {
         margin-right: 1%;
     }
@@ -126,8 +126,8 @@
     }
 }
 
-.tiles.compact.fifths>div,
-.tiles.compact.fifths>a {
+.cl-tiles.compact.fifths>div,
+.cl-tiles.compact.fifths>a {
     &:not(:nth-child(2n)) {
         margin-right: 0;
     }
@@ -140,7 +140,7 @@
 @media screen and (min-width: $break0) {
     
     // Reset previous break
-    .tiles, .tiles.square {
+    .cl-tiles, .cl-tiles.square {
         &.fifths>div:not(:nth-child(2n)),
         &.fifths>a:not(:nth-child(2n)) {
             margin-right: 0;
@@ -151,7 +151,7 @@
         }
     }
     
-    .tiles {
+    .cl-tiles {
         &.thirds>div:nth-child(2n+1),
         &.thirds>a:nth-child(2n+1),
         &.fourths>div:nth-child(2n+1),
@@ -163,7 +163,7 @@
     }
     
     // Set up default tiles for this break
-    .tiles {
+    .cl-tiles {
         &.thirds>div:not(:nth-child(2n)),
         &.thirds>a:not(:nth-child(2n)),
         &.fourths>div:not(:nth-child(2n)),
@@ -185,7 +185,7 @@
     }
 
     // Set up square tiles for this break
-    .tiles.square {
+    .cl-tiles.square {
         &.thirds>div:not(:nth-child(2n)),
         &.thirds>a:not(:nth-child(2n)),
         &.fourths>div:not(:nth-child(2n)),
@@ -209,7 +209,7 @@
     }
     
     // Set up compact tiles for this break
-    .tiles.compact {
+    .cl-tiles.compact {
         &.thirds>div:not(:nth-child(2n)),
         &.thirds>a:not(:nth-child(2n)),
         &.fourths>div:not(:nth-child(2n)),
@@ -237,7 +237,7 @@
 @media screen and (min-width: $break1) {
     
     // Reset previous break
-    .tiles, .tiles.square {
+    .cl-tiles, .cl-tiles.square {
         &.fourths>div:not(:nth-child(2n)),
         &.fourths>a:not(:nth-child(2n)),
         &.fifths>div:not(:nth-child(3n)),
@@ -252,7 +252,7 @@
         }
     }
     
-    .tiles {
+    .cl-tiles {
         &.fourths>div:nth-child(3n+1),
         &.fourths>a:nth-child(3n+1),
         &.fifths>div:nth-child(4n+1),
@@ -262,7 +262,7 @@
     }
     
     // Set up default tiles for this break
-    .tiles {
+    .cl-tiles {
         &.fourths>div:not(:nth-child(3n)),
         &.fourths>a:not(:nth-child(3n)),
         &.fifths>div:not(:nth-child(4n)),
@@ -280,7 +280,7 @@
     }
     
     // Set up square tiles for this break
-    .tiles.square {
+    .cl-tiles.square {
         &.fourths>div:not(:nth-child(3n)),
         &.fourths>a:not(:nth-child(3n)),
         &.fifths>div:not(:nth-child(4n)),
@@ -300,7 +300,7 @@
     }
     
     // Set up compact tiles for this break
-    .tiles.compact {
+    .cl-tiles.compact {
         &.fourths>div:not(:nth-child(3n)),
         &.fourths>a:not(:nth-child(3n)),
         &.fifths>div:not(:nth-child(4n)),
@@ -324,7 +324,7 @@
 @media screen and (min-width: $break2) {
     
     // Reset previous break
-    .tiles, .tiles.square {
+    .cl-tiles, .cl-tiles.square {
         &.thirds>div:not(:nth-child(2n)),
         &.thirds>a:not(:nth-child(2n)),
         &.fourths>div:not(:nth-child(3n)),
@@ -343,7 +343,7 @@
         }
     }
     
-    .tiles {
+    .cl-tiles {
         &.halves>div:nth-child(2n+1),
         &.halves>a:nth-child(2n+1),
         &.thirds>div:nth-child(3n+1),
@@ -357,7 +357,7 @@
     }
     
     // Set up default tiles for this break
-    .tiles {
+    .cl-tiles {
         &.halves>div:not(:nth-child(2n)),
         &.halves>a:not(:nth-child(2n)),
         &.thirds>div:not(:nth-child(3n)),
@@ -387,7 +387,7 @@
     }
     
     // Set up square tiles for this break
-    .tiles.square {
+    .cl-tiles.square {
         &.halves>div:not(:nth-child(2n)),
         &.halves>a:not(:nth-child(2n)),
         &.thirds>div:not(:nth-child(3n)),
@@ -421,7 +421,7 @@
     }
     
     // Set up compact tiles for this break
-    .tiles.compact {
+    .cl-tiles.compact {
         &.halves>div:not(:nth-child(2n)),
         &.halves>a:not(:nth-child(2n)),
         &.thirds>div:not(:nth-child(3n)),
@@ -455,7 +455,7 @@
     }
     
     // Typography
-    .tiles>div>h1 {
+    .cl-tiles>div>h1 {
         padding: 1.8rem 0 .2rem;
     }
     
@@ -463,13 +463,13 @@
 
 // Static p line-height at full width
 @media screen and (min-width: $break3){
-    .tiles>div>p {
+    .cl-tiles>div>p {
         line-height: 1.5rem;
     }
 }
 
 // Don't distort iframes
-.tiles iframe {
+.cl-tiles iframe {
     width: 100%;
     height: auto;
 }

@@ -2,7 +2,7 @@
 
 $(function(){
     
-    $('.hero .dynamic').each(function(i,el){
+    $('.cl-hero .dynamic').each(function(i,el){
             
         var factor = $(el).data('zoom') ? $(el).data('zoom') : 1.25; // The default zoom factor
         $(el).css('position','relative');
@@ -63,7 +63,7 @@ $(function(){
     html += '<div></div><div></div>';
     html += '</div>';
     
-    $('.hero .poster').each(function(){
+    $('.cl-hero .poster').each(function(){
         $(this).parent().find('.overlay').append(html);
     });
     

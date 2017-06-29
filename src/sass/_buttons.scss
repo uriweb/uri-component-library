@@ -1,6 +1,6 @@
 /* ======= BUTTONS ======= */
 
-a.button {
+a.cl-button {
     & {
         display: block !important;
         margin: 1.2rem 0;
@@ -48,21 +48,21 @@ a.button {
     
 }
 
-.tiles>div,
-.cols>div,
-.boxout,
-.panel {
+.cl-tiles>div,
+.cl-cols>div,
+.cl-boxout,
+.cl-panel {
     
-    a.button {
+    a.cl-button {
         padding: calc(1% + 1em) 0;
     }
     
-    a.button.prominent {
+    a.cl-button.prominent {
         padding: calc(1% + 1.09em) 0;
     }
 }
 
-.hero a.button {
+.cl-hero a.cl-button {
     & {
         margin-top: 2rem;
         border: none !important;
@@ -82,22 +82,22 @@ a.button {
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .hero a.button { 
+    .cl-hero a.cl-button { 
         backdrop-filter: saturate(180%) blur(10px); 
         background-color: rgba(255,255,255,.7);
     }
 }
 
-.boxout,
-.panel {
-    a.button {
+.cl-boxout,
+.cl-panel {
+    a.cl-button {
         border-radius: 2px;
     }
 }
 
 @media screen and (min-width: $break1) {
     
-    .cols>div a.button {
+    .cl-cols>div a.cl-button {
         width: 45%;
     }
     
@@ -105,10 +105,10 @@ a.button {
 
 @media screen and (min-width: $break2) {
     
-    .cols>div,
-    .boxout {
+    .cl-cols>div,
+    .cl-boxout {
         
-        a.button {
+        a.cl-button {
             width: 100%;
         }
         

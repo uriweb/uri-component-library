@@ -1,26 +1,26 @@
 /* ======= COLUMNS ======= */
 
-.cols {
+.cl-cols {
     display: block;
     margin-bottom: 50px;
 }
 
-.cols>div {
+.cl-cols>div {
     display: block;
     margin-bottom: 50px; 
     //color: $darkgrey;
 }
 
-.cols>div>img {
+.cl-cols>div>img {
     width: 100%;
 }
 
-.cols>div>h1,
-.cols>div>p {
+.cl-cols>div>h1,
+.cl-cols>div>p {
     max-width: 500px;
 }
 
-.cols>div>h1 {
+.cl-cols>div>h1 {
     //font-family: $header;
     font-size: 1.3rem;
     font-weight: normal;
@@ -31,11 +31,11 @@
     text-transform: initial;
 }
 
-.cols>div>h1:first-child {
+.cl-cols>div>h1:first-child {
     padding-top: 0;
 }
 
-.cols>div>h2 {
+.cl-cols>div>h2 {
     //font-family: $header;
     font-size: 1.1rem;
     font-weight: 500;
@@ -45,68 +45,68 @@
     margin: 0;
 }
 
-.cols>div>p {
+.cl-cols>div>p {
     width: 95%;
     font-size: .8rem;
     // Calculate line-height based on viewport width
     line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
 }
 
-.cols>div>p:first-child {
+.cl-cols>div>p:first-child {
     padding-top: 0;
 }
 
-.cols>div>p:last-child {
+.cl-cols>div>p:last-child {
     padding-bottom: 2rem;
 }
 
 // Partial Width
 @media screen and (min-width: $break1) {
-    .cols>div:after {
+    .cl-cols>div:after {
         content: '';
         display: block;
         clear: both;
     }
-    .cols>div>img {
+    .cl-cols>div>img {
         width: 50%;
         margin: 0 0 5% 5%;
         float: right;
     }
-    .cols>div>h1 {
+    .cl-cols>div>h1 {
         padding: 0 0 .2rem;
     }
 }
 
 // Full Width
 @media screen and (min-width: $break2) {
-    .cols {
+    .cl-cols {
         display: flex;
         justify-content: space-between;
     }
-    .cols>div {
+    .cl-cols>div {
         margin: 0;
     }
-    .cols.halves>div {
+    .cl-cols.halves>div {
         flex-basis: 48%;
         min-width: 320px;
     }
-    .cols.thirds>div {
+    .cl-cols.thirds>div {
         flex-basis: 31%;
         width: 31%;
     }
-    .cols>div>img {
+    .cl-cols>div>img {
         width: 100%;
         margin: 0;
         float: none;
     }
-    .cols>div>h1 {
+    .cl-cols>div>h1 {
         padding: 1.8rem 0 .2rem;
     }
 }
 
 // Static line-height at full width
 @media screen and (min-width: $break3){
-    .cols>div>p {
+    .cl-cols>div>p {
         line-height: 1.5rem;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'hero';
+$classes = 'cl-hero';
 if ($fullscreen) {
     $classes .= ' fullscreen';
 }
@@ -18,7 +18,7 @@ if (!empty($subhead)) {
 }
 
 if (!empty($link)) {
-    $output .= '<a class="button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
+    $output .= '<a class="cl-button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
 }
 
 $output .= '</div>'; // #block

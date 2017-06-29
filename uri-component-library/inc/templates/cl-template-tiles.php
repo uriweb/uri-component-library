@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'tiles';
+$classes = 'cl-tiles';
 
 switch ($accross) {
     case 2:

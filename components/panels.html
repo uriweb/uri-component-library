@@ -35,21 +35,21 @@
                 
                 <h2>Design</h2>
                 <p>Panels are constructed of two panes, one displaying text and the other displaying an image.  The panes sit side-by-side when space allows, and stack at narrow browser widths.  Panels are top level components, so they cannot live in tiles, and require an image.</p>
-                <p>Panels are implemented with the class <code class="class">panel</code></p>
+                <p>Panels are implemented with the class <code class="class">cl-panel</code></p>
                 <xmp class="prettyprint">
-<div class="panel">
+<div class="cl-panel">
     <figure>
         <img>
     </figure>
     <article>
         <h1>Title</h1>
         <p>Paragraph text.</p>
-        <a class="button" href="">Button</a>
+        <a class="cl-button" href="">Button</a>
         ...
     </article>
 </div>                       
                 </xmp>
-                <div class="panel">
+                <div class="cl-panel">
                     <figure>
                         <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
                     </figure>
@@ -57,7 +57,7 @@
                         <h1>Lorem Ipsum Dolor</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat blandit dui ultrices cursus in vel odio. Phasellus molestie ultricies pulvinar. Nullam malesuada libero a nibh tristique ultricies.</p>
                         <p>Vivamus elementum metus massa, et molestie nisl porttitor ac. Suspendisse nec mi ante. In sed dictum quam. Morbi in nulla fermentum, semper enim in, rhoncus diam. Integer lobortis dictum faucibus.</p>
-                        <a class="button" href="#">Learn More</a>
+                        <a class="cl-button" href="#">Learn More</a>
                     </article>
                 </div>
                 <p>Note that the image must be nested in <code class="tag">&lt;figure&gt;</code> tags. In the full-width layout, the height of the figure is dependent on the height of the article, and image covers the figure.  At narrow widths, the figure is stacked on top of the article, and the image is not cropped.</p>
@@ -65,7 +65,7 @@
                 <p>By default, the left pane displays text and the right pane displays an image.  The layout can be reversed by adding the class <code class="class">reverse</code> to the panel. This will not change how the panes behave at narrow browser widths.</p>
                 <p>Note that the figure block must always come before the article block, regardless of layout.</p>
                 <xmp class="prettyprint">
-<div class="panel reverse">
+<div class="cl-panel reverse">
     <figure>
         <img>
     </figure>
@@ -74,7 +74,7 @@
     </article>
 </div>                       
                 </xmp>
-                <div class="panel reverse">
+                <div class="cl-panel reverse">
                     <figure>
                         <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
                     </figure>
@@ -82,7 +82,7 @@
                         <h1>Lorem Ipsum Dolor</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat blandit dui ultrices cursus in vel odio. Phasellus molestie ultricies pulvinar. Nullam malesuada libero a nibh tristique ultricies.</p>
                         <p>Vivamus elementum metus massa, et molestie nisl porttitor ac. Suspendisse nec mi ante. In sed dictum quam. Morbi in nulla fermentum, semper enim in, rhoncus diam. Integer lobortis dictum faucibus.</p>
-                        <a class="button" href="#">Learn More</a>
+                        <a class="cl-button" href="#">Learn More</a>
                     </article>
                 </div>
                  <h4>Shortcode Support</h4>

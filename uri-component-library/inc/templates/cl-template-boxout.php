@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'boxout';
+$classes = 'cl-boxout';
 
 if(!empty($float)) {
     $classes .= ' ' . $float;

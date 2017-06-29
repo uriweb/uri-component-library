@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'button';
+$classes = 'cl-button';
 
 if($prominent) {
     $classes .= ' prominent';

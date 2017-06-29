@@ -36,17 +36,17 @@
             <section id="video">
                 
                 <h2>Video Hero</h2>
-                <p>Video heros are implemented with the class <code class="class">hero</code></p>
+                <p>Video heros are implemented with the class <code class="class">cl-hero</code></p>
                 <p>Video heros require an overlay and poster image. Create an overlay with the class <code class="class">overlay</code>, and a poster with the class <code class="class">poster</code>.</p>
                 <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=ydD1Wg2B8Vk</code>, create the poster with the id <code class="id">ydD1Wg2B8Vk</code>.</p>
                 <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     <div class="overlay"></div>
     <img id="[video id]" class="poster" src="poster.jpg">
 </div>
                 </xmp>
                 
-                <div class="hero">
+                <div class="cl-hero">
                     <div class="overlay"></div>
                     <img id="aK9iLeL5l_c" class="poster" src="../media/commons/hero_vid_poster.jpg">
                 </div>
@@ -56,23 +56,23 @@
                     <h4>Add overlay content.</h4>
                     <p>To overlay content, such as a headline, subheading, and button, create a content block inside the overlay using the class <code class="class">block</code>.  The content will appear superimposed on the video.</p>
                     <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     <div class="overlay">
         <div class="block">
             <h1>Headline</h1>
             <p>Subheading</p>
-            <a class="button" href="#">Button</a>
+            <a class="cl-button" href="#">Button</a>
         </div>
     </div>
     <img id="[video id]" class="poster" src="poster.jpg">
 </div>
                     </xmp>                
-                    <div class="hero">
+                    <div class="cl-hero">
                         <div class="overlay">
                             <div class="block">
                                 <h1>Small state.  Global impact.</h1>
                                 <p>Think big at the University of Rhode Island</p>
-                                <a class='button' href="#">Explore</a>
+                                <a class="cl-button" href="#">Explore</a>
                             </div>
                         </div>
                         <img id="K4YDMmWBac4" class="poster" src="../media/commons/hero_vid_poster.jpg">
@@ -84,7 +84,7 @@
                     <h4>Set custom start and/or end times.</h4>
                     <p>By default, heros play the entire linked video, and loop indefinitely.  To loop a portion of the video, set <code class="attr">data-start</code> and/or <code class="attr">data-end</code> attributes in number of seconds from the beginning of the video.</p>
                     <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     <div class="overlay">
         <h1>Hero title</h1>
     </div>
@@ -99,13 +99,13 @@
             <section id="image">
                 
                 <h2>Image Hero</h2>
-                <p>Image heros are implemented with the class <code class="class">hero</code></p>
+                <p>Image heros are implemented with the class <code class="class">cl-hero</code></p>
                 <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     <img src="hero.jpg">
 </div>
                 </xmp>
-                <div class="hero">
+                <div class="cl-hero">
                     <img src="../media/commons/hero_vid_poster_2.jpg">
                 </div>
                 
@@ -114,20 +114,20 @@
                     <p>To overlay content, such as a headline, subheading, and button, create a content block before the image using the class <code class="class">block</code>.  The content will appear superimposed on the image.</p>
                     <p>Note that an overlay <code class="tag">div</code> is not needed for image heros.</p>
                     <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     <div class="block">
         <h1>Headline</h1>
         <p>Subheading</p>
-        <a class="button" href="#">Button</a>
+        <a class="cl-button" href="#">Button</a>
     </div>
     <img src="hero.jpg">
 </div>
                     </xmp>                
-                    <div class="hero">
+                    <div class="cl-hero">
                             <div class="block">
                                 <h1>Small state.  Global impact.</h1>
                                 <p>Think big at the University of Rhode Island</p>
-                                <a class='button' href="#">Explore</a>
+                                <a class="cl-button" href="#">Explore</a>
                             </div>
                         <img src="../media/commons/hero_vid_poster_2.jpg">
                     </div>
@@ -138,16 +138,16 @@
                     <p>To add movement to the hero image on page load, add the class <code class="class">dynamic</code> to the image.</p>
                     <p>When the page is loaded, the image will magnify slightly and focus on an area just left of center. The animation lasts for 10 seconds.</p>
                     <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     ...
     <img class="dynamic" src="hero.jpg">
 </div>
                     </xmp>
-                    <div class="hero">
+                    <div class="cl-hero">
                         <div class="block">
                             <h1>Small state.  Global impact.</h1>
                             <p>Think big at the University of Rhode Island</p>
-                            <a class='button' href="#">Explore</a>
+                            <a class="cl-button" href="#">Explore</a>
                         </div>
                         <img class="dynamic" src="../media/commons/hero_vid_poster_2.jpg">
                     </div>
@@ -157,7 +157,7 @@
                     <h4>Adjust the level of zoom on dynamic heros.</h4>
                     <p>By default, dynamic heros become 25% larger, or 1.25x original size, at the end of the animation.  To change the zoom factor, set a <code class="attr">data-zoom</code> attribute.  For example, to have the image zoom to 1.5x original size, set the <code class="attr">data-zoom</code> attribute to <code class="string">1.5</code>.</p>
                     <xmp class="prettyprint">
-<div class="hero">
+<div class="cl-hero">
     ...
     <img class="dynamic" src="hero.jpg" data-zoom="1.5">
 </div>
