@@ -1,19 +1,11 @@
 /* ======= BUTTONS ======= */
 
-
 a.button {
-    display: block !important;
-}
-
-.cols>div,
-.tiles>div,
-.boxout,
-.panel,
-.hero {
-
-    a.button {
+    & {
+        display: block !important;
         margin: 1.2rem 0;
-        padding: calc(1% + 1em) 0;
+        padding: 1rem 0;
+        max-width: 300px;
         width: 100%;
         background: $white;
         border: 1px solid $grey !important;
@@ -29,38 +21,50 @@ a.button {
         text-shadow: none;
     }
     
-    a.button.prominent {
+    &.prominent {
         background: linear-gradient(315deg, $blue, $midblue);
         color: $white !important;
         border: none !important;
-        padding: calc(1% + 1.09em) 0;
+        padding: 1.09rem 0;
     }
     
-    a.button:last-child {
+    &:last-child {
         margin-bottom: 0;
     }
     
-    a.button:hover,
-    a.button:focus {
+    &:hover,
+    &:focus {
         background: $blue;
         border: 1px solid $blue !important;
         color: $white !important;
         transition: all .1s;
     }
     
-    a.button.prominent:hover,
-    a.button.prominent:focus {
+    &.prominent:hover,
+    &.prominent:focus {
         background: linear-gradient(315deg, $darkblue, $blue);
         border: none !important;
     }
     
 }
 
-.hero {
+.tiles>div,
+.cols>div,
+.boxout,
+.panel {
+    
     a.button {
+        padding: calc(1% + 1em) 0;
+    }
+    
+    a.button.prominent {
+        padding: calc(1% + 1.09em) 0;
+    }
+}
+
+.hero a.button {
+    & {
         margin-top: 2rem;
-        padding: 1rem 0;
-        max-width: 300px;
         border: none !important;
         background: rgba(255,255,255,.9);
         box-shadow: $level3;
@@ -68,8 +72,8 @@ a.button {
         top: 0;
     }
 
-    a.button:hover,
-    a.button:focus {
+    &:hover,
+    &:focus {
         background: $white;
         border: none !important;
         color: $blue !important;

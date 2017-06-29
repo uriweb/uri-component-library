@@ -8,6 +8,7 @@
  * - Button
  * - Card (Action)
  * - Card (Detail)
+ * - Hero
  * - Panel
  * - Tiles
  *
@@ -103,6 +104,34 @@ function uri_cl_shortcode_dcard( $atts ) {
 
 }
 add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
+
+
+/**
+ * Hero
+ */
+function uri_cl_shortcode_hero( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'headline' => '',
+            'subhead' => '',
+            'button' => 'Explore',
+            'tooltip' => '',
+            'link' => '',
+            'vid' => '',
+            'fullscreen' => false,
+            'poster' => '',
+            'start' => '',
+            'end' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-hero.php';
+    return $output;
+
+}
+add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
 
 
 /**
