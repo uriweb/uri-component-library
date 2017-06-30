@@ -81,6 +81,41 @@ function CLStyles(done) {
   //console.log('styles ran');
 }
 
+
+// Component Library Theme Patches CSS concat, auto-prefix and minify
+gulp.task('CLPatchStyles', CLPatchStyles);
+
+function CLPatchStyles(done) {
+    
+    var banner = ['/*',
+  '===========================================',
+  '',
+  'COMPONENT LIBRARY THEME PATCHES',
+  '',
+  'Improves visual compatability with existing',
+  'Wordpress themes, like the Department theme.',
+  '',
+  'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
+  '',
+  '==============================================',
+  '*/',
+  '',
+  ''].join('\n')
+    
+	gulp.src('./src/sass/patches/*.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass(CLSassOptions).on('error', sass.logError))
+		.pipe(autoprefixer(autoprefixerOptions))
+		.pipe(concat('clpatch.built.css'))
+        .pipe(header(banner))
+		.pipe(sourcemaps.write('./map'))
+		.pipe(gulp.dest('./uri-component-library/css/'));
+
+  done();
+  //console.log('styles ran');
+}
+
+
 // Component Library JS concat, strip debugging and minify
 gulp.task('CLScripts', CLScripts);
 
@@ -109,6 +144,9 @@ function watcher(done) {
 	// watch for Theme CSS changes
 	gulp.watch('./src/sass/*.scss', CLStyles);
     
+    // watch for Theme Patches CSS changes
+	gulp.watch('./src/sass/patches/*.scss', CLPatchStyles);
+    
     // watch for Theme JS changes
 	gulp.watch('./src/js/*.js', CLScripts);
 
@@ -116,7 +154,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'CLStyles', 'CLScripts', 'watcher', function(done){
+	gulp.parallel('styles', 'CLStyles', 'CLPatchStyles', 'CLScripts', 'watcher', function(done){
 		done();
 	})
 );

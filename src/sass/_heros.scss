@@ -49,7 +49,7 @@
         //font-family: 'trajan';
         text-transform: uppercase;
         font-weight: 400;
-        font-size: 1.8rem;
+        font-size: 1.8rem !important;
         color: $white !important;
         transform: all .2s ease-in-out;
         padding: 0;
@@ -57,9 +57,9 @@
     }
 
     p {
-        color: #fff;
-        font-weight: 400;
-        font-size: 1rem;
+        color: #fff !important;
+        font-weight: 400 !important;
+        font-size: 1rem !important;
     }
     
     .motionswitch {
@@ -126,13 +126,10 @@
         height: 400px;
     }
     .cl-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.2rem !important;
     }
     .cl-hero p {
-        font-size: 1.2rem;
-    }
-    .cl-hero .overlay .motionswitch {
-        font-size: .6rem;
+        font-size: 1.2rem !important;
     }
 }
 
@@ -141,12 +138,9 @@
         height: 500px;
     }
     .cl-hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.8rem !important;
     }
     .cl-hero p {
-        font-size: 1.5rem;
-    }
-    .cl-hero .overlay .motionswitch {
-        font-size: .7rem;
+        font-size: 1.5rem !important;
     }
 }
