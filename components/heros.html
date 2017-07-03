@@ -79,21 +79,6 @@
                     </div>
                 </article>
                 
-                
-                <!--<article>
-                    <h4>Set custom start and/or end times.</h4>
-                    <p>By default, heros play the entire linked video, and loop indefinitely.  To loop a portion of the video, set <code class="attr">data-start</code> and/or <code class="attr">data-end</code> attributes in number of seconds from the beginning of the video.</p>
-                    <xmp class="prettyprint">
-<div class="cl-hero">
-    <div class="overlay">
-        <h1>Hero title</h1>
-    </div>
-    <img id="[video id]" class="poster" src="poster.jpg" data-end="30">
-</div>
-                    </xmp>
-                    
-                </article>-->
-                
             </section>
             
             <section id="image">
@@ -164,6 +149,40 @@
                     </xmp>
                 </article>
                 
+                <article>
+                    <h4>Shortcode Support</h4>
+                    <p>Heros can be implemented with the shortcode <code class='shortcode'>cl-hero</code></p>
+                    <p class="code shortcode">[cl-hero headline="A Great Hero" vid="aK9iLeL5l_c" img="sampleimage.jpg"]</p>
+                    <h5>Attributes</h5>
+                    
+                    <p><b>img</b> <i>(string) (required)</i></p>
+                    <p class='indent'>The source URL for the hero image or poster image, if <b>vid</b> is set.</p>
+                    
+                    <p><b>vid</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set the YouTube video ID to create a video hero.<br /><i>(default value: none)</i></p>
+                    
+                    <p><b>dynamic</b> <i>(bool) (optional)</i></p>
+                    <p class='indent'>Set to make an image hero dynamic; this will be ignored if <b>vid</b> is set.<br /><i>(default value: <code class="bool">false</code>)</i></p>
+                    
+                    <p><b>zoom</b> <i>(num) (optional)</i></p>
+                    <p class='indent'>Set a custom zoom factor for a dynamic image hero; <b>dynamic</b> must be <code class="bool">true</code> to have effect.<br /><i>(default value: <code class="num">1.25</code>)</i></p>
+                    
+                    <p><b>headline</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for a headline<br /><i>(default value: none)</i></p>
+                    
+                    <p><b>subhead</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for a subhead<br /><i>(default value: none)</i></p>
+                    
+                    <p><b>link</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a URL to create a button.<br /><i>(default value: none)</i></p>
+                    
+                    <p><b>button</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
+                    
+                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>The title attribute for the button<br /><i>(default value: none)</i></p>
+                
+                </article>
                 
             </section>
             

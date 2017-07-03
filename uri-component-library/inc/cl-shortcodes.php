@@ -120,10 +120,9 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'tooltip' => '',
             'link' => '',
             'vid' => '',
-            'fullscreen' => false,
-            'poster' => '',
-            'start' => '',
-            'end' => ''
+            'dynamic' => false,
+            'zoom' => 1.25,
+            'img' => '',
 		), $atts )
 	);
     

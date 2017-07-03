@@ -1,9 +1,6 @@
 <?php
 
 $classes = 'cl-hero';
-if ($fullscreen) {
-    $classes .= ' fullscreen';
-}
 
 $output = '<div class="' . $classes . '">';
 $output .= '<div class="overlay">';
@@ -24,17 +21,19 @@ if (!empty($link)) {
 $output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
-$poster = '<img id="' . $vid . '" class="poster" src="' . $poster . '" ';
-
-if (!empty($start)) {
-    $poster .= 'data-start="' . $start . '" ';
+if (!empty($vid)) {
+    $image = '<img id="' . $vid . '" class="poster" src="' . $img . '"';
+} else if ($dynamic) {
+    $image = '<img class="dynamic" src="' . $img . '"';
+} else {
+    $image = '<img src="' . $img . '"';
 }
 
-if (!empty($end)) {
-    $poster .= 'data-end="' . $end . '" ';
+if (is_numeric($zoom) && $zoom != 1.25) {
+    $image .= ' data-zoom="' . $zoom . '"';
 }
 
-$poster .= '>';
+$image .= '>';
 
-$output .= $poster;
+$output .= $image;
 $output .= '</div>'; // .hero
