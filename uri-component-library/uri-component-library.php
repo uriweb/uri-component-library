@@ -22,7 +22,7 @@ function uri_cl_enqueues() {
     wp_enqueue_style('uricl-css');
     wp_enqueue_style('uricl-css-patch');
     
-    wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ) );
+    wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), false, false, true );
     
     wp_enqueue_script('uricl-js');
     

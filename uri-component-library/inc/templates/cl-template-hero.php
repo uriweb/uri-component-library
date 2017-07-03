@@ -21,7 +21,8 @@ if (!empty($link)) {
     $output .= '<a class="cl-button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
 }
 
-$output .= '</div>'; // #block
+$output .= '</div>'; // .block
+$output .= '</div>'; // .overlay
 
 $poster = '<img id="' . $vid . '" class="poster" src="' . $poster . '" ';
 
@@ -36,4 +37,4 @@ if (!empty($end)) {
 $poster .= '>';
 
 $output .= $poster;
-$output .= '</div>'; // #overlay
+$output .= '</div>'; // .hero
