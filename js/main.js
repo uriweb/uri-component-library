@@ -12,7 +12,7 @@ $(function(){
         $('#window-mask').addClass('visible');
     });
 
-    $(window).click(function(){
+    $(window).on('click', function(){
         $('#globalnav').removeClass('revealed');
         $('#window-mask').removeClass('visible');
     });
