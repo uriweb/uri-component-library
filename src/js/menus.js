@@ -1,6 +1,6 @@
 /* ======= MENUS ======= */
 
-(function($){
+(function(){
     
     'use strict';
     
@@ -9,18 +9,26 @@
     function initCLMenus() {
         
         // Since we have JS, let's hide any nested menus
-        $('.cl-menu ul').each(function(){
-            console.log('ok');
-            $(this).hide();
+        document.querySelectorAll('.cl-menu ul').forEach(function(el){
+            el.style.display = 'none';
         });
 
-        // Append dropdown arrows, bind click event to submenu triggers, and control the submenu
-        $('.cl-menu span').append('<div class="arrow"></div>').click(function(){
-            var el = $(this).parent();
-            $(el).find('.arrow').eq(0).toggleClass('on');
-            $(el).find('ul').eq(0).slideToggle(150);
+        // Append dropdown arrows, bind click event to submenu triggers, and control the submenu                               
+        var spans = document.querySelectorAll('.cl-menu span');
+        spans.forEach(function(el){
+            el.addEventListener('click', function() {
+                var ul = this.parentNode.querySelector('ul'),
+                    arrow = this.querySelector('.arrow');
+                
+                ul.style.display = ul.style.display === 'none' ? 'block' : 'none';
+                arrow.classList.contains('on') ? arrow.classList.remove('on') : arrow.classList.add('on');
+            });
+            
+            var arrow = document.createElement('div');
+            arrow.className = 'arrow';
+            el.appendChild(arrow);
         });
         
     };
     
-})(jQuery);
+})();
