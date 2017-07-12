@@ -1,5 +1,8 @@
 /* ======= HEROS ======= */
 
+.cl-hero * {
+    box-sizing: border-box;
+}
 
 .cl-hero {
     & {
@@ -10,6 +13,7 @@
         background: #000;
         transition: height .2s ease-in-out;
         z-index: 1;
+        box-sizing: border-box;
     }
 
     &.fullscreen {

@@ -1,8 +1,13 @@
 /* ======= VIDEOS ======= */
 
 
+div.cl-video * {
+    box-sizing: border-box;
+}
+
 div.cl-video,
 div.cl-video img {
+    box-sizing: border-box;
     width: 100%;
 }
 

@@ -1,11 +1,16 @@
 /* ======= CARDS ======= */
 
+.cl-card *, .cl-dcard * {
+    box-sizing: border-box;
+}
+
 .cl-card,
 .cl-dcard {
     display: inline-block;
     width: 100%;
     background: $white !important;
     box-shadow: $level1;
+    box-sizing: border-box;
     color: $darkgrey !important;
     //font-family: "Open Sans", sans-serif !important;
     border-radius: .2rem;

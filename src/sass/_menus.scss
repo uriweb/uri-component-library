@@ -1,11 +1,21 @@
 /* ======= MENUS ======= */
 
+ul.cl-menu * {
+    box-sizing: border-box;
+}
 
 ul.cl-menu {
 
     & {
         width: 100%;
         max-width: 300px;
+        margin: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+    }
+    
+    li {
+        margin: 0;
     }
 
     li:not(:first-child) {
@@ -64,7 +74,8 @@ ul.cl-menu {
     }
 
     ul {
-        margin-left: 5%;
+        margin: 0 0 0 5%;
+        list-style-type: none;
     }
 
 }
@@ -96,7 +107,7 @@ ul.cl-menu.bar {
     }
     
     ul {
-        margin-left: 0;
+        margin: 0;
         position: absolute;
         background: $white;
         min-width: 100%;

@@ -1,8 +1,12 @@
 /* ======= TILES ======= */
 
+.cl-tiles * {
+    box-sizing: border-box;
+}
 
 .cl-tiles {
     width: 100%;
+    box-sizing: border-box;
 }
 
 .cl-tiles:after {

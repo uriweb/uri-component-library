@@ -1,8 +1,13 @@
 /* ======= BUTTONS ======= */
 
+a.cl-button * {
+    box-sizing: border-box;
+}
+
 a.cl-button {
     & {
         display: block !important;
+        box-sizing: border-box;
         margin: 1.2rem 0;
         padding: 1rem 0;
         max-width: 300px;

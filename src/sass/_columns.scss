@@ -1,8 +1,13 @@
 /* ======= COLUMNS ======= */
 
+.cl-cols * {
+    box-sizing: border-box;
+}
+
 .cl-cols {
     display: block;
     margin-bottom: 50px;
+    box-sizing: border-box;
 }
 
 .cl-cols>div {

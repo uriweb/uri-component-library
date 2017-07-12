@@ -1,7 +1,12 @@
 /* ======= BOXOUTS ======= */
 
+.cl-boxout * {
+    box-sizing: border-box;
+}
+
 .cl-boxout {
     display: block;
+    box-sizing: border-box;
     width: 100%;
     padding: 6% 5% !important;
     background: #eee; //#e5ebf4;
