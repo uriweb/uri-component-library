@@ -325,7 +325,7 @@
     
 }
 
-@media screen and (min-width: $break2) {
+@media screen and print and (min-width: $break2) {
     
     // Reset previous break
     .cl-tiles, .cl-tiles.square {
@@ -466,7 +466,7 @@
 }
 
 // Static p line-height at full width
-@media screen and (min-width: $break3){
+@media screen and print and (min-width: $break3){
     .cl-tiles>div>p {
         line-height: 1.5rem;
     }

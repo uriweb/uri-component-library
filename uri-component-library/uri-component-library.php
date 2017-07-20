@@ -27,7 +27,7 @@ function uri_cl_enqueues() {
     wp_enqueue_script('uricl-js');
     
 }
-uri_cl_enqueues();
+add_action('wp_enqueue_scripts', 'uri_cl_enqueues');
 
 // Include shortcodes
 include( plugin_dir_path( __FILE__ ) . 'inc/cl-shortcodes.php');

@@ -1,0 +1,33 @@
+/* ==============================
+   PRINT
+   ============================== */
+
+
+#printheader {
+    display: none;
+}
+
+@media print {
+    
+    #globalheader,
+    #globalnav {
+        display: none;
+    }
+    
+    #printheader {
+        display: block;
+        padding: 4% 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    #printheader h3 {
+        float: right;
+    }
+
+    main {
+        width: 100%;
+        padding: 0 5%;
+        margin-top: 50px;
+    }
+    
+}

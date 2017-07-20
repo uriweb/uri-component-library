@@ -167,6 +167,7 @@ a {
 .cl-card .cl-button {
     display: block !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin-top: 2rem !important;
     padding: calc(1.5% + 1em) 0 !important;
     background: inherit !important;
