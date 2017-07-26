@@ -73,7 +73,12 @@ b {
 }
 
 i {
+    font-style: italic;
+}
+
+.attributes i {
     color: rgba(0,0,0,.5);
+    font-style: normal;
 }
 
 em {
@@ -108,6 +113,30 @@ blockquote {
     font-style: italic;
     font-size: 1rem;
     line-height: 1.5rem;
+}
+
+ul.list {
+    position: relative;
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
+ul.list li {
+    width: 100%;
+    max-width: 600px;
+    padding-bottom: 2rem;
+}
+
+ul.list li:before {
+    position: absolute;
+    left: 0;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #2277b3;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
 }
 
 xmp {

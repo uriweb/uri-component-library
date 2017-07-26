@@ -153,35 +153,37 @@
                     <h4>Shortcode Support</h4>
                     <p>Heros can be implemented with the shortcode <code class='shortcode'>cl-hero</code></p>
                     <p class="code shortcode">[cl-hero headline="A Great Hero" vid="aK9iLeL5l_c" img="sampleimage.jpg"]</p>
-                    <h5>Attributes</h5>
                     
-                    <p><b>img</b> <i>(string) (required)</i></p>
-                    <p class='indent'>The source URL for the hero image or poster image, if <b>vid</b> is set.</p>
-                    
-                    <p><b>vid</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>Set the YouTube video ID to create a video hero.<br /><i>(default value: none)</i></p>
-                    
-                    <p><b>dynamic</b> <i>(bool) (optional)</i></p>
-                    <p class='indent'>Set to make an image hero dynamic; this will be ignored if <b>vid</b> is set.<br /><i>(default value: <code class="bool">false</code>)</i></p>
-                    
-                    <p><b>zoom</b> <i>(num) (optional)</i></p>
-                    <p class='indent'>Set a custom zoom factor for a dynamic image hero; <b>dynamic</b> must be <code class="bool">true</code> to have effect.<br /><i>(default value: <code class="num">1.25</code>)</i></p>
-                    
-                    <p><b>headline</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for a headline<br /><i>(default value: none)</i></p>
-                    
-                    <p><b>subhead</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for a subhead<br /><i>(default value: none)</i></p>
-                    
-                    <p><b>link</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>Set a URL to create a button.<br /><i>(default value: none)</i></p>
-                    
-                    <p><b>button</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
-                    
-                    <p><b>tooltip</b> <i>(string) (optional)</i></p>
-                    <p class='indent'>The title attribute for the button<br /><i>(default value: none)</i></p>
-                
+                    <div class="attributes">
+                        <h5>Attributes</h5>
+
+                        <p><b>img</b> <i>(string) (required)</i></p>
+                        <p class='indent'>The source URL for the hero image or poster image, if <b>vid</b> is set.</p>
+
+                        <p><b>vid</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>Set the YouTube video ID to create a video hero.<br /><i>(default value: none)</i></p>
+
+                        <p><b>dynamic</b> <i>(bool) (optional)</i></p>
+                        <p class='indent'>Set to make an image hero dynamic; this will be ignored if <b>vid</b> is set.<br /><i>(default value: <code class="bool">false</code>)</i></p>
+
+                        <p><b>zoom</b> <i>(num) (optional)</i></p>
+                        <p class='indent'>Set a custom zoom factor for a dynamic image hero; <b>dynamic</b> must be <code class="bool">true</code> to have effect.<br /><i>(default value: <code class="num">1.25</code>)</i></p>
+
+                        <p><b>headline</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>The text for a headline<br /><i>(default value: none)</i></p>
+
+                        <p><b>subhead</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>The text for a subhead<br /><i>(default value: none)</i></p>
+
+                        <p><b>link</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>Set a URL to create a button.<br /><i>(default value: none)</i></p>
+
+                        <p><b>button</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>The text for the button<br /><i>(default value: <code class="string">'Explore'</code>)</i></p>
+
+                        <p><b>tooltip</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>The title attribute for the button<br /><i>(default value: none)</i></p>
+                    </div>
                 </article>
                 
             </section>
