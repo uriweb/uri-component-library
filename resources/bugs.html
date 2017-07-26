@@ -267,7 +267,7 @@ A second paragraph.[cl-button][/cl-boxout][cl-card title="Sample" body="Here's a
             <section id="anchors">
                 <h2>Anchors with inline content</h2>
                 <h3>Cards</h3>
-                <a href="#anchors-case1"><h4 id="anchors-case1">Case 1</h4></a>
+                <a href="#anchors-case1"><h4 id="anchors-case1">#Case 1</h4></a>
                 <p>When hard-coding cards, WordPress will wrap the header and paragraph in one card, the button in another, and add an empty card before the whole thing.</p>
 <xmp class="prettyprint linenums"><a href="#" class="cl-card">
     <h1>Card</h1>
@@ -296,6 +296,39 @@ A second paragraph.[cl-button][/cl-boxout][cl-card title="Sample" body="Here's a
     <a href="#" class="cl-card">
         <span class="cl-button">Button</span>
         <br>
+    </a>
+</p></xmp>
+                    </div>
+                </div>
+                
+                <a href="#anchors-case2"><h4 id="anchors-case2">#Case 2</h4></a>
+                <p>Writing the card HTML on one line produces even stranger results.</p>
+<xmp class="prettyprint linenums"><a href="#" class="cl-card"><h1>Card</h1><p>Some card text</p><span class="cl-button">Button</span></a></xmp>
+                <div class="cl-tiles halves">
+                    <div>
+                        <h4>Expected</h4>
+<xmp class="prettyprint linenums"><a href="#" class="cl-card">
+    <h1>Card</h1>
+    <p>Some card text</p>
+    <span class="cl-button">Button</span>
+</a></xmp>
+                    </div>
+                    <div>
+                        <h4>Actual</h4>
+<xmp class="prettyprint linenums"><p>
+    <a href="#" class="cl-card">
+        <br>
+    </a>
+</p>
+<h1>
+    <a href="#" class="cl-card">Card</a>
+</h1>
+<a href="#" class="cl-card">
+    <p>Some card text</p>
+</a>
+<p>
+    <a href="#" class="cl-card">
+        <span class="cl-button">Button</span>
     </a>
 </p></xmp>
                     </div>
