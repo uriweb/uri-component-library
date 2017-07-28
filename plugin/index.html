@@ -26,20 +26,28 @@
             <p>Download the latest component library plugin.</p>
             
             <section>
-                <div class="cl-tiles thirds">
-                    <div>
-                        <h3>Details</h3>
-                        <ul class="construction-list">
-                            <li>Version: 1.0</li>
-                            <li>Build: 17.0727</li>
-                            <li>Compressed: 27 KB</li>
-                            <li>Uncompressed: 104 KB</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a class="cl-button prominent" href="uri-component-library.zip">Download</a>
-                    </div>
-                </div>
+                    <h3>Download the plugin package</h3>
+                    <ul class="construction-list">
+                        <li>Version: 1.0</li>
+                        <li>Build: 17.0727</li>
+                        <li>Compressed: 27 KB</li>
+                        <li>Uncompressed: 104 KB</li>
+                    </ul>
+                    <a class="cl-button prominent" href="uri-component-library.zip">Download</a>
+            </section>
+            
+            <section>
+                <h3>Use the hosted version</h3>
+                <p>The lastest version of the component library styles is hosted on BitBucket.  Keep in mind that this will only get you the styles &mdash; no shortcode support or anything else.  You'll have to write straight-up HTML.</p>
+                <p>To use, place this in the custom CSS field in WordPress:</p>
+                <xmp class="prettyprint">
+@import url('http://uriweb.bitbucket.io/plugin/hosted/cl.built.css') all;
+                </xmp>
+                <p>If your site's running the Department Theme, you'll also need to include a patch to make the component library a bit more compatibile with existing styles:</p>
+                <xmp class="prettyprint">
+@import url('http://uriweb.bitbucket.io/plugin/hosted/clpatch.built.css') all;
+                </xmp>
+                <p>That's it!  Happy componenting.</p>
             </section>
             
         </main>
