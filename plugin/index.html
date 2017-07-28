@@ -23,9 +23,14 @@
         <main>
             
             <h1>Plugin</h1>
-            <p>Download the latest component library plugin.</p>
+            <p>Get the latest component library plugin.</p>
             
-            <section>
+            <ul id="localnav">
+                <li><a href="#plugin">Plugin Package</a></li>
+                <li><a href="#hosted">Hosted Version</a></li>
+            </ul>
+            
+            <section id="plugin">
                     <h3>Download the plugin package</h3>
                     <ul class="construction-list">
                         <li>Version: 1.0</li>
@@ -36,10 +41,10 @@
                     <a class="cl-button prominent" href="uri-component-library.zip">Download</a>
             </section>
             
-            <section>
+            <section id="hosted">
                 <h3>Use the hosted version</h3>
-                <p>The lastest version of the component library styles is hosted on BitBucket.  Keep in mind that this will only get you the styles &mdash; no shortcode support or anything else.  You'll have to write straight-up HTML.</p>
-                <p>To use, place this in the custom CSS field in WordPress:</p>
+                <p>Installing the component libary as a plugin is the recommended way to go.  However, sometimes that's not always possible.  For that reason, the lastest version of the component library styles is hosted on BitBucket.  Keep in mind that this will only get you the styles &mdash; no shortcode support or anything else.  You'll have to write straight-up HTML.</p>
+                <p>If you're okay with that, <b>place this in the custom CSS field in WordPress:</b></p>
                 <xmp class="prettyprint">
 @import url('http://uriweb.bitbucket.io/plugin/hosted/cl.built.css') all;
                 </xmp>
