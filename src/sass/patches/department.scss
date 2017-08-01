@@ -27,3 +27,7 @@ $library: '.cl-tiles, .cl-card, .cl-dcard, .cl-boxout, .cl-panel';
     }
     
 }
+
+.cl-panel figure {
+    margin-bottom: 0 !important;
+}

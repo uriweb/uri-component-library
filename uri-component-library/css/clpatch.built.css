@@ -11,6 +11,6 @@ AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>
 ==============================================
 */
 
-.cl-tiles p,.cl-card p,.cl-dcard p,.cl-boxout p,.cl-panel p{margin-bottom:0}#mainpage .subcol .cl-tiles p,#mainpage .subcol .cl-card p,#mainpage .subcol .cl-dcard p,#mainpage .subcol .cl-boxout p,#mainpage .subcol .cl-panel p{font-size:.8rem;line-height:1.5;margin-bottom:0;padding-top:1rem;color:inherit}
+.cl-tiles p,.cl-card p,.cl-dcard p,.cl-boxout p,.cl-panel p{margin-bottom:0}#mainpage .subcol .cl-tiles p,#mainpage .subcol .cl-card p,#mainpage .subcol .cl-dcard p,#mainpage .subcol .cl-boxout p,#mainpage .subcol .cl-panel p{font-size:.8rem;line-height:1.5;margin-bottom:0;padding-top:1rem;color:inherit}.cl-panel figure{margin-bottom:0 !important}
 
 /*# sourceMappingURL=map/clpatch.built.css.map */
