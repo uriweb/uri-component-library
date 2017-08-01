@@ -5,7 +5,7 @@ Tags: plugins
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.0
-Build: 17.0727
+Build: 17.0801
 
 Component Library
 
