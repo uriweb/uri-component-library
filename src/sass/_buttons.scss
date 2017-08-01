@@ -10,7 +10,7 @@ a.cl-button {
         box-sizing: border-box;
         margin: 1.2rem 0;
         padding: 1rem 0;
-        max-width: 300px;
+        max-width: $maxcardwidth;
         width: 100%;
         background: $white;
         border: 1px solid $grey !important;
