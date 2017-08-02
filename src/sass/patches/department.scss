@@ -31,3 +31,12 @@ $library: '.cl-tiles, .cl-card, .cl-dcard, .cl-boxout, .cl-panel';
 .cl-panel figure {
     margin-bottom: 0 !important;
 }
+
+.cl-notice h1 {
+    font-family: 'Arial', sans-serif !important;
+}
+
+.cl-notice p {
+    margin-bottom: 0 !important;
+    margin-top: .8rem !important;
+}
