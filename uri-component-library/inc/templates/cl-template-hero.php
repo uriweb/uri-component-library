@@ -14,6 +14,10 @@ if (!empty($subhead)) {
     $output .= '<p>' . $subhead . '</p>';
 }
 
+if (empty($tooltip)) {
+    $tooltip = $button;
+}
+
 if (!empty($link)) {
     $output .= '<a class="cl-button" href="' . $link . '" title="' . $tooltip . '">' . $button . '</a>';
 }

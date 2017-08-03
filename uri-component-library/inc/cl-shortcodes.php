@@ -9,6 +9,7 @@
  * - Card (Action)
  * - Card (Detail)
  * - Hero
+ * - Notice
  * - Panel
  * - Tiles
  *
@@ -45,7 +46,7 @@ function uri_cl_shortcode_button( $atts ) {
 		array(
             'text' => 'Explore',
 			'link' => '#',
-            'tooltip' => 'Explore',
+            'tooltip' => '',
             'prominent' => false
 		), $atts )
 	);
@@ -131,6 +132,26 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
+
+
+/**
+ * Notice
+ */
+function uri_cl_shortcode_notice( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'title' => '',
+            'urgent' => false
+		), $atts )
+	);
+    
+    include 'templates/cl-template-notice.php';
+    return $output;
+
+}
+add_shortcode( 'cl-notice', 'uri_cl_shortcode_notice' );
 
 
 /**

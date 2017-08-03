@@ -21,7 +21,7 @@ a.cl-button {
         text-transform: uppercase;
         text-align: center;
         color: $blue !important;
-        text-decoration: none;
+        text-decoration: none !important;
         transition: all .2s ease-in-out;
         text-shadow: none;
     }
