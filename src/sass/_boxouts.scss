@@ -8,6 +8,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
+    max-width: $maxcardwidth;
     padding: 6% 5% !important;
     background: #eee; //#e5ebf4;
     border-radius: .2rem;
@@ -30,24 +31,16 @@
         float: right;
         margin: 0 0 2rem 2rem;
     }
-    .cl-cols .cl-boxout {
-        width: 45%;
-    }
 }
 
-@media screen and (min-width: $break2) {
-    .cl-cols .cl-boxout {
-        width: 100%;
-    }
-}
 
 @media screen and (min-width: $maxcardwidth) {
     .cl-boxout {
-        max-width: $maxcardwidth;
+        
     }
 }
     
-.cl-cols, .cl-tiles {
+.cl-tiles {
     .cl-boxout {
         margin-bottom: 1rem;
         display: block;

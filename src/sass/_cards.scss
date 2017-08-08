@@ -18,7 +18,7 @@
     transition: width .2s ease-in-out;
 }
 
-.cl-cols, .cl-tiles {
+.cl-tiles {
     .cl-card,
     .cl-dcard {
         margin-bottom: 1rem;
@@ -34,19 +34,6 @@
     }
 }
 
-@media screen and (min-width: $break1) {
-    .cl-cols .cl-card,
-    .cl-cols .cl-dcard {
-        width: 45%;
-    }
-}
-
-@media screen and (min-width: $break2) {
-    .cl-cols .cl-card,
-    .cl-cols .cl-dcard {
-        width: 100%;
-    }
-}
 
 @media screen and (min-width: $maxcardwidth) {
     .cl-card,
@@ -79,7 +66,6 @@ a {
 }
     
 .cl-card h1,
-.cl-cols .cl-card h1,
 .cl-tiles .cl-card h1 {
     //font-family: $header !important;
     font-size: 1.3rem !important;
@@ -92,20 +78,17 @@ a {
 }
 
 .cl-card p,
-.cl-cols .cl-card p,
 .cl-tiles .cl-card p {
     padding: 1rem 1.2rem 0 !important;
     font-size: .8rem !important;
 }
 
 .cl-card p:first-of-type,
-.cl-cols .cl-card p:first-of-type,
 .cl-tiles .cl-card p:first-of-type {
     padding-top: 1.2rem !important;
 }
 
 .cl-card p:last-child,
-.cl-cols .cl-card p:last-child,
 .cl-tiles .cl-card p:last-child {
     padding-bottom: 2rem !important;
 }
@@ -114,7 +97,6 @@ a {
 /* Action Cards */
 
 .cl-card img,
-.cl-cols .cl-card img,
 .cl-tiles .cl-card img {
     width: 100% !important;
     height: auto !important;
@@ -130,7 +112,6 @@ a {
 }
 
 .cl-dcard img,
-.cl-cols .cl-dcard img,
 .cl-tiles .cl-dcard img {
     float: right !important;
     width: 30% !important;
@@ -138,7 +119,6 @@ a {
 }
 
 .cl-dcard h1,
-.cl-cols .cl-dcard h1,
 .cl-tiles .cl-dcard h1 {
     //font-family: $header !important;
     font-size: .8rem !important;
@@ -150,14 +130,12 @@ a {
 }
 
 .cl-dcard p,
-.cl-cols .cl-dcard p,
 .cl-tiles .cl-dcard p {
     padding: .5rem 1rem .1rem !important;
     font-size: .7rem !important;
 }
 
 .cl-dcard p:last-child,
-.cl-cols .cl-dcard p:last-child,
 .cl-tiles .cl-dcard p:last-child {
     padding-bottom: 1rem !important;
 }

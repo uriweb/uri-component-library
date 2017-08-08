@@ -58,7 +58,6 @@ a.cl-button {
 }
 
 .cl-tiles>div,
-.cl-cols>div,
 .cl-boxout,
 .cl-panel {
     
@@ -104,18 +103,10 @@ a.cl-button {
     }
 }
 
-@media screen and (min-width: $break1) {
-    
-    .cl-cols>div a.cl-button {
-        width: 45%;
-    }
-    
-}
-
 @media screen and (min-width: $break2) {
     
-    .cl-cols>div,
-    .cl-boxout {
+    .cl-boxout,
+    .cl-panel {
         
         a.cl-button {
             width: 100%;

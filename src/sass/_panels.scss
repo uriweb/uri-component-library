@@ -8,6 +8,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
+    max-width: $maxcardwidth;
     margin-bottom: 40px;
     background: #eee !important;
     border: 2px solid $white;
