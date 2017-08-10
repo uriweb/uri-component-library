@@ -1,0 +1,54 @@
+/* ======= WAVES ======= */
+
+$wavecolor: #f8f8f8;
+
+.cl-wave {
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    width: 100vw;
+    height: 0;
+    z-index: 10;
+}
+
+.cl-wave * {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-repeat: repeat;
+    background-position: 0 top;
+    height: 0;
+}
+
+.cl-wave.top * {
+    top: 0;
+}
+
+.cl-wave.bottom * {
+    bottom: 0;
+}
+
+.cl-wave.top *:first-child {
+    padding-bottom: 10%; /* Must be 10% of background x-size */
+    background-size: 120% 200%;
+    background-image: radial-gradient(farthest-corner at 75% -40.5%, $wavecolor 38.6%, transparent 38.6%);
+}
+
+.cl-wave.top *:last-child {
+    padding-bottom: 4.05%; /* Must be 4.05% of background x-size */
+    background-size: 120% 100%;
+    background-image: radial-gradient(farthest-corner at 25% 1400%, transparent 69.8%, $wavecolor 69.8%);
+}
+
+.cl-wave.bottom *:first-child {
+    padding-bottom: 4.05%; /* Must be 4.05% of background x-size */
+    background-size: 120% 100%;
+    background-image: radial-gradient(farthest-corner at 75% -1400%, transparent 70.1%, $wavecolor 70.1%);
+}
+.cl-wave.bottom *:last-child {
+    padding-bottom: 12%; /* Must be 12% of background x-size */
+    background-size: 120% 200%;
+    background-image: radial-gradient(farthest-corner at 25% 270%, $wavecolor 66.38%, transparent 66.38%);
+}

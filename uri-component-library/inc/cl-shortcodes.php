@@ -12,6 +12,7 @@
  * - Notice
  * - Panel
  * - Tiles
+ * - Waves
  *
  */
 
@@ -196,4 +197,25 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
+
+
+/**
+ * Waves
+ */
+function uri_cl_shortcode_waves( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'placement' => 'bottom',
+			'offset' => '',
+            'color' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-waves.php';
+    return $output;
+
+}
+add_shortcode( 'cl-waves', 'uri_cl_shortcode_waves' );
 
