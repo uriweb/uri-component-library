@@ -22,13 +22,11 @@ $wavecolor: #f8f8f8;
     height: 0;
 }
 
-.cl-wave.top * {
-    top: 0;
-}
 
 .cl-wave.bottom * {
     bottom: 0;
 }
+
 
 .cl-wave.top *:first-child {
     padding-bottom: 10%; /* Must be 10% of background x-size */
@@ -52,3 +50,4 @@ $wavecolor: #f8f8f8;
     background-size: 120% 200%;
     background-image: radial-gradient(farthest-corner at 25% 270%, $wavecolor 66.38%, transparent 66.38%);
 }
+
