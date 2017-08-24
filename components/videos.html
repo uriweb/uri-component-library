@@ -30,12 +30,13 @@
             <p>Videos description</p>
             
             <ul id="localnav">
+                <li><a href="#design">Design</a></li>
                 <li><a href="#usage">Usage</a></li>
             </ul>
             
-            <section id="usage">
+            <section id="design">
                 
-                <h2>Usage</h2>
+                <h2>Design</h2>
                 <p>Videos are implemented with the class <code class="class">cl-video</code></p>
                 <p>Videos require a poster image.  Create a poster with the class <code class="class">poster</code>.  The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
                 <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=nHlHUqevKcg</code>, create the poster with the id <code class="id">nHlHUqevKcg</code>.</p>
@@ -60,31 +61,50 @@
                 </article>
                 
                 <article>
-                    <h4>Videos can be tiles, or live inside them.</h4>
-                    <xmp class="prettyprint">
-<div class="cl-tiles thirds">
-    <div class="cl-video">
-        <img id="[video id]" src="poster.jpg">
-    </div>
-    <div class="cl-video">
-        <img id="[video id]" src="poster.jpg">
-    </div>
-    ...
-</div>
-                    </xmp>
-                    <div class="cl-tiles thirds">
-                        <div class="cl-video">
-                            <img id="N4Ipqca9scU" src="../media/assets/video-default.jpg">
-                        </div>
-                        <div class="cl-video">
-                            <img id="edcPdZfi5X8" src="../media/assets/video-default.jpg">
-                        </div>
-                        <div class="cl-video">
-                            <img id="nptwT57w12U" src="../media/assets/video-default.jpg">
-                        </div>
+                    <h4>Shortcode Support</h4>
+                    <p>Videos can be implemented with the shortcode <code class='shortcode'>cl-video</code></p>
+                    <p class="code shortcode">[cl-video vid="aK9iLeL5l_c" img="sampleimage.jpg" aspect="4:3"]</p>
+                    
+                    <div class="attributes">
+                        <h5>Attributes</h5>
+                        
+                        <p><b>vid</b> <i>(string) (required)</i></p>
+                        <p class='indent'>The YouTube video ID</p>
+
+                        <p><b>img</b> <i>(string) (required)</i></p>
+                        <p class='indent'>The source URL for the poster image</p>
+
+                        <p><b>aspect</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>Set to specify an aspect ratio other than 16:9<br /><i>(default value: none)</i></p>
                     </div>
                 </article>
-                
+            </section>
+            
+            <section id="usage">
+                <h2>Usage</h2>
+                <h4>Videos can be tiles, or live inside them.</h4>
+                <xmp class="prettyprint">
+<div class="cl-tiles thirds">
+<div class="cl-video">
+    <img id="[video id]" src="poster.jpg">
+</div>
+<div class="cl-video">
+    <img id="[video id]" src="poster.jpg">
+</div>
+...
+</div>
+                </xmp>
+                <div class="cl-tiles thirds">
+                    <div class="cl-video">
+                        <img id="N4Ipqca9scU" src="../media/assets/video-default.jpg">
+                    </div>
+                    <div class="cl-video">
+                        <img id="edcPdZfi5X8" src="../media/assets/video-default.jpg">
+                    </div>
+                    <div class="cl-video">
+                        <img id="nptwT57w12U" src="../media/assets/video-default.jpg">
+                    </div>
+                </div>
                 
             </section>
             

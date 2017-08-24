@@ -12,6 +12,7 @@
  * - Notice
  * - Panel
  * - Tiles
+ * - Video
  * - Waves
  *
  */
@@ -197,6 +198,28 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
+
+
+/**
+ * Video
+ */
+function uri_cl_shortcode_video( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'vid' => '',
+            'img' => '',
+            'alt' => '',
+            'aspect' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-video.php';
+    return $output;
+
+}
+add_shortcode( 'cl-waves', 'uri_cl_shortcode_video' );
 
 
 /**
