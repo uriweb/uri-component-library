@@ -219,7 +219,7 @@ function uri_cl_shortcode_video( $atts ) {
     return $output;
 
 }
-add_shortcode( 'cl-waves', 'uri_cl_shortcode_video' );
+add_shortcode( 'cl-video', 'uri_cl_shortcode_video' );
 
 
 /**
