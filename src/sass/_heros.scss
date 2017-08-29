@@ -37,6 +37,8 @@
     iframe {
         z-index: 1;
         position: relative;
+        max-width: initial;
+        max-height: initial;
     }
 
     .overlay {
@@ -60,7 +62,7 @@
         position: relative;
         text-align: left;
         //font-family: 'trajan';
-        text-transform: uppercase;
+        //text-transform: uppercase;
         font-weight: 400;
         font-size: 1.8rem !important;
         color: $white !important;
