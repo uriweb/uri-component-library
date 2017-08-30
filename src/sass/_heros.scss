@@ -61,9 +61,8 @@
     h1 {
         position: relative;
         text-align: left;
-        //font-family: 'trajan';
-        //text-transform: uppercase;
-        font-weight: 400;
+        //font-family: $header;
+        font-weight: 700;
         font-size: 1.8rem !important;
         color: $white !important;
         transform: all .2s ease-in-out;
@@ -74,7 +73,7 @@
     p {
         color: #fff !important;
         font-weight: 400 !important;
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
     }
     
     .motionswitch {
@@ -144,7 +143,7 @@
         font-size: 2.2rem !important;
     }
     .cl-hero p {
-        font-size: 1.2rem !important;
+        font-size: 1.3rem !important;
     }
 }
 

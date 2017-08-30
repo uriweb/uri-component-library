@@ -32,9 +32,11 @@ $linkhover: #003287;
 
 /* -- Fonts -- */
 
-@import url('https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700') all;
+// Let the component library adapt to the theme fonts
+// @import url('https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700') all;
 
 $header: "Hind", sans-serif;
+$body: "Open Sans", sans-serif;
 
 /* -- Levels -- */
 
@@ -78,7 +80,6 @@ $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 @import 'tiles';
 @import 'typography';
-@import 'localnav';
 @import 'buttons';
 @import 'boxouts';
 @import 'cards';

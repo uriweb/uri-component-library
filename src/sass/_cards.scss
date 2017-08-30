@@ -12,7 +12,7 @@
     box-shadow: $level1;
     box-sizing: border-box;
     color: $darkgrey !important;
-    //font-family: "Open Sans", sans-serif !important;
+    //font-family: $body !important;
     border-radius: .2rem;
     overflow: hidden !important;
     transition: width .2s ease-in-out;
