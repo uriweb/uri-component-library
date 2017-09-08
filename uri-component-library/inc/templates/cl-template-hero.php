@@ -22,18 +22,14 @@ $output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
 if (!empty($vid)) {
-    $image = '<img id="' . $vid . '" class="poster" src="' . $img . '"';
+    $image = '<div id="' . $vid . '" class="poster"';
 } else if ($dynamic) {
-    $image = '<img class="dynamic" src="' . $img . '"';
+    $image = '<div class="dynamic"';
 } else {
-    $image = '<img src="' . $img . '"';
+    $image = '<div class="still"';
 }
 
-if (is_numeric($zoom) && $zoom != 1.25) {
-    $image .= ' data-zoom="' . $zoom . '"';
-}
-
-$image .= '>';
+$image .= ' style="background-image:url(' . $img . ')"></div>'; // image
 
 $output .= $image;
 $output .= '</div>'; // .hero

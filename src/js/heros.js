@@ -9,6 +9,7 @@
     function initCLHeros(){
         dynamicZoom();
         blurHeroControl();
+        mobile();
     }
 
     
@@ -20,11 +21,8 @@
         var heros = document.querySelectorAll('.cl-hero .dynamic');
         
         heros.forEach(function(el){
-            var zoom = el.getAttribute('data-zoom'),
-                factor = zoom ? zoom : 1.25; // The default zoom factor
-            el.style.width = factor*100 + '%';
-            el.style.top = (1-factor)*100/4 + '%';
-            el.style.left = (1-factor)*100/8 + '%';
+            el.style.backgroundPositionX = '100%';
+            el.style.backgroundPositionY = 0;
         });
         
     }
@@ -54,7 +52,6 @@
         }
 
         function blurHero() {
-            //console.log('blur');
             var p = window.pageYOffset,
                 h = overlay.offsetHeight + offset,
                 b = Math.min(p/h*radius, radius);
@@ -62,6 +59,24 @@
             overlay.style.webkitBackdropFilter = 'blur(' + b + 'px)';
         }
         
+    }
+    
+    function mobile() {
+        
+        var els = document.querySelectorAll('.cl-hero .poster');
+        
+        window.addEventListener('resize', function(){
+            var w = window.innerWidth;
+            if (w < 750) {
+                els.forEach(function(el){
+                    el.style.display = 'block';
+                });
+            } else {
+                els.forEach(function(el){
+                    el.style.display = 'none';
+                });
+            }
+        });
     }
 
 })();

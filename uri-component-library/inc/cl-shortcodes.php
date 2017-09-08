@@ -124,7 +124,6 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'link' => '',
             'vid' => '',
             'dynamic' => false,
-            'zoom' => 1.25,
             'img' => '',
 		), $atts )
 	);

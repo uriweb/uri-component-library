@@ -305,7 +305,9 @@ function onYouTubePlayerAPIReady() {
                 break;
             case -1:
             case 1:
-                uri_vid_heros[event.target.a.id].poster.style.display = 'none';
+                if (window.innerWidth > 750) {
+                    uri_vid_heros[event.target.a.id].poster.style.display = 'none';
+                }
                 break;
         }
     }

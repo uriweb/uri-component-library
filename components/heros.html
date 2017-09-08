@@ -43,17 +43,17 @@
                 <xmp class="prettyprint">
 <div class="cl-hero">
     <div class="overlay"></div>
-    <img id="[video id]" class="poster" src="poster.jpg">
+    <div id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
 </div>
                 </xmp>
                 
                 <div class="cl-hero">
                     <div class="overlay"></div>
-                    <img id="ydD1Wg2B8Vk" class="poster" src="../media/commons/hero_vid_poster.jpg">
+                    <div id="ydD1Wg2B8Vk" class="poster" style="background-image:url(../media/native/baycampus_1.jpg)"></div>
                 </div>
                 
                 <article>
-                    <p>In its most basic form, the overlay prevents any user interaction with the video.  The overlay <code class="tag">&lt;div&gt;</code> can be empty, or it can contain a block of content as described below. The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster is replaced by the video.</p>
+                    <p>In its most basic form, the overlay prevents any user interaction with the video.  The overlay <code class="tag">&lt;div&gt;</code> can be empty, or it can contain a block of content as described below. The poster is a placeholder for the video in the event that the video cannot be loaded.  The poster hidden if the video loads successfully, but remains before the video in the DOM.</p>
                     <h4>Add overlay content.</h4>
                     <p>To overlay content, such as a headline, subheading, and button, create a content block inside the overlay using the class <code class="class">block</code>.  The content will appear superimposed on the video.</p>
                     <xmp class="prettyprint">
@@ -65,7 +65,7 @@
             <a class="cl-button" href="#">Button</a>
         </div>
     </div>
-    <img id="[video id]" class="poster" src="poster.jpg">
+    <div id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
 </div>
                     </xmp>                
                     <div class="cl-hero">
@@ -76,7 +76,7 @@
                                 <a class="cl-button" href="#">Explore</a>
                             </div>
                         </div>
-                        <img id="K4YDMmWBac4" class="poster" src="../media/commons/hero_vid_poster_2.jpg">
+                        <div id="K4YDMmWBac4" class="poster" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
                     </div>
                 </article>
                 
@@ -88,11 +88,11 @@
                 <p>Image heros are implemented with the class <code class="class">cl-hero</code></p>
                 <xmp class="prettyprint">
 <div class="cl-hero">
-    <img src="hero.jpg">
+    <div class="still" style="background-image:url(hero.jpg)"></div>
 </div>
                 </xmp>
                 <div class="cl-hero">
-                    <img src="../media/commons/hero_vid_poster_2.jpg">
+                    <div class="still" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
                 </div>
                 
                 <article>
@@ -106,27 +106,27 @@
         <p>Subheading</p>
         <a class="cl-button" href="#">Button</a>
     </div>
-    <img src="hero.jpg">
+    <div class="still" style="background-image:url(hero.jpg)"></div>
 </div>
                     </xmp>                
                     <div class="cl-hero">
-                            <div class="block">
-                                <h1>Small state.  Global impact.</h1>
-                                <p>Think big at the University of Rhode Island</p>
-                                <a class="cl-button" href="#">Explore</a>
-                            </div>
-                        <img src="../media/commons/hero_vid_poster_2.jpg">
+                        <div class="block">
+                            <h1>Small state.  Global impact.</h1>
+                            <p>Think big at the University of Rhode Island</p>
+                            <a class="cl-button" href="#">Explore</a>
+                        </div>
+                        <div class="still" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
                     </div>
                 </article>
                 
                 <article>
                     <h4>Image heros can be dynamic.</h4>
                     <p>To add movement to the hero image on page load, add the class <code class="class">dynamic</code> to the image.</p>
-                    <p>When the page is loaded, the image will magnify slightly and focus on an area just left of center. The animation lasts for 10 seconds.</p>
+                    <p>When the page is loaded, the image will shift position.</p>
                     <xmp class="prettyprint">
 <div class="cl-hero">
     ...
-    <img class="dynamic" src="hero.jpg">
+     <div class="dynamic" style="background-image:url(hero.jpg)"></div>
 </div>
                     </xmp>
                     <div class="cl-hero">
@@ -135,19 +135,15 @@
                             <p>Think big at the University of Rhode Island</p>
                             <a class="cl-button" href="#">Explore</a>
                         </div>
-                        <img class="dynamic" src="../media/commons/hero_vid_poster_2.jpg">
+                        <div class="dynamic" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
                     </div>
                 </article>
                 
                 <article>
-                    <h4>Adjust the level of zoom on dynamic heros.</h4>
-                    <p>By default, dynamic heros become 25% larger, or 1.25x original size, at the end of the animation.  To change the zoom factor, set a <code class="attr">data-zoom</code> attribute.  For example, to have the image zoom to 1.5x original size, set the <code class="attr">data-zoom</code> attribute to <code class="string">1.5</code>.</p>
-                    <xmp class="prettyprint">
-<div class="cl-hero">
-    ...
-    <img class="dynamic" src="hero.jpg" data-zoom="1.5">
-</div>
-                    </xmp>
+                    <h4>Direction of motion</h4>
+                    <p>Heros are designed so that the image is initially centered and always covers the entire hero element. Because of this, the direction and distance of motion is dependent on the dimensions of the image and the hero.</p>
+                    <p>If the image is wider than the hero, the image will shift left until the right edge of the image is aligned with the right edge of the hero.  If the image is taller than the hero, the image will shift down until the top edge of the image is aligned with the top edge of the hero. The animation lasts for 10 seconds.</p>
+                    <img class="figure" src="../media/figures/dynamic-hero-images.png" alt="Dynamic hero image movement">
                 </article>
                 
                 <article>
@@ -166,10 +162,7 @@
 
                         <p><b>dynamic</b> <i>(bool) (optional)</i></p>
                         <p class='indent'>Set to make an image hero dynamic; this will be ignored if <b>vid</b> is set.<br /><i>(default value: <code class="bool">false</code>)</i></p>
-
-                        <p><b>zoom</b> <i>(num) (optional)</i></p>
-                        <p class='indent'>Set a custom zoom factor for a dynamic image hero; <b>dynamic</b> must be <code class="bool">true</code> to have effect.<br /><i>(default value: <code class="num">1.25</code>)</i></p>
-
+                        
                         <p><b>headline</b> <i>(string) (optional)</i></p>
                         <p class='indent'>The text for a headline<br /><i>(default value: none)</i></p>
 
