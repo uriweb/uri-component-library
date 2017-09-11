@@ -3,76 +3,72 @@
    ============================== */
 
 
-.comparison>img {
-    width: 100% !important;
-    max-width: 400px;
-    border: 1px dashed #ccc;
-    float: none !important;
-    margin: 0 !important;
-}
+.comparison {
+    &>img {
+        width: 100% !important;
+        max-width: 400px;
+        border: 1px dashed #ccc;
+        float: none !important;
+        margin: 0 !important;
+    }
 
-.comparison>span {
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 10px;
-    padding-top: 10px;
-    font-weight: 700;
-}
+    &>span {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 10px;
+        padding-top: 10px;
+        font-weight: 700;
+    }
 
-.comparison.do>span {
-    border-top: 10px solid #389f3c;
-    color: #389f3c;
-}
+    &.do>span {
+        border-top: 10px solid #389f3c;
+        color: #389f3c;
+    }
 
-.comparison.instead>span {
-    border-top: 10px solid #0097c4;
-    color: #0097c4;
-}
+    &.instead>span {
+        border-top: 10px solid #0097c4;
+        color: #0097c4;
+    }
 
-.comparison.dont>span {
-    border-top: 10px solid #be3535;
-    color: #be3535;
-}
+    &.dont>span {
+        border-top: 10px solid #be3535;
+        color: #be3535;
+    }
 
-.comparison.code {
-    display: flex;
-    align-items: center;
-    margin: 1rem 0;
-}
-
-.comparison.code>div {
-    font-weight: 700;
-    flex-basis: 80px;
-    padding: 1rem 1rem 1rem 0;
-}
-
-.comparison.code.do>div {
-    color: #389f3c;
-}
-
-.comparison.code.instead>div {
-    color: #0097c4;
-}
-
-.comparison.code.dont>div {
-    color: #be3535;
-}
-
-.comparison.code>xmp {
-    padding-left: 2rem;
-    margin: 0;
-}
-
-.comparison.code.do>xmp {
-    border-left: 10px solid #389f3c;
-}
-
-.comparison.code.instead>xmp {
-    border-left: 10px solid #0097c4;
-}
-
-.comparison.code.dont>xmp {
-    border-left: 10px solid #be3535;
-}
-
+    &.code {
+        &{
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        &>div {
+            font-weight: 700;
+            flex-basis: 80px;
+            padding: 1rem 1rem 1rem 0;
+        }
+        &.do>div {
+            color: #389f3c;
+        }
+        &.instead>div {
+            color: #0097c4;
+        }
+        &.dont>div {
+            color: #be3535;
+        }
+        &>xmp {
+            padding-left: 2rem;
+            margin: 0;
+        }
+        &.do>xmp {
+            border-left: 10px solid #389f3c;
+        }
+        &.instead>xmp {
+            border-left: 10px solid #0097c4;
+        }
+        &.dont>xmp {
+            border-left: 10px solid #be3535;
+        }
+    } // .comparisons.code
+    
+} // .comparisons

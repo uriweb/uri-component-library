@@ -3,25 +3,40 @@
    ============================== */
 
 #globalheader {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    line-height: 80px;
-    z-index: 9997;
-    background: #fff;
-    box-shadow: none;
-    padding-left: 250px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #ddd;
-    transition: all .2s ease-in-out;
-}
 
-#globalheader.transparent {
-    background-color: rgba(256,256,256,0.9);
-}
+    & {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        line-height: 80px;
+        z-index: 9997;
+        background: #fff;
+        box-shadow: none;
+        padding-left: 250px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+        transition: all .2s ease-in-out;
+    }
+
+    &.transparent {
+        background-color: rgba(256,256,256,0.9);
+    }
+
+    h1 {
+        display: inline;
+        font-size: 1.3em;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    h1 a {
+        color: #2277b3;
+    }
+    
+} // #globalheader
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
     #globalheader.transparent {
@@ -42,37 +57,6 @@
     cursor: pointer;
 }
 
-#globalheader h1 {
-    display: inline;
-    font-size: 1.3em;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-#globalheader h1 a {
-    color: #2277b3;
-}
-    
-#globalnav { 
-    position: fixed;
-    display: block;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 250px;
-    background: #fff;
-    border-right: 1px solid #ddd;
-    font-size: .8rem;
-    transition: all .2s ease-in-out;
-}
-
-#globalnav.revealed {
-    left: 0;
-}
-
 #identity {
     display: block;
     width: 100%;
@@ -82,47 +66,82 @@
     background-position: 35px 25px;
     background-repeat: no-repeat;
 }
+    
+#globalnav {
 
-#globalnav #gn {
-    margin: auto;
-    padding: 40px 0;
-}
+    & { 
+        position: fixed;
+        display: block;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 250px;
+        background: #fff;
+        border-right: 1px solid #ddd;
+        font-size: .8rem;
+        transition: all .2s ease-in-out;
+    }
 
-#globalnav li {
-    display: block;
-}
+    &.revealed {
+        left: 0;
+    }
 
-#globalnav #gn>li {
-    padding: 30px 20px 20px 35px;
-    color: #333;
-    font-size: .8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: color .1s ease-in-out;
-}
+    #gn {
+        margin: auto;
+        padding: 40px 0;
+    }
 
-#globalnav #gn>li:hover,
-#globalnav #gn>li:focus {
-    color: #2277b3;
-}
+    li {
+        display: block;
+    }
 
-#globalnav li a {
-    display: block;
-    padding: 15px 20px 15px 50px;
-    line-height: 16px;
-    color: #333;
-    transition: background .1s ease-in-out;
-}
+    #gn>li {
+        padding: 30px 20px 20px 35px;
+        color: #333;
+        font-size: .8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color .1s ease-in-out;
+    }
 
-#globalnav li a:hover,
-#globalnav li a:focus {
-    background: #eee;
-}
+    #gn>li:hover,
+    #gn>li:focus {
+        color: #2277b3;
+    }
 
-#globalnav #gn ul {
-    display: none;
-}
+    li a {
+        display: block;
+        padding: 15px 20px 15px 50px;
+        line-height: 16px;
+        color: #333;
+        transition: background .1s ease-in-out;
+    }
+
+    li a:hover,
+    li a:focus {
+        background: #eee;
+    }
+
+    #gn ul {
+        display: none;
+    }
+
+    .gn-icon {
+        display: block;
+        float: left;
+        width: 16px;
+        height: 16px;
+        margin-right: 15px;
+        background-position: 0;
+        background-size: 32px 16px;
+        background-repeat: no-repeat;
+    }
+    
+} //#globalnav
 
 body.nav-layout #gn-layout,
 body.nav-style #gn-style,
@@ -131,17 +150,6 @@ body.nav-writing #gn-writing,
 body.nav-resources #gn-resources,
 body.nav-demos #gn-demos {
     display: block !important;
-}
-
-#globalnav .gn-icon {
-    display: block;
-    float: left;
-    width: 16px;
-    height: 16px;
-    margin-right: 15px;
-    background-position: 0;
-    background-size: 32px 16px;
-    background-repeat: no-repeat;
 }
 
 #gn-layout-tiles .gn-icon {

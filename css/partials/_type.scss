@@ -2,15 +2,26 @@
    TYPE
    ============================== */
 
-@import url(https://fonts.googleapis.com/css?family=Hind:400,600|Open+Sans:400,700|Roboto+Mono) all;
+@import url(https://fonts.googleapis.com/css?family=Hind:400,600|Hind+Siliguri:400,600|Roboto+Mono) all;
 
 @font-face {
     font-family: 'trajan';
     src: url('../fonts/Trajan Pro Bold.ttf') format('truetype');
 }
 
+$type-header: "Hind", sans-serif;
+$type-body: "Hind Siliguri", sans-serif;
+$type-mono: 'Roboto Mono', Courier, monospace;
+
+html {
+    font-family: $type-body;
+    font-weight: normal;
+    font-size: 16px;
+    color: #000;
+}
+
 h1 {
-    font-family: "Hind", sans-serif;
+    font-family: $type-header;
     font-weight: normal;
     font-size: 2.8rem;
     margin-bottom: 3rem;
@@ -18,14 +29,14 @@ h1 {
 }
 
 h2 {
-    font-family: "Hind", sans-serif;
+    font-family: $type-header;
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: #2277b3;
 }
 
 h3 {
-    font-family: "Hind", sans-serif;
+    font-family: $type-header;
     font-weight: 600;
     font-size: 1.4rem;
     color: #555;
@@ -33,14 +44,14 @@ h3 {
 }
 
 h4 {
-    font-family: "Hind", sans-serif;
+    font-family: $type-header;
     font-weight: 700;
     font-size: 1rem;
     color: #000;
     margin: 2.5rem 0 1.3rem;
 }
 h5 {
-    font-family: "Hind", sans-serif;
+    font-family: $type-header;
     font-weight: 300;
     font-size: 1.1rem;
     color: #555;
@@ -51,27 +62,28 @@ h5 {
 }
 
 a.component {
-    font-weight: 600;
-    font-size: .8rem;
-    color: #2277b3;
-    text-decoration: none;
-    padding: 2px 7px;
-    margin: 0 .1rem;
-    border-radius: .25rem;
-    border: 1px solid #e5e5e5;
-    background: #fff;
-    transition: all .2s;
+    & {
+        font-weight: 600;
+        font-size: .8rem;
+        color: #2277b3;
+        text-decoration: none;
+        padding: 2px 7px;
+        margin: 0 .1rem;
+        border-radius: .25rem;
+        border: 1px solid #e5e5e5;
+        background: #fff;
+        transition: all .2s;
+    }
+    &:hover,
+    &:focus {
+        color: #fff;
+        background: #2277b3;
+        border: 1px solid #2277b3;
+    } 
 }
 
-a.component:hover,
-a.component:focus {
-    color: #fff;
-    background: #2277b3;
-    border: 1px solid #2277b3;
-}   
-
 b {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 i {
@@ -88,11 +100,11 @@ em {
 }
 
 section {
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.7;
     padding-top: 1rem;
 }
 p.indent {
@@ -118,34 +130,34 @@ blockquote {
 }
 
 ul.list {
-    position: relative;
-    padding-left: 2rem;
-    margin: 2rem 0;
-}
-
-ul.list li {
-    width: 100%;
-    max-width: 600px;
-    padding-bottom: 2rem;
-}
-
-ul.list li:before {
-    position: absolute;
-    left: 0;
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: 10px solid #2277b3;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-}
+    & {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2rem 0;
+    }
+    li {
+        width: 100%;
+        max-width: 600px;
+        padding-bottom: 2rem;
+    }
+    li:before {
+        position: absolute;
+        left: 0;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 10px solid #2277b3;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+    }
+} // ul.list
 
 xmp {
     display: block;
     width: 100%;
     white-space: pre-wrap;
-    font-family: 'Roboto Mono', Courier, monospace;
+    font-family: $type-mono;
     font-size: .75rem;
 }
 
@@ -158,7 +170,7 @@ xmp li {
 }
 
 code, p.code {
-    font-family: 'Roboto Mono', Courier, monospace;
+    font-family: $type-mono;
     font-weight: normal;
     font-size: .75rem;
     padding: 0 .2rem;
@@ -230,7 +242,7 @@ code {
     &.link {
         color: #555;
     }
-}
+} // code
 
 .prettyprint {
     .atn {
@@ -242,50 +254,51 @@ code {
     .tag {
         color: #0545ac;
     }
-}
+} // .prettyprint
 
 pre .prettyprint .com {
     color: #999;
 }
 
 .type {
-    margin-bottom: 40px;
-    color: #999;
-}
 
-.type.display li {
-    line-height: 60px;
-}
-
-.type.display {
-    h1,h2,h3,h4 {
-        display: inline-block;
-        margin: 0;
-        margin-left: 20px;
+    & {
+        margin-bottom: 40px;
+        color: #999;
     }
-    h1 {
-        font-family: 'trajan', serif;
+
+    &.display li {
+        line-height: 60px;
     }
-}
 
-.type.text li {
-    line-height: 40px;
-}
+    &.display {
+        h1,h2,h3,h4 {
+            display: inline-block;
+            margin: 0;
+            margin-left: 20px;
+        }
+        h1 {
+            font-family: 'trajan', serif;
+        }
+    } // .type.display
 
-.type.text li.initial {
-    color: #20c77a;
-}
-
-.type.text span {
-    margin-left: 20px;
-    color: #000;
-}
-
-.type.text.bold span {
-    font-weight: 600;
-}
-
-.type.text.italic span {
-    font-style: italic;
-}
-
+    &.text {
+        li {
+            line-height: 40px;
+        }
+        li.initial {
+            color: #20c77a;
+        }
+        span {
+            margin-left: 20px;
+            color: #000;
+        }
+        &.bold span {
+            font-weight: 600;
+        }
+        &.italic span {
+            font-style: italic;
+        } 
+    } // .type.text
+    
+} // .type
