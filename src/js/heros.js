@@ -20,10 +20,10 @@
         
         var heros = document.querySelectorAll('.cl-hero .dynamic');
         
-        heros.forEach(function(el){
-            el.style.backgroundPositionX = '100%';
-            el.style.backgroundPositionY = 0;
-        });
+        for(var i=0; i<heros.length; i++){
+            heros[i].style.backgroundPositionX = '100%';
+            heros[i].style.backgroundPositionY = 0;
+        }
         
     }
 
@@ -66,15 +66,15 @@
         var els = document.querySelectorAll('.cl-hero .poster');
         
         window.addEventListener('resize', function(){
-            var w = window.innerWidth;
+            var i, w = window.innerWidth;
             if (w < 750) {
-                els.forEach(function(el){
-                    el.style.display = 'block';
-                });
+                for(i=0; i<els.length; i++){
+                    els[i].classList.remove('unveil');
+                }
             } else {
-                els.forEach(function(el){
-                    el.style.display = 'none';
-                });
+                for(i=0; i<els.length; i++){
+                    els[i].classList.add('unveil');
+                }
             }
         });
     }

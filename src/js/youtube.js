@@ -22,9 +22,12 @@ function onYouTubePlayerAPIReady() {
      */
     function getVids() {
         
-        document.querySelectorAll('.cl-hero .poster').forEach(function(el) {
+        var i, heros = document.querySelectorAll('.cl-hero .poster');
+        
+        for (i=0; i<heros.length; i++) {
             
-            var key = el.getAttribute('id'),
+            var el = heros[i],
+                key = el.getAttribute('id'),
                 parent = el.parentNode,
                 start = el.getAttribute('data-start'),
                 end = el.getAttribute('data-end');
@@ -46,23 +49,24 @@ function onYouTubePlayerAPIReady() {
 
             requireYouTube = true;
 
-        });
-        
-        //console.log('heros', uri_vid_heros);
-        
+        }
+                
 
-        document.querySelectorAll('.cl-video img').forEach(function(el) {
+        var vids = document.querySelectorAll('.cl-video img');
+        
+        for (i=0; i<vids.length; i++) {
 
-            var aspect = 16/9; // Set default aspect
+            var el = vids[i],
+                key = el.getAttribute('id'),
+                parent = el.parentNode,
+                aspect = 16/9; // Set default aspect
+                
 
             if ( el.getAttribute('data-aspect') ) {
                 aspect = el.getAttribute('data-aspect').split(':');
                 aspect = aspect[0]/aspect[1];
             }
             
-            var key = el.getAttribute('id'),
-                parent = el.parentNode;
-
             uri_videos[key] = {
                 'poster' : el,
                 'parent' : parent,
@@ -71,9 +75,7 @@ function onYouTubePlayerAPIReady() {
 
             requireYouTube = true;
 
-        });
-
-        //console.log('videos', uri_videos);
+        }
         
         if ( requireYouTube ) { loadYouTubeAPI(); }
 
@@ -306,7 +308,7 @@ function onYouTubePlayerAPIReady() {
             case -1:
             case 1:
                 if (window.innerWidth > 750) {
-                    uri_vid_heros[event.target.a.id].poster.style.display = 'none';
+                    uri_vid_heros[event.target.a.id].poster.classList.add('unveil');
                 }
                 break;
         }
@@ -320,7 +322,7 @@ function onYouTubePlayerAPIReady() {
     function onHeroError(event) {
         //console.log('hero error', event);
         
-        uri_vid_heros[event.target.a.id].poster.style.display = 'block';
+        uri_vid_heros[event.target.a.id].poster.classList.remove('unveil');
         uri_vid_heros[event.target.a.id].parent.querySelector('.motionswitch').style.display = 'none';
     }
     

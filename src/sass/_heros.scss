@@ -44,6 +44,16 @@
         transition: all 10s ease-in-out;
     }
     
+    .poster {
+        opacity: 1;
+        transition: all .4s ease-in-out;
+    }
+    
+    .poster.unveil {
+        opacity: 0;
+        transition-delay: .5s;
+    }
+    
     .overlay {
         position: absolute;
         height: 100%;

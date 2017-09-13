@@ -7,15 +7,18 @@
     window.addEventListener('load', initCLMenus, false);
     
     function initCLMenus() {
+        var i;
         
         // Since we have JS, let's hide any nested menus
-        document.querySelectorAll('.cl-menu ul').forEach(function(el){
-            el.style.display = 'none';
-        });
+        var uls = document.querySelectorAll('.cl-menu ul');
+        for (i=0; i<uls.length; i++) {
+            uls[i].style.display = 'none';
+        }
 
         // Append dropdown arrows, bind click event to submenu triggers, and control the submenu                               
         var spans = document.querySelectorAll('.cl-menu span');
-        spans.forEach(function(el){
+        for(i=0; i<spans.length; i++) {
+            var el = spans[i];
             el.addEventListener('click', function() {
                 var ul = this.parentNode.querySelector('ul'),
                     arrow = this.querySelector('.arrow');
@@ -27,7 +30,7 @@
             var arrow = document.createElement('div');
             arrow.className = 'arrow';
             el.appendChild(arrow);
-        });
+        }
         
     }
     
