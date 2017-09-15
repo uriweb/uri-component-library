@@ -42,7 +42,7 @@
                 offset = overlay.getBoundingClientRect().top + scroll,
                 radius = 50; // Set the desired blur radius, in pixels
 
-            console.log('overlay', overlay);
+            //console.log('overlay', overlay);
             blurHero();
 
             window.addEventListener('scroll', function(){

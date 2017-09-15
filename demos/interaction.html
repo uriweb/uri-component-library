@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Interaction - Demos - Digital Content Style Guide</title>
+        <link rel="icon" type="image/png" href="../media/assets/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../css/playground.css">
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        
+        <script src="interaction.js"></script>
+        <link rel="stylesheet" type="text/css" href="popout.css">
+        
+    </head>
+	
+	<body class="nav-demos nav-interaction">
+        
+        <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1>Interaction</h1>
+            <p>Description</p>
+            
+            <ul id="localnav">
+                <li><a href="#perspective-hover">Perspective Hover</a></li>
+                <li><a href="#popouts">CSS Popouts</a></li>
+            </ul>
+            
+            <section id="section-name">
+                <h2>Perspective Hover</h2>
+                <p>The position of the element tracks the cursor, and the dropshadow tracks inversely.</p>
+                <p>The radius <i>r</i> of object movement is proportional to the size of the object, given by the average of the width <i>w</i> and height <i>h</i>, such that <i>r</i> = ( <i>w</i> + <i>h</i> ) / 2 * <i>f</i>, where <i>f</i> is the factor of proportionality expressed as a percent.  The radius of box shadow blur is equal to <i>r</i>, and its placement is inversely proportional to <i>r</i>.  Thus, large objects will exhibit greater motion and softer shadows than small objects. Ideal values of <i>f</i> are between 4% and 10%; the default value of <i>f</i> in the examples below is 8%.</p>
+                <p>Experiment with different factors below.  Changes take effect immediately.</p>
+                <p>Factor: <input type="text" id="perspective-factor">%</p>
+                <article>
+                    <div class="cl-tiles thirds">
+                        <a class="cl-card perspective" href="#">
+                            <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
+                            <h1>The Real Deal</h1>
+                            <p>This is a more elaborate card, with a banner image and longer text.  Text should not be too long though&mdash;two or three sentences should be enough to entice user action.</p>
+                            <span class="cl-button">Explore</span>
+                        </a>
+                        <a class="cl-card perspective" href="#">
+                            <img src="../media/native/hero_1.jpg" alt="Card Hero 1">
+                            <h1>The Real Deal</h1>
+                            <p>This is a more elaborate card, with a banner image and longer text.  Text should not be too long though&mdash;two or three sentences should be enough to entice user action.</p>
+                            <span class="cl-button">Explore</span>
+                        </a>
+                        <a class="cl-dcard perspective" href="#">
+                            <h1>The Real Deal</h1>
+                            <p>This is a more elaborate card, with a banner image and longer text.  Text should not be too long though&mdash;two or three sentences should be enough to entice user action.</p>
+                        </a>
+                    </div>
+                </article>
+            </section>
+            
+            <section id="popouts">
+                <h2>CSS Popouts</h2>
+                <p>Click the square</p>
+                <div class="cl-tiles halves">
+                    <div>
+                        <h4>Slide</h4>
+                        <div class="client">
+                            <div class="popout">
+                                <input type="checkbox" class="popout-toggle" id="toggle1">
+                                <label for="toggle1" class="popout-label"><span>Menu</span></label>
+                                <div class="popout-menu">
+                                    <img src="../media/native/hero_2.jpg" alt="students">
+                                    <p>Here's a CSS popout container.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Glide</h4>
+                        <div class="client">
+                            <div class="popout">
+                                <input type="checkbox" class="popout-toggle" id="toggle2">
+                                <label for="toggle2" class="popout-label"><span>Menu</span></label>
+                                <div class="popout-menu glide">
+                                    <img src="../media/native/hero_2.jpg" alt="students">
+                                    <p>Here's a CSS popout container.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+                
+        <footer id="globalfooter">
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>
