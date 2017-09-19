@@ -11,8 +11,7 @@ function onYouTubePlayerAPIReady() {
     'use strict';
 
     var uri_vid_heros = {},
-        uri_videos = {},
-        requireYouTube;
+        uri_videos = {};
 
     window.addEventListener('load', getVids, false);
 
@@ -22,33 +21,40 @@ function onYouTubePlayerAPIReady() {
      */
     function getVids() {
         
-        var i, heros = document.querySelectorAll('.cl-hero .poster');
+        var requireYouTube = false,
+            heroSupport = checkSupport(),
+            heros = document.querySelectorAll('.cl-hero .poster'),
+            i;
         
-        for (i=0; i<heros.length; i++) {
+        if (heroSupport) {
+        
+            for (i=0; i<heros.length; i++) {
+
+                var el = heros[i],
+                    key = el.getAttribute('id'),
+                    parent = el.parentNode,
+                    start = el.getAttribute('data-start'),
+                    end = el.getAttribute('data-end');
+
+                uri_vid_heros[key] = {
+                    'poster' : el,
+                    'parent' : parent,
+                    'w' : parent.offsetWidth,
+                    'h' : parent.offsetHeight,
+                    'start' : start ? start : 0,
+                    'end' : end ? end : -1
+                };
+
+                // Remove poster id and create a new placeholder for the video
+                el.removeAttribute('id');
+                var placeholder = document.createElement('div');
+                placeholder.id = key;
+                parent.appendChild(placeholder);
+
+                requireYouTube = true;
+
+            }
             
-            var el = heros[i],
-                key = el.getAttribute('id'),
-                parent = el.parentNode,
-                start = el.getAttribute('data-start'),
-                end = el.getAttribute('data-end');
-
-            uri_vid_heros[key] = {
-                'poster' : el,
-                'parent' : parent,
-                'w' : parent.offsetWidth,
-                'h' : parent.offsetHeight,
-                'start' : start ? start : 0,
-                'end' : end ? end : -1
-            };
-            
-            // Remove poster id and create a new placeholder for the video
-            el.removeAttribute('id');
-            var placeholder = document.createElement('div');
-            placeholder.id = key;
-            parent.appendChild(placeholder);
-
-            requireYouTube = true;
-
         }
                 
 
@@ -79,6 +85,23 @@ function onYouTubePlayerAPIReady() {
         
         if ( requireYouTube ) { loadYouTubeAPI(); }
 
+    }
+    
+    /*
+     * Check browser support (essentially anything but IE)
+     * @return bool
+     */
+    function checkSupport() {
+        var support = true,
+            ua = navigator.userAgent,
+            msie = ua.indexOf('MSIE '),
+            trident = ua.indexOf('Trident/');
+        
+        if (navigator.appName == 'Microsoft Internet Explorer' || msie > 0 || trident > 0) {
+            support = false;
+        }
+            
+        return support;
     }
 
 
