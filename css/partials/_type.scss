@@ -22,34 +22,43 @@ html {
 
 h1 {
     font-family: $type-header;
-    font-weight: normal;
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
+    font-weight: 600;
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
     color: #000;
+}
+
+h1.super {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 h2 {
     font-family: $type-header;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 2rem;
-    color: #2277b3;
+    color: #000;
+    max-width: 800px;
 }
 
 h3 {
     font-family: $type-header;
     font-weight: 600;
-    font-size: 1.4rem;
-    color: #555;
+    font-size: 1.3rem;
+    color: #000;
     margin-bottom: 1.3rem;
 }
 
 h4 {
     font-family: $type-header;
-    font-weight: 700;
-    font-size: 1rem;
-    color: #000;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #555;
     margin: 2.5rem 0 1.3rem;
 }
+
 h5 {
     font-family: $type-header;
     font-weight: 300;
@@ -58,7 +67,14 @@ h5 {
     margin: 2.5rem 0 .8rem;
     width: 50%;
     border-bottom: 1px solid #ccc;
-    
+}
+
+h6 {
+    font-family: $type-header;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #555;
+    margin: 2.5rem 0 .8rem;
 }
 
 a.component {
@@ -276,9 +292,6 @@ pre .prettyprint .com {
             display: inline-block;
             margin: 0;
             margin-left: 20px;
-        }
-        h1 {
-            font-family: 'trajan', serif;
         }
     } // .type.display
 

@@ -26,7 +26,7 @@ $(function(){
     });
     
     $(document).on('click', '#gn>li', function(){
-        $(this).next().slideToggle('fast');
+        $(this).find('ul').slideToggle('fast');
     });
     
 });

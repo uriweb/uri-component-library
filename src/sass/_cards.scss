@@ -13,7 +13,7 @@
     box-sizing: border-box;
     color: $darkgrey !important;
     //font-family: $body !important;
-    border-radius: .2rem;
+    //border-radius: .2rem;
     overflow: hidden !important;
     transition: width .2s ease-in-out;
 }
@@ -164,8 +164,8 @@ a.cl-card:hover .cl-button,
 a.cl-card:focus .cl-button,
 .cl-card .cl-button:hover,
 .cl-card .cl-button:focus {
-    background: $blue !important;
-    border-top: 1px solid $blue !important;
+    background: $link !important;
+    border-top: 1px solid $link !important;
     color: $white !important;
-    transition: all .1s !important;
+    transition: all .3s !important;
 }

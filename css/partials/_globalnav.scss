@@ -97,8 +97,9 @@
     li {
         display: block;
     }
-
-    #gn>li {
+    
+    #gn>li>span {
+        display: block;
         padding: 30px 20px 20px 35px;
         color: #333;
         font-size: .8rem;
@@ -108,8 +109,8 @@
         transition: color .1s ease-in-out;
     }
 
-    #gn>li:hover,
-    #gn>li:focus {
+    #gn>li>span:hover,
+    #gn>li>span:focus {
         color: #2277b3;
     }
 
@@ -128,6 +129,7 @@
 
     #gn ul {
         display: none;
+        //margin-left: -35px;
     }
 
     .gn-icon {

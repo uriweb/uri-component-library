@@ -21,7 +21,7 @@ $midgold: #ffd453;
 $gold: #c4960c;
 
 $white: #ffffff;
-$lightgrey: #f8f8f8;
+$lightgrey: #fafafa;
 $grey: #dddddd;
 $midgrey: #999999;
 $darkgrey: #555555;
@@ -41,7 +41,7 @@ $body: "Open Sans", sans-serif;
 /* -- Levels -- */
 
 // [x-offset y-offset blur-radius color]
-$level1: 0 .1rem .3rem rgba(0,0,0,0.15);
+$level1: 0 .1rem .3rem rgba(0,0,0,0.1);
 $level2: 0 .3rem 1rem rgba(0,0,0,0.2);
 $level3: 0 .3rem 1rem rgba(0,0,0,0.35);
 

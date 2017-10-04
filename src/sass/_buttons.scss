@@ -28,7 +28,7 @@ a.cl-button {
     
     &.prominent {
         background: $blue;
-        box-shadow: 250px 0px 100px -100px $midblue inset;
+        box-shadow: 250px 0px 100px -100px transparent inset;
         color: $white !important;
         border: none !important;
         padding: 1.09rem 0;
@@ -44,10 +44,10 @@ a.cl-button {
     
     &:hover,
     &:focus {
-        background: $blue;
-        border: 1px solid $blue !important;
+        background: $link;
+        border: 1px solid $link !important;
         color: $white !important;
-        transition: all .1s ease-in-out;
+        transition: all .3s ease-in-out;
     }
     
     &.prominent:hover,
@@ -56,6 +56,7 @@ a.cl-button {
         box-shadow: 350px 0px 50px -100px $link inset;
         border: none !important;
         transition: all 2s $easeOutExpo;
+        color: $white !important;
     }
     
 }
@@ -87,7 +88,7 @@ a.cl-button {
     &:focus {
         background: $white;
         border: none !important;
-        color: $blue !important;
+        color: $link !important;
         top: -3px;
     }
 }
