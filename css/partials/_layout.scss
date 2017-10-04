@@ -8,14 +8,13 @@ body {
 
 header#hero {
     width: 100%;
-    margin-top: 80px;
     padding-left: 250px;
     transition: all .2s ease-in-out;
 }
 
 main { 
     width: 1250px; 
-    margin: 150px auto 60px;
+    margin: 70px auto 60px;
     padding-left: 250px;
     transition: all .2s ease-in-out;
 }
@@ -37,11 +36,9 @@ main {
 }
 @media screen and (max-width: 600px) {
     main {
-        margin: 130px auto 50px;
+        margin: 50px auto 50px;
     }
-    header#hero {
-        margin-top: 60px;
-    }
+
 }
 
 @keyframes no-js {
