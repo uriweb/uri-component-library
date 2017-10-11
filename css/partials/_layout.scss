@@ -79,6 +79,10 @@ section>article>article {
     margin-bottom: 40px;
 }
 
+#pg-identity.plain {
+    left: 0 !important;
+}
+
 @media screen and (max-width: 600px) {
     #pg-identity {
         left: -3vw;
@@ -135,9 +139,4 @@ ul.construction-list span {
 ul.construction-list li.section {
     margin-top: .6rem;
     font-weight: 700;
-}
-
-xmp {
-    width: 50%;
-    margin: 30px 0;
 }
