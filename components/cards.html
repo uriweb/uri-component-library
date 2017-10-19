@@ -178,12 +178,15 @@
                     </div>
                 </div>
                 <article>
-                    <h4>Action cards and detail cards can be tiles, or live inside them.</h4>
-                    <p>To create a tile with a card or place a card in a tile, use the <a class="component" href="../tiles/">tile</a> framework.  If a card will be the only content in a given tile, the tile can be created with the card itself.</p>
+                    <h4>Action cards and detail cards can live inside tiles.</h4>
+                    <p>To place a card in a tile, use the <a class="component" href="../tiles/">tile</a> framework. </p>
                     <xmp class="prettyprint">
 <div class="cl-tiles thirds">
-    <a class="cl-card">...</a>
-    <a class="cl-card">...</a>
+    <div>
+        ...
+        <a class="cl-card">...</a>
+        ...
+    </div>
     ...
 </div>           
                     </xmp>
@@ -214,8 +217,6 @@
         <a class="cl-dcard">...</a>
         ...
     </div>
-    <a class="cl-dcard">...</a>
-    <a class="cl-dcard">...</a>
     ...
 </div>           
                     </xmp>
