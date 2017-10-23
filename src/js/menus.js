@@ -24,7 +24,13 @@
                     arrow = this.querySelector('.arrow');
                 
                 ul.style.display = ul.style.display === 'none' ? 'block' : 'none';
-                arrow.classList.contains('on') ? arrow.classList.remove('on') : arrow.classList.add('on');
+                
+                if (arrow.classList.contains('on')) {
+                    arrow.classList.remove('on');
+                } else {
+                    arrow.classList.add('on');
+                }
+                
             });
             
             var arrow = document.createElement('div');

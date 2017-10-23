@@ -24,16 +24,17 @@ function onYouTubePlayerAPIReady() {
         var requireYouTube = false,
             heroSupport = checkSupport(),
             heros = document.querySelectorAll('.cl-hero .poster'),
-            i;
+            el, key, parent, i;
         
         if (heroSupport) {
         
             for (i=0; i<heros.length; i++) {
 
-                var el = heros[i],
-                    key = el.getAttribute('id'),
-                    parent = el.parentNode,
-                    start = el.getAttribute('data-start'),
+                el = heros[i];
+                key = el.getAttribute('id');
+                parent = el.parentNode;
+                
+                var start = el.getAttribute('data-start'),
                     end = el.getAttribute('data-end');
 
                 uri_vid_heros[key] = {
@@ -62,10 +63,11 @@ function onYouTubePlayerAPIReady() {
         
         for (i=0; i<vids.length; i++) {
 
-            var el = vids[i],
-                key = el.getAttribute('id'),
-                parent = el.parentNode,
-                aspect = 16/9; // Set default aspect
+            el = vids[i];
+            key = el.getAttribute('id');
+            parent = el.parentNode;
+            
+            var aspect = 16/9; // Set default aspect
                 
 
             if ( el.getAttribute('data-aspect') ) {
@@ -224,7 +226,11 @@ function onYouTubePlayerAPIReady() {
             h = parent.offsetHeight,
             o = parent.getBoundingClientRect().top + p;
             
-        v + p < o || p > o + h ? event.target.pauseVideo() : event.target.playVideo();
+        if (v + p < o || p > o + h) {
+            event.target.pauseVideo();
+        } else { 
+            event.target.playVideo();
+        }
 
     }
 
