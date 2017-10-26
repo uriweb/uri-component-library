@@ -167,6 +167,12 @@ body.nav-demos #gn-demos {
 #gn-components-panels .gn-icon {
     background-image: url(../media/assets/icon-panels.png);
 }
+#gn-components-quotables .gn-icon {
+    background-image: url(../media/assets/icon-quotables.png);
+}
+#gn-components-slideshows .gn-icon {
+    background-image: url(../media/assets/icon-slideshows.png);
+}
 #gn-components-videos .gn-icon {
     background-image: url(../media/assets/icon-videos.png);
 }
@@ -191,6 +197,8 @@ body.nav-heros #gn-components-heros,
 body.nav-menus #gn-components-menus,
 body.nav-notices #gn-components-notices,
 body.nav-panels #gn-components-panels,
+body.nav-quotables #gn-components-quotables,
+body.nav-slideshows #gn-components-slideshows,
 body.nav-videos #gn-components-videos,
 body.nav-tiles #gn-layout-tiles,
 body.nav-bugs #gn-resources-bugs,
