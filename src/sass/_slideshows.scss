@@ -65,9 +65,11 @@
             height: 100%;
             max-width: 100%;
             text-align: center;
-            background-position: center center;
-            background-size: contain;
-            background-repeat: no-repeat;
+        }
+        
+        .slide img {
+            height: 100%;
+            width: auto;
         }
         
         .controls {

@@ -27,7 +27,7 @@
      */
     function parse(el) {
         
-        var figs, i, parts, a, img, caption, parsed = [];
+        var figs, i, parts, a, caption, parsed = [];
         
         figs = el.querySelectorAll('figure');
         
@@ -35,10 +35,7 @@
             
             parts = {};
             
-            img = figs[i].querySelector('img');
-            if(img) {
-                parts.img = img.getAttribute('src');
-            }
+            parts.img = figs[i].querySelector('img');
             
             caption = figs[i].querySelector('figcaption');
             if(caption) {
@@ -87,7 +84,7 @@
                         
             li = document.createElement('li');
             li.className = 'slide';
-            li.style.backgroundImage = 'url(' + parsed[i].img + ')';
+            li.appendChild(parsed[i].img);
             carousel.appendChild(li);
             
             cap = document.createElement('li');
