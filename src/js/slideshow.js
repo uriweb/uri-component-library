@@ -240,15 +240,13 @@
             // reference first touch point for this event
             touchobj = e.changedTouches[0]; 
             
-            delta = (parseInt(touchobj.clientX) - start) - dist;
+            delta = ( parseInt(touchobj.clientX) - start ) - dist;
             dist = parseInt(touchobj.clientX) - start;
             move =  delta < 0 ? -1 : 1;
             
             t = c.style.transform.replace('translateX(','').replace('%)','');
             c.style.transform = 'translateX(' + (parseInt(t) + move) + '%)';
-            
-            console.log(dist);
-            
+                        
             e.preventDefault();
             
         }, false);
