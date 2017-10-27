@@ -41,7 +41,20 @@
             width: 100%;
             height: 100%;
             list-style: none;
+        }
+        
+        .carousel.transitions {
             transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .carousel.reboundLeft {
+            animation-name: cl-slideshow-carousel-rebound-left;
+            animation-duration: .3s;
+        }
+        
+        .carousel.reboundRight {
+            animation-name: cl-slideshow-carousel-rebound-right;
+            animation-duration: .3s;
         }
         
         .slide {
@@ -225,4 +238,16 @@
         height: 60px;
     }
     
+}
+
+@keyframes cl-slideshow-carousel-rebound-left {
+    0% { left: 0; }
+    30% { left: 5%; }
+    100% { left: 0; }  
+}
+
+@keyframes cl-slideshow-carousel-rebound-right {
+    0% { right: 0; }
+    30% { right: 5%; }
+    100% { right: 0; }  
 }

@@ -23,7 +23,7 @@
     
     /*
      * Parse gallery element
-     * @param el obj the gallery element
+     * @param el el the gallery element
      */
     function parse(el) {
         
@@ -56,7 +56,7 @@
     
     /*
      * Build slideshow DOM
-     * @param el obj the gallery element
+     * @param el el the gallery element
      * @param parsed obj the parsed gallery
      */
     function build(el, parsed) {
@@ -70,7 +70,7 @@
         S.appendChild(carouselWrapper);
         
         carousel = document.createElement('ul');
-        carousel.className = 'carousel';
+        carousel.className = 'carousel transitions';
         carouselWrapper.appendChild(carousel);
         
         captions = document.createElement('ul');
@@ -107,8 +107,8 @@
     
     
     /**
-	 * Create controlls
-     * @param c obj the carousel
+	 * Create controls
+     * @param c el the carousel
 	 */
 	function initButtons(c) {
 		var controls, types, target, button, x;
@@ -122,7 +122,7 @@
 			target = document.createElement('div');
 			target.className = 'target ' + types[x].toLowerCase();
             target.title = types[x];
-			target.addEventListener('click', controlDirection.bind(null, c, types[x]) );
+			target.addEventListener('click', controlDirection.bind(null, c, types[x], false) );
             
             button = document.createElement('div');
             button.className = 'controller';
@@ -131,6 +131,8 @@
 			controls.appendChild(target);
 		}
         
+        touchControl(controls, c);
+        
         return controls;
         
 	}
@@ -138,23 +140,40 @@
     
     /*
      * Control direction of movement
-     * @param c obj the carousel
+     * @param c el the carousel
      * @param direction str the direction to move in
+     * @param mobile bool called from mobile device
      */
-    function controlDirection(c, direction) {
+    function controlDirection(c, direction, mobile) {
 		var index, count;
 		index = c.getAttribute('data-position');
-		count = c.children.length -1;
+		count = c.children.length - 1;
+        
+        // Reset the endslide animation
+        var controls =  c.parentElement.querySelector('.controls');
+        c.classList.remove('reboundLeft', 'reboundRight');
 		
 		if(direction == 'Next') {
 			index++;
 			if(index > count) {
-				index = 0;
+                if (!mobile) {
+                    void c.offsetWidth;
+                    c.classList.add('reboundRight');
+                    return;
+                } else {
+                    index--;
+                }
 			}
 		} else {
 			index--;
 			if(index < 0) {
-				index = count;
+                if (!mobile) {
+                    void c.offsetWidth;
+                    c.classList.add('reboundLeft');
+                    return;
+                } else {
+                    index++;
+                }
 			}
 		}
         
@@ -164,29 +183,99 @@
     
     /*
      * Set position of slideshow
-     * @param c obj the carousel
+     * @param c el the carousel
      * @param index int the index to move to
      */
     function setPosition(c, index) {
         
-        var S, captions, counter, i;
+        var S, active, captions, counter, i;
                         
         c.style.transform = 'translateX(-' + (index * 100) + '%)';
         c.setAttribute('data-position', index);
         
         S = c.parentNode.parentNode;
         
-        captions = S.querySelectorAll('.caption');        
-        for (i=0; i<captions.length; i++) {
-            captions[i].classList.remove('active');
+        active = S.querySelector('.captions .active');
+        if (active) {
+            active.classList.remove('active');
         }
         
+        captions = S.querySelectorAll('.caption');
         captions[index].classList.add('active');
         
         counter = S.querySelector('.counter span');
         counter.innerHTML = index + 1;
         
     
+    }
+    
+    
+    /*
+     * Add touch controls
+     * @param el el the control div
+     * @param c el the carousel
+     */
+    function touchControl(el, c) {
+        
+        var start, dist; 
+        
+        start = 0;
+        dist = 0;
+
+        el.addEventListener('touchstart', function(e){
+            
+            c.classList.remove('transitions');
+            
+            // reference first touch point (ie: first finger)
+            var touchobj = e.changedTouches[0];
+            
+            // get x position of touch point relative to left edge of browser
+            start = parseInt(touchobj.clientX);
+            
+            e.preventDefault();
+            
+        }, false);
+
+        el.addEventListener('touchmove', function(e){
+            
+            var touchobj, delta, move, t;
+            
+            // reference first touch point for this event
+            touchobj = e.changedTouches[0]; 
+            
+            delta = (parseInt(touchobj.clientX) - start) - dist;
+            dist = parseInt(touchobj.clientX) - start;
+            move =  delta < 0 ? -1 : 1;
+            
+            t = c.style.transform.replace('translateX(','').replace('%)','');
+            c.style.transform = 'translateX(' + (parseInt(t) + move) + '%)';
+            
+            console.log(dist);
+            
+            e.preventDefault();
+            
+        }, false);
+
+        el.addEventListener('touchend', function(e){
+            
+            c.classList.add('transitions');
+            
+            var w = c.offsetWidth,
+                i = parseInt(c.getAttribute('data-position')),
+                tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
+                                    
+            if (dist > w * tolerance) { 
+                controlDirection(c, 'Previous', true);
+            } else if (dist < w * -tolerance) {
+                controlDirection(c, 'Next', true);
+            } else {
+                setPosition(c, parseInt( c.getAttribute('data-position') ) );
+            }
+            
+            e.preventDefault();
+            
+        }, false);
+        
     }
     
     

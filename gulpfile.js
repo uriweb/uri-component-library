@@ -126,7 +126,7 @@ function CLScripts(done) {
 	gulp.src('./src/js/*.js')
     .pipe(concat('cl.built.js'))
     //.pipe(stripDebug())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('./uri-component-library/js/'));
     
 	done();
