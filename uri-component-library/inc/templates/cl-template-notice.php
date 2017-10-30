@@ -6,6 +6,10 @@ if($urgent) {
     $classes .= ' urgent';
 }
 
+if(!empty($class)) {
+    $classes .= ' ' . $class;
+}
+
 $output = '<div class="' . $classes . '">';
 
 if(!empty($title)) {

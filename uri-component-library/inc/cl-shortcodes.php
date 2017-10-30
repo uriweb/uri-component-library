@@ -27,7 +27,8 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 	extract( shortcode_atts(
 		array(
             'title' => '',
-			'float' => ''
+			'float' => '',
+            'class' => ''
 		), $atts )
 	);
     
@@ -49,7 +50,8 @@ function uri_cl_shortcode_button( $atts ) {
             'text' => 'Explore',
 			'link' => '#',
             'tooltip' => '',
-            'prominent' => false
+            'prominent' => false,
+            'class' => ''
 		), $atts )
 	);
     
@@ -74,7 +76,8 @@ function uri_cl_shortcode_card( $atts ) {
             'body' => '',
             'button' => 'Explore',
             'link' => '#',
-            'tooltip' => 'Explore'
+            'tooltip' => 'Explore',
+            'class' => ''
         ), $atts )
 	);
     
@@ -99,6 +102,7 @@ function uri_cl_shortcode_dcard( $atts ) {
 			'title' => '',
             'body' => '',
             'tooltip' => 'Explore',
+            'class' => ''
 		), $atts )
 	);
     
@@ -125,6 +129,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'vid' => '',
             'dynamic' => false,
             'img' => '',
+            'class' => ''
 		), $atts )
 	);
     
@@ -144,7 +149,8 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 	extract( shortcode_atts(
 		array(
 			'title' => '',
-            'urgent' => false
+            'urgent' => false,
+            'class' => ''
 		), $atts )
 	);
     
@@ -166,7 +172,8 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			'img' => '',
             'alt' => '',
 			'title' => '',
-            'reverse' => false
+            'reverse' => false,
+            'class' => ''
 		), $atts )
 	);
     
@@ -188,7 +195,8 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
             'across' => 3,
 			'square' => false,
             'compact' => false,
-            'animated' => false
+            'animated' => false,
+            'class' => ''
 		), $atts )
 	);
     
@@ -210,7 +218,8 @@ function uri_cl_shortcode_video( $atts ) {
             'vid' => '',
             'img' => '',
             'alt' => '',
-            'aspect' => ''
+            'aspect' => '',
+            'class' => ''
 		), $atts )
 	);
     
@@ -231,7 +240,8 @@ function uri_cl_shortcode_waves( $atts ) {
 		array(
             'placement' => 'bottom',
 			'offset' => '',
-            'color' => ''
+            'color' => '',
+            'class' => ''
 		), $atts )
 	);
     

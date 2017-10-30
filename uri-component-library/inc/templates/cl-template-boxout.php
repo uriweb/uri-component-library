@@ -6,6 +6,10 @@ if(!empty($float)) {
     $classes .= ' ' . $float;
 }
 
+if(!empty($class)) {
+    $classes .= ' ' . $class;
+}
+
 $output = '<div class="' . $classes . '">';
 
 if(!empty($title)) {

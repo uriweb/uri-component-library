@@ -1,6 +1,12 @@
 <?php
 
-$output = '<div class="cl-video">';
+$classes = 'cl-video';
+
+if(!empty($class)) {
+    $classes .= ' ' . $class;
+}
+
+$output = '<div class="' . $classes . '">';
 $output .= '<img id="' . $vid . '" src="' . $img . '" alt="' . $alt . '"';
     
 if (!empty($aspect)) {

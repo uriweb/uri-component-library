@@ -1,8 +1,13 @@
 <?php
 
 $classes = 'cl-panel';
+
 if ($reverse) {
     $classes .= ' reverse';
+}
+
+if(!empty($class)) {
+    $classes .= ' ' . $class;
 }
 
 $output = '<div class="' . $classes . '">';

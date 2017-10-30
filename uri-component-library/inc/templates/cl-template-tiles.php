@@ -31,4 +31,8 @@ if($animated) {
     $classes .= ' reveal';
 }
 
+if(!empty($class)) {
+    $classes .= ' ' . $class;
+}
+
 $output = '<div class="' . $classes . '">' . do_shortcode($content) . '</div>';

@@ -2,6 +2,10 @@
 
 $classes = 'cl-hero';
 
+if(!empty($class)) {
+    $classes .= ' ' . $class;
+}
+
 $output = '<div class="' . $classes . '">';
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
