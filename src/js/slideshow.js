@@ -10,14 +10,14 @@
     
     'use strict';
         
-    window.addEventListener('load', init, false);
+    window.addEventListener('load', initCLSlideshow, false);
     
-    function init() {
+    function initCLSlideshow() {
         var g, i;
         
         g = document.querySelectorAll('.gallery.gallery-size-full');
         for (i=0; i<g.length; i++) {
-            parse(g[i]);
+            parseWPGallery(g[i]);
         } 
     }
     
@@ -25,9 +25,9 @@
      * Parse gallery element
      * @param el el the gallery element
      */
-    function parse(el) {
+    function parseWPGallery(el) {
         
-        var figs, i, parts, a, caption, parsed = [];
+        var figs, i, parts, caption, parsed = [];
         
         figs = el.querySelectorAll('figure');
         
@@ -46,7 +46,7 @@
             
         }
         
-        build(el, parsed);
+        buildSlideshowDOM(el, parsed);
                 
     }
     
@@ -56,7 +56,7 @@
      * @param el el the gallery element
      * @param parsed obj the parsed gallery
      */
-    function build(el, parsed) {
+    function buildSlideshowDOM(el, parsed) {
         var S, carouselWrapper, carousel, captions, counter, li, cap, i;
                 
         S = document.createElement('div');
@@ -94,7 +94,7 @@
                      
         }
         
-        carouselWrapper.appendChild(initButtons(carousel));
+        carouselWrapper.appendChild(makeControlButtons(carousel));
         
         setPosition(carousel, 0);
             
@@ -107,7 +107,7 @@
 	 * Create controls
      * @param c el the carousel
 	 */
-	function initButtons(c) {
+	function makeControlButtons(c) {
 		var controls, types, target, button, x;
         
 		controls = document.createElement('div');
@@ -128,7 +128,7 @@
 			controls.appendChild(target);
 		}
         
-        touchControl(controls, c);
+        addTouchControls(controls, c);
         
         return controls;
         
@@ -147,14 +147,13 @@
 		count = c.children.length - 1;
         
         // Reset the endslide animation
-        var controls =  c.parentElement.querySelector('.controls');
         c.classList.remove('reboundLeft', 'reboundRight');
 		
 		if(direction == 'Next') {
 			index++;
 			if(index > count) {
                 if (!mobile) {
-                    void c.offsetWidth;
+                    void c.offsetWidth; // Trigger reflow to restart animation
                     c.classList.add('reboundRight');
                     return;
                 } else {
@@ -165,7 +164,7 @@
 			index--;
 			if(index < 0) {
                 if (!mobile) {
-                    void c.offsetWidth;
+                    void c.offsetWidth; // Trigger reflow to restart animation
                     c.classList.add('reboundLeft');
                     return;
                 } else {
@@ -212,7 +211,7 @@
      * @param el el the control div
      * @param c el the carousel
      */
-    function touchControl(el, c) {
+    function addTouchControls(el, c) {
         
         var start, dist; 
         
@@ -221,12 +220,13 @@
 
         el.addEventListener('touchstart', function(e){
             
+            // Unhook CSS transitions during swipe event for smoother tracking
             c.classList.remove('transitions');
             
-            // reference first touch point (ie: first finger)
+            // Reference first touch point
             var touchobj = e.changedTouches[0];
             
-            // get x position of touch point relative to left edge of browser
+            // Get x position of touch point relative to left edge of browser
             start = parseInt(touchobj.clientX);
             
             e.preventDefault();
@@ -237,7 +237,7 @@
             
             var touchobj, delta, move, t;
             
-            // reference first touch point for this event
+            // Reference first touch point for this event
             touchobj = e.changedTouches[0]; 
             
             delta = ( parseInt(touchobj.clientX) - start ) - dist;
@@ -253,6 +253,7 @@
 
         el.addEventListener('touchend', function(e){
             
+            // Rehook CSS transitions after the swipe is complete to animate snapping
             c.classList.add('transitions');
             
             var w = c.offsetWidth,
