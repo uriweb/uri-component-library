@@ -6,22 +6,24 @@
     
     & {
         margin: 40px 0;
-        border-left: 8px solid #ddd;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        border-left: 1px solid #0047c2;
     }
-
+    
     li {
-        padding: .75rem 1.5rem;
+        display: block;
+        padding: .9rem 1.5rem;
     }
 
     a {
-        color: #2277b3;
+        color: #0047c2;
+        font-weight: 600;
         transition: all .1s ease-in-out;
     }
 
     a:hover,
     a:focus {
-        color: #002147;
+        color: #003287;
     }
     
 } // #localnav

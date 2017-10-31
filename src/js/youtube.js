@@ -164,7 +164,8 @@ function onYouTubePlayerAPIReady() {
                     iv_load_policy: 3
                 },
                 events: {
-                    'onReady' : onVideoReady
+                    'onReady' : onVideoReady,
+                    'onStateChange' : onVideoStateChange
                 }
             });
 
@@ -353,6 +354,28 @@ function onYouTubePlayerAPIReady() {
         
         uri_vid_heros[event.target.a.id].poster.classList.remove('unveil');
         uri_vid_heros[event.target.a.id].parent.querySelector('.motionswitch').style.display = 'none';
+    }
+    
+    
+    /*
+     * Get video state and decide what to do
+     * @param obj event the video player
+     */
+    function onVideoStateChange(event) {
+        console.log('fired');
+        
+        var state = event.target.getPlayerState(),
+            key = event.target.a.id,
+            overlay = uri_videos[key].parent.querySelector('.overlay');
+        
+        switch (state) {
+            case 1:
+            case 3:
+                overlay.classList.add('hidden');
+                break;
+            default:
+                overlay.classList.remove('hidden');
+        }
     }
     
 })();

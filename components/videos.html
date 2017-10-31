@@ -49,7 +49,30 @@
                     <img id="nHlHUqevKcg" src="../media/assets/video-default.jpg">
                 </div>
                 
-                <article>
+                <article id="design-overlay">
+                    <h4>Overlay</h4>
+                    <p>To overlay a title and/or an excerpt, create a content block using the class <code class="class">overlay</code> before the <code class="tag">img</code> tag.</p>
+                    <p>The overlay will disappear when the user plays the video, and reappear when the video is paused or ends.</p>
+                    <xmp class="prettyprint">
+<div class="cl-video">
+    <div class="overlay">
+        <h1>Title</h1>
+        <p>Excerpt</p>
+    </div>
+    <img id="[video id]" src="poster.jpg">
+</div>
+                    </xmp>
+
+                    <div class="cl-video">
+                        <div class="overlay">
+                            <h1>Why the University of Rhode Island?</h1>
+                            <p>Think Big.  It's what we do every day at URI.</p>
+                        </div>
+                        <img id="YdAG-ZAIVDc" src="../media/assets/video-default.jpg">
+                    </div>
+                </article>
+                
+                <article id="design-ratios">
                     <h4>Set custom aspect ratios.</h4>
                     <p>Videos assume a default aspect ratio of 16:9.  To specifiy a different aspect ratio, so that the video does not have vertical or horizontal black bars, set a <code class="attr">data-aspect</code> attribute on the poster using the format <code class="string">width:height</code>.</p>
                     <xmp class="prettyprint">
@@ -59,7 +82,7 @@
                     </xmp>
                 </article>
                 
-                <article>
+                <article id="design-shortcode">
                     <h4>Shortcode Support</h4>
                     <p>Videos can be implemented with the shortcode <code class='shortcode'>cl-video</code></p>
                     <p class="code shortcode">[cl-video vid="aK9iLeL5l_c" img="sampleimage.jpg" aspect="4:3"]</p>
@@ -84,7 +107,7 @@
                     </div>
                 </article>
                 
-                <article class="wysiwyg">
+                <article id="design-wysiwyg" class="wysiwyg">
                     <h4>WYSIWYG Editor Support</h4>
                     <p>With the <a href="../plugin/" class="component">WYSIWYG</a> plugin installed, videos can be added using the WYSIWYG editor.</p>
                     <p>The icon <img src="../media/wysiwyg/icons/video.png" class="icon" alt="Video WYSIWYG toolbar icon"> to add a video appears in the WYSIWYG toolbar.  Clicking this icon opens a dialogue where different video attributes can be easily set.</p>
