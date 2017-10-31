@@ -40,7 +40,7 @@ function styles(done) {
 		.pipe(sourcemaps.init())
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer(autoprefixerOptions))
-		.pipe(concat('playground.css'))
+		.pipe(concat('playground.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest('./css/'));
