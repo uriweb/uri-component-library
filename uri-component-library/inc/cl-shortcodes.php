@@ -218,6 +218,8 @@ function uri_cl_shortcode_video( $atts ) {
             'vid' => '',
             'img' => '',
             'alt' => '',
+            'title' => '',
+            'excerpt' => '',
             'aspect' => '',
             'class' => ''
 		), $atts )
