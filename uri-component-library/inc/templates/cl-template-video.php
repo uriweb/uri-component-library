@@ -22,7 +22,7 @@ if(!empty($title) || !empty($excerpt)) {
     $output .= '</div>';
 }
 
-$output .= '<img id="' . $vid . '" src="' . $img . '" alt="' . $alt . '"';
+$output .= '<img id="' . $id . '" data-id="' . $vid . '" src="' . $img . '" alt="' . $alt . '"';
     
 if (!empty($aspect)) {
     $output .= ' data-aspect="' . $aspect . '"';

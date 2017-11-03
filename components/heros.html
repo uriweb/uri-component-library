@@ -38,17 +38,18 @@
                 <h2>Video Hero</h2>
                 <p>Video heros are implemented with the class <code class="class">cl-hero</code></p>
                 <p>Video heros require an overlay and poster image. Create an overlay with the class <code class="class">overlay</code>, and a poster with the class <code class="class">poster</code>.</p>
-                <p>The poster's <code class="attr">id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=ydD1Wg2B8Vk</code>, create the poster with the id <code class="id">ydD1Wg2B8Vk</code>.</p>
+                <p>The poster <b>must also</b> have an <code class="attr">id</code> attribute.  It can be arbitrary, but it is necessary for YouTube's API to function.</p>
+                <p>The poster's <code class="attr">data-id</code> attribute is used to determine which YouTube video to load, based on the video id.  For example, if the YouTube URL is <code class="link">https://www.youtube.com/watch?v=ydD1Wg2B8Vk</code>, create the poster with a <code class="attr">data-id</code> of <code class="id">ydD1Wg2B8Vk</code>.</p>
                 <xmp class="prettyprint">
 <div class="cl-hero">
     <div class="overlay"></div>
-    <div id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
+    <div id="hero1" data-id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
 </div>
                 </xmp>
                 
                 <div class="cl-hero">
                     <div class="overlay"></div>
-                    <div id="ydD1Wg2B8Vk" class="poster" style="background-image:url(../media/native/baycampus_1.jpg)"></div>
+                    <div id="demohero1" data-id="ydD1Wg2B8Vk" class="poster" style="background-image:url(../media/native/baycampus_1.jpg)"></div>
                 </div>
                 
                 <article>
@@ -64,7 +65,7 @@
             <a class="cl-button" href="#">Button</a>
         </div>
     </div>
-    <div id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
+    <div id="hero1" data-id="[video id]" class="poster" style="background-image:url(poster.jpg)"></div>
 </div>
                     </xmp>                
                     <div class="cl-hero">
@@ -75,7 +76,7 @@
                                 <a class="cl-button" href="#">Explore</a>
                             </div>
                         </div>
-                        <div id="K4YDMmWBac4" class="poster" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
+                        <div id="demohero2" data-id="K4YDMmWBac4" class="poster" style="background-image:url(../media/commons/hero_vid_poster_2.jpg)"></div>
                     </div>
                 </article>
                 
@@ -148,7 +149,7 @@
                 <article>
                     <h4>Shortcode Support</h4>
                     <p>Heros can be implemented with the shortcode <code class='shortcode'>cl-hero</code></p>
-                    <p class="code shortcode">[cl-hero headline="A Great Hero" vid="aK9iLeL5l_c" img="sampleimage.jpg"]</p>
+                    <p class="code shortcode">[cl-hero headline="A Great Hero" id="hero1" vid="aK9iLeL5l_c" img="sampleimage.jpg"]</p>
                     
                     <div class="attributes">
                         <h5>Attributes</h5>
@@ -157,8 +158,11 @@
                         <p class='indent'>The source URL for the hero image or, if <b>vid</b> is set, the poster image.</p>
 
                         <p><b>vid</b> <i>(string) (optional)</i></p>
-                        <p class='indent'>Set the YouTube video ID to create a video hero.<br /><i>(default value: none)</i></p>
+                        <p class='indent'>Set the YouTube video ID to create a video hero; <b>id</b> must also be set.<br /><i>(default value: none)</i></p>
 
+                        <p><b>id</b> <i>(string) (optional)</i></p>
+                        <p class='indent'>Set a unique id for the element; required if <b>vid</b> is set.</p>
+                        
                         <p><b>dynamic</b> <i>(bool) (optional)</i></p>
                         <p class='indent'>Set to make an image hero dynamic; this will be ignored if <b>vid</b> is set.<br /><i>(default value: <code class="bool">false</code>)</i></p>
                         

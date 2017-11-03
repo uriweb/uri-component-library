@@ -40,6 +40,7 @@ function onYouTubePlayerAPIReady() {
                 uri_vid_heros[key] = {
                     'poster' : el,
                     'parent' : parent,
+                    'ytid' : el.getAttribute('data-id'),
                     'w' : parent.offsetWidth,
                     'h' : parent.offsetHeight,
                     'start' : start ? start : 0,
@@ -65,11 +66,9 @@ function onYouTubePlayerAPIReady() {
 
             el = vids[i];
             key = el.getAttribute('id');
-            parent = el.parentNode;
             
             var aspect = 16/9; // Set default aspect
                 
-
             if ( el.getAttribute('data-aspect') ) {
                 aspect = el.getAttribute('data-aspect').split(':');
                 aspect = aspect[0]/aspect[1];
@@ -77,7 +76,8 @@ function onYouTubePlayerAPIReady() {
             
             uri_videos[key] = {
                 'poster' : el,
-                'parent' : parent,
+                'ytid' : el.getAttribute('data-id'),
+                'parent' : el.parentNode,
                 'aspect' : aspect
             };
 
@@ -123,21 +123,22 @@ function onYouTubePlayerAPIReady() {
      */
     uriCreateYouTubePlayers = function() {
 
-        var key;
+        var key, value;
         
         for (key in uri_vid_heros) {
-            //console.log('key', key);
+            
+            value = uri_vid_heros[key];
 
-            uri_vid_heros[key].player = new YT.Player(key, {
-                width: key.w,
-                height: key.h,
-                videoId: key,
+            value.player = new YT.Player(key, {
+                width: value.w,
+                height: value.h,
+                videoId: value.ytid,
                 playerVars: {
                     autoplay: 1,
                     controls: 0,
                     showinfo: 0,
-                    start: key.start,
-                    end: key.end,
+                    start: value.start,
+                    end: value.end,
                     modestbranding: 1,
                     iv_load_policy: 3,
                     rel: 0
@@ -150,11 +151,13 @@ function onYouTubePlayerAPIReady() {
             });
 
         }
-
+        
         for (key in uri_videos) {
+                        
+            value = uri_videos[key];
 
-            uri_videos[key].player = new YT.Player(key, {
-                videoId: key,
+            value.player = new YT.Player(key, {
+                videoId: value.ytid,
                 playerVars: {
                     autoplay: 0,
                     controls: 1,
@@ -165,7 +168,8 @@ function onYouTubePlayerAPIReady() {
                 },
                 events: {
                     'onReady' : onVideoReady,
-                    'onStateChange' : onVideoStateChange
+                    'onStateChange' : onVideoStateChange,
+                    'onError' : onVideoError
                 }
             });
 
@@ -346,7 +350,7 @@ function onYouTubePlayerAPIReady() {
 
 
     /*
-     * Revert to poster if there's an error with the video
+     * Revert to poster if there's an error with the hero video
      * @param str key the key of the hero in uri_vid_heros
      */
     function onHeroError(event) {
@@ -358,11 +362,42 @@ function onYouTubePlayerAPIReady() {
     
     
     /*
+     * Link the poster to the video on YouTube if there's an error with the video
+     * @param str key the key of the hero in uri_videos
+     */
+    function onVideoError(event) {
+        //console.log('video error', event);
+        
+        var el, a, img, alt;
+        
+        el = uri_videos[event.target.a.id];
+                
+        a = document.createElement('a');
+        a.href = "http://www.youtube.com/watch?v=" + el.ytid;
+        a.title = "Try watching this video on YouTube";
+        
+        img = document.createElement('img');
+        img.src = el.poster.getAttribute('src');
+        alt = el.poster.getAttribute('alt');
+        if (!alt) {
+            alt = "Poster for video";
+        }
+        img.alt = alt;
+        a.appendChild(img);
+              
+        var iframe = document.getElementById(event.target.a.id);
+        if (iframe) {
+            el.parent.replaceChild(a, iframe);
+        }
+    
+    }
+    
+    
+    /*
      * Get video state and decide what to do
      * @param obj event the video player
      */
     function onVideoStateChange(event) {
-        console.log('fired');
         
         var state = event.target.getPlayerState(),
             key = event.target.a.id,

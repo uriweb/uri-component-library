@@ -187,6 +187,7 @@ code, p.code {
     font-size: .75rem;
     padding: 0 .2rem;
     width: 100%;
+    max-width: 100% !important;
     white-space: pre-wrap;
 }
 p.code.shortcode {

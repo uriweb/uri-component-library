@@ -26,7 +26,7 @@ $output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
 if (!empty($vid)) {
-    $image = '<div id="' . $vid . '" class="poster"';
+    $image = '<div id="'. $id . '" data-id="' . $vid . '" class="poster"';
 } else if ($dynamic) {
     $image = '<div class="dynamic"';
 } else {

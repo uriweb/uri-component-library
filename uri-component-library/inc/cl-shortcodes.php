@@ -127,6 +127,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'tooltip' => '',
             'link' => '',
             'vid' => '',
+            'id' => '',
             'dynamic' => false,
             'img' => '',
             'class' => ''
@@ -216,6 +217,7 @@ function uri_cl_shortcode_video( $atts ) {
 	extract( shortcode_atts(
 		array(
             'vid' => '',
+            'id' => '',
             'img' => '',
             'alt' => '',
             'title' => '',
