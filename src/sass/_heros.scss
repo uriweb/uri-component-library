@@ -16,8 +16,11 @@
         box-sizing: border-box;
     }
 
-    &.fullscreen {
+    &.super {
         height: 100vh;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
     }
     
     iframe {
