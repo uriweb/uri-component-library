@@ -20,7 +20,7 @@ if (!empty($title)) {
     $output .= '<h1>' . $title . '</h1>';
 }
 if (isset($content)) {
-    $output .= '<p>' . $content . '</p>';
+    $output .= '<p>' . do_shortcode($content) . '</p>';
 }
     
 $output .= '</article>';
