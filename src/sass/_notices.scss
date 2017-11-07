@@ -8,16 +8,18 @@
     position: relative;
     display: block;
     width: 100%;
-    background: #fff;
-    border-radius: .4rem;
-    border: 2px solid $lightblue;
-    padding: 1rem;
+    background: $lightblue;
+    border-radius: .2rem;
+    //border: 2px solid $lightblue;
+    border: none;
+    padding: 1.5rem 2rem;
     box-sizing: border-box;
 }
 
 .cl-notice.urgent {
-    background: $lightgold;
-    border: 2px solid $midgold;
+    background: $midgold;
+    //border: 2px solid $midgold;
+    border: none;
 }
 
 .cl-notice h1 {
@@ -25,23 +27,24 @@
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     line-height: 1rem !important;
-    color: $midblue !important;
+    color: $blue !important;
     padding: 0 !important;
     margin: 0 !important;
-    text-transform: uppercase !important;
+    //text-transform: uppercase !important;
+    text-transform: none !important;
 }
 
 .cl-notice h1:before {
     position: absolute;
     left: 0;
-    top: .9rem;
+    top: 1.25rem;
     display: block;
     content: '';
     width: 0;
     height: 0;
-    border-left: 9px solid $lightblue;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
+    border-left: 15px solid $white;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
 }
 
 .cl-notice.urgent h1 {
@@ -49,7 +52,7 @@
 }
 
 .cl-notice.urgent h1:before {
-    border-left: 9px solid $midgold;
+    border-left: 15px solid $black;
 }
 
 .cl-notice p {

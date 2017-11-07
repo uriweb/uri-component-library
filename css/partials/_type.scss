@@ -2,10 +2,11 @@
    TYPE
    ============================== */
 
-@import url(https://fonts.googleapis.com/css?family=Hind:400,600|Hind+Siliguri:400,600|Roboto+Mono|Roboto:400,600) all;
+@import url(https://fonts.googleapis.com/css?family=Hind:400,600|Roboto+Mono|Roboto:400,600) all;
 
 $type-header: 'Roboto', 'Hind', Arial, sans-serif;
-$type-body: 'Hind Siliguri', 'Hind', Arial, sans-serif;
+$type-body: 'Hind', Arial, sans-serif;
+$type-serif: 'Charter', serif;
 $type-mono: 'Roboto Mono', Courier, monospace;
 
 html {
@@ -59,8 +60,9 @@ h5 {
     font-weight: 300;
     font-size: 1.1rem;
     color: #555;
-    margin: 2.5rem 0 .8rem;
+    margin: 2.5rem 0 1rem;
     width: 50%;
+    padding-bottom: .5rem;
     border-bottom: 1px solid #ccc;
 }
 
@@ -117,6 +119,13 @@ section {
 p {
     line-height: 1.7;
     padding-top: 1rem;
+}
+p.type-intro {
+    font-family: $type-serif;
+    font-size: 1.2rem;
+}
+p.type-intro:last-of-type {
+     padding-bottom: 2rem;
 }
 p.indent {
     padding-top: .5rem;
@@ -213,12 +222,15 @@ code {
     }
     &.class {
         background: #0eb454;
+        white-space: nowrap;
     }
     &.class.second {
         background: #24a0aa;
+        white-space: nowrap;
     }
     &.id {
         background: #ed6510;
+        white-space: nowrap;
     }
     &.shortcode {
         position: relative;
@@ -228,9 +240,11 @@ code {
         border-radius: .2rem;
         background: #d02566;
         color: #fff;
+        white-space: nowrap;
     }
     &.tag {
         color: #0545ac;
+        white-space: nowrap;
     }
     &.bool,
     &.string,
@@ -281,27 +295,56 @@ pre .prettyprint .com {
     }
 
     &.display li {
-        line-height: 60px;
+        line-height: 2.8rem;
+        padding-bottom: 1.2rem;
+    }
+    
+    &.display li:after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+    
+    &.display span {
+        float: left;
+        width: 6rem;
     }
 
     &.display {
         h1,h2,h3,h4 {
-            display: inline-block;
+            width: calc(100% - 6rem);
+            max-width: 100%;
+            float: right;
+            text-align: left;
             margin: 0;
-            margin-left: 20px;
         }
     } // .type.display
 
     &.text {
         li {
-            line-height: 40px;
+            line-height: 1.8rem;
+            padding-bottom: 1rem;
+        }
+        li:after {
+            display: block;
+            content: '';
+            clear: both;
         }
         li.initial {
             color: #20c77a;
         }
+        code {
+            float: left;
+            width: 5rem;
+        }
         span {
-            margin-left: 20px;
+            width: calc(100% - 5rem);
             color: #000;
+            float: right;
+            text-align: left;
+        }
+        &.charter span {
+            font-family: $type-serif;
         }
         &.bold span {
             font-weight: 600;
