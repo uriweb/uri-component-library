@@ -2,7 +2,7 @@
    TYPE
    ============================== */
 
-@import url(https://fonts.googleapis.com/css?family=Hind:400,600|Roboto+Mono|Roboto:400,600) all;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700|Hind:400,600|Roboto+Mono) all;
 
 $type-header: 'Roboto', 'Hind', Arial, sans-serif;
 $type-body: 'Hind', Arial, sans-serif;
@@ -18,7 +18,7 @@ html {
 
 h1 {
     font-family: $type-header;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.875rem;
     margin-bottom: 2rem;
     max-width: 800px;
@@ -33,7 +33,7 @@ h1.super {
 h2 {
     font-family: $type-header;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 2rem;
     color: #000;
     max-width: 800px;
@@ -41,7 +41,7 @@ h2 {
 
 h3 {
     font-family: $type-header;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.3rem;
     color: #000;
     margin-bottom: 1.3rem;
@@ -49,7 +49,7 @@ h3 {
 
 h4 {
     font-family: $type-header;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.2rem;
     color: #555;
     margin: 2.5rem 0 1.3rem;
@@ -57,7 +57,7 @@ h4 {
 
 h5 {
     font-family: $type-header;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.1rem;
     color: #555;
     margin: 2.5rem 0 1rem;
@@ -68,7 +68,7 @@ h5 {
 
 h6 {
     font-family: $type-header;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1rem;
     color: #555;
     margin: 2.5rem 0 .8rem;
