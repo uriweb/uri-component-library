@@ -1,0 +1,86 @@
+/* ======= SOCIAL ======= */
+
+.cl-social {
+    
+    & {
+        display: block;
+        list-style: none;
+        margin: 0;
+    }
+    
+    li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+    
+    li:not(:first-child) {
+        margin-left: 10px;
+    }
+    
+    a {
+        position: relative;
+        top: 0;
+        display: block;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        padding-left: 20px;
+        padding-bottom: 15px;
+        background-image: url(../i/sprite-social.png);
+        background-repeat: no-repeat;
+        background-size: 60px auto;
+        transition: top .1s ease-in-out;
+    }
+    
+    a:hover {
+        top: -1px;
+    }
+    
+    &.color {
+        a.cl-social-facebook {
+            background-position: 0 0;
+        }
+        a.cl-social-instagram {
+            background-position: 0 -15px;
+        }
+        a.cl-social-twitter {
+            background-position: 0 -30px;
+        }
+        a.cl-social-linkedin {
+            background-position: 0 -45px;
+        }
+    }
+    
+    &.grey {
+        a.cl-social-facebook {
+            background-position: -20px 0;
+        }
+        a.cl-social-instagram {
+            background-position: -20px -15px;
+        }
+        a.cl-social-twitter {
+            background-position: -20px -30px;
+        }
+        a.cl-social-linkedin {
+            background-position: -20px -45px;
+        }
+    }
+    
+    &.white {
+        a.cl-social-facebook {
+            background-position: -40px 0;
+        }
+        a.cl-social-instagram {
+            background-position: -40px -15px;
+        }
+        a.cl-social-twitter {
+            background-position: -40px -30px;
+        }
+        a.cl-social-linkedin {
+            background-position: -40px -45px;
+        }
+    }
+    
+    
+} // .socialbar
