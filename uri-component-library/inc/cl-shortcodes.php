@@ -194,13 +194,14 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'style' => 'grey',
+			'style' => 'color',
             'class' => '',
             'facebook' => '',
             'instagram' => '',
             'twitter' => '',
-            'linkedin' => '',
-            'youtube' => ''
+            'youtube' => '',
+            'snapchat' => '',
+            'linkedin' => ''
 		), $atts )
 	);
     

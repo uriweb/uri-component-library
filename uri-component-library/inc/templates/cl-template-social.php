@@ -6,7 +6,7 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-if(empty($facebook) && empty($instagram) && empty($twitter) && empty($linkedin)) {
+if(empty($facebook) && empty($instagram) && empty($twitter) && empty($youtube) && empty($snapchat) && empty($linkedin)) {
     
     $output = '';
     
@@ -22,6 +22,12 @@ if(empty($facebook) && empty($instagram) && empty($twitter) && empty($linkedin))
     }
     if(!empty($twitter)) {
         $output .= '<li><a href="' . $twitter . '" class="cl-social-twitter">Twitter</a></li>';
+    }
+    if(!empty($youtube)) {
+        $output .= '<li><a href="' . $youtube . '" class="cl-social-youtube">YouTube</a></li>';
+    }
+    if(!empty($snapchat)) {
+        $output .= '<li><a href="' . $snapchat . '" class="cl-social-snapchat">Snapchat</a></li>';
     }
     if(!empty($linkedin)) {
         $output .= '<li><a href="' . $linkedin . '" class="cl-social-linkedin">LinkedIn</a></li>';

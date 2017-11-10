@@ -50,9 +50,15 @@
         a.cl-social-linkedin {
             background-position: 0 -45px;
         }
+        a.cl-social-youtube {
+            background-position: 0 -60px;
+        }
+        a.cl-social-snapchat {
+            background-position: 0 -75px;
+        }
     }
     
-    &.grey {
+    &.black {
         a.cl-social-facebook {
             background-position: -20px 0;
         }
@@ -64,6 +70,12 @@
         }
         a.cl-social-linkedin {
             background-position: -20px -45px;
+        }
+        a.cl-social-youtube {
+            background-position: -20px -60px;
+        }
+        a.cl-social-snapchat {
+            background-position: -20px -75px;
         }
     }
     
@@ -79,6 +91,12 @@
         }
         a.cl-social-linkedin {
             background-position: -40px -45px;
+        }
+        a.cl-social-youtube {
+            background-position: -40px -60px;
+        }
+        a.cl-social-snapchat {
+            background-position: -40px -75px;
         }
     }
     
