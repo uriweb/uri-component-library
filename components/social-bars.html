@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8, IE=9">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Social Bars - Components - Digital Content Style Guide</title>
+        <link rel="icon" type="image/png" href="../media/assets/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../css/playground.built.css">
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </head>
+	
+	<body class="nav-components nav-social-bars">
+        
+        <nav>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
+            <script>$('nav').load('../includes/nav.html');</script>
+        </nav>
+            
+        <main>
+            
+            <h1 class="super">Social Bars</h1>
+            <p class="type-intro">Display a row of social media icons</p>
+            
+            <ul id="localnav">
+                <li><a href="#usage">Usage</a></li>
+            </ul>
+            
+            <section id="usage">
+                <h2>Usage</h2>
+                <p>Social Bars are most easily implemented using the shortcode <code class='shortcode'>cl-social</code></p>
+                <p class="code shortcode">[cl-social facebook="http://www.facebook.com/" twitter="http://www.twitter.com/"]</p>
+                <div class="attributes">
+                    <h5>Attributes</h5>
+                    <p><b>style</b> <i>(string) (optional) (values: <code class="string">'color'</code>, <code class="string">'dark'</code>, <code class="string">'light'</code>)</i></p>
+                    <p class='indent'>Set the style of the icons<br /><i>(default value: <code class="string">'color'</code>)</i></p>
+                    <p><b>facebook</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include Facebook</p>
+                    <p><b>instagram</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include Instagram</p>
+                    <p><b>twitter</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include Twitter</p>
+                    <p><b>youtube</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include YouTube</p>
+                    <p><b>snapchat</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include Snapchat</p>
+                    <p><b>linkedin</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set a link to include LinkedIn</p>
+                    <p><b>class</b> <i>(string) (optional)</i></p>
+                    <p class='indent'>Set custom CSS class(es)<br /><i>(default value: none)</i></p>
+                </div>
+            </section>
+            
+        </main>
+                
+        <footer id="globalfooter">
+            <script>$('footer').load('../includes/footer.html');</script>
+        </footer>
+        
+    </body>
+    
+</html>
