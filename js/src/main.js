@@ -52,7 +52,7 @@ function loadTemplatePart(url, el, success) {
     
     'use strict';
         
-    var xmlhttp = new XMLHttpRequest(), loc, n, i;
+    var xmlhttp = new XMLHttpRequest(), loc, n, i, path;
                 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
@@ -74,7 +74,9 @@ function loadTemplatePart(url, el, success) {
     loc = loc.toString();
     loc.replace(',','/');
     
-    xmlhttp.open('GET', '/' + loc + '/' + url.replace(/\..\//g, ''), true);
+    path = window.location.protocol + '//' + window.location.hostname + '/' + loc + '/' + url.replace(/\..\//g, '');
+
+    xmlhttp.open('GET', path, true);
     xmlhttp.send();
 
 }
