@@ -116,6 +116,24 @@ function CLPatchStyles(done) {
 }
 
 
+// Playground JS concat, strip debugging and minify
+gulp.task('scripts', scripts);
+
+function scripts(done) {
+  gulp.src('./js/src/*.js')
+    .pipe(jshint(done))
+    .pipe(jshint.reporter('default'));
+  gulp.src('./js/src/*.js')
+    .pipe(concat('playground.built.js'))
+    //.pipe(stripDebug())
+    .pipe(uglify())
+    .pipe(gulp.dest('./js/'));
+    
+	done();
+ // console.log('scripts ran');
+}
+
+
 // Component Library JS concat, strip debugging and minify
 gulp.task('CLScripts', CLScripts);
 
@@ -123,7 +141,7 @@ function CLScripts(done) {
   gulp.src('./src/js/*.js')
     .pipe(jshint(done))
     .pipe(jshint.reporter('default'));
-	gulp.src('./src/js/*.js')
+  gulp.src('./src/js/*.js')
     .pipe(concat('cl.built.js'))
     //.pipe(stripDebug())
     .pipe(uglify())
@@ -140,6 +158,9 @@ function watcher(done) {
 	
     // watch for Playground CSS changes
 	gulp.watch('./css/**/*.scss', styles);
+    
+    // watch for Playground JS changes
+	gulp.watch('./js/src/*.js', scripts);
 
 	// watch for Theme CSS changes
 	gulp.watch('./src/sass/*.scss', CLStyles);
@@ -154,7 +175,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'CLStyles', 'CLPatchStyles', 'CLScripts', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'CLStyles', 'CLPatchStyles', 'CLScripts', 'watcher', function(done){
 		done();
 	})
 );

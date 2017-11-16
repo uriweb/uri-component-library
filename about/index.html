@@ -9,8 +9,7 @@
         <link rel="icon" type="image/png" href="../media/assets/favicon.png">
         <link rel="stylesheet" type="text/css" href="../css/playground.built.css">
         <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../js/main.js"></script>
+        <script src="../js/playground.built.js"></script>
         
         <style>
             #humans .list span {
@@ -27,12 +26,12 @@
         
         <nav>
             <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
-            <script>$('nav').load('../includes/nav.html');</script>
+            <script>loadTemplatePart('../includes/nav.html', 'nav', menuControl);</script>
         </nav>
             
         <main>
             
-            <h1>Hi! We built this.</h1>
+            <h1 class="super">Hi! We built this.</h1>
             <img class="wireframe right" src="../media/assets/humans.png" alt="humans" />
             <p class="type-intro">Here's a bit about what this is, why it's here, and the humans behind it.</p>
 
@@ -44,7 +43,7 @@
             
             <section id="what">
                 <h2>What</h2>
-                <p>A style guide for the web, and a component library so it's easy to build.</p>
+                <p>A style guide for the web, and a component library that makes it easy to build.</p>
             </section>
             
             <section id="why">
@@ -67,7 +66,7 @@
         </main>
                 
         <footer id="globalfooter">
-            <script>$('footer').load('../includes/footer.html');</script>
+            <script>loadTemplatePart('../includes/footer.html', 'footer');</script>
         </footer>
         
     </body>

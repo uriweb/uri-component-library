@@ -9,16 +9,15 @@
         <link rel="icon" type="image/png" href="../media/assets/favicon.png">
         <link rel="stylesheet" type="text/css" href="../css/playground.built.css">
         <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../js/main.js"></script>
-        <script src="../js/swapper.js"></script>
+        <script src="../js/playground.built.js"></script>
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     </head>
 	
 	<body class="nav-resources nav-bugs">
         
         <nav>
-            <script>$('nav').load('../includes/nav.html');</script>
+            <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
+            <script>loadTemplatePart('../includes/nav.html', 'nav', menuControl);</script>
         </nav>
             
         <main>
@@ -339,7 +338,7 @@ A second paragraph.[cl-button][/cl-boxout][cl-card title="Sample" body="Here's a
         </main>
                 
         <footer id="globalfooter">
-            <script>$('footer').load('../includes/footer.html');</script>
+            <script>loadTemplatePart('../includes/footer.html', 'footer');</script>
         </footer>
         
     </body>

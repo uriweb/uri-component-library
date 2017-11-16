@@ -8,16 +8,15 @@
         <title>Duck - Digital Content Style Guide</title>
         <link rel="icon" type="image/png" href="../media/assets/favicon.png">
         <link rel="stylesheet" type="text/css" href="../css/playground.built.css">
-        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">   
+        <script src="../js/playground.built.js"></script>
     </head>
 	
 	<body>
         
         <nav>
             <div id="no-js">Please turn on JavaScript, if you can. You're missing out!</div>
-            <script>$('nav').load('../includes/nav.html');</script>
+            <script>loadTemplatePart('../includes/nav.html', 'nav', menuControl);</script>
         </nav>
             
         <main>
@@ -61,7 +60,7 @@
         </main>
                 
         <footer id="globalfooter">
-            <script>$('footer').load('../includes/footer.html');</script>
+            <script>loadTemplatePart('../includes/footer.html', 'footer');</script>
         </footer>
         
     </body>

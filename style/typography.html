@@ -7,15 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Typography - Style - Digital Content Style Guide</title>
         <link rel="stylesheet" type="text/css" href="../css/playground.built.css">
-        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="../uri-component-library/css/cl.built.css">   
+        <script src="../js/playground.built.js"></script>
     </head>
 	
 	<body class="nav-style nav-typography">
         
         <nav>
-            <script>$('nav').load('../includes/nav.html');</script>
+            <script>loadTemplatePart('../includes/nav.html', 'nav', menuControl);</script>
         </nav>      
         
         <main>
@@ -80,7 +79,7 @@
         </main>
         
         <footer id="globalfooter">
-            <script>$('footer').load('../includes/footer.html');</script>
+            <script>loadTemplatePart('../includes/footer.html', 'footer');</script>
         </footer>
         
     </body>
