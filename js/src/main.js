@@ -8,20 +8,23 @@ function menuControl() {
     
     'use strict';
 
-    var lis, i;
+    var gn, wm, lis, i;
+    
+    gn = document.getElementById('globalnav');
+    wm = document.getElementById('window-mask');
     
     document.getElementById('menu-button').addEventListener('click', function(e) {
         e.stopPropagation();
-        document.getElementById('globalnav').classList.add('revealed');
-        document.getElementById('window-mask').classList.add('visible');
+        gn.classList.add('revealed');
+        wm.classList.add('visible');
     });
 
     window.addEventListener('click', function() {
-        document.getElementById('globalnav').classList.remove('revealed');
-        document.getElementById('window-mask').classList.remove('visible');
+        gn.classList.remove('revealed');
+        wm.classList.remove('visible');
     });
 
-    document.getElementById('globalnav').addEventListener('click', function(e) {
+    gn.addEventListener('click', function(e) {
         e.stopPropagation();
     });
 
