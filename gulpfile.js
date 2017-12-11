@@ -29,30 +29,10 @@ var autoprefixerOptions = {
 };
 
 
-// Playground CSS concat, auto-prefix and minify
+// CSS concat, auto-prefix and minify
 gulp.task('styles', styles);
 
 function styles(done) {
-    
-    var banner = ['/* Playground Styles | Author: Brandon Fuller <bjcfuller@uri.edu> */','',''].join('\n')
-    
-	gulp.src('./css/**/*.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer(autoprefixerOptions))
-		.pipe(concat('playground.built.css'))
-        .pipe(header(banner))
-		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./css/'));
-
-  done();
-  //console.log('styles ran');
-}
-
-// Component Library CSS concat, auto-prefix and minify
-gulp.task('CLStyles', CLStyles);
-
-function CLStyles(done) {
     
     var banner = ['/*',
   '===========================================',
@@ -75,17 +55,17 @@ function CLStyles(done) {
 		.pipe(concat('cl.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./uri-component-library/css/'));
+		.pipe(gulp.dest('./css/'));
 
   done();
   //console.log('styles ran');
 }
 
 
-// Component Library Theme Patches CSS concat, auto-prefix and minify
-gulp.task('CLPatchStyles', CLPatchStyles);
+// Theme Patches CSS concat, auto-prefix and minify
+gulp.task('patchstyles', patchstyles);
 
-function CLPatchStyles(done) {
+function patchstyles(done) {
     
     var banner = ['/*',
   '===========================================',
@@ -109,35 +89,17 @@ function CLPatchStyles(done) {
 		.pipe(concat('clpatch.built.css'))
         .pipe(header(banner))
 		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./uri-component-library/css/'));
+		.pipe(gulp.dest('./css/'));
 
   done();
   //console.log('styles ran');
 }
 
 
-// Playground JS concat, strip debugging and minify
+// JS concat, strip debugging and minify
 gulp.task('scripts', scripts);
 
 function scripts(done) {
-  gulp.src('./js/src/*.js')
-    .pipe(jshint(done))
-    .pipe(jshint.reporter('default'));
-  gulp.src('./js/src/*.js')
-    .pipe(concat('playground.built.js'))
-    //.pipe(stripDebug())
-    .pipe(uglify())
-    .pipe(gulp.dest('./js/'));
-    
-	done();
- // console.log('scripts ran');
-}
-
-
-// Component Library JS concat, strip debugging and minify
-gulp.task('CLScripts', CLScripts);
-
-function CLScripts(done) {
   gulp.src('./src/js/*.js')
     .pipe(jshint(done))
     .pipe(jshint.reporter('default'));
@@ -145,7 +107,7 @@ function CLScripts(done) {
     .pipe(concat('cl.built.js'))
     //.pipe(stripDebug())
     .pipe(uglify())
-    .pipe(gulp.dest('./uri-component-library/js/'));
+    .pipe(gulp.dest('./js/'));
     
 	done();
  // console.log('scripts ran');
@@ -156,26 +118,20 @@ gulp.task('watcher', watcher);
 
 function watcher(done) {
 	
-    // watch for Playground CSS changes
-	gulp.watch('./css/**/*.scss', styles);
-    
-    // watch for Playground JS changes
-	gulp.watch('./js/src/*.js', scripts);
-
 	// watch for Theme CSS changes
-	gulp.watch('./src/sass/*.scss', CLStyles);
+	gulp.watch('./src/sass/*.scss', styles);
     
     // watch for Theme Patches CSS changes
-	gulp.watch('./src/sass/patches/*.scss', CLPatchStyles);
+	gulp.watch('./src/sass/patches/*.scss', patchstyles);
     
     // watch for Theme JS changes
-	gulp.watch('./src/js/*.js', CLScripts);
+	gulp.watch('./src/js/*.js', scripts);
 
 	done();
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'CLStyles', 'CLPatchStyles', 'CLScripts', 'watcher', function(done){
+	gulp.parallel('styles', 'patchstyles', 'scripts', 'watcher', function(done){
 		done();
 	})
 );
