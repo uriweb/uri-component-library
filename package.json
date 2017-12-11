@@ -1,8 +1,7 @@
 {
-  "name": “playground”,
-  "description": “URI’s Digital Content Style Guide”,
-  "main": "index.php",
-  "homepage": "https://uriweb.bitbucket.io”,
+  "name": "URI Component Library",
+  "description": "URI Component Library",
+  "homepage": "https://www.uri.edu",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,19 +25,5 @@
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.4"
-  },
-  "browserslist": {
-    "production": [
-      "> 1%",
-      "last 2 versions",
-      "Firefox >= 20",
-      "iOS >=8"
-    ],
-    "development": [
-      "> 1%",
-      "last 2 versions",
-      "Firefox >= 20",
-      "iOS >=8"
-    ]
   }
 }
