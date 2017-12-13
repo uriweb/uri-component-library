@@ -1,10 +1,12 @@
-/* ======= BUTTONS ======= */
+/* ======= BUTTONS ======= */ 
 
-a.cl-button * {
-    box-sizing: border-box;
-}
-
-a.cl-button {
+a.cl-button,
+span.cl-button {
+    
+    * {
+        box-sizing: border-box;
+    }
+    
     & {
         display: block !important;
         box-sizing: border-box;
@@ -32,6 +34,16 @@ a.cl-button {
         color: $white !important;
         border: none !important;
         padding: 1.09rem 0;
+    }
+    
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:focus {
+        background: rgba(0,0,0,.05);
+        color: rgba(0,0,0,.4) !important;
+        border: 1px solid rgba(0,0,0,.1) !important;
+        font-weight: 400;
+        cursor: default;
     }
     
     &:first-child {
@@ -65,16 +77,19 @@ a.cl-button {
 .cl-boxout,
 .cl-panel {
     
-    a.cl-button {
+    a.cl-button,
+    span.cl-button {
         padding: calc(1% + 1em) 0;
     }
     
-    a.cl-button.prominent {
+    a.cl-button.prominent,
+    span.cl-button.prominent {
         padding: calc(1% + 1.09em) 0;
     }
 }
 
-.cl-hero a.cl-button {
+.cl-hero a.cl-button,
+.cl-hero span.cl-button {
     & {
         margin-top: 2rem;
         border: none !important;
@@ -94,7 +109,8 @@ a.cl-button {
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .cl-hero a.cl-button { 
+    .cl-hero a.cl-button,
+    .cl-hero span.cl-button { 
         backdrop-filter: saturate(180%) blur(10px); 
         background-color: rgba(255,255,255,.7);
     }
@@ -102,7 +118,8 @@ a.cl-button {
 
 .cl-boxout,
 .cl-panel {
-    a.cl-button {
+    a.cl-button,
+    span.cl-button {
         border-radius: 2px;
     }
 }
@@ -112,7 +129,8 @@ a.cl-button {
     .cl-boxout,
     .cl-panel {
         
-        a.cl-button {
+        a.cl-button,
+        span.cl-button {
             width: 100%;
             max-width: 100%;
         }
