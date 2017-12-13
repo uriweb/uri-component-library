@@ -130,6 +130,8 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'vid' => '',
             'id' => '',
             'dynamic' => false,
+            'super' => false,
+            'fullwidth' => false,
             'img' => '',
             'class' => ''
 		), $atts )
