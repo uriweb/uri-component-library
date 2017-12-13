@@ -16,18 +16,16 @@
         box-sizing: border-box;
     }
     
-    &.fullwidth {
+    &.fullwidth,
+    &.super {
         width: 100vw;
         position: relative;
         left: 50%;
-        margin: 2rem 0 2rem -50vw;
+        margin-left: -50vw;
     }
 
     &.super {
         height: 100vh;
-        width: 100vw;
-        left: 50%;
-        margin-left: -50vw;
     }
     
     iframe {
