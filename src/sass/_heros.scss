@@ -15,6 +15,13 @@
         z-index: 1;
         box-sizing: border-box;
     }
+    
+    &.fullwidth {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        margin: 2rem 0 2rem -50vw;
+    }
 
     &.super {
         height: 100vh;
