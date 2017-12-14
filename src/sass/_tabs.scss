@@ -1,40 +1,51 @@
 /* ======= TABS ======= */
 
 .cl-tabs {
-
-    [role="tablist"] {
-      padding: 0;
+    
+    & {
+        box-shadow: $level1;
+        background: #eee;
     }
 
-    [role="tablist"] li, [role="tablist"] a {
-      display: inline-block;
+    [role="tablist"] {
+        padding: 0;
+    }
+    
+    [role="tablist"]:after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+
+    [role="tablist"] li {
+        float: left;
     }
 
     [role="tablist"] a {
-      text-decoration: none;
-      padding: 0.5rem 1em;
+        display: block;
+        text-decoration: none;
+        background: #eee;
+        color: $black;
+        padding: 15px 1.5rem;
+        border-right: 1px solid $grey;
     }
 
     [role="tablist"] [aria-selected] {
-      border: 2px solid;
-      background: #fff;
-      border-bottom: 0;
-      position: relative;
-      top: 2px;
+        background: $white;
+        border-right: 1px solid transparent;
     }
 
     [role="tabpanel"] {
-      border: 2px solid;
-      padding: 1.5rem;
+        background: $white;
+        padding: 1.5rem;
     }
 
     [role="tabpanel"] * + * {
-      margin-top: 0.75rem;
+        margin-top: 0.75rem;
     }
-
+    
     *:focus {
-      outline: none;
-      box-shadow: inset 0 0 0 4px lightBlue;
+        outline: none;
     }
     
 } // .cl-tabs
@@ -44,28 +55,24 @@
     .cl-tabs {
   
         [role="tablist"] li, [role="tablist"] a {
-            display: block;
+            float: none;
             position: static;
         }
 
         [role="tablist"] a {
-            border: 2px solid #222 !important;
-        }
-
-        [role="tablist"] li + li a {
-            border-top: 0 !important;
+            padding: 15px 1rem;
+            border-bottom: 1px solid $grey;
+            border-radius: 0;
         }
 
         [role="tablist"] [aria-selected] {
             position: static;
-        }
-
-        [role="tablist"] [aria-selected]::after {
-            content: '\0020⬅';
+            font-weight: 600;
         }
 
         [role="tabpanel"] {
             border-top: 0;
+            padding: 1.5rem 1rem;
         }
         
     } // .cl-tabs
