@@ -1,6 +1,10 @@
 /* ======= TABS ======= */
 
-.cl-tabs {
+.cl-tabs section {
+    margin: 4rem 0;
+}
+
+.cl-tabs.cl-tabs-js {
     
     & {
         box-shadow: $level1;
@@ -38,6 +42,7 @@
     [role="tabpanel"] {
         background: $white;
         padding: 1.5rem;
+        margin: 0;
     }
 
     [role="tabpanel"] * + * {
@@ -48,11 +53,11 @@
         outline: none;
     }
     
-} // .cl-tabs
+} // .cl-tabs.cl-tabs-js
 
 @media (max-width: 550px) {
     
-    .cl-tabs {
+    .cl-tabs.js {
   
         [role="tablist"] li, [role="tablist"] a {
             float: none;
@@ -75,6 +80,6 @@
             padding: 1.5rem 1rem;
         }
         
-    } // .cl-tabs
+    } // .cl-tabs.js
   
 }
