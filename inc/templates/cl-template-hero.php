@@ -2,6 +2,12 @@
 
 $classes = 'cl-hero';
 
+if($super) {
+    $classes .= ' super';
+} else if ($fullwidth) {
+    $classes .= ' fullwidth';
+}
+
 if(!empty($class)) {
     $classes .= ' ' . $class;
 }

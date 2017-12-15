@@ -130,6 +130,8 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'vid' => '',
             'id' => '',
             'dynamic' => false,
+            'super' => false,
+            'fullwidth' => false,
             'img' => '',
             'class' => ''
 		), $atts )
@@ -210,6 +212,44 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-social', 'uri_cl_shortcode_social' );
+
+
+/**
+ * Tabs
+ */
+function uri_cl_shortcode_tabs( $atts, $content = null ) {
+    
+    // Attributes
+	extract( shortcode_atts(
+		array(
+            'class' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-tabs.php';
+    return $output;
+    
+}
+add_shortcode( 'cl-tabs', 'uri_cl_shortcode_tabs' );
+
+function uri_cl_shortcode_tab( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'title' => '',
+            'body' => '',
+            'id' => '',
+            'class' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-tab.php';
+    return $output;
+
+}
+add_shortcode( 'cl-tab', 'uri_cl_shortcode_tab' );
+
 
 
 /**

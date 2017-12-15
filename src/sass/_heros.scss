@@ -15,12 +15,17 @@
         z-index: 1;
         box-sizing: border-box;
     }
+    
+    &.fullwidth,
+    &.super {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        margin-left: -50vw;
+    }
 
     &.super {
         height: 100vh;
-        width: 100vw;
-        left: 50%;
-        margin-left: -50vw;
     }
     
     iframe {
