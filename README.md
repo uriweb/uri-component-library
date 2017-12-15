@@ -3,7 +3,7 @@
 Contributors: Brandon Fuller  
 Tags: plugins  
 Requires at least: 4.0  
-Tested up to: 4.7  
+Tested up to: 4.9  
 Stable tag: 1.1  
 
 Component Library
