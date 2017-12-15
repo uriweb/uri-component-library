@@ -13,6 +13,8 @@
 
     [role="tablist"] {
         padding: 0;
+        list-style: none;
+        margin: 0;
     }
     
     [role="tablist"]:after {
@@ -23,6 +25,8 @@
 
     [role="tablist"] li {
         float: left;
+        margin: 0;
+        line-height: initial;
     }
 
     [role="tablist"] a {
@@ -53,6 +57,10 @@
         outline: none;
     }
     
+    [hidden] {
+        display: none;
+    }
+    
 } // .cl-tabs.cl-tabs-js
 
 @media (max-width: 550px) {
@@ -80,6 +88,6 @@
             padding: 1.5rem 1rem;
         }
         
-    } // .cl-tabs.js
+    } // .cl-tabs.cl-tabs-js
   
 }
