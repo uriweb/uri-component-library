@@ -407,7 +407,7 @@
         
     window.addEventListener('load', initCLTabs, false);
     
-    var numtabs = 0; // Keep this global so we can advance it for each tab we create.
+    var tablist, panels, tabs, numtabs = 0; // Keep these global so we don't have to keep passing from func to func
     
     function initCLTabs() {
         
@@ -420,9 +420,14 @@
         
     }
     
+    
+    /*
+     * Restyle the component to make it look great
+     * @param tabbed el the .cl-tabs element
+     */
     function formatTabs(tabbed) {
     
-        var panels, tablist, header, href, li, a, i;
+        var header, href, li, a, i;
         
         // Add a hook for the js version styles
         tabbed.classList.add('cl-tabs-js');
@@ -452,7 +457,7 @@
             
             // Try to use panel id for tab href, otherwise create generic id for panel and href.
             href = panels[i].id;
-            if (href == '') {
+            if (href === '') {
                 href = 'cl-tab-section-' + numtabs;
                 panels[i].id = href;
             }
@@ -475,43 +480,10 @@
         
         
         // Add event listeners to tabs
-        var tabs = tablist.querySelectorAll('a');
+        tabs = tablist.querySelectorAll('a');
         for (i=0; i<tabs.length; i++) {
-            
-            tabs[i].addEventListener('click', function (e) {
-                e.preventDefault();
-                var currentTab = tablist.querySelector('[aria-selected]');
-                if (e.currentTarget !== currentTab) {
-                    switchTab(panels, tabs, currentTab, e.currentTarget);
-                }
-            });
-            
-            // Handle keydown events for keyboard users
-            tabs[i].addEventListener('keydown', function (e) {
-
-                // Get the index of the current tab in the tabs node list
-                var index = Array.prototype.indexOf.call(tabs, e.currentTarget);
-
-                // Work out which key the user is pressing and
-                // Calculate the new tab's index where appropriate
-                var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
-
-                if (dir !== null) {
-                    e.preventDefault();
-
-                    // If the down key is pressed, move focus to the open panel,
-                    // otherwise switch to the adjacent tab
-                    if (dir === 'down') {
-                        panels[i].focus();
-                    } else if (tabs[dir]) {
-                        switchTab(panels, tabs, e.currentTarget, tabs[dir]);
-                    } else {
-                        void 0;
-                    }
-
-                }
-
-            });
+            tabs[i].addEventListener('click', handleClick);
+            tabs[i].addEventListener('keydown', handleKeystroke);
         }
 
 
@@ -525,7 +497,7 @@
             panels[i].setAttribute('aria-labelledby', tabs[i].id);
             panels[i].hidden = true;
             
-        };
+        }
 
         // Initially activate the first tab and reveal the first tab panel
         tabs[0].removeAttribute('tabindex');
@@ -534,8 +506,55 @@
         
     }
     
-    // The tab switching function
-    function switchTab(panels, tabs, oldTab, newTab) {
+    
+    /*
+     * Handle tab clicking
+     * @param e obj the event object
+     */
+    function handleClick(e) {
+        e.preventDefault();
+        var currentTab = tablist.querySelector('[aria-selected]');
+        if (e.currentTarget !== currentTab) {
+            switchTab(currentTab, e.currentTarget);
+        }
+    }
+    
+    
+    /*
+     * Handle key input
+     * @param e obj the event object
+     */
+    function handleKeystroke(e) {
+        // Get the index of the current tab in the tabs node list
+        var index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+
+        // Work out which key the user is pressing and
+        // Calculate the new tab's index where appropriate
+        var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+
+        if (dir !== null) {
+            e.preventDefault();
+
+            // If the down key is pressed, move focus to the open panel,
+            // otherwise switch to the adjacent tab
+            if (dir === 'down') {
+                panels[i].focus();
+            } else if (tabs[dir]) {
+                switchTab(e.currentTarget, tabs[dir]);
+            } else {
+                void 0;
+            }
+
+        }
+    }
+    
+    
+    /*
+     * The tab switching function
+     * @param oldTab el the current tab
+     * @param newTab el the tab selected
+     */
+    function switchTab(oldTab, newTab) {
 
         newTab.focus();
 
@@ -554,7 +573,7 @@
         panels[oldIndex].hidden = true;
         panels[index].hidden = false;
 
-    };
+    }
     
 })();
 /* ======= WAVES ======= */
