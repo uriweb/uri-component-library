@@ -41,7 +41,7 @@ function styles(done) {
   '',
   'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
   '',
-  'See documentation at uriweb.bitbucket.io',
+  'See documentation at uriweb.github.io',
   '',
   '==============================================',
   '*/',
