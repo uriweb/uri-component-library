@@ -31,51 +31,18 @@ ul.cl-menu {
     
     a:hover,
     a:focus {
-        background: #002147;
+        background: $accentblue;
         color: $white;
     }
 
-    span {
-        display: block;
-        padding: 5%;
-        font-weight: 700;
-        color: $midblue;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all .1s ease-in-out;
-    }
-    
-    .arrow {
-        float: right;
-        margin-top: .2rem;
-        margin-left: 1rem;
-        width: 0; 
-        height: 0; 
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid $midblue;
-        transform: rotate(0);
-        transition: border-top .1s ease-in-out, transform 150ms ease-in-out;
-    }
-    
-    .arrow.on {
-        transform: rotate(180deg);
-    }
-    
-    span:hover,
-    span:focus {
-        & {
-            color: $darkgrey;
-            background: $grey;
-        }
-        .arrow {
-            border-top: 8px solid $darkgrey;
-        }
-    }
-
     ul {
+        display: block;
         margin: 0 0 0 5%;
         list-style-type: none;
+    }
+    
+    ul.hidden {
+        display: none;
     }
 
 }
@@ -83,7 +50,9 @@ ul.cl-menu {
 ul.cl-menu.bar {
     
     & {
+        background: #eee;
         max-width: 100%;
+        border-radius: .2rem;
     }
     
     &:after {
@@ -107,10 +76,22 @@ ul.cl-menu.bar {
     }
     
     ul {
+        display: block;
         margin: 0;
         position: absolute;
+        z-index: 100;
         background: $white;
         min-width: 100%;
+        box-shadow: $level2;
+    }
+    
+    ul.hidden {
+        display: none;
+    }
+    
+    ul ul {
+        top: 0;
+        left: 100%;
     }
     
     ul li {
@@ -120,7 +101,7 @@ ul.cl-menu.bar {
     }
     
     ul li:not(:first-child) {
-        border-top: 1px solid $grey;
+        border-top: 1px solid $lightgrey;
     }
     
 }
