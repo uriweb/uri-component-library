@@ -9,6 +9,7 @@
  * - Card (Action)
  * - Card (Detail)
  * - Hero
+ * - Menu
  * - Notice
  * - Panel
  * - Social
@@ -142,6 +143,29 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
+
+
+/**
+ * Notice
+ */
+function uri_cl_shortcode_menu( $atts, $content = null ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'menu-1',
+            'horizontal' => true,
+            'depth' => 0,
+            'id' => '',
+            'class' => ''
+		), $atts )
+	);
+    
+    include 'templates/cl-template-menu.php';
+    return $output;
+
+}
+add_shortcode( 'cl-menu', 'uri_cl_shortcode_menu' );
 
 
 /**
