@@ -1,11 +1,9 @@
 /* ======= MENUS ======= */
 
-ul.cl-menu {
-
+.cl-menu {
+    
     & {
         width: 100%;
-        margin: 0;
-        list-style-type: none;
         box-sizing: border-box;
         background: #eee;
         border-radius: .2rem;
@@ -13,68 +11,81 @@ ul.cl-menu {
         text-align: center;
     }
     
-    &:after {
-        clear: both;
-        display: block;
-        content: '';
-    }
-    
     * {
         box-sizing: border-box;
     }
     
-    li {
-        margin: 0;
-        display: inline-block;
-        border-top: none;
-        position: relative;
-    }
-    
-    li:not(:first-child) {
-        border-left: 1px solid $grey;
-    }
+    ul.cl-menu-list {
 
-    a {
-        display: block;
-        padding: .8rem 1.2rem;
-        color: $black;
-        transition: all .1s ease-in-out;
-    }
-    
-    a:hover,
-    a:focus {
-        background: $accentblue;
-        color: $white;
-    }
+        & {
+            display: inline-block;
+            list-style-type: none;
+            text-align: left;
+            margin: 0;
+            padding: .5rem 0;
+        }
 
-    
-    ul {
-        display: block;
-        margin: 0;
-        position: absolute;
-        z-index: 100;
-        background: $white;
-        min-width: 100%;
-        box-shadow: $level2;
-    }
-    
-    ul.hidden {
-        display: none;
-    }
-    
-    ul ul {
-        top: 0;
-        left: 100%;
-    }
-    
-    ul li {
-        display: block;
-        float: none;
-        border-left: none !important;
-    }
-    
-    ul li:not(:first-child) {
-        border-top: 1px solid $lightgrey;
-    }
+        &:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+
+        li {
+            margin: 0;
+            float: left;
+            display: block;
+            border-top: none;
+            position: relative;
+        }
+
+        li:not(:first-child) {
+            border-left: 1px solid $grey;
+        }
+
+        a {
+            display: block;
+            padding: .6rem 1.2rem;
+            color: $black;
+            transition: all .1s ease-in-out;
+        }
+
+        a:hover,
+        a:focus {
+            background: $accentblue;
+            color: $white;
+        }
+
+
+        ul {
+            display: block;
+            margin: 0;
+            position: absolute;
+            z-index: 100;
+            background: $white;
+            min-width: 100%;
+            box-shadow: $level2;
+        }
+
+        ul.hidden {
+            display: none;
+        }
+
+        ul ul {
+            top: 0;
+            left: 100%;
+        }
+
+        ul li {
+            display: block;
+            float: none;
+            border-left: none !important;
+        }
+
+        ul li:not(:first-child) {
+            border-top: 1px solid $lightgrey;
+        }
+        
+    } // ul.cl-menu-list
     
 } // .cl-menu

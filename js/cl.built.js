@@ -100,7 +100,7 @@
             menus[i].classList.add('.cl-menu-js');
         }
         
-        uls = document.querySelectorAll('.cl-menu ul');
+        uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
             uls[i].classList.add(hiddenClass);
             uls[i].parentNode.addEventListener('mouseover', mouseover.bind(null, uls[i]));
