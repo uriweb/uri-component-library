@@ -1,1 +1,1036 @@
-function onYouTubePlayerAPIReady(){uriCreateYouTubePlayers()}!function(){"use strict";function e(){t(),n(),r()}function t(){for(var e=document.querySelectorAll(".cl-hero .dynamic"),t=0;t<e.length;t++)e[t].style.backgroundPositionX="100%",e[t].style.backgroundPositionY=0}function n(){function e(){var e=window.pageYOffset,t=n.offsetHeight+a,r=Math.min(e/t*i,i);n.style.webkitBackdropFilter="blur("+r+"px)"}var t=document.getElementById("hero");if(t){var n=t.querySelector(".overlay"),r=window.pageYOffset,a=n.getBoundingClientRect().top+r,i=50;e(),window.addEventListener("scroll",function(){e()})}}function r(){var e=document.querySelectorAll(".cl-hero .poster");window.addEventListener("resize",function(){var t;if(window.innerWidth<750)for(t=0;t<e.length;t++)e[t].classList.remove("unveil");else for(t=0;t<e.length;t++)e[t].classList.add("unveil")})}window.addEventListener("load",e,!1)}(),function(){"use strict";function e(){var e,t=document.querySelectorAll(".cl-menu ul");for(e=0;e<t.length;e++)t[e].style.display="none";var n=document.querySelectorAll(".cl-menu span");for(e=0;e<n.length;e++){var r=n[e];r.addEventListener("click",function(){var e=this.parentNode.querySelector("ul"),t=this.querySelector(".arrow");e.style.display="none"===e.style.display?"block":"none",t.classList.contains("on")?t.classList.remove("on"):t.classList.add("on")});var a=document.createElement("div");a.className="arrow",r.appendChild(a)}}window.addEventListener("load",e,!1)}(),function(){"use strict";function e(){var e,n;for(e=document.querySelectorAll(".gallery.gallery-size-full"),n=0;n<e.length;n++)t(e[n])}function t(e){var t,r,a,i,o=[];for(t=e.querySelectorAll("figure"),r=0;r<t.length;r++)a={},a.img=t[r].querySelector("img"),i=t[r].querySelector("figcaption"),i&&(a.caption=i.innerHTML),o.push(a);n(e,o)}function n(e,t){var n,a,o,l,s,d,c,u;for(n=document.createElement("div"),n.className="cl-slideshow",a=document.createElement("div"),a.className="carousel-wrapper",n.appendChild(a),o=document.createElement("ul"),o.className="carousel transitions",a.appendChild(o),l=document.createElement("ul"),l.className="captions",n.appendChild(l),s=document.createElement("div"),s.className="counter",s.innerHTML="<span></span> of "+t.length,n.appendChild(s),u=0;u<t.length;u++)d=document.createElement("li"),d.className="slide",d.appendChild(t[u].img),o.appendChild(d),c=document.createElement("li"),c.className="caption",c.innerHTML=t[u].caption?t[u].caption:"",l.appendChild(c);a.appendChild(r(o)),i(o,0),e.parentNode.replaceChild(n,e)}function r(e){var t,n,r,i,l;t=document.createElement("div"),t.className="controls",n=["Previous","Next"];for(l in n)r=document.createElement("div"),r.className="target "+n[l].toLowerCase(),r.title=n[l],r.addEventListener("click",a.bind(null,e,n[l],!1)),i=document.createElement("div"),i.className="controller",r.appendChild(i),t.appendChild(r);return o(t,e),t}function a(e,t,n){var r,a;if(r=e.getAttribute("data-position"),a=e.children.length-1,e.classList.remove("reboundLeft","reboundRight"),"Next"==t){if(++r>a){if(!n)return e.offsetWidth,void e.classList.add("reboundRight");r--}}else if(--r<0){if(!n)return e.offsetWidth,void e.classList.add("reboundLeft");r++}i(e,r)}function i(e,t){var n,r,a,i;e.style.transform="translateX(-"+100*t+"%)",e.setAttribute("data-position",t),n=e.parentNode.parentNode,r=n.querySelector(".captions .active"),r&&r.classList.remove("active"),a=n.querySelectorAll(".caption"),a[t].classList.add("active"),i=n.querySelector(".counter span"),i.innerHTML=t+1}function o(e,t){var n,r;n=0,r=0,e.addEventListener("touchstart",function(e){t.classList.remove("transitions");var r=e.changedTouches[0];n=parseInt(r.clientX),e.preventDefault()},!1),e.addEventListener("touchmove",function(e){var a,i,o,l;a=e.changedTouches[0],i=parseInt(a.clientX)-n-r,r=parseInt(a.clientX)-n,o=i<0?-1:1,l=t.style.transform.replace("translateX(","").replace("%)",""),t.style.transform="translateX("+(parseInt(l)+o)+"%)",e.preventDefault()},!1),e.addEventListener("touchend",function(e){t.classList.add("transitions");var n=t.offsetWidth;parseInt(t.getAttribute("data-position"));r>.25*n?a(t,"Previous",!0):r<n*-.25?a(t,"Next",!0):i(t,parseInt(t.getAttribute("data-position"))),e.preventDefault()},!1)}window.addEventListener("load",e,!1)}(),function(){"use strict";function e(){var e,n;for(e=document.querySelectorAll(".cl-tabs"),n=0;n<e.length;n++)t(e[n])}function t(e){var t,a,i,c,u;for(e.classList.add("cl-tabs-js"),l=e.querySelectorAll("section"),o=document.createElement("ul"),o.setAttribute("role","tablist"),u=0;u<l.length;u++)d++,t=l[u].querySelector("h1"),t?t=t.innerHTML:(t=l[u].querySelector("h2"),t=t?t.innerHTML:"Section "+d),a=l[u].id,""===a&&(a="cl-tab-section-"+d,l[u].id=a),i=document.createElement("li"),i.setAttribute("role","presentation"),c=document.createElement("a"),c.href="#"+a,c.id="cl-tabs-tab-"+d,c.setAttribute("role","tab"),c.setAttribute("tabindex","-1"),c.innerHTML=t,i.appendChild(c),o.appendChild(i);for(e.insertBefore(o,l[0]),s=o.querySelectorAll("a"),u=0;u<s.length;u++)s[u].addEventListener("click",n),s[u].addEventListener("keydown",r);for(u=0;u<l.length;u++){l[u].setAttribute("role","tabpanel"),l[u].setAttribute("tabindex","-1");l[u].getAttribute("id");l[u].setAttribute("aria-labelledby",s[u].id),l[u].hidden=!0}s[0].removeAttribute("tabindex"),s[0].setAttribute("aria-selected","true"),l[0].hidden=!1}function n(e){e.preventDefault();var t=o.querySelector("[aria-selected]");e.currentTarget!==t&&a(t,e.currentTarget)}function r(e){var t=Array.prototype.indexOf.call(s,e.currentTarget),n=37===e.which?t-1:39===e.which?t+1:40===e.which?"down":null;null!==n&&(e.preventDefault(),"down"===n?l[i].focus():s[n]&&a(e.currentTarget,s[n]))}function a(e,t){t.focus(),t.removeAttribute("tabindex"),t.setAttribute("aria-selected","true"),e.removeAttribute("aria-selected"),e.setAttribute("tabindex","-1");var n=Array.prototype.indexOf.call(s,t),r=Array.prototype.indexOf.call(s,e);l[r].hidden=!0,l[n].hidden=!1}window.addEventListener("load",e,!1);var o,l,s,d=0}(),function(){"use strict";function e(){var e,n;e=document.querySelectorAll(".cl-wave"),n=window.pageYOffset,window.addEventListener("scroll",function(){t(e,n)})}function t(e,t){var n,r,a,i,o;for(n=window.pageYOffset,r=n-t,i=0;i<e.length;i++)o=e[i],a=o.firstElementChild.style.backgroundPositionX.split("px")[0],a+=r,o.firstElementChild.style.backgroundPositionX=r+"px",o.lastElementChild.style.backgroundPositionX=r+"px"}window.addEventListener("load",e,!1)}();var uriCreateYouTubePlayers;!function(){"use strict";function e(){var e,r,a,i,o=!1,l=t(),s=document.querySelectorAll(".cl-hero .poster");if(l)for(i=0;i<s.length;i++){e=s[i],r=e.getAttribute("id"),a=e.parentNode;var d=e.getAttribute("data-start"),c=e.getAttribute("data-end");f[r]={poster:e,parent:a,ytid:e.getAttribute("data-id"),w:a.offsetWidth,h:a.offsetHeight,start:d||0,end:c||-1},e.removeAttribute("id");var u=document.createElement("div");u.id=r,a.appendChild(u),o=!0}var p=document.querySelectorAll(".cl-video img");for(i=0;i<p.length;i++){e=p[i],r=e.getAttribute("id");var h=16/9;e.getAttribute("data-aspect")&&(h=e.getAttribute("data-aspect").split(":"),h=h[0]/h[1]),v[r]={poster:e,ytid:e.getAttribute("data-id"),parent:e.parentNode,aspect:h},o=!0}o&&n()}function t(){var e=!0,t=navigator.userAgent,n=t.indexOf("MSIE "),r=t.indexOf("Trident/");return("Microsoft Internet Explorer"==navigator.appName||n>0||r>0)&&(e=!1),e}function n(){var e=document.createElement("script");e.src="https://www.youtube.com/player_api";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}function r(e,t){var n=t.offsetWidth,r=t.offsetHeight;n/r>16/9?(e.style.height=9*n/16+"px",e.style.width="100%",e.style.left=0,e.style.top=(r-9*n/16)/2+"px",e.style.marginLeft=0):(n=16*r/9,e.style.height="100%",e.style.width=n+"px",e.style.left=0-n/2+"px",e.style.top=0,e.style.marginLeft="50%")}function a(e,t,n){t.style.height=n.offsetWidth/v[e].aspect+"px"}function i(e,t){var n=window.innerHeight,r=window.pageYOffset,a=t.offsetHeight,i=t.getBoundingClientRect().top+r;n+r<i||r>i+a?e.target.pauseVideo():e.target.playVideo()}function o(e){e.target.mute();var t=e.target.getIframe(),n=f[e.target.a.id].parent;window.addEventListener("resize",function(){r(t,n)}),r(t,n),window.addEventListener("scroll",function(){n.classList.contains("paused")||i(e,n)}),i(e,n);var a=n.querySelector(".overlay"),o=document.createElement("div");o.className="motionswitch",o.title="Pause",o.addEventListener("click",function(){s(e,n,this)}),a.appendChild(o)}function l(e){var t=e.target.getIframe(),n=e.target.a.id,r=v[n].parent;window.addEventListener("resize",function(){a(n,t,r)}),a(n,t,r)}function s(e,t,n){switch(e.target.getPlayerState()){default:case 1:e.target.pauseVideo(),t.classList.add("paused"),n.setAttribute("title","Play");break;case 2:e.target.playVideo(),t.classList.remove("paused"),n.setAttribute("title","Pause")}}function d(e){switch(e.target.getPlayerState()){case 0:e.target.playVideo();break;case-1:case 1:window.innerWidth>750&&f[e.target.a.id].poster.classList.add("unveil")}}function c(e){f[e.target.a.id].poster.classList.remove("unveil"),f[e.target.a.id].parent.querySelector(".motionswitch").style.display="none"}function u(e){var t,n,r,a;t=v[e.target.a.id],n=document.createElement("a"),n.href="http://www.youtube.com/watch?v="+t.ytid,n.title="Try watching this video on YouTube",r=document.createElement("img"),r.src=t.poster.getAttribute("src"),a=t.poster.getAttribute("alt"),a||(a="Poster for video"),r.alt=a,n.appendChild(r);var i=document.getElementById(e.target.a.id);i&&t.parent.replaceChild(n,i)}function p(e){var t=e.target.getPlayerState(),n=e.target.a.id,r=v[n].parent.querySelector(".overlay");switch(t){case 1:case 3:r.classList.add("hidden");break;default:r.classList.remove("hidden")}}var f={},v={};window.addEventListener("load",e,!1),uriCreateYouTubePlayers=function(){var e,t;for(e in f)t=f[e],t.player=new YT.Player(e,{width:t.w,height:t.h,videoId:t.ytid,playerVars:{autoplay:1,controls:0,showinfo:0,start:t.start,end:t.end,modestbranding:1,iv_load_policy:3,rel:0},events:{onReady:o,onStateChange:d,onError:c}});for(e in v)t=v[e],t.player=new YT.Player(e,{videoId:t.ytid,playerVars:{autoplay:0,controls:1,showinfo:0,color:"white",modestbranding:1,iv_load_policy:3},events:{onReady:l,onStateChange:p,onError:u}})}}();
+/* ======= HEROS ======= */
+
+(function(){
+    
+    'use strict';
+    
+    window.addEventListener('load', initCLHeros, false);
+    
+    function initCLHeros(){
+        dynamicZoom();
+        blurHeroControl();
+        mobile();
+    }
+
+    
+    /* 
+     * Zooming for dynamic image heros
+     */
+    function dynamicZoom() {
+        
+        var heros = document.querySelectorAll('.cl-hero .dynamic');
+        
+        for(var i=0; i<heros.length; i++){
+            heros[i].style.backgroundPositionX = '100%';
+            heros[i].style.backgroundPositionY = 0;
+        }
+        
+    }
+
+    
+    /* 
+     * Blur header hero on scroll
+     */
+    function blurHeroControl() {
+        
+        var hero = document.getElementById('hero');
+        
+        if (hero) {
+
+            var overlay = hero.querySelector('.overlay'),
+                scroll = window.pageYOffset,
+                offset = overlay.getBoundingClientRect().top + scroll,
+                radius = 50; // Set the desired blur radius, in pixels
+
+            //console.log('overlay', overlay);
+            blurHero();
+
+            window.addEventListener('scroll', function(){
+                blurHero();
+            });
+
+        }
+
+        function blurHero() {
+            var p = window.pageYOffset,
+                h = overlay.offsetHeight + offset,
+                b = Math.min(p/h*radius, radius);
+            
+            overlay.style.webkitBackdropFilter = 'blur(' + b + 'px)';
+        }
+        
+    }
+    
+    function mobile() {
+        
+        var els = document.querySelectorAll('.cl-hero .poster');
+        
+        window.addEventListener('resize', function(){
+            var i, w = window.innerWidth;
+            if (w < 750) {
+                for(i=0; i<els.length; i++){
+                    els[i].classList.remove('unveil');
+                }
+            } else {
+                for(i=0; i<els.length; i++){
+                    els[i].classList.add('unveil');
+                }
+            }
+        });
+    }
+
+})();
+/* ======= MENUS ======= */
+
+(function(){
+    
+    'use strict';
+    
+    var revealClass = 'reveal';
+    
+    window.addEventListener('load', initCLMenus, false);
+    
+    function initCLMenus() {
+        var menus, uls, trigger, spans, i;
+        
+        // Since we have JS, let's add a unique css hook and submenu triggers
+        
+        menus = document.querySelectorAll('.cl-menu');
+        for (i=0; i<menus.length; i++) {
+            menus[i].classList.add('.cl-menu-js');
+        }
+        
+        uls = document.querySelectorAll('.cl-menu-list ul');
+        for (i=0; i<uls.length; i++) {
+            uls[i].parentNode.addEventListener('mouseover', mouseover.bind(null, uls[i]));
+            uls[i].parentNode.addEventListener('mouseout', mouseout.bind(null, uls[i]));
+        }
+        
+    }
+    
+    
+    /*
+     * Open the submenu
+     * @param el el the submenu trigger clicked
+     */
+    function mouseover(el) {  
+        el.classList.add('reveal');
+        el.previousElementSibling.classList.add('highlight');
+    }
+    
+    /*
+     * Close the submenu
+     * @param el el the submenu trigger clicked
+     */
+    function mouseout(el) {  
+        el.classList.remove('reveal'); 
+        el.previousElementSibling.classList.remove('highlight');
+    }
+    
+})();
+/* ======= SLIDESHOW ======= */
+
+/*
+ * Turn WP image galleries into something pretty.
+ * Hooks into WP full-size image galleries only.
+ */
+
+
+(function(){
+    
+    'use strict';
+        
+    window.addEventListener('load', initCLSlideshow, false);
+    
+    function initCLSlideshow() {
+        var g, i;
+        
+        g = document.querySelectorAll('.gallery.gallery-size-full');
+        for (i=0; i<g.length; i++) {
+            parseWPGallery(g[i]);
+        } 
+    }
+    
+    /*
+     * Parse gallery element
+     * @param el el the gallery element
+     */
+    function parseWPGallery(el) {
+        
+        var figs, i, parts, caption, parsed = [];
+        
+        figs = el.querySelectorAll('figure');
+        
+        for (i=0; i<figs.length; i++) {
+            
+            parts = {};
+            
+            parts.img = figs[i].querySelector('img');
+            
+            caption = figs[i].querySelector('figcaption');
+            if(caption) {
+                parts.caption = caption.innerHTML;
+            }
+            
+            parsed.push(parts);
+            
+        }
+        
+        buildSlideshowDOM(el, parsed);
+                
+    }
+    
+    
+    /*
+     * Build slideshow DOM
+     * @param el el the gallery element
+     * @param parsed obj the parsed gallery
+     */
+    function buildSlideshowDOM(el, parsed) {
+        var S, carouselWrapper, carousel, captions, counter, li, cap, i;
+                
+        S = document.createElement('div');
+        S.className = 'cl-slideshow';
+        
+        carouselWrapper = document.createElement('div');
+        carouselWrapper.className = 'carousel-wrapper';
+        S.appendChild(carouselWrapper);
+        
+        carousel = document.createElement('ul');
+        carousel.className = 'carousel transitions';
+        carouselWrapper.appendChild(carousel);
+        
+        captions = document.createElement('ul');
+        captions.className = 'captions';
+        S.appendChild(captions);
+        
+        counter = document.createElement('div');
+        counter.className = 'counter';
+        counter.innerHTML = '<span></span> of ' + parsed.length;
+        S.appendChild(counter);
+        
+                
+        for (i=0; i<parsed.length; i++) {
+                        
+            li = document.createElement('li');
+            li.className = 'slide';
+            li.appendChild(parsed[i].img);
+            carousel.appendChild(li);
+            
+            cap = document.createElement('li');
+            cap.className = 'caption';
+            cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
+            captions.appendChild(cap);
+                     
+        }
+        
+        carouselWrapper.appendChild(makeControlButtons(carousel));
+        
+        setPosition(carousel, 0);
+            
+        el.parentNode.replaceChild(S, el);
+        
+    }
+    
+    
+    /**
+	 * Create controls
+     * @param c el the carousel
+	 */
+	function makeControlButtons(c) {
+		var controls, types, target, button, x;
+        
+		controls = document.createElement('div');
+        controls.className = 'controls';
+        
+		types = ['Previous', 'Next'];
+        
+        for (x in types) {
+			target = document.createElement('div');
+			target.className = 'target ' + types[x].toLowerCase();
+            target.title = types[x];
+			target.addEventListener('click', controlDirection.bind(null, c, types[x], false) );
+            
+            button = document.createElement('div');
+            button.className = 'controller';
+            target.appendChild(button);
+            
+			controls.appendChild(target);
+		}
+        
+        addTouchControls(controls, c);
+        
+        return controls;
+        
+	}
+    
+    
+    /*
+     * Control direction of movement
+     * @param c el the carousel
+     * @param direction str the direction to move in
+     * @param mobile bool called from mobile device
+     */
+    function controlDirection(c, direction, mobile) {
+		var index, count;
+		index = c.getAttribute('data-position');
+		count = c.children.length - 1;
+        
+        // Reset the endslide animation
+        c.classList.remove('reboundLeft', 'reboundRight');
+		
+		if(direction == 'Next') {
+			index++;
+			if(index > count) {
+                if (!mobile) {
+                    void c.offsetWidth; // Trigger reflow to restart animation
+                    c.classList.add('reboundRight');
+                    return;
+                } else {
+                    index--;
+                }
+			}
+		} else {
+			index--;
+			if(index < 0) {
+                if (!mobile) {
+                    void c.offsetWidth; // Trigger reflow to restart animation
+                    c.classList.add('reboundLeft');
+                    return;
+                } else {
+                    index++;
+                }
+			}
+		}
+        
+		setPosition(c, index);
+	}
+    
+    
+    /*
+     * Set position of slideshow
+     * @param c el the carousel
+     * @param index int the index to move to
+     */
+    function setPosition(c, index) {
+        
+        var S, active, captions, counter, i;
+                        
+        c.style.transform = 'translateX(-' + (index * 100) + '%)';
+        c.setAttribute('data-position', index);
+        
+        S = c.parentNode.parentNode;
+        
+        active = S.querySelector('.captions .active');
+        if (active) {
+            active.classList.remove('active');
+        }
+        
+        captions = S.querySelectorAll('.caption');
+        captions[index].classList.add('active');
+        
+        counter = S.querySelector('.counter span');
+        counter.innerHTML = index + 1;
+        
+    
+    }
+    
+    
+    /*
+     * Add touch controls
+     * @param el el the control div
+     * @param c el the carousel
+     */
+    function addTouchControls(el, c) {
+        
+        var start, dist; 
+        
+        start = 0;
+        dist = 0;
+
+        el.addEventListener('touchstart', function(e){
+            
+            // Unhook CSS transitions during swipe event for smoother tracking
+            c.classList.remove('transitions');
+            
+            // Reference first touch point
+            var touchobj = e.changedTouches[0];
+            
+            // Get x position of touch point relative to left edge of browser
+            start = parseInt(touchobj.clientX);
+            
+            e.preventDefault();
+            
+        }, false);
+
+        el.addEventListener('touchmove', function(e){
+            
+            var touchobj, delta, move, t;
+            
+            // Reference first touch point for this event
+            touchobj = e.changedTouches[0]; 
+            
+            delta = ( parseInt(touchobj.clientX) - start ) - dist;
+            dist = parseInt(touchobj.clientX) - start;
+            move =  delta < 0 ? -1 : 1;
+            
+            t = c.style.transform.replace('translateX(','').replace('%)','');
+            c.style.transform = 'translateX(' + (parseInt(t) + move) + '%)';
+                        
+            e.preventDefault();
+            
+        }, false);
+
+        el.addEventListener('touchend', function(e){
+            
+            // Rehook CSS transitions after the swipe is complete to animate snapping
+            c.classList.add('transitions');
+            
+            var w = c.offsetWidth,
+                i = parseInt(c.getAttribute('data-position')),
+                tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
+                                    
+            if (dist > w * tolerance) { 
+                controlDirection(c, 'Previous', true);
+            } else if (dist < w * -tolerance) {
+                controlDirection(c, 'Next', true);
+            } else {
+                setPosition(c, parseInt( c.getAttribute('data-position') ) );
+            }
+            
+            e.preventDefault();
+            
+        }, false);
+        
+    }
+    
+    
+})();
+(function () {
+
+    'use strict';
+        
+    window.addEventListener('load', initCLTabs, false);
+    
+    var tablist, panels, tabs, numtabs = 0; // Keep these global so we don't have to keep passing from func to func
+    
+    function initCLTabs() {
+        
+        var els, i;
+        
+        els = document.querySelectorAll('.cl-tabs');
+        for (i = 0; i<els.length; i++) {
+            formatTabs(els[i]);
+        }
+        
+    }
+    
+    
+    /*
+     * Restyle the component to make it look great
+     * @param tabbed el the .cl-tabs element
+     */
+    function formatTabs(tabbed) {
+    
+        var header, href, li, a, i;
+        
+        // Add a hook for the js version styles
+        tabbed.classList.add('cl-tabs-js');
+        
+        panels = tabbed.querySelectorAll('section');
+        
+        // Create tabs
+        tablist = document.createElement('ul');
+        tablist.setAttribute('role', 'tablist');
+        
+        for (i=0; i<panels.length; i++) {
+            
+            numtabs++;
+            
+            // Try to use panel h1 or h2 for tab names, otherwise use generic name
+            header = panels[i].querySelector('h1');
+            if (header) {
+                header = header.innerHTML;
+            } else {
+                header = panels[i].querySelector('h2');
+                if (header) {
+                    header = header.innerHTML;
+                } else {
+                    header = 'Section ' + numtabs;
+                }
+            }
+            
+            // Try to use panel id for tab href, otherwise create generic id for panel and href.
+            href = panels[i].id;
+            if (href === '') {
+                href = 'cl-tab-section-' + numtabs;
+                panels[i].id = href;
+            }
+            
+            li = document.createElement('li');
+            li.setAttribute('role', 'presentation');
+            
+            a = document.createElement('a');
+            a.href = '#' + href;
+            a.id = ('cl-tabs-tab-' + numtabs);
+            a.setAttribute('role', 'tab');
+            a.setAttribute('tabindex', '-1');
+            a.innerHTML = header;
+            
+            li.appendChild(a);
+            tablist.appendChild(li);
+        }
+        
+        tabbed.insertBefore(tablist, panels[0]);
+        
+        
+        // Add event listeners to tabs
+        tabs = tablist.querySelectorAll('a');
+        for (i=0; i<tabs.length; i++) {
+            tabs[i].addEventListener('click', handleClick);
+            tabs[i].addEventListener('keydown', handleKeystroke);
+        }
+
+
+        // Add tab panel semantics and hide them all
+        for (i=0; i<panels.length; i++) {
+            
+            panels[i].setAttribute('role', 'tabpanel');
+            panels[i].setAttribute('tabindex', '-1');
+            
+            var id = panels[i].getAttribute('id');
+            panels[i].setAttribute('aria-labelledby', tabs[i].id);
+            panels[i].hidden = true;
+            
+        }
+
+        // Initially activate the first tab and reveal the first tab panel
+        tabs[0].removeAttribute('tabindex');
+        tabs[0].setAttribute('aria-selected', 'true');
+        panels[0].hidden = false;
+        
+    }
+    
+    
+    /*
+     * Handle tab clicking
+     * @param e obj the event object
+     */
+    function handleClick(e) {
+        e.preventDefault();
+        var currentTab = tablist.querySelector('[aria-selected]');
+        if (e.currentTarget !== currentTab) {
+            switchTab(currentTab, e.currentTarget);
+        }
+    }
+    
+    
+    /*
+     * Handle key input
+     * @param e obj the event object
+     */
+    function handleKeystroke(e) {
+        // Get the index of the current tab in the tabs node list
+        var index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+
+        // Work out which key the user is pressing and
+        // Calculate the new tab's index where appropriate
+        var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+
+        if (dir !== null) {
+            e.preventDefault();
+
+            // If the down key is pressed, move focus to the open panel,
+            // otherwise switch to the adjacent tab
+            if (dir === 'down') {
+                panels[i].focus();
+            } else if (tabs[dir]) {
+                switchTab(e.currentTarget, tabs[dir]);
+            } else {
+                void 0;
+            }
+
+        }
+    }
+    
+    
+    /*
+     * The tab switching function
+     * @param oldTab el the current tab
+     * @param newTab el the tab selected
+     */
+    function switchTab(oldTab, newTab) {
+
+        newTab.focus();
+
+        // Make the active tab focusable by the user (Tab key)
+        newTab.removeAttribute('tabindex');
+
+        // Set the selected state
+        newTab.setAttribute('aria-selected', 'true');
+        oldTab.removeAttribute('aria-selected');
+        oldTab.setAttribute('tabindex', '-1');
+
+        // Get the indices of the new and old tabs to find the correct
+        // tab panels to show and hide
+        var index = Array.prototype.indexOf.call(tabs, newTab);
+        var oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+        panels[oldIndex].hidden = true;
+        panels[index].hidden = false;
+
+    }
+    
+})();
+/* ======= WAVES ======= */
+
+(function(){
+    
+    'use strict';
+    
+    window.addEventListener('load', initCLWaves, false);
+               
+    function initCLWaves() {
+        var els, i;
+
+        els = document.querySelectorAll('.cl-wave');
+        i = window.pageYOffset;
+
+        window.addEventListener('scroll', function() {
+            moveWaves(els, i);
+        });
+        
+    }
+    
+    function moveWaves(els, i) {
+        var offset, move, pos, n, el;
+
+        offset = window.pageYOffset;
+        move = offset - i;
+
+        for(n=0; n<els.length; n++){
+            el = els[n];
+            pos = el.firstElementChild.style.backgroundPositionX.split('px')[0];
+            pos += move;
+
+            el.firstElementChild.style.backgroundPositionX = move + 'px';
+            el.lastElementChild.style.backgroundPositionX = move + 'px';
+        }
+    }
+
+})();
+/* ======= HERO VIDS / VIDEOS ======= */
+
+// Create this in the global scope so the YouTube API can call it locally.
+var uriCreateYouTubePlayers;
+function onYouTubePlayerAPIReady() {
+    uriCreateYouTubePlayers();
+}
+
+(function() {
+    
+    'use strict';
+
+    var uri_vid_heros = {},
+        uri_videos = {};
+
+    window.addEventListener('load', getVids, false);
+
+    
+    /*
+     * Get video ID(s) and load the API
+     */
+    function getVids() {
+        
+        var requireYouTube = false,
+            heroSupport = checkSupport(),
+            heros = document.querySelectorAll('.cl-hero .poster'),
+            el, key, parent, i;
+        
+        if (heroSupport) {
+        
+            for (i=0; i<heros.length; i++) {
+
+                el = heros[i];
+                key = el.getAttribute('id');
+                parent = el.parentNode;
+                
+                var start = el.getAttribute('data-start'),
+                    end = el.getAttribute('data-end');
+
+                uri_vid_heros[key] = {
+                    'poster' : el,
+                    'parent' : parent,
+                    'ytid' : el.getAttribute('data-id'),
+                    'w' : parent.offsetWidth,
+                    'h' : parent.offsetHeight,
+                    'start' : start ? start : 0,
+                    'end' : end ? end : -1
+                };
+
+                // Remove poster id and create a new placeholder for the video
+                el.removeAttribute('id');
+                var placeholder = document.createElement('div');
+                placeholder.id = key;
+                parent.appendChild(placeholder);
+
+                requireYouTube = true;
+
+            }
+            
+        }
+                
+
+        var vids = document.querySelectorAll('.cl-video img');
+        
+        for (i=0; i<vids.length; i++) {
+
+            el = vids[i];
+            key = el.getAttribute('id');
+            
+            var aspect = 16/9; // Set default aspect
+                
+            if ( el.getAttribute('data-aspect') ) {
+                aspect = el.getAttribute('data-aspect').split(':');
+                aspect = aspect[0]/aspect[1];
+            }
+            
+            uri_videos[key] = {
+                'poster' : el,
+                'ytid' : el.getAttribute('data-id'),
+                'parent' : el.parentNode,
+                'aspect' : aspect
+            };
+
+            requireYouTube = true;
+
+        }
+        
+        if ( requireYouTube ) { loadYouTubeAPI(); }
+
+    }
+    
+    /*
+     * Check browser support (essentially anything but IE)
+     * @return bool
+     */
+    function checkSupport() {
+        var support = true,
+            ua = navigator.userAgent,
+            msie = ua.indexOf('MSIE '),
+            trident = ua.indexOf('Trident/');
+        
+        if (navigator.appName == 'Microsoft Internet Explorer' || msie > 0 || trident > 0) {
+            support = false;
+        }
+            
+        return support;
+    }
+
+
+    /*
+     * Load the API
+     */
+    function loadYouTubeAPI() {
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/player_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+
+    /*
+     * Create the player(s)
+     */
+    uriCreateYouTubePlayers = function() {
+
+        var key, value;
+        
+        for (key in uri_vid_heros) {
+            
+            value = uri_vid_heros[key];
+
+            value.player = new YT.Player(key, {
+                width: value.w,
+                height: value.h,
+                videoId: value.ytid,
+                playerVars: {
+                    autoplay: 1,
+                    controls: 0,
+                    showinfo: 0,
+                    start: value.start,
+                    end: value.end,
+                    modestbranding: 1,
+                    iv_load_policy: 3,
+                    rel: 0
+                },
+                events: {
+                    'onReady' : onHeroReady,
+                    'onStateChange' : onHeroStateChange,
+                    'onError' : onHeroError
+                }
+            });
+
+        }
+        
+        for (key in uri_videos) {
+                        
+            value = uri_videos[key];
+
+            value.player = new YT.Player(key, {
+                videoId: value.ytid,
+                playerVars: {
+                    autoplay: 0,
+                    controls: 1,
+                    showinfo: 0,
+                    color: 'white',
+                    modestbranding: 1,
+                    iv_load_policy: 3
+                },
+                events: {
+                    'onReady' : onVideoReady,
+                    'onStateChange' : onVideoStateChange,
+                    'onError' : onVideoError
+                }
+            });
+
+        }
+        
+    };
+
+
+    /*
+     * Dynamically set the hero height and position based on width
+     * @param el el the hero
+     * @param el parent the hero parent container
+     */
+    function resizeHero(el, parent) {
+        //console.log('hero resize', el.getAttribute('id'));
+        
+        var w = parent.offsetWidth,
+            h = parent.offsetHeight,
+            style;
+        
+        if (w/h > 16/9) {
+            el.style.height = w * 9 / 16 + 'px';
+            el.style.width = '100%';
+            el.style.left = 0;
+            el.style.top = (h - (w*9/16)) / 2 + 'px';
+            el.style.marginLeft = 0;
+        } else {
+            w = h * 16 / 9;
+            el.style.height = '100%';
+            el.style.width = w + 'px';
+            el.style.left = 0 - w / 2 + 'px';
+            el.style.top = 0;
+            el.style.marginLeft = '50%';
+        }
+    }
+
+
+    /*
+     * Dynamically set the video height and position based on width
+     * @param str key the key of the video in uri_videos
+     * @param el el the video
+     * @param el parent the video parent container
+     */
+    function resizeVideo(key, el, parent) {
+        //console.log('video resize', key, parent.offsetWidth / uri_videos[key].aspect); 
+        el.style.height =  parent.offsetWidth / uri_videos[key].aspect + 'px';
+    }
+
+
+    /*
+     * Pause the hero when it's completely out of the viewport
+     * @param obj event the hero player
+     * @param el parent the hero parent container
+     */
+    function determinePlayState(event, parent) {
+        //console.log('hero play state', event.target.a.id);
+        var v = window.innerHeight,
+            p = window.pageYOffset,
+            h = parent.offsetHeight,
+            o = parent.getBoundingClientRect().top + p;
+            
+        if (v + p < o || p > o + h) {
+            event.target.pauseVideo();
+        } else { 
+            event.target.playVideo();
+        }
+
+    }
+
+
+    /*
+     * Do things with the hero when it's loaded
+     * @param obj event the hero player
+     */
+    function onHeroReady(event) {
+        //console.log('hero ready',event.target.a.id);
+        
+        // Mute the vid
+        event.target.mute();
+
+        var el = event.target.getIframe(),
+            parent = uri_vid_heros[event.target.a.id].parent;
+
+        // Listen for browser resizing
+        window.addEventListener('resize', function(){
+            resizeHero(el, parent);
+        });
+        resizeHero(el, parent);
+
+        // Listen for scrolling
+        window.addEventListener('scroll', function(){
+            if(!parent.classList.contains('paused')) {
+                determinePlayState(event, parent);
+            }
+        });
+        determinePlayState(event, parent);
+        
+        // Add play/pause button
+        var overlay = parent.querySelector('.overlay'),
+            button = document.createElement('div');
+        
+        button.className = 'motionswitch';
+        button.title = 'Pause';
+        button.addEventListener('click', function(){
+            heroControl(event, parent, this);
+        });
+        
+        overlay.appendChild(button);
+
+    }
+
+
+    /*
+     * Do things with the video when it's loaded
+     * @param str id the id of the video
+     */
+    function onVideoReady(event) {
+        //console.log('video ready', id);
+        
+        var el = event.target.getIframe(),
+            key = event.target.a.id,
+            parent = uri_videos[key].parent;
+            
+
+        window.addEventListener('resize', function(){
+            resizeVideo(key,el,parent);
+        });
+        resizeVideo(key,el,parent);
+        
+    }
+
+
+    /*
+     * User control of the hero video
+     * @param obj event the hero player
+     * @param el parent the hero parent container
+     * @param el el the .motionswitch element
+     */
+    function heroControl(event, parent, el) {
+        //console.log('hero control', event.target.a.id);
+        
+        switch (event.target.getPlayerState()) {
+            default:
+            case 1:
+                event.target.pauseVideo();
+                parent.classList.add('paused');
+                el.setAttribute('title','Play');
+                break;
+            case 2: 
+                event.target.playVideo();
+                parent.classList.remove('paused');
+                el.setAttribute('title','Pause');
+                break;
+        } 
+    }
+
+
+    /*
+     * Get hero state and decide what to do
+     * @param obj event the hero player
+     */
+    function onHeroStateChange(event) {
+        var state = event.target.getPlayerState();
+        //console.log('hero state change', event.target.a.id, state);
+        
+        switch (state) {
+            case 0:
+                event.target.playVideo();
+                break;
+            case -1:
+            case 1:
+                if (window.innerWidth > 750) {
+                    uri_vid_heros[event.target.a.id].poster.classList.add('unveil');
+                }
+                break;
+        }
+    }
+
+
+    /*
+     * Revert to poster if there's an error with the hero video
+     * @param str key the key of the hero in uri_vid_heros
+     */
+    function onHeroError(event) {
+        //console.log('hero error', event);
+        
+        uri_vid_heros[event.target.a.id].poster.classList.remove('unveil');
+        uri_vid_heros[event.target.a.id].parent.querySelector('.motionswitch').style.display = 'none';
+    }
+    
+    
+    /*
+     * Link the poster to the video on YouTube if there's an error with the video
+     * @param str key the key of the hero in uri_videos
+     */
+    function onVideoError(event) {
+        //console.log('video error', event);
+        
+        var el, a, img, alt;
+        
+        el = uri_videos[event.target.a.id];
+                
+        a = document.createElement('a');
+        a.href = "http://www.youtube.com/watch?v=" + el.ytid;
+        a.title = "Try watching this video on YouTube";
+        
+        img = document.createElement('img');
+        img.src = el.poster.getAttribute('src');
+        alt = el.poster.getAttribute('alt');
+        if (!alt) {
+            alt = "Poster for video";
+        }
+        img.alt = alt;
+        a.appendChild(img);
+              
+        var iframe = document.getElementById(event.target.a.id);
+        if (iframe) {
+            el.parent.replaceChild(a, iframe);
+        }
+    
+    }
+    
+    
+    /*
+     * Get video state and decide what to do
+     * @param obj event the video player
+     */
+    function onVideoStateChange(event) {
+        
+        var state = event.target.getPlayerState(),
+            key = event.target.a.id,
+            overlay = uri_videos[key].parent.querySelector('.overlay');
+        
+        switch (state) {
+            case 1:
+            case 3:
+                overlay.classList.add('hidden');
+                break;
+            default:
+                overlay.classList.remove('hidden');
+        }
+    }
+    
+})();

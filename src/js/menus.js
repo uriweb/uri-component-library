@@ -4,40 +4,45 @@
     
     'use strict';
     
+    var revealClass = 'reveal';
+    
     window.addEventListener('load', initCLMenus, false);
     
     function initCLMenus() {
-        var i;
+        var menus, uls, trigger, spans, i;
         
-        // Since we have JS, let's hide any nested menus
-        var uls = document.querySelectorAll('.cl-menu ul');
+        // Since we have JS, let's add a unique css hook and submenu triggers
+        
+        menus = document.querySelectorAll('.cl-menu');
+        for (i=0; i<menus.length; i++) {
+            menus[i].classList.add('.cl-menu-js');
+        }
+        
+        uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
-            uls[i].style.display = 'none';
-        }
-
-        // Append dropdown arrows, bind click event to submenu triggers, and control the submenu                               
-        var spans = document.querySelectorAll('.cl-menu span');
-        for(i=0; i<spans.length; i++) {
-            var el = spans[i];
-            el.addEventListener('click', function() {
-                var ul = this.parentNode.querySelector('ul'),
-                    arrow = this.querySelector('.arrow');
-                
-                ul.style.display = ul.style.display === 'none' ? 'block' : 'none';
-                
-                if (arrow.classList.contains('on')) {
-                    arrow.classList.remove('on');
-                } else {
-                    arrow.classList.add('on');
-                }
-                
-            });
-            
-            var arrow = document.createElement('div');
-            arrow.className = 'arrow';
-            el.appendChild(arrow);
+            uls[i].parentNode.addEventListener('mouseover', mouseover.bind(null, uls[i]));
+            uls[i].parentNode.addEventListener('mouseout', mouseout.bind(null, uls[i]));
         }
         
+    }
+    
+    
+    /*
+     * Open the submenu
+     * @param el el the submenu trigger clicked
+     */
+    function mouseover(el) {  
+        el.classList.add('reveal');
+        el.previousElementSibling.classList.add('highlight');
+    }
+    
+    /*
+     * Close the submenu
+     * @param el el the submenu trigger clicked
+     */
+    function mouseout(el) {  
+        el.classList.remove('reveal'); 
+        el.previousElementSibling.classList.remove('highlight');
     }
     
 })();
