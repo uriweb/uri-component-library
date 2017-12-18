@@ -51,14 +51,20 @@
         }
 
         a:hover,
-        a:focus {
+        a:focus,
+        a.highlight:hover,
+        a.highlight:focus {
             background: $accentblue;
             color: $white;
         }
-
+        
+        a.highlight {
+            background: $blue;
+            color: $white;
+        }
 
         ul {
-            display: block;
+            display: none;
             margin: 0;
             position: absolute;
             z-index: 100;
@@ -67,8 +73,8 @@
             box-shadow: $level2;
         }
 
-        ul.hidden {
-            display: none;
+        ul.reveal {
+            display: block;
         }
 
         ul ul {
