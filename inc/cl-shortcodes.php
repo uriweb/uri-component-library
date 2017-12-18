@@ -154,7 +154,6 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
 	extract( shortcode_atts(
 		array(
 			'name' => 'menu-1',
-            'horizontal' => true,
             'depth' => 0,
             'id' => '',
             'class' => ''

@@ -2,10 +2,6 @@
 
 $classes = 'cl-menu';
 
-if($horizontal) {
-    $classes .= ' bar';
-}
-
 if(!empty($class)) {
     $classes .= ' ' . $class;
 }
