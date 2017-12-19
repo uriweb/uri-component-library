@@ -1,30 +1,33 @@
 <?php
 
 function uri_cl_validate($atts, $req, $template) {
-     
-    $error = false;
+    
+    $errors = array();
     
     foreach($req as $a) {
         
-        $att = array_shift($a);
+        $name = $a[0];
+        
+        $att = $atts[array_shift($a)];
         $type = array_shift($a);
+    
                 
         // Check for invalid entries
         foreach($a as $b) {
             if ($att == $b) {
-                $error = true;
+                $errors[] = $name;
             }
         }
         
         // Check for empty entry
         if (empty($att)) {
-            $error = true;
+            $errors[] = $name;
         }
         
     }
     
-    if ($error == true) {
-        $output = uri_cl_return_error();
+    if (count($errors) > 0) {
+        $output = uri_cl_return_error($errors);
     } else {
         extract($atts);
         include $template;
@@ -33,6 +36,17 @@ function uri_cl_validate($atts, $req, $template) {
     return $output;
 }
 
-function uri_cl_return_error() {
-    return '<div>CL Error</div>';
+function uri_cl_return_error($errors) {
+    $output = '<div class="cl-errors">';
+    $output .= '<div>CL Errors</div>';
+    $output .= '<ul>';
+    
+    foreach($errors as $e) {
+        $output .= '<li>' . $e . '</li>';
+    }
+    
+    $output .= '</ul>';
+    $output .= '</div>';
+    
+    return $output;
 }
