@@ -27,6 +27,7 @@ function uri_cl_validate($cname, $atts, $req, $template) {
             switch ($type) {
                 case 'url':
                     $validation = uri_cl_validate_url($att);
+                    $displayType = 'URL';
                     break;
                 default:
                     $validation = array('valid' => true, 'value' => $att);
@@ -38,7 +39,7 @@ function uri_cl_validate($cname, $atts, $req, $template) {
             } else {
                 $errors[] = array(
                     'attr' => $name,
-                    'message' => '"' . $att . '" is not valid',
+                    'message' => '"' . $att . '" is not a valid ' . $displayType,
                     'status' => 'warning'
                 );
             }
