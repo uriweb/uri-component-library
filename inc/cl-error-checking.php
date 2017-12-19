@@ -8,16 +8,8 @@ function uri_cl_validate($atts, $req, $template) {
         
         $name = $a[0];
         
-        $att = $atts[array_shift($a)];
-        $type = array_shift($a);
-    
-                
-        // Check for invalid entries
-        foreach($a as $b) {
-            if ($att == $b) {
-                $errors[] = $name;
-            }
-        }
+        $att = $atts[$a[0]];
+        $type = $a[1];
         
         // Check for empty entry
         if (empty($att)) {
