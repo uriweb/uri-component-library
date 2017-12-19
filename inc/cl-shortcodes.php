@@ -20,6 +20,9 @@
  */
 
 
+include 'cl-error-checking.php'; 
+
+
 /**
  * Boxout
  */
@@ -70,7 +73,7 @@ add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
 function uri_cl_shortcode_card( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	shortcode_atts(
 		array(
 			'img' => '',
             'alt' => '',
@@ -80,12 +83,16 @@ function uri_cl_shortcode_card( $atts ) {
             'link' => '#',
             'tooltip' => 'Explore',
             'class' => ''
-        ), $atts )
-	);
+        ), $atts );
     
-    include 'templates/cl-template-card.php';
-    return $output;
-
+    // (atts, req_atts, template)
+    return uri_cl_validate( $atts, array(
+        // (attr, type, *invalid_1*, *invalid_2*, ...)
+        array($link, 'link', '#')
+        ),
+        'templates/cl-template-card.php'
+    );
+        
 }
 add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
 
