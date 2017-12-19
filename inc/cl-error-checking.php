@@ -4,6 +4,7 @@ function uri_cl_validate($cname, $atts, $req, $template) {
     
     $errors = array();
     $fatal = false;
+    $admin = is_user_logged_in();
     
     foreach($req as $a) {
         
@@ -46,12 +47,16 @@ function uri_cl_validate($cname, $atts, $req, $template) {
     }
     
     if ($fatal) {
-        $output = uri_cl_return_error($cname, $fatal, $errors);
+        if ($admin) {
+            $output = uri_cl_return_error($cname, $fatal, $errors);
+        } else {
+            $output = '';
+        }
     } else {
         extract($atts);
         include $template;
         
-        if (count($errors) > 0 ) {
+        if (count($errors) > 0 && $admin) {
             $output .= uri_cl_return_error($cname, $fatal, $errors);
         }
     }
