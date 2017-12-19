@@ -60,9 +60,9 @@ function uri_cl_return_error($fatal, $errors) {
     $output = '<div class="cl-errors">';
     
     if ($fatal) {
-        $output .= '<div>Shortcode could not load:</div>';
+        $output .= '<div>Component shortcode could not load:</div>';
     } else {
-        $output .= '<div>Shortcode loaded with errors:</div>';
+        $output .= '<div>Component shortcode loaded with errors:</div>';
     }
     
     $output .= '<ul>';
