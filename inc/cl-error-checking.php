@@ -1,6 +1,6 @@
 <?php
 
-function uri_cl_validate($atts, $req, $template) {
+function uri_cl_validate($cname, $atts, $req, $template) {
     
     $errors = array();
     $fatal = false;
@@ -46,23 +46,26 @@ function uri_cl_validate($atts, $req, $template) {
     }
     
     if ($fatal) {
-        $output = uri_cl_return_error($fatal, $errors);
+        $output = uri_cl_return_error($cname, $fatal, $errors);
     } else {
         extract($atts);
         include $template;
-        $output .= uri_cl_return_error($fatal, $errors);
+        
+        if (count($errors) > 0 ) {
+            $output .= uri_cl_return_error($cname, $fatal, $errors);
+        }
     }
     
     return $output;
 }
 
-function uri_cl_return_error($fatal, $errors) {
+function uri_cl_return_error($cname, $fatal, $errors) {
     $output = '<div class="cl-errors">';
     
     if ($fatal) {
-        $output .= '<div>Component shortcode could not load:</div>';
+        $output .= '<div>' . $cname . ' shortcode could not load.</div>';
     } else {
-        $output .= '<div>Component shortcode loaded with errors:</div>';
+        $output .= '<div>' . $cname . ' shortcode loaded with errors.</div>';
     }
     
     $output .= '<ul>';

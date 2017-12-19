@@ -6,7 +6,7 @@
         font-size: .9rem;
         margin: .5rem 0 1rem;
         width: 100%;
-        background: #eee;
+        border: 1px solid #ddd;
         padding: .8rem .5rem .5rem;
         border-radius: .2rem;
         box-sizing: border-box;
@@ -18,6 +18,9 @@
     
     div {
         font-weight: 600;
+        color: #555;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid #ddd;
     }
     
     ul {
@@ -35,8 +38,8 @@
     }
     
     li.cl-error-warning {
-        background: #fbffc9;
-        color: #7b6800;
+        background: #fcf6b1;
+        color: #936c00;
     }
     
     li.cl-error-fatal {
@@ -63,11 +66,6 @@
     li span.cl-error-name {
         font-weight: 600;
         color: #000;
-    }
-    
-    li span.cl-error-name:before {
-        content: 'attr:';
-        font-weight: 400;
     }
     
     li span.cl-error-message {

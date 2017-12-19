@@ -73,7 +73,7 @@ add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
 function uri_cl_shortcode_card( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'img' => '',
             'alt' => '',
@@ -83,11 +83,10 @@ function uri_cl_shortcode_card( $atts ) {
             'link' => '#',
             'tooltip' => 'Explore',
             'class' => ''
-        ), $atts )
-    );
+        ), $atts );
     
-    // (atts, req_atts, template)
-    return uri_cl_validate( $atts, array(
+    // (name, atts, req_atts, template)
+    return uri_cl_validate( 'Card', $atts, array(
         // (attr, type)
         array('link', 'link'),
         array('title', 'str')
