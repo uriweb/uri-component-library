@@ -3,42 +3,94 @@
 function uri_cl_validate($atts, $req, $template) {
     
     $errors = array();
+    $fatal = false;
     
     foreach($req as $a) {
         
         $name = $a[0];
         
-        $att = $atts[$a[0]];
+        $att = $atts[$name];
         $type = $a[1];
         
-        // Check for empty entry
+        // Check for empty entry, otherwise validate
         if (empty($att)) {
-            $errors[] = $name;
+            $errors[] = array(
+                'attr' => $name,
+                'message' => 'Required attribute',
+                'status' => 'fatal'
+            );
+            $fatal = true;
+        } else {
+            
+            // Do validation/sanitation based on var type
+            switch ($type) {
+                case 'link':
+                    $validation = uri_cl_validate_url($att);
+                    break;
+                default:
+                    $validation = array('valid' => true, 'value' => $att);
+            }
+            
+            // If valid, update the attribute with the sanitized value, otherwise return an error
+            if ($validation['valid']) {
+                $atts[$name] = $validation['value'];
+            } else {
+                $errors[] = array(
+                    'attr' => $name,
+                    'message' => '"' . $att . '" is not valid',
+                    'status' => 'warning'
+                );
+            }
         }
         
     }
     
-    if (count($errors) > 0) {
-        $output = uri_cl_return_error($errors);
+    if ($fatal) {
+        $output = uri_cl_return_error($fatal, $errors);
     } else {
         extract($atts);
         include $template;
+        $output .= uri_cl_return_error($fatal, $errors);
     }
     
     return $output;
 }
 
-function uri_cl_return_error($errors) {
+function uri_cl_return_error($fatal, $errors) {
     $output = '<div class="cl-errors">';
-    $output .= '<div>CL Errors</div>';
+    
+    if ($fatal) {
+        $output .= '<div>Shortcode could not load:</div>';
+    } else {
+        $output .= '<div>Shortcode loaded with errors:</div>';
+    }
+    
     $output .= '<ul>';
     
     foreach($errors as $e) {
-        $output .= '<li>' . $e . '</li>';
+        $output .= '<li class="cl-error-' . $e['status'] . '">';
+        $output .= '<span class="cl-error-name">' . $e['attr'] . '</span>';
+        $output .= '<span class="cl-error-message">' . $e['message'] . '</span>';
+        $output .= '</li>';
     }
     
     $output .= '</ul>';
     $output .= '</div>';
     
     return $output;
+}
+
+function uri_cl_validate_url($url) {
+    $valid = false;
+    $url = filter_var($url, FILTER_VALIDATE_URL);
+    
+    if (filter_var($url, FILTER_VALIDATE_URL)) {
+        $valid = true;       
+    }
+    
+    return array(
+        'valid' => $valid, 
+        'value' => $url
+    );
+    
 }
