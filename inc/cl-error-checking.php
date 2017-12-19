@@ -25,7 +25,7 @@ function uri_cl_validate($cname, $atts, $req, $template) {
             
             // Do validation/sanitation based on var type
             switch ($type) {
-                case 'link':
+                case 'url':
                     $validation = uri_cl_validate_url($att);
                     break;
                 default:
