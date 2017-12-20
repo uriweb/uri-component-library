@@ -59,11 +59,12 @@ function uri_cl_shortcode_button( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Button', $atts, array(
-        // (attr, type)
-        array('link', 'url')
-        ),
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-button.php'
     );
 
@@ -89,12 +90,12 @@ function uri_cl_shortcode_card( $atts ) {
             'class' => ''
         ), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Card', $atts, array(
-        // (attr, type)
-        array('link', 'url'),
-        array('title', 'str')
-        ),
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-card.php'
     );
         
@@ -119,11 +120,12 @@ function uri_cl_shortcode_dcard( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Detail Card', $atts, array(
-        // (attr, type)
-        array('link', 'url')
-        ),
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-dcard.php'
     );
 
@@ -153,12 +155,16 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Hero', $atts, array(
-        // (attr, type)
-        array('img', 'url'),
-        array('link', 'url')
+        array(
+            'attr' => 'img',
+            'type' => 'url'
         ),
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-hero.php'
     );
 
@@ -224,11 +230,12 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Panel', $atts, array(
-        // (attr, type)
-        array('img', 'url')
-        ),
+        array(
+            'attr' => 'img',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-panel.php'
     );
 
@@ -341,13 +348,21 @@ function uri_cl_shortcode_video( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, req_atts, template)
+    // (name, atts, check_atts, template)
     return uri_cl_validate( 'Video', $atts, array(
         // (attr, type)
-        array('id', 'str'),
-        array('vid', 'str'),
-        array('img', 'url')
+        array(
+            'attr' => 'id',
+            'type' => 'str'
         ),
+        array(
+            'attr' => 'vid',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'img',
+            'type' => 'url'
+        ) ),
         'templates/cl-template-video.php'
     );
 

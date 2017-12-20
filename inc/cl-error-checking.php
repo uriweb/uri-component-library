@@ -1,20 +1,25 @@
 <?php
 
-function uri_cl_validate($cname, $atts, $req, $template) {
+function uri_cl_validate($cname, $atts, $check_atts, $template) {
     
     $errors = array();
     $fatal = false;
     $admin = is_user_logged_in();
     
-    foreach($req as $a) {
+    foreach($check_atts as $a) {
         
-        $name = $a[0];
+        $name = $a['attr'];
         
         $att = $atts[$name];
-        $type = $a[1];
+        $type = $a['type'];
+        $req = true;
         
+        if (array_key_exists('req', $a)) {
+            $req = $a['req'];
+        }
+                
         // Check for empty entry, otherwise validate
-        if (empty($att)) {
+        if ($req && empty($att)) {
             $errors[] = array(
                 'attr' => $name,
                 'message' => 'Required attribute',
@@ -61,7 +66,7 @@ function uri_cl_validate($cname, $atts, $req, $template) {
             $output .= uri_cl_return_error($cname, $fatal, $errors);
         }
     }
-    
+        
     return $output;
 }
 
