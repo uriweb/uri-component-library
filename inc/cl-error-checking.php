@@ -10,7 +10,7 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
         
         $a_name = $a['attr'];
         
-        $a_att = $atts[$a_name];
+        $a_val = $atts[$a_name];
         $a_type = $a['type'];
         $a_req = true;
         
@@ -18,24 +18,32 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             $a_req = $a['req'];
         }
                 
-        // Check for empty entry, otherwise validate
-        if ($a_req && empty($a_att)) {
+        // Check for empty entry, otherwise validate if it's set
+        if ($a_req && empty($a_val)) {
+            
             $errors[] = array(
                 'attr' => $a_name,
                 'message' => 'Required attribute',
                 'status' => 'fatal'
             );
             $fatal = true;
-        } else {
+            
+        } else if (!empty($a_val)) {
+            
+           // echo $a_name . ':' . $a_val . ' <br />';
             
             // Do validation/sanitation based on var type
             switch ($a_type) {
                 case 'url':
-                    $validation = uri_cl_validate_url($a_att);
+                    $validation = uri_cl_validate_url($a_val);
                     $displayType = 'URL';
                     break;
+                case 'bool':
+                    $validation = uri_cl_validate_bool($a_val);
+                    $displayType = 'boolean';
+                    break;
                 default:
-                    $validation = array('valid' => true, 'value' => $a_att);
+                    $validation = array('valid' => true, 'value' => $a_val);
             }
             
             // If valid, update the attribute with the sanitized value, otherwise return an error
@@ -44,7 +52,7 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             } else {
                 $errors[] = array(
                     'attr' => $a_name,
-                    'message' => '"' . $a_att . '" is not a valid ' . $displayType,
+                    'message' => '"' . $a_val . '" is not a valid ' . $displayType,
                     'status' => 'warning'
                 );
             }
@@ -96,7 +104,7 @@ function uri_cl_return_error($cname, $fatal, $errors) {
 
 function uri_cl_validate_url($url) {
     $valid = false;
-    $url = filter_var($url, FILTER_VALIDATE_URL);
+    $url = $url = filter_var($url, FILTER_SANITIZE_URL);
     
     if (filter_var($url, FILTER_VALIDATE_URL)) {
         $valid = true;       
@@ -105,6 +113,20 @@ function uri_cl_validate_url($url) {
     return array(
         'valid' => $valid, 
         'value' => $url
+    );
+    
+}
+
+function uri_cl_validate_bool($var) {
+    $valid = false;
+        
+    if ($var == true || $var == false || $var == 1 || $var == 0) {
+        $valid = true;
+    }
+    
+    return array(
+        'valid' => $valid,
+        'value' => $var
     );
     
 }

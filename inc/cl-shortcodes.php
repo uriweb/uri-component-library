@@ -185,8 +185,13 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'type' => 'url'
         ),
         array(
+            'attr' => 'vid',
+            'type' => 'str'
+        ),
+        array(
             'attr' => 'link',
-            'type' => 'url'
+            'type' => 'url',
+            'req' => false
         ),
         array(
             'attr' => 'dynamic',
@@ -520,6 +525,11 @@ function uri_cl_shortcode_waves( $atts ) {
             'attr' => 'placement',
             'type' => 'str',
             'values' => array('bottom', 'top')
+        ),
+        array(
+            'attr' => 'offset',
+            'type' => 'unit',
+            'req' => false
         ) ),
         'templates/cl-template-waves.php'
     );
