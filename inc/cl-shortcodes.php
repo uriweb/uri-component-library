@@ -185,7 +185,8 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
         ),
         array(
             'attr' => 'vid',
-            'type' => 'str'
+            'type' => 'str',
+            'req' => false
         ),
         array(
             'attr' => 'link',

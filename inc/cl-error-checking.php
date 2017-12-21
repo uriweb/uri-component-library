@@ -36,23 +36,21 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             switch ($a_type) {
                 case 'url':
                     $validation = uri_cl_validate_url($a_val);
-                    $displayType = 'URL';
                     break;
                 case 'bool':
                     $validation = uri_cl_validate_bool($a_val);
-                    $displayType = 'boolean';
                     break;
                 case 'str':
                     $validation = uri_cl_validate_str($a_val, $a);
-                    $displayType = 'string' . uri_cl_accepted_values($a);
                     break;
                 case 'num':
                     $validation = uri_cl_validate_num($a_val, $a);
-                    $displayType = 'number' . uri_cl_accepted_values($a);
                     break;
                 case 'ratio':
                     $validation = uri_cl_validate_ratio($a_val);
-                    $displayType = 'ratio';
+                    break;
+                case 'unit':
+                    $validation = uri_cl_validate_unit($a_val);
                     break;
                 default:
                     $validation = array('valid' => true, 'value' => $a_val, 'status' => 'normal');
@@ -64,7 +62,7 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             } else {
                 $errors[] = array(
                     'attr' => $a_name,
-                    'message' => '"' . $a_val . '" is not a valid ' . $displayType,
+                    'message' => $validation['message'],
                     'status' => $validation['status']
                 );
                 if ($validation['status'] == 'fatal') {
@@ -130,7 +128,8 @@ function uri_cl_validate_url($url) {
     return array(
         'valid' => $valid, 
         'value' => $url,
-        'status' => $status
+        'status' => $status,
+        'message' => '"' . $url . '" is not a valid URL'
     );
     
 }
@@ -147,7 +146,8 @@ function uri_cl_validate_bool($var) {
     return array(
         'valid' => $valid,
         'value' => $var,
-        'status' => $status
+        'status' => $status,
+        'message' => '"' . $var . '" is not a boolean'
     );
     
 }
@@ -164,7 +164,8 @@ function uri_cl_validate_str($val, $a) {
     return array(
         'valid' => $valid,
         'value' => $val,
-        'status' => $status
+        'status' => $status,
+        'message' => '"' . $val . '" is not a valid string' . uri_cl_accepted_values($a)
     );
     
 }
@@ -187,7 +188,8 @@ function uri_cl_validate_num($val, $a) {
     return array(
         'valid' => $valid,
         'value' => $val,
-        'status' => $status
+        'status' => $status,
+        'message' => '"' . $val . '" is not a valid number' . uri_cl_accepted_values($a)
     );
     
 }
@@ -212,7 +214,35 @@ function uri_cl_validate_ratio($val) {
     return array(
         'valid' => $valid,
         'value' => $val,
-        'status' => $status
+        'status' => $status,
+        'message' => '"' . $val . '" is not a valid ratio (accepted format: x:y)'
+    );
+    
+}
+
+function uri_cl_validate_unit($val) {
+    $valid = true;
+    $status = 'normal';
+    
+    if (is_numeric($val)) {
+        $message = '"' . $val . '" has no units, defaulting to px';
+        $valid = false;
+        $status = 'warning';
+        $val = $val . 'px';
+    } else if (preg_match('/(em|px|rem)$/', $val, $match) === 1) {
+        $num = str_replace($match[0], '', $val);
+        if (!is_numeric($num)) {
+            $valid = false;
+            $status = 'fatal';
+            $message = '"' . $val . '" is not a valid number/unit combination';
+        }
+    }
+    
+    return array(
+        'valid' => $valid,
+        'value' => $val,
+        'status' => $status,
+        'message' => $message
     );
     
 }
