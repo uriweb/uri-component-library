@@ -230,7 +230,7 @@ function uri_cl_validate_unit($val) {
         $message = '"' . $val . '" has no units, defaulting to px';
         $valid = false;
         $status = 'warning';
-        $val = strval($val) . 'px';
+        $val = $val . 'px';
     } else if (preg_match('/(rem|em|px)$/', $val, $match) === 1) {
         $num = str_replace($match[0], '', $val);
         if (!is_numeric($num)) {
