@@ -137,11 +137,25 @@ function uri_cl_validate_url($url) {
 
 function uri_cl_validate_bool($var) {
     $valid = false;
-    $status = 'warning';
+    $status = 'fatal';
+    
+    $acceptable = array(
+        true,
+        'true',
+        1,
+        '1',
+        false,
+        'false',
+        0,
+        '0'
+    );
         
-    if ($var == true || $var == false || $var == 1 || $var == 0) {
-        $valid = true;
-        $status = 'normal';
+    foreach($acceptable as $v) {
+        if ($var === $v) {
+            $valid = true;
+            $status = 'normal';
+            break;
+        }
     }
     
     return array(
