@@ -221,19 +221,24 @@ function uri_cl_validate_ratio($val) {
 function uri_cl_validate_unit($val) {
     $valid = true;
     $status = 'normal';
+    $message = '';
     
     if (is_numeric($val)) {
         $message = '"' . $val . '" has no units, defaulting to px';
         $valid = false;
         $status = 'warning';
         $val = $val . 'px';
-    } else if (preg_match('/(em|px|rem)$/', $val, $match) === 1) {
+    } else if (preg_match('/(rem|em|px)$/', $val, $match) === 1) {
         $num = str_replace($match[0], '', $val);
         if (!is_numeric($num)) {
             $valid = false;
             $status = 'fatal';
             $message = '"' . $val . '" is not a valid number/unit combination';
         }
+    } else {
+        $valid = false;
+        $status = 'fatal';
+        $message = '"' . $val . '" is not a valid number/unit combination';
     }
     
     return array(
