@@ -42,8 +42,12 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
                     $validation = uri_cl_validate_bool($a_val);
                     $displayType = 'boolean';
                     break;
+                case 'str':
+                    $validation = uri_cl_validate_str($a_val, $a);
+                    $displayType = 'string' . uri_cl_accepted_values($a);
+                    break;
                 default:
-                    $validation = array('valid' => true, 'value' => $a_val);
+                    $validation = array('valid' => true, 'value' => $a_val, 'status' => 'normal');
             }
             
             // If valid, update the attribute with the sanitized value, otherwise return an error
@@ -53,8 +57,11 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
                 $errors[] = array(
                     'attr' => $a_name,
                     'message' => '"' . $a_val . '" is not a valid ' . $displayType,
-                    'status' => 'warning'
+                    'status' => $validation['status']
                 );
+                if ($validation['status'] == 'fatal') {
+                    $fatal = true;
+                }
             }
         }
         
@@ -104,29 +111,76 @@ function uri_cl_return_error($cname, $fatal, $errors) {
 
 function uri_cl_validate_url($url) {
     $valid = false;
+    $status = 'warning';
     $url = $url = filter_var($url, FILTER_SANITIZE_URL);
     
     if (filter_var($url, FILTER_VALIDATE_URL)) {
-        $valid = true;       
+        $valid = true;
+        $status = 'normal';
     }
     
     return array(
         'valid' => $valid, 
-        'value' => $url
+        'value' => $url,
+        'status' => $status
     );
     
 }
 
 function uri_cl_validate_bool($var) {
     $valid = false;
+    $status = 'warning';
         
     if ($var == true || $var == false || $var == 1 || $var == 0) {
         $valid = true;
+        $status = 'normal';
     }
     
     return array(
         'valid' => $valid,
-        'value' => $var
+        'value' => $var,
+        'status' => $status
     );
     
 }
+
+function uri_cl_validate_str($val, $a) {
+    $valid = true;
+    $status = 'normal';
+    
+    echo $val;
+    
+    if (array_key_exists('values', $a)) {
+        $valid = uri_cl_in_array($val, $a['values']);
+        $status = $valid ? 'normal' : 'fatal';
+    }
+    
+    return array(
+        'valid' => $valid,
+        'value' => $val,
+        'status' => $status
+    );
+    
+}
+
+function uri_cl_in_array($val, $vals) {
+    
+    if (in_array($val, $vals)) {
+        return true;
+    } else {
+        return false;
+    }
+    
+}
+
+function uri_cl_accepted_values($a) {
+    
+    if (array_key_exists('values', $a)) {
+        $list = implode(' | ', $a['values']);
+        return ' (accepted values: ' . $list . ')';
+    } else {
+        return '';
+    }
+    
+}
+    

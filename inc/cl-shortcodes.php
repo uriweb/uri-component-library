@@ -29,13 +29,12 @@ include 'cl-error-checking.php';
 function uri_cl_shortcode_boxout( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'title' => '',
 			'float' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Boxout', $atts, array(
@@ -221,14 +220,13 @@ add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
 function uri_cl_shortcode_menu( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'name' => 'menu-1',
             'depth' => 1,
             'id' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Menu', $atts, array(
@@ -239,7 +237,6 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
         array(
             'attr' => 'depth',
             'type' => 'num',
-            'req' => false,
             'values' => array(1, 2)
         ) ),
         'templates/cl-template-menu.php'
@@ -255,13 +252,12 @@ add_shortcode( 'cl-menu', 'uri_cl_shortcode_menu' );
 function uri_cl_shortcode_notice( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'title' => '',
             'urgent' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Notice', $atts, array(
@@ -283,7 +279,7 @@ add_shortcode( 'cl-notice', 'uri_cl_shortcode_notice' );
 function uri_cl_shortcode_panel( $atts, $content = null ) {
 
 	// Attributes
-	$attr = shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'img' => '',
             'alt' => '',
@@ -316,7 +312,7 @@ add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
 function uri_cl_shortcode_social( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'style' => 'color',
             'class' => '',
@@ -326,8 +322,7 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
             'youtube' => '',
             'snapchat' => '',
             'linkedin' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Social', $atts, array(
@@ -364,7 +359,6 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
         array(
             'attr' => 'style',
             'type' => 'str',
-            'req' => false,
             'values' => array('color', 'dark', 'light')
         ) ),
         'templates/cl-template-social.php'
@@ -418,15 +412,14 @@ add_shortcode( 'cl-tab', 'uri_cl_shortcode_tab' );
 function uri_cl_shortcode_tiles( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'across' => 3,
 			'square' => false,
             'compact' => false,
             'animated' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Tiles', $atts, array(
@@ -464,7 +457,7 @@ add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
 function uri_cl_shortcode_video( $atts ) {
 
 	// Attributes
-	$attr = shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'vid' => '',
             'id' => '',
@@ -509,14 +502,13 @@ add_shortcode( 'cl-video', 'uri_cl_shortcode_video' );
 function uri_cl_shortcode_waves( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'placement' => 'bottom',
 			'offset' => '',
             'color' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
     // (name, atts, check_atts, template)
     return uri_cl_validate( 'Waves', $atts, array(
