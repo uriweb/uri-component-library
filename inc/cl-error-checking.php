@@ -8,20 +8,20 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
     
     foreach($check_atts as $a) {
         
-        $name = $a['attr'];
+        $a_name = $a['attr'];
         
-        $att = $atts[$name];
-        $type = $a['type'];
-        $req = true;
+        $a_att = $atts[$a_name];
+        $a_type = $a['type'];
+        $a_req = true;
         
         if (array_key_exists('req', $a)) {
-            $req = $a['req'];
+            $a_req = $a['req'];
         }
                 
         // Check for empty entry, otherwise validate
-        if ($req && empty($att)) {
+        if ($a_req && empty($a_att)) {
             $errors[] = array(
-                'attr' => $name,
+                'attr' => $a_name,
                 'message' => 'Required attribute',
                 'status' => 'fatal'
             );
@@ -29,22 +29,22 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
         } else {
             
             // Do validation/sanitation based on var type
-            switch ($type) {
+            switch ($a_type) {
                 case 'url':
-                    $validation = uri_cl_validate_url($att);
+                    $validation = uri_cl_validate_url($a_att);
                     $displayType = 'URL';
                     break;
                 default:
-                    $validation = array('valid' => true, 'value' => $att);
+                    $validation = array('valid' => true, 'value' => $a_att);
             }
             
             // If valid, update the attribute with the sanitized value, otherwise return an error
             if ($validation['valid']) {
-                $atts[$name] = $validation['value'];
+                $atts[$a_name] = $validation['value'];
             } else {
                 $errors[] = array(
-                    'attr' => $name,
-                    'message' => '"' . $att . '" is not a valid ' . $displayType,
+                    'attr' => $a_name,
+                    'message' => '"' . $a_att . '" is not a valid ' . $displayType,
                     'status' => 'warning'
                 );
             }
