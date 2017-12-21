@@ -50,6 +50,10 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
                     $validation = uri_cl_validate_num($a_val, $a);
                     $displayType = 'number' . uri_cl_accepted_values($a);
                     break;
+                case 'ratio':
+                    $validation = uri_cl_validate_ratio($a_val);
+                    $displayType = 'ratio';
+                    break;
                 default:
                     $validation = array('valid' => true, 'value' => $a_val, 'status' => 'normal');
             }
@@ -167,19 +171,43 @@ function uri_cl_validate_str($val, $a) {
 
 function uri_cl_validate_num($val, $a) {
     $valid = true;
-    $status = 'normal';
     
     if (is_numeric($val)) {
         
         if (array_key_exists('values', $a)) {
             $valid = uri_cl_in_array($val, $a['values']);
-            $status = $valid ? 'normal' : 'fatal';
         }
         
     } else {
         $valid = false;
-        $status = 'fatal';
     }
+    
+    $status = $valid ? 'normal' : 'fatal';
+    
+    return array(
+        'valid' => $valid,
+        'value' => $val,
+        'status' => $status
+    );
+    
+}
+
+function uri_cl_validate_ratio($val) {
+    $valid = false;
+    
+    $parts = explode(':', $val);
+    
+    if ( count($parts) == 2 ) {
+        $valid = true;
+        foreach($parts as $p) {
+            if (!is_numeric($p)) {
+                $valid = false;
+                break;
+            };
+        }
+    }
+    
+    $status = $valid ? 'normal' : 'fatal';
     
     return array(
         'valid' => $valid,
