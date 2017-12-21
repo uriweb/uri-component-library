@@ -46,6 +46,10 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
                     $validation = uri_cl_validate_str($a_val, $a);
                     $displayType = 'string' . uri_cl_accepted_values($a);
                     break;
+                case 'num':
+                    $validation = uri_cl_validate_num($a_val, $a);
+                    $displayType = 'number' . uri_cl_accepted_values($a);
+                    break;
                 default:
                     $validation = array('valid' => true, 'value' => $a_val, 'status' => 'normal');
             }
@@ -147,12 +151,34 @@ function uri_cl_validate_bool($var) {
 function uri_cl_validate_str($val, $a) {
     $valid = true;
     $status = 'normal';
-    
-    echo $val;
-    
+        
     if (array_key_exists('values', $a)) {
         $valid = uri_cl_in_array($val, $a['values']);
         $status = $valid ? 'normal' : 'fatal';
+    }
+    
+    return array(
+        'valid' => $valid,
+        'value' => $val,
+        'status' => $status
+    );
+    
+}
+
+function uri_cl_validate_num($val, $a) {
+    $valid = true;
+    $status = 'normal';
+    
+    if (is_numeric($val)) {
+        
+        if (array_key_exists('values', $a)) {
+            $valid = uri_cl_in_array($val, $a['values']);
+            $status = $valid ? 'normal' : 'fatal';
+        }
+        
+    } else {
+        $valid = false;
+        $status = 'fatal';
     }
     
     return array(
