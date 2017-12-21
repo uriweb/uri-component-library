@@ -29,9 +29,7 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             $fatal = true;
             
         } else if (!empty($a_val)) {
-            
-           // echo $a_name . ':' . $a_val . ' <br />';
-            
+                    
             // Do validation/sanitation based on var type
             switch ($a_type) {
                 case 'url':

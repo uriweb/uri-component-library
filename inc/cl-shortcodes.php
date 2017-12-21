@@ -36,8 +36,10 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
+    // (string $cname , array $atts , array $check_atts , string $template)
     return uri_cl_validate( 'Boxout', $atts, array(
+        //(string $attr , string $type [, bool $req [, array $values]])
         array(
             'attr' => 'float',
             'type' => 'str',
@@ -66,7 +68,7 @@ function uri_cl_shortcode_button( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Button', $atts, array(
         array(
             'attr' => 'link',
@@ -102,7 +104,7 @@ function uri_cl_shortcode_card( $atts ) {
             'class' => ''
         ), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Card', $atts, array(
         array(
             'attr' => 'link',
@@ -137,7 +139,7 @@ function uri_cl_shortcode_dcard( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Detail Card', $atts, array(
         array(
             'attr' => 'link',
@@ -177,7 +179,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Hero', $atts, array(
         array(
             'attr' => 'img',
@@ -229,7 +231,7 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Menu', $atts, array(
         array(
             'attr' => 'name',
@@ -260,7 +262,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Notice', $atts, array(
         array(
             'attr' => 'urgent',
@@ -289,7 +291,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Panel', $atts, array(
         array(
             'attr' => 'img',
@@ -325,7 +327,7 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
             'linkedin' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Social', $atts, array(
         array(
             'attr' => 'facebook',
@@ -422,9 +424,8 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Tiles', $atts, array(
-        // (attr, type)
         array(
             'attr' => 'across',
             'type' => 'num',
@@ -470,9 +471,8 @@ function uri_cl_shortcode_video( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Video', $atts, array(
-        // (attr, type)
         array(
             'attr' => 'id',
             'type' => 'str'
@@ -511,9 +511,8 @@ function uri_cl_shortcode_waves( $atts ) {
             'class' => ''
 		), $atts );
     
-    // (name, atts, check_atts, template)
+    // Error checking
     return uri_cl_validate( 'Waves', $atts, array(
-        // (attr, type)
         array(
             'attr' => 'placement',
             'type' => 'str',
