@@ -58,6 +58,9 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
             if ($validation['valid']) {
                 $atts[$a_name] = $validation['value'];
             } else {
+                if ($validation['status'] == 'warning') {
+                    $atts[$a_name] = $validation['value'];
+                }
                 $errors[] = array(
                     'attr' => $a_name,
                     'message' => $validation['message'],
@@ -227,7 +230,7 @@ function uri_cl_validate_unit($val) {
         $message = '"' . $val . '" has no units, defaulting to px';
         $valid = false;
         $status = 'warning';
-        $val = $val . 'px';
+        $val = strval($val) . 'px';
     } else if (preg_match('/(rem|em|px)$/', $val, $match) === 1) {
         $num = str_replace($match[0], '', $val);
         if (!is_numeric($num)) {
