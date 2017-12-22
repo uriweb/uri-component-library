@@ -20,29 +20,11 @@
         
         uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
-            uls[i].parentNode.addEventListener('mouseover', mouseover.bind(null, uls[i]));
-            uls[i].parentNode.addEventListener('mouseout', mouseout.bind(null, uls[i]));
+            uls[i].parentNode.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
         }
         
-    }
-    
-    
-    /*
-     * Open the submenu
-     * @param el el the submenu trigger clicked
-     */
-    function mouseover(el) {  
-        el.classList.add('reveal');
-        el.previousElementSibling.classList.add('highlight');
-    }
-    
-    /*
-     * Close the submenu
-     * @param el el the submenu trigger clicked
-     */
-    function mouseout(el) {  
-        el.classList.remove('reveal'); 
-        el.previousElementSibling.classList.remove('highlight');
     }
     
 })();
