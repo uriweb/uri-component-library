@@ -1,0 +1,79 @@
+/* ======= ERRORS ======= */
+
+.cl-errors {
+    
+    & {
+        font-size: .9rem;
+        margin: 0 0 1rem;
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: .8rem .5rem .5rem;
+        border-radius: .2rem;
+        box-sizing: border-box;
+    }
+    
+    &:not(:first-child) {
+        margin-top: .5rem;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    div {
+        font-weight: 600;
+        color: #555;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    ul {
+        list-style: none;
+        margin: .5rem 0 0;
+        padding: 0;
+    }
+    
+    li {
+        width: 100%;
+        max-width: 100%;
+        margin: .5rem 0 0;
+        padding: .2rem .5rem;
+        border-radius: .2rem;
+    }
+    
+    li.cl-error-warning {
+        background: #fcf6b1;
+        color: #936c00;
+    }
+    
+    li.cl-error-fatal {
+        background: #ffc1c1;
+        color: #7b0303;
+    }
+    
+    li.cl-error-warning:before,
+    li.cl-error-fatal:before {
+        display: block;
+        font-size: .7em;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    
+    li.cl-error-warning:before {
+        content: 'warning';
+    }
+    
+    li.cl-error-fatal:before {
+        content: 'error';
+    }
+    
+    li span.cl-error-name {
+        font-weight: 600;
+        color: #000;
+    }
+    
+    li span.cl-error-message {
+        margin-left: 1rem;
+    }
+    
+}
