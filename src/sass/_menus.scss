@@ -8,7 +8,7 @@
         background: #eee;
         border-radius: .2rem;
         font-size: 1rem;
-        text-align: center;
+        //text-align: center;
     }
     
     * {
@@ -18,7 +18,8 @@
     ul.cl-menu-list {
 
         & {
-            display: inline-block;
+            display: block;
+            width: 100%;
             list-style-type: none;
             text-align: left;
             margin: 0;
@@ -34,7 +35,7 @@
         li {
             margin: 0;
             float: left;
-            display: block;
+            display: flex;
             border-top: none;
             position: relative;
         }
@@ -44,7 +45,7 @@
         }
 
         a {
-            display: block;
+            display: inline-block;
             padding: .6rem 1.2rem;
             color: $black;
             transition: all .1s ease-in-out;
@@ -66,30 +67,16 @@
         ul {
             display: none;
             margin: 0;
-            position: absolute;
-            z-index: 100;
+            position: relative;
             background: $white;
-            min-width: 100%;
-            box-shadow: $level2;
         }
 
         ul.reveal {
-            display: block;
-        }
-
-        ul ul {
-            top: 0;
-            left: 100%;
+            display: inline-block;
         }
 
         ul li {
-            display: block;
-            float: none;
             border-left: none !important;
-        }
-
-        ul li:not(:first-child) {
-            border-top: 1px solid $lightgrey;
         }
         
     } // ul.cl-menu-list
