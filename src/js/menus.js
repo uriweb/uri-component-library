@@ -20,9 +20,30 @@
         
         uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
-            uls[i].parentNode.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
+            var a = uls[i].parentNode.querySelector('a');
+            bindListeners(a, uls, uls[i]);
+        }
+        
+    }
+    
+    function bindListeners(a, uls, ul) {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleClick(uls, ul);
+        });
+    }
+    
+    function handleClick(els, el) {
+        var toggle, i;
+        
+        toggle = el.classList.contains(revealClass);
+        
+        for (i=0; i<els.length; i++) {
+            els[i].classList.remove(revealClass);
+        }
+        
+        if (!toggle) {
+            el.classList.add(revealClass);
         }
         
     }
