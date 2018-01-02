@@ -8,7 +8,7 @@
         background: #eee;
         border-radius: .2rem;
         font-size: 1rem;
-        //text-align: center;
+        overflow: hidden;
     }
     
     * {
@@ -23,7 +23,7 @@
             list-style-type: none;
             text-align: left;
             margin: 0;
-            padding: .5rem 0;
+            padding: 0;
         }
 
         &:after {
@@ -34,33 +34,23 @@
 
         li {
             margin: 0;
-            float: left;
-            display: flex;
-            border-top: none;
             position: relative;
         }
-
+        
         li:not(:first-child) {
-            border-left: 1px solid $grey;
+            border-top: 1px solid $grey;
         }
 
         a {
-            display: inline-block;
-            padding: .6rem 1.2rem;
+            display: block;
+            padding: .7rem 1.2rem;
             color: $black;
             transition: all .1s ease-in-out;
         }
 
         a:hover,
-        a:focus,
-        a.highlight:hover,
-        a.highlight:focus {
+        a:focus {
             background: $accentblue;
-            color: $white;
-        }
-        
-        a.highlight {
-            background: $blue;
             color: $white;
         }
 
@@ -69,14 +59,19 @@
             margin: 0;
             position: relative;
             background: $white;
+            list-style: none;
         }
 
         ul.reveal {
-            display: inline-block;
+            display: block;
         }
-
-        ul li {
-            border-left: none !important;
+        
+        ul li:not(:first-child) {
+            border-top: 1px solid $lightgrey;
+        }
+        
+        ul a {
+            padding-left: 2rem;
         }
         
     } // ul.cl-menu-list
