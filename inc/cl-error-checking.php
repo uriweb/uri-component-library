@@ -1,5 +1,25 @@
 <?php
 
+/* COMPONENT LIBRARY SHORTCODE ERROR CHECKING
+ *
+ * Validate shortcodes based on criteria set in cl-shortcodes.php
+ * Errors are displayed only if user is logged in.
+ *
+ */
+
+
+/*
+ * Loop through attributes to check,
+ * send them each out for proper validation
+ * and return the shortcode and/or error message.
+ * Call this from each shortcode that needs validation.
+ *
+ * @param str cname the name of the shortcode
+ * @param arr atts the returned array of shortcode attributes
+ * @param arr check_atts the attributes to validate and their parameters
+ * @param str template the relative url to the shortcode template
+ * @return str output the component and/or error message html
+ */
 function uri_cl_validate($cname, $atts, $check_atts, $template) {
     
     $errors = array();
@@ -92,6 +112,14 @@ function uri_cl_validate($cname, $atts, $check_atts, $template) {
     return $output;
 }
 
+
+/*
+ * Build the error message html and return it
+ * @param str cname the name of the shortcode
+ * @param bool fatal whether the shortcode contains at least one fatal error
+ * @param arr errors the array of errors and their parameters
+ * @return str output the error message html
+ */
 function uri_cl_return_error($cname, $fatal, $errors) {
     $output = '<div class="cl-errors">';
     
@@ -116,6 +144,12 @@ function uri_cl_return_error($cname, $fatal, $errors) {
     return $output;
 }
 
+
+/*
+ * Validate urls, return the sanatized value and metadata
+ * @param str url the url to validate
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_url($url) {
     $valid = false;
     $status = 'warning';
@@ -135,6 +169,12 @@ function uri_cl_validate_url($url) {
     
 }
 
+
+/*
+ * Validate booleans, return the value and metadata
+ * @param bool/str var the boolean or boolean-equivalent string to validate
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_bool($var) {
     $valid = false;
     $status = 'fatal';
@@ -167,6 +207,13 @@ function uri_cl_validate_bool($var) {
     
 }
 
+
+/*
+ * Validate strings, return the value and metadata
+ * @param str val the string to validate
+ * @param arr a the attribute parameters
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_str($val, $a) {
     $valid = true;
     $status = 'normal';
@@ -185,6 +232,13 @@ function uri_cl_validate_str($val, $a) {
     
 }
 
+
+/*
+ * Validate numbers, return the value and metadata
+ * @param num val the number to validate
+ * @param arr a the attribute parameters
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_num($val, $a) {
     $valid = true;
     
@@ -209,6 +263,12 @@ function uri_cl_validate_num($val, $a) {
     
 }
 
+
+/*
+ * Validate ratios, return the value and metadata
+ * @param str val the ratio to validate
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_ratio($val) {
     $valid = false;
     
@@ -235,6 +295,12 @@ function uri_cl_validate_ratio($val) {
     
 }
 
+
+/*
+ * Validate units (rem, em, px), return the sanatized value and metadata
+ * @param str val the units to validate
+ * @return arr the validation metadata
+ */
 function uri_cl_validate_unit($val) {
     $valid = true;
     $status = 'normal';
@@ -267,6 +333,13 @@ function uri_cl_validate_unit($val) {
     
 }
 
+
+/*
+ * Check if given value is in array
+ * @param val the value to check
+ * @param vals the array in which to check
+ * @return bool
+ */
 function uri_cl_in_array($val, $vals) {
     
     if (in_array($val, $vals)) {
@@ -277,6 +350,12 @@ function uri_cl_in_array($val, $vals) {
     
 }
 
+
+/*
+ * Build list of accepted attribute values, if specified
+ * @param arr a the attribute parameters
+ * @return str
+ */
 function uri_cl_accepted_values($a) {
     
     if (array_key_exists('values', $a)) {
