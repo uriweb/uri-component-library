@@ -102,16 +102,18 @@
         
         uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
-            a = uls[i].parentNode.querySelector('a');
             
             span = document.createElement('span');
             span.className = 'cl-menu-arrow';
             uls[i].parentNode.append(span);
             
+            a = uls[i].parentNode.querySelector('a');
+            
             li = document.createElement('li');
             li.appendChild(a.cloneNode(true));
-            
             uls[i].insertBefore(li, uls[i].firstChild);
+            
+            a.classList.add('cl-menu-trigger');
             
             bindListeners(a, uls, uls[i]);
         }
