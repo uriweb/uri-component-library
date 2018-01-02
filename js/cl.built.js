@@ -91,7 +91,7 @@
     window.addEventListener('load', initCLMenus, false);
     
     function initCLMenus() {
-        var menus, uls, trigger, spans, i;
+        var menus, uls, trigger, spans, i, a, li;
         
         // Since we have JS, let's add a unique css hook and submenu triggers
         
@@ -102,7 +102,13 @@
         
         uls = document.querySelectorAll('.cl-menu-list ul');
         for (i=0; i<uls.length; i++) {
-            var a = uls[i].parentNode.querySelector('a');
+            a = uls[i].parentNode.querySelector('a');
+            
+            li = document.createElement('li');
+            li.appendChild(a.cloneNode(true));
+            
+            uls[i].insertBefore(li, uls[i].firstChild);
+            
             bindListeners(a, uls, uls[i]);
         }
         
