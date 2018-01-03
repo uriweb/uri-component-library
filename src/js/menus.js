@@ -9,12 +9,20 @@
     window.addEventListener('load', initCLMenus, false);
     
     function initCLMenus() {
-        var menus, uls, i, a, span, li;
+        var menus, toggle, uls, i, a, span, li;
         
         // Since we have JS, let's add a unique css hook and submenu triggers
         
         menus = document.querySelectorAll('.cl-menu');
         for (i=0; i<menus.length; i++) {
+            toggle = document.createElement('span');
+            toggle.className = 'cl-menu-toggle';
+            toggle.innerHTML = menus[i].getAttribute('data-name');
+            toggle.addEventListener('click', function() {
+                this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
+            });
+            
+            menus[i].insertBefore(toggle, menus[i].querySelector('.cl-menu-list'));
             menus[i].classList.add('.cl-menu-js');
         }
         

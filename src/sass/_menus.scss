@@ -5,10 +5,7 @@
     & {
         width: 100%;
         box-sizing: border-box;
-        background: #eee;
-        border-radius: .2rem;
         font-size: 1rem;
-        overflow: hidden;
     }
     
     * {
@@ -18,7 +15,9 @@
     ul.cl-menu-list {
 
         & {
-            display: block;
+            display: none;
+            background: #eee;
+            border-radius: 0 0 .2rem .2rem;
             width: 100%;
             list-style-type: none;
             text-align: left;
@@ -101,6 +100,34 @@
         
     } // ul.cl-menu-list
     
+    span.cl-menu-toggle {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: #eee;
+        border-radius: .2rem;
+        font-size: .9rem;
+        font-weight: bold;
+        color: $darkgrey;
+        transition: all .2s ease-in-out;
+    }
+    
+    span.cl-menu-toggle:hover,
+    span.cl-menu-toggle:focus,
+    span.cl-menu-toggle.active {
+        cursor: pointer;
+        background: $darkgrey;
+        color: #fff;
+    }
+    
+    span.cl-menu-toggle.active {
+        border-radius: .2rem .2rem 0 0;
+    }
+    
+    span.cl-menu-toggle.active ~ ul.cl-menu-list {
+        display: block;
+    }
+    
 } // .cl-menu
 
 @media screen and (min-width: 600px) {
@@ -111,6 +138,10 @@
         }
         
         ul.cl-menu-list {
+            
+            & {
+                display: block;
+            }
             
             &>li {
                 float: left;
@@ -135,8 +166,13 @@
                 padding-right: 3rem;
             }
             
- 
         } // ul.cl-menu-list
+        
+        span.cl-menu-toggle {
+            background: $grey;
+            border-radius: .2rem .2rem 0 0;
+        }
+
     
     } // .cl-menu
 }
