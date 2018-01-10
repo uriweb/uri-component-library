@@ -2,25 +2,33 @@
 
 /* COMPONENT LIBRARY SHORTCODES
  *
- * CONTENTS
- *
- * - Boxout
- * - Button
- * - Card (Action)
- * - Card (Detail)
- * - Hero
- * - Menu
- * - Notice
- * - Panel
- * - Social
- * - Tiles
- * - Video
- * - Waves
- *
  */
 
 
 include 'cl-error-checking.php'; 
+
+
+/**
+ * Get shortcode template file
+ *
+ * Priority:
+ * 1. /themes/theme/template-parts/cl/cl-template-*.php
+ * 2. /plugins/uri-component-library/templates/cl-template-*.php
+ *
+ * @param str $name the name of the shortcode, as used in the filename
+ * @return the path to the template file (rel for default templates, abs for theme templates)
+ */
+function uri_cl_shortcode_get_template( $name ) {
+    
+    $template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
+    
+    if ( is_file($template) ) {
+        return $template;
+    } else {
+        return 'templates/cl-template-' . $name . '.php';
+    }
+    
+}
 
 
 /**
@@ -46,7 +54,7 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
             'req' => false,
             'values' => array('left', 'right')
         ) ),
-        'templates/cl-template-boxout.php'
+        uri_cl_shortcode_get_template('boxout')
     );
 
 }
@@ -79,7 +87,7 @@ function uri_cl_shortcode_button( $atts ) {
             'type' => 'bool',
             'req' => false
         ) ),
-        'templates/cl-template-button.php'
+        uri_cl_shortcode_get_template('button')
     );
 
 }
@@ -115,7 +123,7 @@ function uri_cl_shortcode_card( $atts ) {
             'type' => 'url',
             'req' => false
         ) ),
-        'templates/cl-template-card.php'
+        uri_cl_shortcode_get_template('card')
     );
         
 }
@@ -150,7 +158,7 @@ function uri_cl_shortcode_dcard( $atts ) {
             'type' => 'url',
             'req' => false
         ) ),
-        'templates/cl-template-dcard.php'
+        uri_cl_shortcode_get_template('dcard')
     );
 
 }
@@ -210,7 +218,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'type' => 'bool',
             'req' => false
         ) ),
-        'templates/cl-template-hero.php'
+        uri_cl_shortcode_get_template('hero')
     );
 
 }
@@ -242,7 +250,7 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
             'type' => 'num',
             'values' => array(1, 2)
         ) ),
-        'templates/cl-template-menu.php'
+        uri_cl_shortcode_get_template('menu')
     );
 
 }
@@ -269,7 +277,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
             'type' => 'bool',
             'req' => false
         ) ),
-        'templates/cl-template-notice.php'
+        uri_cl_shortcode_get_template('notice')
     );
 
 }
@@ -302,7 +310,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
             'type' => 'bool',
             'req' => false
         ) ),
-        'templates/cl-template-panel.php'
+        uri_cl_shortcode_get_template('panel')
     );
 
 }
@@ -364,7 +372,7 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
             'type' => 'str',
             'values' => array('color', 'dark', 'light')
         ) ),
-        'templates/cl-template-social.php'
+        uri_cl_shortcode_get_template('social')
     );
 
 }
@@ -383,7 +391,7 @@ function uri_cl_shortcode_tabs( $atts, $content = null ) {
 		), $atts )
 	);
     
-    include 'templates/cl-template-tabs.php';
+    include uri_cl_shortcode_get_template('tabs');
     return $output;
     
 }
@@ -401,7 +409,7 @@ function uri_cl_shortcode_tab( $atts, $content = null ) {
 		), $atts )
 	);
     
-    include 'templates/cl-template-tab.php';
+    include uri_cl_shortcode_get_template('tab');
     return $output;
 
 }
@@ -446,7 +454,7 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
             'type' => 'bool',
             'req' => false
         ) ),
-        'templates/cl-template-tiles.php'
+        uri_cl_shortcode_get_template('tiles')
     );
 
 }
@@ -490,7 +498,7 @@ function uri_cl_shortcode_video( $atts ) {
             'type' => 'ratio',
             'req' => false
         ) ),
-        'templates/cl-template-video.php'
+        uri_cl_shortcode_get_template('video')
     );
 
 }
@@ -523,7 +531,7 @@ function uri_cl_shortcode_waves( $atts ) {
             'type' => 'unit',
             'req' => false
         ) ),
-        'templates/cl-template-waves.php'
+        uri_cl_shortcode_get_template('waves')
     );
 
 }
