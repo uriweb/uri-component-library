@@ -2,13 +2,11 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 1.1
+## What's new in 1.2
 
-* Adds a tabs component with full accessibility support
-* Adds a disabled style for buttons
-* Adds full width support for heros
-* Adds shortcode support for full width heros and superheros
-* Minor style adjustments for heros
+* Adds a menu component that hooks into native WordPress menus
+* Adds comprehensive shortcode error checking for the entire library
+* Allows themes to override shortcode template files for any component
 
 ## Plugin Details
 
@@ -19,4 +17,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 1.1  
+Stable tag: 1.2  

@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var pkg = require('./package.json');
 
 // include plug-ins
 var jshint = require('gulp-jshint');
@@ -20,10 +21,6 @@ var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'compressed' //expanded, nested, compact, compressed
 };
-var CLSassOptions = {
-  errLogToConsole: true,
-  outputStyle: 'compressed' //expanded, nested, compact, compressed
-};
 var autoprefixerOptions = {
   browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 };
@@ -34,26 +31,23 @@ gulp.task('styles', styles);
 
 function styles(done) {
     
-    var banner = ['/*',
-  '===========================================',
-  '',
-  'URI COMPONENT LIBRARY',
-  '',
-  'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
-  '',
-  'See documentation at uriweb.github.io',
-  '',
-  '==============================================',
-  '*/',
-  '',
-  ''].join('\n')
+    var banner = ['/**',
+                  ' * <%= pkg.name %>',
+                  ' * ',
+                  ' * @version v<%= pkg.version %>',
+                  ' * @author <%= pkg.authorHuman %>',
+                  ' * @license <%= pkg.license %>',
+                  ' * @see <%= pkg.docs %>',
+                  ' */',
+                  '',
+                  ''].join('\n');
     
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass(CLSassOptions).on('error', sass.logError))
+		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(concat('cl.built.css'))
-        .pipe(header(banner))
+        .pipe(header(banner, { pkg : pkg } ))
 		.pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest('./css/'));
 
@@ -67,27 +61,26 @@ gulp.task('patchstyles', patchstyles);
 
 function patchstyles(done) {
     
-    var banner = ['/*',
-  '===========================================',
-  '',
-  'URI COMPONENT LIBRARY THEME PATCHES',
-  '',
-  'Improves visual compatability with existing',
-  'Wordpress themes, like the Department theme.',
-  '',
-  'AUTHOR: BRANDON FULLER <bjcfuller@uri.edu>',
-  '',
-  '==============================================',
-  '*/',
-  '',
-  ''].join('\n')
+    var banner = ['/**',
+                  ' * <%= pkg.name %> - Theme Patches',
+                  ' * ',
+                  ' * Improves visual compatability with existing',
+                  ' * Wordpress themes, like the Department theme.',
+                  ' * ',
+                  ' * @version v<%= pkg.version %>',
+                  ' * @author <%= pkg.authorHuman %>',
+                  ' * @license <%= pkg.license %>',
+                  ' * @see <%= pkg.docs %>',
+                  ' */',
+                  '',
+                  ''].join('\n');
     
 	gulp.src('./src/sass/patches/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass(CLSassOptions).on('error', sass.logError))
+		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(concat('clpatch.built.css'))
-        .pipe(header(banner))
+        .pipe(header(banner, { pkg : pkg } ))
 		.pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest('./css/'));
 
