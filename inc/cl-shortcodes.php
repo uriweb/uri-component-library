@@ -2,21 +2,33 @@
 
 /* COMPONENT LIBRARY SHORTCODES
  *
- * CONTENTS
- *
- * - Boxout
- * - Button
- * - Card (Action)
- * - Card (Detail)
- * - Hero
- * - Notice
- * - Panel
- * - Social
- * - Tiles
- * - Video
- * - Waves
- *
  */
+
+
+include 'cl-error-checking.php'; 
+
+
+/**
+ * Get shortcode template file
+ *
+ * Priority:
+ * 1. /themes/theme/template-parts/cl/cl-template-*.php
+ * 2. /plugins/uri-component-library/templates/cl-template-*.php
+ *
+ * @param str $name the name of the shortcode, as used in the filename
+ * @return the path to the template file (rel for default templates, abs for theme templates)
+ */
+function uri_cl_shortcode_get_template( $name ) {
+    
+    $template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
+    
+    if ( is_file($template) ) {
+        return $template;
+    } else {
+        return 'templates/cl-template-' . $name . '.php';
+    }
+    
+}
 
 
 /**
@@ -25,16 +37,25 @@
 function uri_cl_shortcode_boxout( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'title' => '',
 			'float' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-boxout.php';
-    return $output;
+    // Error checking
+    // (string $cname , array $atts , array $check_atts , string $template)
+    return uri_cl_validate( 'Boxout', $atts, array(
+        //(string $attr , string $type [, bool $req [, array $values]])
+        array(
+            'attr' => 'float',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('left', 'right')
+        ) ),
+        uri_cl_shortcode_get_template('boxout')
+    );
 
 }
 add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
@@ -46,18 +67,28 @@ add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
 function uri_cl_shortcode_button( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'text' => 'Explore',
 			'link' => '#',
             'tooltip' => '',
             'prominent' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-button.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Button', $atts, array(
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ),
+        array (
+            'attr' => 'prominent',
+            'type' => 'bool',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('button')
+    );
 
 }
 add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
@@ -69,7 +100,7 @@ add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
 function uri_cl_shortcode_card( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'img' => '',
             'alt' => '',
@@ -79,12 +110,22 @@ function uri_cl_shortcode_card( $atts ) {
             'link' => '#',
             'tooltip' => 'Explore',
             'class' => ''
-        ), $atts )
-	);
+        ), $atts );
     
-    include 'templates/cl-template-card.php';
-    return $output;
-
+    // Error checking
+    return uri_cl_validate( 'Card', $atts, array(
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ),
+        array(
+            'attr' => 'img',
+            'type' => 'url',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('card')
+    );
+        
 }
 add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
 
@@ -95,7 +136,7 @@ add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
 function uri_cl_shortcode_dcard( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'link' => '#',
 			'img' => '',
@@ -104,11 +145,21 @@ function uri_cl_shortcode_dcard( $atts ) {
             'body' => '',
             'tooltip' => 'Explore',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-dcard.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Detail Card', $atts, array(
+        array(
+            'attr' => 'link',
+            'type' => 'url'
+        ),
+        array(
+            'attr' => 'img',
+            'type' => 'url',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('dcard')
+    );
 
 }
 add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
@@ -120,7 +171,7 @@ add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
 function uri_cl_shortcode_hero( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'headline' => '',
             'subhead' => '',
@@ -134,14 +185,76 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'fullwidth' => false,
             'img' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-hero.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Hero', $atts, array(
+        array(
+            'attr' => 'img',
+            'type' => 'url'
+        ),
+        array(
+            'attr' => 'vid',
+            'type' => 'str',
+            'req' => false
+        ),
+        array(
+            'attr' => 'link',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'dynamic',
+            'type' => 'bool',
+            'req' => false
+        ),
+        array(
+            'attr' => 'super',
+            'type' => 'bool',
+            'req' => false
+        ),
+        array(
+            'attr' => 'fullwidth',
+            'type' => 'bool',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('hero')
+    );
 
 }
 add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
+
+
+/**
+ * Menu
+ */
+function uri_cl_shortcode_menu( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'name' => 'menu-1',
+            'depth' => 1,
+            'id' => '',
+            'class' => ''
+		), $atts );
+    
+    // Error checking
+    return uri_cl_validate( 'Menu', $atts, array(
+        array(
+            'attr' => 'name',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'depth',
+            'type' => 'num',
+            'values' => array(1, 2)
+        ) ),
+        uri_cl_shortcode_get_template('menu')
+    );
+
+}
+add_shortcode( 'cl-menu', 'uri_cl_shortcode_menu' );
 
 
 /**
@@ -150,16 +263,22 @@ add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
 function uri_cl_shortcode_notice( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'title' => '',
             'urgent' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-notice.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Notice', $atts, array(
+        array(
+            'attr' => 'urgent',
+            'type' => 'bool',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('notice')
+    );
 
 }
 add_shortcode( 'cl-notice', 'uri_cl_shortcode_notice' );
@@ -171,18 +290,28 @@ add_shortcode( 'cl-notice', 'uri_cl_shortcode_notice' );
 function uri_cl_shortcode_panel( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'img' => '',
             'alt' => '',
 			'title' => '',
             'reverse' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-panel.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Panel', $atts, array(
+        array(
+            'attr' => 'img',
+            'type' => 'url'
+        ),
+        array(
+            'attr' => 'reverse',
+            'type' => 'bool',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('panel')
+    );
 
 }
 add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
@@ -194,7 +323,7 @@ add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
 function uri_cl_shortcode_social( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'style' => 'color',
             'class' => '',
@@ -204,11 +333,47 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
             'youtube' => '',
             'snapchat' => '',
             'linkedin' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-social.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Social', $atts, array(
+        array(
+            'attr' => 'facebook',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'instagram',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'twitter',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'youtube',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'snapchat',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'linkedin',
+            'type' => 'url',
+            'req' => false
+        ),
+        array(
+            'attr' => 'style',
+            'type' => 'str',
+            'values' => array('color', 'dark', 'light')
+        ) ),
+        uri_cl_shortcode_get_template('social')
+    );
 
 }
 add_shortcode( 'cl-social', 'uri_cl_shortcode_social' );
@@ -226,7 +391,7 @@ function uri_cl_shortcode_tabs( $atts, $content = null ) {
 		), $atts )
 	);
     
-    include 'templates/cl-template-tabs.php';
+    include uri_cl_shortcode_get_template('tabs');
     return $output;
     
 }
@@ -244,7 +409,7 @@ function uri_cl_shortcode_tab( $atts, $content = null ) {
 		), $atts )
 	);
     
-    include 'templates/cl-template-tab.php';
+    include uri_cl_shortcode_get_template('tab');
     return $output;
 
 }
@@ -258,18 +423,39 @@ add_shortcode( 'cl-tab', 'uri_cl_shortcode_tab' );
 function uri_cl_shortcode_tiles( $atts, $content = null ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'across' => 3,
 			'square' => false,
             'compact' => false,
             'animated' => false,
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-tiles.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Tiles', $atts, array(
+        array(
+            'attr' => 'across',
+            'type' => 'num',
+            'values' => array(2,3,4,5)
+        ),
+        array(
+            'attr' => 'square',
+            'type' => 'bool',
+            'req' => false
+        ),
+        array(
+            'attr' => 'compact',
+            'type' => 'bool',
+            'req' => false
+        ),
+        array(
+            'attr' => 'animated',
+            'type' => 'bool',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('tiles')
+    );
 
 }
 add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
@@ -281,7 +467,7 @@ add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
 function uri_cl_shortcode_video( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'vid' => '',
             'id' => '',
@@ -291,11 +477,29 @@ function uri_cl_shortcode_video( $atts ) {
             'excerpt' => '',
             'aspect' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-video.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Video', $atts, array(
+        array(
+            'attr' => 'id',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'vid',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'img',
+            'type' => 'url'
+        ),
+        array(
+            'attr' => 'aspect',
+            'type' => 'ratio',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('video')
+    );
 
 }
 add_shortcode( 'cl-video', 'uri_cl_shortcode_video' );
@@ -307,17 +511,28 @@ add_shortcode( 'cl-video', 'uri_cl_shortcode_video' );
 function uri_cl_shortcode_waves( $atts ) {
 
 	// Attributes
-	extract( shortcode_atts(
+	$atts = shortcode_atts(
 		array(
             'placement' => 'bottom',
 			'offset' => '',
             'color' => '',
             'class' => ''
-		), $atts )
-	);
+		), $atts );
     
-    include 'templates/cl-template-waves.php';
-    return $output;
+    // Error checking
+    return uri_cl_validate( 'Waves', $atts, array(
+        array(
+            'attr' => 'placement',
+            'type' => 'str',
+            'values' => array('bottom', 'top')
+        ),
+        array(
+            'attr' => 'offset',
+            'type' => 'unit',
+            'req' => false
+        ) ),
+        uri_cl_shortcode_get_template('waves')
+    );
 
 }
 add_shortcode( 'cl-waves', 'uri_cl_shortcode_waves' );
