@@ -17,6 +17,9 @@
         for (i=0; i<menus.length; i++) {
             toggle = document.createElement('span');
             toggle.className = 'cl-menu-toggle';
+            if (menus[i].getAttribute('data-show-title') == '0') {
+                toggle.classList.add('hidden');
+            }
             toggle.innerHTML = menus[i].getAttribute('data-name');
             toggle.addEventListener('click', function() {
                 this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active');
