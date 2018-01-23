@@ -236,6 +236,8 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
 			'name' => 'menu-1',
             'depth' => 1,
             'id' => '',
+            'showtitle' => false,
+            'title' => '',
             'class' => ''
 		), $atts );
     
@@ -249,6 +251,11 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
             'attr' => 'depth',
             'type' => 'num',
             'values' => array(1, 2)
+        ),
+        array(
+            'attr' => 'showtitle',
+            'type' => 'bool',
+            'req' => false
         ) ),
         uri_cl_shortcode_get_template('menu')
     );
