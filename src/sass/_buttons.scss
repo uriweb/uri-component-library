@@ -41,8 +41,9 @@ span.cl-button {
     &.disabled:focus {
         background: rgba(0,0,0,.05);
         color: rgba(0,0,0,.4) !important;
-        border: 1px solid rgba(0,0,0,.1) !important;
+        border: 1px solid rgba(0,0,0,.05) !important;
         font-weight: 400;
+        border-radius: .2rem;
         cursor: default;
     }
     
