@@ -200,6 +200,14 @@
             border-radius: .2rem .2rem 0 0;
         }
         
+        span.cl-menu-toggle.hidden {
+            display: none;
+        }
+        
+        span.cl-menu-toggle.hidden ~ ul.cl-menu-list {
+            border-radius: .2rem;
+        }
+        
         span.cl-menu-toggle:hover,
         span.cl-menu-toggle:focus,
         span.cl-menu-toggle.active {
