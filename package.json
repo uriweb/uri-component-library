@@ -1,7 +1,7 @@
 {
   "name": "URI Component Library",
   "description": "URI Component Library",
-  "version" : "1.2",
+  "version" : "1.2.1",
   "homepage": "https://www.uri.edu",
   "docs": "http://uriweb.github.io",
   "scripts": {
