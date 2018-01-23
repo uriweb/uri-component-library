@@ -6,8 +6,9 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
+$menuname = $name;
 if(!empty($title)) {
-    $name = $title;
+    $menuname = $title;
 }
 
 if($showtitle) {
@@ -16,7 +17,7 @@ if($showtitle) {
     $showtitle = '0';
 }
 
-$output = '<div id="' . $id . '" class="' . $classes . '" data-name="' . $name . '" data-show-title="' . $showtitle . '">';
+$output = '<div id="' . $id . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $showtitle . '">';
 
 $output .= wp_nav_menu( 
     array(
