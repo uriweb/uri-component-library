@@ -73,6 +73,7 @@ function uri_cl_shortcode_button( $atts ) {
 			'link' => '#',
             'tooltip' => '',
             'prominent' => false,
+            'disabled' => false,
             'class' => ''
 		), $atts );
     
@@ -84,6 +85,11 @@ function uri_cl_shortcode_button( $atts ) {
         ),
         array (
             'attr' => 'prominent',
+            'type' => 'bool',
+            'req' => false
+        ),
+        array (
+            'attr' => 'disabled',
             'type' => 'bool',
             'req' => false
         ) ),

@@ -2,12 +2,22 @@
 
 $classes = 'cl-button';
 
-if($prominent) {
-    $classes .= ' prominent';
-}
-
 if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">' . $text . '</a>';
+if($disabled) {
+    
+    $classes .= ' disabled';
+    
+    $output = '<span class="' . $classes . '" title="' . $tooltip . '">' . $text . '</span>';
+    
+} else {
+
+    if($prominent) {
+        $classes .= ' prominent';
+    }
+
+    $output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">' . $text . '</a>';
+    
+}
