@@ -3,7 +3,7 @@
  * 
  * SCRIPTS
  * 
- * @version v1.2.1
+ * @version v1.2.2
  * @author Brandon Fuller <bjcfuller@uri.edu>
  * @license GNU General Public License v2 or later
  * @see http://uriweb.github.io
