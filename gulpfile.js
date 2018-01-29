@@ -34,6 +34,8 @@ function styles(done) {
     var banner = ['/**',
                   ' * <%= pkg.name %>',
                   ' * ',
+                  ' * STYLES',
+                  ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.authorHuman %>',
                   ' * @license <%= pkg.license %>',
@@ -56,16 +58,15 @@ function styles(done) {
 }
 
 
-// Theme Patches CSS concat, auto-prefix and minify
-gulp.task('patchstyles', patchstyles);
+// JS concat, strip debugging and minify
+gulp.task('scripts', scripts);
 
-function patchstyles(done) {
+function scripts(done) {
     
-    var banner = ['/**',
-                  ' * <%= pkg.name %> - Theme Patches',
+  var banner = ['/**',
+                  ' * <%= pkg.name %>',
                   ' * ',
-                  ' * Improves visual compatability with existing',
-                  ' * Wordpress themes, like the Department theme.',
+                  ' * SCRIPTS',
                   ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.authorHuman %>',
@@ -75,32 +76,16 @@ function patchstyles(done) {
                   '',
                   ''].join('\n');
     
-	gulp.src('./src/sass/patches/*.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer(autoprefixerOptions))
-		.pipe(concat('clpatch.built.css'))
+    gulp.src('./src/js/*.js')
+        .pipe(jshint(done))
+        .pipe(jshint.reporter('default'));
+  
+    gulp.src('./src/js/*.js')
+        .pipe(concat('cl.built.js'))
+        //.pipe(stripDebug())
+        .pipe(uglify())
         .pipe(header(banner, { pkg : pkg } ))
-		.pipe(sourcemaps.write('./map'))
-		.pipe(gulp.dest('./css/'));
-
-  done();
-  //console.log('styles ran');
-}
-
-
-// JS concat, strip debugging and minify
-gulp.task('scripts', scripts);
-
-function scripts(done) {
-  gulp.src('./src/js/*.js')
-    .pipe(jshint(done))
-    .pipe(jshint.reporter('default'));
-  gulp.src('./src/js/*.js')
-    .pipe(concat('cl.built.js'))
-    //.pipe(stripDebug())
-    .pipe(uglify())
-    .pipe(gulp.dest('./js/'));
+        .pipe(gulp.dest('./js/'));
     
 	done();
  // console.log('scripts ran');
@@ -114,9 +99,6 @@ function watcher(done) {
 	// watch for Theme CSS changes
 	gulp.watch('./src/sass/*.scss', styles);
     
-    // watch for Theme Patches CSS changes
-	gulp.watch('./src/sass/patches/*.scss', patchstyles);
-    
     // watch for Theme JS changes
 	gulp.watch('./src/js/*.js', scripts);
 
@@ -124,7 +106,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'patchstyles', 'scripts', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'watcher', function(done){
 		done();
 	})
 );
