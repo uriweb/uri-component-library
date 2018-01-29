@@ -129,6 +129,11 @@
     margin: .5rem .5rem .5rem 1rem;
 }
 
+.cl-dcard .cl-dcard-text,
+.cl-tiles .cl-dcard .cl-dcard-text {
+    padding: 1rem 1rem 0;
+}
+
 .cl-dcard h3,
 .cl-tiles .cl-dcard h3 {
     //font-family: $header;
@@ -136,13 +141,13 @@
     //font-weight: 700;
     //text-transform: uppercase;
     //color: $black;
-    padding: 1rem 1rem 0;
-    margin: 0;
+    //padding: 1rem 1rem 0;
+    //margin: 0;
 }
 
 .cl-dcard p,
 .cl-tiles .cl-dcard p {
-    padding: .5rem 1rem .1rem;
+    //padding: .5rem 1rem .1rem;
     font-size: .9rem;
 }
 
