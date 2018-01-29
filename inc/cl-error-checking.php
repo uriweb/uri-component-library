@@ -16,11 +16,12 @@
  *
  * @param str cname the name of the shortcode
  * @param arr atts the returned array of shortcode attributes
+ * @param str content the content of the shortcode, in the case of enclosing shortcodes
  * @param arr check_atts the attributes to validate and their parameters
  * @param str template the relative url to the shortcode template
  * @return str output the component and/or error message html
  */
-function uri_cl_validate($cname, $atts, $check_atts, $template) {
+function uri_cl_validate($cname, $atts, $content, $check_atts, $template) {
     
     $errors = array();
     $fatal = false;
