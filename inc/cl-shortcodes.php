@@ -149,7 +149,7 @@ function uri_cl_shortcode_dcard( $atts ) {
             'alt' => '',
 			'title' => '',
             'body' => '',
-            'tooltip' => 'Explore',
+            'tooltip' => '',
             'class' => ''
 		), $atts );
     
