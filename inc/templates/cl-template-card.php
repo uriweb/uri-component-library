@@ -11,12 +11,24 @@ $output = '<a class="' . $classes . '" href="'. $link .'" title="' . $tooltip . 
 if (!empty($img)) {
     $output .= '<img src="' . $img . '" alt="' . $alt . '">';
 }
-if (!empty($title)) {
-    $output .= '<h3>' . $title . '</h3>';
-}
-if (!empty($body)) {
-    $output .= '<p>' . $body . '</p>';
+
+if (!empty($title) || !empty($body)) {
+    
+    $output .= '<div class="cl-card-text">';
+    
+    if (!empty($title)) {
+        $output .= '<h3>' . $title . '</h3>';
+    }
+    
+    if (!empty($body)) {
+        $output .= '<p>' . $body . '</p>';
+    }
+    
+    $output .= '</div>';
 }
 
-$output .= '<span class="cl-button">' . $button . '</span>';
+if (!empty($button)) {
+    $output .= '<div class="cl-button">' . $button . '</div>';
+}
+
 $output .= '</a>';
