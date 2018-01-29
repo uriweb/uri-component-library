@@ -8,14 +8,14 @@
 .cl-dcard {
     display: inline-block;
     width: 100%;
-    background: $white !important;
+    background: $white;
     box-shadow: $level1;
     box-sizing: border-box;
-    color: $darkgrey !important;
-    //font-family: $body !important;
+    color: $darkgrey;
+    //font-family: $body;
     //border-radius: .2rem;
     border-radius: 0;
-    overflow: hidden !important;
+    overflow: hidden;
     transition: width .2s ease-in-out;
 }
 
@@ -68,30 +68,30 @@ a {
     
 .cl-card h3,
 .cl-tiles .cl-card h3 {
-    //font-family: $header !important;
-    //font-size: 1.5rem !important;
-    //font-weight: normal !important;
-    //line-height: 1.6rem !important;
-    //color: $black !important;
-    padding: 1.8rem 1.2rem 0 !important;
-    margin: 0 !important;
-    text-transform: initial !important;
+    //font-family: $header;
+    //font-size: 1.5rem;
+    //font-weight: normal;
+    //line-height: 1.6rem;
+    //color: $black;
+    padding: 1.8rem 1.2rem 0;
+    margin: 0;
+    text-transform: initial;
 }
 
 .cl-card p,
 .cl-tiles .cl-card p {
-    padding: 1rem 1.2rem 0 !important;
-    font-size: 1rem !important;
+    padding: 1rem 1.2rem 0;
+    font-size: 1rem;
 }
 
 .cl-card p:first-of-type,
 .cl-tiles .cl-card p:first-of-type {
-    padding-top: 1.2rem !important;
+    padding-top: 1.2rem;
 }
 
 .cl-card p:last-child,
 .cl-tiles .cl-card p:last-child {
-    padding-bottom: 2rem !important;
+    padding-bottom: 2rem;
 }
 
 
@@ -99,8 +99,8 @@ a {
 
 .cl-card img,
 .cl-tiles .cl-card img {
-    width: 100% !important;
-    height: auto !important;
+    width: 100%;
+    height: auto;
 }
 
 
@@ -114,59 +114,59 @@ a {
 
 .cl-dcard img,
 .cl-tiles .cl-dcard img {
-    float: right !important;
-    width: 30% !important;
-    margin: .5rem .5rem .5rem 1rem !important;
+    float: right;
+    width: 30%;
+    margin: .5rem .5rem .5rem 1rem;
 }
 
 .cl-dcard h3,
 .cl-tiles .cl-dcard h3 {
-    //font-family: $header !important;
-    //font-size: 1rem !important;
-    //font-weight: 700 !important;
-    //text-transform: uppercase !important;
-    //color: $black !important;
-    padding: 1rem 1rem 0 !important;
-    margin: 0 !important;
+    //font-family: $header;
+    //font-size: 1rem;
+    //font-weight: 700;
+    //text-transform: uppercase;
+    //color: $black;
+    padding: 1rem 1rem 0;
+    margin: 0;
 }
 
 .cl-dcard p,
 .cl-tiles .cl-dcard p {
-    padding: .5rem 1rem .1rem !important;
-    font-size: .9rem !important;
+    padding: .5rem 1rem .1rem;
+    font-size: .9rem;
 }
 
 .cl-dcard p:last-child,
 .cl-tiles .cl-dcard p:last-child {
-    padding-bottom: 1rem !important;
+    padding-bottom: 1rem;
 }
 
 /* Buttons */
 
 .cl-card .cl-button {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-top: 2rem !important;
-    padding: calc(1.5% + 1em) 0 !important;
-    background: inherit !important;
-    border: none !important;
-    border-top: 1px solid #eee !important;
-    font-size: .8rem !important;
-    font-weight: 700 !important;
-    letter-spacing: .1rem !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    color: $blue !important;
-    transition: all .2s !important;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 2rem;
+    padding: calc(1.5% + 1em) 0;
+    background: inherit;
+    border: none;
+    border-top: 1px solid #eee;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: $blue;
+    transition: all .2s;
 }
 
 a.cl-card:hover .cl-button,
 a.cl-card:focus .cl-button,
 .cl-card .cl-button:hover,
 .cl-card .cl-button:focus {
-    background: $link !important;
-    border-top: 1px solid $link !important;
-    color: $white !important;
-    transition: all .3s !important;
+    background: $link;
+    border-top: 1px solid $link;
+    color: $white;
+    transition: all .3s;
 }

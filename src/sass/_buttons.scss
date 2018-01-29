@@ -8,22 +8,22 @@ span.cl-button {
     }
     
     & {
-        display: block !important;
+        display: block;
         box-sizing: border-box;
         margin: 1.2rem 0;
         padding: 1rem 0;
         max-width: $maxcardwidth;
         width: 100%;
         background: $white;
-        border: 1px solid $grey !important;
+        border: 1px solid $grey;
         font-size: .8rem;
         font-weight: 700;
         letter-spacing: .1rem;
         line-height: normal;
         text-transform: uppercase;
         text-align: center;
-        color: $blue !important;
-        text-decoration: none !important;
+        color: $blue;
+        text-decoration: none;
         transition: all .2s ease-in-out;
         text-shadow: none;
     }
@@ -31,8 +31,8 @@ span.cl-button {
     &.prominent {
         background: $blue;
         box-shadow: 250px 0px 100px -100px transparent inset;
-        color: $white !important;
-        border: none !important;
+        color: $white;
+        border: none;
         padding: 1.09rem 0;
     }
     
@@ -40,8 +40,8 @@ span.cl-button {
     &.disabled:hover,
     &.disabled:focus {
         background: rgba(0,0,0,.05);
-        color: rgba(0,0,0,.4) !important;
-        border: 1px solid rgba(0,0,0,.05) !important;
+        color: rgba(0,0,0,.4);
+        border: 1px solid rgba(0,0,0,.05);
         font-weight: 400;
         border-radius: .2rem;
         cursor: default;
@@ -58,8 +58,8 @@ span.cl-button {
     &:hover,
     &:focus {
         background: $link;
-        border: 1px solid $link !important;
-        color: $white !important;
+        border: 1px solid $link;
+        color: $white;
         transition: all .3s ease-in-out;
     }
     
@@ -67,9 +67,9 @@ span.cl-button {
     &.prominent:focus {
         background: $linkhover;
         box-shadow: 350px 0px 50px -100px $link inset;
-        border: none !important;
+        border: none;
         transition: all 2s $easeOutExpo;
-        color: $white !important;
+        color: $white;
     }
     
 }
@@ -93,7 +93,7 @@ span.cl-button {
 .cl-hero span.cl-button {
     & {
         margin-top: 2rem;
-        border: none !important;
+        border: none;
         background: rgba(255,255,255,.9);
         box-shadow: $level3;
         position: relative;
@@ -103,8 +103,8 @@ span.cl-button {
     &:hover,
     &:focus {
         background: $white;
-        border: none !important;
-        color: $link !important;
+        border: none;
+        color: $link;
         top: -3px;
     }
 }

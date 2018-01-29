@@ -23,15 +23,15 @@
 }
 
 .cl-notice h1 {
-    //font-family: $header !important;
-    //font-size: 1.3rem !important;
-    //font-weight: 600 !important;
-    //line-height: 1rem !important;
-    color: $blue !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    //text-transform: uppercase !important;
-    text-transform: none !important;
+    //font-family: $header;
+    //font-size: 1.3rem;
+    //font-weight: 600;
+    //line-height: 1rem;
+    color: $blue;
+    padding: 0;
+    margin: 0;
+    //text-transform: uppercase;
+    text-transform: none;
 }
 
 .cl-notice h1:before {
@@ -48,7 +48,7 @@
 }
 
 .cl-notice.urgent h1 {
-    color: $black !important;
+    color: $black;
 }
 
 .cl-notice.urgent h1:before {
