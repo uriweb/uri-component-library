@@ -1,3 +1,10 @@
+/* ======= RESET ======= */
+
+*[class^="cl-"] br:empty,
+*[class^="cl-"] p:empty {
+    display: none;
+}
+
 /* ======= VARIABLES ======= */
 
 
