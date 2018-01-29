@@ -66,12 +66,12 @@ a {
     }
 }
     
-.cl-card h1,
-.cl-tiles .cl-card h1 {
+.cl-card h3,
+.cl-tiles .cl-card h3 {
     //font-family: $header !important;
-    font-size: 1.3rem !important;
-    font-weight: normal !important;
-    line-height: 1.6rem !important;
+    //font-size: 1.5rem !important;
+    //font-weight: normal !important;
+    //line-height: 1.6rem !important;
     //color: $black !important;
     padding: 1.8rem 1.2rem 0 !important;
     margin: 0 !important;
@@ -81,7 +81,7 @@ a {
 .cl-card p,
 .cl-tiles .cl-card p {
     padding: 1rem 1.2rem 0 !important;
-    font-size: .8rem !important;
+    font-size: 1rem !important;
 }
 
 .cl-card p:first-of-type,
@@ -119,12 +119,12 @@ a {
     margin: .5rem .5rem .5rem 1rem !important;
 }
 
-.cl-dcard h1,
-.cl-tiles .cl-dcard h1 {
+.cl-dcard h3,
+.cl-tiles .cl-dcard h3 {
     //font-family: $header !important;
-    font-size: .8rem !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
+    //font-size: 1rem !important;
+    //font-weight: 700 !important;
+    //text-transform: uppercase !important;
     //color: $black !important;
     padding: 1rem 1rem 0 !important;
     margin: 0 !important;
@@ -133,7 +133,7 @@ a {
 .cl-dcard p,
 .cl-tiles .cl-dcard p {
     padding: .5rem 1rem .1rem !important;
-    font-size: .7rem !important;
+    font-size: .9rem !important;
 }
 
 .cl-dcard p:last-child,
@@ -152,7 +152,7 @@ a {
     background: inherit !important;
     border: none !important;
     border-top: 1px solid #eee !important;
-    font-size: .7rem !important;
+    font-size: .8rem !important;
     font-weight: 700 !important;
     letter-spacing: .1rem !important;
     text-transform: uppercase !important;
