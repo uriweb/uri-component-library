@@ -8,8 +8,9 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    max-width: $maxcardwidth;
+    max-width: 100%;
     padding: 6% 5%;
+    margin-bottom: 2rem;
     background: #eee; //#e5ebf4;
     border-radius: 2px;
     box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
@@ -20,16 +21,17 @@
 
 @media screen and (min-width: $break1) {
     .cl-boxout {
-        width: 300px;
         padding: 20px;
     }
     .cl-boxout.left {
         float: left;
         margin: 0 2rem 2rem 0;
+        max-width: $maxcardwidth;
     }
     .cl-boxout.right {
         float: right;
         margin: 0 0 2rem 2rem;
+        max-width: $maxcardwidth;
     }
 }
 
