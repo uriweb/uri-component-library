@@ -3,17 +3,12 @@ var pkg = require('./package.json');
 
 // include plug-ins
 var jshint = require('gulp-jshint');
-var changed = require('gulp-changed');
-var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
-var autoprefix = require('gulp-autoprefixer');
-var minifyCSS = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
-var rename = require('gulp-rename');
 var header = require('gulp-header');
 
 // options
@@ -34,7 +29,7 @@ function styles(done) {
     var banner = ['/**',
                   ' * <%= pkg.name %>',
                   ' * ',
-                  ' * STYLES',
+                  ' * --styles--',
                   ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.authorHuman %>',
@@ -66,7 +61,7 @@ function scripts(done) {
   var banner = ['/**',
                   ' * <%= pkg.name %>',
                   ' * ',
-                  ' * SCRIPTS',
+                  ' * --scripts--',
                   ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.authorHuman %>',
