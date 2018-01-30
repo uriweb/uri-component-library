@@ -69,3 +69,8 @@
     font-size: 1rem;
     width: 100%;
 }
+
+.cl-boxout .cl-button:hover,
+.cl-boxout .cl-button:focus {
+    cursor: pointer;
+}
