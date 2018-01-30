@@ -17,6 +17,6 @@ if(!empty($title)) {
     $output .= '<h1>' . $title . '</h1>';
 }
 
-$output .= '<p>' . $content . '</p>';
+$output .= '<p>' . do_shortcode($content) . '</p>';
 $output .= '</div>';
 $output .= '</section>';
