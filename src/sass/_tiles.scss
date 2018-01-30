@@ -56,21 +56,12 @@
     width: 100%;
 }
 
-.cl-tiles>div {
-    //color: $darkgrey;
-}
-
 .cl-tiles>div>h1,
 .cl-tiles>div>p {
     max-width: 500px;
 }
 
 .cl-tiles>div>h1 {
-    //font-family: $header;
-    //font-size: 1.3rem;
-    //font-weight: normal;
-    //line-height: 1.6rem;
-    //color: $black;
     padding: 1.8rem 0 .2rem;
     margin: 0;
     text-transform: initial;
@@ -81,11 +72,9 @@
 }
 
 .cl-tiles>div>h2 {
-    //font-family: $header;
     font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.4rem;
-    //color: $midblue;
     padding: 1.6rem 0 .8rem;
     margin: 0;
 }
@@ -475,5 +464,4 @@
 // Don't distort iframes
 .cl-tiles iframe {
     width: 100%;
-    //height: auto;
 }

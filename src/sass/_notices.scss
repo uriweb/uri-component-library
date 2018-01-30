@@ -10,7 +10,6 @@
     width: 100%;
     background: $lightblue;
     border-radius: .2rem;
-    //border: 2px solid $lightblue;
     border: none;
     padding: 1.5rem 2rem;
     box-sizing: border-box;
@@ -18,19 +17,13 @@
 
 .cl-notice.urgent {
     background: $midgold;
-    //border: 2px solid $midgold;
     border: none;
 }
 
 .cl-notice h1 {
-    //font-family: $header;
-    //font-size: 1.3rem;
-    //font-weight: 600;
-    //line-height: 1rem;
     color: $blue;
     padding: 0;
     margin: 0;
-    //text-transform: uppercase;
     text-transform: none;
 }
 
