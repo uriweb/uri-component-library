@@ -6,7 +6,8 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<section class="cl-wrapper cl-video-wrapper">';
+$output .= '<div class="' . $classes . '">';
 
 if(!empty($title) || !empty($excerpt)) {
     $output .= '<div class="overlay">';
@@ -30,3 +31,4 @@ if (!empty($aspect)) {
 
 $output .= '>';
 $output .= '</div>';
+$output .= '</section>';

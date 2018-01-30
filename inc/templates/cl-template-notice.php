@@ -10,7 +10,8 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<section class="cl-wrapper cl-notice-wrapper">';
+$output .= '<div class="' . $classes . '">';
 
 if(!empty($title)) {
     $output .= '<h1>' . $title . '</h1>';
@@ -18,3 +19,4 @@ if(!empty($title)) {
 
 $output .= '<p>' . $content . '</p>';
 $output .= '</div>';
+$output .= '</section>';

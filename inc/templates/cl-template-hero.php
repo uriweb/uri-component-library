@@ -12,7 +12,8 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<section class="cl-wrapper cl-hero-wrapper">';
+$output .= '<div class="' . $classes . '">';
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 
@@ -43,3 +44,4 @@ $image .= ' style="background-image:url(' . $img . ')"></div>'; // image
 
 $output .= $image;
 $output .= '</div>'; // .hero
+$output .= '</section>';

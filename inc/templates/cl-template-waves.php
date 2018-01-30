@@ -6,7 +6,8 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '" style="';
+$output = '<section class="cl-wrapper cl-wave-wrapper">';
+$output .= '<div class="' . $classes . '" style="';
 
 if(!empty($offset)) {
     $output .= 'top:' . $offset . ';';
@@ -16,3 +17,4 @@ $output .= '">';
 
 $output .= '<div></div><div></div>';
 $output .= '</div>';
+$output .= '</section>';

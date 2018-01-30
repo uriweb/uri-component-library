@@ -10,7 +10,8 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<section class="cl-wrapper cl-panel-wrapper">';
+$output .= '<div class="' . $classes . '">';
 $output .= '<figure>';
 $output .= '<img src="' . $img . '" alt="' . $alt . '">';
 $output .= '</figure>';
@@ -25,3 +26,4 @@ if (isset($content)) {
     
 $output .= '</article>';
 $output .= '</div>';
+$output .= '</section>';
