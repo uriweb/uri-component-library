@@ -13,15 +13,30 @@
   "license": "GPL-2.0-or-later",
   "licenseURI": "http://www.gnu.org/licenses/gpl-2.0.html",
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^4.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-header": "^1.8.8",
     "gulp-jshint": "^2.0.4",
+    "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.4"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ],
+    "development": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ]
   }
 }

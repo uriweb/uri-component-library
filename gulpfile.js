@@ -8,16 +8,14 @@ var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
+var autoprefixer = require('autoprefixer');
+var postcss = require('gulp-postcss');
 var header = require('gulp-header');
 
 // options
 var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'compressed' //expanded, nested, compact, compressed
-};
-var autoprefixerOptions = {
-  browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 };
 
 
@@ -42,8 +40,8 @@ function styles(done) {
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(concat('cl.built.css'))
+        .pipe(postcss([ autoprefixer() ]))
         .pipe(header(banner, { pkg : pkg } ))
 		.pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest('./css/'));
