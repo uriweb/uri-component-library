@@ -2,10 +2,13 @@
 
 $classes = 'cl-hero';
 
-if($format == 'super') {
-    $classes .= ' super';
-} else if ($format == 'fullwidth') {
-    $classes .= ' fullwidth';
+switch ($format) {
+    case 'super':
+        $classes .= ' super';
+        break;
+    case 'fullwidth':
+        $classes .= ' fullwidth';
+        break;
 }
 
 if(!empty($class)) {
