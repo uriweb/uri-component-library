@@ -72,8 +72,7 @@ function uri_cl_shortcode_button( $atts ) {
             'text' => 'Explore',
 			'link' => '#',
             'tooltip' => '',
-            'prominent' => false,
-            'disabled' => false,
+            'style' => '',
             'class' => ''
 		), $atts );
     
@@ -84,14 +83,10 @@ function uri_cl_shortcode_button( $atts ) {
             'type' => 'url'
         ),
         array (
-            'attr' => 'prominent',
-            'type' => 'bool',
-            'req' => false
-        ),
-        array (
-            'attr' => 'disabled',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('prominent', 'disabled')
         ) ),
         uri_cl_shortcode_get_template('button')
     );

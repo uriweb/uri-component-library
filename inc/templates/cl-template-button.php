@@ -6,7 +6,7 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-if($disabled) {
+if($style == 'disabled') {
     
     $classes .= ' disabled';
     
@@ -14,7 +14,7 @@ if($disabled) {
     
 } else {
 
-    if($prominent) {
+    if($style == 'prominent') {
         $classes .= ' prominent';
     }
 
