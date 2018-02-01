@@ -2,9 +2,9 @@
 
 $classes = 'cl-hero';
 
-if($super) {
+if($format == 'super') {
     $classes .= ' super';
-} else if ($fullwidth) {
+} else if ($format == 'fullwidth') {
     $classes .= ' fullwidth';
 }
 

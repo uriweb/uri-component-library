@@ -182,8 +182,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'vid' => '',
             'id' => '',
             'dynamic' => false,
-            'super' => false,
-            'fullwidth' => false,
+            'format' => '',
             'img' => '',
             'class' => ''
 		), $atts );
@@ -210,14 +209,10 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'req' => false
         ),
         array(
-            'attr' => 'super',
-            'type' => 'bool',
-            'req' => false
-        ),
-        array(
-            'attr' => 'fullwidth',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'format',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('super', 'fullwidth')
         ) ),
         uri_cl_shortcode_get_template('hero')
     );
