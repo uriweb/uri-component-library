@@ -361,7 +361,7 @@ function uri_cl_accepted_values($a) {
     
     if (array_key_exists('values', $a)) {
         $list = implode(' | ', $a['values']);
-        return ' (accepted values: ' . $list . ')';
+        return ': remove the attribute or set an accepted value (accepted values: ' . $list . ')';
     } else {
         return '';
     }
