@@ -181,7 +181,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'link' => '',
             'vid' => '',
             'id' => '',
-            'dynamic' => false,
+            'animation' => '',
             'format' => '',
             'img' => '',
             'class' => ''
@@ -204,9 +204,10 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'req' => false
         ),
         array(
-            'attr' => 'dynamic',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'animation',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('slide')
         ),
         array(
             'attr' => 'format',

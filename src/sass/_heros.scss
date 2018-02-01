@@ -36,7 +36,7 @@
     }
 
     .still,
-    .dynamic,
+    .animate,
     .poster {
         z-index: 2;
         width: 100%;
@@ -48,7 +48,7 @@
         background-position: center center;
     }
     
-    .dynamic {
+    .animate {
         transition: all 10s ease-in-out;
     }
     

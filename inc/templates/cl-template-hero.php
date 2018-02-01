@@ -34,8 +34,13 @@ $output .= '</div>'; // .overlay
 
 if (!empty($vid)) {
     $image = '<div id="'. $id . '" data-id="' . $vid . '" class="poster"';
-} else if ($dynamic) {
-    $image = '<div class="dynamic"';
+} else if (!empty($animation)) {
+    switch ($animation) {
+        case 'slide':
+            $ani_method = 'slide';
+            break;
+    }
+    $image = '<div class="animate ' . $ani_method . '"';
 } else {
     $image = '<div class="still"';
 }

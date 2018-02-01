@@ -7,18 +7,18 @@
     window.addEventListener('load', initCLHeros, false);
     
     function initCLHeros(){
-        dynamicZoom();
+        animate();
         blurHeroControl();
         mobile();
     }
 
     
     /* 
-     * Zooming for dynamic image heros
+     * Animation control for animated image heros
      */
-    function dynamicZoom() {
+    function animate() {
         
-        var heros = document.querySelectorAll('.cl-hero .dynamic');
+        var heros = document.querySelectorAll('.cl-hero .animate.slide');
         
         for(var i=0; i<heros.length; i++){
             heros[i].style.backgroundPositionX = '100%';
