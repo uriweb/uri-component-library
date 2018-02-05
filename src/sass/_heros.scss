@@ -97,6 +97,26 @@
         font-size: 1.1rem;
     }
     
+    a.cl-button,
+    span.cl-button {
+        & {
+            margin-top: 2rem;
+            border: none;
+            background: rgba(255,255,255,.9);
+            box-shadow: $level3;
+            position: relative;
+            top: 0;
+        }
+
+        &:hover,
+        &:focus {
+            background: $white;
+            border: none;
+            color: $link;
+            top: -3px;
+        }
+    }
+    
     .motionswitch {
         & {
             display: none;
@@ -156,6 +176,16 @@
 
 }
 
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .cl-hero {
+        a.cl-button,
+        span.cl-button { 
+            backdrop-filter: saturate(180%) blur(10px); 
+            background-color: rgba(255,255,255,.7);
+        }
+    }
+}
+
 @media screen and (min-width: 750px) {
     .cl-hero .motionswitch {
         display: block;
@@ -189,3 +219,4 @@
         }
     }
 }
+

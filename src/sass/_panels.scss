@@ -50,6 +50,13 @@
     height: auto;
 }
 
+.cl-panel {
+    a.cl-button,
+    span.cl-button {
+        border-radius: 2px;
+    }
+}
+
 @media screen and (min-width: $break1) {
     .cl-panel { 
         display: flex; 
@@ -80,4 +87,18 @@
         height: 100%;
         object-fit: cover;
     }
+}
+
+@media screen and (min-width: $break2) {
+    
+    .cl-panel {
+        
+        a.cl-button,
+        span.cl-button {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+    }
+    
 }

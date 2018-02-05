@@ -69,7 +69,16 @@
     width: 100%;
 }
 
-.cl-boxout .cl-button:hover,
-.cl-boxout .cl-button:focus {
-    cursor: pointer;
+.cl-boxout {
+    
+    a.cl-button,
+    span.cl-button {
+        border-radius: 2px;
+    }
+    
+    .cl-button:hover,
+    .cl-button:focus {
+        cursor: pointer;
+    }
+    
 }
