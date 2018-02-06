@@ -2,8 +2,10 @@
 
 $classes = 'cl-notice';
 
-if($urgent) {
-    $classes .= ' urgent';
+switch ($style) {
+    case 'urgent':
+        $classes .= ' urgent';
+        break;
 }
 
 if(!empty($class)) {

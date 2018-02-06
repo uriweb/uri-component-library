@@ -270,16 +270,17 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			'title' => '',
-            'urgent' => false,
+            'style' => '',
             'class' => ''
 		), $atts );
     
     // Error checking
     return uri_cl_validate( 'Notice', $atts, $content, array(
         array(
-            'attr' => 'urgent',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('urgent')
         ) ),
         uri_cl_shortcode_get_template('notice')
     );
