@@ -39,8 +39,8 @@ if (!empty($vid)) {
     $image = '<div id="'. $id . '" data-id="' . $vid . '" class="poster"';
 } else if (!empty($animation)) {
     switch ($animation) {
-        case 'slide':
-            $ani_method = 'slide';
+        case 'shift':
+            $ani_method = 'shift';
             break;
     }
     $image = '<div class="animate ' . $ani_method . '"';

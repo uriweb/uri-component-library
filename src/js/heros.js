@@ -18,7 +18,7 @@
      */
     function animate() {
         
-        var heros = document.querySelectorAll('.cl-hero .animate.slide');
+        var heros = document.querySelectorAll('.cl-hero .animate.shift');
         
         for(var i=0; i<heros.length; i++){
             heros[i].style.backgroundPositionX = '100%';

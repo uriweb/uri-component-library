@@ -207,7 +207,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'attr' => 'animation',
             'type' => 'str',
             'req' => false,
-            'values' => array('slide')
+            'values' => array('shift')
         ),
         array(
             'attr' => 'format',
