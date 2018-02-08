@@ -28,6 +28,10 @@ span.cl-button {
         text-shadow: none;
     }
     
+    &.inline {
+        display: inline-block;
+    }
+    
     &.prominent {
         background: $blue;
         box-shadow: 250px 0px 100px -100px transparent inset;
