@@ -6,10 +6,6 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-if($inline) {
-    $classes .= ' inline';
-}
-
 if($style == 'disabled') {
     
     $classes .= ' disabled';

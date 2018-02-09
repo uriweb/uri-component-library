@@ -74,7 +74,6 @@ function uri_cl_shortcode_button( $atts ) {
 			'link' => '#',
             'tooltip' => '',
             'style' => '',
-            'inline' => false,
             'class' => '',
             'css' => ''
 		), $atts );
@@ -84,11 +83,6 @@ function uri_cl_shortcode_button( $atts ) {
         array(
             'attr' => 'link',
             'type' => 'url'
-        ),
-        array(
-            'attr' => 'inline',
-            'type' => 'bool',
-            'req' => false
         ),
         array (
             'attr' => 'style',
