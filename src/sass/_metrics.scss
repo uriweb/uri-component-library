@@ -28,7 +28,9 @@
     
     span:last-child {
         font-weight: 600;
-        font-size: .9rem
+        font-size: .9rem;
+        max-width: 150px;
+        margin: 0 auto;
     }
     
     &.dark {
