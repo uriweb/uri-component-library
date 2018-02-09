@@ -46,4 +46,8 @@
         background: transparent;
     }
     
+    &.dark.clear {
+        text-shadow: 0 .1rem .3rem rgba(0,0,0,.2);
+    }
+    
 }
