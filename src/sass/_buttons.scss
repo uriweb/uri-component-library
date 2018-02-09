@@ -11,7 +11,7 @@ span.cl-button {
         display: block;
         box-sizing: border-box;
         margin: 1.2rem 0;
-        padding: 1rem 0;
+        padding: 1rem;
         max-width: $maxcardwidth;
         width: 100%;
         background: $white;
@@ -37,7 +37,7 @@ span.cl-button {
         box-shadow: 250px 0px 100px -100px transparent inset;
         color: $white;
         border: none;
-        padding: 1.09rem 0;
+        padding: 1.09rem 1rem;
     }
     
     &.disabled,

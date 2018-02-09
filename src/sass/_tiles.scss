@@ -61,24 +61,6 @@
     max-width: 500px;
 }
 
-.cl-tiles>div>h1 {
-    padding: 1.8rem 0 .2rem;
-    margin: 0;
-    text-transform: initial;
-}
-
-.cl-tiles>div>h1:first-child {
-    padding-top: 0;
-}
-
-.cl-tiles>div>h2 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.4rem;
-    padding: 1.6rem 0 .8rem;
-    margin: 0;
-}
-
 .cl-tiles>div>p {
     width: 95%;
     font-size: 1rem;
@@ -445,11 +427,6 @@
             width: 20%;
             padding-bottom: 20%;
         }
-    }
-    
-    // Typography
-    .cl-tiles>div>h1 {
-        padding: 1.8rem 0 .2rem;
     }
     
 }
