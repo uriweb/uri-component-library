@@ -13,7 +13,13 @@ if(empty($facebook) && empty($instagram) && empty($twitter) && empty($youtube) &
 } else {
     
     $output = '<aside class="cl-wrapper cl-social-wrapper">';
-    $output .= '<ul class="' . $classes . '">';
+    $output .= '<ul class="' . $classes . '"';
+    
+    if(!empty($css)){
+        $output .= 'style="' . $css . '"';
+    }
+
+    $output .= '>';
 
     if(!empty($facebook)) {
         $output .= '<li><a href="' . $facebook . '" class="cl-social-facebook">Facebook</a></li>';

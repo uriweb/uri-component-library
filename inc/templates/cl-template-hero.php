@@ -16,7 +16,14 @@ if(!empty($class)) {
 }
 
 $output = '<section class="cl-wrapper cl-hero-wrapper">';
-$output .= '<div class="' . $classes . '">';
+$output .= '<div class="' . $classes . '"';
+
+if(!empty($css)){
+    $output .= 'style="' . $css . '"';
+}
+
+$output .= '>';
+
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 

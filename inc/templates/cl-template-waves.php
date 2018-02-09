@@ -13,6 +13,10 @@ if(!empty($offset)) {
     $output .= 'top:' . $offset . ';';
 }
 
+if(!empty($css)) {
+    $output .= $css;
+}
+
 $output .= '">';
 
 $output .= '<div></div><div></div>';

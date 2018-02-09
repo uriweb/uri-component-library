@@ -13,7 +13,13 @@ if(!empty($class)) {
 }
 
 $output = '<section class="cl-wrapper cl-notice-wrapper">';
-$output .= '<div class="' . $classes . '">';
+$output .= '<div class="' . $classes . '"';
+
+if(!empty($css)){
+    $output .= 'style="' . $css . '"';
+}
+
+$output .= '>';
 
 if(!empty($title)) {
     $output .= '<h1>' . $title . '</h1>';

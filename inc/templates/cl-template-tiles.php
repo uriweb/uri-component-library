@@ -36,5 +36,12 @@ if(!empty($class)) {
 }
 
 $output = '<section class="cl-wrapper cl-tiles-wrapper">';
-$output .= '<div class="' . $classes . '">' . do_shortcode($content) . '</div>';
+$output .= '<div class="' . $classes . '"';
+
+if(!empty($css)){
+    $output .= 'style="' . $css . '"';
+}
+
+$output .= '>' . do_shortcode($content) . '</div>';
+
 $output .= '</section>';

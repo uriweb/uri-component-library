@@ -14,7 +14,13 @@ if($style == 'disabled') {
     
     $classes .= ' disabled';
     
-    $output = '<span class="' . $classes . '" title="' . $tooltip . '">' . $text . '</span>';
+    $output = '<span class="' . $classes . '" title="' . $tooltip . '"';
+    
+    if(!empty($css)){
+        $output .= 'style="' . $css . '"';
+    }
+
+    $output .= '>' . $text . '</span>';
     
 } else {
 
@@ -22,6 +28,12 @@ if($style == 'disabled') {
         $classes .= ' prominent';
     }
 
-    $output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '">' . $text . '</a>';
+    $output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '"';
+    
+    if(!empty($css)){
+        $output .= 'style="' . $css . '"';
+    }
+
+    $output .= '>' . $text . '</a>';
     
 }
