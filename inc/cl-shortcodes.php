@@ -228,6 +228,44 @@ add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
 
 
 /**
+ * Metric
+ */
+function uri_cl_shortcode_metric( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+            'metric' => '',
+            'caption' => '',
+            'style' => '',
+            'class' => '',
+            'css' => ''
+		), $atts );
+    
+    // Error checking
+    return uri_cl_validate( 'Metric', $atts, $content, array(
+        array(
+            'attr' => 'metric',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'caption',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('dark', 'clear', 'overlay')
+        ) ),
+        uri_cl_shortcode_get_template('metric')
+    );
+
+}
+add_shortcode( 'cl-metric', 'uri_cl_shortcode_metric' );
+
+
+/**
  * Menu
  */
 function uri_cl_shortcode_menu( $atts, $content = null ) {
