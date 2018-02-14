@@ -14,7 +14,7 @@ $output = '<section class="cl-wrapper cl-panel-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if(!empty($css)){
-    $output .= 'style="' . $css . '"';
+    $output .= ' style="' . $css . '"';
 }
 
 $output .= '>';

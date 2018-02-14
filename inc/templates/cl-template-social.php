@@ -16,7 +16,7 @@ if(empty($facebook) && empty($instagram) && empty($twitter) && empty($youtube) &
     $output .= '<ul class="' . $classes . '"';
     
     if(!empty($css)){
-        $output .= 'style="' . $css . '"';
+        $output .= ' style="' . $css . '"';
     }
 
     $output .= '>';

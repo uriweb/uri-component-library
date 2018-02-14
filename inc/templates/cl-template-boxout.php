@@ -16,7 +16,7 @@ $output = '<' . $wrapper . ' class="cl-wrapper cl-boxout-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if(!empty($css)){
-    $output .= 'style="' . $css . '"';
+    $output .= ' style="' . $css . '"';
 }
 
 $output .= '>';

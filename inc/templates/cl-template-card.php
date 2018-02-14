@@ -9,7 +9,7 @@ if(!empty($class)) {
 $output = '<a class="' . $classes . '" href="'. $link .'" title="' . $tooltip . '"';
 
 if(!empty($css)){
-    $output .= 'style="' . $css . '"';
+    $output .= ' style="' . $css . '"';
 }
 
 $output .= '>';
