@@ -21,13 +21,13 @@ if(!empty($class)) {
 $output = '<div class="' . $classes . '"';
 
 if(!empty($css)){
-    $output .= 'style="' . $css . '"';
+    $output .= ' style="' . $css . '"';
 }
 
 $output .= '>';
 
-$output = '<span>' . $fact . '</span>';
+$output .= '<span>' . $metric . '</span>';
 
-$output = '<span>' . $caption . '</span>';
+$output .= '<span>' . $caption . '</span>';
 
-$output = '</div>';
+$output .= '</div>';

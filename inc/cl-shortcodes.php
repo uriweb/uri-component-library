@@ -235,7 +235,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-            'fact' => '',
+            'metric' => '',
             'caption' => '',
             'style' => '',
             'class' => '',
@@ -245,7 +245,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
     // Error checking
     return uri_cl_validate( 'Metric', $atts, $content, array(
         array(
-            'attr' => 'fact',
+            'attr' => 'metric',
             'type' => 'str'
         ),
         array(
