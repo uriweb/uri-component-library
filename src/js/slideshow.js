@@ -207,6 +207,14 @@
     
     
     /*
+     * Check if touch device
+     */
+    function isTouchDevice() {
+      return 'ontouchstart' in window || navigator.maxTouchPoints;
+    }
+
+    
+    /*
      * Add touch controls
      * @param el el the control div
      * @param c el the carousel
@@ -217,6 +225,10 @@
         
         start = 0;
         dist = 0;
+        
+        if(isTouchDevice === true) {
+            el.classList.add('touch');
+        }
 
         el.addEventListener('touchstart', function(e){
             

@@ -150,6 +150,10 @@
                 float: right;
             }
             
+            &.touch .controller {
+                display: none;
+            }
+            
             
         } // .cl-slideshow .carouselWrapper .controls
         
