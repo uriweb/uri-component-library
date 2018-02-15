@@ -180,20 +180,33 @@ function uri_cl_validate_bool($var) {
     $valid = false;
     $status = 'fatal';
     
-    $acceptable = array(
+    $truths = array(
         true,
         'true',
         1,
-        '1',
+        '1'
+    );
+    
+    $falses = array(
         false,
         'false',
         0,
         '0'
     );
         
-    foreach($acceptable as $v) {
+    foreach($truths as $v) {
         if ($var === $v) {
             $valid = true;
+            $var = true;
+            $status = 'normal';
+            break;
+        }
+    }
+    
+    foreach($falses as $v) {
+        if ($var === $v) {
+            $valid = true;
+            $var = false;
             $status = 'normal';
             break;
         }
