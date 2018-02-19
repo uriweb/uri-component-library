@@ -7,10 +7,10 @@ The Component Library exists in order to standardize the look and feel of web el
 CL 2.0.0 is a major release focused on theme compatibility, improvements for existing components, and bug fixes.
 
 #### Component Updates
-* Adds a metric component for displaying numbers
 * Boxouts are now full-width components by default, unless floated
 * Cards can now contain just an image or text, with or without a button
-* Notices can now contain nexted shortcodes
+* Notices can now contain nested shortcodes
+* Adds a metric component for displaying numbers
 * Adds highlighting to the current menu item and current menu parent
 * Simplifies hero, notice, and button shortcodes
 
@@ -22,7 +22,7 @@ CL 2.0.0 is a major release focused on theme compatibility, improvements for exi
 * Cleans up development resources
 * Other bug fixes
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/39/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/40/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
