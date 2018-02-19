@@ -2,17 +2,28 @@
 
 $classes = 'cl-hero';
 
-if($super) {
-    $classes .= ' super';
-} else if ($fullwidth) {
-    $classes .= ' fullwidth';
+switch ($format) {
+    case 'super':
+        $classes .= ' super';
+        break;
+    case 'fullwidth':
+        $classes .= ' fullwidth';
+        break;
 }
 
 if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '">';
+$output = '<section class="cl-wrapper cl-hero-wrapper">';
+$output .= '<div class="' . $classes . '"';
+
+if(!empty($css)){
+    $output .= 'style="' . $css . '"';
+}
+
+$output .= '>';
+
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 
@@ -33,8 +44,13 @@ $output .= '</div>'; // .overlay
 
 if (!empty($vid)) {
     $image = '<div id="'. $id . '" data-id="' . $vid . '" class="poster"';
-} else if ($dynamic) {
-    $image = '<div class="dynamic"';
+} else if (!empty($animation)) {
+    switch ($animation) {
+        case 'shift':
+            $ani_method = 'shift';
+            break;
+    }
+    $image = '<div class="animate ' . $ani_method . '"';
 } else {
     $image = '<div class="still"';
 }
@@ -43,3 +59,4 @@ $image .= ' style="background-image:url(' . $img . ')"></div>'; // image
 
 $output .= $image;
 $output .= '</div>'; // .hero
+$output .= '</section>';

@@ -10,42 +10,34 @@
     width: 100%;
     max-width: $maxcardwidth;
     margin-bottom: 40px;
-    background: #eee !important;
-    //border: 2px solid $white;
+    background: #eee;
     border: none;
-    //color: $black !important;
-    //font-family: $body !important;
     border-radius: .2rem;
-    overflow: hidden !important;
+    overflow: hidden;
 }
     
 .cl-panel h1 {
-    //font-family: $header !important;
-    font-size: 1.3rem !important;
-    font-weight: normal !important;
-    line-height: 1.6rem !important;
-    //color: $black !important;
-    margin: 0 !important;
-    text-transform: initial !important;
+    margin: 0;
+    text-transform: initial;
 }
 
 .cl-panel p {
-    padding-top: 1rem !important;
-    font-size: .8rem !important;
+    padding-top: 1rem;
+    font-size: 1rem;
 }
 
 .cl-panel p:first-of-type {
-    padding-top: 1.2rem !important;
+    padding-top: 1.2rem;
 }
 
 .cl-panel article,
 .cl-panel figure { 
-    position: relative !important; 
-    display: block !important; 
-    overflow: hidden !important;
-    width: 100% !important;
-    margin: 0 !important;
-    flex: none !important;
+    position: relative; 
+    display: block; 
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    flex: none;
 }
 
 .cl-panel article {
@@ -53,9 +45,16 @@
 }
 
 .cl-panel img { 
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.cl-panel {
+    a.cl-button,
+    span.cl-button {
+        border-radius: 2px;
+    }
 }
 
 @media screen and (min-width: $break1) {
@@ -65,27 +64,41 @@
     }
     .cl-panel article,
     .cl-panel figure { 
-        width: auto !important;
+        width: auto;
     }
     .cl-panel article { 
-        flex: 44 !important;
-        order: 1 !important;
+        flex: 44;
+        order: 1;
         padding-left: 3%;
         padding-right: 3%;
     }
     .cl-panel figure {
-        flex: 50 !important;
-        order: 2 !important;
+        flex: 50;
+        order: 2;
     }
     .cl-panel.reverse article { 
-        order: 2 !important; 
+        order: 2; 
     }
     .cl-panel.reverse figure {
-        order: 1 !important;
+        order: 1;
     }
     .cl-panel img { 
-        position: absolute !important;
-        height: 100% !important;
-        object-fit: cover !important;
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
     }
+}
+
+@media screen and (min-width: $break2) {
+    
+    .cl-panel {
+        
+        a.cl-button,
+        span.cl-button {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+    }
+    
 }

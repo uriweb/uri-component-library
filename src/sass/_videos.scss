@@ -40,10 +40,7 @@
     h1 {
         position: relative;
         text-align: left;
-        //font-family: $header;
-        font-weight: 700;
-        font-size: 1.2rem !important;
-        color: $black !important;
+        color: $black;
         transform: all .2s ease-in-out;
         padding: 0;
         margin: 0;
@@ -51,9 +48,9 @@
     }
 
     p {
-        color: $black !important;
-        font-weight: 400 !important;
-        font-size: 0.9rem !important;
+        color: $black;
+        font-weight: 400;
+        font-size: 0.9rem;
     }
     
     p:first-child {
@@ -84,17 +81,17 @@
             order: 2;
         }
         h1 {
-            font-size: 1.6rem !important;
-            color: $white !important;
+            font-size: 1.6rem;
+            color: $white;
         }
         p {
-            font-size: 1rem !important;
-            color: $white !important;
+            font-size: 1rem;
+            color: $white;
         }
         .cl-button,
         .cl-button:hover,
         .cl-button:focus {
-            border: none !important;
+            border: none;
         }
     }
     
@@ -106,10 +103,10 @@
 @media screen and (min-width: $break2) {
     .cl-video {
         h1 {
-            font-size: 1.8rem !important;
+            font-size: 1.8rem;
         }
         p {
-            font-size: 1.1rem !important;
+            font-size: 1.1rem;
         }
     }
 }

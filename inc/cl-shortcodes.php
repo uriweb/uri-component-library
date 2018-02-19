@@ -41,7 +41,8 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 		array(
             'title' => '',
 			'float' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -72,9 +73,9 @@ function uri_cl_shortcode_button( $atts ) {
             'text' => 'Explore',
 			'link' => '#',
             'tooltip' => '',
-            'prominent' => false,
-            'disabled' => false,
-            'class' => ''
+            'style' => '',
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -84,14 +85,10 @@ function uri_cl_shortcode_button( $atts ) {
             'type' => 'url'
         ),
         array (
-            'attr' => 'prominent',
-            'type' => 'bool',
-            'req' => false
-        ),
-        array (
-            'attr' => 'disabled',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('prominent', 'disabled')
         ) ),
         uri_cl_shortcode_get_template('button')
     );
@@ -112,10 +109,11 @@ function uri_cl_shortcode_card( $atts ) {
             'alt' => '',
 			'title' => '',
             'body' => '',
-            'button' => 'Explore',
+            'button' => '',
             'link' => '#',
-            'tooltip' => 'Explore',
-            'class' => ''
+            'tooltip' => '',
+            'class' => '',
+            'css' => ''
         ), $atts );
     
     // Error checking
@@ -149,8 +147,9 @@ function uri_cl_shortcode_dcard( $atts ) {
             'alt' => '',
 			'title' => '',
             'body' => '',
-            'tooltip' => 'Explore',
-            'class' => ''
+            'tooltip' => '',
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -186,11 +185,11 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'link' => '',
             'vid' => '',
             'id' => '',
-            'dynamic' => false,
-            'super' => false,
-            'fullwidth' => false,
+            'animation' => '',
+            'format' => '',
             'img' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -210,25 +209,60 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
             'req' => false
         ),
         array(
-            'attr' => 'dynamic',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'animation',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('shift')
         ),
         array(
-            'attr' => 'super',
-            'type' => 'bool',
-            'req' => false
-        ),
-        array(
-            'attr' => 'fullwidth',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'format',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('super', 'fullwidth')
         ) ),
         uri_cl_shortcode_get_template('hero')
     );
 
 }
 add_shortcode( 'cl-hero', 'uri_cl_shortcode_hero' );
+
+
+/**
+ * Metric
+ */
+function uri_cl_shortcode_metric( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+            'metric' => '',
+            'caption' => '',
+            'style' => '',
+            'class' => '',
+            'css' => ''
+		), $atts );
+    
+    // Error checking
+    return uri_cl_validate( 'Metric', $atts, $content, array(
+        array(
+            'attr' => 'metric',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'caption',
+            'type' => 'str'
+        ),
+        array(
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('dark', 'clear', 'overlay')
+        ) ),
+        uri_cl_shortcode_get_template('metric')
+    );
+
+}
+add_shortcode( 'cl-metric', 'uri_cl_shortcode_metric' );
 
 
 /**
@@ -244,7 +278,8 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
             'id' => '',
             'showtitle' => false,
             'title' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -279,16 +314,18 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			'title' => '',
-            'urgent' => false,
-            'class' => ''
+            'style' => '',
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
     return uri_cl_validate( 'Notice', $atts, $content, array(
         array(
-            'attr' => 'urgent',
-            'type' => 'bool',
-            'req' => false
+            'attr' => 'style',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('urgent')
         ) ),
         uri_cl_shortcode_get_template('notice')
     );
@@ -309,7 +346,8 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
             'alt' => '',
 			'title' => '',
             'reverse' => false,
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -345,7 +383,8 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
             'twitter' => '',
             'youtube' => '',
             'snapchat' => '',
-            'linkedin' => ''
+            'linkedin' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -400,7 +439,8 @@ function uri_cl_shortcode_tabs( $atts, $content = null ) {
     // Attributes
 	extract( shortcode_atts(
 		array(
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts )
 	);
     
@@ -418,7 +458,8 @@ function uri_cl_shortcode_tab( $atts, $content = null ) {
             'title' => '',
             'body' => '',
             'id' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts )
 	);
     
@@ -442,7 +483,8 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 			'square' => false,
             'compact' => false,
             'animated' => false,
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -489,7 +531,8 @@ function uri_cl_shortcode_video( $atts ) {
             'title' => '',
             'excerpt' => '',
             'aspect' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking
@@ -529,7 +572,8 @@ function uri_cl_shortcode_waves( $atts ) {
             'placement' => 'bottom',
 			'offset' => '',
             'color' => '',
-            'class' => ''
+            'class' => '',
+            'css' => ''
 		), $atts );
     
     // Error checking

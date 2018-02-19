@@ -17,7 +17,14 @@ if($showtitle) {
     $showtitle = '0';
 }
 
-$output = '<div id="' . $id . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $showtitle . '">';
+$output = '<section class="cl-wrapper cl-menu-wrapper">';
+$output .= '<div id="' . $id . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $showtitle . '"';
+
+if(!empty($css)){
+    $output .= ' style="' . $css . '"';
+}
+
+$output .= '>';
 
 $output .= wp_nav_menu( 
     array(
@@ -30,3 +37,4 @@ $output .= wp_nav_menu(
     ) );
 
 $output .= '</div>';
+$output .= '</section>';
