@@ -5,7 +5,7 @@
  * 
  * @version v2.0.0
  * @author Brandon Fuller <bjcfuller@uri.edu>
- * @license GPL-2.0-or-later
+ * @license GPL-3.0
  * @see http://uriweb.github.io
  */
 
