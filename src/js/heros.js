@@ -10,6 +10,7 @@
         animate();
         blurHeroControl();
         mobile();
+        superhero();
     }
 
     
@@ -77,6 +78,41 @@
                 }
             }
         });
+    }
+    
+    function superhero() {
+        
+        var els, el, vh, offset, i;
+        
+        els = document.querySelectorAll('.cl-hero.super');
+        
+        resize();
+        
+        window.addEventListener('resize', resize, false);
+        
+        function resize() {
+        
+            for (i=0; i<els.length; i++) {
+
+                el = els[i];
+                offset = el.getBoundingClientRect().top;
+                vh = window.innerHeight;
+
+                var p = offset / vh;
+
+                console.log(vh, offset, p);
+
+                if (p > 0.3) {
+                    el.style.height = '90vh';
+                } else {
+                    el.style.height = 95 - p * 100 + 'vh';
+                }
+
+            }
+            
+        }
+        
+        
     }
 
 })();
