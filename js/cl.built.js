@@ -111,9 +111,9 @@
 
                 var p = offset / vh;
 
-                console.log(vh, offset, p);
+                //console.log(vh, offset, p);
 
-                if (p > 0.3) {
+                if (p > 0.3 ) {
                     el.style.height = '90vh';
                 } else {
                     el.style.height = 95 - p * 100 + 'vh';
