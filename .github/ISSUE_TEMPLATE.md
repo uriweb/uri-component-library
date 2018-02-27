@@ -24,7 +24,7 @@
 
 **Additional information:** [Add any additional information useful in reproducing the problem]
 
-## Versions and Environment
+## Environment
 
 <!-- What version(s) exhibit(s) this issue? -->
 **Version:** X.x.x
@@ -33,4 +33,4 @@
 **OS:** [please list]
 
 <!-- What browser(s) exhibit(s) this issue? -->
-**Browser:** [please list]
+**Browsers:** [please list]
