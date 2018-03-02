@@ -1,9 +1,9 @@
 /* ======= HERO VIDS / VIDEOS ======= */
 
 // Create this in the global scope so the YouTube API can call it locally.
-var uriCreateYouTubePlayers;
+var CLCreateYouTubePlayers;
 function onYouTubePlayerAPIReady() {
-    uriCreateYouTubePlayers();
+    CLCreateYouTubePlayers();
 }
 
 (function() {
@@ -121,7 +121,7 @@ function onYouTubePlayerAPIReady() {
     /*
      * Create the player(s)
      */
-    uriCreateYouTubePlayers = function() {
+    CLCreateYouTubePlayers = function() {
 
         var key, value;
         
