@@ -238,6 +238,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
             'metric' => '',
             'caption' => '',
             'style' => '',
+            'float' => '',
             'class' => '',
             'css' => ''
 		), $atts );
@@ -257,6 +258,12 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
             'type' => 'str',
             'req' => false,
             'values' => array('dark', 'clear', 'overlay')
+        ),
+        array(
+            'attr' => 'float',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('left', 'right')
         ) ),
         uri_cl_shortcode_get_template('metric')
     );

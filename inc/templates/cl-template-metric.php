@@ -1,6 +1,7 @@
 <?php
 
 $classes = 'cl-metric';
+$wrapper = 'section';
 
 switch ($style) {
     case 'dark':
@@ -14,11 +15,17 @@ switch ($style) {
         break;
 }
 
+if(!empty($float)) {
+    $classes .= ' ' . $float;
+    $wrapper = 'aside';
+}
+
 if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
-$output = '<div class="' . $classes . '"';
+$output = '<' . $wrapper . ' class="cl-wrapper cl-metric-wrapper">';
+$output .= '<div class="' . $classes . '"';
 
 if(!empty($css)){
     $output .= ' style="' . $css . '"';
@@ -31,3 +38,4 @@ $output .= '<span>' . $metric . '</span>';
 $output .= '<span>' . $caption . '</span>';
 
 $output .= '</div>';
+$output .= '</' . $wrapper . '>';
