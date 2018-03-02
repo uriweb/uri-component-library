@@ -7,6 +7,8 @@
 .cl-tiles {
     width: 100%;
     box-sizing: border-box;
+    display: block;
+    margin: 0;
 }
 
 .cl-tiles:after {
@@ -22,7 +24,6 @@
     overflow: visible;
     width: 100%;
     height: auto;
-    margin-bottom: 8%;
     margin-right: 0;
     padding-bottom: 0;
 }
@@ -31,13 +32,7 @@
 .cl-tiles.square>a {
     height: 0;
     overflow: hidden;
-    margin-bottom: 1%;
     padding-bottom: 100%;
-}
-
-.cl-tiles.compact>div,
-.cl-tiles.compact>a {
-    margin-bottom: 0;
 }
 
 @keyframes tileReveal {
