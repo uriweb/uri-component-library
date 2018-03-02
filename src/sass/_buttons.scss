@@ -8,9 +8,9 @@ span.cl-button {
     }
     
     & {
-        display: block;
+        display: inline-block;
         box-sizing: border-box;
-        margin: 1.2rem 0;
+        margin: 0;
         padding: 1rem;
         max-width: $maxcardwidth;
         width: 100%;
@@ -26,10 +26,6 @@ span.cl-button {
         text-decoration: none;
         transition: all .2s ease-in-out;
         text-shadow: none;
-    }
-    
-    &.inline {
-        display: inline-block;
     }
     
     &.prominent {
@@ -49,14 +45,6 @@ span.cl-button {
         font-weight: 400;
         border-radius: .2rem;
         cursor: default;
-    }
-    
-    &:first-child {
-        margin-top: 0;
-    }
-    
-    &:last-child {
-        margin-bottom: 0;
     }
     
     &:hover,
