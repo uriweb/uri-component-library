@@ -8,6 +8,7 @@
 .cl-dcard {
     display: inline-block;
     width: 100%;
+    margin: 0 0 2rem;
     background: $white;
     box-shadow: $level1;
     box-sizing: border-box;
@@ -43,18 +44,9 @@
 }
 
 .cl-tiles {
-    .cl-card,
-    .cl-dcard {
-        margin-bottom: 1rem;
-        display: block;
-    }
     &>*>.cl-card,
     &>*>.cl-dcard {
         width: 100%;
-    }
-    &>*>.cl-card:not(:first-child),
-    &>*>.cl-dcard:not(:first-child) {
-        margin-top: 1.5rem;
     }
 }
 

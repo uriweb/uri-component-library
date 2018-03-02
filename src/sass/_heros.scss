@@ -8,6 +8,7 @@
     & {
         width: 100%;
         height: 300px;
+        margin: 0 0 2rem;
         overflow: hidden;
         position: relative;
         background: #002147;
@@ -100,7 +101,6 @@
     a.cl-button,
     span.cl-button {
         & {
-            margin-top: 2rem;
             border: none;
             background: rgba(255,255,255,.9);
             box-shadow: $level3;
