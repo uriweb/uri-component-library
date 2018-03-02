@@ -68,11 +68,7 @@
 .cl-card p,
 .cl-tiles .cl-card p {
     font-size: 1rem;
-}
-
-.cl-card p:last-child,
-.cl-tiles .cl-card p:last-child {
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -111,11 +107,7 @@
 .cl-dcard p,
 .cl-tiles .cl-dcard p {
     font-size: .9rem;
-}
-
-.cl-dcard p:last-child,
-.cl-tiles .cl-dcard p:last-child {
-    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 /* Buttons */
