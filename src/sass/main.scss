@@ -1,8 +1,11 @@
 /* ======= RESET ======= */
 
-*[class^="cl-"] br:empty,
 *[class^="cl-"] p:empty {
     display: none;
+}
+
+*[class^="cl-"].fitted {
+    margin-bottom: 0 !important;
 }
 
 /* ======= VARIABLES ======= */

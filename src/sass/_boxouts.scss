@@ -10,7 +10,7 @@
     width: 100%;
     max-width: 100%;
     padding: 6% 5%;
-    margin-bottom: 2rem;
+    margin: 0 0 2rem;
     background: #eee;
     border-radius: 2px;
     box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
@@ -38,19 +38,6 @@
 @media screen and (min-width: $maxcardwidth) {
     .cl-boxout {
         
-    }
-}
-    
-.cl-tiles {
-    .cl-boxout {
-        margin-bottom: 1rem;
-        display: block;
-    }
-    &>*>.cl-boxout {
-        width: 100%;
-    }
-    .cl-boxout:not(:first-child) {
-        margin-top: 1.5rem;
     }
 }
 

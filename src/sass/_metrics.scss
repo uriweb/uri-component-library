@@ -7,7 +7,10 @@
     background: #eee;
     border-radius: .2rem;
     padding: 1rem;
-    display: inline-block;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 2rem;
     
     * {
         box-sizing: border-box;
@@ -52,4 +55,21 @@
         text-shadow: 0 .1rem .3rem rgba(0,0,0,.2);
     }
     
+}
+
+@media screen and (min-width: $break1) {
+    .cl-metric.left,
+    .cl-metric.right {
+        width: auto;
+        display: inline-block;
+        //max-width: $maxcardwidth;
+    }
+    .cl-metric.left {
+        float: left;
+        margin: 0 2rem 2rem 0;
+    }
+    .cl-metric.right {
+        float: right;
+        margin: 0 0 2rem 2rem;
+    }
 }

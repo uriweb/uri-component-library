@@ -112,6 +112,7 @@ function uri_cl_shortcode_card( $atts ) {
             'button' => '',
             'link' => '#',
             'tooltip' => '',
+            'float' => '',
             'class' => '',
             'css' => ''
         ), $atts );
@@ -126,6 +127,12 @@ function uri_cl_shortcode_card( $atts ) {
             'attr' => 'img',
             'type' => 'url',
             'req' => false
+        ),
+        array(
+            'attr' => 'float',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('left', 'right')
         ) ),
         uri_cl_shortcode_get_template('card')
     );
@@ -148,6 +155,7 @@ function uri_cl_shortcode_dcard( $atts ) {
 			'title' => '',
             'body' => '',
             'tooltip' => '',
+            'float' => '',
             'class' => '',
             'css' => ''
 		), $atts );
@@ -162,6 +170,12 @@ function uri_cl_shortcode_dcard( $atts ) {
             'attr' => 'img',
             'type' => 'url',
             'req' => false
+        ),
+        array(
+            'attr' => 'float',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('left', 'right')
         ) ),
         uri_cl_shortcode_get_template('dcard')
     );
@@ -238,6 +252,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
             'metric' => '',
             'caption' => '',
             'style' => '',
+            'float' => '',
             'class' => '',
             'css' => ''
 		), $atts );
@@ -257,6 +272,12 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
             'type' => 'str',
             'req' => false,
             'values' => array('dark', 'clear', 'overlay')
+        ),
+        array(
+            'attr' => 'float',
+            'type' => 'str',
+            'req' => false,
+            'values' => array('left', 'right')
         ) ),
         uri_cl_shortcode_get_template('metric')
     );

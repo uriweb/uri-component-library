@@ -6,6 +6,10 @@ if(!empty($class)) {
     $classes .= ' ' . $class;
 }
 
+if(!empty($float)) {
+    $classes .= ' ' . $float;
+}
+
 $output = '<a class="' . $classes . '" href="'. $link .'" title="' . $tooltip . '"';
 
 if(!empty($css)){

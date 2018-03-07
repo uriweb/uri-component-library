@@ -8,6 +8,8 @@
 .cl-dcard {
     display: inline-block;
     width: 100%;
+    max-width: 100%;
+    margin: 0 0 2rem;
     background: $white;
     box-shadow: $level1;
     box-sizing: border-box;
@@ -17,6 +19,22 @@
     position: relative;
     top: 0;
     transition: width .2s ease-in-out, top .1s ease-in-out, box-shadow .1s ease-in-out;
+}
+
+@media screen and (min-width: $break1) {
+    .cl-card,
+    .cl-dcard {
+        &.left {
+            float: left;
+            margin: 0 2rem 2rem 0;
+            max-width: $maxcardwidth;
+        }
+        &.right {
+            float: right;
+            margin: 0 0 2rem 2rem;
+            max-width: $maxcardwidth;
+        }
+    }
 }
 
 .cl-card:hover,
@@ -42,30 +60,6 @@
     color: inherit;
 }
 
-.cl-tiles {
-    .cl-card,
-    .cl-dcard {
-        margin-bottom: 1rem;
-        display: block;
-    }
-    &>*>.cl-card,
-    &>*>.cl-dcard {
-        width: 100%;
-    }
-    &>*>.cl-card:not(:first-child),
-    &>*>.cl-dcard:not(:first-child) {
-        margin-top: 1.5rem;
-    }
-}
-
-
-@media screen and (min-width: $maxcardwidth) {
-    .cl-card,
-    .cl-dcard {
-        max-width: $maxcardwidth;
-    }
-}
-
 .cl-card .cl-card-text,
 .cl-tiles .cl-card .cl-card-text {
     padding: 1.5rem 1.2rem 0;
@@ -74,11 +68,7 @@
 .cl-card p,
 .cl-tiles .cl-card p {
     font-size: 1rem;
-}
-
-.cl-card p:last-child,
-.cl-tiles .cl-card p:last-child {
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -117,11 +107,7 @@
 .cl-dcard p,
 .cl-tiles .cl-dcard p {
     font-size: .9rem;
-}
-
-.cl-dcard p:last-child,
-.cl-tiles .cl-dcard p:last-child {
-    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 /* Buttons */
