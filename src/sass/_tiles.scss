@@ -63,14 +63,6 @@
     line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
 }
 
-.cl-tiles>div>p:first-child {
-    padding-top: 0;
-}
-
-.cl-tiles>div>p:last-child {
-    padding-bottom: 2rem;
-}
-
 // Set up tiles.fifths at most narrow width
 .cl-tiles.fifths>div,
 .cl-tiles.fifths>a {
