@@ -8,26 +8,15 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    max-width: $maxcardwidth;
     margin: 0 0 2rem;
     background: #eee;
     border: none;
     border-radius: .2rem;
     overflow: hidden;
 }
-    
-.cl-panel h1 {
-    margin: 0;
-    text-transform: initial;
-}
 
 .cl-panel p {
-    padding-top: 1rem;
     font-size: 1rem;
-}
-
-.cl-panel p:first-of-type {
-    padding-top: 1.2rem;
 }
 
 .cl-panel article,
@@ -41,7 +30,7 @@
 }
 
 .cl-panel article {
-    padding: 1.8rem 1.2rem 1.5rem;
+    padding: 1.8rem 1.2rem 0;
 }
 
 .cl-panel img { 

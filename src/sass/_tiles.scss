@@ -63,14 +63,6 @@
     line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
 }
 
-.cl-tiles>div>p:first-child {
-    padding-top: 0;
-}
-
-.cl-tiles>div>p:last-child {
-    padding-bottom: 2rem;
-}
-
 // Set up tiles.fifths at most narrow width
 .cl-tiles.fifths>div,
 .cl-tiles.fifths>a {
@@ -103,7 +95,6 @@
     }
     & {
         width: 50%;
-        padding-bottom: 50%;
     }
 }
 
@@ -193,12 +184,10 @@
         &.fourths>div,
         &.fourths>a {
             width: 50%;
-            padding-bottom: 50%;
         }
         &.fifths>div,
         &.fifths>a {
             width: 33.33%;
-            padding-bottom: 33.33%;
         }
     }
     
@@ -280,12 +269,10 @@
         &.fourths>div,
         &.fourths>a {
             width: 33.33%;
-            padding-bottom: 33.33%;
         }
         &.fifths>div,
         &.fifths>a {
             width: 25%;
-            padding-bottom: 25%;
         }
     }
     
@@ -405,22 +392,18 @@
         &.halves>div,
         &.halves>a {
             width: 50%;
-            padding-bottom: 50%;
         }
         &.thirds>div,
         &.thirds>a {
             width: 33.33%;
-            padding-bottom: 33.33%;
         }
         &.fourths>div,
         &.fourths>a {
             width: 25%;
-            padding-bottom: 25%;
         }
         &.fifths>div,
         &.fifths>a {
             width: 20%;
-            padding-bottom: 20%;
         }
     }
     

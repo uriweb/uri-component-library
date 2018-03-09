@@ -12,26 +12,14 @@
     border-radius: .2rem;
     border: none;
     margin: 0 0 2rem;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem .2rem;
     box-sizing: border-box;
 }
 
-.cl-notice.urgent {
-    background: $midgold;
-    border: none;
-}
-
-.cl-notice h1 {
-    color: $blue;
-    padding: 0;
-    margin: 0;
-    text-transform: none;
-}
-
-.cl-notice h1:before {
+.cl-notice:before {
     position: absolute;
     left: 0;
-    top: 1.25rem;
+    top: 1.5rem;
     display: block;
     content: '';
     width: 0;
@@ -41,12 +29,22 @@
     border-bottom: 11px solid transparent;
 }
 
-.cl-notice.urgent h1 {
-    color: $black;
+.cl-notice.urgent:before {
+    border-left: 15px solid $black;
 }
 
-.cl-notice.urgent h1:before {
-    border-left: 15px solid $black;
+.cl-notice.urgent {
+    background: $midgold;
+    border: none;
+}
+
+.cl-notice h1 {
+    color: $blue;
+    text-transform: none;
+}
+
+.cl-notice.urgent h1 {
+    color: $black;
 }
 
 .cl-notice p {
