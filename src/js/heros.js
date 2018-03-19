@@ -10,6 +10,7 @@
         animate();
         blurHeroControl();
         mobile();
+        superhero();
     }
 
     
@@ -77,6 +78,68 @@
                 }
             }
         });
+    }
+    
+    function superhero() {
+        
+        var H = [], els, n, i, div;
+        
+        els = document.querySelectorAll('.cl-hero.super');
+        n = els.length;
+        
+        for (i=0; i<n; i++) {
+            
+            // Create the scroll prompter
+            div = document.createElement('div');
+            div.className = 'prompter';
+            div.innerHTML = 'Scroll down';
+            els[i].appendChild(div);
+            
+            // Save a list of superheros, their initial offsets, and prompter divs
+            H.push({
+                el : els[i],
+                offset : els[i].getBoundingClientRect().top,
+                prompt : div
+            });
+            
+        }
+                
+        resize();
+        
+        window.addEventListener('resize', resize, false);
+        
+        function resize() {
+            
+            var vh, vw;
+        
+            for (i=0; i<n; i++) {
+                
+                vh = window.innerHeight;
+                vw = window.innerWidth;
+
+                var p = H[i].offset / vh;
+
+                if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
+                    H[i].el.style.height = '90vh';
+                    
+                    H[i].prompt.style.display = 'none';
+                    
+                } else {
+                    H[i].el.style.height = 98 - p * 100 + 'vh';
+                    
+                    if ( H[i].offset < vh ) {
+                        H[i].prompt.style.display = 'block';
+                    } else {
+                        H[i].prompt.style.display = 'none';
+                    }
+                    
+                }
+
+            }
+            
+        }
+        
+        
     }
 
 })();
