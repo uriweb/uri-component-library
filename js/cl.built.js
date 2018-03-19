@@ -100,7 +100,7 @@
         
         for (i=0; i<n; i++) {
             div = document.createElement('div');
-            div.className = 'cl-hero-prompter';
+            div.className = 'prompter';
             div.innerHTML = 'Scroll down';
             els[i].appendChild(div);
         }
@@ -116,7 +116,7 @@
             for (i=0; i<n; i++) {
 
                 el = els[i];
-                prompter = el.querySelector('.cl-hero-prompter');
+                prompter = el.querySelector('.prompter');
                 offset = el.getBoundingClientRect().top;
                 vh = window.innerHeight;
                 vw = window.innerWidth;
@@ -128,16 +128,18 @@
                 if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
                     el.style.height = '90vh';
                     
-                    if ( offset < vh ) {
-                        console.log('display prompter');
-                        prompter.display = 'block';
-                    } else {
-                        prompter.display = 'none';
-                    }
+                    prompter.style.display = 'none';
                     
                 } else {
-                    el.style.height = 95 - p * 100 + 'vh';
-                    prompter.display = 'none';
+                    el.style.height = 98 - p * 100 + 'vh';
+                    
+                    if ( offset < vh ) {
+                        console.log('display prompter');
+                        prompter.style.display = 'block';
+                    } else {
+                        prompter.style.display = 'none';
+                    }
+                    
                 }
 
             }
