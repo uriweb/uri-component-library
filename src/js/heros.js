@@ -82,30 +82,51 @@
     
     function superhero() {
         
-        var els, el, vh, offset, i;
+        var els, n, i, div;
         
         els = document.querySelectorAll('.cl-hero.super');
+        n = els.length;
+        
+        for (i=0; i<n; i++) {
+            div = document.createElement('div');
+            div.className = 'cl-hero-prompter';
+            div.innerHTML = 'Scroll down';
+            els[i].appendChild(div);
+        }
         
         resize();
         
         window.addEventListener('resize', resize, false);
         
         function resize() {
+            
+            var el, prompter, vh, vw, offset;
         
-            for (i=0; i<els.length; i++) {
+            for (i=0; i<n; i++) {
 
                 el = els[i];
+                prompter = el.querySelector('.cl-hero-prompter');
                 offset = el.getBoundingClientRect().top;
                 vh = window.innerHeight;
+                vw = window.innerWidth;
 
                 var p = offset / vh;
 
-                //console.log(vh, offset, p);
+                console.log(vh, vw, vh*0.9, offset, p);
 
-                if (p > 0.3 ) {
+                if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
                     el.style.height = '90vh';
+                    
+                    if ( offset < vh ) {
+                        console.log('display prompter');
+                        prompter.display = 'block';
+                    } else {
+                        prompter.display = 'none';
+                    }
+                    
                 } else {
                     el.style.height = 95 - p * 100 + 'vh';
+                    prompter.display = 'none';
                 }
 
             }
