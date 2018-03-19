@@ -120,7 +120,7 @@
                 var p = H[i].offset / vh;
 
                 if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
-                    H[i].el.style.height = '90vh';
+                    H[i].el.style.height = Math.max(0.9 * vh, 500) + 'px';
                     
                     H[i].prompt.style.display = 'none';
                     
