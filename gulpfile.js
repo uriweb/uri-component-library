@@ -76,7 +76,7 @@ function scripts(done) {
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
         //.pipe(stripDebug())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./js/'));
     
