@@ -82,51 +82,55 @@
     
     function superhero() {
         
-        var els, n, i, div;
+        var H = [], els, n, i, div;
         
         els = document.querySelectorAll('.cl-hero.super');
         n = els.length;
         
         for (i=0; i<n; i++) {
+            
+            // Create the scroll prompter
             div = document.createElement('div');
             div.className = 'prompter';
             div.innerHTML = 'Scroll down';
             els[i].appendChild(div);
+            
+            // Save a list of superheros, their initial offsets, and prompter divs
+            H.push({
+                el : els[i],
+                offset : els[i].getBoundingClientRect().top,
+                prompt : div
+            });
+            
         }
-        
+                
         resize();
         
         window.addEventListener('resize', resize, false);
         
         function resize() {
             
-            var el, prompter, vh, vw, offset;
+            var vh, vw;
         
             for (i=0; i<n; i++) {
-
-                el = els[i];
-                prompter = el.querySelector('.prompter');
-                offset = el.getBoundingClientRect().top;
+                
                 vh = window.innerHeight;
                 vw = window.innerWidth;
 
-                var p = offset / vh;
-
-                console.log(vh, vw, vh*0.9, offset, p);
+                var p = H[i].offset / vh;
 
                 if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
-                    el.style.height = '90vh';
+                    H[i].el.style.height = '90vh';
                     
-                    prompter.style.display = 'none';
+                    H[i].prompt.style.display = 'none';
                     
                 } else {
-                    el.style.height = 98 - p * 100 + 'vh';
+                    H[i].el.style.height = 98 - p * 100 + 'vh';
                     
-                    if ( offset < vh ) {
-                        console.log('display prompter');
-                        prompter.style.display = 'block';
+                    if ( H[i].offset < vh ) {
+                        H[i].prompt.style.display = 'block';
                     } else {
-                        prompter.style.display = 'none';
+                        H[i].prompt.style.display = 'none';
                     }
                     
                 }
