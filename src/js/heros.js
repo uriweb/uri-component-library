@@ -1,5 +1,7 @@
 /* ======= HEROS ======= */
 
+var CLResizeSuperheros;
+
 (function(){
     
     'use strict';
@@ -103,16 +105,16 @@
             });
             
         }
-                
-        resize();
         
-        window.addEventListener('resize', resize, false);
-        
-        function resize() {
-            
+        CLResizeSuperheros = function(getOffset) {
+                        
             var vh, vw;
         
             for (i=0; i<n; i++) {
+                
+                if (getOffset !== false) {
+                    H[i].offset = els[i].getBoundingClientRect().top;
+                }
                 
                 vh = window.innerHeight;
                 vw = window.innerWidth;
@@ -138,7 +140,10 @@
             }
             
         }
+                
+        CLResizeSuperheros(false);
         
+        window.addEventListener('resize', CLResizeSuperheros.bind(null, false), false);
         
     }
 

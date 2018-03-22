@@ -18,7 +18,7 @@
                 metrics[i].setAttribute('data-font-max', window.getComputedStyle(metrics[i].querySelector('span')).getPropertyValue('font-size').match(/\d+/)[0]);
             }
             
-            fitMetricsToContainer(metrics)
+            fitMetricsToContainer(metrics);
             
             window.addEventListener('resize', fitMetricsToContainer.bind(null, metrics));
             
