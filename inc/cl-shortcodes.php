@@ -294,7 +294,7 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'name' => 'menu-1',
+			'name' => '',
             'depth' => 1,
             'id' => '',
             'showtitle' => false,
@@ -305,10 +305,6 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
     
     // Error checking
     return uri_cl_validate( 'Menu', $atts, $content, array(
-        array(
-            'attr' => 'name',
-            'type' => 'str'
-        ),
         array(
             'attr' => 'depth',
             'type' => 'num',
