@@ -25,6 +25,9 @@
     
     span:first-child {
         font-size: 4rem;
+        line-height: 4rem;
+        overflow: hidden;
+        white-space: nowrap;
         font-weight: 500;
         margin-bottom: .5rem;
     }
