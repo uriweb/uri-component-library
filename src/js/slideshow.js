@@ -161,7 +161,7 @@
 		} else {
 			index--;
 			if ( index < 0 ) {
-				if ( ! mobile) {
+				if ( ! mobile ) {
 					void c.offsetWidth; // Trigger reflow to restart animation
 					c.classList.add( 'reboundLeft' );
 					return;

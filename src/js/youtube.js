@@ -86,7 +86,8 @@ function onYouTubePlayerAPIReady() {
 		}
 
 		if ( requireYouTube ) {
-			loadYouTubeAPI(); }
+			loadYouTubeAPI();
+		}
 
 	}
 
@@ -114,7 +115,7 @@ function onYouTubePlayerAPIReady() {
 		var tag, firstScriptTag;
 
 		tag = document.createElement( 'script' );
-		tag.src = "https://www.youtube.com/player_api";
+		tag.src = 'https://www.youtube.com/player_api';
 		firstScriptTag = document.getElementsByTagName( 'script' )[0];
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
 	}
@@ -196,7 +197,7 @@ function onYouTubePlayerAPIReady() {
 			el.style.height = w * 9 / 16 + 'px';
 			el.style.width = '100%';
 			el.style.left = 0;
-			el.style.top = (h - (w * 9 / 16)) / 2 + 'px';
+			el.style.top = ( h - ( w * 9 / 16 ) ) / 2 + 'px';
 			el.style.marginLeft = 0;
 		} else {
 			w = h * 16 / 9;
@@ -253,7 +254,7 @@ function onYouTubePlayerAPIReady() {
 
 		// Listen for browser resizing
 		window.addEventListener(
-			'resize', function(){
+			'resize', function() {
 				resizeHero( el, parent );
 			}
 		);
@@ -261,7 +262,7 @@ function onYouTubePlayerAPIReady() {
 
 		// Listen for scrolling
 		window.addEventListener(
-			'scroll', function(){
+			'scroll', function() {
 				if ( ! parent.classList.contains( 'paused' ) ) {
 					determinePlayState( event, parent );
 				}
@@ -315,12 +316,12 @@ function onYouTubePlayerAPIReady() {
 			case 1:
 				event.target.pauseVideo();
 				parent.classList.add( 'paused' );
-				el.setAttribute( 'title','Play' );
+				el.setAttribute( 'title', 'Play' );
 				break;
 			case 2:
 				event.target.playVideo();
 				parent.classList.remove( 'paused' );
-				el.setAttribute( 'title','Pause' );
+				el.setAttribute( 'title', 'Pause' );
 				break;
 		}
 	}
@@ -363,14 +364,14 @@ function onYouTubePlayerAPIReady() {
 		el = uriVideos[event.target.a.id];
 
 		a = document.createElement( 'a' );
-		a.href = "http://www.youtube.com/watch?v=" + el.ytid;
-		a.title = "Try watching this video on YouTube";
+		a.href = 'http://www.youtube.com/watch?v=' + el.ytid;
+		a.title = 'Try watching this video on YouTube';
 
 		img = document.createElement( 'img' );
 		img.src = el.poster.getAttribute( 'src' );
 		alt = el.poster.getAttribute( 'alt' );
 		if ( ! alt ) {
-			alt = "Poster for video";
+			alt = 'Poster for video';
 		}
 		img.alt = alt;
 		a.appendChild( img );
