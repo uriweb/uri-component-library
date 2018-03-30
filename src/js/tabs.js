@@ -4,7 +4,7 @@
  * @package uri-component-library
  */
 
-(function () {
+( function () {
 
 	'use strict';
 
@@ -17,7 +17,7 @@
 		var els, i;
 
 		els = document.querySelectorAll( '.cl-tabs' );
-		for (i = 0; i < els.length; i++) {
+		for ( i = 0; i < els.length; i++ ) {
 			formatTabs( els[i] );
 		}
 
@@ -40,17 +40,17 @@
 		tablist = document.createElement( 'ul' );
 		tablist.setAttribute( 'role', 'tablist' );
 
-		for (i = 0; i < panels.length; i++) {
+		for ( i = 0; i < panels.length; i++ ) {
 
 			numtabs++;
 
 			// Try to use panel h1 or h2 for tab names, otherwise use generic name
 			header = panels[i].querySelector( 'h1' );
-			if (header) {
+			if ( header ) {
 				header = header.innerHTML;
 			} else {
 				header = panels[i].querySelector( 'h2' );
-				if (header) {
+				if ( header ) {
 					header = header.innerHTML;
 				} else {
 					header = 'Section ' + numtabs;
@@ -59,7 +59,7 @@
 
 			// Try to use panel id for tab href, otherwise create generic id for panel and href.
 			href = panels[i].id;
-			if (href === '') {
+			if ( '' === href) {
 				href = 'cl-tab-section-' + numtabs;
 				panels[i].id = href;
 			}
@@ -69,7 +69,7 @@
 
 			a = document.createElement( 'a' );
 			a.href = '#' + href;
-			a.id = ('cl-tabs-tab-' + numtabs);
+			a.id = 'cl-tabs-tab-' + numtabs;
 			a.setAttribute( 'role', 'tab' );
 			a.setAttribute( 'tabindex', '-1' );
 			a.innerHTML = header;
@@ -82,13 +82,13 @@
 
 		// Add event listeners to tabs
 		tabs = tablist.querySelectorAll( 'a' );
-		for (i = 0; i < tabs.length; i++) {
+		for ( i = 0; i < tabs.length; i++ ) {
 			tabs[i].addEventListener( 'click', handleClick );
 			tabs[i].addEventListener( 'keydown', handleKeystroke );
 		}
 
 		// Add tab panel semantics and hide them all
-		for (i = 0; i < panels.length; i++) {
+		for ( i = 0; i < panels.length; i++ ) {
 
 			panels[i].setAttribute( 'role', 'tabpanel' );
 			panels[i].setAttribute( 'tabindex', '-1' );
@@ -113,7 +113,7 @@
 	function handleClick(e) {
 		e.preventDefault();
 		var currentTab = tablist.querySelector( '[aria-selected]' );
-		if (e.currentTarget !== currentTab) {
+		if ( e.currentTarget !== currentTab ) {
 			switchTab( currentTab, e.currentTarget );
 		}
 	}
@@ -130,14 +130,14 @@
 		// Calculate the new tab's index where appropriate
 		var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
 
-		if (dir !== null) {
+		if ( null !== dir) {
 			e.preventDefault();
 
 			// If the down key is pressed, move focus to the open panel,
 			// otherwise switch to the adjacent tab
-			if (dir === 'down') {
+			if ( 'down' === dir ) {
 				panels[i].focus();
-			} else if (tabs[dir]) {
+			} else if ( tabs[dir] ) {
 				switchTab( e.currentTarget, tabs[dir] );
 			} else {
 				void 0;

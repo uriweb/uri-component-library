@@ -4,7 +4,7 @@
  * @package uri-component-library
  */
 
-(function(){
+( function() {
 
 	'use strict';
 
@@ -20,7 +20,7 @@
 			'scroll', function() {
 				moveWaves( els, i );
 			}
-			);
+        );
 
 	}
 
@@ -30,7 +30,7 @@
 		offset = window.pageYOffset;
 		move = offset - i;
 
-		for (n = 0; n < els.length; n++) {
+		for ( n = 0; n < els.length; n++ ) {
 			el = els[n];
 			pos = el.firstElementChild.style.backgroundPositionX.split( 'px' )[0];
 			pos += move;

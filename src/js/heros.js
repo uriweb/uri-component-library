@@ -6,13 +6,13 @@
 
 var CLResizeSuperheros;
 
-(function(){
+( function() {
 
 	'use strict';
 
 	window.addEventListener( 'load', initCLHeros, false );
 
-	function initCLHeros(){
+	function initCLHeros() {
 		animate();
 		blurHeroControl();
 		mobile();
@@ -23,10 +23,12 @@ var CLResizeSuperheros;
 	 * Animation control for animated image heros
 	 */
 	function animate() {
+        
+        var heros, i;
 
-		var heros = document.querySelectorAll( '.cl-hero .animate.shift' );
+		heros = document.querySelectorAll( '.cl-hero .animate.shift' );
 
-		for (var i = 0; i < heros.length; i++) {
+		for ( i = 0; i < heros.length; i++ ) {
 			heros[i].style.backgroundPositionX = '100%';
 			heros[i].style.backgroundPositionY = 0;
 		}
@@ -37,24 +39,25 @@ var CLResizeSuperheros;
 	 * Blur header hero on scroll
 	 */
 	function blurHeroControl() {
+        
+        var hero, overlay, scroll, offset, radius;
 
-		var hero = document.getElementById( 'hero' );
+		hero = document.getElementById( 'hero' );
 
-		if (hero) {
+		if ( hero ) {
 
-			var overlay = hero.querySelector( '.overlay' ),
-				scroll = window.pageYOffset,
-				offset = overlay.getBoundingClientRect().top + scroll,
-				radius = 50; // Set the desired blur radius, in pixels
+			overlay = hero.querySelector( '.overlay' );
+            scroll = window.pageYOffset;
+            offset = overlay.getBoundingClientRect().top + scroll;
+            radius = 50; // Set the desired blur radius, in pixels
 
-			// console.log('overlay', overlay);
 			blurHero();
 
 			window.addEventListener(
-				'scroll', function(){
+				'scroll', function() {
 					blurHero();
 				}
-				);
+            );
 
 		}
 
@@ -73,19 +76,19 @@ var CLResizeSuperheros;
 		var els = document.querySelectorAll( '.cl-hero .poster' );
 
 		window.addEventListener(
-			'resize', function(){
+			'resize', function() {
 				var i, w = window.innerWidth;
-				if (w < 750) {
-					for (i = 0; i < els.length; i++) {
+				if ( w < 750 ) {
+					for ( i = 0; i < els.length; i++ ) {
 						els[i].classList.remove( 'unveil' );
 					}
 				} else {
-					for (i = 0; i < els.length; i++) {
+					for ( i = 0; i < els.length; i++ ) {
 						els[i].classList.add( 'unveil' );
 					}
 				}
 			}
-			);
+        );
 	}
 
 	function superhero() {
@@ -95,7 +98,7 @@ var CLResizeSuperheros;
 		els = document.querySelectorAll( '.cl-hero.super' );
 		n = els.length;
 
-		for (i = 0; i < n; i++) {
+		for ( i = 0; i < n; i++ ) {
 
 			// Create the scroll prompter
 			div = document.createElement( 'div' );
@@ -116,22 +119,20 @@ var CLResizeSuperheros;
 
 		CLResizeSuperheros = function(getOffset) {
 
-			var vh, vw;
+			var vh, vw, p;
 
-			for (i = 0; i < n; i++) {
+			for ( i = 0; i < n; i++ ) {
 
-				if (getOffset !== false) {
+				if ( false !== getOffset ) {
 					H[i].offset = els[i].getBoundingClientRect().top;
 				}
 
 				vh = window.innerHeight;
 				vw = window.innerWidth;
+				p = H[i].offset / vh;
 
-				var p = H[i].offset / vh;
-
-				if ( (vh < vw * 0.75 && vh * 0.9 < 600) || (p > 0.3) ) {
+				if ( ( vh < vw * 0.75 && vh * 0.9 < 600 ) || ( p > 0.3 ) ) {
 					H[i].el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
-
 					H[i].prompt.style.display = 'none';
 
 				} else {

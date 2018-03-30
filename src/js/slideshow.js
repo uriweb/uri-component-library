@@ -8,7 +8,7 @@
  */
 
 
-(function(){
+( function() {
 
 	'use strict';
 
@@ -18,7 +18,7 @@
 		var g, i;
 
 		g = document.querySelectorAll( '.gallery.gallery-size-full' );
-		for (i = 0; i < g.length; i++) {
+		for ( i = 0; i < g.length; i++ ) {
 			parseWPGallery( g[i] );
 		}
 	}
@@ -33,14 +33,14 @@
 
 		figs = el.querySelectorAll( 'figure' );
 
-		for (i = 0; i < figs.length; i++) {
+		for ( i = 0; i < figs.length; i++ ) {
 
 			parts = {};
 
 			parts.img = figs[i].querySelector( 'img' );
 
 			caption = figs[i].querySelector( 'figcaption' );
-			if (caption) {
+			if ( caption ) {
 				parts.caption = caption.innerHTML;
 			}
 
@@ -80,7 +80,7 @@
 		counter.innerHTML = '<span></span> of ' + parsed.length;
 		S.appendChild( counter );
 
-		for (i = 0; i < parsed.length; i++) {
+		for ( i = 0; i < parsed.length; i++ ) {
 
 			li = document.createElement( 'li' );
 			li.className = 'slide';
@@ -115,7 +115,7 @@
 
 		types = ['Previous', 'Next'];
 
-		for (x in types) {
+		for ( x in types ) {
 			target = document.createElement( 'div' );
 			target.className = 'target ' + types[x].toLowerCase();
 			target.title = types[x];
@@ -148,9 +148,9 @@
 		// Reset the endslide animation
 		c.classList.remove( 'reboundLeft', 'reboundRight' );
 
-		if (direction == 'Next') {
+		if ( 'Next' == direction ) {
 			index++;
-			if (index > count) {
+			if ( index > count ) {
 				if ( ! mobile) {
 					void c.offsetWidth; // Trigger reflow to restart animation
 					c.classList.add( 'reboundRight' );
@@ -161,7 +161,7 @@
 			}
 		} else {
 			index--;
-			if (index < 0) {
+			if ( index < 0 ) {
 				if ( ! mobile) {
 					void c.offsetWidth; // Trigger reflow to restart animation
 					c.classList.add( 'reboundLeft' );
@@ -184,13 +184,13 @@
 
 		var S, active, captions, counter, i;
 
-		c.style.transform = 'translateX(-' + (index * 100) + '%)';
+		c.style.transform = 'translateX(-' + ( index * 100 ) + '%)';
 		c.setAttribute( 'data-position', index );
 
 		S = c.parentNode.parentNode;
 
 		active = S.querySelector( '.captions .active' );
-		if (active) {
+		if ( active ) {
 			active.classList.remove( 'active' );
 		}
 
@@ -221,12 +221,12 @@
 		start = 0;
 		dist = 0;
 
-		if (isTouchDevice === true) {
+		if ( true === isTouchDevice ) {
 			el.classList.add( 'touch' );
 		}
 
 		el.addEventListener(
-			'touchstart', function(e){
+			'touchstart', function(e) {
 
 				// Unhook CSS transitions during swipe event for smoother tracking
 				c.classList.remove( 'transitions' );
@@ -243,7 +243,7 @@
 			);
 
 		el.addEventListener(
-			'touchmove', function(e){
+			'touchmove', function(e) {
 
 				var touchobj, delta, move, t;
 
@@ -255,7 +255,7 @@
 				move = delta < 0 ? -1 : 1;
 
 				t = c.style.transform.replace( 'translateX(','' ).replace( '%)','' );
-				c.style.transform = 'translateX(' + (parseInt( t ) + move) + '%)';
+				c.style.transform = 'translateX(' + ( parseInt( t ) + move ) + '%)';
 
 				e.preventDefault();
 
@@ -263,7 +263,7 @@
 			);
 
 		el.addEventListener(
-			'touchend', function(e){
+			'touchend', function(e) {
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
@@ -272,9 +272,9 @@
 				i = parseInt( c.getAttribute( 'data-position' ) ),
 				tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
 
-				if (dist > w * tolerance) {
+				if ( dist > w * tolerance ) {
 					controlDirection( c, 'Previous', true );
-				} else if (dist < w * -tolerance) {
+				} else if ( dist < w * -tolerance ) {
 					controlDirection( c, 'Next', true );
 				} else {
 					setPosition( c, parseInt( c.getAttribute( 'data-position' ) ) );

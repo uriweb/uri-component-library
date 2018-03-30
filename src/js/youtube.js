@@ -10,7 +10,7 @@ function onYouTubePlayerAPIReady() {
 	CLCreateYouTubePlayers();
 }
 
-(function() {
+( function() {
 
 	'use strict';
 
@@ -29,9 +29,9 @@ function onYouTubePlayerAPIReady() {
 			heros = document.querySelectorAll( '.cl-hero .poster' ),
 			el, key, parent, i;
 
-		if (heroSupport) {
+		if ( heroSupport ) {
 
-			for (i = 0; i < heros.length; i++) {
+			for ( i = 0; i < heros.length; i++ ) {
 
 				el = heros[i];
 				key = el.getAttribute( 'id' );
@@ -102,7 +102,7 @@ function onYouTubePlayerAPIReady() {
 			msie = ua.indexOf( 'MSIE ' ),
 			trident = ua.indexOf( 'Trident/' );
 
-		if (navigator.appName == 'Microsoft Internet Explorer' || msie > 0 || trident > 0) {
+		if ( 'Microsoft Internet Explorer' == navigator.appName || msie > 0 || trident > 0 ) {
 			support = false;
 		}
 
@@ -126,7 +126,7 @@ function onYouTubePlayerAPIReady() {
 
 		var key, value;
 
-		for (key in uri_vid_heros) {
+		for ( key in uri_vid_heros ) {
 
 			value = uri_vid_heros[key];
 
@@ -155,7 +155,7 @@ function onYouTubePlayerAPIReady() {
 
 		}
 
-		for (key in uri_videos) {
+		for ( key in uri_videos ) {
 
 			value = uri_videos[key];
 
@@ -193,7 +193,7 @@ function onYouTubePlayerAPIReady() {
 			h = parent.offsetHeight,
 			style;
 
-		if (w / h > 16 / 9) {
+		if ( w / h > 16 / 9 ) {
 			el.style.height = w * 9 / 16 + 'px';
 			el.style.width = '100%';
 			el.style.left = 0;
@@ -232,7 +232,7 @@ function onYouTubePlayerAPIReady() {
 			h = parent.offsetHeight,
 			o = parent.getBoundingClientRect().top + p;
 
-		if (v + p < o || p > o + h) {
+		if ( v + p < o || p > o + h ) {
 			event.target.pauseVideo();
 		} else {
 			event.target.playVideo();
@@ -257,17 +257,17 @@ function onYouTubePlayerAPIReady() {
 			'resize', function(){
 				resizeHero( el, parent );
 			}
-			);
+        );
 		resizeHero( el, parent );
 
 		// Listen for scrolling
 		window.addEventListener(
 			'scroll', function(){
-				if ( ! parent.classList.contains( 'paused' )) {
+				if ( ! parent.classList.contains( 'paused' ) ) {
 					determinePlayState( event, parent );
 				}
 			}
-			);
+        );
 		determinePlayState( event, parent );
 
 		// Add play/pause button
@@ -280,7 +280,7 @@ function onYouTubePlayerAPIReady() {
 			'click', function(){
 				heroControl( event, parent, this );
 			}
-			);
+        );
 
 		overlay.appendChild( button );
 
@@ -298,10 +298,10 @@ function onYouTubePlayerAPIReady() {
 
 		window.addEventListener(
 			'resize', function(){
-				resizeVideo( key,el,parent );
+				resizeVideo( key, el, parent );
 			}
-			);
-		resizeVideo( key,el,parent );
+        );
+		resizeVideo( key, el, parent );
 
 	}
 
@@ -313,7 +313,7 @@ function onYouTubePlayerAPIReady() {
 	 */
 	function heroControl(event, parent, el) {
 		// console.log('hero control', event.target.a.id);
-		switch (event.target.getPlayerState()) {
+		switch ( event.target.getPlayerState() ) {
 			default:
 			case 1:
 				event.target.pauseVideo();
@@ -335,13 +335,13 @@ function onYouTubePlayerAPIReady() {
 	function onHeroStateChange(event) {
 		var state = event.target.getPlayerState();
 		// console.log('hero state change', event.target.a.id, state);
-		switch (state) {
+		switch ( state ) {
 			case 0:
 				event.target.playVideo();
 				break;
 			case -1:
 			case 1:
-				if (window.innerWidth > 750) {
+				if ( window.innerWidth > 750 ) {
 					uri_vid_heros[event.target.a.id].poster.classList.add( 'unveil' );
 				}
 				break;
@@ -375,14 +375,14 @@ function onYouTubePlayerAPIReady() {
 		img = document.createElement( 'img' );
 		img.src = el.poster.getAttribute( 'src' );
 		alt = el.poster.getAttribute( 'alt' );
-		if ( ! alt) {
+		if ( ! alt ) {
 			alt = "Poster for video";
 		}
 		img.alt = alt;
 		a.appendChild( img );
 
 		var iframe = document.getElementById( event.target.a.id );
-		if (iframe) {
+		if ( iframe ) {
 			el.parent.replaceChild( a, iframe );
 		}
 
@@ -398,7 +398,7 @@ function onYouTubePlayerAPIReady() {
 			key = event.target.a.id,
 			overlay = uri_videos[key].parent.querySelector( '.overlay' );
 
-		switch (state) {
+		switch ( state ) {
 			case 1:
 			case 3:
 				overlay.classList.add( 'hidden' );

@@ -4,7 +4,7 @@
  * @package uri-component-library
  */
 
-(function(){
+( function() {
 
 	'use strict';
 
@@ -17,10 +17,10 @@
 
 		// Since we have JS, let's add a unique css hook and submenu triggers
 		menus = document.querySelectorAll( '.cl-menu' );
-		for (i = 0; i < menus.length; i++) {
+		for ( i = 0; i < menus.length; i++ ) {
 			toggle = document.createElement( 'span' );
 			toggle.className = 'cl-menu-toggle';
-			if (menus[i].getAttribute( 'data-show-title' ) == '0') {
+			if ( '0' == menus[i].getAttribute( 'data-show-title' ) ) {
 				toggle.classList.add( 'hidden' );
 			}
 			toggle.innerHTML = menus[i].getAttribute( 'data-name' );
@@ -35,7 +35,7 @@
 		}
 
 		uls = document.querySelectorAll( '.cl-menu-list ul' );
-		for (i = 0; i < uls.length; i++) {
+		for ( i = 0; i < uls.length; i++ ) {
 
 			span = document.createElement( 'span' );
 			span.className = 'cl-menu-arrow';
@@ -68,7 +68,7 @@
 
 		toggle = el.classList.contains( revealClass );
 
-		for (i = 0; i < els.length; i++) {
+		for ( i = 0; i < els.length; i++ ) {
 			els[i].classList.remove( revealClass );
 		}
 
