@@ -3,32 +3,32 @@
 $classes = 'cl-metric';
 $wrapper = 'section';
 
-switch ($style) {
-    case 'dark':
-        $classes .= ' dark';
-        break;
-    case 'clear':
-        $classes .= ' clear';
-        break;
-    case 'overlay':
-        $classes .= ' dark clear';
-        break;
+switch ( $style ) {
+	case 'dark':
+		$classes .= ' dark';
+		break;
+	case 'clear':
+		$classes .= ' clear';
+		break;
+	case 'overlay':
+		$classes .= ' dark clear';
+		break;
 }
 
-if(!empty($float)) {
-    $classes .= ' ' . $float;
-    $wrapper = 'aside';
+if ( ! empty( $float ) ) {
+	$classes .= ' ' . $float;
+	$wrapper = 'aside';
 }
 
-if(!empty($class)) {
-    $classes .= ' ' . $class;
+if ( ! empty( $class ) ) {
+	$classes .= ' ' . $class;
 }
 
 $output = '<' . $wrapper . ' class="cl-wrapper cl-metric-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
-if(!empty($css)){
-    $output .= ' style="' . $css . '"';
+if ( ! empty( $css ) ) {
+	$output .= ' style="' . $css . '"';
 }
 
 $output .= '>';

@@ -3,28 +3,28 @@
 $classes = 'cl-boxout';
 $wrapper = 'section';
 
-if(!empty($float)) {
-    $classes .= ' ' . $float;
-    $wrapper = 'aside';
+if ( ! empty( $float ) ) {
+	$classes .= ' ' . $float;
+	$wrapper = 'aside';
 }
 
-if(!empty($class)) {
-    $classes .= ' ' . $class;
+if ( ! empty( $class ) ) {
+	$classes .= ' ' . $class;
 }
 
 $output = '<' . $wrapper . ' class="cl-wrapper cl-boxout-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
-if(!empty($css)){
-    $output .= ' style="' . $css . '"';
+if ( ! empty( $css ) ) {
+	$output .= ' style="' . $css . '"';
 }
 
 $output .= '>';
 
-if(!empty($title)) {
-    $output .= '<h1>' . $title . '</h1>';
+if ( ! empty( $title ) ) {
+	$output .= '<h1>' . $title . '</h1>';
 }
 
-$output .= '<p>' . do_shortcode($content) . '</p>';
+$output .= '<p>' . do_shortcode( $content ) . '</p>';
 $output .= '</div>';
 $output .= '</' . $wrapper . '>';
