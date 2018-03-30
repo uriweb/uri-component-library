@@ -3,6 +3,6 @@
     "fileExtensions": [ ".js" ],
     "excludeFiles": [
         "gulpfile.js",
-        "js/script.min.js"
+        "js/cl.built.js"
     ]
 }
