@@ -14,8 +14,8 @@ function onYouTubePlayerAPIReady() {
 
 	'use strict';
 
-	var uri_vid_heros = {},
-		uri_videos = {};
+	var uriVidHeros = {},
+		uriVideos = {};
 
 	window.addEventListener( 'load', getVids, false );
 
@@ -27,7 +27,8 @@ function onYouTubePlayerAPIReady() {
 		var requireYouTube = false,
 			heroSupport = checkSupport(),
 			heros = document.querySelectorAll( '.cl-hero .poster' ),
-			el, key, parent, i;
+			vids = document.querySelectorAll( '.cl-video img' ),
+			el, key, parent, i, start, end, placeholder, aspect;
 
 		if ( heroSupport ) {
 
@@ -36,23 +37,22 @@ function onYouTubePlayerAPIReady() {
 				el = heros[i];
 				key = el.getAttribute( 'id' );
 				parent = el.parentNode;
+				start = el.getAttribute( 'data-start' );
+				end = el.getAttribute( 'data-end' );
 
-				var start = el.getAttribute( 'data-start' ),
-					end = el.getAttribute( 'data-end' );
-
-				uri_vid_heros[key] = {
-					'poster' : el,
-					'parent' : parent,
-					'ytid' : el.getAttribute( 'data-id' ),
-					'w' : parent.offsetWidth,
-					'h' : parent.offsetHeight,
-					'start' : start ? start : 0,
-					'end' : end ? end : -1
+				uriVidHeros[key] = {
+					'poster': el,
+					'parent': parent,
+					'ytid': el.getAttribute( 'data-id' ),
+					'w': parent.offsetWidth,
+					'h': parent.offsetHeight,
+					'start': start ? start : 0,
+					'end': end ? end : -1
 				};
 
 				// Remove poster id and create a new placeholder for the video
 				el.removeAttribute( 'id' );
-				var placeholder = document.createElement( 'div' );
+				placeholder = document.createElement( 'div' );
 				placeholder.id = key;
 				parent.appendChild( placeholder );
 
@@ -62,25 +62,23 @@ function onYouTubePlayerAPIReady() {
 
 		}
 
-		var vids = document.querySelectorAll( '.cl-video img' );
-
-		for (i = 0; i < vids.length; i++) {
+		for ( i = 0; i < vids.length; i++ ) {
 
 			el = vids[i];
 			key = el.getAttribute( 'id' );
 
-			var aspect = 16 / 9; // Set default aspect
+			aspect = 16 / 9; // Set default aspect
 
 			if ( el.getAttribute( 'data-aspect' ) ) {
 				aspect = el.getAttribute( 'data-aspect' ).split( ':' );
 				aspect = aspect[0] / aspect[1];
 			}
 
-			uri_videos[key] = {
-				'poster' : el,
-				'ytid' : el.getAttribute( 'data-id' ),
-				'parent' : el.parentNode,
-				'aspect' : aspect
+			uriVideos[key] = {
+				'poster': el,
+				'ytid': el.getAttribute( 'data-id' ),
+				'parent': el.parentNode,
+				'aspect': aspect
 			};
 
 			requireYouTube = true;
@@ -113,9 +111,11 @@ function onYouTubePlayerAPIReady() {
 	 * Load the API
 	 */
 	function loadYouTubeAPI() {
-		var tag = document.createElement( 'script' );
+		var tag, firstScriptTag;
+
+		tag = document.createElement( 'script' );
 		tag.src = "https://www.youtube.com/player_api";
-		var firstScriptTag = document.getElementsByTagName( 'script' )[0];
+		firstScriptTag = document.getElementsByTagName( 'script' )[0];
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
 	}
 
@@ -126,9 +126,9 @@ function onYouTubePlayerAPIReady() {
 
 		var key, value;
 
-		for ( key in uri_vid_heros ) {
+		for ( key in uriVidHeros ) {
 
-			value = uri_vid_heros[key];
+			value = uriVidHeros[key];
 
 			value.player = new YT.Player(
 				key, {
@@ -146,18 +146,18 @@ function onYouTubePlayerAPIReady() {
 						rel: 0
 					},
 					events: {
-						'onReady' : onHeroReady,
-						'onStateChange' : onHeroStateChange,
-						'onError' : onHeroError
+						'onReady': onHeroReady,
+						'onStateChange': onHeroStateChange,
+						'onError': onHeroError
 					}
 			}
 				);
 
 		}
 
-		for ( key in uri_videos ) {
+		for ( key in uriVideos ) {
 
-			value = uri_videos[key];
+			value = uriVideos[key];
 
 			value.player = new YT.Player(
 				key, {
@@ -171,9 +171,9 @@ function onYouTubePlayerAPIReady() {
 						iv_load_policy: 3
 					},
 					events: {
-						'onReady' : onVideoReady,
-						'onStateChange' : onVideoStateChange,
-						'onError' : onVideoError
+						'onReady': onVideoReady,
+						'onStateChange': onVideoStateChange,
+						'onError': onVideoError
 					}
 			}
 				);
@@ -187,8 +187,7 @@ function onYouTubePlayerAPIReady() {
 	 * @param el el the hero
 	 * @param el parent the hero parent container
 	 */
-	function resizeHero(el, parent) {
-		// console.log('hero resize', el.getAttribute('id'));
+	function resizeHero( el, parent ) {
 		var w = parent.offsetWidth,
 			h = parent.offsetHeight,
 			style;
@@ -211,13 +210,12 @@ function onYouTubePlayerAPIReady() {
 
 	/*
 	 * Dynamically set the video height and position based on width
-	 * @param str key the key of the video in uri_videos
+	 * @param str key the key of the video in uriVideos
 	 * @param el el the video
 	 * @param el parent the video parent container
 	 */
-	function resizeVideo(key, el, parent) {
-		// console.log('video resize', key, parent.offsetWidth / uri_videos[key].aspect);
-		el.style.height = parent.offsetWidth / uri_videos[key].aspect + 'px';
+	function resizeVideo( key, el, parent ) {
+		el.style.height = parent.offsetWidth / uriVideos[key].aspect + 'px';
 	}
 
 	/*
@@ -225,8 +223,7 @@ function onYouTubePlayerAPIReady() {
 	 * @param obj event the hero player
 	 * @param el parent the hero parent container
 	 */
-	function determinePlayState(event, parent) {
-		// console.log('hero play state', event.target.a.id);
+	function determinePlayState( event, parent ) {
 		var v = window.innerHeight,
 			p = window.pageYOffset,
 			h = parent.offsetHeight,
@@ -244,13 +241,15 @@ function onYouTubePlayerAPIReady() {
 	 * Do things with the hero when it's loaded
 	 * @param obj event the hero player
 	 */
-	function onHeroReady(event) {
-		// console.log('hero ready',event.target.a.id);
+	function onHeroReady( event ) {
+
+		var el, parent, overlay, button;
+
 		// Mute the vid
 		event.target.mute();
 
-		var el = event.target.getIframe(),
-			parent = uri_vid_heros[event.target.a.id].parent;
+		el = event.target.getIframe();
+		parent = uriVidHeros[event.target.a.id].parent;
 
 		// Listen for browser resizing
 		window.addEventListener(
@@ -271,13 +270,13 @@ function onYouTubePlayerAPIReady() {
 		determinePlayState( event, parent );
 
 		// Add play/pause button
-		var overlay = parent.querySelector( '.overlay' ),
-			button = document.createElement( 'div' );
+		overlay = parent.querySelector( '.overlay' );
+		button = document.createElement( 'div' );
 
 		button.className = 'motionswitch';
 		button.title = 'Pause';
 		button.addEventListener(
-			'click', function(){
+			'click', function() {
 				heroControl( event, parent, this );
 			}
 		);
@@ -290,14 +289,13 @@ function onYouTubePlayerAPIReady() {
 	 * Do things with the video when it's loaded
 	 * @param str id the id of the video
 	 */
-	function onVideoReady(event) {
-		// console.log('video ready', id);
+	function onVideoReady( event ) {
 		var el = event.target.getIframe(),
 			key = event.target.a.id,
-			parent = uri_videos[key].parent;
+			parent = uriVideos[key].parent;
 
 		window.addEventListener(
-			'resize', function(){
+			'resize', function() {
 				resizeVideo( key, el, parent );
 			}
 		);
@@ -311,8 +309,7 @@ function onYouTubePlayerAPIReady() {
 	 * @param el parent the hero parent container
 	 * @param el el the .motionswitch element
 	 */
-	function heroControl(event, parent, el) {
-		// console.log('hero control', event.target.a.id);
+	function heroControl( event, parent, el ) {
 		switch ( event.target.getPlayerState() ) {
 			default:
 			case 1:
@@ -332,9 +329,8 @@ function onYouTubePlayerAPIReady() {
 	 * Get hero state and decide what to do
 	 * @param obj event the hero player
 	 */
-	function onHeroStateChange(event) {
+	function onHeroStateChange( event ) {
 		var state = event.target.getPlayerState();
-		// console.log('hero state change', event.target.a.id, state);
 		switch ( state ) {
 			case 0:
 				event.target.playVideo();
@@ -342,7 +338,7 @@ function onYouTubePlayerAPIReady() {
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					uri_vid_heros[event.target.a.id].poster.classList.add( 'unveil' );
+					uriVidHeros[event.target.a.id].poster.classList.add( 'unveil' );
 				}
 				break;
 		}
@@ -350,23 +346,21 @@ function onYouTubePlayerAPIReady() {
 
 	/*
 	 * Revert to poster if there's an error with the hero video
-	 * @param str key the key of the hero in uri_vid_heros
+	 * @param str key the key of the hero in uriVidHeros
 	 */
-	function onHeroError(event) {
-		// console.log('hero error', event);
-		uri_vid_heros[event.target.a.id].poster.classList.remove( 'unveil' );
-		uri_vid_heros[event.target.a.id].parent.querySelector( '.motionswitch' ).style.display = 'none';
+	function onHeroError( event ) {
+		uriVidHeros[event.target.a.id].poster.classList.remove( 'unveil' );
+		uriVidHeros[event.target.a.id].parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/*
 	 * Link the poster to the video on YouTube if there's an error with the video
-	 * @param str key the key of the hero in uri_videos
+	 * @param str key the key of the hero in uriVideos
 	 */
-	function onVideoError(event) {
-		// console.log('video error', event);
-		var el, a, img, alt;
+	function onVideoError( event ) {
+		var el, a, img, alt, iframe;
 
-		el = uri_videos[event.target.a.id];
+		el = uriVideos[event.target.a.id];
 
 		a = document.createElement( 'a' );
 		a.href = "http://www.youtube.com/watch?v=" + el.ytid;
@@ -381,7 +375,7 @@ function onYouTubePlayerAPIReady() {
 		img.alt = alt;
 		a.appendChild( img );
 
-		var iframe = document.getElementById( event.target.a.id );
+		iframe = document.getElementById( event.target.a.id );
 		if ( iframe ) {
 			el.parent.replaceChild( a, iframe );
 		}
@@ -392,11 +386,11 @@ function onYouTubePlayerAPIReady() {
 	 * Get video state and decide what to do
 	 * @param obj event the video player
 	 */
-	function onVideoStateChange(event) {
+	function onVideoStateChange( event ) {
 
 		var state = event.target.getPlayerState(),
 			key = event.target.a.id,
-			overlay = uri_videos[key].parent.querySelector( '.overlay' );
+			overlay = uriVideos[key].parent.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:

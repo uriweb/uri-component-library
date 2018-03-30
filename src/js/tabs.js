@@ -29,7 +29,7 @@
 	 */
 	function formatTabs( tabbed ) {
 
-		var header, href, li, a, i;
+		var header, href, li, a, i, id;
 
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
@@ -93,7 +93,7 @@
 			panels[i].setAttribute( 'role', 'tabpanel' );
 			panels[i].setAttribute( 'tabindex', '-1' );
 
-			var id = panels[i].getAttribute( 'id' );
+			id = panels[i].getAttribute( 'id' );
 			panels[i].setAttribute( 'aria-labelledby', tabs[i].id );
 			panels[i].hidden = true;
 

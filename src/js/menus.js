@@ -56,7 +56,7 @@
 
 	function bindListeners( a, uls, ul ) {
 		a.addEventListener(
-			'click', function(e) {
+			'click', function( e ) {
 				e.preventDefault();
 				handleClick( uls, ul );
 			}

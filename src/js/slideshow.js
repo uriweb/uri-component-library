@@ -7,7 +7,6 @@
  * @package uri-component-library
  */
 
-
 ( function() {
 
 	'use strict';
@@ -151,7 +150,7 @@
 		if ( 'Next' == direction ) {
 			index++;
 			if ( index > count ) {
-				if ( ! mobile) {
+				if ( ! mobile ) {
 					void c.offsetWidth; // Trigger reflow to restart animation
 					c.classList.add( 'reboundRight' );
 					return;
@@ -228,11 +227,13 @@
 		el.addEventListener(
 			'touchstart', function( e ) {
 
+				var touchobj;
+
 				// Unhook CSS transitions during swipe event for smoother tracking
 				c.classList.remove( 'transitions' );
 
 				// Reference first touch point
-				var touchobj = e.changedTouches[0];
+				touchobj = e.changedTouches[0];
 
 				// Get x position of touch point relative to left edge of browser
 				start = parseInt( touchobj.clientX );
@@ -254,7 +255,7 @@
 				dist = parseInt( touchobj.clientX ) - start;
 				move = delta < 0 ? -1 : 1;
 
-				t = c.style.transform.replace( 'translateX(','' ).replace( '%)','' );
+				t = c.style.transform.replace( 'translateX(', '' ).replace( '%)', '' );
 				c.style.transform = 'translateX(' + ( parseInt( t ) + move ) + '%)';
 
 				e.preventDefault();
@@ -265,11 +266,13 @@
 		el.addEventListener(
 			'touchend', function( e ) {
 
+				var w, i, tolerance;
+
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
 
-				var w = c.offsetWidth,
-				i = parseInt( c.getAttribute( 'data-position' ) ),
+				w = c.offsetWidth;
+				i = parseInt( c.getAttribute( 'data-position' ) );
 				tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
 
 				if ( dist > w * tolerance ) {
