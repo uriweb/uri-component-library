@@ -20,7 +20,7 @@
 			'scroll', function() {
 				moveWaves( els, i );
 			}
-        );
+		);
 
 	}
 

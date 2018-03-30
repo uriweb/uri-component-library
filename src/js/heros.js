@@ -23,8 +23,8 @@ var CLResizeSuperheros;
 	 * Animation control for animated image heros
 	 */
 	function animate() {
-        
-        var heros, i;
+
+		var heros, i;
 
 		heros = document.querySelectorAll( '.cl-hero .animate.shift' );
 
@@ -39,17 +39,17 @@ var CLResizeSuperheros;
 	 * Blur header hero on scroll
 	 */
 	function blurHeroControl() {
-        
-        var hero, overlay, scroll, offset, radius;
+
+		var hero, overlay, scroll, offset, radius;
 
 		hero = document.getElementById( 'hero' );
 
 		if ( hero ) {
 
 			overlay = hero.querySelector( '.overlay' );
-            scroll = window.pageYOffset;
-            offset = overlay.getBoundingClientRect().top + scroll;
-            radius = 50; // Set the desired blur radius, in pixels
+			scroll = window.pageYOffset;
+			offset = overlay.getBoundingClientRect().top + scroll;
+			radius = 50; // Set the desired blur radius, in pixels
 
 			blurHero();
 
@@ -57,7 +57,7 @@ var CLResizeSuperheros;
 				'scroll', function() {
 					blurHero();
 				}
-            );
+			);
 
 		}
 
@@ -88,7 +88,7 @@ var CLResizeSuperheros;
 					}
 				}
 			}
-        );
+		);
 	}
 
 	function superhero() {

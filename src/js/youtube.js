@@ -257,7 +257,7 @@ function onYouTubePlayerAPIReady() {
 			'resize', function(){
 				resizeHero( el, parent );
 			}
-        );
+		);
 		resizeHero( el, parent );
 
 		// Listen for scrolling
@@ -267,7 +267,7 @@ function onYouTubePlayerAPIReady() {
 					determinePlayState( event, parent );
 				}
 			}
-        );
+		);
 		determinePlayState( event, parent );
 
 		// Add play/pause button
@@ -280,7 +280,7 @@ function onYouTubePlayerAPIReady() {
 			'click', function(){
 				heroControl( event, parent, this );
 			}
-        );
+		);
 
 		overlay.appendChild( button );
 
@@ -300,7 +300,7 @@ function onYouTubePlayerAPIReady() {
 			'resize', function(){
 				resizeVideo( key, el, parent );
 			}
-        );
+		);
 		resizeVideo( key, el, parent );
 
 	}
