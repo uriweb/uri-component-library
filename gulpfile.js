@@ -3,6 +3,7 @@ var pkg = require('./package.json');
 
 // include plug-ins
 var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
 var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
@@ -72,6 +73,10 @@ function scripts(done) {
     gulp.src('./src/js/*.js')
         .pipe(jshint(done))
         .pipe(jshint.reporter('default'));
+    
+    gulp.src('./src/js/*.js')
+        .pipe(jscs(done))
+        .pipe(jscs.reporter());
   
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
