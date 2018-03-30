@@ -4,13 +4,13 @@
  * @package uri-component-library
  */
 
-( function () {
+( function() {
 
 	'use strict';
 
-	window.addEventListener( 'load', initCLTabs, false );
-
 	var tablist, panels, tabs, numtabs = 0; // Keep these global so we don't have to keep passing from func to func
+
+	window.addEventListener( 'load', initCLTabs, false );
 
 	function initCLTabs() {
 
@@ -27,7 +27,7 @@
 	 * Restyle the component to make it look great
 	 * @param tabbed el the .cl-tabs element
 	 */
-	function formatTabs(tabbed) {
+	function formatTabs( tabbed ) {
 
 		var header, href, li, a, i;
 
@@ -59,7 +59,7 @@
 
 			// Try to use panel id for tab href, otherwise create generic id for panel and href.
 			href = panels[i].id;
-			if ( '' === href) {
+			if ( '' === href ) {
 				href = 'cl-tab-section-' + numtabs;
 				panels[i].id = href;
 			}
@@ -110,27 +110,34 @@
 	 * Handle tab clicking
 	 * @param e obj the event object
 	 */
-	function handleClick(e) {
+	function handleClick( e ) {
+
+		var currentTab;
+
 		e.preventDefault();
-		var currentTab = tablist.querySelector( '[aria-selected]' );
+
+		currentTab = tablist.querySelector( '[aria-selected]' );
+
 		if ( e.currentTarget !== currentTab ) {
 			switchTab( currentTab, e.currentTarget );
 		}
+
 	}
 
 	/*
 	 * Handle key input
 	 * @param e obj the event object
 	 */
-	function handleKeystroke(e) {
+	function handleKeystroke( e ) {
+
 		// Get the index of the current tab in the tabs node list
 		var index = Array.prototype.indexOf.call( tabs, e.currentTarget );
 
 		// Work out which key the user is pressing and
 		// Calculate the new tab's index where appropriate
-		var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+		var dir = 37 === e.which ? index - 1 : 39 === e.which ? index + 1 : 40 === e.which ? 'down' : null;
 
-		if ( null !== dir) {
+		if ( null !== dir ) {
 			e.preventDefault();
 
 			// If the down key is pressed, move focus to the open panel,
@@ -151,7 +158,9 @@
 	 * @param oldTab el the current tab
 	 * @param newTab el the tab selected
 	 */
-	function switchTab(oldTab, newTab) {
+	function switchTab( oldTab, newTab ) {
+
+		var index, oldIndex;
 
 		newTab.focus();
 
@@ -165,8 +174,8 @@
 
 		// Get the indices of the new and old tabs to find the correct
 		// tab panels to show and hide
-		var index = Array.prototype.indexOf.call( tabs, newTab );
-		var oldIndex = Array.prototype.indexOf.call( tabs, oldTab );
+		index = Array.prototype.indexOf.call( tabs, newTab );
+		oldIndex = Array.prototype.indexOf.call( tabs, oldTab );
 		panels[oldIndex].hidden = true;
 		panels[index].hidden = false;
 

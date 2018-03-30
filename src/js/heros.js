@@ -109,15 +109,15 @@ var CLResizeSuperheros;
 			// Save a list of superheros, their initial offsets, and prompter divs
 			H.push(
 				{
-					el : els[i],
-					offset : els[i].getBoundingClientRect().top,
-					prompt : div
+					el: els[i],
+					offset: els[i].getBoundingClientRect().top,
+					prompt: div
 			}
 				);
 
 		}
 
-		CLResizeSuperheros = function(getOffset) {
+		CLResizeSuperheros = function( getOffset ) {
 
 			var vh, vw, p;
 
@@ -148,7 +148,7 @@ var CLResizeSuperheros;
 
 			}
 
-		}
+		};
 
 		CLResizeSuperheros( false );
 

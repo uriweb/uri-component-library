@@ -27,7 +27,7 @@
 	 * Parse gallery element
 	 * @param el el the gallery element
 	 */
-	function parseWPGallery(el) {
+	function parseWPGallery( el ) {
 
 		var figs, i, parts, caption, parsed = [];
 
@@ -57,7 +57,7 @@
 	 * @param el el the gallery element
 	 * @param parsed obj the parsed gallery
 	 */
-	function buildSlideshowDOM(el, parsed) {
+	function buildSlideshowDOM( el, parsed ) {
 		var S, carouselWrapper, carousel, captions, counter, li, cap, i;
 
 		S = document.createElement( 'div' );
@@ -107,7 +107,7 @@
 	 *
 	 * @param c el the carousel
 	 */
-	function makeControlButtons(c) {
+	function makeControlButtons( c ) {
 		var controls, types, target, button, x;
 
 		controls = document.createElement( 'div' );
@@ -140,7 +140,7 @@
 	 * @param direction str the direction to move in
 	 * @param mobile bool called from mobile device
 	 */
-	function controlDirection(c, direction, mobile) {
+	function controlDirection( c, direction, mobile ) {
 		var index, count;
 		index = c.getAttribute( 'data-position' );
 		count = c.children.length - 1;
@@ -180,7 +180,7 @@
 	 * @param c el the carousel
 	 * @param index int the index to move to
 	 */
-	function setPosition(c, index) {
+	function setPosition( c, index ) {
 
 		var S, active, captions, counter, i;
 
@@ -214,7 +214,7 @@
 	 * @param el el the control div
 	 * @param c el the carousel
 	 */
-	function addTouchControls(el, c) {
+	function addTouchControls( el, c ) {
 
 		var start, dist;
 
@@ -226,7 +226,7 @@
 		}
 
 		el.addEventListener(
-			'touchstart', function(e) {
+			'touchstart', function( e ) {
 
 				// Unhook CSS transitions during swipe event for smoother tracking
 				c.classList.remove( 'transitions' );
@@ -243,7 +243,7 @@
 			);
 
 		el.addEventListener(
-			'touchmove', function(e) {
+			'touchmove', function( e ) {
 
 				var touchobj, delta, move, t;
 
@@ -263,7 +263,7 @@
 			);
 
 		el.addEventListener(
-			'touchend', function(e) {
+			'touchend', function( e ) {
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );

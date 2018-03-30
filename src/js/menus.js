@@ -54,7 +54,7 @@
 
 	}
 
-	function bindListeners(a, uls, ul) {
+	function bindListeners( a, uls, ul ) {
 		a.addEventListener(
 			'click', function(e) {
 				e.preventDefault();
@@ -63,7 +63,7 @@
 			);
 	}
 
-	function handleClick(els, el) {
+	function handleClick( els, el ) {
 		var toggle, i;
 
 		toggle = el.classList.contains( revealClass );
@@ -72,7 +72,7 @@
 			els[i].classList.remove( revealClass );
 		}
 
-		if ( ! toggle) {
+		if ( ! toggle ) {
 			el.classList.add( revealClass );
 		}
 

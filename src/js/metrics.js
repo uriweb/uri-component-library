@@ -30,7 +30,7 @@
 
 	}
 
-	function fitMetricsToContainer(metrics) {
+	function fitMetricsToContainer( metrics ) {
 
 		var i, m;
 

@@ -24,7 +24,7 @@
 
 	}
 
-	function moveWaves(els, i) {
+	function moveWaves( els, i ) {
 		var offset, move, pos, n, el;
 
 		offset = window.pageYOffset;
