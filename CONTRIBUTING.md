@@ -2,14 +2,14 @@
 
 Thanks for your interest in contributing to URI Component Library!  As a contributor, there are a few things we'd like you to know.
 
-* [Questions or Problems?](#questions)
-* [Bug Reporting](#bugs)
-* [Feature Requests](#features)
+* [Have a question?](#questions)
+* [Find a bug?](#bugs)
+* [Have an idea for a feature?](#features)
 * [Submission Guidelines](#submission)
 * [Development Guidelines](#development)
 * [Code of Conduct](#conduct)
 
-## <a name="questions"></a>Have a Question?
+## <a name="questions"></a>Have a question?
 
 If you have a question about using or contributing to URI Component Library that isn't answered here, let us know.  However, we ask that you not open issues for general questions.
 
@@ -51,7 +51,7 @@ If you're thinking about fixing a bug or developing a new feature, we ask that y
 
 Before you get to work, please consider our [development guidelines](#development).  Unless you have or request access to the repository, your changes will (and should) be made on a [fork](https://help.github.com/articles/fork-a-repo/).
 
-Once you're satisfied with your work, send a [pull request](https://github.com/uriweb/uri-component-library/compare) to `uri-component-library:develop` so that we can consider merging it in.  If we have any suggestions, we'll let you know.  You can then make those updates, rebase your branch, and force push to your GitHub repository to update your pull request.
+Once you're satisfied with your work, we recommend [testing](#testing) your code for compliance with WordPress coding standards.  Once you've fixed any errors, send a [pull request](https://github.com/uriweb/uri-component-library/compare) to `uri-component-library:develop` so that we can consider merging it in.  If we have any suggestions, we'll let you know.  You can then make those updates, rebase your branch, and force push to your GitHub repository to update your pull request.
 
 ## <a name="development"></a>Development Guidelines
 
@@ -63,6 +63,8 @@ Before you can develop URI Component Library, you'll need to install a few prere
 * [Node.js](https://nodejs.org/), (version specified in the engines field of [`package.json`](https://github.com/uriweb/uri-component-library/blob/develop/package.json)) which is used to distribute [npm](https://www.npmjs.com)
 * [npm](https://www.npmjs.com), (version specified in the engines field of [`package.json`](https://github.com/uriweb/uri-component-library/blob/develop/package.json)) which is used to install dependencies (npm is included in Node.js but may need to be updated separately)
 * [Gulp.js](https://gulpjs.com) and [gulp-cli](https://www.npmjs.com/package/gulp-cli), which is used to compile the source code
+
+You'll need some [additional prerequisites](#testing) if you plan to test your code, which we recommend doing.
 
 ### Fork
 
@@ -91,19 +93,22 @@ URI Component Library source files are compiled with [gulp.js](https://gulpjs.co
 You might need to first remove any previous versions of gulp you may have installed globally:
 
 ```shell
-$ npm rm --global gulp
+$ npm rm -g gulp
 ```
 
 Then install gulp-cli globally:
 
 ```shell
-$ npm install --global gulp-cli
+$ npm install -g gulp-cli
 ```
 
 Finally, install gulp locally, along with dependencies:
 
 ```shell
-# Install gulp in your project directory
+# Hop into your project dir (if you're not there already)
+$ cd <project_dir>
+
+# Install gulp
 $ npm install gulp
 
 # Install gulp dependencies
@@ -114,6 +119,116 @@ Run gulp to make sure everything worked:
 ```shell
 $ gulp
 ```
+
+__Note:__ It's probably a good idea to stop gulp before switching branches and restart after switching, in case there are differences in [`gulpfile.js`](https://github.com/uriweb/uri-component-library/blob/develop/gulpfile.js) or added/removed partials.  That way you're guaranteed a clean compile.
+
+
+### <a name="testing"></a>Test your code
+
+After you've written some code and are thinking about [submitting a pull request](#submit-pr), we encourage you to test your code locally and fix any errors that occur.  This will make it easier for your PR to build successfully in Travis-CI.
+
+You'll need to install some prerequisites first:
+
+* [Composer](https://getcomposer.org), which is used to install PHP CodeSniffer
+* [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), which is used to test code locally
+* [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards#installation), a collection of PHP CodeSniffer rules for WordPress
+
+#### Install Composer
+
+There are a lot of PHP dependency managers out there, so if you have one you like or are already using, feel free to [install PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer#installation) that way.
+
+For this guide, we'll use Composer.  Here's how to [install it](https://getcomposer.org/download/).
+
+To make the `composer` command available, run:
+
+```shell
+# You may need to run with sudo
+$ mv composer.phar /usr/local/bin/composer
+```
+
+#### Install PHP CodeSniffer
+
+Install PHP CodeSniffer using their [instructions for Composer](https://github.com/squizlabs/PHP_CodeSniffer#composer).
+
+Essentially, this involves running:
+
+```shell
+$ composer global require "squizlabs/php_codesniffer=*"
+```
+
+This will install PHP CodeSniffer globally and add a dependency in your `composer.json` file (it'll create it too, if it doesn't exist)
+
+Then, hop into your `.composer` directory and make sure everything is up to date:
+
+```shell
+$ cd .composer
+$ composer update
+$ vendor/bin/phpcs --version
+```
+
+##### Make PHP CodeSniffer available system-wide
+
+Right now, you won't be able to run PHP CodeSniffer from your project directory.  You'll have to run it from `~/.composer` and use absolute paths to any files and directories you want to test.  This will get old fast.
+
+To use `phpcs` and `phpcbf` as global commands, symlink to them in `/usr/local/bin`:
+
+```shell
+# Replace <username> with yours
+$ sudo ln -s /Users/<username>/.composer/vendor/bin/phpcs /usr/local/bin
+$ sudo ln -s /Users/<username>/.composer/vendor/bin/phpcbf /usr/local/bin
+```
+
+You should be able to run `phpcs -h` and `phpcbf -h` from anywhere now.
+
+#### Install WordPress Coding Standards
+
+Now install the WordPress ruleset for PHP CodeSniffer using their [instructions for Composer](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards#installation).
+
+Essentially, this involves running:
+
+```shell
+# In the .composer directory:
+$ composer create-project wp-coding-standards/wpcs --no-dev
+```
+
+Now we need to tell PHP CodeSniffer about the new rules.  If you're using the `phpcs` and `phpcbf` commands globally, you'll need to use the absolute path to the `wpcs` directory:
+```shell
+$ phpcs --config-set installed_paths /Users/<username>/.composer/wpcs
+```
+
+Verify that the new rules have been added (you should see a bunch of WordPress standards in there now):
+```shell
+$ phpcs -i
+```
+
+#### Using PHP CodeSniffer
+
+To use PHP CodeSniffer in you project directory:
+
+```shell
+# Hop into your project dir
+$ cd <project_dir>
+
+# Test code with PHP CodeSniffer
+$ phpcs --standard=WordPress some_file.php
+
+# Automatically fix code with PHP Code Beautifier
+$ phpcbf --standard=WordPress some_file.php
+```
+
+Specifying the coding standard each time you run the test might get annoying.  To use the WordPress ruleset by default, run:
+
+```shell
+$ phpcs --config-set default_standard WordPress
+```
+
+To use the custom ruleset included in URI Component Library, use the `--standard=.codesniffer.ruleset.xml` arguement:
+
+```shell
+$ phpcs --standard=.codesniffer.ruleset.xml some_file.php
+```
+
+You can check out all the PHP CodeSniffer [config options](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options) on their [wiki](https://github.com/squizlabs/PHP_CodeSniffer/wiki).
 
 ### Git Model
 
