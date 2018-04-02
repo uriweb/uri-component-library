@@ -70,7 +70,7 @@ add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
 /**
  * Button
  */
-function uri_cl_shortcode_button( $atts ) {
+function uri_cl_shortcode_button( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -108,7 +108,7 @@ add_shortcode( 'cl-button', 'uri_cl_shortcode_button' );
 /**
  * Action Card
  */
-function uri_cl_shortcode_card( $atts ) {
+function uri_cl_shortcode_card( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -155,7 +155,7 @@ add_shortcode( 'cl-card', 'uri_cl_shortcode_card' );
 /**
  * Detail Card
  */
-function uri_cl_shortcode_dcard( $atts ) {
+function uri_cl_shortcode_dcard( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -579,7 +579,7 @@ add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
 /**
  * Video
  */
-function uri_cl_shortcode_video( $atts ) {
+function uri_cl_shortcode_video( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
@@ -627,7 +627,7 @@ add_shortcode( 'cl-video', 'uri_cl_shortcode_video' );
 /**
  * Waves
  */
-function uri_cl_shortcode_waves( $atts ) {
+function uri_cl_shortcode_waves( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
