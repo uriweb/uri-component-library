@@ -415,6 +415,47 @@ add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
 
 
 /**
+ * Quote
+ */
+function uri_cl_shortcode_quote( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'img' => '',
+			'alt' => '',
+			'quote' => '',
+			'citation' => '',
+			'class' => '',
+			'css' => '',
+		), $atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Quote', $atts, $content, array(
+             array(
+				 'attr' => 'quote',
+				 'type' => 'str'
+			 ),
+             array(
+				 'attr' => 'citation',
+				 'type' => 'str'
+			 ),
+			 array(
+				 'attr' => 'img',
+				 'type' => 'url',
+                 'req' => false
+			 )
+		 ),
+		uri_cl_shortcode_get_template( 'quote' )
+	);
+
+}
+add_shortcode( 'cl-quote', 'uri_cl_shortcode_quote' );
+
+
+/**
  * Social
  */
 function uri_cl_shortcode_social( $atts, $content = null ) {
