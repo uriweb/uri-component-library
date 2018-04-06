@@ -129,7 +129,9 @@ var CLResizeSuperheros;
 
 				vh = window.innerHeight;
 				vw = window.innerWidth;
-				p = H[i].offset / vh;
+				p = Math.max( H[i].offset / vh, 0 );
+                
+                console.log(p);
 
 				if ( ( vh < vw * 0.75 && vh * 0.9 < 600 ) || ( p > 0.3 ) ) {
 					H[i].el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
