@@ -160,14 +160,10 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 function uri_cl_validate_url( $url ) {
 	$valid = false;
 	$status = 'warning';
-    
-    /**
-     * @todo better URL validation
-     *
-     * Add a default protocol (if needed) for validation purposes only,
-     * but let's not pass the sanitized url back to the shortcode.
-     */
-    $testurl = 0 === strpos($url, '//') ? 'https:' . $url : $url;
+
+	// @todo more robust URL validation.
+	// Add a default protocol (if needed) for validation purposes only.
+	$testurl = 0 === strpos( $url, '//' ) ? 'https:' . $url : $url;
 	$testurl = $testurl = filter_var( $testurl, FILTER_SANITIZE_URL );
 
 	if ( filter_var( $testurl, FILTER_VALIDATE_URL ) ) {
