@@ -553,7 +553,6 @@ function uri_cl_shortcode_tab( $atts, $content = null ) {
 		shortcode_atts(
 		array(
 			'title' => '',
-			'body' => '',
 			'id' => '',
 			'class' => '',
 			'css' => '',
