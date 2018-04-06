@@ -152,7 +152,7 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 
 
 /**
- * Validate urls, return the sanatized value and metadata
+ * Validate urls, return the value and metadata
  *
  * @param str $url the url to validate.
  * @return arr the validation metadata.
@@ -160,9 +160,17 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 function uri_cl_validate_url( $url ) {
 	$valid = false;
 	$status = 'warning';
-	$url = $url = filter_var( $url, FILTER_SANITIZE_URL );
+    
+    /**
+     * @todo better URL validation
+     *
+     * Add a default protocol (if needed) for validation purposes only,
+     * but let's not pass the sanitized url back to the shortcode.
+     */
+    $testurl = 0 === strpos($url, '//') ? 'https:' . $url : $url;
+	$testurl = $testurl = filter_var( $testurl, FILTER_SANITIZE_URL );
 
-	if ( filter_var( $url, FILTER_VALIDATE_URL ) ) {
+	if ( filter_var( $testurl, FILTER_VALIDATE_URL ) ) {
 		$valid = true;
 		$status = 'normal';
 	}
