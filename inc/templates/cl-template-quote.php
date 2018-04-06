@@ -16,7 +16,7 @@ if ( ! empty( $css ) ) {
 $output .= '>';
 
 if ( ! empty( $img ) ) {
-	$output .= '<div class="cl-quote-image" style="background-image:url(' . $img . ')"></div>';
+	$output .= '<div class="cl-quote-image" style="background-image:url(' . $img . ')" title="' . $alt . '"></div>';
 }
 
 $output .= '<blockquote>' . $quote . '</blockquote>';
