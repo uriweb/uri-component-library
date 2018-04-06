@@ -434,19 +434,19 @@ function uri_cl_shortcode_quote( $atts, $content = null ) {
 	// Error checking
 	return uri_cl_validate(
 		 'Quote', $atts, $content, array(
-             array(
+			 array(
 				 'attr' => 'quote',
-				 'type' => 'str'
+				 'type' => 'str',
 			 ),
-             array(
+			 array(
 				 'attr' => 'citation',
-				 'type' => 'str'
+				 'type' => 'str',
 			 ),
 			 array(
 				 'attr' => 'img',
 				 'type' => 'url',
-                 'req' => false
-			 )
+				 'req' => false,
+			 ),
 		 ),
 		uri_cl_shortcode_get_template( 'quote' )
 	);

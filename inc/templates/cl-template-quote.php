@@ -3,7 +3,7 @@
 $classes = 'cl-quote';
 
 if ( ! empty( $class ) ) {
-    $classes .= ' ' . $class;
+	$classes .= ' ' . $class;
 }
 
 $output = '<section class="cl-wrapper cl-quote-wrapper">';
