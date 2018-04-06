@@ -2,20 +2,15 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 2.2.1
+## What's new in 2.3.0
 
-CL 2.2.1 is a bug fix release focused on meeting WordPress coding standards.
+* Adds a quote component
+* The tab component is now an enclosing shortcode
+  - **This is a breaking change.**  To remedy, move any content in the `[cl-tab]` `body` attribute to between the opening and closing `[cl-tab]` tags (see [#69](https://github.com/uriweb/uri-component-library/pull/69)).
+* Fixes an issue that may cause superheros to not size properly when the page is reloaded
+* Fixes an issue with validating urls that omit the url protocol
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/62/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 2.2.0
-
-* Includes big improvements for superheros
-* Adds better handling of long metrics
-* Fixes an issue in menus that caused the default menu to be the first WordPress menu created, not necessarily the primary menu
-* Other minor fixes
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/58/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/70/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
@@ -29,4 +24,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 2.2.1  
+Stable tag: 2.3.0  
