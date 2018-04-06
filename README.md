@@ -6,7 +6,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 * Adds a quote component
 * The tab component is now an enclosing shortcode
-  - **This is a breaking change.**  To remedy, move any content in the `[cl-tab]` `body` attribute to between the opening and closing `[cl-tab]` tags.
+  - **This is a breaking change.**  To remedy, move any content in the `[cl-tab]` `body` attribute to between the opening and closing `[cl-tab]` tags (see [#69](https://github.com/uriweb/uri-component-library/pull/69)).
 * Fixes an issue that may cause superheros to not size properly when the page is reloaded
 * Fixes an issue with validating urls that omit the url protocol
 
