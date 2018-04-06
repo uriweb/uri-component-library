@@ -121,9 +121,9 @@ var CLResizeSuperheros;
 
 			var vh, vw, s, p;
 
-            vh = window.innerHeight;
-            vw = window.innerWidth;
-            s = window.pageYOffset;
+			vh = window.innerHeight;
+			vw = window.innerWidth;
+			s = window.pageYOffset;
 
 			for ( i = 0; i < n; i++ ) {
 
@@ -133,20 +133,20 @@ var CLResizeSuperheros;
 
 				p = ( H[i].offset + s ) / vh;
 
-                /**
-                 * IF the browser aspect ratio is at least 4:3 and the browser is less than 675px high
-                 * OR the top of the hero is greater than 30% from the top of the page
-                 * THEN set the hero height to 90% of the browser height or 500px, whichever is greater
-                 */
+				/**
+				 * IF the browser aspect ratio is at least 4:3 and the browser is less than 675px high
+				 * OR the top of the hero is greater than 30% from the top of the page
+				 * THEN set the hero height to 90% of the browser height or 500px, whichever is greater
+				 */
 				if ( ( vh < vw * 0.75 && vh < 675 ) || ( p > 0.3 ) ) {
 					H[i].el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
 					H[i].prompt.style.display = 'none';
 				} else {
 
-                    /**
-                     * ELSE set the hero height to 98% of the browser height,
-                     * less the distance between the top of the page and the top of the hero
-                     */
+					/**
+					 * ELSE set the hero height to 98% of the browser height,
+					 * less the distance between the top of the page and the top of the hero
+					 */
 					H[i].el.style.height = 98 - p * 100 + 'vh';
 
 					if ( H[i].offset < vh ) {
@@ -161,13 +161,13 @@ var CLResizeSuperheros;
 
 		};
 
-        // Trigger scroll event to refresh pageYOffset value on page reload (otherwise it'll be 0).
-        window.dispatchEvent( new Event( 'scroll' ) );
+		// Trigger scroll event to refresh pageYOffset value on page reload (otherwise it'll be 0).
+		window.dispatchEvent( new Event( 'scroll' ) );
 
-        // Resize the superheros.
+		// Resize the superheros.
 		CLResizeSuperheros( false );
 
-        // Listen for any browser resizing.
+		// Listen for any browser resizing.
 		window.addEventListener( 'resize', CLResizeSuperheros.bind( null, false ), false );
 
 	}
