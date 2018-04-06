@@ -29,4 +29,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 2.2.1  
+Stable tag: 2.3.0  
