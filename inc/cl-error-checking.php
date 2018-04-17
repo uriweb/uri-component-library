@@ -127,18 +127,18 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
  * @return str $output the error message html.
  */
 function uri_cl_return_error( $cname, $fatal, $errors ) {
-    $ne = count( $errors );
-    $plural = 1 == $ne ? '' : 's';
-    $classes = 'cl-errors';
+	$ne = count( $errors );
+	$plural = 1 == $ne ? '' : 's';
+	$classes = 'cl-errors';
 	$output = '<div class="';
 
 	if ( $fatal ) {
-        $classes .= ' cl-errors-shortcode-failure';
-        $output .= $classes . '">';
+		$classes .= ' cl-errors-shortcode-failure';
+		$output .= $classes . '">';
 		$output .= '<div class="cl-error-message">' . $cname . ' shortcode could not load.</div>';
 	} else {
-        $classes .= ' cl-errors-shortcode-success';
-        $output .= $classes . '">';
+		$classes .= ' cl-errors-shortcode-success';
+		$output .= $classes . '">';
 		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $ne . ' warning' . $syntax . '.</div>';
 	}
 
@@ -146,7 +146,7 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 
 	foreach ( $errors as $e ) {
 		$output .= '<li class="cl-error-' . $e['status'] . '">';
-        $output .= '<span class="cl-error-icon">' . $e['status'] . '</span>'; 
+		$output .= '<span class="cl-error-icon">' . $e['status'] . '</span>';
 		$output .= '<span class="cl-error-name">' . $e['attr'] . '</span>';
 		$output .= '<span class="cl-error-message">' . $e['message'] . '</span>';
 		$output .= '</li>';
