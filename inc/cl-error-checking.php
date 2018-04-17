@@ -127,6 +127,8 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
  * @return str $output the error message html.
  */
 function uri_cl_return_error( $cname, $fatal, $errors ) {
+    $ne = count( $errors );
+    $plural = 1 == $ne ? '' : 's';
     $classes = 'cl-errors';
 	$output = '<div class="';
 
@@ -137,9 +139,7 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 	} else {
         $classes .= ' cl-errors-shortcode-success';
         $output .= $classes . '">';
-		$ne = count( $errors );
-		$syntax = 1 == $ne ? 'warning' : 'warnings';
-		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $ne . ' ' . $syntax . '.</div>';
+		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $ne . ' warning' . $syntax . '.</div>';
 	}
 
 	$output .= '<ul>';

@@ -35,17 +35,29 @@
         
     }
     
+    &.cl-errors-collapsed ul {
+        display: none;
+    }
+    
     * {
         box-sizing: border-box;
     }
     
     div.cl-error-message {
+        
         font-weight: 600;
         color: #555;
         padding: .8rem .5rem;
         border-radius: .2rem .2rem 0 0;
         border-bottom: 1px solid #c0d3eb;
         background: #f1f8ff;
+        
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            color: #0b1c79;
+        }
+        
     }
     
     ul {
@@ -56,22 +68,19 @@
     
     li {
         position: relative;
-        width: calc( 100% - 28px );
-        max-width: calc( 100% - 28px );
-        margin: .5rem 0 0 28px;
-        padding: .2rem .5rem;
-        border-radius: .2rem;
+        width: calc( 100% - 10px );
+        max-width: calc( 100% - 10px );
+        margin: .5rem 0 0 10px;
+        padding: .2rem .5rem .2rem 1.8rem;
         color: #333;
     }
     
     li.cl-error-warning {
-        background: #fff3be;
-        border: 1px solid #ffe159;
+        background: #ffeccf;
     }
     
     li.cl-error-fatal {
         background: #ffdada;
-        border: 1px solid #ffb6b6;
     }
     
     li.cl-error-warning:before,
@@ -79,23 +88,18 @@
         display: block;
         content: '';
         position: absolute;
-        top: 7px;
-        left: -7px;
-        width: 12px;
-        height: 12px;
-        transform: rotate(45deg);
+        top: 0;
+        left: -10px;
+        width: 7px;
+        height: 100%;
     }
     
     li.cl-error-warning:before {
-        background: #fff3be;
-        border-left: 1px solid #ffe159;
-        border-bottom: 1px solid #ffe159;
+        background: #FF9F10;
     }
     
     li.cl-error-fatal:before {
-        background: #ffdada;
-        border-left: 1px solid #ffb6b6;
-        border-bottom: 1px solid #ffb6b6;
+        background: #C01C1C;
     }
     
     li span.cl-error-icon {
@@ -103,7 +107,7 @@
         content: '';
         position: absolute;
         top: 5px;
-        left: -28px;
+        left: 5px;
         width: 0;
         height: 16px;
         padding-left: 16px;
