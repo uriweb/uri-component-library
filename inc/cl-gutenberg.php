@@ -14,7 +14,6 @@
  */
 function uri_cl_gutenberg_is_active() {
 
-	// @todo: remove this hack to get the CL styles in the editor.
 	wp_enqueue_style(
 		'cl-styles',
 		URI_CL_PATH . '/css/cl.built.css',
