@@ -16,6 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+define( 'URI_CL_PATH', plugin_dir_path( __FILE__ ) );
+define( 'URI_CL_URL', str_replace('/js', '/', plugins_url( 'js', __FILE__ ) ) );
+
+
 /**
  * Include css and js
  */
@@ -31,9 +35,13 @@ function uri_cl_enqueues() {
 add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 
 // Include shortcodes
-include( plugin_dir_path( __FILE__ ) . 'inc/cl-shortcodes.php' );
+include( URI_CL_PATH . 'inc/cl-shortcodes.php' );
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
+
+// Include gutenberg
+include( URI_CL_PATH . 'inc/cl-gutenberg.php' );
+
