@@ -211,6 +211,7 @@
 							inline: false,
 							placeholder: i18n.__( 'Link' ),
 							value: attributes.link,
+							formattingControls: [],
 							onChange: function( newLink ) {
 								props.setAttributes( { link: newLink } );
 							},
@@ -227,6 +228,7 @@
 							inline: false,
 							placeholder: i18n.__( 'Explore' ),
 							value: attributes.button,
+							formattingControls: [],
 							onChange: function( newval ) {
 								props.setAttributes( { button: newval } );
 							},
