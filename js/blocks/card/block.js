@@ -31,7 +31,7 @@
 	function renderCard( args ) {
 		buildCardShortCode( args );
 		if(args.link) {
-			return el( 'a', { className: 'cl-card', href: args.link }, 
+			return el( 'a', { className: 'cl-card ' + args.className , href: args.link }, 
 				el( 'img', { src: args.img, alt: args.alt, 'data-id': args.mediaID } ),
 				el( 'div', { className: 'cl-card-text' }, 
 					el( 'h3', {}, args.title ),
@@ -74,6 +74,9 @@
 		}
 		if(args.button) {
 			shortcode += ' button="' + args.button + '"';
+		}
+		if(args.className) {
+			shortcode += ' class="' + args.className + '"';
 		}
 		if(args.floatie) {
 			shortcode += ' floatie="' + args.floatie + '"';
