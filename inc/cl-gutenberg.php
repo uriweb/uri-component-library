@@ -29,6 +29,9 @@ function uri_cl_gutenberg_is_active() {
 
 	// Cards
 	_uri_cl_load_block( 'card' );
+
+	// Buh-ins
+	_uri_cl_load_block( 'button' );
 	
 }
 add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );

@@ -12,10 +12,10 @@
 	 */
 	function shortcodeEditorPreview( args ) {
 			
-		var shortcode = buildCardShortCode( args );
+		var shortcode = buildShortCode( args );
 	
 		if(args.link) {
-			return renderCard( args );
+			return renderHTML( args );
 		} else {
 			return el( 'div', { className: 'uri-gutenberg-shortcode-card' }, 
 				el( 'p', {}, 'Cards must have a value for the Link field.' ),
@@ -26,11 +26,11 @@
 	}
 
 	/**
-	 * Render the HTML for a card
+	 * Render the HTML
 	 */
-	function renderCard( args ) {
+	function renderHTML( args ) {
 		var classes;
-		buildCardShortCode( args );
+		buildShortCode( args );
 		if(args.link) {
 			classes = ['cl-card', args.className, args.alignment].join(' '); 
 			return el( 'a', { className: classes , href: args.link }, 
@@ -45,9 +45,9 @@
 	}
 
 	/**
-	 * Render the HTML for a card
+	 * Render the shortcode
 	 */
-	function buildCardShortCode( args ) {		
+	function buildShortCode( args ) {		
 //		var attributes = Object.keys(args).map(e => (`${e}="${args[e]}"`));
 //		var as = attributes.join(' ');
 //		return '[cl-card ' + as + ']';
@@ -288,7 +288,7 @@
 		 */
 		save: function( props ) {
 			
-			return buildCardShortCode( props.attributes );
+			return buildShortCode( props.attributes );
 
 		}
 
