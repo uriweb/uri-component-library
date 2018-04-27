@@ -29,9 +29,11 @@
 	 * Render the HTML for a card
 	 */
 	function renderCard( args ) {
+		var classes;
 		buildCardShortCode( args );
 		if(args.link) {
-			return el( 'a', { className: 'cl-card ' + args.className , href: args.link }, 
+			classes = ['cl-card', args.className, args.alignment].join(' '); 
+			return el( 'a', { className: classes , href: args.link }, 
 				el( 'img', { src: args.img, alt: args.alt, 'data-id': args.mediaID } ),
 				el( 'div', { className: 'cl-card-text' }, 
 					el( 'h3', {}, args.title ),
