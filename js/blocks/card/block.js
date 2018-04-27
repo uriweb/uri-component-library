@@ -78,8 +78,8 @@
 		if(args.className) {
 			shortcode += ' class="' + args.className + '"';
 		}
-		if(args.floatie) {
-			shortcode += ' floatie="' + args.floatie + '"';
+		if(args.alignment == 'left' || args.alignment == 'right' ) {
+			shortcode += ' float="' + args.alignment + '"';
 		}
 				
 		shortcode += ']';
@@ -121,7 +121,7 @@
 			button: {
 				type: 'string',
 			},
-			floatie: {
+			alignment: {
 				type: 'string',
 			}
 		},
@@ -144,6 +144,13 @@
 				} );
 			};
 
+			var onChangeBlockAlignment = ( alignment ) => {
+				// possible values: left, right, center
+				props.setAttributes( {
+					'alignment': alignment
+				} );
+			};
+
 			/**
 			 * Builds the form in the block editor
 			 */
@@ -151,6 +158,18 @@
 
 				return el( 'a', { className: 'cl-card has-focus', href: '#' }, 
 
+					el(
+						blocks.BlockControls,
+						{ key: 'controls' },
+						el(
+							blocks.BlockAlignmentToolbar,
+							{
+								value: attributes.alignment,
+								onChange: onChangeBlockAlignment
+							}
+						)
+					),
+            
  					el( 'div', { className: props.className },
  						el( 'img', {
  							className: attributes.img ? 'uri-gutenberg-image image-active' : 'uri-gutenberg-image image-inactive',
