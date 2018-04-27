@@ -114,7 +114,7 @@
 				return el( 'div', { className: props.className + ' cl-button-form' },
 
 						el( 'label', { className:''}, i18n.__( 'Link' ) ),
-						el( blocks.RichText, {
+						el( blocks.UrlInput, {
 							tagName: 'div',
 							inline: false,
 							value: attributes.link,
@@ -131,7 +131,7 @@
 							placeholder: 'Link',
 						}),
 
-						el( 'label', { className:''}, i18n.__( 'Text' ) ),
+						el( 'label', { className:''}, i18n.__( 'Button Text' ) ),
 						el( blocks.RichText, {
 							tagName: 'div',
 							className: 'field',
@@ -165,8 +165,22 @@
 							},
 						}),
 
-						 
-						 
+						el( 'label', { className:''}, i18n.__( 'Style' ) ),
+						el( blocks.RichText, {
+							tagName: 'div',
+							className: 'field',
+							inline: false,
+							value: attributes.style,
+							formattingControls: [],
+							onChange: function( newVal ) {
+								props.setAttributes( { style: newVal } );
+							},
+							focus: focusedEditable === 'style' ? focus : null,
+							onFocus: function( focus ) {
+								props.setFocus( _.extend( {}, focus, { editable: 'style' } ) );
+							},
+						}),						 
+						el( 'p', { className:'description'}, 'Style can be blank, prominent, or disabled' ),
 					);
 					
 			}

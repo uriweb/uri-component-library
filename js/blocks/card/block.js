@@ -229,7 +229,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Link' ) ),
-						el( blocks.RichText, {
+						el( blocks.UrlInput, {
 							tagName: 'p',
 							className: '',
 							inline: false,
