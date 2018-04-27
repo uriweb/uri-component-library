@@ -169,7 +169,7 @@
     
 } // .cl-menu
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $break1) {
     .cl-menu {
         
         & {
