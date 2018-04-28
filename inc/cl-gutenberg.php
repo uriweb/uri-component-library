@@ -16,7 +16,7 @@ function uri_cl_gutenberg_is_active() {
 
 	wp_enqueue_style(
 		'cl-styles',
-		URI_CL_PATH . '/css/cl.built.css',
+		URI_CL_URL . '/css/cl.built.css',
 		array( 'wp-edit-blocks')
 	);
 	

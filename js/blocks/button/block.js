@@ -17,8 +17,8 @@
 		if(args.link) {
 			return renderHTML( args );
 		} else {
-			return el( 'div', { className: 'uri-gutenberg-shortcode-card' }, 
-				el( 'p', {}, 'Cards must have a value for the Link field.' ),
+			return el( 'div', { className: 'uri-gutenberg-shortcode-button' }, 
+				el( 'p', {}, 'Buttons must have a value for the Link field.' ),
 				shortcode
 			);
 		}
@@ -32,7 +32,7 @@
 		var classes;
 		buildShortCode( args );
 		if(args.link) {
-			classes = ['cl-button', args.className, args.style].join(' '); 
+			classes = [ 'cl-button', args.className, args.style ].join(' '); 
 			return el( 'a', { className: classes , href: args.link, title: args.tooltip }, args.text );
 		}
 	}
@@ -41,16 +41,12 @@
 	 * Assemble the shortcode
 	 */
 	function buildShortCode( args ) {		
-//		var attributes = Object.keys(args).map(e => (`${e}="${args[e]}"`));
-//		var as = attributes.join(' ');
-//		return '[cl-card ' + as + ']';
-
 		// unfortunately, Gutenberg cares a lot about the order in which attributes appear, 
 		// so this process is best done manually.
-
+		
 		var shortcode = '[cl-button ';
 		if(args.link) {
-			shortcode += ' link="' + args.title + '"';
+			shortcode += ' link="' + args.link + '"';
 		}
 		if(args.text) {
 			shortcode += ' text="' + args.text + '"';
@@ -93,7 +89,7 @@
 				type: 'string',
 			},
 			style: {
-				type: 'number',
+				type: 'string',
 			},
 		},
 
