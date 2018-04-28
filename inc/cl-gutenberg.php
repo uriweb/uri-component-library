@@ -50,7 +50,9 @@ function _uri_cl_load_block( $name ) {
 			URI_CL_URL . '/js/blocks/' . $name . '/block.js',
 			array( 'wp-blocks', 'wp-element', 'wp-i18n' ),
 			filemtime( URI_CL_PATH . '/js/blocks/' . $name . '/block.js' ) // cache buster
-		);		
+		);
+		wp_localize_script( 'uri-gutenberg-script-' . $name, 'URI_CL_URL', URI_CL_URL );
+	
 	}
 
 	if ( file_exists( URI_CL_PATH . '/js/blocks/' . $name . '/block.js' ) ) {

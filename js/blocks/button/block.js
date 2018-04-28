@@ -3,9 +3,13 @@
 
 	var el = element.createElement;
 	
-	var customIcon = el('svg', { width: 20, height: 20, className: "dashicon" },
-		el('path', { d: "M2,8 L2,16 L16,16 L16,8 L2,8 Z M2,7 L16,7 L16,2 L2,2 L2,7 Z M18,1 L18,17 C18,17 18,18 18,18 C18,18 17,18 17,18 L1,18 C1,18 0,18 0,18 C0,18 0,17 0,17 L0,1 C0,1 0,0 0,0 C0,0 1,0 1,0 L17,0 C17,0 18,0 18,0 C18,0 18,1 18,1 Z M15,15 L3,15 L3,12 L15,12 L15,15 Z" } )
-	);
+	var customIcon = el('img', {
+		width: 20,
+		height: 20,
+		className: "dashicon",
+		src: URI_CL_URL + 'i/button.png',
+		alt: 'button'
+	});
 
 	/**
 	 * The preview that renders in the block editor
@@ -75,8 +79,9 @@
 	// This way, we keep things neatly based upon shortcodes, and we lose no data.
 	blocks.registerBlockType( 'uri-gutenberg/button', {
 		title: i18n.__('Button'),
+		description: i18n.__( 'Great for a call to action.' ),
 		icon: 'carrot',
-		//icon: customIcon,
+		icon: customIcon,
 		category: 'widgets',
 		attributes: {
 			link: {

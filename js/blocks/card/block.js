@@ -98,7 +98,7 @@
 	// This way, we keep things neatly based upon shortcodes, and we lose no data.
 	blocks.registerBlockType( 'uri-gutenberg/card', {
 		title: i18n.__('Card'),
-		//icon: 'carrot',
+		description: i18n.__( 'A step up from a button, a link with an image and description.' ),
 		icon: customIcon,
 		category: 'widgets',
 		attributes: {
@@ -183,7 +183,7 @@
  							value: attributes.mediaID,
  							render: function( obj ) {
 								return el( components.Button, {
-										className: attributes.mediaID ? 'image-button' : 'button button-large select-image',
+										className: attributes.mediaID ? 'button button-large image-button' : 'button button-large image-button add-image',
 										onClick: obj.open
 									},
 									! attributes.mediaID ? i18n.__( 'Add Image' ) : i18n.__( 'Replace Image' )
