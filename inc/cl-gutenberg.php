@@ -32,6 +32,9 @@ function uri_cl_gutenberg_is_active() {
 
 	// Buh-ins
 	_uri_cl_load_block( 'button' );
+
+	// Boxouts
+	_uri_cl_load_block( 'boxout' );
 	
 }
 add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
