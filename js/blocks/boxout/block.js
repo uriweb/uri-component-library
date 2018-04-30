@@ -25,12 +25,14 @@
 	 */
 	function renderHTML( args ) {
 		var classes;
-		buildShortCode( args );
-			classes = [ 'cl-' + componentName, args.className, args.alignment ].join(' '); 
-			return el( 'div', { className: classes }, 
-				el( 'h1', {  }, args.title ), 
-				args.body
-			);
+			
+		classes = [ 'cl-' + componentName, args.className, args.alignment ].join(' '); 
+		return el( 'div', { className: classes }, 
+			el( 'h1', {  }, args.title ), 
+			//el( 'pre', {  }, buildShortCode( args ) ), 
+			args.body
+			//toRichTextValue( args.body )
+		);
 	}
 
 	/**
@@ -51,10 +53,25 @@
 			shortcode += ' class="' + args.className + '"';
 		}
 				
-		shortcode += ']' + args.body + '[/cl-' + componentName + ']';
-		
+		shortcode += ']' + toRichTextValue( args.body ) + '[/cl-' + componentName + ']';
+
 		return shortcode;
 		
+	}
+
+	function toRichTextValue( v ) {
+
+// 		var ele = wp.element.createElement( wp.blocks.RichText.Content, {
+//     	tagName: 'p',
+//     	value: v
+//     } );
+
+		var a = v.map( function callback( subValue ) {
+			return subValue;
+			return element.renderToString(subValue);
+		});
+
+		return a.join(' ');
 	}
 
 	
@@ -73,7 +90,7 @@
 				type: 'string',
 			},
 			body: {
-				type: 'string',
+				type: 'array',
 			},
 			alignment: {
 				type: 'string',
@@ -137,6 +154,7 @@
 					el( blocks.RichText, {
 						tagName: 'p',
 						inline: true,
+						multiline: 'p',
 						value: attributes.body,
 						onChange: function( newBody ) {
 							props.setAttributes( { body: newBody } );
@@ -169,6 +187,17 @@
 		 * Just the shortcode gets the work done.
 		 */
 		save: function( props ) {
+		
+// 			console.log('before');
+// 			console.log(props.attributes.body);
+// 		
+// 			props.attributes.body = wp.element.createElement( wp.blocks.RichText.Content, {
+// 				tagName: 'p',
+// 				value: props.attributes.body
+// 			});
+// 
+// 			console.log('after');
+// 			console.log(props.attributes.body);
 			
 			return buildShortCode( props.attributes );
 
