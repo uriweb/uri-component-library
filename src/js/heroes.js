@@ -10,9 +10,9 @@ var CLResizeSuperheroes;
 
 	'use strict';
 
-	window.addEventListener( 'load', initCLHeros, false );
+	window.addEventListener( 'load', initCLHeroes, false );
 
-	function initCLHeros() {
+	function initCLHeroes() {
 		animate();
 		blurHeroControl();
 		mobile();
