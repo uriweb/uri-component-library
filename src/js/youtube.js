@@ -26,15 +26,15 @@ function onYouTubePlayerAPIReady() {
 
 		var requireYouTube = false,
 			heroSupport = checkSupport(),
-			heros = document.querySelectorAll( '.cl-hero .poster' ),
+			heroes = document.querySelectorAll( '.cl-hero .poster' ),
 			vids = document.querySelectorAll( '.cl-video img' ),
 			el, key, parent, i, start, end, placeholder, aspect;
 
 		if ( heroSupport ) {
 
-			for ( i = 0; i < heros.length; i++ ) {
+			for ( i = 0; i < heroes.length; i++ ) {
 
-				el = heros[i];
+				el = heroes[i];
 				key = el.getAttribute( 'id' );
 				parent = el.parentNode;
 				start = el.getAttribute( 'data-start' );

@@ -4,7 +4,7 @@
  * @package uri-component-library
  */
 
-var CLResizeSuperheros;
+var CLResizeSuperheroes;
 
 ( function() {
 
@@ -20,17 +20,17 @@ var CLResizeSuperheros;
 	}
 
 	/*
-	 * Animation control for animated image heros
+	 * Animation control for animated image heroes
 	 */
 	function animate() {
 
-		var heros, i;
+		var heroes, i;
 
-		heros = document.querySelectorAll( '.cl-hero .animate.shift' );
+		heroes = document.querySelectorAll( '.cl-hero .animate.shift' );
 
-		for ( i = 0; i < heros.length; i++ ) {
-			heros[i].style.backgroundPositionX = '100%';
-			heros[i].style.backgroundPositionY = 0;
+		for ( i = 0; i < heroes.length; i++ ) {
+			heroes[i].style.backgroundPositionX = '100%';
+			heroes[i].style.backgroundPositionY = 0;
 		}
 
 	}
@@ -106,7 +106,7 @@ var CLResizeSuperheros;
 			div.innerHTML = 'Scroll down';
 			els[i].appendChild( div );
 
-			// Save a list of superheros, their initial offsets, and prompter divs
+			// Save a list of superheroes, their initial offsets, and prompter divs
 			H.push(
 				{
 					el: els[i],
@@ -117,7 +117,7 @@ var CLResizeSuperheros;
 
 		}
 
-		CLResizeSuperheros = function( getOffset ) {
+		CLResizeSuperheroes = function( getOffset ) {
 
 			var vh, vw, s, p;
 
@@ -164,11 +164,11 @@ var CLResizeSuperheros;
 		// Trigger scroll event to refresh pageYOffset value on page reload (otherwise it'll be 0).
 		window.dispatchEvent( new Event( 'scroll' ) );
 
-		// Resize the superheros.
-		CLResizeSuperheros( false );
+		// Resize the superheroes.
+		CLResizeSuperheroes( false );
 
 		// Listen for any browser resizing.
-		window.addEventListener( 'resize', CLResizeSuperheros.bind( null, false ), false );
+		window.addEventListener( 'resize', CLResizeSuperheroes.bind( null, false ), false );
 
 	}
 
