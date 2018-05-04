@@ -151,6 +151,13 @@ $cards: ".cl-card, .cl-dcard, .cl-scard";
     width: 100%;
 }
 
+.cl-scard-body,
+.cl-scard-body:hover,
+.cl-scard-body:focus,
+.cl-scard-body:active {
+    color: inherit;
+}
+
 .cl-scard-date {
     margin-bottom: 1rem;
     font-size: .9rem;

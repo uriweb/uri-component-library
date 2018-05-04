@@ -36,13 +36,15 @@ $post_cat_classname = 'cl-scard-category-' . strtolower( str_replace( ' ', '-', 
 
 $output .= '<a class="cl-scard-category ' . $post_cat_classname . '" href="' . get_category_link ( $post_cat_id[0] ) . '">' . $post_cat_name[0] . '</a>';
 
-$output .= '<a href="' . $post_link . '">';
+$output .= '<a class="cl-scard-body" href="' . $post_link . '">';
 $output .= '<h3 class="cl-scard-title">' . get_the_title( $post ) . '</h3>';
-$output .= '</a>';
 
 $output .= '<p class="cl-scard-exerpt">' . get_the_excerpt( $post ) . '</p>';
 
 $output .= '<div class="cl-scard-date">' . get_the_date( 'F j, Y', $post ) . '</div>';
+
+$output .= '</a>';
+
 
 $output .= '</div>';
 
