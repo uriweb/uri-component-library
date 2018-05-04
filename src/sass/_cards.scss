@@ -1,11 +1,12 @@
 /* ======= CARDS ======= */
 
-.cl-card *, .cl-dcard * {
+$cards: ".cl-card, .cl-dcard, .cl-scard";
+
+#{$cards} * {
     box-sizing: border-box;
 }
 
-.cl-card,
-.cl-dcard {
+#{$cards} {
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -22,8 +23,7 @@
 }
 
 @media screen and (min-width: $break1) {
-    .cl-card,
-    .cl-dcard {
+    #{$cards} {
         &.left {
             float: left;
             margin: 0 2rem 2rem 0;
@@ -61,21 +61,24 @@
 }
 
 .cl-card .cl-card-text,
-.cl-tiles .cl-card .cl-card-text {
+.cl-tiles .cl-card .cl-card-text,
+.cl-scard .cl-scard-text,
+.cl-tiles .cl-scard .cl-scard-text {
     padding: 1.5rem 1.2rem 0;
 }
 
 .cl-card p,
-.cl-tiles .cl-card p {
+.cl-tiles .cl-card p,
+.cl-scard p,
+.cl-tiles .cl-scard p {
     font-size: 1rem;
     margin-bottom: 2rem;
 }
 
-
-/* Action Cards */
-
 .cl-card img,
-.cl-tiles .cl-card img {
+.cl-tiles .cl-card img
+.cl-scard img,
+.cl-tiles .cl-scard img {
     width: 100%;
     height: auto;
     margin: 0;
@@ -109,6 +112,53 @@
     font-size: .9rem;
     margin-bottom: 1.2rem;
 }
+
+
+/* Story Cards */
+
+.cl-scard {
+    border-radius: .2rem .2rem 0 0;
+    box-shadow: none;
+    border: 1px solid #eee;
+}
+
+.cl-scard img {
+    border-radius: .2rem .2rem 0 0;
+}
+
+.cl-scard-category {
+    display: inline-block;
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+}
+
+.cl-scard-category:after {
+    display: block;
+    content: '';
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 1.5rem;
+    height: .5rem;
+    border-bottom: 1px solid #ddd;
+    transition: width .2s ease-in-out;
+}
+
+.cl-scard-category:hover:after,
+.cl-scard-category:focus:after {
+    width: 100%;
+}
+
+.cl-scard-date {
+    margin-bottom: 1rem;
+    font-size: .9rem;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
 
 /* Buttons */
 

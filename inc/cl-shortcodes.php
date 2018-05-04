@@ -199,6 +199,34 @@ add_shortcode( 'cl-dcard', 'uri_cl_shortcode_dcard' );
 
 
 /**
+ * Story Card
+ */
+function uri_cl_shortcode_scard( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'post' => ''
+		), $atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Story Card', $atts, $content, array(
+			 array(
+				 'attr' => 'post',
+				 'type' => 'num',
+                 'req'  => false
+			 )
+		 ),
+		uri_cl_shortcode_get_template( 'scard' )
+	);
+
+}
+add_shortcode( 'cl-scard', 'uri_cl_shortcode_scard' );
+
+
+/**
  * Hero
  */
 function uri_cl_shortcode_hero( $atts, $content = null ) {
