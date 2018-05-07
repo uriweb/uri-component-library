@@ -207,6 +207,17 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			'post' => '',
+			'link' => '',
+			'showcat' => true,
+			'cat' => '',
+			'catlink' => '',
+			'img' => '',
+			'title' => '',
+			'excerpt' => '',
+			'showsocial' => true,
+			'showdate' => true,
+			'class' => '',
+			'css' => '',
 		), $atts
 		);
 
@@ -216,7 +227,36 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 			 array(
 				 'attr' => 'post',
 				 'type' => 'num',
-				 'req'  => false,
+			 ),
+			 array(
+				 'attr' => 'link',
+				 'type' => 'url',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'showcat',
+				 'type' => 'bool',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'catlink',
+				 'type' => 'url',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'img',
+				 'type' => 'url',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'showsocial',
+				 'type' => 'bool',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'showdate',
+				 'type' => 'bool',
+				 'req' => false,
 			 ),
 		 ),
 		uri_cl_shortcode_get_template( 'scard' )
