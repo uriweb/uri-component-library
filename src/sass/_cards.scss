@@ -217,13 +217,10 @@ $adcards: ".cl-card, .cl-dcard";
             clear: both;
         }
         
-        span {
-            line-height: 1rem;
-        }
-        
     }
     
     .cl-scard-date {
+        line-height: 20px;
         float: left;
     }
     
