@@ -157,7 +157,56 @@ $adcards: ".cl-card, .cl-dcard";
     img {
         border-radius: .2rem .2rem 0 0;
     }
-
+    
+    .cl-scard-img-container {
+        position: relative;
+        display: block;
+    }
+    
+    .cl-scard-img-overlay {
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: .2rem .2rem 0 0;
+        background: rgba(0,0,0,.5);
+        opacity: 0;
+        transition: all .2s ease-in-out;
+        text-align: center;
+        
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
+        
+        span {
+            display: inline-block;
+            position: relative;
+            font-size: 1rem;
+            top: calc( 50% - .5rem );
+            left: -.5rem;
+            padding-left: 1.5rem;
+            color: #fff;
+        }
+        
+        span:before {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            background-image: url(../i/read.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: auto 100%;
+        }
+        
+    }
+    
     .cl-scard-category {
         display: inline-block;
         color: #555;
@@ -205,7 +254,7 @@ $adcards: ".cl-card, .cl-dcard";
 
     .cl-scard-meta {
         
-        margin-bottom: .7rem;
+        margin-bottom: .9rem;
         font-size: .9rem;
         color: #999;
         border-top: 1px solid #eee;
@@ -228,4 +277,12 @@ $adcards: ".cl-card, .cl-dcard";
         float: right;
     }
     
+}
+
+@supports ( (backdrop-filter: initial) or (-webkit-backdrop-filter: initial) ) {
+    .cl-scard .cl-scard-img-overlay {
+        background: rgba(0,0,0,.1);
+        -webkit-backdrop-filter: blur(30px) saturate(300%);
+        backdrop-filter: blur(30px) saturate(300%);
+    }
 }

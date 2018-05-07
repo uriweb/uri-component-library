@@ -23,8 +23,9 @@ $post_thumbnail = get_the_post_thumbnail( $post );
 
 // Thumbnail
 if ( $post_thumbnail ) {
-	$output .= '<a href="' . $post_link . '">';
+	$output .= '<a class="cl-scard-img-container" href="' . $post_link . '">';
 	$output .= $post_thumbnail;
+    $output .= '<div class="cl-scard-img-overlay"><span>Read</span></div>';
 	$output .= '</a>';
 }
 
@@ -36,7 +37,7 @@ $post_cat_name = wp_get_post_categories( $post, array( 'fields' => 'names' ) );
 $post_cat_classname = 'cl-scard-category-' . strtolower( str_replace( ' ', '-', $post_cat_name[0] ) );
 
 // Category
-$output .= '<a class="cl-scard-category ' . $post_cat_classname . '" href="' . get_category_link( $post_cat_id[0] ) . '">' . $post_cat_name[0] . '</a>';
+$output .= '<a class="cl-scard-category ' . $post_cat_classname . '" href="' . get_category_link( $post_cat_id[0] ) . '" title="See more from this category">' . $post_cat_name[0] . '</a>';
 
 // --- Begin Body ---
 $output .= '<a class="cl-scard-body" href="' . $post_link . '">';
