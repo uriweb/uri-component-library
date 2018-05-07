@@ -179,6 +179,17 @@ $adcards: ".cl-card, .cl-dcard";
         &:hover,
         &:focus {
             opacity: 1;
+            
+            span {
+                font-size: 1.25rem;
+                left: -.625rem;
+                padding-left: 1.85rem;
+            }
+            
+            span:before {
+                width: 1.35rem;
+                height: 1.25rem;
+            }
         }
         
         span {
@@ -187,8 +198,9 @@ $adcards: ".cl-card, .cl-dcard";
             font-size: 1rem;
             top: calc( 50% - .5rem );
             left: -.5rem;
-            padding-left: 1.5rem;
+            padding-left: 1.6rem;
             color: #fff;
+            transition: all .1s ease-in-out;
         }
         
         span:before {
@@ -197,12 +209,13 @@ $adcards: ".cl-card, .cl-dcard";
             left: 0;
             top: 0;
             content: '';
-            width: 1rem;
+            width: 1.1rem;
             height: 1rem;
             background-image: url(../i/read.png);
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: auto 100%;
+            background-size: 100% auto;
+            transition: all .1s ease-in-out;
         }
         
     }
