@@ -206,7 +206,7 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'post' => ''
+			'post' => '',
 		), $atts
 		);
 
@@ -216,8 +216,8 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 			 array(
 				 'attr' => 'post',
 				 'type' => 'num',
-                 'req'  => false
-			 )
+				 'req'  => false,
+			 ),
 		 ),
 		uri_cl_shortcode_get_template( 'scard' )
 	);

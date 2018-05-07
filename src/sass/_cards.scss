@@ -183,19 +183,52 @@ $adcards: ".cl-card, .cl-dcard";
         width: 100%;
     }
 
-    .cl-scard-body,
-    .cl-scard-body:hover,
-    .cl-scard-body:focus,
-    .cl-scard-body:active {
+    .cl-scard-body {
+        
         color: inherit;
+        
+        h3, p {
+            transition: color .1s ease-in-out;
+        }
+    
+        &:hover,
+        &:focus,
+        &:active {
+
+            h3, p {
+                color: $keaneyblue !important;
+            }
+
+        }
+        
     }
 
-    .cl-scard-date {
-        margin-bottom: 1rem;
+    .cl-scard-meta {
+        
+        margin-bottom: .7rem;
         font-size: .9rem;
         color: #999;
         border-top: 1px solid #eee;
         padding-top: 1rem;
+        
+        &:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        
+        span {
+            line-height: 1rem;
+        }
+        
+    }
+    
+    .cl-scard-date {
+        float: left;
+    }
+    
+    .cl-scard-social {
+        float: right;
     }
     
 }
