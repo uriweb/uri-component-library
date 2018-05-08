@@ -3,8 +3,10 @@
 $cards: ".cl-card, .cl-dcard, .cl-scard";
 $adcards: ".cl-card, .cl-dcard";
 
-#{$cards} * {
-    box-sizing: border-box;
+#{$cards} {
+    * {
+        box-sizing: border-box;
+    }
 }
 
 #{$cards} {
@@ -38,21 +40,21 @@ $adcards: ".cl-card, .cl-dcard";
     }
 }
 
-#{$adcards}:hover,
-#{$adcards}:focus {
-    top: -2px;
-    box-shadow: $level2;
-    cursor: pointer;
-}
-
-#{$adcards}:active {
-    box-shadow: $level3;
-}
-
-#{$adcards}:hover,
-#{$adcards}:focus,
-#{$adcards}:active {
-    color: inherit;
+#{$adcards} {
+    
+    &:hover,
+    &:focus {
+        top: -2px;
+        box-shadow: $level2;
+        cursor: pointer;
+        color: inherit;
+    }
+    
+    &:active {
+        box-shadow: $level3;
+        color: inherit;
+    }
+    
 }
 
 .cl-card .cl-card-text,
