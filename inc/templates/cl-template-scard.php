@@ -64,7 +64,7 @@ if ( $post_thumbnail ) {
 $output .= '<div class="cl-scard-text">';
 
 // Category
-if ( $showcat ) {
+if ( $showcat && $post_cat ) {
 	$post_cat_classname = 'cl-scard-category-' . strtolower( str_replace( ' ', '-', $post_cat ) );
 	$output .= '<a class="cl-scard-category ' . $post_cat_classname . '" href="' . $post_cat_link . '" title="See more from this category">' . $post_cat . '</a>';
 }
