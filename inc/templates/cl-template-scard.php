@@ -44,7 +44,7 @@ if ( ! empty( $excerpt ) ) {
 
 
 // ---- BUILD THE CARD ----
-$output = '<div class="' . $classes . '"';
+$output = '<div id="post-' . $post . '" class="' . $classes . '"';
 
 if ( ! empty( $css ) ) {
 	$output .= ' style="' . $css . '"';
