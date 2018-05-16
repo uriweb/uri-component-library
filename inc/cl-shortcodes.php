@@ -214,6 +214,7 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 			'img' => '',
 			'title' => '',
 			'excerpt' => '',
+			'showexcerpt' => true,
 			'showsocial' => true,
 			'showdate' => true,
 			'class' => '',
@@ -246,6 +247,11 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 			 array(
 				 'attr' => 'img',
 				 'type' => 'url',
+				 'req' => false,
+			 ),
+			 array(
+				 'attr' => 'showexcerpt',
+				 'type' => 'bool',
 				 'req' => false,
 			 ),
 			 array(

@@ -74,7 +74,9 @@ $output .= '<a class="cl-scard-body" href="' . $post_link . '">';
 
 $output .= '<h3 class="cl-scard-title">' . $post_title . '</h3>';
 
-$output .= '<p class="cl-scard-exerpt">' . $post_excerpt . '</p>';
+if ( $showexcerpt && $post_excerpt ) {
+	$output .= '<p class="cl-scard-exerpt">' . $post_excerpt . '</p>';
+}
 
 $output .= '</a>';
 // --- End Body ---
