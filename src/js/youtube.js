@@ -14,7 +14,7 @@ function onYouTubePlayerAPIReady() {
 
 	'use strict';
 
-	var uriVidHeros = {},
+	var uriVidHeroes = {},
 		uriVideos = {};
 
 	window.addEventListener( 'load', getVids, false );
@@ -26,21 +26,21 @@ function onYouTubePlayerAPIReady() {
 
 		var requireYouTube = false,
 			heroSupport = checkSupport(),
-			heros = document.querySelectorAll( '.cl-hero .poster' ),
+			heroes = document.querySelectorAll( '.cl-hero .poster' ),
 			vids = document.querySelectorAll( '.cl-video img' ),
 			el, key, parent, i, start, end, placeholder, aspect;
 
 		if ( heroSupport ) {
 
-			for ( i = 0; i < heros.length; i++ ) {
+			for ( i = 0; i < heroes.length; i++ ) {
 
-				el = heros[i];
+				el = heroes[i];
 				key = el.getAttribute( 'id' );
 				parent = el.parentNode;
 				start = el.getAttribute( 'data-start' );
 				end = el.getAttribute( 'data-end' );
 
-				uriVidHeros[key] = {
+				uriVidHeroes[key] = {
 					'poster': el,
 					'parent': parent,
 					'ytid': el.getAttribute( 'data-id' ),
@@ -127,9 +127,9 @@ function onYouTubePlayerAPIReady() {
 
 		var key, value;
 
-		for ( key in uriVidHeros ) {
+		for ( key in uriVidHeroes ) {
 
-			value = uriVidHeros[key];
+			value = uriVidHeroes[key];
 
 			value.player = new YT.Player(
 				key, {
@@ -250,7 +250,7 @@ function onYouTubePlayerAPIReady() {
 		event.target.mute();
 
 		el = event.target.getIframe();
-		parent = uriVidHeros[event.target.a.id].parent;
+		parent = uriVidHeroes[event.target.a.id].parent;
 
 		// Listen for browser resizing
 		window.addEventListener(
@@ -339,7 +339,7 @@ function onYouTubePlayerAPIReady() {
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					uriVidHeros[event.target.a.id].poster.classList.add( 'unveil' );
+					uriVidHeroes[event.target.a.id].poster.classList.add( 'unveil' );
 				}
 				break;
 		}
@@ -347,11 +347,11 @@ function onYouTubePlayerAPIReady() {
 
 	/*
 	 * Revert to poster if there's an error with the hero video
-	 * @param str key the key of the hero in uriVidHeros
+	 * @param str key the key of the hero in uriVidHeroes
 	 */
 	function onHeroError( event ) {
-		uriVidHeros[event.target.a.id].poster.classList.remove( 'unveil' );
-		uriVidHeros[event.target.a.id].parent.querySelector( '.motionswitch' ).style.display = 'none';
+		uriVidHeroes[event.target.a.id].poster.classList.remove( 'unveil' );
+		uriVidHeroes[event.target.a.id].parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/*
