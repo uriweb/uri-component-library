@@ -56,9 +56,6 @@
 
 .cl-tiles>div>p {
     width: 95%;
-    font-size: 1rem;
-    // Calculate line-height based on viewport width
-    line-height: calc(1.2rem + .3 * ((100vw - 22.5rem ) / 40));
 }
 
 // Set up tiles.fifths at most narrow width
@@ -405,13 +402,6 @@
         }
     }
     
-}
-
-// Static p line-height at full width
-@media all and (min-width: $break3){
-    .cl-tiles>div>p {
-        line-height: 1.5rem;
-    }
 }
 
 // Don't distort iframes
