@@ -34,7 +34,7 @@
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
 
-		panels = tabbed.querySelectorAll( 'section' );
+		panels = tabbed.querySelectorAll( '.cl-tab' );
 
 		// Create tabs
 		tablist = document.createElement( 'ul' );
