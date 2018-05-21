@@ -1,16 +1,17 @@
 <?php
 
 $output = '<section';
+$classes= 'cl-tab';
 
 if ( ! empty( $id ) ) {
 	$output .= ' id="' . $id . '"';
 }
 
 if ( ! empty( $class ) ) {
-	$output .= ' class="' . $class . '"';
+	$classes .= ' ' . $class;
 }
 
-$output .= '>';
+$output .= ' class="' . $classes . '">';
 
 if ( ! empty( $title ) ) {
 	$output .= '<h1>' . $title . '</h1>';
