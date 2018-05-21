@@ -2,7 +2,17 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 2.3.2
+## What's new in 2.3.3
+
+CL 2.3.3 is a bug fix release.
+
+* Improves reliability of page ancestor styling in menus
+* Improves compatibility of tabs with nested block-level elements
+* Removes section wrapping of non-floated metrics
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/84/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 2.3.2
 
 CL 2.3.2 is a bug fix release.
 
@@ -34,4 +44,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 2.3.2  
+Stable tag: 2.3.3  
