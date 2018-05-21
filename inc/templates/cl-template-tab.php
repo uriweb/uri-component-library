@@ -1,7 +1,7 @@
 <?php
 
 $output = '<section';
-$classes= 'cl-tab';
+$classes = 'cl-tab';
 
 if ( ! empty( $id ) ) {
 	$output .= ' id="' . $id . '"';
