@@ -2,15 +2,35 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 2.3.0
+## What's new in 2.3.3
 
-* Adds a quote component
-* The tab component is now an enclosing shortcode
-  - **This is a breaking change.**  To remedy, move any content in the `[cl-tab]` `body` attribute to between the opening and closing `[cl-tab]` tags (see [#69](https://github.com/uriweb/uri-component-library/pull/69)).
-* Fixes an issue that may cause superheros to not size properly when the page is reloaded
-* Fixes an issue with validating urls that omit the url protocol
+CL 2.3.3 is a bug fix release.
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/70/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+* Improves reliability of page ancestor styling in menus
+* Improves compatibility of tabs with nested block-level elements
+* Removes section wrapping of non-floated metrics
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/84/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 2.3.2
+
+CL 2.3.2 is a bug fix release.
+
+* Removes font size and line height styles from tiles
+* Softens the hero overlay gradient
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/82/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 2.3.1
+
+CL 2.3.1 is a bug fix release focused on style adjustments and improvements to developer tools.
+
+* Adds current page ancestor and current menu item highlighting to menus
+* Includes error message design improvements
+* Adds/adjusts development tools
+* Other style tweaks and bug fixes
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/80/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
@@ -24,4 +44,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 2.3.0  
+Stable tag: 2.3.3  
