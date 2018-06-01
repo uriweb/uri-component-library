@@ -1,10 +1,8 @@
 /* ======= BOXOUTS ======= */
 
-.cl-boxout * {
-    box-sizing: border-box;
-}
 
 .cl-boxout {
+	
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -16,6 +14,11 @@
     box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
     border-bottom: 1px solid #fff;
     transition: width .2s ease-in-out;
+	
+	* {
+		box-sizing: border-box;
+	}
+	
 }
 
 @media screen and (min-width: $break1) {
@@ -31,13 +34,6 @@
         float: right;
         margin: 0 0 2rem 2rem;
         max-width: $maxcardwidth;
-    }
-}
-
-
-@media screen and (min-width: $maxcardwidth) {
-    .cl-boxout {
-        
     }
 }
 

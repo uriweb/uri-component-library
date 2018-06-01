@@ -92,8 +92,6 @@
 
 			panels[i].setAttribute( 'role', 'tabpanel' );
 			panels[i].setAttribute( 'tabindex', '-1' );
-
-			id = panels[i].getAttribute( 'id' );
 			panels[i].setAttribute( 'aria-labelledby', tabs[i].id );
 			panels[i].hidden = true;
 
