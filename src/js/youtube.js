@@ -190,8 +190,7 @@ function onYouTubePlayerAPIReady() {
 	 */
 	function resizeHero( el, parent ) {
 		var w = parent.offsetWidth,
-			h = parent.offsetHeight,
-			style;
+			h = parent.offsetHeight;
 
 		if ( w / h > 16 / 9 ) {
 			el.style.height = w * 9 / 16 + 'px';

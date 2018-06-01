@@ -181,7 +181,7 @@
 	 */
 	function setPosition( c, index ) {
 
-		var S, active, captions, counter, i;
+		var S, active, captions, counter;
 
 		c.style.transform = 'translateX(-' + ( index * 100 ) + '%)';
 		c.setAttribute( 'data-position', index );
@@ -266,7 +266,7 @@
 		el.addEventListener(
 			'touchend', function( e ) {
 
-				var w, i, tolerance;
+				var w, tolerance;
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
