@@ -29,7 +29,7 @@
 	 */
 	function formatTabs( tabbed ) {
 
-		var header, href, li, a, i, id;
+		var header, href, li, a, i;
 
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
