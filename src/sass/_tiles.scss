@@ -1,96 +1,125 @@
 /* ======= TILES ======= */
 
-.cl-tiles * {
-    box-sizing: border-box;
-}
-
-.cl-tiles {
-    width: 100%;
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-}
-
-.cl-tiles:after {
-    content: '';
-    clear: both;
-    display: block;
-}
-
-.cl-tiles>div,
-.cl-tiles>a {
-    float: left;
-    clear: none;
-    overflow: visible;
-    width: 100%;
-    height: auto;
-    margin-right: 0;
-    padding-bottom: 0;
-}
-
-.cl-tiles.square>div,
-.cl-tiles.square>a {
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 100%;
-}
-
 @keyframes tileReveal {
     from { transform: rotateY(90deg); }
     to   { transform: rotateY(0deg); }
 }
 
-.cl-tiles.reveal>div,
-.cl-tiles.reveal>a {
-    animation: tileReveal .5s;
-}
+.cl-tiles {
+	
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+	
+	* {
+		box-sizing: border-box;
+	}
+	
+	&:after {
+		content: '';
+		clear: both;
+		display: block;
+	}
 
-.cl-tiles img {
-    max-width: 100%;
-}
+	&>div,
+	&>a {
+		float: left;
+		clear: none;
+		overflow: visible;
+		width: 100%;
+		height: auto;
+		margin-right: 0;
+		padding-bottom: 0;
+	}
 
-.cl-tiles>div>h1,
-.cl-tiles>div>p {
-    max-width: 500px;
-}
+	&.square {
 
-.cl-tiles>div>p {
-    width: 95%;
-}
+		&>div,
+		&>a {
+			height: 0;
+			overflow: hidden;
+			padding-bottom: 100%;
+		}
 
-// Set up tiles.fifths at most narrow width
-.cl-tiles.fifths>div,
-.cl-tiles.fifths>a {
-    &:not(:nth-child(2n)) {
-        margin-right: 3%;
-    }
-    &:nth-child(2n+1) {
-        clear: both;
-    }
-    & {
-        width: 48.5%;
-    } 
-}
+	}
 
-.cl-tiles.square.fifths>div,
-.cl-tiles.square.fifths>a {
-    &:not(:nth-child(2n)) {
-        margin-right: 1%;
-    }
-    & {
-        width: 49.5%;
-        padding-bottom: 49.5%;
-    }
-}
+	&.reveal {
 
-.cl-tiles.compact.fifths>div,
-.cl-tiles.compact.fifths>a {
-    &:not(:nth-child(2n)) {
-        margin-right: 0;
-    }
-    & {
-        width: 50%;
-    }
+		&>div,
+		&>a {
+			animation: tileReveal .5s;
+		}
+
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	&>div>h1,
+	&>div>p {
+		max-width: 500px;
+	}
+
+	&>div>p {
+		width: 95%;
+	}
+	
+	// Set up tiles.fifths at most narrow width
+	&.fifths {
+		
+		&>div,
+		&>a {
+
+			width: 48.5%;
+
+			&:not(:nth-child(2n)) {
+				margin-right: 3%;
+			}
+			&:nth-child(2n+1) {
+				clear: both;
+			}
+
+		}
+
+	}
+	
+	&.square.fifths {
+		&>div,
+		&>a {
+
+			width: 49.5%;
+			padding-bottom: 49.5%;
+
+			&:not(:nth-child(2n)) {
+				margin-right: 1%;
+			}
+
+		}
+
+	}
+
+	&.compact.fifths {
+
+		&>div,
+		&>a {
+
+			width: 50%;
+
+			&:not(:nth-child(2n)) {
+				margin-right: 0;
+			}
+
+		}
+
+	}
+	
+	// Don't distort iframes
+	iframe {
+		width: 100%;
+	}
+	
 }
 
 @media screen and (min-width: $break0) {
@@ -108,6 +137,8 @@
     }
     
     .cl-tiles {
+		
+		// Reset previous break
         &.thirds>div:nth-child(2n+1),
         &.thirds>a:nth-child(2n+1),
         &.fourths>div:nth-child(2n+1),
@@ -116,14 +147,12 @@
         &.fifths>a:nth-child(3n+1){
             clear: both;
         }
-    }
     
-    // Set up default tiles for this break
-    .cl-tiles {
+    	// Set up default tiles for this break
         &.thirds>div:not(:nth-child(2n)),
         &.thirds>a:not(:nth-child(2n)),
         &.fourths>div:not(:nth-child(2n)),
-        &.fourths>a:not(:nth-child(2n)), 
+        &.fourths>a:not(:nth-child(2n)),
         &.fifths>div:not(:nth-child(3n)),
         &.fifths>a:not(:nth-child(3n)) {
             margin-right: 3%;
@@ -138,53 +167,54 @@
         &.fifths>a {
             width: 31.33%;
         }
-    }
 
-    // Set up square tiles for this break
-    .cl-tiles.square {
-        &.thirds>div:not(:nth-child(2n)),
-        &.thirds>a:not(:nth-child(2n)),
-        &.fourths>div:not(:nth-child(2n)),
-        &.fourths>a:not(:nth-child(2n)),
-        &.fifths>div:not(:nth-child(3n)),
-        &.fifths>a:not(:nth-child(3n)) {
-            margin-right: 1%;
-        }
-        &.thirds>div,
-        &.thirds>a,
-        &.fourths>div,
-        &.fourths>a {
-            width: 49.5%;
-            padding-bottom: 49.5%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 32.66%;
-            padding-bottom: 32.66%;
-        }
-    }
-    
-    // Set up compact tiles for this break
-    .cl-tiles.compact {
-        &.thirds>div:not(:nth-child(2n)),
-        &.thirds>a:not(:nth-child(2n)),
-        &.fourths>div:not(:nth-child(2n)),
-        &.fourths>a:not(:nth-child(2n)),
-        &.fifths>div:not(:nth-child(3n)),
-        &.fifths>a:not(:nth-child(3n)) {
-            margin-right: 0;
-        }
-        &.thirds>div,
-        &.thirds>a,
-        &.fourths>div,
-        &.fourths>a {
-            width: 50%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 33.33%;
-        }
-    }
+		// Set up square tiles for this break
+		&.square {
+			&.thirds>div:not(:nth-child(2n)),
+			&.thirds>a:not(:nth-child(2n)),
+			&.fourths>div:not(:nth-child(2n)),
+			&.fourths>a:not(:nth-child(2n)),
+			&.fifths>div:not(:nth-child(3n)),
+			&.fifths>a:not(:nth-child(3n)) {
+				margin-right: 1%;
+			}
+			&.thirds>div,
+			&.thirds>a,
+			&.fourths>div,
+			&.fourths>a {
+				width: 49.5%;
+				padding-bottom: 49.5%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 32.66%;
+				padding-bottom: 32.66%;
+			}
+		}
+
+		// Set up compact tiles for this break
+		&.compact {
+			&.thirds>div:not(:nth-child(2n)),
+			&.thirds>a:not(:nth-child(2n)),
+			&.fourths>div:not(:nth-child(2n)),
+			&.fourths>a:not(:nth-child(2n)),
+			&.fifths>div:not(:nth-child(3n)),
+			&.fifths>a:not(:nth-child(3n)) {
+				margin-right: 0;
+			}
+			&.thirds>div,
+			&.thirds>a,
+			&.fourths>div,
+			&.fourths>a {
+				width: 50%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 33.33%;
+			}
+		}
+
+	}
     
 }
 
@@ -207,16 +237,16 @@
     }
     
     .cl-tiles {
+		
+		// Reset previous break
         &.fourths>div:nth-child(3n+1),
         &.fourths>a:nth-child(3n+1),
         &.fifths>div:nth-child(4n+1),
         &.fifths>a:nth-child(4n+1) {
             clear: both;
         }
-    }
     
-    // Set up default tiles for this break
-    .cl-tiles {
+    	// Set up default tiles for this break
         &.fourths>div:not(:nth-child(3n)),
         &.fourths>a:not(:nth-child(3n)),
         &.fifths>div:not(:nth-child(4n)),
@@ -231,45 +261,46 @@
         &.fifths>a {
             width: 22.75%;
         }
-    }
-    
-    // Set up square tiles for this break
-    .cl-tiles.square {
-        &.fourths>div:not(:nth-child(3n)),
-        &.fourths>a:not(:nth-child(3n)),
-        &.fifths>div:not(:nth-child(4n)),
-        &.fifths>a:not(:nth-child(4n)) {
-            margin-right: 1%;
-        }
-        &.fourths>div,
-        &.fourths>a {
-            width: 32.66%;
-            padding-bottom: 32.66%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 24.25%;
-            padding-bottom: 24.25%;
-        }
-    }
-    
-    // Set up compact tiles for this break
-    .cl-tiles.compact {
-        &.fourths>div:not(:nth-child(3n)),
-        &.fourths>a:not(:nth-child(3n)),
-        &.fifths>div:not(:nth-child(4n)),
-        &.fifths>a:not(:nth-child(4n)) {
-            margin-right: 0;
-        }
-        &.fourths>div,
-        &.fourths>a {
-            width: 33.33%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 25%;
-        }
-    }
+
+		// Set up square tiles for this break
+		&.square {
+			&.fourths>div:not(:nth-child(3n)),
+			&.fourths>a:not(:nth-child(3n)),
+			&.fifths>div:not(:nth-child(4n)),
+			&.fifths>a:not(:nth-child(4n)) {
+				margin-right: 1%;
+			}
+			&.fourths>div,
+			&.fourths>a {
+				width: 32.66%;
+				padding-bottom: 32.66%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 24.25%;
+				padding-bottom: 24.25%;
+			}
+		}
+
+		// Set up compact tiles for this break
+		&.compact {
+			&.fourths>div:not(:nth-child(3n)),
+			&.fourths>a:not(:nth-child(3n)),
+			&.fifths>div:not(:nth-child(4n)),
+			&.fifths>a:not(:nth-child(4n)) {
+				margin-right: 0;
+			}
+			&.fourths>div,
+			&.fourths>a {
+				width: 33.33%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 25%;
+			}
+		}
+		
+	}
     
 }
 
@@ -296,6 +327,8 @@
     }
     
     .cl-tiles {
+
+		// Reset previous break
         &.halves>div:nth-child(2n+1),
         &.halves>a:nth-child(2n+1),
         &.thirds>div:nth-child(3n+1),
@@ -306,10 +339,8 @@
         &.fifths>a:nth-child(5n+1) {
             clear: both;
         }
-    }
-    
-    // Set up default tiles for this break
-    .cl-tiles {
+
+    	// Set up default tiles for this break
         &.halves>div:not(:nth-child(2n)),
         &.halves>a:not(:nth-child(2n)),
         &.thirds>div:not(:nth-child(3n)),
@@ -336,75 +367,71 @@
         &.fifths>a {
             width: 17.6%;
         }
-    }
     
-    // Set up square tiles for this break
-    .cl-tiles.square {
-        &.halves>div:not(:nth-child(2n)),
-        &.halves>a:not(:nth-child(2n)),
-        &.thirds>div:not(:nth-child(3n)),
-        &.thirds>a:not(:nth-child(3n)),
-        &.fourths>div:not(:nth-child(4n)),
-        &.fourths>a:not(:nth-child(4n)),
-        &.fifths>div:not(:nth-child(5n)),
-        &.fifths>a:not(:nth-child(5n)) {
-            margin-right: 1%;
-        }
-        &.halves>div,
-        &.halves>a {
-            width: 49.5%;
-            padding-bottom: 49.5%;
-        }
-        &.thirds>div,
-        &.thirds>a {
-            width: 32.66%;
-            padding-bottom: 32.66%;
-        }
-        &.fourths>div,
-        &.fourths>a {
-            width: 24.25%;
-            padding-bottom: 24.25%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 19.2%;
-            padding-bottom: 19.2%;
-        }
-    }
-    
-    // Set up compact tiles for this break
-    .cl-tiles.compact {
-        &.halves>div:not(:nth-child(2n)),
-        &.halves>a:not(:nth-child(2n)),
-        &.thirds>div:not(:nth-child(3n)),
-        &.thirds>a:not(:nth-child(3n)),
-        &.fourths>div:not(:nth-child(4n)),
-        &.fourths>a:not(:nth-child(4n)),
-        &.fifths>div:not(:nth-child(5n)),
-        &.fifths>a:not(:nth-child(5n)) {
-            margin-right: 0;
-        }
-        &.halves>div,
-        &.halves>a {
-            width: 50%;
-        }
-        &.thirds>div,
-        &.thirds>a {
-            width: 33.33%;
-        }
-        &.fourths>div,
-        &.fourths>a {
-            width: 25%;
-        }
-        &.fifths>div,
-        &.fifths>a {
-            width: 20%;
-        }
-    }
-    
-}
+		// Set up square tiles for this break
+		&.square {
+			&.halves>div:not(:nth-child(2n)),
+			&.halves>a:not(:nth-child(2n)),
+			&.thirds>div:not(:nth-child(3n)),
+			&.thirds>a:not(:nth-child(3n)),
+			&.fourths>div:not(:nth-child(4n)),
+			&.fourths>a:not(:nth-child(4n)),
+			&.fifths>div:not(:nth-child(5n)),
+			&.fifths>a:not(:nth-child(5n)) {
+				margin-right: 1%;
+			}
+			&.halves>div,
+			&.halves>a {
+				width: 49.5%;
+				padding-bottom: 49.5%;
+			}
+			&.thirds>div,
+			&.thirds>a {
+				width: 32.66%;
+				padding-bottom: 32.66%;
+			}
+			&.fourths>div,
+			&.fourths>a {
+				width: 24.25%;
+				padding-bottom: 24.25%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 19.2%;
+				padding-bottom: 19.2%;
+			}
+		}
 
-// Don't distort iframes
-.cl-tiles iframe {
-    width: 100%;
+		// Set up compact tiles for this break
+		&.compact {
+			&.halves>div:not(:nth-child(2n)),
+			&.halves>a:not(:nth-child(2n)),
+			&.thirds>div:not(:nth-child(3n)),
+			&.thirds>a:not(:nth-child(3n)),
+			&.fourths>div:not(:nth-child(4n)),
+			&.fourths>a:not(:nth-child(4n)),
+			&.fifths>div:not(:nth-child(5n)),
+			&.fifths>a:not(:nth-child(5n)) {
+				margin-right: 0;
+			}
+			&.halves>div,
+			&.halves>a {
+				width: 50%;
+			}
+			&.thirds>div,
+			&.thirds>a {
+				width: 33.33%;
+			}
+			&.fourths>div,
+			&.fourths>a {
+				width: 25%;
+			}
+			&.fifths>div,
+			&.fifths>a {
+				width: 20%;
+			}
+		}
+
+	}
+    
 }

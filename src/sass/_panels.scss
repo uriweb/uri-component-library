@@ -1,10 +1,8 @@
 /* ======= PANELS ======= */
 
-.cl-panel * {
-    box-sizing: border-box;
-}
 
 .cl-panel {
+	
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -13,69 +11,84 @@
     border: none;
     border-radius: .2rem;
     overflow: hidden;
-}
+	
+	* {
+		box-sizing: border-box;
+	}
 
-.cl-panel p {
-    font-size: 1rem;
-}
+	p {
+		font-size: 1rem;
+	}
 
-.cl-panel article,
-.cl-panel figure { 
-    position: relative; 
-    display: block; 
-    overflow: hidden;
-    width: 100%;
-    margin: 0;
-    flex: none;
-}
+	article,
+	figure {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		width: 100%;
+		margin: 0;
+		flex: none;
+	}
 
-.cl-panel article {
-    padding: 1.8rem 1.2rem 0;
-}
+	article {
+		padding: 1.8rem 1.2rem 0;
+	}
 
-.cl-panel img { 
-    position: relative;
-    width: 100%;
-    height: auto;
-}
+	img {
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
 
-.cl-panel {
     a.cl-button,
     span.cl-button {
         border-radius: 2px;
     }
+	
 }
 
 @media screen and (min-width: $break1) {
-    .cl-panel { 
+    .cl-panel {
+		
         display: flex; 
         max-width: 100%;
-    }
-    .cl-panel article,
-    .cl-panel figure { 
-        width: auto;
-    }
-    .cl-panel article { 
-        flex: 44;
-        order: 1;
-        padding-left: 3%;
-        padding-right: 3%;
-    }
-    .cl-panel figure {
-        flex: 50;
-        order: 2;
-    }
-    .cl-panel.reverse article { 
-        order: 2; 
-    }
-    .cl-panel.reverse figure {
-        order: 1;
-    }
-    .cl-panel img { 
-        position: absolute;
-        height: 100%;
-        object-fit: cover;
-    }
+    
+		article,
+		figure {
+			width: auto;
+		}
+		
+		article {
+			flex: 44;
+			order: 1;
+			padding-left: 3%;
+			padding-right: 3%;
+		}
+		
+		figure {
+			flex: 50;
+			order: 2;
+		}
+		
+		&.reverse  {
+			
+			article {
+				order: 2;
+			}
+			figure {
+				order: 1;
+			}
+			
+		}
+		
+		img {
+			position: absolute;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+	}
+	
 }
 
 @media screen and (min-width: $break2) {
