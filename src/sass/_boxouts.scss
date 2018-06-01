@@ -18,42 +18,22 @@
 	* {
 		box-sizing: border-box;
 	}
-	
-}
 
-@media screen and (min-width: $break1) {
-    .cl-boxout {
-        padding: 20px;
-    }
-    .cl-boxout.left {
-        float: left;
-        margin: 0 2rem 2rem 0;
-        max-width: $maxcardwidth;
-    }
-    .cl-boxout.right {
-        float: right;
-        margin: 0 0 2rem 2rem;
-        max-width: $maxcardwidth;
-    }
-}
+	img {
+		width: 100%;
+		margin: 1.2rem 0;
+		border-radius: 2px;
+	}
 
-.cl-boxout img {
-    width: 100%;
-    margin: 1.2rem 0;
-    border-radius: 2px;
-}
+	img:first-child {
+		margin-top: 0;
+	}
 
-.cl-boxout img:first-child {
-    margin-top: 0;
-}
+	p {
+		font-size: 1rem;
+		width: 100%;
+	}
 
-.cl-boxout p {
-    font-size: 1rem;
-    width: 100%;
-}
-
-.cl-boxout {
-    
     a.cl-button,
     span.cl-button {
         border-radius: 2px;
@@ -64,4 +44,24 @@
         cursor: pointer;
     }
     
+}
+
+@media screen and (min-width: $break1) {
+    .cl-boxout {
+		
+        padding: 20px;
+		
+		&.left {
+			float: left;
+			margin: 0 2rem 2rem 0;
+			max-width: $maxcardwidth;
+		}
+
+		&.right {
+			float: right;
+			margin: 0 0 2rem 2rem;
+			max-width: $maxcardwidth;
+		}
+		
+	}
 }

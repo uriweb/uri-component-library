@@ -11,10 +11,8 @@
 
 .cl-tabs.cl-tabs-js {
     
-    & {
-        box-shadow: $level1;
-        background: #eee;
-    }
+	box-shadow: $level1;
+	background: #eee;
 
     [role="tablist"] {
         padding: 0;

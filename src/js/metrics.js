@@ -12,7 +12,7 @@
 
 	function initCLMetrics() {
 
-		var metrics, fontSize, i;
+		var metrics, i;
 
 		metrics = document.querySelectorAll( '.cl-metric' );
 

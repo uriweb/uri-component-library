@@ -25,16 +25,13 @@
 	}
 
 	function moveWaves( els, i ) {
-		var offset, move, pos, n, el;
+		var offset, move, n, el;
 
 		offset = window.pageYOffset;
 		move = offset - i;
 
 		for ( n = 0; n < els.length; n++ ) {
 			el = els[n];
-			pos = el.firstElementChild.style.backgroundPositionX.split( 'px' )[0];
-			pos += move;
-
 			el.firstElementChild.style.backgroundPositionX = move + 'px';
 			el.lastElementChild.style.backgroundPositionX = move + 'px';
 		}
