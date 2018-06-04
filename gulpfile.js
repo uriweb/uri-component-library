@@ -5,13 +5,14 @@ var pkg = require('./package.json');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var concat = require('gulp-concat');
-var stripDebug = require('gulp-strip-debug');
+//var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('autoprefixer');
 var postcss = require('gulp-postcss');
 var header = require('gulp-header');
+var shell = require('gulp-shell');
 
 // options
 var sassOptions = {
@@ -89,22 +90,37 @@ function scripts(done) {
  // console.log('scripts ran');
 }
 
+
+// run codesniffer
+gulp.task('sniffs', sniffs);
+
+function sniffs(done) {
+    
+    return gulp.src('.', {read:false})
+        .pipe(shell(['./.sniff']));
+    
+}
+
+
 // watch
 gulp.task('watcher', watcher);
 
 function watcher(done) {
 	
-	// watch for Theme CSS changes
+	// watch for CSS changes
 	gulp.watch('./src/sass/*.scss', styles);
     
-    // watch for Theme JS changes
+    // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
+	
+	// watch for PHP change
+    gulp.watch('./**/*.php', sniffs);
 
 	done();
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'watcher', function(done){
 		done();
 	})
 );
