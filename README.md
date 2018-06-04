@@ -37,6 +37,7 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 [![Master Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.org/uriweb/uri-component-library)
 [![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/043fca0aa28b4b2db799d5daacf2d27d?branch=master)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
+[![dependencies Status](https://david-dm.org/uriweb/uri-component-library/status.svg)](https://david-dm.org/uriweb/uri-component-library)
 
 URI Component Library  
 Add the component library, including shortcodes, to WordPress.  
