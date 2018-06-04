@@ -35,7 +35,6 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 ## Plugin Details
 
 [![Master Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.org/uriweb/uri-component-library)
-[![Develop Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=develop "Develop build status")](https://travis-ci.org/uriweb/uri-component-library)
 [![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
 
 URI Component Library  
