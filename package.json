@@ -13,19 +13,19 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-header": "^1.8.8",
-    "gulp-jscs": "^4.1.0",
-    "gulp-jshint": "^2.0.4",
-    "gulp-postcss": "^7.0.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-shell": "^0.6.5",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-strip-debug": "^1.1.0",
-    "gulp-uglify": "^2.0.0",
-    "jshint": "^2.9.4"
+    "autoprefixer": "^8.6.0",
+    "gulp": ">=4.0.0",
+    "gulp-concat": ">=2.6.1",
+    "gulp-header": "^2.0.5",
+    "gulp-jscs": ">=4.1.0",
+    "gulp-jshint": ">=2.0.4",
+    "gulp-postcss": ">=7.0.0",
+    "gulp-sass": ">=4.0.1",
+    "gulp-shell": ">=0.6.5",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-uglify": "^3.0.0",
+    "jshint": ">=2.9.4"
   },
   "browserslist": {
     "production": [
