@@ -33,7 +33,7 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 		$this_attr = array(
 			'name' => $a['attr'],
 			'val' => $atts[ $a['attr'] ],
-			'type' => $a['type'],
+			'types' => $a['types'],
 			'req' => true,
 		);
 
@@ -55,16 +55,15 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 
 			$validation = array();
 
-			// Make the var type(s) an array if it isn't already
-			$this_attr['type'] = is_array( $this_attr['type'] ) ? $this_attr['type'] : array( $this_attr['type'] );
-
 			// Run validation for each var type
-			foreach ( $this_attr['type'] as $t ) {
+			foreach ( $this_attr['types'] as $t ) {
 				$validation[] = uri_cl_return_validation( $t, $this_attr['val'], $a );
 			}
 
-			$these_errors = uri_cl_add_error( $atts, $this_attr, $validation );
+			// Get error information
+			$these_errors = uri_cl_compile_error( $atts, $this_attr, $validation );
 
+			// Add errors to the master list
 			$errors = array_merge( $errors, $these_errors['errors'] );
 
 			if ( true == $these_errors['fatal'] ) {
@@ -126,8 +125,13 @@ function uri_cl_return_validation( $type, $val, $a ) {
 
 /**
  * If valid, update the attribute with the sanitized value, otherwise return an error
+ *
+ * @param arr $atts the shortcode attributes.
+ * @param arr $this_attr the current attribute.
+ * @param arr $validation the attribute validation(s).
+ * @return arr the errors and fatal indication
  */
-function uri_cl_add_error( $atts, $this_attr, $validation ) {
+function uri_cl_compile_error( $atts, $this_attr, $validation ) {
 
 	$e = array();
 
