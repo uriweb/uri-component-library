@@ -52,33 +52,7 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 
 		} else if ( ! empty( $a_val ) ) {
 
-			// Do validation/sanitation based on var type
-			switch ( $a_type ) {
-				case 'url':
-					$validation = uri_cl_validate_url( $a_val );
-					break;
-				case 'bool':
-					$validation = uri_cl_validate_bool( $a_val );
-					break;
-				case 'str':
-					$validation = uri_cl_validate_str( $a_val, $a );
-					break;
-				case 'num':
-					$validation = uri_cl_validate_num( $a_val, $a );
-					break;
-				case 'ratio':
-					$validation = uri_cl_validate_ratio( $a_val );
-					break;
-				case 'unit':
-					$validation = uri_cl_validate_unit( $a_val );
-					break;
-				default:
-					$validation = array(
-						'valid' => true,
-						'value' => $a_val,
-						'status' => 'normal',
-					);
-			}
+			$validation = uri_cl_return_validation( $a_type, $a_val, $a );
 
 			// If valid, update the attribute with the sanitized value, otherwise return an error
 			if ( $validation['valid'] ) {
@@ -115,6 +89,38 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 	}
 
 	return $output;
+}
+
+
+/**
+ * Do validation/sanitation based on var type
+ *
+ * @param str $a_type the var type.
+ * @param str $a_val the attribute value.
+ * @param str $a the attribute.
+ * @return arr $validation the validation array.
+ */
+function uri_cl_return_validation( $a_type, $a_val, $a ) {
+	switch ( $a_type ) {
+		case 'url':
+			return uri_cl_validate_url( $a_val );
+		case 'bool':
+			return uri_cl_validate_bool( $a_val );
+		case 'str':
+			return uri_cl_validate_str( $a_val, $a );
+		case 'num':
+			return uri_cl_validate_num( $a_val, $a );
+		case 'ratio':
+			return uri_cl_validate_ratio( $a_val );
+		case 'unit':
+			return uri_cl_validate_unit( $a_val );
+		default:
+			return array(
+				'valid' => true,
+				'value' => $a_val,
+				'status' => 'normal',
+			);
+	}
 }
 
 
