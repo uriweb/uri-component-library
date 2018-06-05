@@ -30,39 +30,40 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 
 	foreach ( $check_atts as $a ) {
 
-		$a_name = $a['attr'];
-
-		$a_val = $atts[ $a_name ];
-		$a_type = $a['type'];
-		$a_req = true;
+		$this_attr = array(
+			'name' => $a['attr'],
+			'val' => $atts[ $a['attr'] ],
+			'type' => $a['type'],
+			'req' => true,
+		);
 
 		if ( array_key_exists( 'req', $a ) ) {
-			$a_req = $a['req'];
+			$this_attr['req'] = $a['req'];
 		}
 
 		// Check for empty entry, otherwise validate if it's set
-		if ( $a_req && empty( $a_val ) ) {
+		if ( $this_attr['req'] && empty( $this_attr['val'] ) ) {
 
 			$errors[] = array(
-				'attr' => $a_name,
+				'attr' => $this_attr['name'],
 				'message' => 'Required attribute',
 				'status' => 'fatal',
 			);
 			$fatal = true;
 
-		} else if ( ! empty( $a_val ) ) {
+		} else if ( ! empty( $this_attr['val'] ) ) {
 
-			$validation = uri_cl_return_validation( $a_type, $a_val, $a );
+			$validation = uri_cl_return_validation( $this_attr, $a );
 
 			// If valid, update the attribute with the sanitized value, otherwise return an error
 			if ( $validation['valid'] ) {
-				$atts[ $a_name ] = $validation['value'];
+				$atts[ $this_attr['name'] ] = $validation['value'];
 			} else {
 				if ( 'warning' == $validation['status'] ) {
-					$atts[ $a_name ] = $validation['value'];
+					$atts[ $this_attr['name'] ] = $validation['value'];
 				}
 				$errors[] = array(
-					'attr' => $a_name,
+					'attr' => $this_attr['name'],
 					'message' => $validation['message'],
 					'status' => $validation['status'],
 				);
@@ -71,7 +72,7 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 				}
 			}
 		}
-	}
+	} // End for each
 
 	if ( $fatal ) {
 		if ( $admin ) {
@@ -95,29 +96,28 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 /**
  * Do validation/sanitation based on var type
  *
- * @param str $a_type the var type.
- * @param str $a_val the attribute value.
+ * @param arr $this_attr the attribute info.
  * @param str $a the attribute.
  * @return arr $validation the validation array.
  */
-function uri_cl_return_validation( $a_type, $a_val, $a ) {
-	switch ( $a_type ) {
+function uri_cl_return_validation( $this_attr, $a ) {
+	switch ( $this_attr['type'] ) {
 		case 'url':
-			return uri_cl_validate_url( $a_val );
+			return uri_cl_validate_url( $this_attr['val'] );
 		case 'bool':
-			return uri_cl_validate_bool( $a_val );
+			return uri_cl_validate_bool( $this_attr['val'] );
 		case 'str':
-			return uri_cl_validate_str( $a_val, $a );
+			return uri_cl_validate_str( $this_attr['val'], $a );
 		case 'num':
-			return uri_cl_validate_num( $a_val, $a );
+			return uri_cl_validate_num( $this_attr['val'], $a );
 		case 'ratio':
-			return uri_cl_validate_ratio( $a_val );
+			return uri_cl_validate_ratio( $this_attr['val'] );
 		case 'unit':
-			return uri_cl_validate_unit( $a_val );
+			return uri_cl_validate_unit( $this_attr['val'] );
 		default:
 			return array(
 				'valid' => true,
-				'value' => $a_val,
+				'value' => $this_attr['val'],
 				'status' => 'normal',
 			);
 	}
