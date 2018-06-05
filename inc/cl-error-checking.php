@@ -53,23 +53,22 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 
 		} else if ( ! empty( $this_attr['val'] ) ) {
 
-			$validation = uri_cl_return_validation( $this_attr, $a );
+			$validation = array();
 
-			// If valid, update the attribute with the sanitized value, otherwise return an error
-			if ( $validation['valid'] ) {
-				$atts[ $this_attr['name'] ] = $validation['value'];
-			} else {
-				if ( 'warning' == $validation['status'] ) {
-					$atts[ $this_attr['name'] ] = $validation['value'];
-				}
-				$errors[] = array(
-					'attr' => $this_attr['name'],
-					'message' => $validation['message'],
-					'status' => $validation['status'],
-				);
-				if ( 'fatal' == $validation['status'] ) {
-					$fatal = true;
-				}
+			// Make the var type(s) an array if it isn't already
+			$this_attr['type'] = is_array( $this_attr['type'] ) ? $this_attr['type'] : array( $this_attr['type'] );
+
+			// Run validation for each var type
+			foreach ( $this_attr['type'] as $t ) {
+				$validation[] = uri_cl_return_validation( $t, $this_attr['val'], $a );
+			}
+
+			$these_errors = uri_cl_add_error( $atts, $this_attr, $validation );
+
+			$errors = array_merge( $errors, $these_errors['errors'] );
+
+			if ( true == $these_errors['fatal'] ) {
+				$fatal = true;
 			}
 		}
 	} // End for each
@@ -96,31 +95,78 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 /**
  * Do validation/sanitation based on var type
  *
- * @param arr $this_attr the attribute info.
+ * @param str $type the var type.
+ * @param str $val the attribute value.
  * @param str $a the attribute.
  * @return arr $validation the validation array.
  */
-function uri_cl_return_validation( $this_attr, $a ) {
-	switch ( $this_attr['type'] ) {
+function uri_cl_return_validation( $type, $val, $a ) {
+	switch ( $type ) {
 		case 'url':
-			return uri_cl_validate_url( $this_attr['val'] );
+			return uri_cl_validate_url( $val );
 		case 'bool':
-			return uri_cl_validate_bool( $this_attr['val'] );
+			return uri_cl_validate_bool( $val );
 		case 'str':
-			return uri_cl_validate_str( $this_attr['val'], $a );
+			return uri_cl_validate_str( $val, $a );
 		case 'num':
-			return uri_cl_validate_num( $this_attr['val'], $a );
+			return uri_cl_validate_num( $val, $a );
 		case 'ratio':
-			return uri_cl_validate_ratio( $this_attr['val'] );
+			return uri_cl_validate_ratio( $val );
 		case 'unit':
-			return uri_cl_validate_unit( $this_attr['val'] );
+			return uri_cl_validate_unit( $val );
 		default:
 			return array(
 				'valid' => true,
-				'value' => $this_attr['val'],
+				'value' => $val,
 				'status' => 'normal',
 			);
 	}
+}
+
+
+/**
+ * If valid, update the attribute with the sanitized value, otherwise return an error
+ */
+function uri_cl_add_error( $atts, $this_attr, $validation ) {
+
+	$e = array();
+
+	foreach ( $validation as $v ) {
+
+		if ( $v['valid'] ) {
+
+			$atts[ $this_attr['name'] ] = $v['value'];
+			$valid = true;
+
+		} else {
+
+			if ( 'warning' == $v['status'] ) {
+				$atts[ $this_attr['name'] ] = $v['value'];
+			}
+
+			$e[] = array(
+				'attr' => $this_attr['name'],
+				'message' => $v['message'],
+				'status' => $v['status'],
+			);
+
+			$this_fatal = false;
+			if ( 'fatal' == $v['status'] ) {
+				$this_fatal = true;
+			}
+		}
+	}
+
+	if ( $valid ) {
+		$e = array();
+		$this_fatal = false;
+	}
+
+	return array(
+		'errors' => $e,
+		'fatal' => $this_fatal,
+	);
+
 }
 
 
