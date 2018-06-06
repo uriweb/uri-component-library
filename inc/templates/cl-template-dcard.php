@@ -19,7 +19,7 @@ if ( ! empty( $css ) ) {
 $output .= '>';
 
 if ( ! empty( $img ) ) {
-	$output .= '<img src="' . $img . '" alt="' . $alt . '">';
+	$output .= uri_cl_build_img_tag( $img, $alt );
 }
 
 $output .= '<div class="cl-dcard-text">';
