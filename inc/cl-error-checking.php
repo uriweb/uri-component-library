@@ -137,6 +137,7 @@ function uri_cl_return_validation( $type, $val, $a ) {
 function uri_cl_compile_error( $atts, $this_attr, $validation ) {
 
 	$e = array();
+	$valid = false;
 
 	foreach ( $validation as $v ) {
 
