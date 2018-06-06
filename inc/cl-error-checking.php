@@ -28,17 +28,17 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 	$fatal = false;
 	$admin = is_user_logged_in();
 
-	foreach ( $check_atts as $a ) {
+	foreach ( $check_atts as $att ) {
 
 		$this_attr = array(
-			'name' => $a['attr'],
-			'val' => $atts[ $a['attr'] ],
-			'types' => $a['types'],
+			'name' => $att['attr'],
+			'val' => $atts[ $att['attr'] ],
+			'types' => $att['types'],
 			'req' => true,
 		);
 
-		if ( array_key_exists( 'req', $a ) ) {
-			$this_attr['req'] = $a['req'];
+		if ( array_key_exists( 'req', $att ) ) {
+			$this_attr['req'] = $att['req'];
 		}
 
 		// Check for empty entry, otherwise validate if it's set
@@ -56,20 +56,20 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 			$validation = array();
 
 			// Run validation for each var type
-			foreach ( $this_attr['types'] as $t ) {
-				$validation[] = uri_cl_return_validation( $t, $this_attr['val'], $a );
+			foreach ( $this_attr['types'] as $type ) {
+				$validation[] = uri_cl_return_validation( $type, $this_attr['val'], $att );
 			}
 
 			// Get error information
-			$e = uri_cl_compile_error( $atts, $this_attr, $validation );
+			$err = uri_cl_compile_error( $atts, $this_attr, $validation );
 
 			// Update atts
-			$atts = $e['atts'];
+			$atts = $err['atts'];
 
 			// Add errors to the master list
-			$errors = array_merge( $errors, $e['errors'] );
+			$errors = array_merge( $errors, $err['errors'] );
 
-			if ( true == $e['fatal'] ) {
+			if ( true == $err['fatal'] ) {
 				$fatal = true;
 			}
 		}
@@ -99,19 +99,19 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
  *
  * @param str $type the var type.
  * @param str $val the attribute value.
- * @param str $a the attribute.
+ * @param str $att the attribute.
  * @return arr $validation the validation array.
  */
-function uri_cl_return_validation( $type, $val, $a ) {
+function uri_cl_return_validation( $type, $val, $att ) {
 	switch ( $type ) {
 		case 'url':
 			return uri_cl_validate_url( $val );
 		case 'bool':
 			return uri_cl_validate_bool( $val );
 		case 'str':
-			return uri_cl_validate_str( $val, $a );
+			return uri_cl_validate_str( $val, $att );
 		case 'num':
-			return uri_cl_validate_num( $val, $a );
+			return uri_cl_validate_num( $val, $att );
 		case 'ratio':
 			return uri_cl_validate_ratio( $val );
 		case 'unit':
@@ -136,43 +136,43 @@ function uri_cl_return_validation( $type, $val, $a ) {
  */
 function uri_cl_compile_error( $atts, $this_attr, $validation ) {
 
-	$e = array();
+	$err = array();
 	$valid = false;
 
-	foreach ( $validation as $v ) {
+	foreach ( $validation as $vld ) {
 
-		if ( $v['valid'] ) {
+		if ( $vld['valid'] ) {
 
-			$atts[ $this_attr['name'] ] = $v['value'];
+			$atts[ $this_attr['name'] ] = $vld['value'];
 			$valid = true;
 
 		} else {
 
-			if ( 'warning' == $v['status'] ) {
-				$atts[ $this_attr['name'] ] = $v['value'];
+			if ( 'warning' == $vld['status'] ) {
+				$atts[ $this_attr['name'] ] = $vld['value'];
 			}
 
-			$e[] = array(
+			$err[] = array(
 				'attr' => $this_attr['name'],
-				'message' => $v['message'],
-				'status' => $v['status'],
+				'message' => $vld['message'],
+				'status' => $vld['status'],
 			);
 
 			$is_fatal = false;
-			if ( 'fatal' == $v['status'] ) {
+			if ( 'fatal' == $vld['status'] ) {
 				$is_fatal = true;
 			}
 		}
 	}
 
 	if ( $valid ) {
-		$e = array();
+		$err = array();
 		$is_fatal = false;
 	}
 
 	return array(
 		'atts' => $atts,
-		'errors' => $e,
+		'errors' => $err,
 		'fatal' => $is_fatal,
 	);
 
@@ -188,8 +188,8 @@ function uri_cl_compile_error( $atts, $this_attr, $validation ) {
  * @return str $output the error message html.
  */
 function uri_cl_return_error( $cname, $fatal, $errors ) {
-	$ne = count( $errors );
-	$plural = 1 == $ne ? '' : 's';
+	$num_errors = count( $errors );
+	$plural = 1 == $num_errors ? '' : 's';
 	$classes = 'cl-errors';
 	$output = '<div class="';
 
@@ -200,16 +200,16 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 	} else {
 		$classes .= ' cl-errors-shortcode-success';
 		$output .= $classes . '">';
-		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $ne . ' warning' . $syntax . '.</div>';
+		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $num_errors . ' warning' . $plural . '.</div>';
 	}
 
 	$output .= '<ul>';
 
-	foreach ( $errors as $e ) {
-		$output .= '<li class="cl-error-' . $e['status'] . '">';
-		$output .= '<span class="cl-error-icon">' . $e['status'] . '</span>';
-		$output .= '<span class="cl-error-name">' . $e['attr'] . '</span>';
-		$output .= '<span class="cl-error-message">' . $e['message'] . '</span>';
+	foreach ( $errors as $err ) {
+		$output .= '<li class="cl-error-' . $err['status'] . '">';
+		$output .= '<span class="cl-error-icon">' . $err['status'] . '</span>';
+		$output .= '<span class="cl-error-name">' . $err['attr'] . '</span>';
+		$output .= '<span class="cl-error-message">' . $err['message'] . '</span>';
 		$output .= '</li>';
 	}
 
@@ -274,8 +274,8 @@ function uri_cl_validate_bool( $var ) {
 		'0',
 	);
 
-	foreach ( $truths as $v ) {
-		if ( $var === $v ) {
+	foreach ( $truths as $value ) {
+		if ( $var === $value ) {
 			$valid = true;
 			$var = true;
 			$status = 'normal';
@@ -283,8 +283,8 @@ function uri_cl_validate_bool( $var ) {
 		}
 	}
 
-	foreach ( $falses as $v ) {
-		if ( $var === $v ) {
+	foreach ( $falses as $value ) {
+		if ( $var === $value ) {
 			$valid = true;
 			$var = false;
 			$status = 'normal';
@@ -306,15 +306,15 @@ function uri_cl_validate_bool( $var ) {
  * Validate strings, return the value and metadata
  *
  * @param str $val the string to validate.
- * @param arr $a the attribute parameters.
+ * @param arr $att the attribute parameters.
  * @return arr the validation metadata.
  */
-function uri_cl_validate_str( $val, $a ) {
+function uri_cl_validate_str( $val, $att ) {
 	$valid = true;
 	$status = 'normal';
 
-	if ( array_key_exists( 'values', $a ) ) {
-		$valid = uri_cl_in_array( $val, $a['values'] );
+	if ( array_key_exists( 'values', $att ) ) {
+		$valid = uri_cl_in_array( $val, $att['values'] );
 		$status = $valid ? 'normal' : 'fatal';
 	}
 
@@ -322,7 +322,7 @@ function uri_cl_validate_str( $val, $a ) {
 		'valid' => $valid,
 		'value' => $val,
 		'status' => $status,
-		'message' => '"' . $val . '" is not a valid string' . uri_cl_accepted_values( $a ),
+		'message' => '"' . $val . '" is not a valid string' . uri_cl_accepted_values( $att ),
 	);
 
 }
@@ -332,16 +332,16 @@ function uri_cl_validate_str( $val, $a ) {
  * Validate numbers, return the value and metadata
  *
  * @param num $val the number to validate.
- * @param arr $a the attribute parameters.
+ * @param arr $att the attribute parameters.
  * @return arr the validation metadata.
  */
-function uri_cl_validate_num( $val, $a ) {
+function uri_cl_validate_num( $val, $att ) {
 	$valid = true;
 
 	if ( is_numeric( $val ) ) {
 
-		if ( array_key_exists( 'values', $a ) ) {
-			$valid = uri_cl_in_array( $val, $a['values'] );
+		if ( array_key_exists( 'values', $att ) ) {
+			$valid = uri_cl_in_array( $val, $att['values'] );
 		}
 	} else {
 		$valid = false;
@@ -353,7 +353,7 @@ function uri_cl_validate_num( $val, $a ) {
 		'valid' => $valid,
 		'value' => $val,
 		'status' => $status,
-		'message' => '"' . $val . '" is not a valid number' . uri_cl_accepted_values( $a ),
+		'message' => '"' . $val . '" is not a valid number' . uri_cl_accepted_values( $att ),
 	);
 
 }
@@ -372,8 +372,8 @@ function uri_cl_validate_ratio( $val ) {
 
 	if ( count( $parts ) == 2 ) {
 		$valid = true;
-		foreach ( $parts as $p ) {
-			if ( ! is_numeric( $p ) ) {
+		foreach ( $parts as $part ) {
+			if ( ! is_numeric( $part ) ) {
 				$valid = false;
 				break;
 			};
@@ -452,13 +452,13 @@ function uri_cl_in_array( $val, $vals ) {
 /**
  * Build list of accepted attribute values, if specified
  *
- * @param arr $a the attribute parameters.
+ * @param arr $att the attribute parameters.
  * @return str
  */
-function uri_cl_accepted_values( $a ) {
+function uri_cl_accepted_values( $att ) {
 
-	if ( array_key_exists( 'values', $a ) ) {
-		$list = implode( ' | ', $a['values'] );
+	if ( array_key_exists( 'values', $att ) ) {
+		$list = implode( ' | ', $att['values'] );
 		return ': remove the attribute or set an accepted value (accepted values: ' . $list . ')';
 	} else {
 		return '';

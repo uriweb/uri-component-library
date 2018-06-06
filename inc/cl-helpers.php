@@ -20,11 +20,11 @@ function uri_cl_shortcode_get_template( $name ) {
 
 	$template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
 
-	if ( is_file( $template ) ) {
-		return $template;
-	} else {
-		return 'templates/cl-template-' . $name . '.php';
+	if ( ! is_file( $template ) ) {
+		$template = 'templates/cl-template-' . $name . '.php';
 	}
+
+	return $template;
 
 }
 
