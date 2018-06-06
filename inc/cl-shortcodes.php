@@ -8,30 +8,7 @@
 
 
 include 'cl-error-checking.php';
-
-
-/**
- * Get shortcode template file
- *
- * Priority:
- * 1. /themes/theme/template-parts/cl/cl-template-*.php
- * 2. /plugins/uri-component-library/templates/cl-template-*.php
- *
- * @param str $name the name of the shortcode, as used in the filename.
- * @return the path to the template file (rel for default templates, abs for theme templates)
- */
-function uri_cl_shortcode_get_template( $name ) {
-
-	$template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
-
-	if ( is_file( $template ) ) {
-		return $template;
-	} else {
-		return 'templates/cl-template-' . $name . '.php';
-	}
-
-}
-
+include 'cl-helpers.php';
 
 /**
  * Boxout
