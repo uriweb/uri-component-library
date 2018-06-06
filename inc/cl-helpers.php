@@ -1,5 +1,4 @@
 <?php
-
 /**
  * COMPONENT LIBRARY HELPERS
  *
@@ -33,12 +32,12 @@ function uri_cl_shortcode_get_template( $name ) {
 /**
  * Return img tag
  *
- * @param mixed $img the shortcode img attribute
- * @param str $alt the shortcode alt attribute
+ * @param mixed $img the shortcode img attribute.
+ * @param str   $alt the shortcode alt attribute.
  * @return str
  */
 function uri_cl_build_img_tag( $img, $alt = '' ) {
-	
+
 	$img_src = $img;
 	$img_srcset = '';
 
@@ -50,5 +49,5 @@ function uri_cl_build_img_tag( $img, $alt = '' ) {
 	}
 
 	return '<img src="' . $img_src . '" srcset="' . $img_srcset . '" alt="' . $alt . '">';
-	
+
 }

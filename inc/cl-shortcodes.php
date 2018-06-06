@@ -1,5 +1,4 @@
 <?php
-
 /**
  * COMPONENT LIBRARY SHORTCODES
  *
