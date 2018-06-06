@@ -19,9 +19,7 @@ if ( ! empty( $css ) ) {
 $output .= '>';
 
 if ( ! empty( $img ) ) {
-
 	$output .= uri_cl_build_img_tag( $img, $alt );
-
 }
 
 if ( ! empty( $title ) || ! empty( $body ) ) {

@@ -20,7 +20,7 @@ if ( ! empty( $css ) ) {
 $output .= '>';
 
 $output .= '<figure>';
-$output .= '<img src="' . $img . '" alt="' . $alt . '">';
+$output .= uri_cl_build_img_tag( $img, $alt );
 $output .= '</figure>';
 $output .= '<article>';
 

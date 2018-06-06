@@ -454,8 +454,8 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			 ),
 			 array(
 				 'attr' => 'reverse',
-				 'types' => 'bool',
-				 'req' => array( false ),
+				 'types' => array( 'bool' ),
+				 'req' => false,
 			 ),
 		 ),
 		uri_cl_shortcode_get_template( 'panel' )

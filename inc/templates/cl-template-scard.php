@@ -23,7 +23,7 @@ if ( ! empty( $link ) ) {
 }
 
 if ( ! empty( $img ) ) {
-	$post_thumbnail = '<img src="' . $img . '">';
+	$post_thumbnail = uri_cl_build_img_tag( $img );
 }
 
 if ( ! empty( $cat ) ) {
