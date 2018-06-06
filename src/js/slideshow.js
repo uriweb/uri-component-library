@@ -266,13 +266,12 @@
 		el.addEventListener(
 			'touchend', function( e ) {
 
-				var w, i, tolerance;
+				var w, tolerance;
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
 
 				w = c.offsetWidth;
-				i = parseInt( c.getAttribute( 'data-position' ) );
 				tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
 
 				if ( dist > w * tolerance ) {
