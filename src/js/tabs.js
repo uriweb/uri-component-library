@@ -141,7 +141,7 @@
 			// If the down key is pressed, move focus to the open panel,
 			// otherwise switch to the adjacent tab
 			if ( 'down' === dir ) {
-				panels[i].focus();
+				panels[index].focus();
 			} else if ( tabs[dir] ) {
 				switchTab( e.currentTarget, tabs[dir] );
 			} else {

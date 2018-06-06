@@ -266,7 +266,7 @@
 		el.addEventListener(
 			'touchend', function( e ) {
 
-				var w, tolerance;
+				var w, i, tolerance;
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
