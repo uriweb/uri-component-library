@@ -61,12 +61,15 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 			}
 
 			// Get error information
-			$these_errors = uri_cl_compile_error( $atts, $this_attr, $validation );
+			$e = uri_cl_compile_error( $atts, $this_attr, $validation );
+
+			// Update atts
+			$atts = $e['atts'];
 
 			// Add errors to the master list
-			$errors = array_merge( $errors, $these_errors['errors'] );
+			$errors = array_merge( $errors, $e['errors'] );
 
-			if ( true == $these_errors['fatal'] ) {
+			if ( true == $e['fatal'] ) {
 				$fatal = true;
 			}
 		}
@@ -129,7 +132,7 @@ function uri_cl_return_validation( $type, $val, $a ) {
  * @param arr $atts the shortcode attributes.
  * @param arr $this_attr the current attribute.
  * @param arr $validation the attribute validation(s).
- * @return arr the errors and fatal indication
+ * @return arr
  */
 function uri_cl_compile_error( $atts, $this_attr, $validation ) {
 
@@ -154,21 +157,22 @@ function uri_cl_compile_error( $atts, $this_attr, $validation ) {
 				'status' => $v['status'],
 			);
 
-			$this_fatal = false;
+			$is_fatal = false;
 			if ( 'fatal' == $v['status'] ) {
-				$this_fatal = true;
+				$is_fatal = true;
 			}
 		}
 	}
 
 	if ( $valid ) {
 		$e = array();
-		$this_fatal = false;
+		$is_fatal = false;
 	}
 
 	return array(
+		'atts' => $atts,
 		'errors' => $e,
-		'fatal' => $this_fatal,
+		'fatal' => $is_fatal,
 	);
 
 }
