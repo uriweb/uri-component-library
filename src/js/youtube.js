@@ -101,7 +101,7 @@ function onYouTubePlayerAPIReady() {
 			msie = ua.indexOf( 'MSIE ' ),
 			trident = ua.indexOf( 'Trident/' );
 
-		if ( 'Microsoft Internet Explorer' == navigator.appName || msie > 0 || trident > 0 ) {
+		if ( 'Microsoft Internet Explorer' === navigator.appName || msie > 0 || trident > 0 ) {
 			support = false;
 		}
 

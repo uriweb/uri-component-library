@@ -147,7 +147,7 @@
 		// Reset the endslide animation
 		c.classList.remove( 'reboundLeft', 'reboundRight' );
 
-		if ( 'Next' == direction ) {
+		if ( 'Next' === direction ) {
 			index++;
 			if ( index > count ) {
 				if ( ! mobile ) {

@@ -54,7 +54,7 @@
 					m.sw = m.num.scrollWidth;
 				}
 			} else if ( m.num.classList.contains( 'autosized' ) ) {
-				while ( m.sw == m.w && m.nfs < m.mfs ) {
+				while ( m.sw === m.w && m.nfs < m.mfs ) {
 					m.nfs++;
 					m.num.style.fontSize = m.nfs + 'px';
 					m.sw = m.num.scrollWidth;
