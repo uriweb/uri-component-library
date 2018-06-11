@@ -157,7 +157,7 @@ function uri_cl_shortcode_dcard( $atts, $content = null ) {
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'types' => array( 'url' ),
+				 'types' => array( 'url', 'num' ),
 				 'req' => false,
 			 ),
 			 array(
