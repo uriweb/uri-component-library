@@ -32,8 +32,11 @@
 
 	img {
 		position: relative;
+		display: initial;
 		width: 100%;
+		min-width: initial;
 		height: auto;
+		padding: 0;
 	}
 
     a.cl-button,
