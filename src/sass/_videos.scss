@@ -3,19 +3,16 @@
 
 .cl-video {
     
-    & {
-        display: block;
-        margin: 0 0 2rem;
-        box-sizing: border-box;
-        width: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
+	display: flex;
+	margin: 0 0 2rem;
+	box-sizing: border-box;
+	width: 100%;
+	position: relative;
+	flex-direction: column;
 
     & * {
         box-sizing: border-box;
-    } 
+    }
 
     img {
         width: 100%;

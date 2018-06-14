@@ -20,13 +20,17 @@
 		for ( i = 0; i < menus.length; i++ ) {
 			toggle = document.createElement( 'span' );
 			toggle.className = 'cl-menu-toggle';
-			if ( '0' == menus[i].getAttribute( 'data-show-title' ) ) {
+			if ( '0' === menus[i].getAttribute( 'data-show-title' ) ) {
 				toggle.classList.add( 'hidden' );
 			}
 			toggle.innerHTML = menus[i].getAttribute( 'data-name' );
 			toggle.addEventListener(
 				'click', function() {
-					this.classList.contains( 'active' ) ? this.classList.remove( 'active' ) : this.classList.add( 'active' );
+					if ( this.classList.contains( 'active' ) ) {
+						this.classList.remove( 'active' );
+					} else {
+						this.classList.add( 'active' );
+					}
 				}
 				);
 

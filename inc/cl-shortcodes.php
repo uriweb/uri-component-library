@@ -1,5 +1,4 @@
 <?php
-
 /**
  * COMPONENT LIBRARY SHORTCODES
  *
@@ -8,30 +7,7 @@
 
 
 include 'cl-error-checking.php';
-
-
-/**
- * Get shortcode template file
- *
- * Priority:
- * 1. /themes/theme/template-parts/cl/cl-template-*.php
- * 2. /plugins/uri-component-library/templates/cl-template-*.php
- *
- * @param str $name the name of the shortcode, as used in the filename.
- * @return the path to the template file (rel for default templates, abs for theme templates)
- */
-function uri_cl_shortcode_get_template( $name ) {
-
-	$template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
-
-	if ( is_file( $template ) ) {
-		return $template;
-	} else {
-		return 'templates/cl-template-' . $name . '.php';
-	}
-
-}
-
+include 'cl-helpers.php';
 
 /**
  * Boxout
@@ -52,10 +28,10 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 	// (string $cname , array $atts , array $check_atts , string $template)
 	return uri_cl_validate(
 		 'Boxout', $atts, $content, array(
-			 // (string $attr , string $type [, bool $req [, array $values]])
+			 // (string $attr , string $types [, bool $req [, array $values]])
 			 array(
 				 'attr' => 'float',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'left', 'right' ),
 			 ),
@@ -89,11 +65,11 @@ function uri_cl_shortcode_button( $atts, $content = null ) {
 		 'Button', $atts, $content, array(
 			 array(
 				 'attr' => 'link',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'style',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'prominent', 'disabled' ),
 			 ),
@@ -131,16 +107,16 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 		 'Card', $atts, $content, array(
 			 array(
 				 'attr' => 'link',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url', 'num' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'float',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'left', 'right' ),
 			 ),
@@ -177,16 +153,16 @@ function uri_cl_shortcode_dcard( $atts, $content = null ) {
 		 'Detail Card', $atts, $content, array(
 			 array(
 				 'attr' => 'link',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url', 'num' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'float',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'left', 'right' ),
 			 ),
@@ -227,41 +203,41 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 		 'Story Card', $atts, $content, array(
 			 array(
 				 'attr' => 'post',
-				 'type' => 'num',
+				 'types' => array( 'num' ),
 			 ),
 			 array(
 				 'attr' => 'link',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'showcat',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'catlink',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'showexcerpt',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'showsocial',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'showdate',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -300,27 +276,27 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 		 'Hero', $atts, $content, array(
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'vid',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'link',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'animation',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'shift' ),
 			 ),
 			 array(
 				 'attr' => 'format',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'super', 'fullwidth' ),
 			 ),
@@ -354,21 +330,21 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 		 'Metric', $atts, $content, array(
 			 array(
 				 'attr' => 'metric',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'caption',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'style',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'dark', 'clear', 'overlay' ),
 			 ),
 			 array(
 				 'attr' => 'float',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'left', 'right' ),
 			 ),
@@ -403,12 +379,12 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
 		 'Menu', $atts, $content, array(
 			 array(
 				 'attr' => 'depth',
-				 'type' => 'num',
+				 'types' => array( 'num' ),
 				 'values' => array( 1, 2 ),
 			 ),
 			 array(
 				 'attr' => 'showtitle',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -439,7 +415,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 		 'Notice', $atts, $content, array(
 			 array(
 				 'attr' => 'style',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'req' => false,
 				 'values' => array( 'urgent' ),
 			 ),
@@ -473,11 +449,11 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 		 'Panel', $atts, $content, array(
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'reverse',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -510,15 +486,15 @@ function uri_cl_shortcode_quote( $atts, $content = null ) {
 		 'Quote', $atts, $content, array(
 			 array(
 				 'attr' => 'quote',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'citation',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -554,37 +530,37 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 		 'Social', $atts, $content, array(
 			 array(
 				 'attr' => 'facebook',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'instagram',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'twitter',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'youtube',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'snapchat',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'linkedin',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'style',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'values' => array( 'color', 'dark', 'light' ),
 			 ),
 		 ),
@@ -664,22 +640,22 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 		 'Tiles', $atts, $content, array(
 			 array(
 				 'attr' => 'across',
-				 'type' => 'num',
+				 'types' => array( 'num' ),
 				 'values' => array( 2, 3, 4, 5 ),
 			 ),
 			 array(
 				 'attr' => 'square',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'compact',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 			 array(
 				 'attr' => 'animated',
-				 'type' => 'bool',
+				 'types' => array( 'bool' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -715,19 +691,19 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 		 'Video', $atts, $content, array(
 			 array(
 				 'attr' => 'id',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'vid',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 			 ),
 			 array(
 				 'attr' => 'img',
-				 'type' => 'url',
+				 'types' => array( 'url' ),
 			 ),
 			 array(
 				 'attr' => 'aspect',
-				 'type' => 'ratio',
+				 'types' => array( 'ratio' ),
 				 'req' => false,
 			 ),
 		 ),
@@ -759,12 +735,12 @@ function uri_cl_shortcode_waves( $atts, $content = null ) {
 		 'Waves', $atts, $content, array(
 			 array(
 				 'attr' => 'placement',
-				 'type' => 'str',
+				 'types' => array( 'str' ),
 				 'values' => array( 'bottom', 'top' ),
 			 ),
 			 array(
 				 'attr' => 'offset',
-				 'type' => 'unit',
+				 'types' => array( 'unit' ),
 				 'req' => false,
 			 ),
 		 ),

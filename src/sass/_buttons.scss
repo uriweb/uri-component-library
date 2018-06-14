@@ -1,36 +1,34 @@
-/* ======= BUTTONS ======= */ 
+/* ======= BUTTONS ======= */
 
 a.cl-button,
 span.cl-button {
-    
+
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 1rem;
+	max-width: $maxcardwidth;
+	width: 100%;
+	background: $white;
+	border: 1px solid $grey;
+	font-size: .8rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	line-height: normal;
+	text-transform: uppercase;
+	text-align: center;
+	color: $blue;
+	text-decoration: none;
+	transition: all .2s ease-in-out;
+	text-shadow: none;
+
     * {
         box-sizing: border-box;
     }
-    
-    & {
-        display: inline-block;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 1rem;
-        max-width: $maxcardwidth;
-        width: 100%;
-        background: $white;
-        border: 1px solid $grey;
-        font-size: .8rem;
-        font-weight: 700;
-        letter-spacing: .1rem;
-        line-height: normal;
-        text-transform: uppercase;
-        text-align: center;
-        color: $blue;
-        text-decoration: none;
-        transition: all .2s ease-in-out;
-        text-shadow: none;
-    }
-    
+
     &.prominent {
         background: $blue;
-        box-shadow: 250px 0px 100px -100px transparent inset;
+        box-shadow: 250px 0 100px -100px transparent inset;
         color: $white;
         border: none;
         padding: 1.09rem 1rem;
@@ -58,7 +56,7 @@ span.cl-button {
     &.prominent:hover,
     &.prominent:focus {
         background: $linkhover;
-        box-shadow: 350px 0px 50px -100px $link inset;
+        box-shadow: 350px 0 50px -100px $link inset;
         border: none;
         transition: all 2s $easeOutExpo;
         color: $white;

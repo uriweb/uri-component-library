@@ -4,12 +4,7 @@ $cards: ".cl-card, .cl-dcard, .cl-scard";
 $adcards: ".cl-card, .cl-dcard";
 
 #{$cards} {
-    * {
-        box-sizing: border-box;
-    }
-}
-
-#{$cards} {
+	
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -23,6 +18,11 @@ $adcards: ".cl-card, .cl-dcard";
     position: relative;
     top: 0;
     transition: width .2s ease-in-out, top .1s ease-in-out, box-shadow .1s ease-in-out;
+	
+	* {
+        box-sizing: border-box;
+    }
+	
 }
 
 @media screen and (min-width: $break1) {
@@ -70,7 +70,6 @@ $adcards: ".cl-card, .cl-dcard";
 .cl-tiles .cl-scard {
     
     p {
-        font-size: 1rem;
         margin-bottom: 2rem;
     }
     

@@ -147,7 +147,7 @@
 		// Reset the endslide animation
 		c.classList.remove( 'reboundLeft', 'reboundRight' );
 
-		if ( 'Next' == direction ) {
+		if ( 'Next' === direction ) {
 			index++;
 			if ( index > count ) {
 				if ( ! mobile ) {
@@ -181,7 +181,7 @@
 	 */
 	function setPosition( c, index ) {
 
-		var S, active, captions, counter, i;
+		var S, active, captions, counter;
 
 		c.style.transform = 'translateX(-' + ( index * 100 ) + '%)';
 		c.setAttribute( 'data-position', index );
@@ -266,13 +266,12 @@
 		el.addEventListener(
 			'touchend', function( e ) {
 
-				var w, i, tolerance;
+				var w, tolerance;
 
 				// Rehook CSS transitions after the swipe is complete to animate snapping
 				c.classList.add( 'transitions' );
 
 				w = c.offsetWidth;
-				i = parseInt( c.getAttribute( 'data-position' ) );
 				tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
 
 				if ( dist > w * tolerance ) {
