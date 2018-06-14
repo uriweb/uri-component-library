@@ -25,6 +25,7 @@
     &.fullwidth,
     &.super {
         width: 100vw;
+		max-width: initial;
         position: relative;
         left: 50%;
         margin-left: -50vw;
@@ -95,6 +96,17 @@
         transform: all .2s ease-in-out;
         padding: 0;
     }
+	
+	p {
+        color: #fff;
+        font-weight: 400;
+        font-size: 1.1rem;
+    }
+	
+	p,
+	&.fullwidth p {
+		max-width: 600px;		
+	}
     
     &.super {
         
@@ -120,12 +132,6 @@
             line-height: 1.5rem;
         }
         
-    }
-            
-    p {
-        color: #fff;
-        font-weight: 400;
-        font-size: 1.1rem;
     }
     
     .cl-button {
