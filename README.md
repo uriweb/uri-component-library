@@ -2,35 +2,13 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 2.3.3
+## What's new in 2.3.4
 
-CL 2.3.3 is a bug fix release.
+CL 2.3.4 is a bug fix release.
 
-* Improves reliability of page ancestor styling in menus
-* Improves compatibility of tabs with nested block-level elements
-* Removes section wrapping of non-floated metrics
+* Fixes an issue that caused potential conflicts between fullwidth heroes and themes containing a class `fullwidth`
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/84/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 2.3.2
-
-CL 2.3.2 is a bug fix release.
-
-* Removes font size and line height styles from tiles
-* Softens the hero overlay gradient
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/82/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 2.3.1
-
-CL 2.3.1 is a bug fix release focused on style adjustments and improvements to developer tools.
-
-* Adds current page ancestor and current menu item highlighting to menus
-* Includes error message design improvements
-* Adds/adjusts development tools
-* Other style tweaks and bug fixes
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/80/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/92/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
@@ -44,4 +22,4 @@ Contributors: Brandon Fuller
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 2.3.3  
+Stable tag: 2.3.4  
