@@ -7,7 +7,7 @@
 
 (function() {
 
-	var cNames = ['cl-card', 'cl-dcard'],
+	var cName = 'cl-card',
 		wName = 'CLCard';
 
 	function generateCardShortcode(params) {
@@ -18,13 +18,10 @@
 		}
 
 		for (i in params) {
-			if (i == 'style') {
-				continue;
-			}
 			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
 		}
 
-		return '[' + params.style + ' ' + attributes.join( ' ' ) + ']';
+		return '[' + cName + ' ' + attributes.join( ' ' ) + ']';
 
 	}
 
@@ -39,8 +36,6 @@
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
 			init : function(ed, url) {
-
-				var style;
 
 				// add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
@@ -58,7 +53,7 @@
 
 					// create an empty object if args is empty
 					if ( ! args) {
-						args = {style:'', title:'', body:'', link:''}
+						args = {title:'', body:'', link:''}
 					}
 					// create an empty property so nothing is null
 					var possibleArgs = ['title', 'body', 'link', 'button', 'img', 'alt', 'tooltip', 'float'];
@@ -83,11 +78,6 @@
 						title: 'Insert / Update Card',
 						library: {type: 'image'},
 						body: [
-						{type: 'listbox', name: 'style', label: 'Card Style', value: args.style, 'values': [
-							{text: 'Standard', value: 'cl-card'},
-							{text: 'Detail', value: 'cl-dcard'}
-							]
-						},
 						{type: 'textbox', name: 'title', label: 'Title', value: args.title},
 						{type: 'textbox', name: 'body', multiline: 'true', label: 'Body', value: args.body},
 						{type: 'textbox', name: 'link', label: 'Link', value: args.link},
@@ -107,7 +97,7 @@
 						onsubmit: function(e) {
 							// Insert content when the window form is submitted
 							var shortcode = generateCardShortcode( e.data );
-							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cNames );
+							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
 						}
 					},
 					{
@@ -120,18 +110,14 @@
 
 				ed.on(
 				 'BeforeSetContent', function( event ) {
-					for (var i = 0; i < cNames.length; i++) {
-						event.content = URIWYSIWYG.replaceShortcodes( event.content, cNames[i], true, ed );
-					}
+					event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, ed );
 				 }
 				);
 
 				ed.on(
 				 'PostProcess', function( event ) {
 					if ( event.get ) {
-						for (var i = 0; i < cNames.length; i++) {
-							event.content = URIWYSIWYG.restoreShortcodes( event.content, cNames[i] );
-						}
+						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
 					}
 				 }
 				);
@@ -139,9 +125,7 @@
 				// open popup on placeholder double click
 				ed.on(
 				'DblClick',function( event ) {
-					for (var i = 0; i < cNames.length; i++) {
-						URIWYSIWYG.openPopup( event.target, ed, cNames[i], wName );
-					}
+					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
 				}
 				);
 

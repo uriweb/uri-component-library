@@ -106,7 +106,7 @@ class URIWYSIWYG {
 							var placeHolder = ed.$( '#' + id );
 							var d = document.createElement( 'div' );
 
-							if ( data.match( 'class="cl-card' ) || data.match( 'class="cl-dcard' ) ) {
+							if ( data.match( 'class="cl-card' ) ) {
 								// replace the <a class="cl-card"> element with a <div>
 								// because TinyMCE doesn't like block-level elements inside of inline elements
 								data = data.replace( '<a ', '<div ' );
@@ -171,9 +171,9 @@ class URIWYSIWYG {
 	 * @param target obj The target component
 	 * @param shortcode str The shortcode
 	 * @param ed obj The editor instance
-	 * @param cNames mixed The component name(s)
+	 * @param cName mixed The component name
 	 */
-	static insertMultiMediaComponent( target, shortcode, ed, cNames ) {
+	static insertMultiMediaComponent( target, shortcode, ed, cName ) {
 
 		var id, i;
 
@@ -181,13 +181,7 @@ class URIWYSIWYG {
 			id = URIWYSIWYG.generateID();
 			jQuery( target ).replaceWith( URIWYSIWYG.generateLoadingDiv( window.encodeURIComponent( shortcode ), id ) );
 
-			if ( Array.isArray( cNames ) ) {
-				for ( i = 0; i < cNames.length; i++ ) {
-					URIWYSIWYG.getHTML( ed, shortcode, id, URIWYSIWYG.generateNonEditableClasses( cNames[i] ) );
-				}
-			} else {
-				URIWYSIWYG.getHTML( ed, shortcode, id, URIWYSIWYG.generateNonEditableClasses( cNames ) );
-			}
+			URIWYSIWYG.getHTML( ed, shortcode, id, URIWYSIWYG.generateNonEditableClasses( cName ) );
 
 		} else {
 			ed.execCommand( 'mceInsertContent', 0, shortcode );
