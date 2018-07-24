@@ -112,6 +112,7 @@ function watcher(done) {
     
     // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
+	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
 	// watch for PHP change
     gulp.watch('./**/*.php', sniffs);
