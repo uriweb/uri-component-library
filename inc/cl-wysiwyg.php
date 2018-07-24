@@ -171,7 +171,7 @@ function uri_cl_wysiwyg_get_html() {
 	foreach ( $divs as $element ) {
 		$class = $element->getAttribute( 'class' );
 		if ( strpos( $class, 'cl-errors' ) !== false ) {
-			$element->parent_node->removeChild( $element );
+			$element->parentNode->removeChild( $element );
 		}
 	}
 
