@@ -30,8 +30,18 @@ function uri_cl_enqueues() {
 }
 add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 
+/**
+ * Return the plugin base url
+ */
+function uri_cl_dir_url() {
+	return plugin_dir_url( __FILE__ );
+}
+
 // Include shortcodes
 include( plugin_dir_path( __FILE__ ) . 'inc/cl-shortcodes.php' );
+
+// Include WYSIWYG buttons
+include( plugin_dir_path( __FILE__ ) . 'inc/cl-wysiwyg.php' );
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {

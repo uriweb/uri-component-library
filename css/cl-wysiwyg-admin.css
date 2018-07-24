@@ -1,0 +1,14 @@
+#wysiwyg-img-preview {
+	text-align: right;
+	height: 100px;
+}
+#wysiwyg-img-preview img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.wysiwyg-section-break {
+    margin: 10px 0 5px;
+    width: 100%;
+    border-top: 2px solid #aaa;
+    font-weight: bold;
+}
