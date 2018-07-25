@@ -4,6 +4,7 @@
  * @package uri-component-library
  */
 
+// jshint esversion: 6
 // jscs:disable requireVarDeclFirst
 class URIWYSIWYG {
 
