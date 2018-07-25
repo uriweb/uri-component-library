@@ -449,7 +449,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 		 'Panel', $atts, $content, array(
 			 array(
 				 'attr' => 'img',
-				 'types' => array( 'url' ),
+				 'types' => array( 'url', 'num' ),
 			 ),
 			 array(
 				 'attr' => 'reverse',
