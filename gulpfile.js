@@ -71,14 +71,27 @@ function scripts(done) {
                   '',
                   ''].join('\n');
     
+	// Run JSHint for src js
     gulp.src('./src/js/*.js')
         .pipe(jshint(done))
         .pipe(jshint.reporter('default'));
+	
+	// Run JSHint for wysiwyg js
+	gulp.src('./js/wysiwyg/*.js')
+        .pipe(jshint(done))
+        .pipe(jshint.reporter('default'));
     
+	// Run jscs for src js
     gulp.src('./src/js/*.js')
         .pipe(jscs(done))
         .pipe(jscs.reporter());
+	
+	// Run jscs for wysiwyg js
+	gulp.src('./js/wysiwyg/*.js')
+        .pipe(jscs(done))
+        .pipe(jscs.reporter());
   
+	// Compile src js
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
         //.pipe(stripDebug())
@@ -112,6 +125,7 @@ function watcher(done) {
     
     // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
+	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
 	// watch for PHP change
     gulp.watch('./**/*.php', sniffs);
