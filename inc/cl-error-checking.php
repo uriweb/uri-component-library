@@ -82,7 +82,7 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 			$output = '';
 		}
 	} else {
-		extract( $atts );
+
 		include $template;
 
 		if ( count( $errors ) > 0 && $admin ) {

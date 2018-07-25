@@ -2,52 +2,52 @@
 
 $classes = 'cl-scard';
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 if ( ! empty( $float ) ) {
 	$classes .= ' ' . $float;
 }
 
-$post_link = get_permalink( $post );
-$post_thumbnail = get_the_post_thumbnail( $post );
-$post_cat_id = wp_get_post_categories( $post, array( 'fields' => 'ids' ) )[0];
-$post_cat = wp_get_post_categories( $post, array( 'fields' => 'names' ) )[0];
+$post_link = get_permalink( $atts['post'] );
+$post_thumbnail = get_the_post_thumbnail( $atts['post'] );
+$post_cat_id = wp_get_post_categories( $atts['post'], array( 'fields' => 'ids' ) )[0];
+$post_cat = wp_get_post_categories( $atts['post'], array( 'fields' => 'names' ) )[0];
 $post_cat_link = get_category_link( $post_cat_id );
-$post_title = get_the_title( $post );
-$post_excerpt = get_the_excerpt( $post );
+$post_title = get_the_title( $atts['post'] );
+$post_excerpt = get_the_excerpt( $atts['post'] );
 
-if ( ! empty( $link ) ) {
-	$post_link = $link;
+if ( ! empty( $atts['link'] ) ) {
+	$post_link = $atts['link'];
 }
 
-if ( ! empty( $img ) ) {
-	$post_thumbnail = uri_cl_build_img_tag( $img );
+if ( ! empty( $atts['img'] ) ) {
+	$post_thumbnail = uri_cl_build_img_tag( $atts['img'] );
 }
 
-if ( ! empty( $cat ) ) {
-	$post_cat = $cat;
+if ( ! empty( $atts['cat'] ) ) {
+	$post_cat = $atts['cat'];
 }
 
-if ( ! empty( $catlink ) ) {
-	$post_cat_link = $catlink;
+if ( ! empty( $atts['catlink'] ) ) {
+	$post_cat_link = $atts['catlink'];
 }
 
-if ( ! empty( $title ) ) {
-	$post_title = $title;
+if ( ! empty( $atts['title'] ) ) {
+	$post_title = $atts['title'];
 }
 
-if ( ! empty( $excerpt ) ) {
-	$post_excerpt = $excerpt;
+if ( ! empty( $atts['excerpt'] ) ) {
+	$post_excerpt = $atts['excerpt'];
 }
 
 
 // ---- BUILD THE CARD ----
-$output = '<div id="post-' . $post . '" class="' . $classes . '"';
+$output = '<div id="post-' . $atts['post'] . '" class="' . $classes . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= ' style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
 }
 
 $output .= '>';
@@ -64,7 +64,7 @@ if ( $post_thumbnail ) {
 $output .= '<div class="cl-scard-text">';
 
 // Category
-if ( $showcat && $post_cat ) {
+if ( $atts['showcat'] && $post_cat ) {
 	$post_cat_classname = 'cl-scard-category-' . strtolower( str_replace( ' ', '-', $post_cat ) );
 	$output .= '<a class="cl-scard-category ' . $post_cat_classname . '" href="' . $post_cat_link . '" title="See more from this category">' . $post_cat . '</a>';
 }
@@ -74,23 +74,23 @@ $output .= '<a class="cl-scard-body" href="' . $post_link . '">';
 
 $output .= '<h3 class="cl-scard-title">' . $post_title . '</h3>';
 
-if ( $showexcerpt && $post_excerpt ) {
+if ( $atts['showexcerpt'] && $post_excerpt ) {
 	$output .= '<p class="cl-scard-exerpt">' . $post_excerpt . '</p>';
 }
 
 $output .= '</a>';
 // --- End Body ---
 // --- Begin Metadata ---
-if ( $showdate || $showsocial ) {
+if ( $atts['showdate'] || $atts['showsocial'] ) {
 	$output .= '<div class="cl-scard-meta">';
 
 	// Date
-	if ( $showdate ) {
-		$output .= '<span class="cl-scard-date">' . get_the_date( 'F j, Y', $post ) . '</span>';
+	if ( $atts['showdate'] ) {
+		$output .= '<span class="cl-scard-date">' . get_the_date( 'F j, Y', $atts['post'] ) . '</span>';
 	}
 
 	// Social media
-	if ( $showsocial ) {
+	if ( $atts['showsocial'] ) {
 		$output .= '<span class="cl-scard-social">';
 
 		$output .= '<a class="twitter-share-button" href="https://twitter.com/share" data-size="small" data-url="' . $post_link . '" data-text="' . $post_title . '">Tweet</a>';

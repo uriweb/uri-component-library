@@ -1,12 +1,12 @@
 <?php
 
-$classes = 'cl-social ' . $style;
+$classes = 'cl-social ' . $atts['style'];
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
-if ( empty( $facebook ) && empty( $instagram ) && empty( $twitter ) && empty( $youtube ) && empty( $snapchat ) && empty( $linkedin ) ) {
+if ( empty( $atts['facebook'] ) && empty( $atts['instagram'] ) && empty( $atts['twitter'] ) && empty( $atts['youtube'] ) && empty( $atts['snapchat'] ) && empty( $atts['linkedin'] ) ) {
 
 	$output = '';
 
@@ -15,29 +15,29 @@ if ( empty( $facebook ) && empty( $instagram ) && empty( $twitter ) && empty( $y
 	$output = '<aside class="cl-wrapper cl-social-wrapper">';
 	$output .= '<ul class="' . $classes . '"';
 
-	if ( ! empty( $css ) ) {
-		$output .= ' style="' . $css . '"';
+	if ( ! empty( $atts['css'] ) ) {
+		$output .= ' style="' . $atts['css'] . '"';
 	}
 
 	$output .= '>';
 
-	if ( ! empty( $facebook ) ) {
-		$output .= '<li><a href="' . $facebook . '" class="cl-social-facebook">Facebook</a></li>';
+	if ( ! empty( $atts['facebook'] ) ) {
+		$output .= '<li><a href="' . $atts['facebook'] . '" class="cl-social-facebook">Facebook</a></li>';
 	}
-	if ( ! empty( $instagram ) ) {
-		$output .= '<li><a href="' . $instagram . '" class="cl-social-instagram">Instagram</a></li>';
+	if ( ! empty( $atts['instagram'] ) ) {
+		$output .= '<li><a href="' . $atts['instagram'] . '" class="cl-social-instagram">Instagram</a></li>';
 	}
-	if ( ! empty( $twitter ) ) {
-		$output .= '<li><a href="' . $twitter . '" class="cl-social-twitter">Twitter</a></li>';
+	if ( ! empty( $atts['twitter'] ) ) {
+		$output .= '<li><a href="' . $atts['twitter'] . '" class="cl-social-twitter">Twitter</a></li>';
 	}
-	if ( ! empty( $youtube ) ) {
-		$output .= '<li><a href="' . $youtube . '" class="cl-social-youtube">YouTube</a></li>';
+	if ( ! empty( $atts['youtube'] ) ) {
+		$output .= '<li><a href="' . $atts['youtube'] . '" class="cl-social-youtube">YouTube</a></li>';
 	}
-	if ( ! empty( $snapchat ) ) {
-		$output .= '<li><a href="' . $snapchat . '" class="cl-social-snapchat">Snapchat</a></li>';
+	if ( ! empty( $atts['snapchat'] ) ) {
+		$output .= '<li><a href="' . $atts['snapchat'] . '" class="cl-social-snapchat">Snapchat</a></li>';
 	}
-	if ( ! empty( $linkedin ) ) {
-		$output .= '<li><a href="' . $linkedin . '" class="cl-social-linkedin">LinkedIn</a></li>';
+	if ( ! empty( $atts['linkedin'] ) ) {
+		$output .= '<li><a href="' . $atts['linkedin'] . '" class="cl-social-linkedin">LinkedIn</a></li>';
 	}
 
 	$output .= '</ul>';
