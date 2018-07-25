@@ -4,38 +4,48 @@
  * @package uri-component-library
  */
 
+// jscs:disable requireVarDeclFirst
 class URIWYSIWYG {
 
-	// escapes quotes on every element in an array (if element is a string)
-	static escapeQuotesDeep(a) {
-		for (i in a) {
-			if (typeof a[i] === 'string') {
+	/**
+	 * Escapes quotes on every element in an array (if element is a string)
+	 */
+	static escapeQuotesDeep( a ) {
+		var i;
+		for ( i in a ) {
+			if ( 'string' === typeof a[i] ) {
 				a[i] = this.escapeQuotes( a[i] );
 			}
 		}
 		return a;
 	}
 
-	// replace quotes with curly quotes
-	static escapeQuotes(s) {
-		s = s.replace( /"\b/g, "&#8220;" );
-		s = s.replace( /"/g, "&#8221;" );
+	/**
+	 * Replace quotes with curly quotes
+	 */
+	static escapeQuotes( s ) {
+		s = s.replace( /"\b/g, '&#8220;' );
+		s = s.replace( /"/g, '&#8221;' );
 		return s;
-		return s.replace( /"/g, '%25' );
 	}
 
-	// unescapes quotes on every element in an array (if element is a string)
-	static unEscapeQuotesDeep(a) {
-		for (i in a) {
-			if (typeof a[i] === 'string') {
+	/**
+	 * Unescapes quotes on every element in an array (if element is a string)
+	 */
+	static unEscapeQuotesDeep( a ) {
+		var i;
+		for ( i in a ) {
+			if ( 'string' === typeof a[i] ) {
 				a[i] = this.unEscapeQuotes( a[i] );
 			}
 		}
 		return a;
 	}
 
-	// replace %25 with "
-	static unEscapeQuotes(s) {
+	/**
+	 * Replace %25 with "
+	 */
+	static unEscapeQuotes( s ) {
 		return s.replace( /%25/g, '"' );
 	}
 
@@ -47,17 +57,19 @@ class URIWYSIWYG {
 	 * @param str s
 	 * @return str
 	 */
-	static htmlEscape(s) {
-		// tend to quotes... using the entities here will cause the visual editor to
-		// display them literally, that's why this doesn't call escapeQuotes()
-		// replace all quotes before a word boundary with an opening curly quote
-		s = s.replace( /"\b/g, "“" );
-		// replace the rest of the quotes with a closing curly quote
-		s = s.replace( /"/g, "”" );
+	static htmlEscape( s ) {
 
-		// replace single prime with curly apostrophe
-		s = s.replace( /'\b/g, "‘" );
-		s = s.replace( /'/g, "’" );
+		// Tend to quotes... using the entities here will cause the visual editor to
+		// Display them literally, that's why this doesn't call escapeQuotes()
+		// Replace all quotes before a word boundary with an opening curly quote
+		s = s.replace( /"\b/g, '“' );
+
+		// Replace the rest of the quotes with a closing curly quote
+		s = s.replace( /"/g, '”' );
+
+		// Replace single prime with curly apostrophe
+		s = s.replace( /'\b/g, '‘' );
+		s = s.replace( /'/g, '’' );
 
 		return s
 			.replace( /&/g, '&amp;' )
@@ -74,15 +86,18 @@ class URIWYSIWYG {
 	 * @param str s
 	 * @return str
 	 */
-	static htmlUnescape(s) {
+	static htmlUnescape( s ) {
+
+		// jscs:disable validateQuoteMarks
 		return s
 			.replace( /&#34;/g, '"' )
 			.replace( /&#39;/g, "'" )
 			.replace( /&lt;/g, '<' )
 			.replace( /&gt;/g, '>' )
 			.replace( /&amp;/g, '&' );
-	}
 
+		// jscs:enable validateQuoteMarks
+	}
 
 	static getHTML( ed, shortcode, id, classes ) {
 
@@ -101,16 +116,20 @@ class URIWYSIWYG {
 					},
 					success: function( data, textStatus, jqXHR ) {
 
-						if (ed.$) {
+						var placeHolder, d;
 
-							var placeHolder = ed.$( '#' + id );
-							var d = document.createElement( 'div' );
+						if ( ed.$ ) {
+
+							placeHolder = ed.$( '#' + id );
+							d = document.createElement( 'div' );
 
 							if ( data.match( 'class="cl-card' ) ) {
-								// replace the <a class="cl-card"> element with a <div>
-								// because TinyMCE doesn't like block-level elements inside of inline elements
+
+								// Replace the <a class="cl-card"> element with a <div>
+								// Because TinyMCE doesn't like block-level elements inside of inline elements
 								data = data.replace( '<a ', '<div ' );
 								data = data.replace( '</a>', '</div>' );
+
 							}
 
 							jQuery( d ).addClass( classes ).append( data );
@@ -137,8 +156,9 @@ class URIWYSIWYG {
 			);
 	}
 
-
-	/* Replace shortcode with HTML
+	/**
+	 * Replace shortcode with HTML
+	 *
 	 * @param content string The editor content
 	 * @param shortcodeName string The shortcode name
 	 * @param selfclosing bool Whether or not the shortcode is self-closing
@@ -151,12 +171,12 @@ class URIWYSIWYG {
 		return content.replace(
 			 re, function( match ) {
 
-				var safeData, classes, out;
+				var safeData, classes, out, id;
 
 				safeData = window.encodeURIComponent( match );
 				classes = URIWYSIWYG.generateNonEditableClasses( shortcodeName );
 
-				var id = URIWYSIWYG.generateID();
+				id = URIWYSIWYG.generateID();
 				out = URIWYSIWYG.generateLoadingDiv( safeData, id );
 
 				URIWYSIWYG.getHTML( ed, match, id, classes );
@@ -166,8 +186,9 @@ class URIWYSIWYG {
 			);
 	}
 
-
-	/* Insert/Replace multimedia content
+	/**
+	 * Insert/Replace multimedia content
+	 *
 	 * @param target obj The target component
 	 * @param shortcode str The shortcode
 	 * @param ed obj The editor instance
@@ -175,7 +196,7 @@ class URIWYSIWYG {
 	 */
 	static insertMultiMediaComponent( target, shortcode, ed, cName ) {
 
-		var id, i;
+		var id;
 
 		if ( target ) {
 			id = URIWYSIWYG.generateID();
@@ -186,37 +207,45 @@ class URIWYSIWYG {
 		} else {
 			ed.execCommand( 'mceInsertContent', 0, shortcode );
 		}
+
 	}
 
-
-	/* Generates the mceNonEditable classes
+	/**
+	 * Generates the mceNonEditable classes
+	 *
 	 * @param name str The shortcode name
 	 */
 	static generateNonEditableClasses( name ) {
+
 		return 'mceNonEditable ' + name + '-noneditable';
+
 	}
 
-
-	/* Generates a random ID
+	/**
+	 * Generates a random ID
 	 */
 	static generateID() {
+
 		return '_' + Math.random().toString( 36 ).substr( 2, 9 );
+
 	}
 
-
-	/* Generates the loading div
+	/**
+	 * Generates the loading div
+	 *
 	 * @param data str The shortcode data
 	 * @param id The random id
 	 */
 	static generateLoadingDiv( data, id ) {
-		return '<div class="loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
-	}
 
+		return '<div class="loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
+
+	}
 
 	/* Parses a short code and returns an array of attributes
 	 * @param sc string The shortcode
 	 */
-	static parseShortCodeAttributes(sc) {
+	static parseShortCodeAttributes( sc ) {
 
 		var attributes, atts, innerContent, x, t;
 
@@ -225,13 +254,13 @@ class URIWYSIWYG {
 
 		for ( x in atts ) {
 			t = atts[x].split( '=' );
-			t[1] = t[1].replace( /\"/gi, '' );
+			t[1] = t[1].replace( /"/gi, '' );
 			attributes[t[0]] = t[1];
 		}
 
 		innerContent = sc.match( /\][^]+?\[/gi );
-		if (innerContent) {
-			attributes['content'] = innerContent[0].replace( /^\]|\[$/gi,'' ).trim();
+		if ( innerContent ) {
+			attributes.content = innerContent[0].replace( /^\]|\[$/gi, '' ).trim();
 		}
 
 		return attributes;
@@ -244,35 +273,39 @@ class URIWYSIWYG {
 	 * @param sc string The shortcode name
 	 */
 	static restoreShortcodes( content, sc ) {
-		var html, componentElements, i, t, wrapper;
 
-		// convert the content string into a DOM tree so we can parse it easily
+		var html, componentElements, i, t;
+
+		// Convert the content string into a DOM tree so we can parse it easily
 		html = document.createElement( 'div' );
 		html.innerHTML = content;
 		componentElements = html.querySelectorAll( '.' + sc + '-noneditable' );
 
-		// componentElements contains an array of the shortcodes
-		for (i = 0; i < componentElements.length; i++) {
+		// Var componentElements contains an array of the shortcodes
+		for ( i = 0; i < componentElements.length; i++ ) {
 			t = document.createTextNode( window.decodeURIComponent( componentElements[i].getAttribute( 'data-shortcode' ) ) );
 			componentElements[i].parentNode.replaceChild( t, componentElements[i] );
 		}
 
-		// return the DOM tree as a string
+		// Return the DOM tree as a string
 		var out = this.htmlUnescape( html.innerHTML );
 		return out;
-		// return html.innerHTML;
+
 	}
 
+	/**
+	 * Invokes the wp media picker from a tinymce modal
+	 */
+	static mediaPicker( e ) {
 
-	// invokes the wp media picker from a tinymce modal
-	static mediaPicker(e) {
-		e.preventDefault();
 		var picker;
+
+		e.preventDefault();
 
 		picker = wp.media.frames.picker = wp.media(
 			{
 				title: 'Select an image',
-				button: {text: 'Add an image'},
+				button: { text: 'Add an image' },
 				library: { type: [ 'image' ] },
 				multiple: false
 		}
@@ -290,9 +323,9 @@ class URIWYSIWYG {
 
 				imgurl.value = attachment.sizes.full.url;
 
-				if (attachment.alt) {
+				if ( attachment.alt ) {
 					alt = attachment.alt;
-				} else if (attachment.title) {
+				} else if ( attachment.title ) {
 					alt = attachment.title;
 				} else {
 					alt = '';
@@ -310,25 +343,27 @@ class URIWYSIWYG {
 
 	}
 
+	static mediaPickerPreview( src, alt ) {
 
-	static mediaPickerPreview(src, alt) {
 		var preview;
+
 		preview = document.createElement( 'img' );
 		preview.src = src;
 		preview.alt = alt;
 		document.getElementById( 'wysiwyg-img-preview' ).innerHTML = '';
 		document.getElementById( 'wysiwyg-img-preview' ).appendChild( preview );
+
 	}
 
-	static openPopup(target, ed, cName, wName) {
+	static openPopup( target, ed, cName, wName ) {
 
 		var isTarget = false, sc, attributes;
 
-		while ( isTarget === false && target.parentNode ) {
+		while ( false === isTarget && target.parentNode ) {
 			if ( jQuery( target ).hasClass( cName ) ) {
 				isTarget = true;
 			} else {
-				if (target.parentNode) {
+				if ( target.parentNode ) {
 					target = target.parentNode;
 				}
 			}
@@ -337,8 +372,10 @@ class URIWYSIWYG {
 		if ( isTarget ) {
 
 			if ( ! target.getAttribute( 'data-shortcode' ) ) {
-				// see if the component has a wrapper element
+
+				// See if the component has a wrapper element
 				target = jQuery( target ).closest( '.' + cName + '-wrapper' )[0];
+
 			}
 
 			sc = window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) );
@@ -346,6 +383,18 @@ class URIWYSIWYG {
 			console.log( attributes );
 			ed.execCommand( wName, target, attributes );
 		}
+	}
+
+	static getPluginInfo() {
+
+		return {
+			longname: 'URI WYSIWYG',
+			author: 'John Pennypacker, Brandon Fuller',
+			authorurl: 'https://today.uri.edu',
+			infourl: 'https://www.uri.edu/communications',
+			version: '0.1'
+		};
+
 	}
 
 }

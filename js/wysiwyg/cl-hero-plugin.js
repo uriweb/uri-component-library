@@ -10,15 +10,15 @@
 	var cName = 'cl-hero',
 		wName = 'CLHero';
 
-	function generateHeroShortcode(params) {
+	function generateHeroShortcode( params ) {
 
-		var attributes = [];
+		var attributes = [], i;
 
-		if ( ! params.button) {
+		if ( ! params.button ) {
 			params.button = 'Explore';
 		}
 
-		for (i in params) {
+		for ( i in params ) {
 			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
 		}
 
@@ -36,28 +36,31 @@
 			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init : function(ed, url) {
+			init: function( ed, url ) {
 
-				// add the button that the WP plugin defined in the mce_buttons filter callback
+				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 				wName, {
-					title : 'Hero',
-					text : '',
-					cmd : wName,
-					image : url + '/i/hero.png'
+					title: 'Hero',
+					text: '',
+					cmd: wName,
+					image: url + '/i/hero.png'
 				}
 				);
 
-				// add a js callback for the button
+				// Add a js callback for the button
 				ed.addCommand(
 				wName, function( target, args ) {
 
-					// create an empty object if args is empty
-					if ( ! args) {
-						args = {}
+					var possibleArgs, imageEl;
+
+					// Create an empty object if args is empty
+					if ( ! args ) {
+						args = {};
 					}
-					// create an empty property so nothing is null
-					var possibleArgs = [
+
+					// Create an empty property so nothing is null
+					possibleArgs = [
 						'img',
 						'id',
 						'vid',
@@ -71,69 +74,71 @@
 						'animation'
 					];
 					possibleArgs.forEach(
-					function(i){
-						if ( ! args[i]) {
+					function( i ) {
+						if ( ! args[i] ) {
 							args[i] = '';
 						}
 					}
 					);
 
-					var imageEl = '';
-					if (args.img) {
+					imageEl = '';
+					if ( args.img ) {
 						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
 					}
 
 					// Set an initial unique id for the hero component, since it's required
-					if ( ! args.id) {
+					if ( ! args.id ) {
 						args.id = URIWYSIWYG.generateID();
 					}
 
 					ed.windowManager.open(
 					{
 						title: 'Insert / Update Hero',
-						library: {type: 'image'},
+						library: { type: 'image' },
 						body: [
-						{type: 'container', label: ' ', html: '<div id="wysiwyg-img-preview">' + imageEl + '</div>'},
-						{type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker},
-						{type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden'},
-						{type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden'},
-						{type: 'textbox', name: 'id', label: 'Unique ID', value: args.id},
-						{type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid},
-						{type: 'textbox', name: 'headline', label: 'Headline', value: args.headline},
-						{type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead},
-						{type: 'textbox', name: 'link', label: 'Link', value: args.link},
-						{type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button},
-						{type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip},
-						{type: 'listbox', name: 'format', label: 'Format', value: args.format, 'values': [
-							{text: 'Default', value: ''},
-							{text: 'Full Width', value: 'fullwidth'},
-							{text: 'Super', value: 'super'}
+						{ type: 'container', label: ' ', html: '<div id="wysiwyg-img-preview">' + imageEl + '</div>' },
+						{ type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
+						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+						{ type: 'textbox', name: 'id', label: 'Unique ID', value: args.id },
+						{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
+						{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
+						{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
+						{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
+						{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
+						{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+						{ type: 'listbox', name: 'format', label: 'Format', value: args.format, 'values': [
+							{ text: 'Default', value: '' },
+							{ text: 'Full Width', value: 'fullwidth' },
+							{ text: 'Super', value: 'super' }
 							]
 						},
-						{type: 'listbox', name: 'animation', label: 'Animation', value: args.animation, 'values': [
-							{text: 'None', value: ''},
-							{text: 'Shift', value: 'shift'}
+						{ type: 'listbox', name: 'animation', label: 'Animation', value: args.animation, 'values': [
+							{ text: 'None', value: '' },
+							{ text: 'Shift', value: 'shift' }
 							]
-						},
+						}
 
 						],
-						onsubmit: function(e) {
+						onsubmit: function( e ) {
+
+							var shortcode;
 
 							// Sanitize unique id
-							if ( ! e.data.id) {
+							if ( ! e.data.id ) {
 								e.data.id = URIWYSIWYG.generateID();
 							} else {
 								e.data.id = e.data.id.replace( /\s/g, '' );
 							}
 
 							// Insert content when the window form is submitted
-							var shortcode = generateHeroShortcode( e.data );
+							shortcode = generateHeroShortcode( e.data );
 							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
 
 						}
 					},
 					{
-						wp: wp,
+						wp: wp
 					}
 					);
 
@@ -154,9 +159,9 @@
 				 }
 				);
 
-				// open popup on placeholder double click
+				// Open popup on placeholder double click
 				ed.on(
-				'DblClick',function( event ) {
+				'DblClick', function( event ) {
 					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
 				}
 				);
@@ -173,7 +178,7 @@
 			 * @param {tinymce.ControlManager} cm Control manager to use inorder to create new control.
 			 * @return {tinymce.ui.Control} New control instance or null if no control was created.
 			 */
-			createControl : function(n, cm) {
+			createControl: function( n, cm ) {
 				return null;
 			},
 
@@ -183,14 +188,8 @@
 			 *
 			 * @return {Object} Name/value array containing information about the plugin.
 			 */
-			getInfo : function() {
-				return {
-					longname : 'URI WYSIWYG',
-					author : 'John Pennypacker',
-					authorurl : 'https://today.uri.edu',
-					infourl : 'https://www.uri.edu/communications',
-					version : "0.1"
-				};
+			getInfo: function() {
+				return URIWYSIWYG.getPluginInfo();
 			}
 
 	}

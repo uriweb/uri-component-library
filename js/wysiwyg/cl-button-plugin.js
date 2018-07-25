@@ -10,15 +10,15 @@
 	var cName = 'cl-button',
 		wName = 'CLButton';
 
-	function generateButtonShortcode(params) {
+	function generateButtonShortcode( params ) {
 
-		var attributes = [];
+		var attributes = [], i;
 
-		if ( ! params.text) {
+		if ( ! params.text ) {
 			params.text = 'Explore';
 		}
 
-		for (i in params) {
+		for ( i in params ) {
 			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
 		}
 
@@ -36,59 +36,63 @@
 			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init : function(ed, url) {
+			init: function( ed, url ) {
 
-				// add the button that the WP plugin defined in the mce_buttons filter callback
+				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 				wName, {
-					title : 'Button',
-					text : '',
-					cmd : wName,
-					image : url + '/i/button.png'
+					title: 'Button',
+					text: '',
+					cmd: wName,
+					image: url + '/i/button.png'
 				}
 				);
 
-				// add a js callback for the button
+				// Add a js callback for the button
 				ed.addCommand(
 				wName, function( target, args ) {
 
-					// create an empty object if args is empty
-					if ( ! args) {
-						args = {}
+					var possibleArgs;
+
+					// Create an empty object if args is empty
+					if ( ! args ) {
+						args = {};
 					}
-					// create an empty property so nothing is null
-					var possibleArgs = ['link', 'text', 'tooltip', 'style'];
+
+					// Create an empty property so nothing is null
+					possibleArgs = ['link', 'text', 'tooltip', 'style'];
 					possibleArgs.forEach(
-					function(i){
-						if ( ! args[i]) {
+					function( i ) {
+						if ( ! args[i] ) {
 							args[i] = '';
 						}
 					}
 					);
-					// prevent nested quotes... escape / unescape instead?
-					// args = URIWYSIWYG.unEscapeQuotesDeep(args);
+
 					ed.windowManager.open(
 					{
 						title: 'Insert / Update Button',
 						body: [
-						{type: 'textbox', name: 'link', label: 'Link', value: args.link},
-						{type: 'textbox', name: 'text', label: 'Text', 'placeholder':'Explore', value: args.text},
-						{type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip},
-						{type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
-							{text: 'Default', value: ''},
-							{text: 'Prominent', value: 'prominent'},
-							{text: 'Disabled', value: 'disabled'}
+						{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
+						{ type: 'textbox', name: 'text', label: 'Text', 'placeholder':'Explore', value: args.text },
+						{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+						{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
+							{ text: 'Default', value: '' },
+							{ text: 'Prominent', value: 'prominent' },
+							{ text: 'Disabled', value: 'disabled' }
 							]
-						},
+						}
 						],
-						onsubmit: function(e) {
+						onsubmit: function( e ) {
+
 							// Insert content when the window form is submitted
 							shortcode = generateButtonShortcode( e.data );
 							ed.execCommand( 'mceInsertContent', 0, shortcode );
+
 						}
 					},
 					{
-						wp: wp,
+						wp: wp
 					}
 					);
 
@@ -104,16 +108,14 @@
 				ed.on(
 				 'PostProcess', function( event ) {
 					if ( event.get ) {
-						// here's the kicker: nested quotes will all be converted to quotes
-						// obviously, this breaks everything
 						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
 					}
 				 }
 				);
 
-				// open popup on placeholder double click
+				// Open popup on placeholder double click
 				ed.on(
-				'DblClick',function( event ) {
+				'DblClick', function( event ) {
 					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
 				}
 				);
@@ -130,7 +132,7 @@
 			 * @param {tinymce.ControlManager} cm Control manager to use inorder to create new control.
 			 * @return {tinymce.ui.Control} New control instance or null if no control was created.
 			 */
-			createControl : function(n, cm) {
+			createControl: function( n, cm ) {
 				return null;
 			},
 
@@ -140,14 +142,8 @@
 			 *
 			 * @return {Object} Name/value array containing information about the plugin.
 			 */
-			getInfo : function() {
-				return {
-					longname : 'URI WYSIWYG',
-					author : 'John Pennypacker',
-					authorurl : 'https://today.uri.edu',
-					infourl : 'https://www.uri.edu/communications',
-					version : "0.1"
-				};
+			getInfo: function() {
+				return URIWYSIWYG.getPluginInfo();
 			}
 
 	}

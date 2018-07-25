@@ -10,11 +10,11 @@
 	var cName = 'cl-video',
 		wName = 'CLVideo';
 
-	function generateVideoShortcode(params) {
+	function generateVideoShortcode( params ) {
 
-		var attributes = [];
+		var attributes = [], i;
 
-		for (i in params) {
+		for ( i in params ) {
 			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
 		}
 
@@ -32,80 +32,86 @@
 			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init : function(ed, url) {
+			init: function( ed, url ) {
 
-				// add the button that the WP plugin defined in the mce_buttons filter callback
+				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 				wName, {
-					title : 'Video',
-					text : '',
-					cmd : wName,
-					image : url + '/i/video.png'
+					title: 'Video',
+					text: '',
+					cmd: wName,
+					image: url + '/i/video.png'
 				}
 				);
 
-				// add a js callback for the button
+				// Add a js callback for the button
 				ed.addCommand(
 				wName, function( target, args ) {
 
-					// create an empty object if args is empty
-					if ( ! args) {
-						args = {}
+					var possibleArgs, imageEl;
+
+					// Create an empty object if args is empty
+					if ( ! args ) {
+						args = {};
 					}
-					// create an empty property so nothing is null
-					var possibleArgs = ['img', 'vid', 'alt', 'aspect', 'id', 'title', 'excerpt'];
+
+					// Create an empty property so nothing is null
+					possibleArgs = ['img', 'vid', 'alt', 'aspect', 'id', 'title', 'excerpt'];
 					possibleArgs.forEach(
-					function(i){
-						if ( ! args[i]) {
+					function( i ) {
+						if ( ! args[i] ) {
 							args[i] = '';
 						}
 					}
 					);
-					// prevent nested quotes... escape / unescape instead?
+
+					// Prevent nested quotes... escape / unescape instead?
 					args = URIWYSIWYG.unEscapeQuotesDeep( args );
 
-					var imageEl = '';
-					if (args.img) {
+					imageEl = '';
+					if ( args.img ) {
 						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
 					}
 
 					// Set an initial unique id for the video component, since it's required
-					if ( ! args.id) {
+					if ( ! args.id ) {
 						args.id = URIWYSIWYG.generateID();
 					}
 
 					ed.windowManager.open(
 					{
 						title: 'Insert / Update Video',
-						library: {type: 'image'},
+						library: { type: 'image' },
 						body: [
-						{type: 'container', label: ' ', html: '<div id="wysiwyg-img-preview">' + imageEl + '</div>'},
-						{type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker},
-						{type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden'},
-						{type: 'textbox', name: 'alt', id: 'alt', label: 'Image Alt Text', value: args.alt},
-						{type: 'textbox', name: 'id', label: 'Unique ID', value: args.id},
-						{type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid},
-						{type: 'textbox', name: 'aspect', label: 'Aspect Ratio', 'placeholder': '16:9', value: args.aspect},
-						{type: 'textbox', name: 'title', label: 'Title', value: args.title},
-						{type: 'textbox', name: 'excerpt', multiline: 'true', label: 'Excerpt', value: args.excerpt}
+						{ type: 'container', label: ' ', html: '<div id="wysiwyg-img-preview">' + imageEl + '</div>' },
+						{ type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+						{ type: 'textbox', name: 'alt', id: 'alt', label: 'Image Alt Text', value: args.alt },
+						{ type: 'textbox', name: 'id', label: 'Unique ID', value: args.id },
+						{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
+						{ type: 'textbox', name: 'aspect', label: 'Aspect Ratio', 'placeholder': '16:9', value: args.aspect },
+						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
+						{ type: 'textbox', name: 'excerpt', multiline: 'true', label: 'Excerpt', value: args.excerpt }
 						],
-						onsubmit: function(e) {
+						onsubmit: function( e ) {
+
+							var shortcode;
 
 							// Sanitize unique id
-							if ( ! e.data.id) {
+							if ( ! e.data.id ) {
 								e.data.id = URIWYSIWYG.generateID();
 							} else {
 								e.data.id = e.data.id.replace( /\s/g, '' );
 							}
 
 							// Insert content when the window form is submitted
-							var shortcode = generateVideoShortcode( e.data );
+							shortcode = generateVideoShortcode( e.data );
 							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
 
 						}
 					},
 					{
-						wp: wp,
+						wp: wp
 					}
 					);
 
@@ -126,9 +132,9 @@
 				 }
 				);
 
-				// open popup on placeholder double click
+				// Open popup on placeholder double click
 				ed.on(
-				'DblClick',function( event ) {
+				'DblClick', function( event ) {
 					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
 				}
 				);
@@ -145,7 +151,7 @@
 			 * @param {tinymce.ControlManager} cm Control manager to use inorder to create new control.
 			 * @return {tinymce.ui.Control} New control instance or null if no control was created.
 			 */
-			createControl : function(n, cm) {
+			createControl: function( n, cm ) {
 				return null;
 			},
 
@@ -155,14 +161,8 @@
 			 *
 			 * @return {Object} Name/value array containing information about the plugin.
 			 */
-			getInfo : function() {
-				return {
-					longname : 'URI WYSIWYG',
-					author : 'John Pennypacker',
-					authorurl : 'https://today.uri.edu',
-					infourl : 'https://www.uri.edu/communications',
-					version : "0.1"
-				};
+			getInfo: function() {
+				return URIWYSIWYG.getPluginInfo();
 			}
 
 	}
