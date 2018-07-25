@@ -34,7 +34,7 @@ if ( empty( $name ) ) {
 	$output .= wp_nav_menu(
 		array(
 			'theme_location' => 'menu-1',
-			'menu_class' => 'cl-menu-list',
+			'menu_class' => 'cl-menu-list cl-menu-list-no-js',
 			'depth' => $depth,
 			'container' => '',
 			'fallback_cb' => false,
@@ -45,7 +45,7 @@ if ( empty( $name ) ) {
 	$output .= wp_nav_menu(
 		array(
 			'menu' => $name,
-			'menu_class' => 'cl-menu-list',
+			'menu_class' => 'cl-menu-list cl-menu-list-no-js',
 			'depth' => $depth,
 			'container' => '',
 			'fallback_cb' => false,
