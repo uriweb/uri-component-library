@@ -65,10 +65,10 @@ add_filter( 'mce_buttons_3', 'uri_cl_wysiwyg_register_buttons' );
  * @param int $hook Hook suffix for the current admin page.
  */
 function uri_cl_wysiwyg_add_scripts( $hook ) {
-	$v = strtotime( 'now' ); // was 1.0
+	$ver = strtotime( 'now' ); // was 1.0
 	if ( 'edit.php' === $hook || 1 == 1 ) { // @todo: only load on the add/edit screen?
 		wp_enqueue_style( 'cl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-		wp_enqueue_script( 'cl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $v );
+		wp_enqueue_script( 'cl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
 	}
 
 }
@@ -158,10 +158,10 @@ function uri_cl_wysiwyg_get_html() {
 		return;
 	}
 
-	$sc = ( get_magic_quotes_gpc() ) ? $_GET['sc'] : stripslashes( $_GET['sc'] );
-	$sc = mb_convert_encoding( $sc, 'HTML-ENTITIES', 'UTF-8' );
+	$shortcode = ( get_magic_quotes_gpc() ) ? $_GET['sc'] : stripslashes( $_GET['sc'] );
+	$shortcode = mb_convert_encoding( $shortcode, 'HTML-ENTITIES', 'UTF-8' );
 
-	$out = do_shortcode( $sc );
+	$out = do_shortcode( $shortcode );
 
 	// parse errors out of the returned HTML, otherwise, they'll be saved in the post.
 	$dom = new DOMDocument();
@@ -177,12 +177,6 @@ function uri_cl_wysiwyg_get_html() {
 
 	$out = $dom->saveHTML();
 
-	// echo '<pre>';
-	// print_r( $_GET['sc'] );
-	// echo '<hr>';
-	// print_r( $sc );
-	// print_r ( $out );
-	// exit;
 	// return the output
 	wp_send_json( $out );
 	wp_die();
