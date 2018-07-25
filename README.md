@@ -2,13 +2,37 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 2.3.4
+## What's new in 3.0.0
 
-CL 2.3.4 is a bug fix release.
+CL 3.0.0 is a major release focused on usability, performance, and fine-tuning existing components.
 
-* Fixes an issue that caused potential conflicts between fullwidth heroes and themes containing a class `fullwidth`
+### Introducing Visual Editor Support
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/92/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+Components can now be built and edited directly in the visual editor without needing to write shortcodes.  Simply click on a component button in the editor toolbar to open a dialogue where the component can be created.
+
+* Using the visual editor is the fastest, simplest way to create and edit components
+* Components render fully in the visual editor window
+* Shortcodes can still be written and edited in the text editor
+* Components built using shortcodes in the text editor will appear fully styled in the visual editor
+
+### Component Updates
+
+* Adds a story card component for rich linking to posts or pages (_beta_)
+* The media id can now be used to set an image in cards and panels
+* Images in cards and panels now use source sets for better performance across devices
+* Panels can now use images added from the WordPress media library
+* Tiles can now be built with any block level elements
+
+### General Improvements
+
+* Allow more fonts to better adapt to theme font sizes
+* Fixes an issue that prevented menus from displaying on mobile devices without JavaScript
+* Fixes a display issue with submenus in the menu component
+* Fixes an issue that prevented multiple instances of tabs on a page
+* Adds additional development tools
+* Other bug fixes
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/99/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
