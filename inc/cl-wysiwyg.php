@@ -88,10 +88,6 @@ function uri_cl_wysiwyg_editor_style( $url ) {
 add_filter( 'mce_css', 'uri_cl_wysiwyg_editor_style' );
 
 
-
-
-
-
 /**
  * Expose the Format menu in TinyMCE
  */
@@ -122,6 +118,18 @@ function uri_cl_wysiwyg_insert_formats( $init_array ) {
 			'classes' => 'fullwidth',
 			'wrapper' => true,
 		),
+		array(
+			'title' => 'Breakout',
+			'block' => 'div',
+			'classes' => 'breakout',
+			'wrapper' => true,
+		),
+		array(
+			'title' => 'Feature Caption',
+			'block' => 'div',
+			'classes' => 'feature-caption',
+			'wrapper' => true,
+		),
 	// array(
 	// 'title' => 'Red Uppercase Text',
 	// 'inline' => 'span',
@@ -139,9 +147,6 @@ function uri_cl_wysiwyg_insert_formats( $init_array ) {
 
 }
 add_filter( 'tiny_mce_before_init', 'uri_cl_wysiwyg_insert_formats' );
-
-
-
 
 
 /**

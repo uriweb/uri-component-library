@@ -239,7 +239,7 @@ class URIWYSIWYG {
 	 */
 	static generateLoadingDiv( data, id ) {
 
-		return '<div class="loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
+		return '<div class="cl-wysiwyg-loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
 
 	}
 

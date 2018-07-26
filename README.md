@@ -6,7 +6,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 3.0.0 is a major release focused on usability, performance, and fine-tuning existing components.
 
-### Introducing Visual Editor Support
+### Introducing Visual Editor Support (Beta)
 
 Components can now be built and edited directly in the visual editor without needing to write shortcodes.  Simply click on a component button in the editor toolbar to open a dialogue where the component can be created.
 
