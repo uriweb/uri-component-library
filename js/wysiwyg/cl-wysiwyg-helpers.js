@@ -389,11 +389,11 @@ class URIWYSIWYG {
 	static getPluginInfo() {
 
 		return {
-			longname: 'URI WYSIWYG',
-			author: 'John Pennypacker, Brandon Fuller',
-			authorurl: 'https://today.uri.edu',
-			infourl: 'https://www.uri.edu/communications',
-			version: '0.1'
+			longname: URIComponentLibrary.Name,
+			author: URIComponentLibrary.Author,
+			authorurl: URIComponentLibrary.AuthorURI,
+			infourl: 'https://github.com/uriweb/uri-component-library',
+			version: URIComponentLibrary.Version
 		};
 
 	}

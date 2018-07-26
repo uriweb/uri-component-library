@@ -67,8 +67,11 @@ add_filter( 'mce_buttons_3', 'uri_cl_wysiwyg_register_buttons' );
 function uri_cl_wysiwyg_add_scripts( $hook ) {
 	$ver = strtotime( 'now' ); // was 1.0
 	if ( 'edit.php' === $hook || 1 == 1 ) { // @todo: only load on the add/edit screen?
-		wp_enqueue_style( 'cl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-		wp_enqueue_script( 'cl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
+		wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
+
+		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+		wp_enqueue_script( 'uricl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
+		wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
 	}
 
 }

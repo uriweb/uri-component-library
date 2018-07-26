@@ -5,15 +5,24 @@
  * Description: Component Library
  * Version: 3.0.0
  * Author: URI Web Communications
- * Author URI:
+ * Author URI: https://today.uri.edu/
  *
- * @author: Brandon Fuller <bjcfuller@uri.edu>
+ * @author: Brandon Fuller <bjcfuller@uri.edu>, John Pennypacker <jpennypacker@uri.edu>
  * @package uri-component-library
  */
 
 // Block direct requests
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
+}
+
+define( 'URI_CL_DIR_PATH', plugin_dir_path( __FILE__ ) );
+
+/**
+ * Return the plugin base url
+ */
+function uri_cl_dir_url() {
+	return plugin_dir_url( __FILE__ );
 }
 
 /**
@@ -30,18 +39,11 @@ function uri_cl_enqueues() {
 }
 add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 
-/**
- * Return the plugin base url
- */
-function uri_cl_dir_url() {
-	return plugin_dir_url( __FILE__ );
-}
-
 // Include shortcodes
-include( plugin_dir_path( __FILE__ ) . 'inc/cl-shortcodes.php' );
+include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 
 // Include WYSIWYG buttons
-include( plugin_dir_path( __FILE__ ) . 'inc/cl-wysiwyg.php' );
+include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
