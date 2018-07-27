@@ -92,7 +92,7 @@
 						body: [
 						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-						{ type: 'container', label: ' ', html: '<div id="wysiwyg-img-preview">' + imageEl + '</div>' },
+						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
 						{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
 						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },

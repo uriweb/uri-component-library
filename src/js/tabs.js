@@ -83,14 +83,14 @@
 		tabs = tablist.querySelectorAll( 'a' );
 		for ( i = 0; i < tabs.length; i++ ) {
 			tabs[i].addEventListener(
-				 'click', function( e ) {
+				'click', function( e ) {
 					handleClick( e, tabs, tablist, panels );
-				 }
+				}
 				);
 			tabs[i].addEventListener(
-				 'keydown', function( e ) {
+				'keydown', function( e ) {
 					handleKeystroke( e, tabs, panels );
-				 }
+				}
 				);
 		}
 
@@ -179,7 +179,6 @@
 
 		// Get the indices of the new and old tabs to find the correct
 		// tab panels to show and hide
-		console.log( tabs, newTab );
 		index = Array.prototype.indexOf.call( tabs, newTab );
 		oldIndex = Array.prototype.indexOf.call( tabs, oldTab );
 		panels[oldIndex].hidden = true;

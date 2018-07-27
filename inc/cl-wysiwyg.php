@@ -67,8 +67,11 @@ add_filter( 'mce_buttons_3', 'uri_cl_wysiwyg_register_buttons' );
 function uri_cl_wysiwyg_add_scripts( $hook ) {
 	$ver = strtotime( 'now' ); // was 1.0
 	if ( 'edit.php' === $hook || 1 == 1 ) { // @todo: only load on the add/edit screen?
-		wp_enqueue_style( 'cl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-		wp_enqueue_script( 'cl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
+		wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
+
+		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+		wp_enqueue_script( 'uricl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
+		wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
 	}
 
 }
@@ -86,62 +89,6 @@ function uri_cl_wysiwyg_editor_style( $url ) {
 	return $url;
 }
 add_filter( 'mce_css', 'uri_cl_wysiwyg_editor_style' );
-
-
-
-
-
-
-/**
- * Expose the Format menu in TinyMCE
- */
-function uri_cl_wysiwyg_enable_styles_menu( $buttons ) {
-	array_unshift( $buttons, 'styleselect' );
-	return $buttons;
-}
-add_filter( 'mce_buttons_2', 'uri_cl_wysiwyg_enable_styles_menu' );
-
-
-/**
- * Callback function to filter the MCE Format Menu settings
- * Add URI Modern styles to the menu
- */
-function uri_cl_wysiwyg_insert_formats( $init_array ) {
-
-	$style_formats = array(
-		// for reasons unknown, WP doesn't like using p for 'block'
-		array(
-			'title' => 'Introduction',
-			'block' => 'div',
-			'classes' => 'type-intro',
-			'wrapper' => true,
-		),
-		array(
-			'title' => 'Full Width',
-			'block' => 'div',
-			'classes' => 'fullwidth',
-			'wrapper' => true,
-		),
-	// array(
-	// 'title' => 'Red Uppercase Text',
-	// 'inline' => 'span',
-	// 'styles' => array(
-	// 'color' => '#ff0000',
-	// 'fontWeight' => 'bold',
-	// 'textTransform' => 'uppercase'
-	// )
-	// ),
-	);
-	// Insert the array, JSON ENCODED, into 'style_formats'
-	$init_array['style_formats'] = json_encode( $style_formats );
-
-	return $init_array;
-
-}
-add_filter( 'tiny_mce_before_init', 'uri_cl_wysiwyg_insert_formats' );
-
-
-
 
 
 /**

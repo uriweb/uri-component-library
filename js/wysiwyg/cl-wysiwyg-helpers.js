@@ -133,6 +133,15 @@ class URIWYSIWYG {
 
 							}
 
+							if ( data.match( 'class="cl-button' ) ) {
+
+								// Replace the <a class="cl-button"> element with a <span>
+								// Buttons render funny when selected if they're an anchor
+								data = data.replace( '<a ', '<span ' );
+								data = data.replace( '</a>', '</span>' );
+
+							}
+
 							jQuery( d ).addClass( classes ).append( data );
 
 							placeHolder.after( d.innerHTML );
@@ -239,7 +248,7 @@ class URIWYSIWYG {
 	 */
 	static generateLoadingDiv( data, id ) {
 
-		return '<div class="loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
+		return '<div class="cl-wysiwyg-loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
 
 	}
 
@@ -351,8 +360,8 @@ class URIWYSIWYG {
 		preview = document.createElement( 'img' );
 		preview.src = src;
 		preview.alt = alt;
-		document.getElementById( 'wysiwyg-img-preview' ).innerHTML = '';
-		document.getElementById( 'wysiwyg-img-preview' ).appendChild( preview );
+		document.getElementById( 'cl-wysiwyg-img-preview' ).innerHTML = '';
+		document.getElementById( 'cl-wysiwyg-img-preview' ).appendChild( preview );
 
 	}
 
@@ -389,11 +398,11 @@ class URIWYSIWYG {
 	static getPluginInfo() {
 
 		return {
-			longname: 'URI WYSIWYG',
-			author: 'John Pennypacker, Brandon Fuller',
-			authorurl: 'https://today.uri.edu',
-			infourl: 'https://www.uri.edu/communications',
-			version: '0.1'
+			longname: URIComponentLibrary.Name,
+			author: URIComponentLibrary.Author,
+			authorurl: URIComponentLibrary.AuthorURI,
+			infourl: 'https://github.com/uriweb/uri-component-library',
+			version: URIComponentLibrary.Version
 		};
 
 	}
