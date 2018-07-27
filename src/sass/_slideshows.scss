@@ -3,16 +3,14 @@
 
 .cl-slideshow {
     
-    & * {
+	display: block;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+	margin: 0 0 2rem;
+	
+    * {
         box-sizing: border-box;
-    }
-    
-    & {
-        display: block;
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-        margin: 0 0 2rem;
     }
     
     &:after {
@@ -23,15 +21,13 @@
     
     .carousel-wrapper {
         
-        & {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            background: #eee;
-            border-radius: .2rem;
-            margin-bottom: 1rem;
-        }
+		position: relative;
+		width: 100%;
+		height: 300px;
+		overflow: hidden;
+		background: #eee;
+		border-radius: .2rem;
+		margin-bottom: 1rem;
         
         .carousel {
             position: relative;
@@ -74,16 +70,14 @@
         
         .controls {
             
-            & {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                transition: all .4s ease-in-out;
-            }
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: all .4s ease-in-out;
             
             &:after {
                 display: block;
@@ -169,16 +163,14 @@
     
     .captions {
     
-        & {
-            display: block;
-            float: left;
-            list-style: none;
-            text-align: left;
-            margin: 0;
-            padding: 0;
-            width: 40%;
-            min-width: 250px;
-        }
+		display: block;
+		float: left;
+		list-style: none;
+		text-align: left;
+		margin: 0;
+		padding: 0;
+		width: 40%;
+		min-width: 250px;
         
         .caption {
             padding: 0;
@@ -196,13 +188,11 @@
     
     .counter {
         
-        & {
-            display: block;
-            float: right;
-            font-size: .8rem;
-            color: $darkgrey;
-            margin-bottom: 5rem;
-        }
+		display: block;
+		float: right;
+		font-size: .8rem;
+		color: $darkgrey;
+		margin-bottom: 5rem;
         
         span {
             font-weight: 600;
@@ -249,11 +239,11 @@
 @keyframes cl-slideshow-carousel-rebound-left {
     0% { left: 0; }
     30% { left: 5%; }
-    100% { left: 0; }  
+    100% { left: 0; }
 }
 
 @keyframes cl-slideshow-carousel-rebound-right {
     0% { right: 0; }
     30% { right: 5%; }
-    100% { right: 0; }  
+    100% { right: 0; }
 }

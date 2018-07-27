@@ -2,34 +2,34 @@
 
 $classes = 'cl-button';
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
-if ( 'disabled' == $style ) {
+if ( 'disabled' == $atts['style'] ) {
 
 	$classes .= ' disabled';
 
-	$output = '<span class="' . $classes . '" title="' . $tooltip . '"';
+	$output = '<span class="' . $classes . '" title="' . $atts['tooltip'] . '"';
 
-	if ( ! empty( $css ) ) {
-		$output .= 'style="' . $css . '"';
+	if ( ! empty( $atts['css'] ) ) {
+		$output .= 'style="' . $atts['css'] . '"';
 	}
 
-	$output .= '>' . $text . '</span>';
+	$output .= '>' . $atts['text'] . '</span>';
 
 } else {
 
-	if ( 'prominent' == $style ) {
+	if ( 'prominent' == $atts['style'] ) {
 		$classes .= ' prominent';
 	}
 
-	$output = '<a class="' . $classes . '" href="' . $link . '" title="' . $tooltip . '"';
+	$output = '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 
-	if ( ! empty( $css ) ) {
-		$output .= 'style="' . $css . '"';
+	if ( ! empty( $atts['css'] ) ) {
+		$output .= 'style="' . $atts['css'] . '"';
 	}
 
-	$output .= '>' . $text . '</a>';
+	$output .= '>' . $atts['text'] . '</a>';
 
 }

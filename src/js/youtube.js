@@ -101,7 +101,7 @@ function onYouTubePlayerAPIReady() {
 			msie = ua.indexOf( 'MSIE ' ),
 			trident = ua.indexOf( 'Trident/' );
 
-		if ( 'Microsoft Internet Explorer' == navigator.appName || msie > 0 || trident > 0 ) {
+		if ( 'Microsoft Internet Explorer' === navigator.appName || msie > 0 || trident > 0 ) {
 			support = false;
 		}
 
@@ -190,8 +190,7 @@ function onYouTubePlayerAPIReady() {
 	 */
 	function resizeHero( el, parent ) {
 		var w = parent.offsetWidth,
-			h = parent.offsetHeight,
-			style;
+			h = parent.offsetHeight;
 
 		if ( w / h > 16 / 9 ) {
 			el.style.height = w * 9 / 16 + 'px';

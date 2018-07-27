@@ -2,29 +2,29 @@
 
 .cl-menu {
     
-    & {
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 1rem;
-        margin: 0 0 2rem;
-    }
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 1rem;
+	margin: 0 0 2rem;
     
     * {
         box-sizing: border-box;
     }
+	
+	ul.cl-menu-list.cl-menu-list-no-js {
+		display: block;
+	}
     
     ul.cl-menu-list {
 
-        & {
-            display: none;
-            background: #eee;
-            border-radius: 0 0 .2rem .2rem;
-            width: 100%;
-            list-style-type: none;
-            text-align: left;
-            margin: 0;
-            padding: 0;
-        }
+		display: none;
+		background: #eee;
+		border-radius: 0 0 .2rem .2rem;
+		width: 100%;
+		list-style-type: none;
+		text-align: left;
+		margin: 0;
+		padding: 0;
 
         &:after {
             clear: both;
@@ -173,15 +173,11 @@
 @media screen and (min-width: $break1) {
     .cl-menu {
         
-        & {
-            overflow: visible;
-        }
+        overflow: visible;
         
         ul.cl-menu-list {
             
-            & {
-                display: block;
-            }
+            display: block;
             
             &>li {
                 float: left;
@@ -196,6 +192,7 @@
                 position: absolute;
                 box-shadow: $level1;
                 min-width: 100%;
+				z-index: 10;
             }
             
             ul a {

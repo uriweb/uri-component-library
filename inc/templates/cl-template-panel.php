@@ -2,30 +2,30 @@
 
 $classes = 'cl-panel';
 
-if ( $reverse ) {
+if ( $atts['reverse'] ) {
 	$classes .= ' reverse';
 }
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $output = '<section class="cl-wrapper cl-panel-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= ' style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
 }
 
 $output .= '>';
 
 $output .= '<figure>';
-$output .= '<img src="' . $img . '" alt="' . $alt . '">';
+$output .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
 $output .= '</figure>';
 $output .= '<article>';
 
-if ( ! empty( $title ) ) {
-	$output .= '<h1>' . $title . '</h1>';
+if ( ! empty( $atts['title'] ) ) {
+	$output .= '<h1>' . $atts['title'] . '</h1>';
 }
 if ( isset( $content ) ) {
 	$output .= '<p>' . do_shortcode( $content ) . '</p>';

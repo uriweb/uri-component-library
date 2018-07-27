@@ -1,10 +1,8 @@
 /* ======= BOXOUTS ======= */
 
-.cl-boxout * {
-    box-sizing: border-box;
-}
 
 .cl-boxout {
+	
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -16,48 +14,25 @@
     box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
     border-bottom: 1px solid #fff;
     transition: width .2s ease-in-out;
-}
+	
+	* {
+		box-sizing: border-box;
+	}
 
-@media screen and (min-width: $break1) {
-    .cl-boxout {
-        padding: 20px;
-    }
-    .cl-boxout.left {
-        float: left;
-        margin: 0 2rem 2rem 0;
-        max-width: $maxcardwidth;
-    }
-    .cl-boxout.right {
-        float: right;
-        margin: 0 0 2rem 2rem;
-        max-width: $maxcardwidth;
-    }
-}
+	img {
+		width: 100%;
+		margin: 1.2rem 0;
+		border-radius: 2px;
+	}
 
+	img:first-child {
+		margin-top: 0;
+	}
 
-@media screen and (min-width: $maxcardwidth) {
-    .cl-boxout {
-        
-    }
-}
+	p {
+		width: 100%;
+	}
 
-.cl-boxout img {
-    width: 100%;
-    margin: 1.2rem 0;
-    border-radius: 2px;
-}
-
-.cl-boxout img:first-child {
-    margin-top: 0;
-}
-
-.cl-boxout p {
-    font-size: 1rem;
-    width: 100%;
-}
-
-.cl-boxout {
-    
     a.cl-button,
     span.cl-button {
         border-radius: 2px;
@@ -68,4 +43,24 @@
         cursor: pointer;
     }
     
+}
+
+@media screen and (min-width: $break1) {
+    .cl-boxout {
+		
+        padding: 20px;
+		
+		&.left {
+			float: left;
+			margin: 0 2rem 2rem 0;
+			max-width: $maxcardwidth;
+		}
+
+		&.right {
+			float: right;
+			margin: 0 0 2rem 2rem;
+			max-width: $maxcardwidth;
+		}
+		
+	}
 }

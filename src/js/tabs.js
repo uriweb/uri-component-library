@@ -8,8 +8,6 @@
 
 	'use strict';
 
-	var tablist, panels, tabs, numtabs = 0; // Keep these global so we don't have to keep passing from func to func
-
 	window.addEventListener( 'load', initCLTabs, false );
 
 	function initCLTabs() {
@@ -18,7 +16,7 @@
 
 		els = document.querySelectorAll( '.cl-tabs' );
 		for ( i = 0; i < els.length; i++ ) {
-			formatTabs( els[i] );
+			formatTabs( els[i], i + 1 );
 		}
 
 	}
@@ -26,10 +24,11 @@
 	/*
 	 * Restyle the component to make it look great
 	 * @param tabbed el the .cl-tabs element
+	 * @param tabbedIndex num the index of tabbed on the page
 	 */
-	function formatTabs( tabbed ) {
+	function formatTabs( tabbed, tabbedIndex ) {
 
-		var header, href, li, a, i, id;
+		var header, href, tabs, tablist, panels, li, a, i, numtabs = 0;
 
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
@@ -60,7 +59,7 @@
 			// Try to use panel id for tab href, otherwise create generic id for panel and href.
 			href = panels[i].id;
 			if ( '' === href ) {
-				href = 'cl-tab-section-' + numtabs;
+				href = 'cl-tabs-' + tabbedIndex + '-tab-section-' + numtabs;
 				panels[i].id = href;
 			}
 
@@ -69,7 +68,7 @@
 
 			a = document.createElement( 'a' );
 			a.href = '#' + href;
-			a.id = 'cl-tabs-tab-' + numtabs;
+			a.id = 'cl-tabs-' + tabbedIndex + '-tab-' + numtabs;
 			a.setAttribute( 'role', 'tab' );
 			a.setAttribute( 'tabindex', '-1' );
 			a.innerHTML = header;
@@ -83,8 +82,16 @@
 		// Add event listeners to tabs
 		tabs = tablist.querySelectorAll( 'a' );
 		for ( i = 0; i < tabs.length; i++ ) {
-			tabs[i].addEventListener( 'click', handleClick );
-			tabs[i].addEventListener( 'keydown', handleKeystroke );
+			tabs[i].addEventListener(
+				'click', function( e ) {
+					handleClick( e, tabs, tablist, panels );
+				}
+				);
+			tabs[i].addEventListener(
+				'keydown', function( e ) {
+					handleKeystroke( e, tabs, panels );
+				}
+				);
 		}
 
 		// Add tab panel semantics and hide them all
@@ -92,8 +99,6 @@
 
 			panels[i].setAttribute( 'role', 'tabpanel' );
 			panels[i].setAttribute( 'tabindex', '-1' );
-
-			id = panels[i].getAttribute( 'id' );
 			panels[i].setAttribute( 'aria-labelledby', tabs[i].id );
 			panels[i].hidden = true;
 
@@ -110,7 +115,7 @@
 	 * Handle tab clicking
 	 * @param e obj the event object
 	 */
-	function handleClick( e ) {
+	function handleClick( e, tabs, tablist, panels ) {
 
 		var currentTab;
 
@@ -119,7 +124,7 @@
 		currentTab = tablist.querySelector( '[aria-selected]' );
 
 		if ( e.currentTarget !== currentTab ) {
-			switchTab( currentTab, e.currentTarget );
+			switchTab( tabs, panels, currentTab, e.currentTarget );
 		}
 
 	}
@@ -128,7 +133,7 @@
 	 * Handle key input
 	 * @param e obj the event object
 	 */
-	function handleKeystroke( e ) {
+	function handleKeystroke( e, tabs, panels ) {
 
 		// Get the index of the current tab in the tabs node list
 		var index = Array.prototype.indexOf.call( tabs, e.currentTarget );
@@ -143,9 +148,9 @@
 			// If the down key is pressed, move focus to the open panel,
 			// otherwise switch to the adjacent tab
 			if ( 'down' === dir ) {
-				panels[i].focus();
+				panels[index].focus();
 			} else if ( tabs[dir] ) {
-				switchTab( e.currentTarget, tabs[dir] );
+				switchTab( tabs, panels, e.currentTarget, tabs[dir] );
 			} else {
 				void 0;
 			}
@@ -158,7 +163,7 @@
 	 * @param oldTab el the current tab
 	 * @param newTab el the tab selected
 	 */
-	function switchTab( oldTab, newTab ) {
+	function switchTab( tabs, panels, oldTab, newTab ) {
 
 		var index, oldIndex;
 

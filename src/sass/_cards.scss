@@ -1,11 +1,10 @@
 /* ======= CARDS ======= */
 
-.cl-card *, .cl-dcard * {
-    box-sizing: border-box;
-}
+$cards: ".cl-card, .cl-dcard, .cl-scard";
+$adcards: ".cl-card, .cl-dcard";
 
-.cl-card,
-.cl-dcard {
+#{$cards} {
+	
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -19,11 +18,15 @@
     position: relative;
     top: 0;
     transition: width .2s ease-in-out, top .1s ease-in-out, box-shadow .1s ease-in-out;
+	
+	* {
+        box-sizing: border-box;
+    }
+	
 }
 
 @media screen and (min-width: $break1) {
-    .cl-card,
-    .cl-dcard {
+    #{$cards} {
         &.left {
             float: left;
             margin: 0 2rem 2rem 0;
@@ -37,50 +40,81 @@
     }
 }
 
-.cl-card:hover,
-.cl-card:focus,
-.cl-dcard:hover,
-.cl-dcard:focus {
-    top: -2px;
-    box-shadow: $level2;
-    cursor: pointer;
-}
-
-.cl-card:active,
-.cl-dcard:active {
-    box-shadow: $level3;
-}
-
-.cl-card:hover,
-.cl-card:focus,
-.cl-dcard:hover,
-.cl-dcard:focus,
-.cl-card:active,
-.cl-dcard:active {
-    color: inherit;
+#{$adcards} {
+    
+    &:hover,
+    &:focus {
+        top: -2px;
+        box-shadow: $level2;
+        cursor: pointer;
+        color: inherit;
+    }
+    
+    &:active {
+        box-shadow: $level3;
+        color: inherit;
+    }
+    
 }
 
 .cl-card .cl-card-text,
-.cl-tiles .cl-card .cl-card-text {
+.cl-tiles .cl-card .cl-card-text,
+.cl-scard .cl-scard-text,
+.cl-tiles .cl-scard .cl-scard-text {
     padding: 1.5rem 1.2rem 0;
 }
 
-.cl-card p,
-.cl-tiles .cl-card p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+.cl-card,
+.cl-tiles .cl-card,
+.cl-scard,
+.cl-tiles .cl-scard {
+    
+    p {
+        margin-bottom: 2rem;
+    }
+    
+    img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    
 }
 
 
 /* Action Cards */
 
-.cl-card img,
-.cl-tiles .cl-card img {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    display: block;
+.cl-card {
+
+    .cl-button {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: calc(1.5% + 1em) 1rem;
+        background: inherit;
+        border: none;
+        border-top: 1px solid #eee;
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: $blue;
+        transition: all .2s;
+    }
+
+    &:hover .cl-button,
+    &:focus .cl-button,
+    .cl-button:hover,
+    .cl-button:focus {
+        background: $link;
+        border-top: 1px solid $link;
+        color: $white;
+        transition: all .3s;
+    }
+    
 }
 
 
@@ -92,49 +126,177 @@
     clear: both;
 }
 
-.cl-dcard img,
-.cl-tiles .cl-dcard img {
-    float: right;
-    width: 30%;
-    margin: .5rem .5rem .5rem 1rem;
+.cl-dcard,
+.cl-tiles .cl-dcard {
+    
+    img {
+        float: right;
+        width: 30%;
+        margin: .5rem .5rem .5rem 1rem;
+    }
+
+    .cl-dcard-text {
+        padding: 1rem 1rem 0;
+    }
+
+    p {
+        font-size: .9rem;
+        margin-bottom: 1.2rem;
+    }
+    
 }
 
-.cl-dcard .cl-dcard-text,
-.cl-tiles .cl-dcard .cl-dcard-text {
-    padding: 1rem 1rem 0;
+
+/* Story Cards */
+
+.cl-scard {
+    
+    border-radius: .2rem .2rem 0 0;
+    box-shadow: none;
+    border: 1px solid #eee;
+
+    img {
+        border-radius: .2rem .2rem 0 0;
+    }
+    
+    .cl-scard-img-container {
+        position: relative;
+        display: block;
+    }
+    
+    .cl-scard-img-overlay {
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: .2rem .2rem 0 0;
+        background: rgba(0,0,0,.7);
+        opacity: 0;
+        transition: all .2s ease-in-out;
+        text-align: center;
+        
+        &:hover,
+        &:focus {
+            opacity: 1;
+            
+            span {
+                font-size: 1.25rem;
+                left: -.625rem;
+                padding-left: 1.85rem;
+            }
+            
+            span:before {
+                width: 1.35rem;
+                height: 1.25rem;
+            }
+        }
+        
+        span {
+            display: inline-block;
+            position: relative;
+            font-size: 1rem;
+            top: calc( 50% - .5rem );
+            left: -.5rem;
+            padding-left: 1.6rem;
+            color: #fff;
+            transition: all .1s ease-in-out;
+        }
+        
+        span:before {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 1.1rem;
+            height: 1rem;
+            background-image: url(../i/read.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 100% auto;
+            transition: all .1s ease-in-out;
+        }
+        
+    }
+    
+    .cl-scard-category {
+        display: inline-block;
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .cl-scard-category:after {
+        display: block;
+        content: '';
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 1.5rem;
+        height: .5rem;
+        border-bottom: 1px solid #ddd;
+        transition: width .2s ease-in-out;
+    }
+
+    .cl-scard-category:hover:after,
+    .cl-scard-category:focus:after {
+        width: 100%;
+    }
+
+    .cl-scard-body {
+        
+        color: inherit;
+        
+        h3, p {
+            transition: color .1s ease-in-out;
+        }
+    
+        &:hover,
+        &:focus,
+        &:active {
+
+            h3, p {
+                color: $keaneyblue !important;
+            }
+
+        }
+        
+    }
+
+    .cl-scard-meta {
+        
+        margin-bottom: .9rem;
+        font-size: .9rem;
+        color: #999;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+        
+        &:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        
+    }
+    
+    .cl-scard-date {
+        line-height: 20px;
+        float: left;
+    }
+    
+    .cl-scard-social {
+        float: right;
+    }
+    
 }
 
-.cl-dcard p,
-.cl-tiles .cl-dcard p {
-    font-size: .9rem;
-    margin-bottom: 1.2rem;
-}
-
-/* Buttons */
-
-.cl-card .cl-button {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    padding: calc(1.5% + 1em) 1rem;
-    background: inherit;
-    border: none;
-    border-top: 1px solid #eee;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-    text-align: center;
-    color: $blue;
-    transition: all .2s;
-}
-
-.cl-card:hover .cl-button,
-.cl-card:focus .cl-button,
-.cl-card .cl-button:hover,
-.cl-card .cl-button:focus {
-    background: $link;
-    border-top: 1px solid $link;
-    color: $white;
-    transition: all .3s;
+@supports ( (backdrop-filter: initial) or (-webkit-backdrop-filter: initial) ) {
+    .cl-scard .cl-scard-img-overlay {
+        background: rgba(0,0,0,.1);
+        -webkit-backdrop-filter: blur(20px) saturate(250%);
+        backdrop-filter: blur(20px) saturate(250%);
+    }
 }
