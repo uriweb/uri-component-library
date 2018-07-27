@@ -3,18 +3,24 @@
 $output = '<section';
 $classes = 'cl-tab';
 
-if ( ! empty( $id ) ) {
-	$output .= ' id="' . $id . '"';
+if ( ! empty( $atts['id'] ) ) {
+	$output .= ' id="' . $atts['id'] . '"';
 }
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
-$output .= ' class="' . $classes . '">';
+$output .= ' class="' . $classes . '"';
 
-if ( ! empty( $title ) ) {
-	$output .= '<h1>' . $title . '</h1>';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
+}
+
+$output .= '>';
+
+if ( ! empty( $atts['title'] ) ) {
+	$output .= '<h1>' . $atts['title'] . '</h1>';
 }
 
 $output .= do_shortcode( $content );

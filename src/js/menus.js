@@ -13,7 +13,7 @@
 	window.addEventListener( 'load', initCLMenus, false );
 
 	function initCLMenus() {
-		var menus, toggle, uls, i, a, span, li;
+		var menus, toggle, list, uls, i, a, span, li;
 
 		// Since we have JS, let's add a unique css hook and submenu triggers
 		menus = document.querySelectorAll( '.cl-menu' );
@@ -34,7 +34,10 @@
 				}
 				);
 
-			menus[i].insertBefore( toggle, menus[i].querySelector( '.cl-menu-list' ) );
+			list = menus[i].querySelector( '.cl-menu-list' );
+			list.classList.remove( 'cl-menu-list-no-js' );
+
+			menus[i].insertBefore( toggle, list );
 			menus[i].classList.add( '.cl-menu-js' );
 		}
 

@@ -7,6 +7,7 @@ var jscs = require('gulp-jscs');
 var concat = require('gulp-concat');
 //var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
+var replace = require('gulp-replace-task');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('autoprefixer');
@@ -71,14 +72,27 @@ function scripts(done) {
                   '',
                   ''].join('\n');
     
+	// Run JSHint for src js
     gulp.src('./src/js/*.js')
         .pipe(jshint(done))
         .pipe(jshint.reporter('default'));
+	
+	// Run JSHint for wysiwyg js
+	gulp.src('./js/wysiwyg/*.js')
+        .pipe(jshint(done))
+        .pipe(jshint.reporter('default'));
     
+	// Run jscs for src js
     gulp.src('./src/js/*.js')
         .pipe(jscs(done))
         .pipe(jscs.reporter());
+	
+	// Run jscs for wysiwyg js
+	gulp.src('./js/wysiwyg/*.js')
+        .pipe(jscs(done))
+        .pipe(jscs.reporter());
   
+	// Compile src js
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
         //.pipe(stripDebug())
@@ -102,6 +116,23 @@ function sniffs(done) {
 }
 
 
+// Update plugin version
+gulp.task('version', version);
+
+function version(done) {
+		
+	gulp.src('./uri-component-library.php')
+		.pipe(replace({
+			patterns: [{
+				match: /Version:\s([^\n\r]*)/,
+				replace: 'Version: ' + pkg.version
+			}]
+		}))
+		.pipe(gulp.dest('./'));
+	
+}
+
+
 // watch
 gulp.task('watcher', watcher);
 
@@ -112,6 +143,7 @@ function watcher(done) {
     
     // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
+	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
 	// watch for PHP change
     gulp.watch('./**/*.php', sniffs);
@@ -120,7 +152,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'version', 'watcher', function(done){
 		done();
 	})
 );

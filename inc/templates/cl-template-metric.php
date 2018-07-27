@@ -2,7 +2,7 @@
 
 $classes = 'cl-metric';
 
-switch ( $style ) {
+switch ( $atts['style'] ) {
 	case 'dark':
 		$classes .= ' dark';
 		break;
@@ -14,28 +14,28 @@ switch ( $style ) {
 		break;
 }
 
-if ( ! empty( $float ) ) {
-	$classes .= ' ' . $float;
+if ( ! empty( $atts['float'] ) ) {
+	$classes .= ' ' . $atts['float'];
 	$output = '<aside class="cl-wrapper cl-metric-wrapper">';
 }
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $output .= '<div class="' . $classes . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= ' style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
 }
 
 $output .= '>';
 
-$output .= '<span>' . $metric . '</span>';
+$output .= '<span>' . $atts['metric'] . '</span>';
 
-$output .= '<span>' . $caption . '</span>';
+$output .= '<span>' . $atts['caption'] . '</span>';
 
 $output .= '</div>';
-if ( ! empty( $float ) ) {
+if ( ! empty( $atts['float'] ) ) {
 	$output .= '</aside>';
 }

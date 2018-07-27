@@ -2,40 +2,40 @@
 
 $classes = 'cl-menu';
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $menuname = 'Menu';
 
-if ( ! empty( $name ) ) {
-	$menuname = $name;
+if ( ! empty( $atts['name'] ) ) {
+	$menuname = $atts['name'];
 }
-if ( ! empty( $title ) ) {
-	$menuname = $title;
+if ( ! empty( $atts['title'] ) ) {
+	$menuname = $atts['title'];
 }
 
-if ( $showtitle ) {
-	$showtitle = '1';
+if ( $atts['showtitle'] ) {
+	$atts['showtitle'] = '1';
 } else {
-	$showtitle = '0';
+	$atts['showtitle'] = '0';
 }
 
 $output = '<section class="cl-wrapper cl-menu-wrapper">';
-$output .= '<div id="' . $id . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $showtitle . '"';
+$output .= '<div id="' . $atts['id'] . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $atts['showtitle'] . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= ' style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
 }
 
 $output .= '>';
 
-if ( empty( $name ) ) {
+if ( empty( $atts['name'] ) ) {
 	$output .= wp_nav_menu(
 		array(
 			'theme_location' => 'menu-1',
-			'menu_class' => 'cl-menu-list',
-			'depth' => $depth,
+			'menu_class' => 'cl-menu-list cl-menu-list-no-js',
+			'depth' => $atts['depth'],
 			'container' => '',
 			'fallback_cb' => false,
 			'echo' => false,
@@ -44,9 +44,9 @@ if ( empty( $name ) ) {
 } else {
 	$output .= wp_nav_menu(
 		array(
-			'menu' => $name,
-			'menu_class' => 'cl-menu-list',
-			'depth' => $depth,
+			'menu' => $atts['name'],
+			'menu_class' => 'cl-menu-list cl-menu-list-no-js',
+			'depth' => $atts['depth'],
 			'container' => '',
 			'fallback_cb' => false,
 			'echo' => false,

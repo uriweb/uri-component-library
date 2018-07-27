@@ -449,7 +449,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 		 'Panel', $atts, $content, array(
 			 array(
 				 'attr' => 'img',
-				 'types' => array( 'url' ),
+				 'types' => array( 'url', 'num' ),
 			 ),
 			 array(
 				 'attr' => 'reverse',
@@ -577,14 +577,12 @@ add_shortcode( 'cl-social', 'uri_cl_shortcode_social' );
 function uri_cl_shortcode_tabs( $atts, $content = null ) {
 
 	// Attributes
-	extract(
-		shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'class' => '',
 			'css' => '',
 		), $atts
-		)
-	);
+		);
 
 	include uri_cl_shortcode_get_template( 'tabs' );
 	return $output;
@@ -599,16 +597,14 @@ add_shortcode( 'cl-tabs', 'uri_cl_shortcode_tabs' );
 function uri_cl_shortcode_tab( $atts, $content = null ) {
 
 	// Attributes
-	extract(
-		shortcode_atts(
+	$atts = shortcode_atts(
 		array(
 			'title' => '',
 			'id' => '',
 			'class' => '',
 			'css' => '',
 		), $atts
-		)
-	);
+		);
 
 	include uri_cl_shortcode_get_template( 'tab' );
 	return $output;
@@ -724,7 +720,6 @@ function uri_cl_shortcode_waves( $atts, $content = null ) {
 		array(
 			'placement' => 'bottom',
 			'offset' => '',
-			'color' => '',
 			'class' => '',
 			'css' => '',
 		), $atts

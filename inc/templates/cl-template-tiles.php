@@ -2,7 +2,7 @@
 
 $classes = 'cl-tiles';
 
-switch ( $accross ) {
+switch ( $atts['across'] ) {
 	case 2:
 		$classes .= ' halves';
 		break;
@@ -19,27 +19,27 @@ switch ( $accross ) {
 		$classes .= ' thirds';
 }
 
-if ( $square ) {
+if ( $atts['square'] ) {
 	$classes .= ' square';
 }
 
-if ( $compact ) {
+if ( $atts['compact'] ) {
 	$classes .= ' compact';
 }
 
-if ( $animated ) {
+if ( $atts['animated'] ) {
 	$classes .= ' reveal';
 }
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $output = '<section class="cl-wrapper cl-tiles-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= ' style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= ' style="' . $atts['css'] . '"';
 }
 
 $output .= '>' . do_shortcode( $content ) . '</div>';

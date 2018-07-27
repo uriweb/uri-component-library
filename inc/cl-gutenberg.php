@@ -24,7 +24,7 @@ function uri_cl_gutenberg_is_active() {
 		'uri-gutenberg-editor-styles',
 		URI_CL_URL . '/css/uri-gutenberg.css',
 		array( 'wp-edit-blocks'),
-		filemtime( URI_CL_PATH . '/css/uri-gutenberg.css' ) // cache buster			
+		filemtime( URI_CL_DIR_PATH . '/css/uri-gutenberg.css' ) // cache buster			
 	);
 
 	// Cards
@@ -47,23 +47,23 @@ add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
  */
 function _uri_cl_load_block( $name ) {
 	
-	if ( file_exists( URI_CL_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
+	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
 		wp_enqueue_script(
 			'uri-gutenberg-script-' . $name,
 			URI_CL_URL . '/js/blocks/' . $name . '/block.js',
 			array( 'wp-blocks', 'wp-element', 'wp-i18n' ),
-			filemtime( URI_CL_PATH . '/js/blocks/' . $name . '/block.js' ) // cache buster
+			filemtime( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) // cache buster
 		);
 		wp_localize_script( 'uri-gutenberg-script-' . $name, 'URI_CL_URL', URI_CL_URL );
 	
 	}
 
-	if ( file_exists( URI_CL_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
+	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
 		wp_enqueue_style(
 			'uri-gutenberg-styles-' . $name,
 			URI_CL_URL . '/js/blocks/' . $name . '/block.css',
 			array( 'wp-edit-blocks'),
-			filemtime( URI_CL_PATH . '/js/blocks/' . $name . '/block.css' ) // cache buster			
+			filemtime( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.css' ) // cache buster			
 		);
 	}
 	

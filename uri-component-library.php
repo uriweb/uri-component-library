@@ -3,11 +3,12 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 2.3.4
+ * Version: 3.0.0
  * Author: URI Web Communications
- * Author URI:
+ * Author URI: https://today.uri.edu/
  *
  * @author: Brandon Fuller <bjcfuller@uri.edu>
+ * @author: John Pennypacker <jpennypacker@uri.edu>
  * @package uri-component-library
  */
 
@@ -16,9 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-define( 'URI_CL_PATH', plugin_dir_path( __FILE__ ) );
+define( 'URI_CL_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'URI_CL_URL', str_replace('/js', '/', plugins_url( 'js', __FILE__ ) ) );
 
+/**
+ * Return the plugin base url
+ */
+function uri_cl_dir_url() {
+	return plugin_dir_url( __FILE__ );
+}
 
 /**
  * Include css and js
@@ -35,13 +42,15 @@ function uri_cl_enqueues() {
 add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 
 // Include shortcodes
-include( URI_CL_PATH . 'inc/cl-shortcodes.php' );
+include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
+
+// Include WYSIWYG buttons
+include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
+
+// Include gutenberg
+include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
-
-// Include gutenberg
-include( URI_CL_PATH . 'inc/cl-gutenberg.php' );
-

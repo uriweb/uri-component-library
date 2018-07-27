@@ -2,25 +2,25 @@
 
 $classes = 'cl-quote';
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $output = '<section class="cl-wrapper cl-quote-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
-if ( ! empty( $css ) ) {
-	$output .= 'style="' . $css . '"';
+if ( ! empty( $atts['css'] ) ) {
+	$output .= 'style="' . $atts['css'] . '"';
 }
 
 $output .= '>';
 
-if ( ! empty( $img ) ) {
-	$output .= '<div class="cl-quote-image" style="background-image:url(' . $img . ')" title="' . $alt . '"></div>';
+if ( ! empty( $atts['img'] ) ) {
+	$output .= '<div class="cl-quote-image" style="background-image:url(' . $atts['img'] . ')" title="' . $atts['alt'] . '"></div>';
 }
 
-$output .= '<blockquote>' . $quote . '</blockquote>';
-$output .= '<cite>' . $citation . '</cite>';
+$output .= '<blockquote>' . $atts['quote'] . '</blockquote>';
+$output .= '<cite>' . $atts['citation'] . '</cite>';
 
 $output .= '</div>';
 $output .= '</section>';

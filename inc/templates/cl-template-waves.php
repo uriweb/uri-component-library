@@ -1,20 +1,20 @@
 <?php
 
-$classes = 'cl-wave ' . $placement;
+$classes = 'cl-wave ' . $atts['placement'];
 
-if ( ! empty( $class ) ) {
-	$classes .= ' ' . $class;
+if ( ! empty( $atts['class'] ) ) {
+	$classes .= ' ' . $atts['class'];
 }
 
 $output = '<section class="cl-wrapper cl-wave-wrapper">';
 $output .= '<div class="' . $classes . '" style="';
 
-if ( ! empty( $offset ) ) {
-	$output .= 'top:' . $offset . ';';
+if ( ! empty( $atts['offset'] ) ) {
+	$output .= 'top:' . $atts['offset'] . ';';
 }
 
-if ( ! empty( $css ) ) {
-	$output .= $css;
+if ( ! empty( $atts['css'] ) ) {
+	$output .= $atts['css'];
 }
 
 $output .= '">';
