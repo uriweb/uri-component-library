@@ -7,7 +7,8 @@
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
- * @author: Brandon Fuller <bjcfuller@uri.edu>, John Pennypacker <jpennypacker@uri.edu>
+ * @author: Brandon Fuller <bjcfuller@uri.edu>
+ * @author: John Pennypacker <jpennypacker@uri.edu>
  * @package uri-component-library
  */
 

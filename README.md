@@ -6,7 +6,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 3.0.0 is a major release focused on usability, performance, and fine-tuning existing components.
 
-### Introducing Visual Editor Support (Beta)
+### Introducing Visual Editor Support (_Beta_)
 
 Components can now be built and edited directly in the visual editor without needing to write shortcodes.  Simply click on a component button in the editor toolbar to open a dialogue where the component can be created.
 
@@ -25,7 +25,7 @@ Components can now be built and edited directly in the visual editor without nee
 
 ### General Improvements
 
-* Allow more fonts to better adapt to theme font sizes
+* More typography now adapts to theme font sizes
 * Fixes an issue that prevented menus from displaying on mobile devices without JavaScript
 * Fixes a display issue with submenus in the menu component
 * Fixes an issue that prevented multiple instances of tabs on a page
@@ -42,9 +42,9 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 [![devDependencies Status](https://david-dm.org/uriweb/uri-component-library/dev-status.svg)](https://david-dm.org/uriweb/uri-component-library?type=dev)
 
 URI Component Library  
-Add the component library, including shortcodes, to WordPress.  
+Add the component library, including shortcodes and visual editor support, to WordPress.  
 
-Contributors: Brandon Fuller  
+Contributors: Brandon Fuller, John Pennypacker  
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
