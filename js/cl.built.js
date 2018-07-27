@@ -5,6 +5,7 @@
  * 
  * @version v3.0.0
  * @author Brandon Fuller <bjcfuller@uri.edu>
+ * @author John Pennypacker <jpennypacker@uri.edu>
  * @license GPL-3.0
  * @see https://www.uri.edu/styleguide
  */

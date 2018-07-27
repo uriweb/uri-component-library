@@ -9,7 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "University of Rhode Island",
-  "authorHuman": "Brandon Fuller <bjcfuller@uri.edu>",
+  "humans": [
+    "Brandon Fuller <bjcfuller@uri.edu>",
+    "John Pennypacker <jpennypacker@uri.edu>"
+  ],
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
