@@ -1,3 +1,10 @@
+/**
+ * uri-component-library
+ *
+ * Style adjustments to make components render nicely in the WYSIWYG editor
+ * 
+ */
+
 .cl-tiles > div {
 	min-height: 2rem;
 	outline: 1px dashed #999;
@@ -5,4 +12,8 @@
 
 .cl-hero.super {
 	max-height: 800px;
+}
+
+.cl-button:not(.disabled):hover {
+	cursor: pointer;
 }
