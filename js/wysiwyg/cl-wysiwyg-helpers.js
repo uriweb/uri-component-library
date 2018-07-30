@@ -264,6 +264,7 @@ class URIWYSIWYG {
 
 		for ( x in atts ) {
 			t = atts[x].split( '=' );
+			t[0] = t[0].toLowerCase();
 			t[1] = t[1].replace( /"/gi, '' );
 			attributes[t[0]] = t[1];
 		}
@@ -390,7 +391,6 @@ class URIWYSIWYG {
 
 			sc = window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) );
 			attributes = URIWYSIWYG.parseShortCodeAttributes( sc );
-			console.log( attributes );
 			ed.execCommand( wName, target, attributes );
 		}
 	}
