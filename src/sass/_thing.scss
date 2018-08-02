@@ -1,0 +1,89 @@
+.cl-thing {
+	
+	width: 100%;
+	margin: 0 0 2rem;
+	position: relative;
+	box-sizing: border-box;
+	
+	.artwork {
+		display: block;
+		position: relative;
+		content: '';
+		height: 300px;
+		width: 100vw;
+		left: -25px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-size: cover;
+		background-position: center center;
+	}
+	
+	.block {
+		box-sizing: border-box;
+		position: relative;
+		width: 100vw;
+		left: -25px;
+		padding: 2rem 25px;
+		border-bottom: 1px solid #ddd;
+	}
+	
+}
+
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .cl-thing .block {
+		backdrop-filter: saturate(200%) blur(30px);
+		background-color: rgba(255,255,255,.85);
+	}
+}
+
+@media screen and (min-width: $break1) {
+    .cl-thing {
+		min-height: 400px;
+		
+		.artwork {
+			z-index: 2;
+			height: 100%;
+			width: 100vw;
+			margin-left: -50vw;
+			top: 0;
+			left: 50%;
+			z-index: 1;
+			max-width: initial;
+			position: absolute;
+			background-position: 25% center;
+		}
+
+		.block {
+			z-index: 2;
+			left: -25px;
+			background: rgba(255,255,255,.95);
+			padding: 25px;
+			width: calc( 50% + 25px );
+			border-bottom: none;
+		}
+		
+    }
+}
+
+@media screen and (min-width: $break2) {
+    .cl-thing {
+        
+		min-height: 300px;
+		padding: 2rem 0;
+
+		.artwork {
+			background-position: center center;
+		}
+		
+		.block {
+			width: 50%;
+			left: 0;
+			padding: 2rem;
+			border-radius: .3rem;
+			border: 1px solid #fff;
+			box-shadow: $level3;
+		}
+		
+    }
+}
