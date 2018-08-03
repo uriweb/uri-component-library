@@ -25,16 +25,19 @@
 		left: -25px;
 		padding: 2rem 25px;
 		border-bottom: 1px solid #ddd;
+		background-color: #fff;
 	}
 	
-}
-
-
-@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .cl-thing .block {
-		backdrop-filter: saturate(200%) blur(30px);
-		background-color: rgba(255,255,255,.85);
+	.block.hidden {
+		display: none;
 	}
+	
+	.cl-thing-slider {
+		display: block;
+		z-index: 2;
+		position: relative;
+	}
+	
 }
 
 @media screen and (min-width: $break1) {
@@ -57,7 +60,7 @@
 		.block {
 			z-index: 2;
 			left: -25px;
-			background: rgba(255,255,255,.95);
+			background-color: rgba(255,255,255,.95);
 			padding: 25px;
 			width: calc( 50% + 25px );
 			border-bottom: none;
@@ -81,9 +84,15 @@
 			left: 0;
 			padding: 2rem;
 			border-radius: .3rem;
-			border: 1px solid #fff;
 			box-shadow: $level3;
 		}
 		
     }
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .cl-thing .block {
+		backdrop-filter: saturate(200%) blur(30px);
+		background-color: rgba(255,255,255,.7);
+	}
 }
