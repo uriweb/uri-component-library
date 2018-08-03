@@ -110,6 +110,7 @@ class URIWYSIWYG {
 						sc: shortcode
 					},
 					dataType: 'json',
+					method: 'post',
 					error: function( jqXHR, textStatus, errorThrown ) {
 						console.log( 'failed to retrieve shortcode HTML.' );
 						console.log( textStatus );
