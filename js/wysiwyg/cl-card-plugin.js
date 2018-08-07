@@ -82,10 +82,9 @@
 						library: { type: 'image' },
 						body: [
 						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-						{ type: 'textbox', name: 'body', multiline: 'true', label: 'Body', value: args.body },
+						{ type: 'textbox', name: 'body', multiline: 'true', label: 'Body', value: args.body, rows: 4, style: '' },
 						{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
 						{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
-						{ type: 'container', label: ' ', html: 'Only standard cards display button text.' },
 						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
 						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },

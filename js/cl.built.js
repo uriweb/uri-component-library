@@ -3,8 +3,9 @@
  * 
  * --scripts--
  * 
- * @version v3.0.0
+ * @version v3.0.1
  * @author Brandon Fuller <bjcfuller@uri.edu>
+ * @author John Pennypacker <jpennypacker@uri.edu>
  * @license GPL-3.0
  * @see https://www.uri.edu/styleguide
  */

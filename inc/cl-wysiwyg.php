@@ -101,11 +101,11 @@ function uri_cl_wysiwyg_get_html() {
 		return __( 'This resource is for authors only, sorry.', 'uri' );
 	}
 
-	if ( empty( $_GET['sc'] ) ) {
+	if ( empty( $_REQUEST['sc'] ) ) {
 		return;
 	}
 
-	$shortcode = ( get_magic_quotes_gpc() ) ? $_GET['sc'] : stripslashes( $_GET['sc'] );
+	$shortcode = ( get_magic_quotes_gpc() ) ? $_REQUEST['sc'] : stripslashes( $_REQUEST['sc'] );
 	$shortcode = mb_convert_encoding( $shortcode, 'HTML-ENTITIES', 'UTF-8' );
 
 	$out = do_shortcode( $shortcode );

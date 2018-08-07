@@ -72,7 +72,7 @@
 						title: 'Insert / Update Boxout',
 						body: [
 						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content },
+						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
 						{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
 							{ text: 'Auto', value: '' },
 							{ text: 'Left', value: 'left' },

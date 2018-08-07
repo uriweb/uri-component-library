@@ -1,7 +1,7 @@
 {
   "name": "uri-component-library",
   "description": "URI Component Library",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "homepage": "https://www.uri.edu",
   "repository": "https://github.com/uriweb/uri-component-library",
   "docs": "https://www.uri.edu/styleguide",
@@ -9,11 +9,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "University of Rhode Island",
-  "authorHuman": "Brandon Fuller <bjcfuller@uri.edu>",
+  "humans": [
+    "Brandon Fuller <bjcfuller@uri.edu>",
+    "John Pennypacker <jpennypacker@uri.edu>"
+  ],
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^9.0.1",
     "gulp": "^4.0.0",
     "gulp-concat": ">=2.6.1",
     "gulp-header": "^2.0.5",
@@ -25,7 +28,7 @@
     "gulp-shell": ">=0.6.5",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-strip-debug": "^3.0.0",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.1",
     "jshint": ">=2.9.4"
   },
   "browserslist": {
