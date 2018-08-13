@@ -258,17 +258,17 @@ class URIWYSIWYG {
 	 */
 	static parseShortCodeAttributes( sc ) {
 
-		var attributes, atts, innerContent, x, t;
+		var attributes, atts, innerContent, x, key, value;
 
 		attributes = {};
 		atts = sc.match( /[\w-]+="[^"]*"/gi );
 
 		for ( x in atts ) {
-			t = atts[x].split( '=' );
-			t[0] = t[0].toLowerCase();
-			t[1] = t[1].replace( /"/gi, '' );
-			attributes[t[0]] = t[1];
+			key = atts[x].substr(0, atts[x].indexOf('='));
+			value = atts[x].substr(atts[x].indexOf('=') + 1);
+			attributes[key.toLowerCase()] = value.replace( /"/gi, '' );
 		}
+		
 
 		innerContent = sc.match( /\][^]+?\[/gi );
 		if ( innerContent ) {
