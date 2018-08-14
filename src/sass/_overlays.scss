@@ -1,11 +1,13 @@
-.cl-thing {
+/* ======= OVERLAYS ======= */
+
+.cl-overlay {
 	
 	width: 100%;
 	margin: 0 0 2rem;
 	position: relative;
 	box-sizing: border-box;
 	
-	.artwork {
+	.cl-overlay-artwork {
 		display: block;
 		position: absolute;
 		content: '';
@@ -19,7 +21,7 @@
 		background-position: center center;
 	}
 	
-	.block {
+	.cl-overlay-block {
 		display: block;
 		box-sizing: border-box;
 		position: relative;
@@ -33,12 +35,12 @@
 		transition: left .2s ease-in-out, min-height .2s ease-in-out;
 	}
 	
-	.cl-thing-text {
+	.cl-overlay-text {
 		overflow: hidden;
 		padding: 2rem 25px;
 	}
 	
-	.cl-thing-slider {
+	.cl-overlay-slider {
 		
 		display: block;
 		position: relative;
@@ -54,7 +56,7 @@
 			background: rgba(255,255,255,.5);
 		}
 		
-		.prompter {
+		.cl-overlay-prompter {
 			position: absolute;
 			top: 20px;
 			left: calc( 50% - 11px );
@@ -70,7 +72,7 @@
 		
 	}
 	
-	&.dark .block {
+	&.dark .cl-overlay-block {
 		
 		background-color: #333;
 		color: #fff;
@@ -79,7 +81,7 @@
 			color: #fff;
 		}
 		
-		.cl-thing-slider {
+		.cl-overlay-slider {
 			
 			border-top: 1px solid rgba(255,255,255,.3);
 			
@@ -88,7 +90,7 @@
 				background: rgba(0,0,0,.5);
 			}
 			
-			.prompter {
+			.cl-overlay-prompter {
 				border-left: 1px solid rgba(255,255,255,.5);
 				border-bottom: 1px solid rgba(255,255,255,.5);
 			}
@@ -97,17 +99,17 @@
 		
 	}
 	
-	.block.hidden {
+	.cl-overlay-block.hidden {
 		
 		min-height: 0;
 		
-		.cl-thing-text {
+		.cl-overlay-text {
 			height: 0;
 			padding-top: 0;
 			padding-bottom: 0;
 		}
 		
-		.cl-thing-slider .prompter {
+		.cl-overlay-slider .cl-overlay-prompter {
 			transform: rotate(-45deg);
 			top: 8px;
 		}
@@ -117,11 +119,11 @@
 }
 
 @media screen and (min-width: $break1) {
-    .cl-thing {
+    .cl-overlay {
 		
 		min-height: 400px;
 		
-		.artwork {
+		.cl-overlay-artwork {
 			z-index: 2;
 			height: 100%;
 			width: 100vw;
@@ -133,7 +135,7 @@
 			background-position: 25% center;
 		}
 
-		.block {
+		.cl-overlay-block {
 			display: flex;
 			z-index: 2;
 			left: -25px;
@@ -144,11 +146,11 @@
 			border-bottom: none;
 		}
 		
-		.cl-thing-text {
+		.cl-overlay-text {
 			padding: 25px;
 		}
 		
-		.cl-thing-slider {
+		.cl-overlay-slider {
 			
 			flex: 0 0 50px;
 			height: initial;
@@ -156,7 +158,7 @@
 			border-top: none;
 			border-left: 1px solid rgba(0,0,0,.3);
 			
-			.prompter {
+			.cl-overlay-prompter {
 				transform: rotate(45deg);
 				top: calc( 50% - 11px );
 				left: 20px;
@@ -164,23 +166,23 @@
 			
 		}
 		
-		&.dark .block .cl-thing-slider {
+		&.dark .cl-overlay-block .cl-overlay-slider {
 			border-top: none;
 			border-left: 1px solid rgba(255,255,255,.3);
 		}
 		
-		.block.hidden {
+		.cl-overlay-block.hidden {
 			
 			min-height: 400px;
 			left: calc( -50vw + 25px );
 		
-			.cl-thing-text {
+			.cl-overlay-text {
 				height: initial;
 				padding-top: 25px;
 				padding-bottom: 25px;
 			}
 			
-			.cl-thing-slider .prompter {
+			.cl-overlay-slider .cl-overlay-prompter {
 				transform: rotate(-135deg);
 				top: calc( 50% - 11px );
 				left: 8px;
@@ -192,16 +194,16 @@
 }
 
 @media screen and (min-width: $break2) {
-    .cl-thing {
+    .cl-overlay {
         
 		min-height: 500px;
 		padding: 2rem 0;
 
-		.artwork {
+		.cl-overlay-artwork {
 			background-position: center center;
 		}
 		
-		.block {
+		.cl-overlay-block {
 			width: 50%;
 			min-height: initial;
 			left: 0;
@@ -209,14 +211,14 @@
 			box-shadow: $level3;
 		}
 		
-		.block.hidden {
+		.cl-overlay-block.hidden {
 			
 			min-height: initial;
 			left: calc( -50vw + 50px );
 			
 		}
 		
-		.cl-thing-slider {
+		.cl-overlay-slider {
 			border-radius: 0 .3rem .3rem 0;
 		}
 		
@@ -224,11 +226,11 @@
 }
 
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .cl-thing .block {
+    .cl-overlay .cl-overlay-block {
 		backdrop-filter: saturate(200%) blur(30px);
 		background-color: rgba(255,255,255,.7);
 	}
-	.cl-thing.dark .block {
+	.cl-overlay.dark .cl-overlay-block {
 		backdrop-filter: saturate(200%) blur(30px);
 		background-color: rgba(0,0,0,.7);
 	}

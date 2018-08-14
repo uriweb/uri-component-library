@@ -1,24 +1,30 @@
+/**
+ * OVERLAYS
+ *
+ * @package uri-component-library
+ */
+
 ( function() {
 
 	'use strict';
 
-	window.addEventListener( 'load', initCLThing, false );
+	window.addEventListener( 'load', initCLOverlay, false );
 
-	function initCLThing() {
+	function initCLOverlay() {
 
 		var things, i, block, div;
 
-		things = document.querySelectorAll( '.cl-thing' );
+		things = document.querySelectorAll( '.cl-overlay' );
 		for ( i = 0; i < things.length; i++ ) {
 
 			div = document.createElement( 'div' );
-			div.className = 'cl-thing-slider';
-			div.innerHTML = '<div class="prompter"></div>';
+			div.className = 'cl-overlay-slider';
+			div.innerHTML = '<div class="cl-overlay-prompter"></div>';
 			div.title = 'Hide story';
 
 			div.addEventListener( 'click', handleClick.bind( null, div, things[i] ), false );
 
-			things[i].querySelector( '.block' ).appendChild( div );
+			things[i].querySelector( '.cl-overlay-block' ).appendChild( div );
 
 		}
 
