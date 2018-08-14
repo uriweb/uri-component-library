@@ -264,11 +264,10 @@ class URIWYSIWYG {
 		atts = sc.match( /[\w-]+="[^"]*"/gi );
 
 		for ( x in atts ) {
-			key = atts[x].substr(0, atts[x].indexOf('='));
-			value = atts[x].substr(atts[x].indexOf('=') + 1);
+			key = atts[x].substr( 0, atts[x].indexOf( '=' ) );
+			value = atts[x].substr( atts[x].indexOf( '=' ) + 1 );
 			attributes[key.toLowerCase()] = value.replace( /"/gi, '' );
 		}
-		
 
 		innerContent = sc.match( /\][^]+?\[/gi );
 		if ( innerContent ) {
