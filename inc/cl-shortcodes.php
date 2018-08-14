@@ -428,6 +428,43 @@ add_shortcode( 'cl-notice', 'uri_cl_shortcode_notice' );
 
 
 /**
+ * Overlay
+ */
+function uri_cl_shortcode_overlay( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'img' => '',
+			'title' => '',
+			'style' => '',
+			'class' => '',
+			'css' => '',
+		), $atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Overlay', $atts, $content, array(
+			 array(
+				 'attr' => 'img',
+				 'types' => array( 'url' ),
+			 ),
+			 array(
+				 'attr' => 'style',
+				 'types' => array( 'str' ),
+				 'req' => false,
+				 'values' => array( 'dark' ),
+			 ),
+		 ),
+		uri_cl_shortcode_get_template( 'overlay' )
+	);
+
+}
+add_shortcode( 'cl-overlay', 'uri_cl_shortcode_overlay' );
+
+
+/**
  * Panel
  */
 function uri_cl_shortcode_panel( $atts, $content = null ) {
