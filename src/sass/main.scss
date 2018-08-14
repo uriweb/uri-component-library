@@ -90,6 +90,7 @@ $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 @import 'menus';
 @import 'metrics';
 @import 'notices';
+@import 'overlays';
 @import 'panels';
 @import 'quotes';
 @import 'slideshows';
@@ -97,8 +98,6 @@ $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 @import 'tabs';
 @import 'videos';
 @import 'waves';
-
-@import 'thing';
 
 // Non-component styles
 @import 'errors';
