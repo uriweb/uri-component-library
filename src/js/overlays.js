@@ -34,7 +34,7 @@
 
 		var textblock;
 
-		textblock = parent.querySelector( '.block' );
+		textblock = parent.querySelector( '.cl-overlay-block' );
 
 		if ( textblock.classList.contains( 'hidden' ) ) {
 
