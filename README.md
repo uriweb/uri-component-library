@@ -59,4 +59,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 3.0.1  
+Stable tag: 3.0.2  
