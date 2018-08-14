@@ -13,11 +13,12 @@
 
 			div = document.createElement( 'div' );
 			div.className = 'cl-thing-slider';
-			div.innerHTML = 'Show Photo';
+			div.innerHTML = '<div class="prompter"></div>';
+			div.title = 'Hide story';
 
 			div.addEventListener( 'click', handleClick.bind( null, div, things[i] ), false );
 
-			things[i].appendChild( div );
+			things[i].querySelector( '.block' ).appendChild( div );
 
 		}
 
@@ -33,11 +34,13 @@
 
 			textblock.classList.remove( 'hidden' );
 			parent.style.height = 'auto';
+			el.title = 'Hide story';
 
 		} else {
 
 			parent.style.height = parent.offsetHeight + 'px';
 			textblock.classList.add( 'hidden' );
+			el.title = 'Show story';
 
 		}
 
