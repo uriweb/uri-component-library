@@ -6,7 +6,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 3.0.2 is a bug fix release.
 
-* Fixes an error that caused errors with "=" characters in shortcode attributes
+* Fixes an error with parsing "=" characters in shortcode attributes
 * Fixes a rendering error with floated cards
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/104/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
