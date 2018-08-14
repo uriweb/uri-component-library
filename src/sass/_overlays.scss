@@ -19,18 +19,18 @@
 		background-color: transparent;
 		background-size: cover;
 		background-position: center center;
+		border-bottom: 1px solid #ddd;
 	}
 	
 	.cl-overlay-block {
 		display: block;
 		box-sizing: border-box;
 		position: relative;
-		width: 100vw;
+		width: calc( 100vw - 20px );
 		min-height: 300px;
-		left: -25px;
+		left: -15px;
 		top: 0;
 		padding: 0;
-		border-bottom: 1px solid #ddd;
 		background-color: #fff;
 		transition: left .2s ease-in-out, min-height .2s ease-in-out;
 	}
@@ -102,6 +102,7 @@
 	.cl-overlay-block.hidden {
 		
 		min-height: 0;
+		border-radius: 0 0 .3rem .3rem;
 		
 		.cl-overlay-text {
 			height: 0;
@@ -109,9 +110,15 @@
 			padding-bottom: 0;
 		}
 		
-		.cl-overlay-slider .cl-overlay-prompter {
-			transform: rotate(-45deg);
-			top: 8px;
+		.cl-overlay-slider {
+			
+			border-radius: 0 0 .3rem .3rem;
+			
+			.cl-overlay-prompter {
+				transform: rotate(-45deg);
+				top: 8px;
+			}
+			
 		}
 		
 	}
@@ -143,7 +150,6 @@
 			background-color: rgba(255,255,255,.95);
 			width: calc( 50% + 25px );
 			min-height: 400px;
-			border-bottom: none;
 		}
 		
 		.cl-overlay-text {
@@ -167,7 +173,7 @@
 		}
 		
 		&.dark .cl-overlay-block .cl-overlay-slider {
-			border-top: none;
+			border-top: 0;
 			border-left: 1px solid rgba(255,255,255,.3);
 		}
 		
@@ -175,6 +181,7 @@
 			
 			min-height: 400px;
 			left: calc( -50vw + 25px );
+			border-radius: 0;
 		
 			.cl-overlay-text {
 				height: initial;
@@ -182,10 +189,16 @@
 				padding-bottom: 25px;
 			}
 			
-			.cl-overlay-slider .cl-overlay-prompter {
-				transform: rotate(-135deg);
-				top: calc( 50% - 11px );
-				left: 8px;
+			.cl-overlay-slider {
+				
+				border-radius: 0;
+				
+				.cl-overlay-prompter {
+					transform: rotate(-135deg);
+					top: calc( 50% - 11px );
+					left: 8px;
+				}
+				
 			}
 			
 		}
@@ -211,15 +224,20 @@
 			box-shadow: $level3;
 		}
 		
+		.cl-overlay-slider {
+			border-radius: 0 .3rem .3rem 0;
+		}
+		
 		.cl-overlay-block.hidden {
 			
+			border-radius: 0 .3rem .3rem 0;
 			min-height: initial;
 			left: calc( -50vw + 50px );
 			
-		}
-		
-		.cl-overlay-slider {
-			border-radius: 0 .3rem .3rem 0;
+			.cl-overlay-slider {
+				border-radius: 0 .3rem .3rem 0;
+			}
+			
 		}
 		
     }
