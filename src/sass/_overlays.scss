@@ -65,7 +65,6 @@
 			height: 20px;
 			padding-left: 20px;
 			overflow: hidden;
-			z-index: 10;
 			border-left: 1px solid rgba(0,0,0,.5);
 			border-bottom: 1px solid rgba(0,0,0,.5);
 			transform: rotate(135deg);
@@ -135,20 +134,17 @@
 		min-height: 400px;
 		
 		.cl-overlay-artwork {
-			z-index: 2;
 			height: 100%;
 			width: 100vw;
 			margin-left: -50vw;
 			top: 0;
 			left: 50%;
-			z-index: 1;
 			max-width: initial;
 			background-position: 25% center;
 		}
 
 		.cl-overlay-block {
 			display: flex;
-			z-index: 2;
 			left: -25px;
 			padding: 0;
 			width: calc( 50% + 25px );

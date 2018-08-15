@@ -12,19 +12,19 @@
 
 	function initCLOverlay() {
 
-		var things, i, block, div;
+		var els, i, div;
 
-		things = document.querySelectorAll( '.cl-overlay' );
-		for ( i = 0; i < things.length; i++ ) {
+		els = document.querySelectorAll( '.cl-overlay' );
+		for ( i = 0; i < els.length; i++ ) {
 
 			div = document.createElement( 'div' );
 			div.className = 'cl-overlay-slider';
 			div.innerHTML = '<div class="cl-overlay-prompter"></div>';
 			div.title = 'Hide story';
 
-			div.addEventListener( 'click', handleClick.bind( null, div, things[i] ), false );
+			div.addEventListener( 'click', handleClick.bind( null, div, els[i] ), false );
 
-			things[i].querySelector( '.cl-overlay-block' ).appendChild( div );
+			els[i].querySelector( '.cl-overlay-block' ).appendChild( div );
 
 		}
 
