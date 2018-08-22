@@ -2,25 +2,13 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.0.2
+## What's new in 3.1.0
 
-CL 3.0.2 is a bug fix release.
+CL 3.1.0 is a minor release.
 
-* Fixes an error with parsing "=" characters in shortcode attributes
-* Fixes a rendering error with floated cards
+* Adds an overlay component with shortcode and visual editor support
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/104/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 3.0.1
-
-CL 3.0.1 is a bug fix release.
-
-* Increases security compliance of AJAX calls
-* The `id` attribute in hero components is now required
-* Fixes an error that caused capitalized shortcode attributes to be ignored by the visual editor
-* Minor visual adjustments to certain visual editor modals
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/102/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/107/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
