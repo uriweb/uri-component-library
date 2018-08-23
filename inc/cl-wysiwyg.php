@@ -28,6 +28,8 @@ function uri_cl_wysiwyg_register_tinymce_plugin( $plugin_array ) {
 	$plugin_array['uri_cl_wysiwyg_panel'] = uri_cl_dir_url() . 'js/wysiwyg/cl-panel-plugin.js';
 	// load the custom notice plugin
 	$plugin_array['uri_cl_wysiwyg_notice'] = uri_cl_dir_url() . 'js/wysiwyg/cl-notice-plugin.js';
+	// load the custom overlay plugin
+	$plugin_array['uri_cl_wysiwyg_overlay'] = uri_cl_dir_url() . 'js/wysiwyg/cl-overlay-plugin.js';
 
 	// load the custom cards plugin
 	$plugin_array['uri_cl_wysiwyg_card'] = uri_cl_dir_url() . 'js/wysiwyg/cl-card-plugin.js';
@@ -53,7 +55,7 @@ add_filter( 'mce_external_plugins', 'uri_cl_wysiwyg_register_tinymce_plugin' );
  * Add new buttons
  */
 function uri_cl_wysiwyg_register_buttons( $buttons ) {
-	array_unshift( $buttons, 'CLBoxout', 'CLButton', 'CLCard', 'CLHero', 'CLMetric', 'CLNotice', 'CLPanel', 'CLQuote', 'CLVideo', 'CLTiles' );
+	array_unshift( $buttons, 'CLBoxout', 'CLButton', 'CLCard', 'CLHero', 'CLMetric', 'CLNotice', 'CLOverlay', 'CLPanel', 'CLQuote', 'CLVideo', 'CLTiles' );
 	return $buttons;
 }
 add_filter( 'mce_buttons_3', 'uri_cl_wysiwyg_register_buttons' );
