@@ -24,4 +24,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 3.1.0  
+Stable tag: 3.1.1  
