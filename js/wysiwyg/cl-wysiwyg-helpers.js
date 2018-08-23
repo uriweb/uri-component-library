@@ -290,7 +290,7 @@ class URIWYSIWYG {
 		// Convert the content string into a DOM tree so we can parse it easily
 		html = document.createElement( 'div' );
 		html.innerHTML = content;
-		componentElements = html.querySelectorAll( '.' + sc + '-noneditable' );
+		componentElements = html.querySelectorAll( '.' + sc );
 
 		// Var componentElements contains an array of the shortcodes
 		for ( i = 0; i < componentElements.length; i++ ) {
