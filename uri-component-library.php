@@ -43,8 +43,10 @@ add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 // Include shortcodes
 include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 
-// Include WYSIWYG buttons
-include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
+// Include WYSIWYG buttons on all themes except URI Responsive
+if ( 'uri-responsive' != wp_get_theme()->get_stylesheet() ) {
+	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
+}
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
