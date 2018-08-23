@@ -24,6 +24,7 @@
 	
 	.cl-overlay-block {
 		display: block;
+		justify-content: space-between;
 		box-sizing: border-box;
 		position: relative;
 		width: calc( 100vw - 20px );
@@ -154,6 +155,7 @@
 		.cl-overlay-text {
 			padding: 25px;
 			min-height: initial;
+			width: calc(100% - 50px);
 		}
 		
 		.cl-overlay-slider {
