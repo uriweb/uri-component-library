@@ -2,7 +2,15 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.1.2
+## What's new in 3.1.3
+
+CL 3.1.3 is a bug fix release.
+
+* Correctly removes visual editor support for the URI Responsive theme
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/114/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 3.1.2
 
 CL 3.1.2 is a bug fix release focused on WordPress compatibility.
 
@@ -20,14 +28,6 @@ CL 3.1.1 is a bug fix release.
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/109/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
-## New in 3.1.0
-
-CL 3.1.0 is a minor release.
-
-* Adds an overlay component with shortcode and visual editor support
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/107/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
 ## Plugin Details
 
 [![Master Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.org/uriweb/uri-component-library)
@@ -42,4 +42,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 3.1.2  
+Stable tag: 3.1.3  
