@@ -44,7 +44,7 @@ add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 
 // Include WYSIWYG buttons on all themes except URI Responsive
-if ( 'uri-responsive' != wp_get_theme()->get_stylesheet() ) {
+if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
 
