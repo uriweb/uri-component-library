@@ -2,7 +2,16 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.1.1
+## What's new in 3.1.2
+
+CL 3.1.2 is a bug fix release focused on WordPress compatibility.
+
+* Improves backward compatibility with older versions of WordPress (<=v4.9.6)
+* Makes it easier to add content after tiles built with the visual editor
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/111/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 3.1.1
 
 CL 3.1.1 is a bug fix release.
 
