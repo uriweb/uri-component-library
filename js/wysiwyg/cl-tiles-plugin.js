@@ -18,7 +18,8 @@
 			out += '<div> </div>';
 		}
 		out += '</div>';
-		// add a line break after the tiles so the editor allows for adding content after tiles
+
+		// Add a line break after the tiles so the editor allows for adding content after tiles
 		out += '<p class="cl-panel-spacer">&nbsp;</p>';
 		return out;
 	}

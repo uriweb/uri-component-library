@@ -100,7 +100,7 @@ class URIWYSIWYG {
 		// jscs:enable validateQuoteMarks
 	}
 
-	/** 
+	/**
 	 * Find a shortcode's wrapper element if it has one, and return the html element
 	 *
 	 * @param html obj an html object
@@ -108,13 +108,16 @@ class URIWYSIWYG {
 	 * @return obj and html object
 	 */
 	static getWrapper ( html, sc ) {
+
 		if ( ! html.getAttribute( 'data-shortcode' ) ) {
+
 			// See if the component has a wrapper element
 			html = jQuery( html ).closest( '.' + sc + '-wrapper' )[0];
+
 		}
+
 		return html;
 	}
-
 
 	static getHTML( ed, shortcode, id, classes ) {
 
@@ -302,7 +305,7 @@ class URIWYSIWYG {
 	static restoreShortcodes( content, sc ) {
 
 		var html, componentElements, target, i, t;
-		
+
 		// Convert the content string into a DOM tree so we can parse it easily
 		html = document.createElement( 'div' );
 		html.innerHTML = content;
@@ -320,7 +323,6 @@ class URIWYSIWYG {
 		return out;
 
 	}
-	
 
 	/**
 	 * Invokes the wp media picker from a tinymce modal
