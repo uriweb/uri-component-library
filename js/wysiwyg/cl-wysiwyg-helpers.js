@@ -100,6 +100,22 @@ class URIWYSIWYG {
 		// jscs:enable validateQuoteMarks
 	}
 
+	/** 
+	 * Find a shortcode's wrapper element if it has one, and return the html element
+	 *
+	 * @param html obj an html object
+	 * @param sc str the shortcode
+	 * @return obj and html object
+	 */
+	static getWrapper ( html, sc ) {
+		if ( ! html.getAttribute( 'data-shortcode' ) ) {
+			// See if the component has a wrapper element
+			html = jQuery( html ).closest( '.' + sc + '-wrapper' )[0];
+		}
+		return html;
+	}
+
+
 	static getHTML( ed, shortcode, id, classes ) {
 
 		// https://api.jquery.com/jQuery.ajax/
@@ -285,8 +301,8 @@ class URIWYSIWYG {
 	 */
 	static restoreShortcodes( content, sc ) {
 
-		var html, componentElements, i, t;
-
+		var html, componentElements, target, i, t;
+		
 		// Convert the content string into a DOM tree so we can parse it easily
 		html = document.createElement( 'div' );
 		html.innerHTML = content;
@@ -294,8 +310,9 @@ class URIWYSIWYG {
 
 		// Var componentElements contains an array of the shortcodes
 		for ( i = 0; i < componentElements.length; i++ ) {
-			t = document.createTextNode( window.decodeURIComponent( componentElements[i].getAttribute( 'data-shortcode' ) ) );
-			componentElements[i].parentNode.replaceChild( t, componentElements[i] );
+			target = this.getWrapper( componentElements[i], sc );
+			t = document.createTextNode( window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) ) );
+			target.parentNode.replaceChild( t, target );
 		}
 
 		// Return the DOM tree as a string
@@ -303,6 +320,7 @@ class URIWYSIWYG {
 		return out;
 
 	}
+	
 
 	/**
 	 * Invokes the wp media picker from a tinymce modal
@@ -382,12 +400,7 @@ class URIWYSIWYG {
 
 		if ( isTarget ) {
 
-			if ( ! target.getAttribute( 'data-shortcode' ) ) {
-
-				// See if the component has a wrapper element
-				target = jQuery( target ).closest( '.' + cName + '-wrapper' )[0];
-
-			}
+			target = this.getWrapper( target, cName );
 
 			sc = window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) );
 			attributes = URIWYSIWYG.parseShortCodeAttributes( sc );
