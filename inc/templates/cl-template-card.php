@@ -10,7 +10,8 @@ if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
 }
 
-$output = '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
+$output = '<div class="cl-wrapper cl-card-wrapper">';
+$output .= '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 
 if ( ! empty( $atts['css'] ) ) {
 	$output .= ' style="' . $atts['css'] . '"';
@@ -42,3 +43,4 @@ if ( ! empty( $atts['button'] ) ) {
 }
 
 $output .= '</a>';
+$output .= '</div>';

@@ -73,7 +73,7 @@
 						title: 'Insert / Update Notice',
 						body: [
 						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content },
+						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
 						{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
 							{ text: 'Default', value: '' },
 							{ text: 'Urgent', value: 'urgent' }

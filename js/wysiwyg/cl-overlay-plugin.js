@@ -1,5 +1,5 @@
 /**
- * CL Boxout WYSIWYG Plugin
+ * CL Overlay WYSIWYG Plugin
  *
  * @see https://code.tutsplus.com/tutorials/guide-to-creating-your-own-wordpress-editor-buttons--wp-30182
  * @package uri-component-library
@@ -7,12 +7,17 @@
 
 (function() {
 
-	var cName = 'cl-boxout',
-		wName = 'CLBoxout';
+	var cName = 'cl-overlay',
+		wName = 'CLOverlay';
 
-	function generateBoxoutShortcode( params ) {
+	function generateOverlayShortcode( params ) {
 
 		var attributes = [], i;
+
+		if ( ! params.img ) {
+			alert( 'Image is required for overlays' );
+			return false;
+		}
 
 		for ( i in params ) {
 			if ( 'content' != i ) {
@@ -25,7 +30,7 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_boxout', {
+		'tinymce.plugins.uri_cl_wysiwyg_overlay', {
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -39,10 +44,10 @@
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 				wName, {
-					title: 'Boxout',
+					title: 'Overlay',
 					text: '',
 					cmd: wName,
-					image: url + '/i/boxout.png'
+					image: url + '/i/overlay.png'
 				}
 				);
 
@@ -50,7 +55,7 @@
 				ed.addCommand(
 				wName, function( target, args ) {
 
-					var possibleArgs;
+					var possibleArgs, imageEl;
 
 					// Create an empty object if args is empty
 					if ( ! args ) {
@@ -58,7 +63,10 @@
 					}
 
 					// Create an empty property so nothing is null
-					possibleArgs = ['title', 'content', 'float'];
+					possibleArgs = ['img', 'title', 'style'];
+					if ( ! args.title ) {
+						args.title = '';
+					}
 					possibleArgs.forEach(
 					function( i ) {
 						if ( ! args[i] ) {
@@ -67,24 +75,32 @@
 					}
 					);
 
+					imageEl = '';
+					if ( args.img ) {
+						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
+					}
+
 					ed.windowManager.open(
 					{
-						title: 'Insert / Update Boxout',
+						title: 'Insert / Update Overlay',
 						body: [
+						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
+						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
+						{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
 						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
-						{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
-							{ text: 'Auto', value: '' },
-							{ text: 'Left', value: 'left' },
-							{ text: 'Right', value: 'right' }
+						{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
+							{ text: 'Default', value: '' },
+							{ text: 'Dark', value: 'dark' }
 							]
 						}
 						],
 						onsubmit: function( e ) {
 
 							// Insert content when the window form is submitted
-							shortcode = generateBoxoutShortcode( e.data );
-							ed.execCommand( 'mceInsertContent', 0, shortcode );
+							var shortcode = generateOverlayShortcode( e.data );
+							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
 
 						}
 					},
@@ -133,6 +149,6 @@
 		);
 
 	// Register plugin
-	tinymce.PluginManager.add( 'uri_cl_wysiwyg_boxout', tinymce.plugins.uri_cl_wysiwyg_boxout );
+	tinymce.PluginManager.add( 'uri_cl_wysiwyg_overlay', tinymce.plugins.uri_cl_wysiwyg_overlay );
 
 })();
