@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 3.1.2
+ * Version: 3.1.3
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -44,7 +44,7 @@ add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 
 // Include WYSIWYG buttons on all themes except URI Responsive
-if ( 'uri-responsive' != wp_get_theme()->get_stylesheet() ) {
+if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
 
