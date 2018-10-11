@@ -30,7 +30,6 @@
     }
     
     blockquote {
-        margin-bottom: 1rem;
         font-style: normal;
         line-height: 1.5rem;
         color: inherit;
@@ -41,6 +40,8 @@
         color: $darkgrey;
         position: relative;
         left: -.5rem;
+		margin-top: 1rem;
+		margin-bottom: .5rem;
     }
     
     cite:before {

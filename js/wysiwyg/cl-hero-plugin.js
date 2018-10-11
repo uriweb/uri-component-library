@@ -27,7 +27,8 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_hero', {
+		'tinymce.plugins.uri_cl_wysiwyg_hero',
+		{
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -40,27 +41,29 @@
 
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName, {
-					title: 'Hero',
-					text: '',
-					cmd: wName,
-					image: url + '/i/hero.png'
+				wName,
+					{
+						title: 'Hero',
+						text: '',
+						cmd: wName,
+						image: url + '/i/hero.png'
 				}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName, function( target, args ) {
+				wName,
+					function( target, args ) {
 
-					var possibleArgs, imageEl;
+						var possibleArgs, imageEl;
 
-					// Create an empty object if args is empty
-					if ( ! args ) {
-						args = {};
-					}
+						// Create an empty object if args is empty
+						if ( ! args ) {
+							args = {};
+						}
 
-					// Create an empty property so nothing is null
-					possibleArgs = [
+						// Create an empty property so nothing is null
+						possibleArgs = [
 						'img',
 						'id',
 						'vid',
@@ -72,98 +75,101 @@
 						'alt',
 						'format',
 						'animation'
-					];
-					possibleArgs.forEach(
-					function( i ) {
-						if ( ! args[i] ) {
-							args[i] = '';
+						];
+						possibleArgs.forEach(
+						function( i ) {
+							if ( ! args[i] ) {
+								args[i] = '';
+							}
 						}
-					}
-					);
+						);
 
-					imageEl = '';
-					if ( args.img ) {
-						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
-					}
-
-					// Set an initial unique id for the hero component, since it's required
-					if ( ! args.id ) {
-						args.id = URIWYSIWYG.generateID();
-					}
-
-					ed.windowManager.open(
-					{
-						title: 'Insert / Update Hero',
-						library: { type: 'image' },
-						body: [
-						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
-						{ type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
-						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
-						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-						{ type: 'textbox', name: 'id', label: 'Unique ID', value: args.id },
-						{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
-						{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
-						{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
-						{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
-						{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
-						{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
-						{ type: 'listbox', name: 'format', label: 'Format', value: args.format, 'values': [
-							{ text: 'Default', value: '' },
-							{ text: 'Full Width', value: 'fullwidth' },
-							{ text: 'Super', value: 'super' }
-							]
-						},
-						{ type: 'listbox', name: 'animation', label: 'Animation', value: args.animation, 'values': [
-							{ text: 'None', value: '' },
-							{ text: 'Shift', value: 'shift' }
-							]
+						imageEl = '';
+						if ( args.img ) {
+							imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
 						}
 
-						],
-						onsubmit: function( e ) {
+						// Set an initial unique id for the hero component, since it's required
+						if ( ! args.id ) {
+							args.id = URIWYSIWYG.generateID();
+						}
 
-							var shortcode;
-
-							// Sanitize unique id
-							if ( ! e.data.id ) {
-								e.data.id = URIWYSIWYG.generateID();
-							} else {
-								e.data.id = e.data.id.replace( /\s/g, '' );
+						ed.windowManager.open(
+						{
+							title: 'Insert / Update Hero',
+							library: { type: 'image' },
+							body: [
+							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
+							{ type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
+							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+							{ type: 'textbox', name: 'id', label: 'Unique ID', value: args.id },
+							{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
+							{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
+							{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
+							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
+							{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
+							{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+							{ type: 'listbox', name: 'format', label: 'Format', value: args.format, 'values': [
+								{ text: 'Default', value: '' },
+								{ text: 'Full Width', value: 'fullwidth' },
+								{ text: 'Super', value: 'super' }
+								]
+							},
+							{ type: 'listbox', name: 'animation', label: 'Animation', value: args.animation, 'values': [
+								{ text: 'None', value: '' },
+								{ text: 'Shift', value: 'shift' }
+								]
 							}
 
-							// Insert content when the window form is submitted
-							shortcode = generateHeroShortcode( e.data );
-							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
+							],
+							onsubmit: function( e ) {
 
+								var shortcode;
+
+								// Sanitize unique id
+								if ( ! e.data.id ) {
+									e.data.id = URIWYSIWYG.generateID();
+								} else {
+									e.data.id = e.data.id.replace( /\s/g, '' );
+								}
+
+								// Insert content when the window form is submitted
+								shortcode = generateHeroShortcode( e.data );
+								URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
+
+							}
+						},
+						{
+							wp: wp
 						}
-					},
-					{
-						wp: wp
-					}
-					);
+						);
 
-				}
+					}
 				);
 
 				ed.on(
-				 'BeforeSetContent', function( event ) {
-					event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, ed );
-				 }
+				 'BeforeSetContent',
+					function( event ) {
+						event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, ed );
+					}
 				);
 
 				ed.on(
-				 'PostProcess', function( event ) {
-					if ( event.get ) {
-						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+				 'PostProcess',
+					function( event ) {
+						if ( event.get ) {
+							event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+						}
 					}
-				 }
 				);
 
 				// Open popup on placeholder double click
 				ed.on(
-				'DblClick', function( event ) {
-					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
-				}
+				'DblClick',
+					function( event ) {
+						URIWYSIWYG.openPopup( event.target, ed, cName, wName );
+					}
 				);
 
 			},

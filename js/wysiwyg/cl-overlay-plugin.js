@@ -30,7 +30,8 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_overlay', {
+		'tinymce.plugins.uri_cl_wysiwyg_overlay',
+		{
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -43,94 +44,99 @@
 
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName, {
-					title: 'Overlay',
-					text: '',
-					cmd: wName,
-					image: url + '/i/overlay.png'
+				wName,
+					{
+						title: 'Overlay',
+						text: '',
+						cmd: wName,
+						image: url + '/i/overlay.png'
 				}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName, function( target, args ) {
+				wName,
+					function( target, args ) {
 
-					var possibleArgs, imageEl;
+						var possibleArgs, imageEl;
 
-					// Create an empty object if args is empty
-					if ( ! args ) {
-						args = {};
-					}
-
-					// Create an empty property so nothing is null
-					possibleArgs = ['img', 'title', 'style'];
-					if ( ! args.title ) {
-						args.title = '';
-					}
-					possibleArgs.forEach(
-					function( i ) {
-						if ( ! args[i] ) {
-							args[i] = '';
+						// Create an empty object if args is empty
+						if ( ! args ) {
+							args = {};
 						}
-					}
-					);
 
-					imageEl = '';
-					if ( args.img ) {
-						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
-					}
-
-					ed.windowManager.open(
-					{
-						title: 'Insert / Update Overlay',
-						body: [
-						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
-						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
-						{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
-						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
-						{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
-							{ text: 'Default', value: '' },
-							{ text: 'Dark', value: 'dark' }
-							]
+						// Create an empty property so nothing is null
+						possibleArgs = ['img', 'title', 'style'];
+						if ( ! args.title ) {
+							args.title = '';
 						}
-						],
-						onsubmit: function( e ) {
-
-							// Insert content when the window form is submitted
-							var shortcode = generateOverlayShortcode( e.data );
-							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
-
+						possibleArgs.forEach(
+						function( i ) {
+							if ( ! args[i] ) {
+								args[i] = '';
+							}
 						}
-					},
-					{
-						wp: wp
-					}
-					);
+						);
 
-				}
+						imageEl = '';
+						if ( args.img ) {
+							imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
+						}
+
+						ed.windowManager.open(
+						{
+							title: 'Insert / Update Overlay',
+							body: [
+							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
+							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
+							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
+							{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
+							{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
+								{ text: 'Default', value: '' },
+								{ text: 'Dark', value: 'dark' }
+								]
+							}
+							],
+							onsubmit: function( e ) {
+
+								// Insert content when the window form is submitted
+								var shortcode = generateOverlayShortcode( e.data );
+								URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
+
+							}
+						},
+						{
+							wp: wp
+						}
+						);
+
+					}
 				);
 
 				ed.on(
-				 'BeforeSetContent', function( event ) {
-					event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, false, ed );
-				 }
+				 'BeforeSetContent',
+					function( event ) {
+						event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, false, ed );
+					}
 				);
 
 				ed.on(
-				 'PostProcess', function( event ) {
-					if ( event.get ) {
-						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+				 'PostProcess',
+					function( event ) {
+						if ( event.get ) {
+							event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+						}
 					}
-				 }
 				);
 
 				// Open popup on placeholder double click
 				ed.on(
-				'DblClick', function( event ) {
-					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
-				}
+				'DblClick',
+					function( event ) {
+						URIWYSIWYG.openPopup( event.target, ed, cName, wName );
+					}
 				);
 
 			},
