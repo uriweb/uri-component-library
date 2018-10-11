@@ -20,7 +20,10 @@ if ( ! empty( $atts['img'] ) ) {
 }
 
 $output .= '<blockquote>' . $atts['quote'] . '</blockquote>';
-$output .= '<cite>' . $atts['citation'] . '</cite>';
+
+if ( ! empty( $atts['citation'] ) ) {
+	$output .= '<cite>' . $atts['citation'] . '</cite>';
+}
 
 $output .= '</div>';
 $output .= '</section>';

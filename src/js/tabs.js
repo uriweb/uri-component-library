@@ -28,7 +28,7 @@
 	 */
 	function formatTabs( tabbed, tabbedIndex ) {
 
-		var header, href, tabs, tablist, panels, li, a, i, numtabs = 0;
+		var header, href, tabs, tablist, panels, li, a, i, numtabs, anchor;
 
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
@@ -38,6 +38,8 @@
 		// Create tabs
 		tablist = document.createElement( 'ul' );
 		tablist.setAttribute( 'role', 'tablist' );
+
+		numtabs = 0;
 
 		for ( i = 0; i < panels.length; i++ ) {
 
@@ -83,12 +85,14 @@
 		tabs = tablist.querySelectorAll( 'a' );
 		for ( i = 0; i < tabs.length; i++ ) {
 			tabs[i].addEventListener(
-				'click', function( e ) {
+				'click',
+				function( e ) {
 					handleClick( e, tabs, tablist, panels );
 				}
 				);
 			tabs[i].addEventListener(
-				'keydown', function( e ) {
+				'keydown',
+				function( e ) {
 					handleKeystroke( e, tabs, panels );
 				}
 				);
@@ -108,6 +112,38 @@
 		tabs[0].removeAttribute( 'tabindex' );
 		tabs[0].setAttribute( 'aria-selected', 'true' );
 		panels[0].hidden = false;
+
+		// Go to the anchored tab, if there is one
+		anchor = getAnchoredElement( tabbed );
+		if ( null !== anchor ) {
+			switchTab( tabs, panels, tablist.querySelector( '[aria-selected]' ), anchor );
+		}
+
+	}
+
+	/*
+	 * Get any URL anchor and return the corresponding tab
+	 * @param tabbed el the current .cl-tabs element
+	 * @return the tab <a> that controls the anchored panel
+	 */
+	function getAnchoredElement( tabbed ) {
+
+		var urlParts, section, anchor;
+
+		urlParts = document.URL.split( '#' );
+		anchor = null;
+
+		if ( urlParts.length > 1 ) {
+
+			section = tabbed.querySelector( '#' + urlParts[1] );
+
+			if ( null !== section ) {
+				anchor = document.getElementById( section.getAttribute( 'aria-labelledby' ) );
+			}
+
+		}
+
+		return anchor;
 
 	}
 

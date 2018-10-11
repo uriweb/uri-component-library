@@ -1,6 +1,7 @@
 <?php
 
 $classes = 'cl-metric';
+$override_bgcolor = false;
 
 switch ( $atts['style'] ) {
 	case 'dark':
@@ -11,6 +12,7 @@ switch ( $atts['style'] ) {
 		break;
 	case 'overlay':
 		$classes .= ' dark clear';
+		$override_bgcolor = true;
 		break;
 }
 
@@ -25,8 +27,20 @@ if ( ! empty( $atts['class'] ) ) {
 
 $output .= '<div class="' . $classes . '"';
 
-if ( ! empty( $atts['css'] ) ) {
-	$output .= ' style="' . $atts['css'] . '"';
+if ( ! empty( $atts['css'] ) || ! empty( $atts['bgcolor'] ) ) {
+
+	$output .= ' style="';
+
+	if ( ! empty( $atts['bgcolor'] ) && ! $override_bgcolor ) {
+		$output .= 'background-color:' . $atts['bgcolor'] . ';';
+	}
+
+	if ( ! empty( $atts['css'] ) ) {
+		$output .= $atts['css'];
+	}
+
+	$output .= '"';
+
 }
 
 $output .= '>';

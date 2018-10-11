@@ -2,31 +2,17 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.1.2
+## What's new in 3.2.0
 
-CL 3.1.2 is a bug fix release focused on WordPress compatibility.
+CL 3.2.0 is a minor release focused on shortcode enhancements.
 
-* Improves backward compatibility with older versions of WordPress (<=v4.9.6)
-* Makes it easier to add content after tiles built with the visual editor
+* Tabs can now be specifically linked to and opened automatically
+* Quote citations are now optional
+* Metric background colors can now be customized
+* Adds a universial class for adding bottom margin to inline elements
+* Updates code styles to meet the latest WordPress standards
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/111/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 3.1.1
-
-CL 3.1.1 is a bug fix release.
-
-* Fixes a display issue with overlays containing very short titles/content
-* Removes visual editor support for the URI Responsive theme
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/109/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 3.1.0
-
-CL 3.1.0 is a minor release.
-
-* Adds an overlay component with shortcode and visual editor support
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/107/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/119/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
@@ -42,4 +28,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 3.1.2  
+Stable tag: 3.2.0  

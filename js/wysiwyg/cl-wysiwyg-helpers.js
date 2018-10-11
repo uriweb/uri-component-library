@@ -123,65 +123,66 @@ class URIWYSIWYG {
 
 		// https://api.jquery.com/jQuery.ajax/
 		jQuery.ajax(
-			 wp.ajax.settings.url, {
-					data: {
-						action: 'uri_cl_wysiwyg',
-						sc: shortcode
-					},
-					dataType: 'json',
-					method: 'post',
-					error: function( jqXHR, textStatus, errorThrown ) {
-						console.log( 'failed to retrieve shortcode HTML.' );
-						console.log( textStatus );
-						console.log( errorThrown );
-					},
-					success: function( data, textStatus, jqXHR ) {
+			 wp.ajax.settings.url,
+			{
+				data: {
+					action: 'uri_cl_wysiwyg',
+					sc: shortcode
+				},
+				dataType: 'json',
+				method: 'post',
+				error: function( jqXHR, textStatus, errorThrown ) {
+					console.log( 'failed to retrieve shortcode HTML.' );
+					console.log( textStatus );
+					console.log( errorThrown );
+				},
+				success: function( data, textStatus, jqXHR ) {
 
-						var placeHolder, d;
+					var placeHolder, d;
 
-						if ( ed.$ ) {
+					if ( ed.$ ) {
 
-							placeHolder = ed.$( '#' + id );
-							d = document.createElement( 'div' );
+						placeHolder = ed.$( '#' + id );
+						d = document.createElement( 'div' );
 
-							if ( data.match( 'class="cl-card' ) ) {
+						if ( data.match( 'class="cl-card' ) ) {
 
-								// Replace the <a class="cl-card"> element with a <div>
-								// Because TinyMCE doesn't like block-level elements inside of inline elements
-								data = data.replace( '<a ', '<div ' );
-								data = data.replace( '</a>', '</div>' );
+							// Replace the <a class="cl-card"> element with a <div>
+							// Because TinyMCE doesn't like block-level elements inside of inline elements
+							data = data.replace( '<a ', '<div ' );
+							data = data.replace( '</a>', '</div>' );
 
-							}
-
-							if ( data.match( 'class="cl-button' ) ) {
-
-								// Replace the <a class="cl-button"> element with a <span>
-								// Buttons render funny when selected if they're an anchor
-								data = data.replace( '<a ', '<span ' );
-								data = data.replace( '</a>', '</span>' );
-
-							}
-
-							jQuery( d ).addClass( classes ).append( data );
-
-							placeHolder.after( d.innerHTML );
-							var el = placeHolder.next();
-
-							el.attr(
-								{
-									'data-shortcode': window.encodeURIComponent( shortcode ),
-									'contenteditable': 'false'
-							}
-								);
-							el.addClass( classes );
-
-							placeHolder.remove();
 						}
 
-					},
-					done: function( data, textStatus, jqXHR ) {
-						console.log( 'Done.' );
+						if ( data.match( 'class="cl-button' ) ) {
+
+							// Replace the <a class="cl-button"> element with a <span>
+							// Buttons render funny when selected if they're an anchor
+							data = data.replace( '<a ', '<span ' );
+							data = data.replace( '</a>', '</span>' );
+
+						}
+
+						jQuery( d ).addClass( classes ).append( data );
+
+						placeHolder.after( d.innerHTML );
+						var el = placeHolder.next();
+
+						el.attr(
+							{
+								'data-shortcode': window.encodeURIComponent( shortcode ),
+								'contenteditable': 'false'
+							}
+							);
+						el.addClass( classes );
+
+						placeHolder.remove();
 					}
+
+				},
+				done: function( data, textStatus, jqXHR ) {
+					console.log( 'Done.' );
+				}
 		}
 			);
 	}
@@ -199,7 +200,8 @@ class URIWYSIWYG {
 		var re = selfclosing ? new RegExp( '\\[' + shortcodeName + '([^\\]]*)\\]', 'g' ) : new RegExp( '\\[' + shortcodeName + '[^]+?\\[/' + shortcodeName + '\\]', 'g' );
 
 		return content.replace(
-			 re, function( match ) {
+			 re,
+			function( match ) {
 
 				var safeData, classes, out, id;
 
@@ -212,7 +214,7 @@ class URIWYSIWYG {
 				URIWYSIWYG.getHTML( ed, match, id, classes );
 				return out;
 
-			 }
+			}
 			);
 	}
 
@@ -343,7 +345,8 @@ class URIWYSIWYG {
 			);
 
 		picker.on(
-			'select', function() {
+			'select',
+			function() {
 
 				var imgurl, altEl, attachment, alt;
 

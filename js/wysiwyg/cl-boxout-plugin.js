@@ -25,7 +25,8 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_boxout', {
+		'tinymce.plugins.uri_cl_wysiwyg_boxout',
+		{
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -38,83 +39,88 @@
 
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName, {
-					title: 'Boxout',
-					text: '',
-					cmd: wName,
-					image: url + '/i/boxout.png'
+				wName,
+					{
+						title: 'Boxout',
+						text: '',
+						cmd: wName,
+						image: url + '/i/boxout.png'
 				}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName, function( target, args ) {
+				wName,
+					function( target, args ) {
 
-					var possibleArgs;
+						var possibleArgs;
 
-					// Create an empty object if args is empty
-					if ( ! args ) {
-						args = {};
-					}
-
-					// Create an empty property so nothing is null
-					possibleArgs = ['title', 'content', 'float'];
-					possibleArgs.forEach(
-					function( i ) {
-						if ( ! args[i] ) {
-							args[i] = '';
+						// Create an empty object if args is empty
+						if ( ! args ) {
+							args = {};
 						}
-					}
-					);
 
-					ed.windowManager.open(
-					{
-						title: 'Insert / Update Boxout',
-						body: [
-						{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-						{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
-						{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
-							{ text: 'Auto', value: '' },
-							{ text: 'Left', value: 'left' },
-							{ text: 'Right', value: 'right' }
-							]
+						// Create an empty property so nothing is null
+						possibleArgs = ['title', 'content', 'float'];
+						possibleArgs.forEach(
+						function( i ) {
+							if ( ! args[i] ) {
+								args[i] = '';
+							}
 						}
-						],
-						onsubmit: function( e ) {
+						);
 
-							// Insert content when the window form is submitted
-							shortcode = generateBoxoutShortcode( e.data );
-							ed.execCommand( 'mceInsertContent', 0, shortcode );
+						ed.windowManager.open(
+						{
+							title: 'Insert / Update Boxout',
+							body: [
+							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
+							{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
+							{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
+								{ text: 'Auto', value: '' },
+								{ text: 'Left', value: 'left' },
+								{ text: 'Right', value: 'right' }
+								]
+							}
+							],
+							onsubmit: function( e ) {
 
+								// Insert content when the window form is submitted
+								shortcode = generateBoxoutShortcode( e.data );
+								ed.execCommand( 'mceInsertContent', 0, shortcode );
+
+							}
+						},
+						{
+							wp: wp
 						}
-					},
-					{
-						wp: wp
-					}
-					);
+						);
 
-				}
+					}
 				);
 
 				ed.on(
-				 'BeforeSetContent', function( event ) {
-					event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, false, ed );
-				 }
+				 'BeforeSetContent',
+					function( event ) {
+						event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, false, ed );
+					}
 				);
 
 				ed.on(
-				 'PostProcess', function( event ) {
-					if ( event.get ) {
-						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+				 'PostProcess',
+					function( event ) {
+						if ( event.get ) {
+							event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+						}
 					}
-				 }
 				);
 
 				// Open popup on placeholder double click
 				ed.on(
-				'DblClick', function( event ) {
-					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
-				}
+				'DblClick',
+					function( event ) {
+						URIWYSIWYG.openPopup( event.target, ed, cName, wName );
+					}
 				);
 
 			},

@@ -23,7 +23,8 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_quote', {
+		'tinymce.plugins.uri_cl_wysiwyg_quote',
+		{
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -36,86 +37,91 @@
 
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName, {
-					title: 'Quote',
-					text: '',
-					cmd: wName,
-					image: url + '/i/quote.png'
+				wName,
+					{
+						title: 'Quote',
+						text: '',
+						cmd: wName,
+						image: url + '/i/quote.png'
 				}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName, function( target, args ) {
+				wName,
+					function( target, args ) {
 
-					var possibleArgs, imageEl;
+						var possibleArgs, imageEl;
 
-					// Create an empty object if args is empty
-					if ( ! args ) {
-						args = {};
-					}
-
-					// Create an empty property so nothing is null
-					possibleArgs = ['img', 'alt', 'quote', 'citation'];
-					possibleArgs.forEach(
-					function( i ) {
-						if ( ! args[i] ) {
-							args[i] = '';
+						// Create an empty object if args is empty
+						if ( ! args ) {
+							args = {};
 						}
-					}
-					);
 
-					imageEl = '';
-					if ( args.img ) {
-						imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
-					}
-
-					ed.windowManager.open(
-					{
-						title: 'Insert / Update Quote',
-						body: [
-						{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
-						{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-						{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
-						{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
-						{ type: 'textbox', multiline: 'true', name: 'quote', label: 'Quote', value: args.quote, rows: 4, style: '' },
-						{ type: 'textbox', name: 'citation', label: 'Citation', value: args.citation }
-						],
-						onsubmit: function( e ) {
-
-							// Insert content when the window form is submitted
-							var shortcode = generateQuoteShortcode( e.data );
-							URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
-
+						// Create an empty property so nothing is null
+						possibleArgs = ['img', 'alt', 'quote', 'citation'];
+						possibleArgs.forEach(
+						function( i ) {
+							if ( ! args[i] ) {
+								args[i] = '';
+							}
 						}
-					},
-					{
-						wp: wp
-					}
-					);
+						);
 
-				}
+						imageEl = '';
+						if ( args.img ) {
+							imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
+						}
+
+						ed.windowManager.open(
+						{
+							title: 'Insert / Update Quote',
+							body: [
+							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
+							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
+							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+							{ type: 'textbox', multiline: 'true', name: 'quote', label: 'Quote', value: args.quote, rows: 4, style: '' },
+							{ type: 'textbox', name: 'citation', label: 'Citation', value: args.citation }
+							],
+							onsubmit: function( e ) {
+
+								// Insert content when the window form is submitted
+								var shortcode = generateQuoteShortcode( e.data );
+								URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
+
+							}
+						},
+						{
+							wp: wp
+						}
+						);
+
+					}
 				);
 
 				ed.on(
-				 'BeforeSetContent', function( event ) {
-					event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, ed );
-				 }
+				 'BeforeSetContent',
+					function( event ) {
+						event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, ed );
+					}
 				);
 
 				ed.on(
-				 'PostProcess', function( event ) {
-					if ( event.get ) {
-						event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+				 'PostProcess',
+					function( event ) {
+						if ( event.get ) {
+							event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
+						}
 					}
-				 }
 				);
 
 				// Open popup on placeholder double click
 				ed.on(
-				'DblClick', function( event ) {
-					URIWYSIWYG.openPopup( event.target, ed, cName, wName );
-				}
+				'DblClick',
+					function( event ) {
+						URIWYSIWYG.openPopup( event.target, ed, cName, wName );
+					}
 				);
 
 			},
