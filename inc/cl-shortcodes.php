@@ -344,6 +344,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 			'caption' => '',
 			'style' => '',
 			'float' => '',
+			'bgcolor' => '',
 			'class' => '',
 			'css' => '',
 		),
