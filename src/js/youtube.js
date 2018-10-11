@@ -132,7 +132,8 @@ function onYouTubePlayerAPIReady() {
 			value = uriVidHeroes[key];
 
 			value.player = new YT.Player(
-				key, {
+				key,
+				{
 					width: value.w,
 					height: value.h,
 					videoId: value.ytid,
@@ -161,7 +162,8 @@ function onYouTubePlayerAPIReady() {
 			value = uriVideos[key];
 
 			value.player = new YT.Player(
-				key, {
+				key,
+				{
 					videoId: value.ytid,
 					playerVars: {
 						autoplay: 0,
@@ -253,7 +255,8 @@ function onYouTubePlayerAPIReady() {
 
 		// Listen for browser resizing
 		window.addEventListener(
-			'resize', function() {
+			'resize',
+			function() {
 				resizeHero( el, parent );
 			}
 		);
@@ -261,7 +264,8 @@ function onYouTubePlayerAPIReady() {
 
 		// Listen for scrolling
 		window.addEventListener(
-			'scroll', function() {
+			'scroll',
+			function() {
 				if ( ! parent.classList.contains( 'paused' ) ) {
 					determinePlayState( event, parent );
 				}
@@ -276,7 +280,8 @@ function onYouTubePlayerAPIReady() {
 		button.className = 'motionswitch';
 		button.title = 'Pause';
 		button.addEventListener(
-			'click', function() {
+			'click',
+			function() {
 				heroControl( event, parent, this );
 			}
 		);
@@ -295,7 +300,8 @@ function onYouTubePlayerAPIReady() {
 			parent = uriVideos[key].parent;
 
 		window.addEventListener(
-			'resize', function() {
+			'resize',
+			function() {
 				resizeVideo( key, el, parent );
 			}
 		);

@@ -83,12 +83,14 @@
 		tabs = tablist.querySelectorAll( 'a' );
 		for ( i = 0; i < tabs.length; i++ ) {
 			tabs[i].addEventListener(
-				'click', function( e ) {
+				'click',
+				function( e ) {
 					handleClick( e, tabs, tablist, panels );
 				}
 				);
 			tabs[i].addEventListener(
-				'keydown', function( e ) {
+				'keydown',
+				function( e ) {
 					handleKeystroke( e, tabs, panels );
 				}
 				);

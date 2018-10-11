@@ -225,7 +225,8 @@
 		}
 
 		el.addEventListener(
-			'touchstart', function( e ) {
+			'touchstart',
+			function( e ) {
 
 				var touchobj;
 
@@ -240,11 +241,13 @@
 
 				e.preventDefault();
 
-			}, false
+			},
+			false
 			);
 
 		el.addEventListener(
-			'touchmove', function( e ) {
+			'touchmove',
+			function( e ) {
 
 				var touchobj, delta, move, t;
 
@@ -260,11 +263,13 @@
 
 				e.preventDefault();
 
-			}, false
+			},
+			false
 			);
 
 		el.addEventListener(
-			'touchend', function( e ) {
+			'touchend',
+			function( e ) {
 
 				var w, tolerance;
 
@@ -284,7 +289,8 @@
 
 				e.preventDefault();
 
-			}, false
+			},
+			false
 			);
 
 	}

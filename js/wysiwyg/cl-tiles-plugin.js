@@ -44,7 +44,8 @@
 	}
 
 	tinymce.create(
-		'tinymce.plugins.uri_cl_wysiwyg_tiles', {
+		'tinymce.plugins.uri_cl_wysiwyg_tiles',
+		{
 			/**
 			 * Initializes the plugin, this will be executed after the plugin has been created.
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -57,65 +58,67 @@
 
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName, {
-					title: 'Tiles',
-					text: '',
-					cmd: wName,
-					image: url + '/i/tiles.png'
+				wName,
+					{
+						title: 'Tiles',
+						text: '',
+						cmd: wName,
+						image: url + '/i/tiles.png'
 				}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName, function( target, args ) {
+				wName,
+					function( target, args ) {
 
-					var possibleArgs;
+						var possibleArgs;
 
-					// Create an empty object if args is empty
-					if ( ! args ) {
-						args = {};
-					}
-
-					// Create an empty property so nothing is null
-					possibleArgs = ['columns'];
-					possibleArgs.forEach(
-					function( i ) {
-						if ( ! args[i] ) {
-							args[i] = '';
+						// Create an empty object if args is empty
+						if ( ! args ) {
+							args = {};
 						}
-					}
-					);
 
-					// Prevent nested quotes... escape / unescape instead?
-					args = URIWYSIWYG.unEscapeQuotesDeep( args );
+						// Create an empty property so nothing is null
+						possibleArgs = ['columns'];
+						possibleArgs.forEach(
+						function( i ) {
+							if ( ! args[i] ) {
+								args[i] = '';
+							}
+						}
+						);
 
-					ed.windowManager.open(
-					{
-						title: 'Insert / Update Tiles',
-						body: [
-						{ type: 'listbox', name: 'columns', label: 'Columns', value: args.columns, 'values': [
+						// Prevent nested quotes... escape / unescape instead?
+						args = URIWYSIWYG.unEscapeQuotesDeep( args );
+
+						ed.windowManager.open(
+						{
+							title: 'Insert / Update Tiles',
+							body: [
+							{ type: 'listbox', name: 'columns', label: 'Columns', value: args.columns, 'values': [
 								{ text: 'Two', value: '2' },
 								{ text: 'Three', value: '3' },
 								{ text: 'Four', value: '4' },
 								{ text: 'Five', value: '5' }
 								]
-						}
-						],
-						onsubmit: function( e ) {
+							}
+							],
+							onsubmit: function( e ) {
 
-							// Insert content when the window form is submitted
-							e.data = URIWYSIWYG.escapeQuotesDeep( e.data );
-							shortcode = generateTilesHTML( e.data );
-							ed.execCommand( 'mceInsertContent', 0, shortcode );
+								// Insert content when the window form is submitted
+								e.data = URIWYSIWYG.escapeQuotesDeep( e.data );
+								shortcode = generateTilesHTML( e.data );
+								ed.execCommand( 'mceInsertContent', 0, shortcode );
 
+							}
+						},
+						{
+							wp: wp
 						}
-					},
-					{
-						wp: wp
+						);
+
 					}
-					);
-
-				}
 				);
 			},
 

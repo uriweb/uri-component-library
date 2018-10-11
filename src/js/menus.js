@@ -25,7 +25,8 @@
 			}
 			toggle.innerHTML = menus[i].getAttribute( 'data-name' );
 			toggle.addEventListener(
-				'click', function() {
+				'click',
+				function() {
 					if ( this.classList.contains( 'active' ) ) {
 						this.classList.remove( 'active' );
 					} else {
@@ -63,7 +64,8 @@
 
 	function bindListeners( a, uls, ul ) {
 		a.addEventListener(
-			'click', function( e ) {
+			'click',
+			function( e ) {
 				e.preventDefault();
 				handleClick( uls, ul );
 			}

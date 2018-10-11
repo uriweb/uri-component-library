@@ -54,7 +54,8 @@ var CLResizeSuperheroes;
 			blurHero();
 
 			window.addEventListener(
-				'scroll', function() {
+				'scroll',
+				function() {
 					blurHero();
 				}
 			);
@@ -76,7 +77,8 @@ var CLResizeSuperheroes;
 		var els = document.querySelectorAll( '.cl-hero .poster' );
 
 		window.addEventListener(
-			'resize', function() {
+			'resize',
+			function() {
 				var i, w = window.innerWidth;
 				if ( w < 750 ) {
 					for ( i = 0; i < els.length; i++ ) {

@@ -17,7 +17,8 @@
 		i = window.pageYOffset;
 
 		window.addEventListener(
-			'scroll', function() {
+			'scroll',
+			function() {
 				moveWaves( els, i );
 			}
 		);
