@@ -122,9 +122,9 @@
 	}
 
 	/*
-	 * Get any anchor in url
+	 * Get any URL anchor and return the corresponding tab
 	 * @param tabbed el the current .cl-tabs element
-	 * @return the anchored element
+	 * @return the tab <a> that controls the anchored panel
 	 */
 	function getAnchoredElement( tabbed ) {
 
