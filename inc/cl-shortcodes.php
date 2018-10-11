@@ -574,10 +574,6 @@ function uri_cl_shortcode_quote( $atts, $content = null ) {
 				'types' => array( 'str' ),
 			),
 			array(
-				'attr' => 'citation',
-				'types' => array( 'str' ),
-			),
-			array(
 				'attr' => 'img',
 				'types' => array( 'url' ),
 				'req' => false,
