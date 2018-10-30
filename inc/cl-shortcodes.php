@@ -301,6 +301,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url' ),
+				'req' => false,
 			),
 			array(
 				'attr' => 'vid',
