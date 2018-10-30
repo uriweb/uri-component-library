@@ -83,8 +83,8 @@
 							body: [
 							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
 							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
+							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-							{ type: 'textbox', name: 'alt', id: 'alt', label: 'Image Alt Text', value: args.alt },
 							{ type: 'textbox', name: 'id', id: 'id', value: args.id, subtype: 'hidden' },
 							{ type: 'textbox', name: 'vid', label: 'YouTube ID (required)', value: args.vid },
 							{ type: 'textbox', name: 'aspect', label: 'Aspect Ratio', 'placeholder': '16:9', value: args.aspect },
