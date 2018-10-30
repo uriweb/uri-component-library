@@ -783,16 +783,13 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 		$content,
 		array(
 			array(
-				'attr' => 'id',
-				'types' => array( 'str' ),
-			),
-			array(
 				'attr' => 'vid',
 				'types' => array( 'str' ),
 			),
 			array(
 				'attr' => 'img',
 				'types' => array( 'url' ),
+				'req' => false,
 			),
 			array(
 				'attr' => 'aspect',
