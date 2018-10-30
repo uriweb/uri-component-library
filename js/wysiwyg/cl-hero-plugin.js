@@ -89,11 +89,6 @@
 							imageEl = '<img src="' + args.img + '" alt="' + args.alt + '" />';
 						}
 
-						// Set an initial unique id for the hero component, since it's required
-						if ( ! args.id ) {
-							args.id = URIWYSIWYG.generateID();
-						}
-
 						ed.windowManager.open(
 						{
 							title: 'Insert / Update Hero',
@@ -103,7 +98,7 @@
 							{ type: 'button', label: 'Image (required)', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
-							{ type: 'textbox', name: 'id', label: 'Unique ID', value: args.id },
+							{ type: 'textbox', name: 'id', id: 'id', value: args.id, subtype: 'hidden' },
 							{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
 							{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
 							{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
@@ -125,17 +120,8 @@
 							],
 							onsubmit: function( e ) {
 
-								var shortcode;
-
-								// Sanitize unique id
-								if ( ! e.data.id ) {
-									e.data.id = URIWYSIWYG.generateID();
-								} else {
-									e.data.id = e.data.id.replace( /\s/g, '' );
-								}
-
 								// Insert content when the window form is submitted
-								shortcode = generateHeroShortcode( e.data );
+								var shortcode = generateHeroShortcode( e.data );
 								URIWYSIWYG.insertMultiMediaComponent( target, shortcode, ed, cName );
 
 							}

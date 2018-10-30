@@ -43,7 +43,8 @@ $output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
 if ( ! empty( $atts['vid'] ) ) {
-	$image = '<div id="' . $atts['id'] . '" data-id="' . $atts['vid'] . '" class="poster"';
+	$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
+	$image = '<div id="' . $id . '" data-id="' . $atts['vid'] . '" class="poster"';
 } else if ( ! empty( $atts['animation'] ) ) {
 	switch ( $atts['animation'] ) {
 		case 'shift':
