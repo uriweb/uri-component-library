@@ -2,17 +2,17 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.2.0
+## What's new in 3.3.0
 
-CL 3.2.0 is a minor release focused on shortcode enhancements.
+CL 3.3.0 is a minor release focused on hero and video functionality.
 
-* Tabs can now be specifically linked to and opened automatically
-* Quote citations are now optional
-* Metric background colors can now be customized
-* Adds a universial class for adding bottom margin to inline elements
-* Updates code styles to meet the latest WordPress standards
+* Adds scroll functionality to super hero prompters
+* Updates link text color to comply with WCAG standards
+* Uses the YouTube poster image by default for videos and video heroes
+* Uses the `vid` value for video and hero component ids (setting an id manually is no longer available via the Visual Editor)
+* Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/119/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/123/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
