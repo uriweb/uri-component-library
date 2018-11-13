@@ -115,12 +115,14 @@ var CLResizeSuperheroes;
 			els[i].appendChild( prompt );
 
 			// Save a list of superheroes, their initial offsets, prompter divs, and after divs
-			H.push( {
-				el: els[i],
-				offset: els[i].getBoundingClientRect().top,
-				prompt: prompt,
-				after: after
-			} );
+			H.push(
+				 {
+						el: els[i],
+						offset: els[i].getBoundingClientRect().top,
+						prompt: prompt,
+						after: after
+			}
+				);
 
 		}
 
