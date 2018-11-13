@@ -4,7 +4,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 ## What's new in 3.3.0
 
-CL 3.3.0 is a minor release focused on hero and video functionality.
+CL 3.3.0 is a minor release focused on hero and video component functionality.
 
 * Adds scroll functionality to super hero prompters (smooth scrolling behavior requires a [polyfill](http://iamdustan.com/smoothscroll/), available starting in [URI Modern v1.2.1](https://github.com/uriweb/uri-modern/releases/tag/1.2.1))
 * Updates link text color to comply with WCAG standards
@@ -16,6 +16,8 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 
 ## Plugin Details
 
+[![GitHub release](https://img.shields.io/github/release/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
 [![Master Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.org/uriweb/uri-component-library)
 [![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/043fca0aa28b4b2db799d5daacf2d27d?branch=master)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
