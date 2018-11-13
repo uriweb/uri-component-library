@@ -20,7 +20,7 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 [![GitHub Release Date](https://img.shields.io/github/release-date/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
 [![Master Build Status](https://travis-ci.org/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.org/uriweb/uri-component-library)
 [![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/043fca0aa28b4b2db799d5daacf2d27d?branch=master)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://img.shields.io/codacy/grade/043fca0aa28b4b2db799d5daacf2d27d.svg)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
 [![devDependencies Status](https://david-dm.org/uriweb/uri-component-library/dev-status.svg)](https://david-dm.org/uriweb/uri-component-library?type=dev)
 
 URI Component Library  
