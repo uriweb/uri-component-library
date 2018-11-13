@@ -6,7 +6,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 3.3.0 is a minor release focused on hero and video functionality.
 
-* Adds scroll functionality to super hero prompters
+* Adds scroll functionality to super hero prompters (smooth scrolling behavior requires a [polyfill](http://iamdustan.com/smoothscroll/), available starting in [URI Modern v1.2.1](https://github.com/uriweb/uri-modern/releases/tag/1.2.1))
 * Updates link text color to comply with WCAG standards
 * Uses the YouTube poster image by default for videos and video heroes
 * Uses the `vid` value for video and hero component ids (setting an id manually is no longer available via the Visual Editor)
