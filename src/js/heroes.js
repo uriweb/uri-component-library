@@ -95,25 +95,32 @@ var CLResizeSuperheroes;
 
 	function superhero() {
 
-		var H = [], els, n, i, div;
+		var H = [], els, n, i, prompt, after;
 
 		els = document.querySelectorAll( '.cl-hero.super' );
 		n = els.length;
 
 		for ( i = 0; i < n; i++ ) {
 
-			// Create the scroll prompter
-			div = document.createElement( 'div' );
-			div.className = 'prompter';
-			div.innerHTML = 'Scroll down';
-			els[i].appendChild( div );
+			// Create the after div
+			after = document.createElement( 'div' );
+			after.className = 'cl-hero-after';
+			els[i].parentNode.insertBefore( after, els[i].nextSibling );
 
-			// Save a list of superheroes, their initial offsets, and prompter divs
+			// Create the scroll prompter
+			prompt = document.createElement( 'div' );
+			prompt.className = 'prompter';
+			prompt.innerHTML = 'Scroll down';
+			prompt.addEventListener( 'click', handlePrompterClick.bind( null, after ), false );
+			els[i].appendChild( prompt );
+
+			// Save a list of superheroes, their initial offsets, prompter divs, and after divs
 			H.push(
-				{
-					el: els[i],
-					offset: els[i].getBoundingClientRect().top,
-					prompt: div
+				 {
+						el: els[i],
+						offset: els[i].getBoundingClientRect().top,
+						prompt: prompt,
+						after: after
 			}
 				);
 
@@ -121,7 +128,7 @@ var CLResizeSuperheroes;
 
 		CLResizeSuperheroes = function( getOffset ) {
 
-			var vh, vw, s, p;
+			var vh, vw, s, i, h, p;
 
 			vh = window.innerHeight;
 			vw = window.innerWidth;
@@ -129,11 +136,13 @@ var CLResizeSuperheroes;
 
 			for ( i = 0; i < n; i++ ) {
 
+				h = H[i];
+
 				if ( false !== getOffset ) {
-					H[i].offset = els[i].getBoundingClientRect().top;
+					h.offset = h.el.getBoundingClientRect().top;
 				}
 
-				p = ( H[i].offset + s ) / vh;
+				p = ( h.offset + s ) / vh;
 
 				/**
 				 * IF the browser aspect ratio is at least 4:3 and the browser is less than 675px high
@@ -141,20 +150,20 @@ var CLResizeSuperheroes;
 				 * THEN set the hero height to 90% of the browser height or 500px, whichever is greater
 				 */
 				if ( ( vh < vw * 0.75 && vh < 675 ) || ( p > 0.3 ) ) {
-					H[i].el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
-					H[i].prompt.style.display = 'none';
+					h.el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
+					h.prompt.style.display = 'none';
 				} else {
 
 					/**
 					 * ELSE set the hero height to 98% of the browser height,
 					 * less the distance between the top of the page and the top of the hero
 					 */
-					H[i].el.style.height = 98 - p * 100 + 'vh';
+					h.el.style.height = 98 - p * 100 + 'vh';
 
-					if ( H[i].offset < vh ) {
-						H[i].prompt.style.display = 'block';
+					if ( h.offset < vh ) {
+						h.prompt.style.display = 'block';
 					} else {
-						H[i].prompt.style.display = 'none';
+						h.prompt.style.display = 'none';
 					}
 
 				}
@@ -162,6 +171,12 @@ var CLResizeSuperheroes;
 			}
 
 		};
+
+		function handlePrompterClick( after ) {
+
+			after.scrollIntoView( { behavior: 'smooth' } );
+
+		}
 
 		// Trigger scroll event to refresh pageYOffset value on page reload (otherwise it'll be 0).
 		window.dispatchEvent( new Event( 'scroll' ) );

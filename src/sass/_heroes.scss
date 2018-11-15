@@ -150,6 +150,7 @@
     }
     
     .prompter {
+		
         display: none;
         position: absolute;
         bottom: 25px;
@@ -162,6 +163,11 @@
         border-left: 1px solid rgba(255,255,255,.8);
         border-bottom: 1px solid rgba(255,255,255,.8);
         transform: rotate(-45deg);
+		
+		&:hover {
+			cursor: pointer;
+		}
+		
     }
     
     &:hover .prompter,

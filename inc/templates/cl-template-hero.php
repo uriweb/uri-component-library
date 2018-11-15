@@ -43,19 +43,32 @@ $output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
 if ( ! empty( $atts['vid'] ) ) {
-	$image = '<div id="' . $atts['id'] . '" data-id="' . $atts['vid'] . '" class="poster"';
+
+	$imgurl = 'https://img.youtube.com/vi/' . $atts['vid'] . '/maxresdefault.jpg';
+	$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
+	$image = '<div id="' . $id . '" data-id="' . $atts['vid'] . '" class="poster"';
+
 } else if ( ! empty( $atts['animation'] ) ) {
+
 	switch ( $atts['animation'] ) {
 		case 'shift':
 			$ani_method = 'shift';
 			break;
 	}
+
 	$image = '<div class="animate ' . $ani_method . '"';
+
 } else {
+
 	$image = '<div class="still"';
+
 }
 
-$image .= ' style="background-image:url(' . $atts['img'] . ')"></div>'; // image
+if ( ! empty( $atts['img'] ) ) {
+	$imgurl = $atts['img'];
+}
+
+$image .= ' style="background-image:url(' . $imgurl . ')"></div>'; // image
 
 $output .= $image;
 $output .= '</div>'; // .hero

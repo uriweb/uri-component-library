@@ -29,7 +29,14 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['excerpt'] ) ) {
 	$output .= '</div>';
 }
 
-$output .= '<img id="' . $atts['id'] . '" data-id="' . $atts['vid'] . '" src="' . $atts['img'] . '" alt="' . $atts['alt'] . '"';
+$imgsrc = 'https://img.youtube.com/vi/' . $atts['vid'] . '/maxresdefault.jpg';
+
+if ( ! empty( $atts['img'] ) ) {
+	$imgsrc = $atts['img'];
+}
+
+$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
+$output .= '<img id="' . $id . '" data-id="' . $atts['vid'] . '" src="' . $imgsrc . '" alt="' . $atts['alt'] . '"';
 
 if ( ! empty( $atts['aspect'] ) ) {
 	$output .= ' data-aspect="' . $atts['aspect'] . '"';
