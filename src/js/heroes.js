@@ -95,7 +95,7 @@ var CLResizeSuperheroes;
 
 	function superhero() {
 
-		var H = [], els, n, i, id, prompt, after;
+		var H = [], els, n, i, prompt, after;
 
 		els = document.querySelectorAll( '.cl-hero.super' );
 		n = els.length;
