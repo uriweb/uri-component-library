@@ -1,5 +1,5 @@
 // https://neliosoftware.com/blog/how-to-create-your-first-block-for-gutenberg/
-(function ( blocks, components, element, i18n ) {
+(function ( editor, blocks, components, element, i18n ) {
 
 	var el = element.createElement;
 	
@@ -82,7 +82,7 @@
 		description: i18n.__( 'Great for a call to action.' ),
 		icon: 'carrot',
 		icon: customIcon,
-		category: 'widgets',
+		category: 'cl-blocks',
 		attributes: {
 			link: {
 				type: 'string',
@@ -115,7 +115,7 @@
 				return el( 'div', { className: props.className + ' cl-button-form' },
 
 						el( 'label', { className:''}, i18n.__( 'Link' ) ),
-						el( blocks.UrlInput, {
+						el( editor.URLInput, {
 							tagName: 'div',
 							inline: false,
 							value: attributes.link,
@@ -133,7 +133,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Button Text' ) ),
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'div',
 							className: 'field',
 							inline: false,
@@ -150,7 +150,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Tooltip' ) ),
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'div',
 							className: 'field',
 							inline: false,
@@ -167,7 +167,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Style' ) ),
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'div',
 							className: 'field',
 							inline: false,
@@ -213,6 +213,7 @@
 	} );
 
 })(
+	window.wp.editor,
 	window.wp.blocks,
 	window.wp.components,
 	window.wp.element,
