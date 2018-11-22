@@ -40,7 +40,6 @@ function uri_cl_gutenberg_is_active() {
 add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
 
 
-
 /**
  * Helper function to simplify the process of enqueing scripts and styles
  * @param $name is the name of the component, and its directory name inside /js/blocks/
@@ -68,3 +67,15 @@ function _uri_cl_load_block( $name ) {
 	}
 	
 }
+
+add_filter( 'block_categories', function( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'cl-blocks',
+				'title' => __( 'Component Library', 'cl-blocks' ),
+			),
+		)
+	);
+}, 10, 2 );

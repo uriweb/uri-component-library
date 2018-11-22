@@ -1,5 +1,5 @@
 // https://neliosoftware.com/blog/how-to-create-your-first-block-for-gutenberg/
-(function ( blocks, components, element, i18n ) {
+(function ( editor, blocks, components, element, i18n ) {
 
 	var el = element.createElement;
 	
@@ -100,7 +100,7 @@
 		title: i18n.__('Card'),
 		description: i18n.__( 'A step up from a button, a link with an image and description.' ),
 		icon: customIcon,
-		category: 'widgets',
+		category: 'cl-blocks',
 		attributes: {
 			title: {
 				type: 'string',
@@ -161,10 +161,10 @@
 				return el( 'a', { className: 'cl-card has-focus', href: '#' }, 
 
 					el(
-						blocks.BlockControls,
+						editor.BlockControls,
 						{ key: 'controls' },
 						el(
-							blocks.BlockAlignmentToolbar,
+							editor.BlockAlignmentToolbar,
 							{
 								value: attributes.alignment,
 								onChange: onChangeBlockAlignment
@@ -177,7 +177,7 @@
  							className: attributes.img ? 'uri-gutenberg-image image-active' : 'uri-gutenberg-image image-inactive',
  							src: attributes.img ? attributes.img : ''
  						}),
- 						el( blocks.MediaUpload, {
+ 						el( editor.MediaUpload, {
  							onSelect: onSelectImage,
  							type: 'image',
  							value: attributes.mediaID,
@@ -192,11 +192,10 @@
  						}),
  					),
 
-
 					el( 'div', { className: 'cl-card-text' }, 
 
 						el( 'label', { className:''}, i18n.__( 'Title' ) ),
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'h3',
 							inline: false,
 							value: attributes.title,
@@ -214,7 +213,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Body' ) ),						
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'p',
 							inline: true,
 							value: attributes.body,
@@ -229,7 +228,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Link' ) ),
-						el( blocks.UrlInput, {
+						el( editor.URLInput, {
 							tagName: 'p',
 							className: '',
 							inline: false,
@@ -246,7 +245,7 @@
 						}),
 
 						el( 'label', { className:''}, i18n.__( 'Button Text' ) ),
-						el( blocks.RichText, {
+						el( editor.RichText, {
 							tagName: 'p',
 							className: '',
 							inline: false,
@@ -296,6 +295,7 @@
 	} );
 
 })(
+	window.wp.editor,
 	window.wp.blocks,
 	window.wp.components,
 	window.wp.element,
