@@ -2,17 +2,15 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.3.0
+## What's new in 3.4.0
 
-CL 3.3.0 is a minor release focused on hero and video component functionality.
+CL 3.4.0 is a minor release focusing on [Display Posts Shortcode](https://github.com/billerickson/display-posts-shortcode) plugin extensions.
 
-* Adds scroll functionality to super hero prompters (smooth scrolling behavior requires a [polyfill](http://iamdustan.com/smoothscroll/), available starting in [URI Modern v1.2.1](https://github.com/uriweb/uri-modern/releases/tag/1.2.1))
-* Updates link text color to comply with WCAG standards
-* Uses the YouTube poster image by default for videos and video heroes
-* Uses the `vid` value for video and hero component ids (setting an id manually is no longer available via the Visual Editor)
-* Updates development tools
+* Adds support for displaying posts as components using Display Posts:
+	- Display lists of posts as either cards, story cards, heroes, or panels
+	- Customize components in the Display Posts shortcode by using the applicable component shortcode attribute(s) and the prefix `cl-`
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/123/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/126/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
