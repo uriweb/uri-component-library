@@ -43,6 +43,9 @@ add_action( 'wp_enqueue_scripts', 'uri_cl_enqueues' );
 // Include shortcodes
 include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 
+// Include display posts extensions
+include( URI_CL_DIR_PATH . 'inc/cl-display-posts.php' );
+
 // Include WYSIWYG buttons on all themes except URI Responsive
 if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
