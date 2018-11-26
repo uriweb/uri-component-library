@@ -5,4 +5,4 @@
  * @package uri-component-library
  */
 
-print do_shortcode( '[cl-scard post="' . get_the_ID() . '"]' );
+print do_shortcode( '[cl-scard post="' . get_the_ID() . '" ' . $cl_atts . ']' );

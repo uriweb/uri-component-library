@@ -20,6 +20,14 @@ function uri_cl_display_posts_component( $output, $original_atts ) {
 		return $output;
 	}
 
+	$cl_atts = '';
+
+	foreach ( $original_atts as $k => $v ) {
+		if ( preg_match( '/^cl-/', $k ) ) {
+			$cl_atts .= str_replace( 'cl-', '', $k ) . '="' . $v . '" ';
+		}
+	};
+
 	ob_start();
 	$template = null;
 

@@ -5,7 +5,7 @@
  * @package uri-component-library
  */
 
-$sc = '[cl-panel title="' . get_the_title() . '" img="' . get_the_post_thumbnail_url() . '"]';
+$sc = '[cl-panel title="' . get_the_title() . '" img="' . get_the_post_thumbnail_url() . '" ' . $cl_atts . ']';
 $sc .= get_the_excerpt();
 $sc .= '<p>[cl-button link="' . get_the_permalink() . '" text="Read More"]</p>';
 $sc .= '[/cl-panel]';
