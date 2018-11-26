@@ -9,6 +9,7 @@ CL 3.4.0 is a minor release focusing on [Display Posts Shortcode](https://github
 * Adds support for displaying posts as components using Display Posts:
 	- Display lists of posts as either cards, story cards, heroes, or panels
 	- Customize components in the Display Posts shortcode by using the applicable component shortcode attribute(s) and the prefix `cl-`
+* Other minor bug fixes
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/126/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
