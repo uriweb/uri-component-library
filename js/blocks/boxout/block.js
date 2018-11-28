@@ -24,14 +24,12 @@
 	 * Render the HTML
 	 */
 	function renderHTML( args ) {
-		var classes;
-			
+		var classes;			
 		classes = [ 'cl-' + componentName, args.className, args.alignment ].join(' '); 
+		
 		return el( 'div', { className: classes }, 
-			el( 'h1', {  }, args.title ), 
-			//el( 'pre', {  }, buildShortCode( args ) ), 
-			args.body
-			//toRichTextValue( args.body )
+			el( wp.editor.RichText.Content, { tagName: 'h1', value: args.title }),
+			el( wp.editor.RichText.Content, { tagName: 'div', value: args.body })
 		);
 	}
 
@@ -53,25 +51,10 @@
 			shortcode += ' class="' + args.className + '"';
 		}
 				
-		shortcode += ']' + toRichTextValue( args.body ) + '[/cl-' + componentName + ']';
+		shortcode += ']' + args.body + '[/cl-' + componentName + ']';
 
 		return shortcode;
 		
-	}
-
-	function toRichTextValue( v ) {
-
-// 		var ele = wp.element.createElement( wp.blocks.RichText.Content, {
-//     	tagName: 'p',
-//     	value: v
-//     } );
-
-		var a = v.map( function callback( subValue ) {
-			return subValue;
-			return element.renderToString(subValue);
-		});
-
-		return a.join(' ');
 	}
 
 	
@@ -84,13 +67,13 @@
 		title: i18n.__('Boxout'),
 		description: i18n.__( 'Use to offer content that supports or is tangental to the main message.' ),
 		icon: customIcon,
-		category: 'widgets',
+		category: 'cl-blocks',
 		attributes: {
 			title: {
 				type: 'string',
 			},
 			body: {
-				type: 'array',
+				type: 'string',
 			},
 			alignment: {
 				type: 'string',
@@ -117,14 +100,16 @@
 			 * Builds the form in the block editor
 			 */
 			function createForm( ) {
+			
+				editor = wp.editor;
 
 				return el( 'div', { className: props.className + ' cl-' + componentName + '-form' },
 
 					el(
-						blocks.BlockControls,
+						wp.editor.BlockControls,
 						{ key: 'controls' },
 						el(
-							blocks.BlockAlignmentToolbar,
+							editor.BlockAlignmentToolbar,
 							{
 								value: attributes.alignment,
 								onChange: onChangeBlockAlignment
@@ -133,7 +118,7 @@
 					),
 
 					el( 'label', { className:''}, i18n.__( 'Title' ) ),
-					el( blocks.RichText, {
+					el( editor.RichText, {
 						tagName: 'p',
 						inline: false,
 						value: attributes.title,
@@ -150,9 +135,9 @@
 						placeholder: i18n.__( 'Title' ),
 					}),
 
-					el( 'label', { className:''}, i18n.__( 'Body' ) ),						
-					el( blocks.RichText, {
-						tagName: 'p',
+					el( 'label', { className:''}, i18n.__( 'Body' ) ),
+					el( editor.RichText, {
+						tagName: 'div',
 						inline: true,
 						multiline: 'p',
 						value: attributes.body,
@@ -187,17 +172,9 @@
 		 * Just the shortcode gets the work done.
 		 */
 		save: function( props ) {
-		
-// 			console.log('before');
-// 			console.log(props.attributes.body);
-// 		
-// 			props.attributes.body = wp.element.createElement( wp.blocks.RichText.Content, {
-// 				tagName: 'p',
-// 				value: props.attributes.body
-// 			});
-// 
-// 			console.log('after');
-// 			console.log(props.attributes.body);
+			console.log('save');
+			console.log(props);
+			console.log(buildShortCode( props.attributes ));
 			
 			return buildShortCode( props.attributes );
 

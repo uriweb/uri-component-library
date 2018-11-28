@@ -1,5 +1,5 @@
 // https://neliosoftware.com/blog/how-to-create-your-first-block-for-gutenberg/
-(function ( editor, blocks, components, element, i18n ) {
+(function ( blocks, components, element, i18n ) {
 
 	var el = element.createElement;
 	
@@ -30,14 +30,15 @@
 	 */
 	function renderHTML( args ) {
 		var classes;
-		buildShortCode( args );
+		//buildShortCode( args );
+		
 		if(args.link) {
 			classes = ['cl-card', args.className, args.alignment].join(' '); 
 			return el( 'a', { className: classes , href: args.link }, 
 				el( 'img', { src: args.img, alt: args.alt, 'data-id': args.mediaID } ),
 				el( 'div', { className: 'cl-card-text' }, 
-					el( 'h3', {}, args.title ),
-					el( 'p', {}, args.body )
+					el( wp.editor.RichText.Content, { tagName: 'h3', value: args.title }),
+					el( wp.editor.RichText.Content, { tagName: 'p', value: args.body })
 				),
 				el( 'div', { className: 'cl-button' }, args.button )
 			);
@@ -54,6 +55,7 @@
 
 		// unfortunately, Gutenberg cares a lot about the order in which attributes appear, 
 		// so this process is best done manually.
+		
 
 		var shortcode = '[cl-card ';
 		if(args.title) {
@@ -157,7 +159,8 @@
 			 * Builds the form in the block editor
 			 */
 			function createForm( ) {
-
+				var editor = wp.editor;
+				
 				return el( 'a', { className: 'cl-card has-focus', href: '#' }, 
 
 					el(
@@ -182,7 +185,7 @@
  							type: 'image',
  							value: attributes.mediaID,
  							render: function( obj ) {
-								return el( components.Button, {
+								return el( wp.components.Button, {
 										className: attributes.mediaID ? 'button button-large image-button' : 'button button-large image-button add-image',
 										onClick: obj.open
 									},
@@ -295,7 +298,6 @@
 	} );
 
 })(
-	window.wp.editor,
 	window.wp.blocks,
 	window.wp.components,
 	window.wp.element,
