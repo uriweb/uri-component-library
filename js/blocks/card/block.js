@@ -287,11 +287,12 @@
 		/**
 		 * this is what gets saved to the database and displayed on pages
 		 * Just the shortcode gets the work done.
+		 * @todo: RawHTML is suboptimal... seek a workaround
 		 */
 		save: function( props ) {
 			
-			return buildShortCode( props.attributes );
-
+			return el( wp.element.RawHTML, null, buildShortCode( props.attributes ) );
+	
 		}
 
 

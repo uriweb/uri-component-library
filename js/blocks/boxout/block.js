@@ -172,11 +172,8 @@
 		 * Just the shortcode gets the work done.
 		 */
 		save: function( props ) {
-			console.log('save');
-			console.log(props);
-			console.log(buildShortCode( props.attributes ));
-			
-			return buildShortCode( props.attributes );
+
+			return el( wp.element.RawHTML, null, buildShortCode( props.attributes ) );
 
 		}
 
