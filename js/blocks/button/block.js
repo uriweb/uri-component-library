@@ -112,6 +112,8 @@
 			 */
 			function createForm( ) {
 
+				editor = wp.editor;
+
 				return el( 'div', { className: props.className + ' cl-button-form' },
 
 						el( 'label', { className:''}, i18n.__( 'Link' ) ),
