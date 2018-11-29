@@ -150,6 +150,12 @@
 						},
 						placeholder: i18n.__( 'Write the body here...' ),
 					}),
+// 					el( wp.editor.InnerBlocks, {
+// 						allowedBlocks: ['uri-gutenberg/button'],
+// 						template: [ ['uri-gutenberg/button', {},[] ] ],
+// 						//templateLock: 'all'
+// 					}),
+
 				);
 					
 			}
@@ -157,7 +163,7 @@
 
 			if ( props.isSelected ) {
 				// display the editor form that accepts the shortcode input
-				content.push( createForm( props ) );
+				content.push( createForm( props ) );				
 			} else {
 				content.push( shortcodeEditorPreview( props.attributes ) );
 			}

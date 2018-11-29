@@ -27,6 +27,21 @@ function uri_cl_gutenberg_is_active() {
 		filemtime( URI_CL_DIR_PATH . '/css/uri-gutenberg.css' ) // cache buster			
 	);
 
+// jp testing
+	$name = 'jp-dev-block';
+	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.js' ) ) {
+		wp_enqueue_script(
+			'uri-gutenberg-script-' . $name,
+			URI_CL_URL . '/js/blocks/build/blocks.build.js',
+			array( 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor' ),
+			filemtime( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.js' ) // cache buster
+		);
+		wp_localize_script( 'uri-gutenberg-script-' . $name, 'URI_CL_URL', URI_CL_URL );
+	}
+// end jp testing	
+
+
+
 	// Cards
 	_uri_cl_load_block( 'card' );
 
@@ -68,6 +83,9 @@ function _uri_cl_load_block( $name ) {
 	
 }
 
+/**
+ * Defines a custom category
+ */
 add_filter( 'block_categories', function( $categories, $post ) {
 	return array_merge(
 		$categories,
