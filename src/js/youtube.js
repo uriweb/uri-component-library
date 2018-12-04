@@ -171,7 +171,8 @@ function onYouTubePlayerAPIReady() {
 						showinfo: 0,
 						color: 'white',
 						modestbranding: 1,
-						iv_load_policy: 3
+						iv_load_policy: 3,
+						rel: 0
 					},
 					events: {
 						'onReady': onVideoReady,
