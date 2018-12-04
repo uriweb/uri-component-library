@@ -1,7 +1,7 @@
 {
   "name": "uri-component-library",
   "description": "URI Component Library",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "homepage": "https://www.uri.edu",
   "repository": "https://github.com/uriweb/uri-component-library",
   "docs": "https://www.uri.edu/styleguide",
@@ -16,7 +16,7 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "autoprefixer": "^9.3.1",
+    "autoprefixer": "^9.4.2",
     "gulp": "^4.0.0",
     "gulp-concat": ">=2.6.1",
     "gulp-header": "^2.0.5",
