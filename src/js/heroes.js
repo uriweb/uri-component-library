@@ -174,7 +174,7 @@ var CLResizeSuperheroes;
 
 		function handlePrompterClick( after ) {
 
-			after.scrollIntoView( { behavior: 'smooth' } );
+			after.scrollIntoView( { behavior: 'smooth', block: 'start', inline: 'nearest' } );
 
 		}
 
