@@ -2,7 +2,18 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.4.0
+## What's new in 3.4.1
+
+CL 3.4.1 is a bug fix release.
+
+* Fixes an issue that caused the hero prompter to not scroll fully in Chrome
+* Fixes an issue that may cause images in tiles to not scale proportionally
+* Relevent YouTube videos are no longer shown in the video component
+* Updates development tools
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/129/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+
+## New in 3.4.0
 
 CL 3.4.0 is a minor release focusing on [Display Posts Shortcode](https://github.com/billerickson/display-posts-shortcode) plugin extensions.
 
