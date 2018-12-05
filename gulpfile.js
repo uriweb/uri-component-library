@@ -117,6 +117,16 @@ function sniffs(done) {
     
 }
 
+// run webpack
+gulp.task('webpack', webpack);
+
+function webpack(done) {
+    
+    return gulp.src('.', {read:false})
+        .pipe(shell(['npx webpack']));
+    
+}
+
 
 // Update plugin version
 gulp.task('version', version);
@@ -148,13 +158,15 @@ function watcher(done) {
 	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
 	// watch for PHP change
-    gulp.watch('./**/*.php', sniffs);
+	gulp.watch('./**/*.php', sniffs);
+
+	gulp.watch('./js/blocks/src/', webpack);
 
 	done();
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'version', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', function(done){
 		done();
 	})
 );

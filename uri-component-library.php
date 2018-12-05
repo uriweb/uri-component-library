@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'URI_CL_DIR_PATH', plugin_dir_path( __FILE__ ) );
-define( 'URI_CL_URL', str_replace('/js', '/', plugins_url( 'js', __FILE__ ) ) );
+define( 'URI_CL_URL', str_replace( '/js', '/', plugins_url( 'js', __FILE__ ) ) );
 
 /**
  * Return the plugin base url
