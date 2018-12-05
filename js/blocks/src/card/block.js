@@ -1,6 +1,23 @@
-const { RichText, MediaUpload, PlainText } = wp.editor;
+const { __ } = wp.i18n;
+const { RichText, MediaUpload, PlainText, InspectorControls, BlockControls, Toolbar, IconButton, AlignmentToolbar } = wp.editor;
 const { registerBlockType } = wp.blocks;
-const { Button } = wp.components;
+const { PanelBody, PanelRow, Button } = wp.components;
+
+// @todo: internationalize
+
+
+const customIcon = () => {
+	return(
+		<svg
+			width="20"
+			height="20"
+			className="dashicon"
+		>
+			<path d="M2,8 L2,16 L16,16 L16,8 L2,8 Z M2,7 L16,7 L16,2 L2,2 L2,7 Z M18,1 L18,17 C18,17 18,18 18,18 C18,18 17,18 17,18 L1,18 C1,18 0,18 0,18 C0,18 0,17 0,17 L0,1 C0,1 0,0 0,0 C0,0 1,0 1,0 L17,0 C17,0 18,0 18,0 C18,0 18,1 18,1 Z M15,15 L3,15 L3,12 L15,12 L15,15 Z"/>
+		</svg>
+	);
+}
+
 
 /**
  * Render the shortcode
@@ -51,9 +68,11 @@ function buildShortCode( args ) {
 
 registerBlockType('card-block/main', {   
 
-  title: 'Card',
-  icon: 'heart',
+  title: __('Card'),
+  icon: customIcon,
   category: 'common',
+  
+
 
 	// the mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
@@ -87,6 +106,7 @@ registerBlockType('card-block/main', {
 	
 	edit({ attributes, className, setAttributes }) {
 
+		// generate the image or the add image section
 		const getImageButton = (openEvent) => {
 			if(attributes.img) {
 				return (
@@ -111,45 +131,102 @@ registerBlockType('card-block/main', {
 			}
 		};
 
-  	return (
-			<div className="container">
-				<div class="cl-card">
-					<MediaUpload
-						onSelect={ media => { setAttributes({
-							alt: media.alt,
-							img: media.url,
-							mediaID: media.id
-						}); } }
-						type="image"
-						value={ attributes.mediaID }
-						render={ ({ open }) => getImageButton(open) }
-					/>
+		// generate editor view of the card itself
+		const createContentEditForm = () => {
+			return (
+				<div className="container">
+					<div class="cl-card">
+						<MediaUpload
+							onSelect={ media => { setAttributes({
+								alt: media.alt,
+								img: media.url,
+								mediaID: media.id
+							}); } }
+							type="image"
+							value={ attributes.mediaID }
+							render={ ({ open }) => getImageButton(open) }
+						/>
+						<div class="cl-card-text">
+						<h3><PlainText
+							tagName="h2"
+							onChange={ content => setAttributes({ title: content }) }
+							value={ attributes.title }
+							placeholder={__("Your card title")}
+							className="heading"
+							keepPlaceholderOnFocus={true}
+						/></h3>
+						<RichText
+							tagName="div"
+							onChange={ content => setAttributes({ body: content }) }
+							value={ attributes.body }
+							multiline="p"
+							placeholder={__("Your card text")}
+							keepPlaceholderOnFocus={true}
+						/>
+						</div>
+						<PlainText
+							onChange={ content => setAttributes({ button: content }) }
+							value={ attributes.button }
+							placeholder={__("Your button text")}
+							keepPlaceholderOnFocus={true}
+							className="cl-button"
+						/>
+					</div>
+					<div class="meta">
+					<label>Links to:</label>
 					<PlainText
-						onChange={ content => setAttributes({ title: content }) }
-						value={ attributes.title }
-						placeholder="Your card title"
-						className="heading"
+						onChange={ content => setAttributes({ link: content }) }
+						value={ attributes.link }
+						placeholder="https://www.uri.edu/"
+						className="meta-field"
 					/>
-					<RichText
-						onChange={ content => setAttributes({ body: content }) }
-						value={ attributes.body }
-						multiline="p"
-						placeholder="Your card text"
-					/>
-					<PlainText
-						onChange={ content => setAttributes({ button: content }) }
-						value={ attributes.button }
-						placeholder="Your button text"
-						className="cl-button"
-					/>
+					</div>
 				</div>
-				<PlainText
-					onChange={ content => setAttributes({ link: content }) }
-					value={ attributes.link }
-					placeholder="Links To"
-				/>
-			</div>
-  	);
+			);
+		}
+
+		// generate block controls for alignment, etc
+		const createBlockControls = () => {
+			return(
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ attributes.alignment }
+						onChange={ content => setAttributes({ alignment: content }) }
+					/>
+				</BlockControls>
+			);
+
+// 					<Toolbar>
+// 						<IconButton 
+// 							className='pin'
+// 							icon={customIcon}
+// 							onClick={() => setAttributes({ isPinned: !isPinned })}
+// 							tooltip={isPinned ? __('Unpin', 'example') : __('Pin This', 'example')}
+// 						/>
+// 					</Toolbar>
+		}
+
+		// generate sidebar inspector controls for other custom attributes
+		const createInspectorControls = () => {
+			return(
+				<InspectorControls>
+					<PanelBody>
+						<PanelRow>
+							This text will show when the box is selected
+						</PanelRow>
+						<PanelRow>
+							ditto
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>			);
+		}
+
+		// send the editor interfaces to the view
+  	return ([
+			createBlockControls(),
+			createInspectorControls(),
+			createContentEditForm()
+  	]);
   	
 	}, // end edit
 	

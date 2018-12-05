@@ -38,8 +38,7 @@ function uri_cl_gutenberg_is_active() {
 	}
 	// end jp testing
 	// Cards
-	_uri_cl_load_block( 'card' );
-
+	// _uri_cl_load_block( 'card' );
 	// Buh-ins
 	_uri_cl_load_block( 'button' );
 
