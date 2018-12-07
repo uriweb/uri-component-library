@@ -55,7 +55,7 @@ function styles(done) {
 }
 
 
-// CSS concat, auto-prefix and minify
+// I don't love this... I'd rather be able to tap into the core stylesheets
 gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
 
 function gutenbergAdminStyles(done) {
