@@ -1,9 +1,20 @@
 const { __ } = wp.i18n;
-const { RichText, MediaUpload, PlainText, InspectorControls, BlockControls, Toolbar, IconButton, AlignmentToolbar } = wp.editor;
 const { registerBlockType } = wp.blocks;
-const { PanelBody, PanelRow, Button } = wp.components;
-
-// @todo: internationalize
+const {
+	PlainText,
+	RichText,
+	MediaUpload,
+	InspectorControls,
+	BlockControls,
+	Toolbar,
+	IconButton,
+	BlockAlignmentToolbar
+} = wp.editor;
+const {
+	PanelBody,
+	PanelRow,
+	Button
+} = wp.components;
 
 
 const customIcon = () => {
@@ -189,21 +200,13 @@ registerBlockType('card-block/main', {
 		const createBlockControls = () => {
 			return(
 				<BlockControls key="controls">
-					<AlignmentToolbar
+					<BlockAlignmentToolbar
 						value={ attributes.alignment }
 						onChange={ content => setAttributes({ alignment: content }) }
 					/>
 				</BlockControls>
 			);
 
-// 					<Toolbar>
-// 						<IconButton 
-// 							className='pin'
-// 							icon={customIcon}
-// 							onClick={() => setAttributes({ isPinned: !isPinned })}
-// 							tooltip={isPinned ? __('Unpin', 'example') : __('Pin This', 'example')}
-// 						/>
-// 					</Toolbar>
 		}
 
 		// generate sidebar inspector controls for other custom attributes
@@ -214,17 +217,15 @@ registerBlockType('card-block/main', {
 						<PanelRow>
 							This text will show when the box is selected
 						</PanelRow>
-						<PanelRow>
-							ditto
-						</PanelRow>
 					</PanelBody>
-				</InspectorControls>			);
+				</InspectorControls>
+			);
 		}
 
 		// send the editor interfaces to the view
   	return ([
 			createBlockControls(),
-			createInspectorControls(),
+			// createInspectorControls(),
 			createContentEditForm()
   	]);
   	
