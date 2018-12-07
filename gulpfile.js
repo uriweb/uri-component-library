@@ -55,6 +55,23 @@ function styles(done) {
 }
 
 
+// CSS concat, auto-prefix and minify
+gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
+
+function gutenbergAdminStyles(done) {
+    
+	gulp.src('./js/blocks/src/blocks.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(concat('blocks.build.css'))
+        .pipe(postcss([ autoprefixer() ]))
+		.pipe(sourcemaps.write('map'))
+		.pipe(gulp.dest('./js/blocks/build/'));
+
+  done();
+}
+
+
 // JS concat, strip debugging and minify
 gulp.task('scripts', scripts);
 
@@ -166,7 +183,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', 'gutenbergAdminStyles', function(done){
 		done();
 	})
 );

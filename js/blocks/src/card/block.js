@@ -77,11 +77,11 @@ function buildShortCode( args ) {
 
 }
 
-registerBlockType('card-block/main', {   
+registerBlockType('uri-cl/card', {   
 
   title: __('Card'),
   icon: customIcon,
-  category: 'common',
+  category: 'cl-blocks',
   
 
 
@@ -184,13 +184,13 @@ registerBlockType('card-block/main', {
 						/>
 					</div>
 					<div class="meta">
-					<label>Links to:</label>
-					<PlainText
-						onChange={ content => setAttributes({ link: content }) }
-						value={ attributes.link }
-						placeholder="https://www.uri.edu/"
-						className="meta-field"
-					/>
+						<label>Links to:</label>
+						<PlainText
+							onChange={ content => setAttributes({ link: content }) }
+							value={ attributes.link }
+							placeholder="https://www.uri.edu/"
+							className="meta-field"
+						/>
 					</div>
 				</div>
 			);

@@ -25,58 +25,28 @@ function uri_cl_gutenberg_is_active() {
 		filemtime( URI_CL_DIR_PATH . '/css/uri-gutenberg.css' ) // cache buster
 	);
 
-	// jp testing
-	$name = 'jp-dev-block';
 	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.js' ) ) {
 		wp_enqueue_script(
-			'uri-gutenberg-script-' . $name,
+			'uri-cl-gutenberg-blocks',
 			URI_CL_URL . '/js/blocks/build/blocks.build.js',
 			array( 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor' ),
 			filemtime( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.js' ) // cache buster
 		);
-		wp_localize_script( 'uri-gutenberg-script-' . $name, 'URI_CL_URL', URI_CL_URL );
+		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', URI_CL_URL );
 	}
-	// end jp testing
-	// Cards
-	// _uri_cl_load_block( 'card' );
-	// Buh-ins
-	_uri_cl_load_block( 'button' );
-
-	// Boxouts
-	_uri_cl_load_block( 'boxout' );
+	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.css' ) ) {
+		wp_enqueue_style(
+			'uri-cl-gutenberg-styles',
+			URI_CL_URL . '/js/blocks/build/blocks.build.css',
+			array( 'wp-edit-blocks' ),
+			filemtime( URI_CL_DIR_PATH . '/js/blocks/build/blocks.build.css' ) // cache buster
+		);
+	}
 
 }
 add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
 
 
-/**
- * Helper function to simplify the process of enqueing scripts and styles
- *
- * @param str $name is the name of the component, and its directory name inside /js/blocks/.
- */
-function _uri_cl_load_block( $name ) {
-
-	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
-		wp_enqueue_script(
-			'uri-gutenberg-script-' . $name,
-			URI_CL_URL . '/js/blocks/' . $name . '/block.js',
-			array( 'wp-blocks', 'wp-element', 'wp-i18n' ),
-			filemtime( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) // cache buster
-		);
-		wp_localize_script( 'uri-gutenberg-script-' . $name, 'URI_CL_URL', URI_CL_URL );
-
-	}
-
-	if ( file_exists( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.js' ) ) {
-		wp_enqueue_style(
-			'uri-gutenberg-styles-' . $name,
-			URI_CL_URL . '/js/blocks/' . $name . '/block.css',
-			array( 'wp-edit-blocks' ),
-			filemtime( URI_CL_DIR_PATH . '/js/blocks/' . $name . '/block.css' ) // cache buster
-		);
-	}
-
-}
 
 /**
  * Defines a custom category
