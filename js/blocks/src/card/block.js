@@ -13,6 +13,8 @@ const {
 const {
 	PanelBody,
 	PanelRow,
+	BaseControl,
+	TextControl,
 	Button
 } = wp.components;
 
@@ -215,7 +217,12 @@ registerBlockType('uri-cl/card', {
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
-							This text will show when the box is selected
+							<TextControl
+								label="Tool tip"
+								onChange={ content => setAttributes({ tooltip: content }) }
+								value={ attributes.tooltip }
+								className="meta-field"
+							/>
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
@@ -225,7 +232,7 @@ registerBlockType('uri-cl/card', {
 		// send the editor interfaces to the view
   	return ([
 			createBlockControls(),
-			// createInspectorControls(),
+			createInspectorControls(),
 			createContentEditForm()
   	]);
   	
