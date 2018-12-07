@@ -12,7 +12,8 @@ const {
 const {
 	PanelBody,
 	PanelRow,
-	Button
+	Button,
+	ButtonGroup
 } = wp.components;
 
 
@@ -81,6 +82,13 @@ registerBlockType('uri-cl/button', {
 		},
 	},
 	
+	setButtonStyle( v ) {
+		console.log(v);
+		return () => {
+			this.props.setAttributes( { style, v } );
+		};
+	},
+	
 	
 	edit({ attributes, className, setAttributes }) {
 
@@ -111,6 +119,7 @@ registerBlockType('uri-cl/button', {
 		}
 
 		// generate block controls for alignment, etc
+		// @todo: do we need alignment/float controls on buttons?
 		const createBlockControls = () => {
 			return(
 				<BlockControls key="controls">
@@ -122,6 +131,13 @@ registerBlockType('uri-cl/button', {
 			);
 
 		}
+		
+		//const MyButtonGroup = () => {};
+		
+		const setButtonStyle = (v) => {
+			console.log(v);
+			console.log(attributes);
+		}
 
 		// generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
@@ -129,8 +145,32 @@ registerBlockType('uri-cl/button', {
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
-							This text will show when the box is selected
+							<label>Button Style:</label>
 						</PanelRow>
+
+						<PanelRow>
+							<ButtonGroup aria-label={ __( 'Image Size' ) }>
+								{ [ 'default', 'prominent', 'disabled' ].map( ( value ) => {
+
+									const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+									const key = (value === 'default') ? '' : value;
+									const isSelected = key === attributes.style;
+									
+									return (
+										<Button
+											key={ key }
+											isDefault
+											isPrimary={ isSelected }
+											aria-pressed={ isSelected }
+											onClick={ content => setAttributes({ style: key }) }
+										>
+											{ capitalizedValue }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</PanelRow>
+
 					</PanelBody>
 				</InspectorControls>
 			);
@@ -138,8 +178,8 @@ registerBlockType('uri-cl/button', {
 
 		// send the editor interfaces to the view
   	return ([
-			createBlockControls(),
-			// createInspectorControls(),
+			//createBlockControls(),
+			createInspectorControls(),
 			createContentEditForm()
   	]);
   	
