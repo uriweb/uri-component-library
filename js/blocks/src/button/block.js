@@ -12,6 +12,8 @@ const {
 const {
 	PanelBody,
 	PanelRow,
+	BaseControl,
+	TextControl,
 	Button,
 	ButtonGroup
 } = wp.components;
@@ -82,13 +84,7 @@ registerBlockType('uri-cl/button', {
 		},
 	},
 	
-	setButtonStyle( v ) {
-		console.log(v);
-		return () => {
-			this.props.setAttributes( { style, v } );
-		};
-	},
-	
+
 	
 	edit({ attributes, className, setAttributes }) {
 
@@ -132,12 +128,6 @@ registerBlockType('uri-cl/button', {
 
 		}
 		
-		//const MyButtonGroup = () => {};
-		
-		const setButtonStyle = (v) => {
-			console.log(v);
-			console.log(attributes);
-		}
 
 		// generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
@@ -145,30 +135,39 @@ registerBlockType('uri-cl/button', {
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
-							<label>Button Style:</label>
+							<BaseControl
+								label={ __( "Button Style" ) }
+							>
+								<ButtonGroup aria-label={ __( "Button Style" ) }>
+									{ [ "default", "prominent", "disabled" ].map( ( value ) => {
+
+										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+										const key = (value === "default") ? '' : value;
+										const isSelected = key === attributes.style;
+									
+										return (
+											<Button
+												key={ key }
+												isDefault
+												isPrimary={ isSelected }
+												aria-pressed={ isSelected }
+												onClick={ content => setAttributes({ style: key }) }
+											>
+												{ capitalizedValue }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</BaseControl>
 						</PanelRow>
 
 						<PanelRow>
-							<ButtonGroup aria-label={ __( 'Image Size' ) }>
-								{ [ 'default', 'prominent', 'disabled' ].map( ( value ) => {
-
-									const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-									const key = (value === 'default') ? '' : value;
-									const isSelected = key === attributes.style;
-									
-									return (
-										<Button
-											key={ key }
-											isDefault
-											isPrimary={ isSelected }
-											aria-pressed={ isSelected }
-											onClick={ content => setAttributes({ style: key }) }
-										>
-											{ capitalizedValue }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<TextControl
+								label="Tool tip"
+								onChange={ content => setAttributes({ tooltip: content }) }
+								value={ attributes.tooltip }
+								className="meta-field"
+							/>
 						</PanelRow>
 
 					</PanelBody>
