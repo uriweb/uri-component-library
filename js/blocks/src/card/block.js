@@ -32,61 +32,12 @@ const customIcon = () => {
 }
 
 
-/**
- * Render the shortcode
- */
-function buildShortCode( args ) {
-	// var attributes = Object.keys(args).map(e => (`${e}="${args[e]}"`));
-	// var as = attributes.join(' ');
-	// return '[cl-card ' + as + ']';
-	// unfortunately, Gutenberg cares a lot about the order in which attributes appear,
-	// so this process is best done manually.
-	var shortcode = '[cl-card ';
-	if (args.title) {
-		shortcode += ' title="' + args.title + '"';
-	}
-	
-	if (args.body) {
-		shortcode += ' body="' + args.body + '"';
-		//shortcode += ' body="' + wp.element.renderToString( args.body ) + '"';
-	}
-	if (args.link) {
-		shortcode += ' link="' + args.link + '"';
-	}
-	if (args.mediaID) {
-		shortcode += ' img="' + args.mediaID + '"';
-	} else {
-		if (args.img) {
-			shortcode += ' img="' + args.img + '"';
-		}
-		if (args.alt) {
-			shortcode += ' alt="' + args.alt + '"';
-		}
-	}
-	if (args.button) {
-		shortcode += ' button="' + args.button + '"';
-	}
-	if (args.className) {
-		shortcode += ' class="' + args.className + '"';
-	}
-	if (args.alignment == 'left' || args.alignment == 'right' ) {
-		shortcode += ' float="' + args.alignment + '"';
-	}
-
-	shortcode += ']';
-
-	return shortcode;
-
-}
-
 registerBlockType('uri-cl/card', {   
 
   title: __('Card'),
   icon: customIcon,
   category: 'cl-blocks',
   
-
-
 	// the mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
 	attributes: {
@@ -117,7 +68,7 @@ registerBlockType('uri-cl/card', {
 	},
 	
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 
 		// generate the image or the add image section
 		const getImageButton = (openEvent) => {
@@ -143,6 +94,21 @@ registerBlockType('uri-cl/card', {
 				);
 			}
 		};
+		
+		let meta;
+		if( !! isSelected ) {
+			meta = (
+				<div class="meta">
+					<label>Links to:</label>
+					<PlainText
+						onChange={ content => setAttributes({ link: content }) }
+						value={ attributes.link }
+						placeholder="https://www.uri.edu/"
+						className="meta-field"
+					/>
+				</div>
+			);
+		}
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
@@ -161,7 +127,6 @@ registerBlockType('uri-cl/card', {
 						/>
 						<div class="cl-card-text">
 						<h3><PlainText
-							tagName="h2"
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
 							placeholder={__("Your card title")}
@@ -185,15 +150,7 @@ registerBlockType('uri-cl/card', {
 							className="cl-button"
 						/>
 					</div>
-					<div class="meta">
-						<label>Links to:</label>
-						<PlainText
-							onChange={ content => setAttributes({ link: content }) }
-							value={ attributes.link }
-							placeholder="https://www.uri.edu/"
-							className="meta-field"
-						/>
-					</div>
+					{ meta }
 				</div>
 			);
 		}
@@ -239,10 +196,26 @@ registerBlockType('uri-cl/card', {
 	}, // end edit
 	
 	save({ attributes }) {
+	
+		// @todo: use the media ID to build a src set
 
-		var o = wp.element.createElement( wp.element.RawHTML, null, buildShortCode( attributes ) );
-		// console.log(o);
-		return o;
+		let classes = "cl-card";
+		if ( !! attributes.className ) {
+			classes += " " + attributes.className;
+		}
+		return (
+			<div>
+				<a class={classes} href={ attributes.link }>
+					<img src={ attributes.img } alt={ attributes.alt } />
+					<div class="cl-card-text">
+						<h3>{ attributes.title }</h3>
+						<RichText.Content tagName="p" value={ attributes.body } />
+					</div>
+					<div class="cl-button">{ attributes.button }</div>
+				</a>
+			</div>
+		);
+		
 		
 	}
 	

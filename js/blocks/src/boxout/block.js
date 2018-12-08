@@ -1,7 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType,
-	InnerBlocks // @todo: allow nested blocks
+	registerBlockType
 } = wp.blocks;
 const {
 	PlainText,
@@ -11,8 +10,19 @@ const {
 	BlockControls,
 	Toolbar,
 	IconButton,
-	BlockAlignmentToolbar
+	BlockAlignmentToolbar,
+	InnerBlocks // @todo: allow nested blocks
 } = wp.editor;
+
+const ALLOWED_BLOCKS = [
+	'core/image',
+	'core/heading',
+	'core/paragraph',
+	'uri-cl/button'
+];
+const TEMPLATE = [
+  ['core/paragraph', { placeholder: 'Your boxout content...' }],
+];
 
 
 const customIcon = () => {
@@ -25,30 +35,6 @@ const customIcon = () => {
 			alt="button"
 		/>
 	);
-}
-
-
-/**
- * Assemble the shortcode
- */
-function buildShortCode( args ) {
-	// unfortunately, Gutenberg cares a lot about the order in which attributes appear,
-	// so this process is best done manually.
-	var shortcode = '[cl-boxout';
-	if (args.title) {
-		shortcode += ' title="' + args.title + '"';
-	}
-	if (args.alignment == 'left' || args.alignment == 'right' ) {
-		shortcode += ' float="' + args.alignment + '"';
-	}
-	if (args.className) {
-		shortcode += ' class="' + args.className + '"';
-	}
-
-	shortcode += ']' + args.body + '[/cl-boxout]';
-
-	return shortcode;
-
 }
 
 
@@ -71,10 +57,7 @@ registerBlockType('uri-cl/boxout', {
 	},
 
 	
-	
 	edit({ attributes, className, setAttributes }) {
-
-
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
 			return (
@@ -88,13 +71,9 @@ registerBlockType('uri-cl/boxout', {
 							className="heading"
 							keepPlaceholderOnFocus={true}
 						/></h1>
-						<RichText
-							tagName="div"
-							onChange={ content => setAttributes({ body: content }) }
-							value={ attributes.body }
-							multiline="p"
-							placeholder={__("Your boxout text")}
-							keepPlaceholderOnFocus={true}
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={TEMPLATE}
 						/>
 					</div>
 				</div>
@@ -123,11 +102,12 @@ registerBlockType('uri-cl/boxout', {
 	}, // end edit
 	
 	save({ attributes }) {
-
-		var o = wp.element.createElement( wp.element.RawHTML, null, buildShortCode( attributes ) );
-		// console.log(o);
-		return o;
-		
+			return (
+				<div class="cl-boxout">
+					<h1>{ attributes.title }</h1>
+					<InnerBlocks.Content />
+				</div>
+			);
 	}
 	
 	

@@ -86,10 +86,26 @@ registerBlockType('uri-cl/button', {
 	
 
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
+
+			let meta;
+			if ( !! isSelected ) {
+				meta = (
+					<div class="meta">
+						<label>Links to:</label>
+						<PlainText
+							onChange={ content => setAttributes({ link: content }) }
+							value={ attributes.link }
+							placeholder="https://www.uri.edu/"
+							className="meta-field"
+						/>
+					</div>
+				)
+			}
+			
 			return (
 				<div className="container">
 					<div class="cl-button">
@@ -101,15 +117,7 @@ registerBlockType('uri-cl/button', {
 							className="cl-button"
 						/>
 					</div>
-					<div class="meta">
-						<label>Links to:</label>
-						<PlainText
-							onChange={ content => setAttributes({ link: content }) }
-							value={ attributes.link }
-							placeholder="https://www.uri.edu/"
-							className="meta-field"
-						/>
-					</div>
+					{ meta }
 				</div>
 			);
 		}
