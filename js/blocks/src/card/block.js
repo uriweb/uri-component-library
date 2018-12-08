@@ -130,11 +130,11 @@ registerBlockType('uri-cl/card', {
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
 							placeholder={__("Your card title")}
-							className="heading"
 							keepPlaceholderOnFocus={true}
 						/></h3>
 						<RichText
 							onChange={ content => setAttributes({ body: content }) }
+							tagname="p"
 							value={ attributes.body }
 							placeholder={__("Your card text")}
 							keepPlaceholderOnFocus={true}
