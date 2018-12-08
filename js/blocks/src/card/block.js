@@ -134,10 +134,8 @@ registerBlockType('uri-cl/card', {
 							keepPlaceholderOnFocus={true}
 						/></h3>
 						<RichText
-							tagName="div"
 							onChange={ content => setAttributes({ body: content }) }
 							value={ attributes.body }
-							multiline="p"
 							placeholder={__("Your card text")}
 							keepPlaceholderOnFocus={true}
 						/>
@@ -200,8 +198,12 @@ registerBlockType('uri-cl/card', {
 		// @todo: use the media ID to build a src set
 
 		let classes = "cl-card";
-		if ( !! attributes.className ) {
-			classes += " " + attributes.className;
+		if( !! attributes.className ) {
+			// @todo this gets automatically applied to wrapper... remove it?
+			classes += " " + attributes.className
+		}
+		if( !! attributes.alignment ) {
+			classes += " " + attributes.alignment
 		}
 		return (
 			<div>
@@ -209,7 +211,10 @@ registerBlockType('uri-cl/card', {
 					<img src={ attributes.img } alt={ attributes.alt } />
 					<div class="cl-card-text">
 						<h3>{ attributes.title }</h3>
-						<RichText.Content tagName="p" value={ attributes.body } />
+						<RichText.Content
+							tagName="p"
+							value={ attributes.body }
+						/>
 					</div>
 					<div class="cl-button">{ attributes.button }</div>
 				</a>

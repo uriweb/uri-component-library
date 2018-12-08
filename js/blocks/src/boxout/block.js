@@ -48,9 +48,6 @@ registerBlockType('uri-cl/boxout', {
 		title: {
 			type: 'string',
 		},
-		body: {
-			type: 'string',
-		},
 		alignment: {
 			type: 'string',
 		},
@@ -64,11 +61,9 @@ registerBlockType('uri-cl/boxout', {
 				<div className="container">
 					<div class="cl-boxout">
 						<h1><PlainText
-							tagName="h2"
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
 							placeholder={__("Your boxout title")}
-							className="heading"
 							keepPlaceholderOnFocus={true}
 						/></h1>
 						<InnerBlocks
@@ -102,12 +97,22 @@ registerBlockType('uri-cl/boxout', {
 	}, // end edit
 	
 	save({ attributes }) {
-			return (
-				<div class="cl-boxout">
+		let classes = "cl-boxout";
+		if( !! attributes.className ) {
+			// @todo this gets automatically applied to wrapper... remove it?
+			classes += " " + attributes.className
+		}
+		if( !! attributes.alignment ) {
+			classes += " " + attributes.alignment
+		}
+		return (
+			<div>
+				<div class={classes}>
 					<h1>{ attributes.title }</h1>
 					<InnerBlocks.Content />
 				</div>
-			);
+			</div>
+		);
 	}
 	
 	
