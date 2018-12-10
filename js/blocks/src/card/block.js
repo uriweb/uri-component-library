@@ -1,22 +1,31 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
-	PlainText,
-	RichText,
-	MediaUpload,
-	InspectorControls,
-	BlockControls,
-	Toolbar,
 	IconButton,
-	BlockAlignmentToolbar
-} = wp.editor;
-const {
 	PanelBody,
 	PanelRow,
+	Toolbar,
+	withNotices,
 	BaseControl,
 	TextControl,
 	Button
 } = wp.components;
+const {
+	BlockControls,
+	InspectorControls,
+	BlockAlignmentToolbar,
+	MediaPlaceholder,
+	MediaUpload,
+	MediaUploadCheck,
+	AlignmentToolbar,
+	RichText,
+	PlainText,
+} = wp.editor;
+
+
+// @see https://github.com/WordPress/gutenberg/tree/master/packages/block-library/src
+
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 
 const customIcon = () => {
@@ -72,25 +81,31 @@ registerBlockType('uri-cl/card', {
 
 		// generate the image or the add image section
 		const getImageButton = (openEvent) => {
-			if(attributes.img) {
+			if(attributes.mediaID) {
 				return (
 					<img 
 						src={ attributes.img }
-						onClick={ openEvent }
+						alt={ attributes.alt }
 						className="image"
 					/>
 				);
-			}
-			else {
+			} else {
 				return (
-					<div className="button-container">
-						<Button 
-							onClick={ openEvent }
-							className="button button-large"
-						>
-							Pick an image
-						</Button>
-					</div>
+					<MediaPlaceholder
+						icon={ 'format-image' }
+						className={ className }
+						labels={ {
+							title: 'Add an image',
+							instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+						} }
+						onSelect={ media => { setAttributes({
+							alt: media.alt,
+							img: media.url,
+							mediaID: media.id
+						}); } }
+						accept="image/*"
+						allowedTypes={ ALLOWED_MEDIA_TYPES }
+					/>
 				);
 			}
 		};
@@ -115,6 +130,7 @@ registerBlockType('uri-cl/card', {
 			return (
 				<div className="container">
 					<div class="cl-card">
+
 						<MediaUpload
 							onSelect={ media => { setAttributes({
 								alt: media.alt,
@@ -125,6 +141,7 @@ registerBlockType('uri-cl/card', {
 							value={ attributes.mediaID }
 							render={ ({ open }) => getImageButton(open) }
 						/>
+
 						<div class="cl-card-text">
 						<h3><PlainText
 							onChange={ content => setAttributes({ title: content }) }
@@ -161,6 +178,31 @@ registerBlockType('uri-cl/card', {
 						value={ attributes.alignment }
 						onChange={ content => setAttributes({ alignment: content }) }
 					/>
+
+					{ !! attributes.img && (
+					<MediaUploadCheck>
+						<Toolbar>
+							<MediaUpload
+								onSelect={ media => { setAttributes({
+									alt: media.alt,
+									img: media.url,
+									mediaID: media.id
+								}); } }
+								allowedTypes={ ALLOWED_MEDIA_TYPES }
+								value={ attributes.mediaID }
+								render={ ( { open } ) => (
+									<IconButton
+										className="components-toolbar__control"
+										label={ __( 'Edit media' ) }
+										icon="edit"
+										onClick={ open }
+									/>
+								) }
+							/>
+						</Toolbar>
+					</MediaUploadCheck>
+					) }
+
 				</BlockControls>
 			);
 
@@ -198,11 +240,11 @@ registerBlockType('uri-cl/card', {
 		// @todo: use the media ID to build a src set
 
 		let classes = "cl-card";
-		if( !! attributes.className ) {
+		if ( !! attributes.className ) {
 			// @todo this gets automatically applied to wrapper... remove it?
 			classes += " " + attributes.className
 		}
-		if( !! attributes.alignment ) {
+		if ( !! attributes.alignment ) {
 			classes += " " + attributes.alignment
 		}
 		return (
