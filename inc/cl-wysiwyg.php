@@ -16,6 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Load the TinyMCE plugin
  */
 function uri_cl_wysiwyg_register_tinymce_plugin( $plugin_array ) {
+
+	$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+	wp_enqueue_script( 'uricl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $values['Version'] );
+	wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
+
+	wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
+
 	// load up the noneditable plugin from TinyMCE
 	$plugin_array['noneditable'] = uri_cl_dir_url() . 'js/wysiwyg/noneditable/plugin.min.js';
 
@@ -60,24 +67,6 @@ function uri_cl_wysiwyg_register_buttons( $buttons ) {
 }
 add_filter( 'mce_buttons_3', 'uri_cl_wysiwyg_register_buttons' );
 
-
-/**
- * Enqueue a script in the WordPress admin
- *
- * @param int $hook Hook suffix for the current admin page.
- */
-function uri_cl_wysiwyg_add_scripts( $hook ) {
-	$ver = strtotime( 'now' ); // was 1.0
-	if ( 'edit.php' === $hook || 1 == 1 ) { // @todo: only load on the add/edit screen?
-		wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-
-		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
-		wp_enqueue_script( 'uricl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $ver );
-		wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
-	}
-
-}
-add_action( 'admin_enqueue_scripts', 'uri_cl_wysiwyg_add_scripts' );
 
 
 /**
