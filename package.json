@@ -19,7 +19,7 @@
     "autoprefixer": "^9.4.2",
     "gulp": "^4.0.0",
     "gulp-concat": ">=2.6.1",
-    "gulp-header": "^2.0.5",
+    "gulp-header": "^2.0.7",
     "gulp-jscs": ">=4.1.0",
     "gulp-jshint": ">=2.0.4",
     "gulp-postcss": "^8.0.0",
@@ -28,8 +28,8 @@
     "gulp-shell": ">=0.6.5",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-strip-debug": "^3.0.0",
-    "gulp-uglify": "^3.0.1",
-    "jshint": "^2.9.6"
+    "gulp-terser": ">=1.1.6",
+    "jshint": "^2.9.7"
   },
   "browserslist": {
     "production": [

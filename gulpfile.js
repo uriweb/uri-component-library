@@ -6,7 +6,7 @@ var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var concat = require('gulp-concat');
 //var stripDebug = require('gulp-strip-debug');
-var uglify = require('gulp-uglify');
+var terser = require('gulp-terser');
 var replace = require('gulp-replace-task');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
@@ -98,7 +98,7 @@ function scripts(done) {
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
         //.pipe(stripDebug())
-        .pipe(uglify())
+        .pipe(terser())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./js/'));
     
