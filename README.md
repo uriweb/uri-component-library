@@ -7,7 +7,7 @@ The Component Library exists in order to standardize the look and feel of web el
 CL 3.4.2 is a bug fix release.
 
 * Fixes a bug in IE that caused hero images to disappear when the browser was resized
-* Solves a compatability issue with the [Themify Builder](https://wordpress.org/plugins/themify-builder/) plugin
+* Solves a compatability issue with the Themify Builder plugin
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/131/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
