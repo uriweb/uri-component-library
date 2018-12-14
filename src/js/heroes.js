@@ -74,23 +74,29 @@ var CLResizeSuperheroes;
 
 	function mobile() {
 
-		var els = document.querySelectorAll( '.cl-hero .poster' );
+		var els;
 
-		window.addEventListener(
-			'resize',
-			function() {
-				var i, w = window.innerWidth;
-				if ( w < 750 ) {
-					for ( i = 0; i < els.length; i++ ) {
-						els[i].classList.remove( 'unveil' );
-					}
-				} else {
-					for ( i = 0; i < els.length; i++ ) {
-						els[i].classList.add( 'unveil' );
+		if ( URICL.checkSupport() ) {
+
+			els = document.querySelectorAll( '.cl-hero .poster' );
+
+			window.addEventListener(
+				'resize',
+				function() {
+					var i, w = window.innerWidth;
+					if ( w < 750 ) {
+						for ( i = 0; i < els.length; i++ ) {
+							els[i].classList.remove( 'unveil' );
+						}
+					} else {
+						for ( i = 0; i < els.length; i++ ) {
+							els[i].classList.add( 'unveil' );
+						}
 					}
 				}
-			}
-		);
+			);
+
+		}
 	}
 
 	function superhero() {

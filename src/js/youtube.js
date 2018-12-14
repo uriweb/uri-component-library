@@ -25,12 +25,11 @@ function onYouTubePlayerAPIReady() {
 	function getVids() {
 
 		var requireYouTube = false,
-			heroSupport = checkSupport(),
 			heroes = document.querySelectorAll( '.cl-hero .poster' ),
 			vids = document.querySelectorAll( '.cl-video img' ),
 			el, key, parent, i, start, end, placeholder, aspect;
 
-		if ( heroSupport ) {
+		if ( URICL.checkSupport() ) {
 
 			for ( i = 0; i < heroes.length; i++ ) {
 
@@ -89,23 +88,6 @@ function onYouTubePlayerAPIReady() {
 			loadYouTubeAPI();
 		}
 
-	}
-
-	/*
-	 * Check browser support (essentially anything but IE)
-	 * @return bool
-	 */
-	function checkSupport() {
-		var support = true,
-			ua = navigator.userAgent,
-			msie = ua.indexOf( 'MSIE ' ),
-			trident = ua.indexOf( 'Trident/' );
-
-		if ( 'Microsoft Internet Explorer' === navigator.appName || msie > 0 || trident > 0 ) {
-			support = false;
-		}
-
-		return support;
 	}
 
 	/*
