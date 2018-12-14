@@ -2,27 +2,14 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.4.1
+## What's new in 3.4.2
 
-CL 3.4.1 is a bug fix release.
+CL 3.4.2 is a bug fix release.
 
-* Fixes an issue that caused the hero prompter to not scroll fully in Chrome
-* Fixes an issue that may cause images in tiles to not scale proportionally
-* Relevant YouTube videos are no longer shown in the video component
-* Updates development tools
+* Fixes a bug in IE that caused hero images to disappear when the browser was resized
+* Solves a compatability issue with the Themify Builder plugin
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/129/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
-
-## New in 3.4.0
-
-CL 3.4.0 is a minor release focusing on [Display Posts Shortcode](https://github.com/billerickson/display-posts-shortcode) plugin extensions.
-
-* Adds support for displaying posts as components using Display Posts:
-	- Display lists of posts as either cards, story cards, heroes, or panels
-	- Customize components in the Display Posts shortcode by using the applicable component shortcode attribute(s) and the prefix `cl-`
-* Other minor bug fixes
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/126/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/131/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
@@ -40,4 +27,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 4.9  
-Stable tag: 3.4.1  
+Stable tag: 3.4.2  
