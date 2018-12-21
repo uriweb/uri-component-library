@@ -73,6 +73,9 @@ registerBlockType('uri-cl/card', {
 		button: {
 			type: 'string',
 		},
+		tooltip: {
+			type: 'string',
+		},
 		alignment: {
 			type: 'string',
 		}
@@ -144,7 +147,7 @@ registerBlockType('uri-cl/card', {
 			}
 			return (
 				<div className="container cl-card-block-form">
-					<div className={classes}>
+					<div className={classes} title={title}>
 
 						<MediaUpload
 							onSelect={ media => { setAttributes({
