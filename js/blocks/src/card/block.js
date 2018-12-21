@@ -114,24 +114,37 @@ registerBlockType('uri-cl/card', {
 		
 		let meta;
 		if( !! isSelected ) {
-			meta = (
-				<div class="meta">
-					<label>Links to:</label>
-					<PlainText
-						onChange={ content => setAttributes({ link: content }) }
-						value={ attributes.link }
-						placeholder="https://www.uri.edu/"
-						className="meta-field"
-					/>
-				</div>
-			);
+				meta = (
+					<form
+						className="meta"
+						onSubmit={ ( event ) => event.preventDefault() }
+					>
+						<label title="Links to:"><Dashicon icon="admin-links" /></label>
+						<URLInput
+							value={ attributes.link }
+							onChange={ ( content ) => setAttributes( { link: content } ) }
+							placeholder="https://www.uri.edu/"
+							className="meta-field"
+						/>
+					</form>
+				)
+
 		}
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
+			let classes = "cl-card";
+			if( !! attributes.style ) {
+				classes += ' ' + attributes.style;
+			}
+			// set the tooltip
+			let title = "";
+			if( !! attributes.tooltip ) {
+				title = attributes.tooltip;
+			}
 			return (
-				<div className="container">
-					<div class="cl-card">
+				<div className="container cl-card-block-form">
+					<div className={classes}>
 
 						<MediaUpload
 							onSelect={ media => { setAttributes({

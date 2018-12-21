@@ -1,5 +1,18 @@
 @import "../../../src/sass/variables";
 @import "../../../src/sass/buttons";
+@import "../../../src/sass/boxouts";
+@import "../../../src/sass/cards";
+
+
+textarea {
+	background-color: inherit !important;
+	border-radius: 0;
+}
+
+/** This would hide drop caps but probably everywhere. **/
+// .blocks-font-size .components-toggle-control {
+// 	display: none;
+// }
 
 .cl-button-block-form {
 
@@ -22,14 +35,17 @@
 	}
 	
 	textarea {
-		background-color: transparent;
-		border-radius: 0;
 		text-align: center;
 	}
 	textarea:focus {
-		background-color: $white;
-		color: $black;
-		text-align: center;
 	}
-	
+
+
+}
+
+.cl-card-block-form {
+	textarea.cl-button {
+		border-radius: 0;
+		color: $black !important;
+	}
 }

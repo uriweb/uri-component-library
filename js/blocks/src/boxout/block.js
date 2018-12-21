@@ -21,7 +21,7 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/button'
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Your boxout content...' }],
+  ['core/paragraph', { placeholder: 'Your boxout content...', dropCap: false }],
 ];
 
 
