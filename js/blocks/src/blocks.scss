@@ -11,6 +11,10 @@
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
 	}
+	
+	label {
+		color: $midgrey;
+	}
 
 	label,
 	.editor-url-input {
@@ -23,8 +27,8 @@
 		text-align: center;
 	}
 	textarea:focus {
-		background-color: #fff;
-		color: #000;
+		background-color: $white;
+		color: $black;
 		text-align: center;
 	}
 	

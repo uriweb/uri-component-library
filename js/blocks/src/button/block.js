@@ -7,7 +7,6 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	IconButton,
 	BlockAlignmentToolbar
 } = wp.editor;
 const {
@@ -96,7 +95,10 @@ registerBlockType('uri-cl/button', {
 			let meta;
 			if ( !! isSelected ) {
 				meta = (
-					<div class="meta">
+					<form
+						className="meta"
+						onSubmit={ ( event ) => event.preventDefault() }
+					>
 						<label title="Links to:"><Dashicon icon="admin-links" /></label>
 						<URLInput
 							value={ attributes.link }
@@ -104,7 +106,7 @@ registerBlockType('uri-cl/button', {
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
-					</div>
+					</form>
 				)
 			}
 			// set the classnames

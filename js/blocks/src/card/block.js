@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
+	Dashicon,
 	IconButton,
 	PanelBody,
 	PanelRow,
@@ -20,6 +21,7 @@ const {
 	AlignmentToolbar,
 	RichText,
 	PlainText,
+	URLInput,
 } = wp.editor;
 
 
