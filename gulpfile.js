@@ -170,7 +170,7 @@ function watcher(done) {
 	// watch for CSS changes
 	gulp.watch('./src/sass/*.scss', styles);
     
-    // watch for JS changes
+  // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
 	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
@@ -178,6 +178,7 @@ function watcher(done) {
 	gulp.watch('./**/*.php', sniffs);
 
 	gulp.watch('./js/blocks/src/', webpack);
+	gulp.watch('./js/blocks/src/blocks.scss', gutenbergAdminStyles);
 
 	done();
 }

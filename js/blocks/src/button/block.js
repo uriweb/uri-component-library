@@ -3,6 +3,7 @@ const { registerBlockType } = wp.blocks;
 const {
 	PlainText,
 	RichText,
+	URLInput,
 	InspectorControls,
 	BlockControls,
 	Toolbar,
@@ -10,6 +11,7 @@ const {
 	BlockAlignmentToolbar
 } = wp.editor;
 const {
+	Dashicon,
 	PanelBody,
 	PanelRow,
 	BaseControl,
@@ -88,27 +90,36 @@ registerBlockType('uri-cl/button', {
 	
 	edit({ attributes, className, setAttributes, isSelected }) {
 
-		// generate editor view of the card itself
+		// generate editor view of the button itself
 		const createContentEditForm = () => {
 
 			let meta;
 			if ( !! isSelected ) {
 				meta = (
 					<div class="meta">
-						<label>Links to:</label>
-						<PlainText
-							onChange={ content => setAttributes({ link: content }) }
+						<label title="Links to:"><Dashicon icon="admin-links" /></label>
+						<URLInput
 							value={ attributes.link }
+							onChange={ ( content ) => setAttributes( { link: content } ) }
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
 					</div>
 				)
 			}
-			
+			// set the classnames
+			let classes = "cl-button";
+			if( !! attributes.style ) {
+				classes += ' ' + attributes.style;
+			}
+			// set the tooltip
+			let title = "";
+			if( !! attributes.tooltip ) {
+				title = attributes.tooltip;
+			}
 			return (
-				<div className="container">
-					<div class="cl-button">
+				<div className="container cl-button-block-form">
+					<span class={classes} title={title}>
 						<PlainText
 							onChange={ content => setAttributes({ text: content }) }
 							value={ attributes.text }
@@ -116,7 +127,7 @@ registerBlockType('uri-cl/button', {
 							keepPlaceholderOnFocus={true}
 							className="cl-button"
 						/>
-					</div>
+					</span>
 					{ meta }
 				</div>
 			);
