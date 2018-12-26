@@ -49,3 +49,13 @@ function uri_cl_display_posts_component( $output, $original_atts ) {
 
 }
 add_action( 'display_posts_shortcode_output', 'uri_cl_display_posts_component', 10, 2 );
+
+
+/**
+ * Helper function to excape square brackets in text that would otherwise appear in shortcodes
+ * @param str $input is the input string
+ * @return str
+ */
+function _uri_cl_escape_brackets($input) {
+	return str_replace(array('[', ']'), array('&#91;', '&#93;'), $input);
+}

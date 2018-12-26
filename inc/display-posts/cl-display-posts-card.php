@@ -4,5 +4,7 @@
  *
  * @package uri-component-library
  */
+ 
+$sc = '[cl-card title="' . _uri_cl_escape_brackets(get_the_title()) . '" body="' . _uri_cl_escape_brackets(get_the_excerpt()) . '" link="' . get_the_permalink() . '" img="' . get_the_post_thumbnail_url() . '" button="Read More" ' . $cl_atts . ']';
 
-print do_shortcode( '[cl-card title="' . get_the_title() . '" body="' . get_the_excerpt() . '" link="' . get_the_permalink() . '" img="' . get_the_post_thumbnail_url() . '" button="Read More" ' . $cl_atts . ']' );
+print do_shortcode( $sc );
