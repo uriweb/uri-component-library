@@ -49,3 +49,34 @@ textarea {
 		color: $black !important;
 	}
 }
+
+.cl-hero-block-form {
+	color: #fff;
+	
+	h1 {
+		color: #fff;
+		margin: 0;
+		textarea, textarea:focus, textarea::placeholder {
+			color: #efe !important;
+		}
+	}
+	
+	.subtitle {
+		color: #efe !important;
+		margin: 1rem 0;
+	}
+	
+	.overlay, .block {
+		height: auto;
+		position: relative;
+	}
+	
+	.block {
+		border: 1px solid red;
+	}
+
+	.poster {
+		border: 1px solid green;
+	}
+
+}
