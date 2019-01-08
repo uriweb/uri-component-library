@@ -173,9 +173,8 @@ Right now, you won't be able to run PHP CodeSniffer from your project directory.
 To use `phpcs` and `phpcbf` as global commands, symlink to them in `/usr/local/bin`:
 
 ```shell
-# Replace <username> with yours
-$ sudo ln -s /Users/<username>/.composer/vendor/bin/phpcs /usr/local/bin
-$ sudo ln -s /Users/<username>/.composer/vendor/bin/phpcbf /usr/local/bin
+$ sudo ln -s ~/.composer/vendor/bin/phpcs /usr/local/bin
+$ sudo ln -s ~/.composer/vendor/bin/phpcbf /usr/local/bin
 ```
 
 You should be able to run `phpcs -h` and `phpcbf -h` from anywhere now.
@@ -193,7 +192,7 @@ $ composer create-project wp-coding-standards/wpcs --no-dev
 
 Now we need to tell PHP CodeSniffer about the new rules.  If you're using the `phpcs` and `phpcbf` commands globally, you'll need to use the absolute path to the `wpcs` directory:
 ```shell
-$ phpcs --config-set installed_paths /Users/<username>/.composer/wpcs
+$ phpcs --config-set installed_paths ~/.composer/wpcs
 ```
 
 Verify that the new rules have been added (you should see a bunch of WordPress standards in there now):
@@ -203,16 +202,16 @@ $ phpcs -i
 
 #### Using PHP CodeSniffer
 
-The easiest way to use PHP CodeSniffer is to run the `.sniff` bash script included in URI Component Library:
+Gulp will automatically run PHP CodeSniffer when any PHP file changes by running the included `.sniff` bash script. This will run `phpcbf` and `phpcs` in sequence for the entire directory, using the custom ruleset and ignoring development files, much as you would if you were to run PHP CodeSniffer as described below.
+
+If you want, you can always run `.sniff` on its own:
 
 ```shell
 # In your project dir
 $ ./.sniff
 ```
 
-This will run `phpcbf` and `phpcs` in sequence for the entire directory, using the custom ruleset and ignoring development files, much as you would if you were to run PHP CodeSniffer as described below.
-
-##### To use PHP CodeSniffer in you project directory:
+##### To use PHP CodeSniffer commands individually:
 
 ```shell
 # Hop into your project dir
