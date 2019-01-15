@@ -43,7 +43,7 @@
 	-->
 	
 	<!-- Lowering the severity of snake_case naming convention to below the default threshold -->
-    <rule ref="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar">
+    <rule ref="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase">
         <severity>4</severity>
     </rule>
     
