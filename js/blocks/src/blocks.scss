@@ -83,14 +83,18 @@ textarea {
 }
 
 .cl-hero-block-form .selected {
-	color: #fff;
 	height: auto;
 	
 	textarea, div.subhead {
-		background-color: #fff !important;
+		background-color: rgba(255, 255, 255, .8) !important;
 		border-radius: 2px;
 		padding: .25rem .75rem;
 		color: #000 !important;
+	}
+	
+	.vid {
+		margin: 1rem 1rem 1rem 2rem;
+		width: auto;
 	}
 		
 	.overlay, .block, .poster {
@@ -107,7 +111,7 @@ textarea {
 		position: absolute;
 	}
 	.meta {
-		margin: 1em 0;
+		margin: 1rem 2rem;
 		position: relative;
 		z-index: 2;
 		input {
@@ -127,4 +131,8 @@ textarea {
 //		border: 1px solid green;
 	}
 
+}
+.cl-hero.selected.fullwidth {
+	width: 60vw;
+	margin-left: -30vw;
 }

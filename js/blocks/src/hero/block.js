@@ -9,7 +9,8 @@ const {
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button
+	Button,
+	ButtonGroup
 } = wp.components;
 const {
 	BlockControls,
@@ -58,9 +59,6 @@ registerBlockType('uri-cl/hero', {
 		subhead: {
 			type: 'string',
 		},
-		body: {
-			type: 'string',
-		},
 		link: {
 			type: 'string',
 		},
@@ -80,6 +78,9 @@ registerBlockType('uri-cl/hero', {
 			type: 'string',
 		},
 		tooltip: {
+			type: 'string',
+		},
+		format: {
 			type: 'string',
 		},
 		animation: {
@@ -135,6 +136,13 @@ registerBlockType('uri-cl/hero', {
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
+						<PlainText
+							className="vid"
+							onChange={ content => setAttributes({ vid: content }) }
+							value={ attributes.vid }
+							placeholder={__("Youtube ID")}
+							keepPlaceholderOnFocus={true}
+						/>
 					</form>
 				)
 
@@ -145,6 +153,9 @@ registerBlockType('uri-cl/hero', {
 			let classes = "cl-hero";
 			if( !! attributes.style ) {
 				classes += ' ' + attributes.style;
+			}
+			if( !! attributes.format ) {
+				classes += ' ' + attributes.format;
 			}
 			if( !! isSelected ) {
 				classes += ' selected';
@@ -248,6 +259,33 @@ registerBlockType('uri-cl/hero', {
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
+							<BaseControl
+								label={ __( "Format" ) }
+							>
+								<ButtonGroup aria-label={ __( "Hero Format" ) }>
+									{ [ "default", "fullwidth", "super" ].map( ( value ) => {
+
+										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+										const key = (value === "default") ? '' : value;
+										const isSelected = key === attributes.format;
+									
+										return (
+											<Button
+												key={ key }
+												isDefault
+												isPrimary={ isSelected }
+												aria-pressed={ isSelected }
+												onClick={ content => setAttributes({ format: key }) }
+											>
+												{ capitalizedValue }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</BaseControl>
+						</PanelRow>
+
+						<PanelRow>
 							<TextControl
 								label="Tool tip"
 								onChange={ content => setAttributes({ tooltip: content }) }
@@ -278,6 +316,9 @@ registerBlockType('uri-cl/hero', {
 			// @todo this gets automatically applied to wrapper... remove it?
 			classes += " " + attributes.className
 		}
+		if ( !! attributes.format ) {
+			classes += " " + attributes.format
+		}
 		let bg = "";
 		if ( !! attributes.img ) {
 			bg = "background-image:url(" + attributes.img + ")";
@@ -285,7 +326,7 @@ registerBlockType('uri-cl/hero', {
 		return (
 
 
-			<div class="cl-hero">
+			<div class={classes}>
 				<div class="overlay">
 					<div class="block">
 						<h1>{ attributes.title }</h1>
