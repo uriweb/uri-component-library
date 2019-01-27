@@ -3,12 +3,19 @@
 @import "../../../src/sass/boxouts";
 @import "../../../src/sass/cards";
 
+.editor-styles-wrapper {
+	line-height: 1.2;
+}
 
 textarea {
 	background-color: inherit !important;
 	border-radius: 0;
 }
 
+.meta label {
+	float: left;
+	margin-right: .5em;
+}
 
 /* @todo: temporary styles that belong in the theme */
 .cl-button textarea {
@@ -59,10 +66,22 @@ textarea {
 }
 
 .cl-hero-block-form {
+	h1 {
+		margin: 0;
+	}
+	p {
+		margin: 0 0 1em;
+	}
 	textarea {
 		background-color: transparent !important;
 	}
+	.poster img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
 }
+
 .cl-hero-block-form .selected {
 	color: #fff;
 	height: auto;
@@ -84,7 +103,20 @@ textarea {
 		position: relative;	
 	}
 	.poster img {
+		min-height: 500px;
 		position: absolute;
+	}
+	.meta {
+		margin: 1em 0;
+		position: relative;
+		z-index: 2;
+		input {
+			width: 85%;
+		}
+		label svg {
+			margin-left: .25em;
+			margin-top: .5em;
+		}
 	}
 	
 	.block {
