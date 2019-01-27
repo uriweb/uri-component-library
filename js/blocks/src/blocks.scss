@@ -9,6 +9,14 @@ textarea {
 	border-radius: 0;
 }
 
+
+/* @todo: temporary styles that belong in the theme */
+.cl-button textarea {
+	font-family: "Hind", sans-serif !important;
+	text-transform: uppercase;
+}
+
+
 /** This would hide drop caps but probably everywhere. **/
 // .blocks-font-size .components-toggle-control {
 // 	display: none;
@@ -51,32 +59,40 @@ textarea {
 }
 
 .cl-hero-block-form {
+	textarea {
+		background-color: transparent !important;
+	}
+}
+.cl-hero-block-form .selected {
 	color: #fff;
+	height: auto;
 	
-	h1 {
-		color: #fff;
-		margin: 0;
-		textarea, textarea:focus, textarea::placeholder {
-			color: #efe !important;
-		}
+	textarea, div.subhead {
+		background-color: #fff !important;
+		border-radius: 2px;
+		padding: .25rem .75rem;
+		color: #000 !important;
 	}
-	
-	.subtitle {
-		color: #efe !important;
-		margin: 1rem 0;
-	}
-	
-	.overlay, .block {
+		
+	.overlay, .block, .poster {
+		position: relative;	
 		height: auto;
-		position: relative;
+		top: 0;
+	}
+	
+	.poster .editor-media-placeholder {
+		position: relative;	
+	}
+	.poster img {
+		position: absolute;
 	}
 	
 	.block {
-		border: 1px solid red;
+//		border: 1px solid red;
 	}
 
 	.poster {
-		border: 1px solid green;
+//		border: 1px solid green;
 	}
 
 }

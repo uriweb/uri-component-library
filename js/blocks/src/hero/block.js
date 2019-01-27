@@ -55,7 +55,7 @@ registerBlockType('uri-cl/hero', {
 		title: {
 			type: 'string',
 		},
-		subtitle: {
+		subhead: {
 			type: 'string',
 		},
 		body: {
@@ -146,6 +146,10 @@ registerBlockType('uri-cl/hero', {
 			if( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
+			if( !! isSelected ) {
+				classes += ' selected';
+			}
+
 			// set the tooltip
 			let title = "";
 			if( !! attributes.tooltip ) {
@@ -175,13 +179,13 @@ registerBlockType('uri-cl/hero', {
 									placeholder={__("Your hero title")}
 									keepPlaceholderOnFocus={true}
 								/></h1>
-								<RichText
-									onChange={ content => setAttributes({ title: subtitle }) }
-									value={ attributes.subtitle }
+								<p><RichText
+									onChange={ content => setAttributes({ subhead: content }) }
+									value={ attributes.subhead }
 									placeholder={__("Your hero subtitle")}
 									keepPlaceholderOnFocus={true}
-									className="subtitle"
-								/>
+									className="subhead"
+								/></p>
 								<span class="cl-button">
 								<PlainText
 									onChange={ content => setAttributes({ button: content }) }
@@ -285,7 +289,7 @@ registerBlockType('uri-cl/hero', {
 				<div class="overlay">
 					<div class="block">
 						<h1>{ attributes.title }</h1>
-						<p>{ attributes.subtitle }</p>
+						<p>{ attributes.subhead }</p>
 						<a class="cl-button" href={ attributes.link }>{ attributes.button }</a>
 					</div>
 				</div>
