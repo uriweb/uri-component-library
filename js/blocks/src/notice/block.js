@@ -68,15 +68,15 @@ registerBlockType('uri-cl/notice', {
 	edit({ attributes, className, setAttributes }) {
 
 		const createContentEditForm = () => {
-		let classes = "cl-notice";
-		if( !! attributes.className ) {
-			// @todo this gets automatically applied to wrapper... remove it?
-			classes += " " + attributes.className
-		}
+			let classes = "cl-notice";
+			if( !! attributes.className ) {
+				// @todo this gets automatically applied to wrapper... remove it?
+				classes += " " + attributes.className
+			}
 
-		if ( !! attributes.style ) {
-			classes += " " + attributes.style
-		}
+			if ( !! attributes.style ) {
+				classes += " " + attributes.style
+			}
 
 			return (
 				<div className="container">
