@@ -42,6 +42,18 @@ const customIcon = () => {
 	);
 }
 
+const classNames = (attributes) => {
+	let classes = "cl-card";
+	if( !! attributes.className ) {
+		// @todo this gets automatically applied to wrapper... remove it?
+		classes += " " + attributes.className
+	}
+	if( !! attributes.alignment ) {
+		classes += " " + attributes.alignment
+	}
+	return classes;
+}
+
 
 registerBlockType('uri-cl/card', {   
 
@@ -136,10 +148,8 @@ registerBlockType('uri-cl/card', {
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = "cl-card";
-			if( !! attributes.style ) {
-				classes += ' ' + attributes.style;
-			}
+			let classes = classNames(attributes);
+
 			// set the tooltip
 			let title = "";
 			if( !! attributes.tooltip ) {
@@ -257,11 +267,8 @@ registerBlockType('uri-cl/card', {
 	
 		// @todo: use the media ID to build a src set
 
-		let classes = "cl-card";
-		if ( !! attributes.className ) {
-			// @todo this gets automatically applied to wrapper... remove it?
-			classes += " " + attributes.className
-		}
+		let classes = classNames(attributes);
+
 		if ( !! attributes.alignment ) {
 			classes += " " + attributes.alignment
 		}

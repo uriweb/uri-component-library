@@ -37,6 +37,18 @@ const customIcon = () => {
 	);
 }
 
+const classNames = (attributes) => {
+	let classes = "cl-boxout";
+	if( !! attributes.className ) {
+		// @todo this gets automatically applied to wrapper... remove it?
+		classes += " " + attributes.className
+	}
+	if( !! attributes.alignment ) {
+		classes += " " + attributes.alignment
+	}
+	return classes;
+}
+
 
 registerBlockType('uri-cl/boxout', {   
 
@@ -57,9 +69,10 @@ registerBlockType('uri-cl/boxout', {
 	edit({ attributes, className, setAttributes }) {
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
+			let classes = classNames(attributes);
 			return (
 				<div className="container">
-					<div class="cl-boxout">
+					<div class={classes}>
 						<h1><PlainText
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
@@ -88,6 +101,8 @@ registerBlockType('uri-cl/boxout', {
 
 		}
 
+
+
 		// send the editor interfaces to the view
   	return ([
 			createBlockControls(),
@@ -97,14 +112,8 @@ registerBlockType('uri-cl/boxout', {
 	}, // end edit
 	
 	save({ attributes }) {
-		let classes = "cl-boxout";
-		if( !! attributes.className ) {
-			// @todo this gets automatically applied to wrapper... remove it?
-			classes += " " + attributes.className
-		}
-		if( !! attributes.alignment ) {
-			classes += " " + attributes.alignment
-		}
+		let classes = classNames(attributes);
+		
 		return (
 			<div>
 				<div class={classes}>

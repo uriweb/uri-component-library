@@ -43,6 +43,14 @@ const customIcon = () => {
 	);
 }
 
+const randomID = () => {
+	// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
+	let S4 = () => {
+		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+	};
+	return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 
 registerBlockType('uri-cl/hero', {   
 
@@ -64,6 +72,9 @@ registerBlockType('uri-cl/hero', {
 		},
 		mediaID: {
 			type: 'number',
+		},
+		id: {
+			type: 'string',
 		},
 		vid: {
 			type: 'string',
@@ -141,7 +152,7 @@ registerBlockType('uri-cl/hero', {
 						<fieldset>
 						<PlainText
 							className="vid"
-							onChange={ content => setAttributes({ vid: content }) }
+							onChange={ content => setAttributes({ vid: content, id: content }) }
 							value={ attributes.vid }
 							placeholder={__("Youtube ID")}
 							keepPlaceholderOnFocus={true}
@@ -154,6 +165,11 @@ registerBlockType('uri-cl/hero', {
 
 		// generate editor view of the hero itself
 		const createContentEditForm = () => {
+
+			if( ! attributes.id ) {
+				attributes.id = randomID();
+			}			
+
 			let classes = "cl-hero";
 			if( !! attributes.style ) {
 				classes += ' ' + attributes.style;
@@ -327,22 +343,28 @@ registerBlockType('uri-cl/hero', {
 		if ( !! attributes.img ) {
 			bg = "background-image:url(" + attributes.img + ")";
 		}
+		let still = "still";
+		if ( !! attributes.vid ) {
+			still = "poster";
+		}
+		let button = "";
+		if( !! attributes.button && !! attributes.link ) {
+			button = ( <a class="cl-button" href={ attributes.link }>{ attributes.button }</a> );
+		}
+		// @todo add still photo animations... e.g. "animation shift"
+
 		return (
-
-
 			<div class={classes}>
 				<div class="overlay">
 					<div class="block">
 						<h1>{ attributes.title }</h1>
 						<p>{ attributes.subhead }</p>
-						<a class="cl-button" href={ attributes.link }>{ attributes.button }</a>
+						{button}
 					</div>
 				</div>
-				<div id="hero1" data-id="[video id]" class="poster" style={bg}></div>
+				<div id={attributes.id} data-id={attributes.vid} class={still} style={bg}></div>
 			</div>
-
 		);
-		
 		
 	}
 	

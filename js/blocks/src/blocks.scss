@@ -33,6 +33,10 @@ textarea {
 }
 
 
+.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
+	position: relative;
+	z-index: 5;
+}
 
 /* @todo: temporary styles that belong in the theme */
 .cl-button textarea {

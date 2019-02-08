@@ -34,7 +34,9 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/button'
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Your hero2 content...', dropCap: false }],
+  ['core/heading', { level: 1, placeholder: 'My Hero' }],
+  ['core/paragraph', { placeholder: '', dropCap: false }],
+  ['uri-cl/button', {}]
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
@@ -131,15 +133,10 @@ registerBlockType('uri-cl/hero2', {
 								render={ ({ open }) => getImageButton(open) }
 							/>
 						</div>
-						<h1><PlainText
-							onChange={ content => setAttributes({ title: content }) }
-							value={ attributes.title }
-							placeholder={__("Your hero2 title")}
-							keepPlaceholderOnFocus={true}
-						/></h1>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={TEMPLATE}
+							templateLock="all"
 						/>
 					</div>
 				</div>
@@ -170,7 +167,7 @@ registerBlockType('uri-cl/hero2', {
 	}, // end edit
 	
 	save({ attributes }) {
-		let classes = "cl-hero2";
+		let classes = "cl-hero";
 		if( !! attributes.className ) {
 			// @todo this gets automatically applied to wrapper... remove it?
 			classes += " " + attributes.className
@@ -178,13 +175,25 @@ registerBlockType('uri-cl/hero2', {
 		if( !! attributes.alignment ) {
 			classes += " " + attributes.alignment
 		}
+		if ( !! attributes.format ) {
+			classes += " " + attributes.format
+		}
+		let bg = "";
+		if ( !! attributes.img ) {
+			bg = "background-image:url(" + attributes.img + ")";
+		}
 		return (
-			<div>
-				<div class={classes}>
-					<h1>{ attributes.title }</h1>
-					<InnerBlocks.Content />
+
+			<div class={classes}>
+				<div class="overlay">
+					<div class="block">
+						<h1>{ attributes.title }</h1>
+						<InnerBlocks.Content />
+					</div>
 				</div>
+				<div id="hero1" data-id={attributes.vid} class="poster" style={bg}></div>
 			</div>
+
 		);
 	}
 	
