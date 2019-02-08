@@ -3,3 +3,4 @@ import './button/block';
 import './card/block';
 import './hero/block';
 import './hero2/block';
+import './notice/block';
