@@ -99,6 +99,7 @@ registerBlockType('uri-cl/button', {
 						className="meta"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
+						<fieldset class="row link">
 						<label title="Links to:"><Dashicon icon="admin-links" /></label>
 						<URLInput
 							value={ attributes.link }
@@ -106,6 +107,7 @@ registerBlockType('uri-cl/button', {
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
+						</fieldset>
 					</form>
 				)
 			}

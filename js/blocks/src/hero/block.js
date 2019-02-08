@@ -129,6 +129,7 @@ registerBlockType('uri-cl/hero', {
 						className="meta"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
+						<fieldset class="row link">
 						<label title="Links to:"><Dashicon icon="admin-links" /></label>
 						<URLInput
 							value={ attributes.link }
@@ -136,6 +137,8 @@ registerBlockType('uri-cl/hero', {
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
+						</fieldset>
+						<fieldset>
 						<PlainText
 							className="vid"
 							onChange={ content => setAttributes({ vid: content }) }
@@ -143,6 +146,7 @@ registerBlockType('uri-cl/hero', {
 							placeholder={__("Youtube ID")}
 							keepPlaceholderOnFocus={true}
 						/>
+						</fieldset>
 					</form>
 				)
 
@@ -190,7 +194,7 @@ registerBlockType('uri-cl/hero', {
 									placeholder={__("Your hero title")}
 									keepPlaceholderOnFocus={true}
 								/></h1>
-								<p><RichText
+								<p class="subhead"><RichText
 									onChange={ content => setAttributes({ subhead: content }) }
 									value={ attributes.subhead }
 									placeholder={__("Your hero subtitle")}

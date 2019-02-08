@@ -3,6 +3,11 @@
 @import "../../../src/sass/boxouts";
 @import "../../../src/sass/cards";
 
+@keyframes metaReveal {
+	from { transform: rotateX(90deg); 	transform-origin: top; }
+	to   { transform: rotateX(0deg); 	transform-origin: top; }
+}
+
 .editor-styles-wrapper {
 	line-height: 1.2;
 }
@@ -12,10 +17,22 @@ textarea {
 	border-radius: 0;
 }
 
-.meta label {
+.meta {
+	animation: metaReveal .5s;
+	position: relative;
+	padding: 1rem 0;
+}
+
+.meta .link label {
 	float: left;
 	margin-right: .5em;
+	svg {
+		margin-left: .25em;
+		margin-top: .5em;
+	}
 }
+
+
 
 /* @todo: temporary styles that belong in the theme */
 .cl-button textarea {
@@ -66,6 +83,10 @@ textarea {
 }
 
 .cl-hero-block-form {
+	h1, textarea, .subhead {
+		position: relative;
+		transition: all .5s ease;
+	}
 	h1 {
 		margin: 0;
 	}
@@ -110,17 +131,9 @@ textarea {
 		min-height: 500px;
 		position: absolute;
 	}
+
 	.meta {
-		margin: 1rem 2rem;
-		position: relative;
 		z-index: 2;
-		input {
-			width: 85%;
-		}
-		label svg {
-			margin-left: .25em;
-			margin-top: .5em;
-		}
 	}
 	
 	.block {
