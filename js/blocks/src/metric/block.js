@@ -83,8 +83,6 @@ registerBlockType('uri-cl/metric', {
 		const createContentEditForm = () => {
 			let classes = classNames(attributes);
 			
-			console.log(classes);
-			
 			// set the tooltip
 			let title = "";
 			if( !! attributes.tooltip ) {
@@ -145,7 +143,7 @@ registerBlockType('uri-cl/metric', {
 							<BaseControl
 								label={ __( "Metric Style" ) }
 							>
-								<ButtonGroup aria-label={ __( "Metric Style" ) } selectMultiple="true">
+								<ButtonGroup aria-label={ __( "Metric Style" ) }>
 									{ [ "standard", "clear", "dark", "overlay" ].map( ( value ) => {
 
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
