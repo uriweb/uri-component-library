@@ -127,6 +127,8 @@ registerBlockType('uri-cl/metric', {
 		}
 
 		// generate sidebar inspector controls for other custom attributes
+		// @todo: technically, you can have a clear and dark metric
+		// 				our buttongroup only allows users to select one
 		const createInspectorControls = () => {
 			return(
 				<InspectorControls>
@@ -143,7 +145,7 @@ registerBlockType('uri-cl/metric', {
 							<BaseControl
 								label={ __( "Metric Style" ) }
 							>
-								<ButtonGroup aria-label={ __( "Metric Style" ) }>
+								<ButtonGroup aria-label={ __( "Metric Style" ) } selectMultiple="true">
 									{ [ "standard", "clear", "dark", "overlay" ].map( ( value ) => {
 
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
