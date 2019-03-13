@@ -2,6 +2,7 @@
 @import "../../../src/sass/buttons";
 @import "../../../src/sass/boxouts";
 @import "../../../src/sass/cards";
+@import "../../../src/sass/metrics";
 
 @keyframes metaReveal {
 	from { transform: rotateX(90deg); 	transform-origin: top; }
@@ -30,6 +31,16 @@ textarea {
 		margin-left: .25em;
 		margin-top: .5em;
 	}
+}
+
+
+.cl-metric textarea, .cl-metric span {
+	text-align: center;
+}
+.cl-metric.right, .cl-metric.left {
+	position: relative;
+	width: 35%;
+	z-index: 5;
 }
 
 
