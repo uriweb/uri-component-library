@@ -6,3 +6,4 @@ import './hero2/block';
 import './metric/block';
 import './notice/block';
 import './panel/block';
+import './quote/block';

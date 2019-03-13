@@ -33,6 +33,11 @@ textarea {
 	}
 }
 
+.cl-quote cite textarea {
+	max-width: 50%;
+	position: relative;
+	top: .375rem;
+}
 
 .cl-metric textarea, .cl-metric span {
 	text-align: center;
