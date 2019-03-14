@@ -1,10 +1,16 @@
 <?php
 /**
- * CL Boxout Gutenberg Implementation
+ * CL Gutenberg Implementation
  *
  * @package uri-component-library
  * @author John Pennypacker <jpennypacker@uri.edu>
+ * @author: Brandon Fuller <bjcfuller@uri.edu>
  */
+
+// Block direct requests
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
 
 
 /**
