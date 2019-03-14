@@ -99,12 +99,10 @@ registerBlockType('uri-cl/tabs', {
 			return (
 				<div className="container">
 					<div class={classes}>
-						<section class="cl-tab">
 							<InnerBlocks
 								template={ getTabsTemplate( attributes.tabs ) }
 								templateLock="all"
 								allowedBlocks={ ALLOWED_BLOCKS } />
-						</section>
 					</div>
 				</div>
 			);

@@ -33,6 +33,11 @@ textarea {
 	}
 }
 
+.block-editor .cl-tab {
+	border: 1px dashed #ddd;
+	border-width: 1px 0;
+}
+
 .cl-quote cite textarea {
 	max-width: 50%;
 	position: relative;
