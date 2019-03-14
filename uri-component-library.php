@@ -57,10 +57,6 @@ if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
 
-
-/**
- * Test for Gutenberg
- */
 // Include gutenberg
 include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
 
