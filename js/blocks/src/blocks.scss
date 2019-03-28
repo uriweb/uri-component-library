@@ -111,6 +111,23 @@ textarea {
 }
 
 
+
+.edit-post-visual-editor div[data-type="uri-cl/hero"] {
+	outline: 4px dotted green;
+}
+
+.block-editor {
+	.editor-styles-wrapper {
+		.cl-hero, .cl-hero.super, .cl-hero.fullwidth {
+			left: 0;
+			margin-left: 0;
+			width: 100%;
+		}
+	}
+}
+
+
+
 .editor-styles-wrapper .cl-hero .poster img {
 	height: 100%;
 	object-fit: cover;
