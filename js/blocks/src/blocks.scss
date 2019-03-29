@@ -185,6 +185,12 @@ textarea {
 			}
 		}
 
+		.cl-hero.selected {
+			h1 textarea, .subhead {
+				background-color: rgba(0,0,0,.5) !important;
+			}
+		}
+
 		.cl-hero.selected.no-image .poster {
 			z-index: 10;
 			height: auto;
