@@ -74,39 +74,42 @@ textarea {
 	border-width: 1px 0;
 }
 
-.cl-quote cite textarea {
+.block-editor .cl-quote cite textarea {
 	max-width: 50%;
 	position: relative;
 	top: .375rem;
 }
 
-.cl-metric textarea, .cl-metric span {
-	text-align: center;
-}
-.cl-metric.right, .cl-metric.left {
-	position: relative;
-	width: 35%;
-	z-index: 5;
-}
-.cl-metric.dark textarea {
-	color: #fff;
-}
-
-
-.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
-	position: relative;
-	z-index: 5;
+.block-editor {
+	.cl-metric textarea, .cl-metric span {
+		text-align: center;
+	}
+	.cl-metric.right, .cl-metric.left {
+		position: relative;
+		width: 35%;
+		z-index: 5;
+	}
+	.cl-metric.dark textarea {
+		color: #fff;
+	}
 }
 
+
+.block-editor {
+	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
+		position: relative;
+		z-index: 5;
+	}
+}
 
 /** This would hide drop caps but probably everywhere. **/
 // .blocks-font-size .components-toggle-control {
 // 	display: none;
 // }
 
-// @todo: don't repeat button styles here
 .block-editor {
 	.cl-button {
+		// @todo: don't repeat button styles here
 		font-size: .8rem;
 		font-weight: 700;
 		padding: 1rem;
@@ -115,36 +118,37 @@ textarea {
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
 	}
-}
+	.cl-button-block-form {
 
-.cl-button-block-form {
-
-	vertical-align: middle;
+		vertical-align: middle;
 	
-	label {
-		color: $midgrey;
-	}
+		label {
+			color: $midgrey;
+		}
 
-	label,
-	.editor-url-input {
-		display: inline;
-	}
+		label,
+		.editor-url-input {
+			display: inline;
+		}
 	
-	textarea {
-		text-align: center;
-	}
-	textarea:focus {
-	}
+		textarea {
+			text-align: center;
+		}
+		textarea:focus {
+		}
 
-}
-
-.cl-card-block-form {
-	textarea.cl-button {
-		border-radius: 0;
-		color: $black !important;
 	}
 }
 
+
+.block-editor {
+	.cl-card-block-form {
+		textarea.cl-button {
+			border-radius: 0;
+			color: $black !important;
+		}
+	}
+}
 
 
 .edit-post-visual-editor div[data-type="uri-cl/hero"] {
@@ -215,29 +219,3 @@ textarea {
 		}
 	}
 }
-
-
-
-
-
-// 
-// 
-// .editor-writing-flow {
-// 	outline: 1px dotted red;
-// }
-// .edit-post-visual-editor div[data-type="uri-cl/hero"] {
-// 	margin: 0;
-// 	padding: 0;
-// 	width: 100%;
-// }
-// .editor-styles-wrapper .cl-hero.selected.super {
-// 	width: 100%;
-// 	left: 0;
-// 	margin-left: 0;
-// }
-// 
-// 
-// .cl-hero.selected.fullwidth {
-// 	left: 0;
-// 	margin-left: 0; /* admin bar */
-// }
