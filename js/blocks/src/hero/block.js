@@ -307,6 +307,7 @@ registerBlockType('uri-cl/hero', {
 								onChange={ content => setAttributes({ vid: content }) }
 								value={ attributes.vid }
 								className="meta-field vid"
+								help="For creating a video hero."
 							/>
 						</PanelRow>						
 
