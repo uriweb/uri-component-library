@@ -180,6 +180,11 @@ registerBlockType('uri-cl/hero', {
 			if( !! isSelected ) {
 				classes += ' selected';
 			}
+			if ( !! attributes.img ) {
+				classes += ' has-image';
+			} else {
+				classes += ' no-image';
+			}
 
 			// set the tooltip
 			let title = "";
@@ -224,11 +229,11 @@ registerBlockType('uri-cl/hero', {
 									placeholder={__("Your button text")}
 									keepPlaceholderOnFocus={true}
 								/></span>
+								{ meta }
 						</div>
+
+
 					</div>
-
-					{ meta }
-
 
 					</div>
 				</div>

@@ -20,8 +20,25 @@ textarea {
 
 .meta {
 	animation: metaReveal .5s;
+	background-color: #fff;
+	border: 2px solid #ddd;
+	box-shadow: 0 0 2px #999;
+	margin-top: .75rem;
 	position: relative;
 	padding: 1rem 0;
+	&:before {
+		background-color: #fff;
+		border: 2px solid #ddd;
+		border-width: 2px 0 0 2px;
+		content: ' ';
+		display: block;
+		height: 1rem;
+		left: 2rem;
+		position: absolute;
+		top: -.6rem;
+		transform: rotateZ(45deg);
+		width: 1rem;
+	}
 }
 
 .meta .link label {
@@ -113,26 +130,50 @@ textarea {
 
 
 .edit-post-visual-editor div[data-type="uri-cl/hero"] {
-	outline: 4px dotted green;
+	max-width: 100%;
 }
 
 .block-editor {
 	.editor-styles-wrapper {
-		.cl-hero, .cl-hero.super, .cl-hero.fullwidth {
+		.cl-hero {
+			max-width: 610px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.cl-hero.super, .cl-hero.fullwidth {
+			max-width: 100%;
 			left: 0;
 			margin-left: 0;
+			margin-right: 0;
 			width: 100%;
+		}
+		.cl-hero, .cl-hero.super, .cl-hero.fullwidth {
+			background-color: #fff;
+			overflow: initial;
+			h1 {
+				margin: 0 0 -1rem;
+				textarea::placeholder {
+					color: #fff;
+				}
+			}
+			.subhead {
+				margin: 0 0 2rem;
+			}
+		}
+		.cl-hero.selected.no-image .poster {
+			z-index: 10;
+			height: auto;
+			img {
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
 		}
 	}
 }
 
 
 
-.editor-styles-wrapper .cl-hero .poster img {
-	height: 100%;
-	object-fit: cover;
-	width: 100%;
-}
 
 
 // 
