@@ -26,6 +26,10 @@ textarea {
 	margin-top: .75rem;
 	position: relative;
 	padding: 1rem 0;
+	.row {
+		margin-left: .5rem;
+		margin-right: .5rem;
+	}
 	&:before {
 		background-color: #fff;
 		border: 2px solid #ddd;
@@ -80,11 +84,13 @@ textarea {
 }
 
 /* @todo: temporary styles that belong in the theme */
-.cl-button textarea {
-	font-family: "Hind", sans-serif !important;
-	text-transform: uppercase;
+.block-editor {
+	.cl-button textarea {
+		font-family: "Hind", sans-serif !important;
+		text-transform: uppercase;
+		background-color: transparent !important;
+	}
 }
-
 
 /** This would hide drop caps but probably everywhere. **/
 // .blocks-font-size .components-toggle-control {
@@ -135,6 +141,23 @@ textarea {
 
 .block-editor {
 	.editor-styles-wrapper {
+
+		.cl-hero {
+			background-color: #fff;
+			overflow: initial;
+			h1, h1 textarea:focus {
+				color: #fff;
+				margin: 0 0 -1rem;
+				textarea::placeholder {
+					color: #fff;
+				}
+			}
+			.subhead {
+				margin: 0 0 2rem;
+			}
+		}
+		
+
 		.cl-hero {
 			/* these are WP's block defaults, we honor them for regular heroes */
 			max-width: 610px;
@@ -162,19 +185,6 @@ textarea {
 			}
 		}
 
-		.cl-hero, .cl-hero.super, .cl-hero.fullwidth {
-			background-color: #fff;
-			overflow: initial;
-			h1 {
-				margin: 0 0 -1rem;
-				textarea::placeholder {
-					color: #fff;
-				}
-			}
-			.subhead {
-				margin: 0 0 2rem;
-			}
-		}
 		.cl-hero.selected.no-image .poster {
 			z-index: 10;
 			height: auto;

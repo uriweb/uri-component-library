@@ -149,15 +149,6 @@ registerBlockType('uri-cl/hero', {
 							className="meta-field"
 						/>
 						</fieldset>
-						<fieldset>
-						<PlainText
-							className="vid"
-							onChange={ content => setAttributes({ vid: content, id: content }) }
-							value={ attributes.vid }
-							placeholder={__("Youtube ID")}
-							keepPlaceholderOnFocus={true}
-						/>
-						</fieldset>
 					</form>
 				)
 
@@ -309,6 +300,15 @@ registerBlockType('uri-cl/hero', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
+						
+						<PanelRow>
+							<TextControl
+								label="Youtube ID"
+								onChange={ content => setAttributes({ vid: content }) }
+								value={ attributes.vid }
+								className="meta-field vid"
+							/>
+						</PanelRow>						
 
 						<PanelRow>
 							<TextControl
