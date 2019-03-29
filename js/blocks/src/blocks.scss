@@ -178,6 +178,8 @@ textarea {
 		.cl-hero.selected.no-image .poster {
 			z-index: 10;
 			height: auto;
+		}
+		.cl-hero.has-image .poster {
 			img {
 				height: 100%;
 				object-fit: cover;
