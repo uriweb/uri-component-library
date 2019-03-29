@@ -148,7 +148,20 @@ textarea {
 			margin-left: 0;
 			margin-right: 0;
 			width: 100%;
+		 .meta {
+				max-width: 400px;
+			}
 		}
+		.cl-hero.super {
+			h1, textarea, .subhead {
+				text-align: center;
+			}
+			.meta {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
 		.cl-hero, .cl-hero.super, .cl-hero.fullwidth {
 			background-color: #fff;
 			overflow: initial;
