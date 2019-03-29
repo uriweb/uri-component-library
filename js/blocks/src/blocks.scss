@@ -136,11 +136,13 @@ textarea {
 .block-editor {
 	.editor-styles-wrapper {
 		.cl-hero {
+			/* these are WP's block defaults, we honor them for regular heroes */
 			max-width: 610px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 		.cl-hero.super, .cl-hero.fullwidth {
+			/* we override the default block width for full-width and full-screen heroes */
 			max-width: 100%;
 			left: 0;
 			margin-left: 0;
