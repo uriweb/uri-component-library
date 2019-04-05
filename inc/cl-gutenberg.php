@@ -57,19 +57,16 @@ add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
 /**
  * Defines a custom category
  */
-add_filter(
-	 'block_categories',
-	function( $categories, $post ) {
-		return array_merge(
+function uri_cl_gutenberg_add_categories( $categories, $post ) {
+	return array_merge(
 		$categories,
 		array(
 			array(
 				'slug' => 'cl-blocks',
 				'title' => __( 'Component Library', 'cl-blocks' ),
+				'icon' => null,
 			),
 		)
-		);
-	},
-	10,
-	2
 	);
+}
+add_filter( 'block_categories', 'uri_cl_gutenberg_add_categories', 10, 2 );
