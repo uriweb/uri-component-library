@@ -2,14 +2,17 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.4.2
+## What's new in 3.4.3
 
-CL 3.4.2 is a bug fix release.
+CL 3.4.3 is a bug fix release.
 
-* Fixes a bug in IE that caused hero images to disappear when the browser was resized
-* Solves a compatability issue with the Themify Builder plugin
+* Allows titles and excerpts passed to components displayed using Display Posts (via the [Display Posts Shortcode](https://github.com/billerickson/display-posts-shortcode)) to include square brackets
+* Image sizes are now passed to components displayed using Display Posts
+* Adds tooltips to icons displayed using the social bar component
+* Adds compass point classes for positioning still image hero backgrounds (e.g. `n`, `ne`, `w`, etc.)
+* Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/131/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/135/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
 
 ## Plugin Details
 
