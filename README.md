@@ -29,5 +29,5 @@ Add the component library, including shortcodes and visual editor support, to Wo
 Contributors: Brandon Fuller, John Pennypacker  
 Tags: plugins  
 Requires at least: 4.0  
-Tested up to: 4.9  
+Tested up to: 5.0  
 Stable tag: 3.4.3  
