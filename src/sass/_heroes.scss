@@ -20,7 +20,7 @@
 	//transition: height .2s ease-in-out;
 	z-index: 1;
 	box-sizing: border-box;
-    
+
     &.fullwidth,
     &.super {
         width: 100vw;
@@ -29,7 +29,7 @@
         left: 50%;
         margin-left: -50vw;
     }
-    
+
     iframe {
         z-index: 1;
         position: relative;
@@ -49,21 +49,21 @@
         background-size: cover;
         background-position: center center;
     }
-    
+
     .animate {
         transition: all 10s ease-in-out;
     }
-    
+
     .poster {
         opacity: 1;
         transition: all .4s ease-in-out;
     }
-    
+
     .poster.unveil {
         opacity: 0;
         transition-delay: .5s;
     }
-	
+
 	&.n .still {
 		background-position: 50% 0;
 	}
@@ -88,14 +88,14 @@
 	&.nw .still {
 		background-position: 0 0;
 	}
-    
+
     .overlay {
         position: absolute;
         height: 100%;
         width: 100%;
         z-index: 3;
     }
-    
+
     .block {
         position: absolute;
         z-index: 3;
@@ -116,48 +116,48 @@
         transform: all .2s ease-in-out;
         padding: 0;
     }
-	
+
 	p {
         color: #fff;
         font-weight: 400;
         font-size: 1.1rem;
     }
-	
+
 	p,
 	&.fullwidth p {
 		max-width: 600px;
 	}
 
     &.super {
-		
+
 		height: 100vh;
-        
+
         .block,
         h1,
         p {
             text-align: center;
         }
-        
+
         h1,
         p {
             max-width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
         }
-        
+
         h1 {
             font-size: 2.5rem;
         }
-        
+
         p {
             font-size: 1.4rem;
             line-height: 1.5rem;
         }
-        
+
     }
-    
+
     .cl-button {
-        
+
         border: none;
         background: rgba(255,255,255,.9);
         box-shadow: $level3;
@@ -173,37 +173,7 @@
             top: -3px;
         }
     }
-    
-    .prompter {
-		
-        display: none;
-        position: absolute;
-        bottom: 25px;
-        left: calc( 50% - 16px);
-        width: 0;
-        height: 30px;
-        padding-left: 30px;
-        overflow: hidden;
-        z-index: 10;
-        border-left: 1px solid rgba(255,255,255,.8);
-        border-bottom: 1px solid rgba(255,255,255,.8);
-        transform: rotate(-45deg);
-		
-		&:hover {
-			cursor: pointer;
-		}
-		
-    }
-    
-    &:hover .prompter,
-    &:focus .prompter {
-        animation-name: prompter-pulse;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        animation-timing-function: ease-in-out;
-    }
-    
+
     .motionswitch {
 
 		display: none;
@@ -281,9 +251,9 @@
 
 @media screen and (min-width: $break1) {
     .cl-hero {
-        
+
         height: 400px;
-        
+
         .block {
             padding-bottom: 10%;
         }
@@ -310,9 +280,9 @@
 
 @media screen and (min-width: $break2) {
     .cl-hero {
-        
+
         height: 500px;
-        
+
         .block {
             padding-bottom: 6%;
         }
@@ -331,7 +301,6 @@
                 line-height: 2.2rem;
             }
         }
-            
+
     }
 }
-
