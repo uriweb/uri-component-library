@@ -55,3 +55,11 @@ if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
+
+// URI Autoupdater
+function uri_component_library_update() {
+	if ( function_exists( 'uri_check_for_updates' ) ) {
+		uri_check_for_updates(__FILE__, 'uri-component-library');
+	}
+};
+add_action( 'plugins_loaded', 'uri_component_library_update' );
