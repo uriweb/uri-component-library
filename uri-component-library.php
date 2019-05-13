@@ -59,7 +59,7 @@ if ( is_admin() ) {
 // URI Autoupdater
 function uri_component_library_update() {
 	if ( function_exists( 'uri_check_for_updates' ) ) {
-		uri_check_for_updates(__FILE__, 'uri-component-library');
+		uri_check_for_updates( __FILE__, 'uri-component-library' );
 	}
 };
 add_action( 'plugins_loaded', 'uri_component_library_update' );
