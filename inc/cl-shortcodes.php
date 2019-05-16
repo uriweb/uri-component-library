@@ -518,11 +518,17 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			'alt' => '',
 			'title' => '',
 			'reverse' => false,
+			'format' => '',
 			'class' => '',
 			'css' => '',
 		),
 		$atts
 		);
+
+	$template = 'panel';
+	if ( 'super' == $atts['format'] ) {
+		$template = 'panel-super';
+	}
 
 	// Error checking
 	return uri_cl_validate(
@@ -539,8 +545,14 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 				'types' => array( 'bool' ),
 				'req' => false,
 			),
+			array(
+				'attr' => 'format',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default', 'super' ),
+			),
 		),
-		uri_cl_shortcode_get_template( 'panel' )
+		uri_cl_shortcode_get_template( $template )
 	);
 
 }
@@ -842,4 +854,3 @@ function uri_cl_shortcode_waves( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-waves', 'uri_cl_shortcode_waves' );
-
