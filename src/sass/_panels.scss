@@ -107,6 +107,32 @@
 
 /* SUPER PANELS */
 
+@keyframes glide {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(1.5) rotate(-20deg) translateZ(8ch);
+  }
+  100% {
+    transform: scale(1.5) rotate(45deg) translateZ(-8ch);
+  }
+}
+@keyframes haze {
+  0% {
+    filter: blur(50px) brightness(80%) saturate(200%);
+  }
+  25% {
+    filter: blur(80px) brightness(60%) saturate(250%);
+  }
+  50% {
+    filter: blur(50px) brightness(80%) saturate(200%);
+  }
+  100% {
+    filter: blur(90px) brightness(70%) saturate(220%);
+  }
+}
+
 .cl-panel-super {
 
   position: relative;
@@ -196,6 +222,11 @@
 	  background-repeat: no-repeat;
 	  background-size: cover;
 	  filter: blur(50px) brightness(80%) saturate(200%);
+    animation-duration: 80s, 60s;
+    animation-name: glide, haze;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease;
 	}
 
 }
