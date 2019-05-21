@@ -12,7 +12,7 @@ CL 3.4.3 is a bug fix release.
 * Adds compass point classes for positioning still image hero backgrounds (e.g. `n`, `ne`, `w`, etc.)
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/135/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues). 
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/135/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
@@ -30,4 +30,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 5.0  
-Stable tag: 3.4.3  
+Stable tag: 3.5.0  
