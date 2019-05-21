@@ -4,7 +4,7 @@ $cards: ".cl-card, .cl-dcard, .cl-scard";
 $adcards: ".cl-card, .cl-dcard";
 
 #{$cards} {
-	
+
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -18,11 +18,11 @@ $adcards: ".cl-card, .cl-dcard";
     position: relative;
     top: 0;
     transition: width .2s ease-in-out, top .1s ease-in-out, box-shadow .1s ease-in-out;
-	
+
 	* {
         box-sizing: border-box;
     }
-	
+
 }
 
 @media screen and (min-width: $break1) {
@@ -41,7 +41,7 @@ $adcards: ".cl-card, .cl-dcard";
 }
 
 #{$adcards} {
-    
+
     &:hover,
     &:focus {
         top: -2px;
@@ -49,12 +49,12 @@ $adcards: ".cl-card, .cl-dcard";
         cursor: pointer;
         color: inherit;
     }
-    
+
     &:active {
         box-shadow: $level3;
         color: inherit;
     }
-    
+
 }
 
 .cl-card .cl-card-text,
@@ -68,11 +68,11 @@ $adcards: ".cl-card, .cl-dcard";
 .cl-tiles .cl-card,
 .cl-scard,
 .cl-tiles .cl-scard {
-    
+
     p {
         margin-bottom: 2rem;
     }
-    
+
     img {
         width: 100%;
         height: auto;
@@ -80,7 +80,11 @@ $adcards: ".cl-card, .cl-dcard";
         padding: 0;
         display: block;
     }
-    
+
+}
+
+.cl-boxout .cl-card img {
+	border-radius: 0;
 }
 
 
@@ -114,7 +118,7 @@ $adcards: ".cl-card, .cl-dcard";
         color: $white;
         transition: all .3s;
     }
-    
+
 }
 
 
@@ -128,7 +132,7 @@ $adcards: ".cl-card, .cl-dcard";
 
 .cl-dcard,
 .cl-tiles .cl-dcard {
-    
+
     img {
         float: right;
         width: 30%;
@@ -143,14 +147,14 @@ $adcards: ".cl-card, .cl-dcard";
         font-size: .9rem;
         margin-bottom: 1.2rem;
     }
-    
+
 }
 
 
 /* Story Cards */
 
 .cl-scard {
-    
+
     border-radius: .2rem .2rem 0 0;
     box-shadow: none;
     border: 1px solid #eee;
@@ -158,14 +162,14 @@ $adcards: ".cl-card, .cl-dcard";
     img {
         border-radius: .2rem .2rem 0 0;
     }
-    
+
     .cl-scard-img-container {
         position: relative;
         display: block;
     }
-    
+
     .cl-scard-img-overlay {
-        
+
         position: absolute;
         top: 0;
         left: 0;
@@ -176,23 +180,23 @@ $adcards: ".cl-card, .cl-dcard";
         opacity: 0;
         transition: all .2s ease-in-out;
         text-align: center;
-        
+
         &:hover,
         &:focus {
             opacity: 1;
-            
+
             span {
                 font-size: 1.25rem;
                 left: -.625rem;
                 padding-left: 1.85rem;
             }
-            
+
             span:before {
                 width: 1.35rem;
                 height: 1.25rem;
             }
         }
-        
+
         span {
             display: inline-block;
             position: relative;
@@ -203,7 +207,7 @@ $adcards: ".cl-card, .cl-dcard";
             color: #fff;
             transition: all .1s ease-in-out;
         }
-        
+
         span:before {
             display: block;
             position: absolute;
@@ -218,9 +222,9 @@ $adcards: ".cl-card, .cl-dcard";
             background-size: 100% auto;
             transition: all .1s ease-in-out;
         }
-        
+
     }
-    
+
     .cl-scard-category {
         display: inline-block;
         color: #555;
@@ -247,13 +251,13 @@ $adcards: ".cl-card, .cl-dcard";
     }
 
     .cl-scard-body {
-        
+
         color: inherit;
-        
+
         h3, p {
             transition: color .1s ease-in-out;
         }
-    
+
         &:hover,
         &:focus,
         &:active {
@@ -263,34 +267,34 @@ $adcards: ".cl-card, .cl-dcard";
             }
 
         }
-        
+
     }
 
     .cl-scard-meta {
-        
+
         margin-bottom: .9rem;
         font-size: .9rem;
         color: #999;
         border-top: 1px solid #eee;
         padding-top: 1rem;
-        
+
         &:after {
             display: block;
             content: '';
             clear: both;
         }
-        
+
     }
-    
+
     .cl-scard-date {
         line-height: 20px;
         float: left;
     }
-    
+
     .cl-scard-social {
         float: right;
     }
-    
+
 }
 
 @supports ( (backdrop-filter: initial) or (-webkit-backdrop-filter: initial) ) {

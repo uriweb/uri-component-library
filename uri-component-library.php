@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 3.4.3
+ * Version: 3.5.0
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -55,3 +55,13 @@ if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
+
+/**
+ * URI Autoupdater
+ */
+function uri_component_library_update() {
+	if ( function_exists( 'uri_autoupdater_check_for_updates' ) ) {
+		uri_autoupdater_check_for_updates( __FILE__, 'uri-component-library' );
+	}
+};
+add_action( 'plugins_loaded', 'uri_component_library_update' );
