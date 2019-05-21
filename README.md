@@ -2,17 +2,16 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.4.3
+## What's new in 3.5.0
 
-CL 3.4.3 is a bug fix release.
+CL 3.5.0 is a minor release.
 
-* Allows titles and excerpts passed to components displayed using Display Posts (via the [Display Posts Shortcode](https://github.com/billerickson/display-posts-shortcode)) to include square brackets
-* Image sizes are now passed to components displayed using Display Posts
-* Adds tooltips to icons displayed using the social bar component
-* Adds compass point classes for positioning still image hero backgrounds (e.g. `n`, `ne`, `w`, etc.)
+* Adds a new "super" format for panels
+* Adds support for automatic updating via the [URI AutoUpdater](https://github.com/uriweb/uri-autoupdater) plugin
+* Fixes a minor styling issue with cards nested in boxouts
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/135/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/141/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
