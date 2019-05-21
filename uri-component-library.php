@@ -56,7 +56,9 @@ if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
 
-// URI Autoupdater
+/**
+ * URI Autoupdater
+ */
 function uri_component_library_update() {
 	if ( function_exists( 'uri_autoupdater_check_for_updates' ) ) {
 		uri_autoupdater_check_for_updates( __FILE__, 'uri-component-library' );
