@@ -195,7 +195,7 @@ class URIWYSIWYG {
 					}
 
 				},
-				complete: function( data, textStatus, jqXHR ) {
+				complete: function() {
 					URIWYSIWYGoutStandingRequests--;
 					if ( URIWYSIWYGoutStandingRequests < 1 ) {
 						jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', null );
