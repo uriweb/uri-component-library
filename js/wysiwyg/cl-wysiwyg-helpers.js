@@ -4,8 +4,18 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
-// jscs:disable requireVarDeclFirst
+ // jshint esversion: 6
+ // jscs:disable requireVarDeclFirst
+
+var URIWYSIWYGoutStandingRequests = 0;
+var URIWYSIWYGpublishButtonValue;
+
+jQuery( document ).ready(
+	function() {
+		URIWYSIWYGpublishButtonValue = jQuery( '#publish' ).val();
+	}
+	);
+
 class URIWYSIWYG {
 
 	/**
@@ -136,6 +146,11 @@ class URIWYSIWYG {
 					console.log( textStatus );
 					console.log( errorThrown );
 				},
+				beforeSend: function() {
+					URIWYSIWYGoutStandingRequests++;
+					jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', true );
+					jQuery( '#publish' ).val( 'loading' );
+				},
 				success: function( data, textStatus, jqXHR ) {
 
 					var placeHolder, d;
@@ -180,8 +195,12 @@ class URIWYSIWYG {
 					}
 
 				},
-				done: function( data, textStatus, jqXHR ) {
-					console.log( 'Done.' );
+				complete: function() {
+					URIWYSIWYGoutStandingRequests--;
+					if ( URIWYSIWYGoutStandingRequests < 1 ) {
+						jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', null );
+						jQuery( '#publish' ).val( URIWYSIWYGpublishButtonValue );
+					}
 				}
 		}
 			);
