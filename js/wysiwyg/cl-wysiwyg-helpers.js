@@ -79,8 +79,15 @@ class URIWYSIWYG {
 		s = s.replace( /"/g, '”' );
 
 		// Replace single prime with curly apostrophe
-		s = s.replace( /'\b/g, '‘' );
-		s = s.replace( /'/g, '’' );
+		// if there's only one apostrophe, it's probably meant to be outward
+		// this leaves many corner cases, but it's closer.
+		console.log(s.split("'").length - 1);
+		if ( s.split("'").length - 1 === 1) {
+			s = s.replace( /'/g, '’' );
+		} else {
+			s = s.replace( /'\b/g, '‘' );
+			s = s.replace( /'/g, '’' );
+		}
 
 		return s
 			.replace( /&/g, '&amp;' )
