@@ -66,7 +66,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['img', 'title', 'style'];
+						possibleArgs = ['img', 'title', 'style', 'class'];
 						if ( ! args.title ) {
 							args.title = '';
 						}

@@ -72,7 +72,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['img', 'alt', 'title', 'reverse', 'content'];
+						possibleArgs = ['img', 'alt', 'title', 'reverse', 'content', 'class'];
 						if ( ! args.title ) {
 							args.title = '';
 						}

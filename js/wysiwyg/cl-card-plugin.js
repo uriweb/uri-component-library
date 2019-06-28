@@ -58,11 +58,11 @@
 
 						// Create an empty object if args is empty
 						if ( ! args ) {
-							args = { title:'', body:'', link:'' };
+							args = { title:'', body:'', link:'', button:'' };
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['title', 'body', 'link', 'button', 'img', 'alt', 'tooltip', 'float'];
+						possibleArgs = ['title', 'body', 'link', 'button', 'img', 'alt', 'tooltip', 'float', 'class'];
 						if ( ! args.title ) {
 							args.title = '';
 						}

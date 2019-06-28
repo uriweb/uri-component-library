@@ -59,7 +59,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['img', 'alt', 'quote', 'citation'];
+						possibleArgs = ['img', 'alt', 'quote', 'citation', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {

@@ -4,8 +4,17 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
-// jscs:disable requireVarDeclFirst
+ // jshint esversion: 6
+ // jscs:disable requireVarDeclFirst
+var URIWYSIWYGoutStandingRequests = 0;
+var URIWYSIWYGpublishButtonValue;
+
+jQuery( document ).ready(
+	function() {
+		URIWYSIWYGpublishButtonValue = jQuery( '#publish' ).val();
+	}
+	);
+
 class URIWYSIWYG {
 
 	/**
@@ -69,8 +78,14 @@ class URIWYSIWYG {
 		s = s.replace( /"/g, '”' );
 
 		// Replace single prime with curly apostrophe
-		s = s.replace( /'\b/g, '‘' );
-		s = s.replace( /'/g, '’' );
+		// if there's only one apostrophe, it's probably meant to be outward
+		// this leaves many corner cases, but it's closer.
+		if ( 1 === s.split( "'" ).length - 1 ) {
+			s = s.replace( /'/g, '’' );
+		} else {
+			s = s.replace( /'\b/g, '‘' );
+			s = s.replace( /'/g, '’' );
+		}
 
 		return s
 			.replace( /&/g, '&amp;' )
@@ -136,6 +151,11 @@ class URIWYSIWYG {
 					console.log( textStatus );
 					console.log( errorThrown );
 				},
+				beforeSend: function() {
+					URIWYSIWYGoutStandingRequests++;
+					jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', true );
+					jQuery( '#publish' ).val( 'loading' );
+				},
 				success: function( data, textStatus, jqXHR ) {
 
 					var placeHolder, d;
@@ -180,8 +200,12 @@ class URIWYSIWYG {
 					}
 
 				},
-				done: function( data, textStatus, jqXHR ) {
-					console.log( 'Done.' );
+				complete: function() {
+					URIWYSIWYGoutStandingRequests--;
+					if ( URIWYSIWYGoutStandingRequests < 1 ) {
+						jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', null );
+						jQuery( '#publish' ).val( URIWYSIWYGpublishButtonValue );
+					}
 				}
 		}
 			);

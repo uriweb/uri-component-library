@@ -74,7 +74,8 @@
 						'tooltip',
 						'alt',
 						'format',
-						'animation'
+						'animation',
+						'class'
 						];
 						possibleArgs.forEach(
 						function( i ) {
