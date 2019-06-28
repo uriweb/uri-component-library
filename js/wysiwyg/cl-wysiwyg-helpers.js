@@ -6,7 +6,6 @@
 
  // jshint esversion: 6
  // jscs:disable requireVarDeclFirst
-
 var URIWYSIWYGoutStandingRequests = 0;
 var URIWYSIWYGpublishButtonValue;
 
@@ -81,8 +80,7 @@ class URIWYSIWYG {
 		// Replace single prime with curly apostrophe
 		// if there's only one apostrophe, it's probably meant to be outward
 		// this leaves many corner cases, but it's closer.
-
-		if ( s.split("'").length - 1 === 1) {
+		if ( 1 === s.split( "'" ).length - 1 ) {
 			s = s.replace( /'/g, '’' );
 		} else {
 			s = s.replace( /'\b/g, '‘' );
