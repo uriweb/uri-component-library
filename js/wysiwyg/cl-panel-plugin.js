@@ -99,6 +99,7 @@
 							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
 							{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'checkbox', name: 'reverse', label: 'Reverse', checked: ( 'true' == args.reverse ) }
 							],
 							onsubmit: function( e ) {

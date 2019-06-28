@@ -106,6 +106,7 @@
 							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
 							{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
 							{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'listbox', name: 'format', label: 'Format', value: args.format, 'values': [
 								{ text: 'Default', value: '' },
 								{ text: 'Full Width', value: 'fullwidth' },

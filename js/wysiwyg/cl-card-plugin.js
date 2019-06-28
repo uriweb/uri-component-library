@@ -90,6 +90,7 @@
 							{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
 							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
 							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 							{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
