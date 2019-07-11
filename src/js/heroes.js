@@ -101,32 +101,18 @@ var CLResizeSuperheroes;
 
 	function superhero() {
 
-		var H = [], els, n, i, prompt, after;
+		var H = [], els, n, i;
 
 		els = document.querySelectorAll( '.cl-hero.super' );
 		n = els.length;
 
 		for ( i = 0; i < n; i++ ) {
 
-			// Create the after div
-			after = document.createElement( 'div' );
-			after.className = 'cl-hero-after';
-			els[i].parentNode.insertBefore( after, els[i].nextSibling );
-
-			// Create the scroll prompter
-			prompt = document.createElement( 'div' );
-			prompt.className = 'prompter';
-			prompt.innerHTML = 'Scroll down';
-			prompt.addEventListener( 'click', handlePrompterClick.bind( null, after ), false );
-			els[i].appendChild( prompt );
-
-			// Save a list of superheroes, their initial offsets, prompter divs, and after divs
+			// Save a list of superheroes and their initial offsets
 			H.push(
 				 {
 						el: els[i],
-						offset: els[i].getBoundingClientRect().top,
-						prompt: prompt,
-						after: after
+						offset: els[i].getBoundingClientRect().top
 			}
 				);
 
@@ -157,7 +143,6 @@ var CLResizeSuperheroes;
 				 */
 				if ( ( vh < vw * 0.75 && vh < 675 ) || ( p > 0.3 ) ) {
 					h.el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
-					h.prompt.style.display = 'none';
 				} else {
 
 					/**
@@ -166,23 +151,11 @@ var CLResizeSuperheroes;
 					 */
 					h.el.style.height = 98 - p * 100 + 'vh';
 
-					if ( h.offset < vh ) {
-						h.prompt.style.display = 'block';
-					} else {
-						h.prompt.style.display = 'none';
-					}
-
 				}
 
 			}
 
 		};
-
-		function handlePrompterClick( after ) {
-
-			after.scrollIntoView( { behavior: 'smooth', block: 'start', inline: 'nearest' } );
-
-		}
 
 		// Trigger scroll event to refresh pageYOffset value on page reload (otherwise it'll be 0).
 		window.dispatchEvent( new Event( 'scroll' ) );
