@@ -6,25 +6,20 @@
 }
 
 .cl-tiles {
-	
+
+    display: grid;
+    grid-column-gap: 3%;
+    grid-template-columns: 1fr;
     width: 100%;
     box-sizing: border-box;
-    display: block;
     margin: 0;
-	
+
 	* {
 		box-sizing: border-box;
 	}
-	
-	&:after {
-		content: '';
-		clear: both;
-		display: block;
-	}
 
 	&>* {
-		float: left;
-		clear: none;
+		position: relative;
 		overflow: visible;
 		width: 100%;
 		height: auto;
@@ -35,6 +30,8 @@
 
 	&.square {
 
+    grid-column-gap: 1%;
+
 		&>* {
 			height: 0;
 			overflow: hidden;
@@ -43,12 +40,12 @@
 
 	}
 
-	&.reveal {
+  &.compact {
+    grid-column-gap: 0;
+  }
 
-		&>* {
-			animation: tileReveal .5s;
-		}
-
+	&.reveal>* {
+		animation: tileReveal .5s;
 	}
 
 	img {
@@ -64,295 +61,67 @@
 	&>*>p {
 		width: 95%;
 	}
-	
-	// Set up tiles.fifths at most narrow width
-	&.fifths {
-		
-		&>* {
 
-			width: 48.5%;
-
-			&:not(:nth-child(2n)) {
-				margin-right: 3%;
-			}
-			&:nth-child(2n+1) {
-				clear: both;
-			}
-
-		}
-
-	}
-	
-	&.square.fifths {
-		&>* {
-
-			width: 49.5%;
-			padding-bottom: 49.5%;
-
-			&:not(:nth-child(2n)) {
-				margin-right: 1%;
-			}
-
-		}
-
-	}
-
-	&.compact.fifths {
-
-		&>* {
-
-			width: 50%;
-
-			&:not(:nth-child(2n)) {
-				margin-right: 0;
-			}
-
-		}
-
-	}
-	
 	// Don't distort iframes
 	iframe {
 		width: 100%;
 	}
-	
+
+  // Set up tiles.fifths at most narrow width
+	&.fifths {
+    grid-template-columns: repeat( 2, 1fr );
+	}
+
 }
 
 @media screen and (min-width: $break0) {
-    
-    // Reset previous break
-    .cl-tiles, .cl-tiles.square {
-        &.fifths>*:not(:nth-child(2n)) {
-            margin-right: 0;
-        }
-        &.fifths>*:nth-child(2n+1) {
-            clear: none;
-        }
+
+  .cl-tiles {
+
+    &.thirds,
+    &.fourths {
+      grid-template-columns: repeat( 2, 1fr );
     }
-    
-    .cl-tiles {
-		
-		// Reset previous break
-        &.thirds>*:nth-child(2n+1),
-        &.fourths>*:nth-child(2n+1),
-        &.fifths>*:nth-child(3n+1) {
-            clear: both;
-        }
-    
-    	// Set up default tiles for this break
-        &.thirds>*:not(:nth-child(2n)),
-        &.fourths>*:not(:nth-child(2n)),
-        &.fifths>*:not(:nth-child(3n)) {
-            margin-right: 3%;
-        }
-        &.thirds>*,
-        &.fourths>* {
-            width: 48.5%;
-        }
-        &.fifths>* {
-            width: 31.33%;
-        }
-
-		// Set up square tiles for this break
-		&.square {
-			&.thirds>*:not(:nth-child(2n)),
-			&.fourths>*:not(:nth-child(2n)),
-			&.fifths>*:not(:nth-child(3n)) {
-				margin-right: 1%;
-			}
-			&.thirds>*,
-			&.fourths>* {
-				width: 49.5%;
-				padding-bottom: 49.5%;
-			}
-			&.fifths>* {
-				width: 32.66%;
-				padding-bottom: 32.66%;
-			}
-		}
-
-		// Set up compact tiles for this break
-		&.compact {
-			&.thirds>*:not(:nth-child(2n)),
-			&.fourths>*:not(:nth-child(2n)),
-			&.fifths>*:not(:nth-child(3n)) {
-				margin-right: 0;
-			}
-			&.thirds>*,
-			&.fourths>* {
-				width: 50%;
-			}
-			&.fifths>* {
-				width: 33.33%;
-			}
-		}
+    &.fifths {
+      grid-template-columns: repeat( 3, 1fr );
+    }
 
 	}
-    
+
 }
 
 @media screen and (min-width: $break1) {
-    
-    // Reset previous break
-    .cl-tiles, .cl-tiles.square {
-        &.fourths>*:not(:nth-child(2n)),
-        &.fifths>*:not(:nth-child(3n)) {
-            margin-right: 0;
-        }
-        &.fourths>*:nth-child(2n+1),
-        &.fifths>*:nth-child(3n+1) {
-            clear: none;
-        }
+
+  .cl-tiles {
+
+    &.fourths {
+      grid-template-columns: repeat( 3, 1fr );;
     }
-    
-    .cl-tiles {
-		
-		// Reset previous break
-        &.fourths>*:nth-child(3n+1),
-        &.fifths>*:nth-child(4n+1) {
-            clear: both;
-        }
-    
-    	// Set up default tiles for this break
-        &.fourths>*:not(:nth-child(3n)),
-        &.fifths>*:not(:nth-child(4n)) {
-            margin-right: 3%;
-        }
-        &.fourths>* {
-            width: 31.33%;
-        }
-        &.fifths>* {
-            width: 22.75%;
-        }
+    &.fifths {
+      grid-template-columns: repeat( 4, 1fr );;
+    }
 
-		// Set up square tiles for this break
-		&.square {
-			&.fourths>*:not(:nth-child(3n)),
-			&.fifths>*:not(:nth-child(4n)) {
-				margin-right: 1%;
-			}
-			&.fourths>* {
-				width: 32.66%;
-				padding-bottom: 32.66%;
-			}
-			&.fifths>* {
-				width: 24.25%;
-				padding-bottom: 24.25%;
-			}
-		}
+  }
 
-		// Set up compact tiles for this break
-		&.compact {
-			&.fourths>*:not(:nth-child(3n)),
-			&.fifths>*:not(:nth-child(4n)) {
-				margin-right: 0;
-			}
-			&.fourths>* {
-				width: 33.33%;
-			}
-			&.fifths>* {
-				width: 25%;
-			}
-		}
-		
-	}
-    
 }
 
 @media all and (min-width: $break2) {
-    
-    // Reset previous break
-    .cl-tiles, .cl-tiles.square {
-        &.thirds>*:not(:nth-child(2n)),
-        &.fourths>*:not(:nth-child(3n)),
-        &.fifths>*:not(:nth-child(4n)) {
-            margin-right: 0;
-        }
-        &.thirds>*:nth-child(2n+1),
-        &.fourths>*:nth-child(3n+1),
-        &.fifths>*:nth-child(4n+1) {
-            clear: none;
-        }
+
+  .cl-tiles {
+
+    &.halves {
+      grid-template-columns: repeat( 2, 1fr );
     }
-    
-    .cl-tiles {
-
-		// Reset previous break
-        &.halves>*:nth-child(2n+1),
-        &.thirds>*:nth-child(3n+1),
-        &.fourths>*:nth-child(4n+1),
-        &.fifths>*:nth-child(5n+1) {
-            clear: both;
-        }
-
-    	// Set up default tiles for this break
-        &.halves>*:not(:nth-child(2n)),
-        &.thirds>*:not(:nth-child(3n)),
-        &.fourths>*:not(:nth-child(4n)),
-        &.fifths>*:not(:nth-child(5n)) {
-            margin-right: 3%;
-        }
-        &.halves>* {
-            width: 48.5%;
-        }
-        &.thirds>* {
-            width: 31.33%;
-        }
-        &.fourths>* {
-            width: 22.75%;
-        }
-        &.fifths>* {
-            width: 17.6%;
-        }
-    
-		// Set up square tiles for this break
-		&.square {
-			&.halves>*:not(:nth-child(2n)),
-			&.thirds>*:not(:nth-child(3n)),
-			&.fourths>*:not(:nth-child(4n)),
-			&.fifths>*:not(:nth-child(5n)) {
-				margin-right: 1%;
-			}
-			&.halves>* {
-				width: 49.5%;
-				padding-bottom: 49.5%;
-			}
-			&.thirds>* {
-				width: 32.66%;
-				padding-bottom: 32.66%;
-			}
-			&.fourths>* {
-				width: 24.25%;
-				padding-bottom: 24.25%;
-			}
-			&.fifths>* {
-				width: 19.2%;
-				padding-bottom: 19.2%;
-			}
-		}
-
-		// Set up compact tiles for this break
-		&.compact {
-			&.halves>*:not(:nth-child(2n)),
-			&.thirds>*:not(:nth-child(3n)),
-			&.fourths>*:not(:nth-child(4n)),
-			&.fifths>*:not(:nth-child(5n)) {
-				margin-right: 0;
-			}
-			&.halves>* {
-				width: 50%;
-			}
-			&.thirds>* {
-				width: 33.33%;
-			}
-			&.fourths>* {
-				width: 25%;
-			}
-			&.fifths>* {
-				width: 20%;
-			}
-		}
+    &.thirds {
+      grid-template-columns: repeat( 3, 1fr );
+    }
+    &.fourths {
+      grid-template-columns: repeat( 4, 1fr );
+    }
+    &.fifths {
+      grid-template-columns: repeat( 5, 1fr );
+    }
 
 	}
-    
+
 }
