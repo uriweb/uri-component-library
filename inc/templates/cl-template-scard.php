@@ -44,7 +44,8 @@ if ( ! empty( $atts['excerpt'] ) ) {
 
 
 // ---- BUILD THE CARD ----
-$output = '<div id="post-' . $atts['post'] . '" class="' . $classes . '"';
+$output = '<div class="cl-wrapper cl-scard-wrapper">';
+$output .= '<div id="post-' . $atts['post'] . '" class="' . $classes . '"';
 
 if ( ! empty( $atts['css'] ) ) {
 	$output .= ' style="' . $atts['css'] . '"';
@@ -75,7 +76,7 @@ $output .= '<a class="cl-scard-body" href="' . $post_link . '">';
 $output .= '<h3 class="cl-scard-title">' . $post_title . '</h3>';
 
 if ( $atts['showexcerpt'] && $post_excerpt ) {
-	$output .= '<p class="cl-scard-exerpt">' . $post_excerpt . '</p>';
+	$output .= '<p class="cl-scard-excerpt">' . $post_excerpt . '</p>';
 }
 
 $output .= '</a>';
@@ -104,4 +105,5 @@ if ( $atts['showdate'] || $atts['showsocial'] ) {
 // --- End Metadata ---
 $output .= '</div>';
 // --- End Text Area ---
+$output .= '</div>';
 $output .= '</div>';
