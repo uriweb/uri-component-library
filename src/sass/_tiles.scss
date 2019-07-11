@@ -26,6 +26,41 @@
 		list-style: none;
 	}
 
+  // Adjust contents for equal-height option
+  &.equal-height {
+
+    .cl-wrapper {
+      height: 100%;
+    }
+
+    .cl-card,
+    .cl-dcard,
+    .cl-scard {
+
+      height: calc( 100% - 2rem );
+
+      &.fitted {
+        height: 100%;
+      }
+
+      .cl-button,
+      .cl-scard-meta {
+        position: absolute;
+        bottom: 0
+      }
+
+      .cl-scard-meta {
+        width: calc( 100% - 2.4rem );
+      }
+
+      p:last-child {
+        margin-bottom: 5rem;
+      }
+
+    }
+
+  }
+
 	&.square {
 
     grid-column-gap: 1%;
