@@ -93,10 +93,19 @@
   .cl-tiles {
 
     &.fourths {
-      grid-template-columns: repeat( 3, 1fr );;
+      grid-template-columns: repeat( 3, 1fr );
     }
     &.fifths {
-      grid-template-columns: repeat( 4, 1fr );;
+      grid-template-columns: repeat( 4, 1fr );
+    }
+    &.two-one,
+    &.two-one-one {
+      grid-template-columns: 2fr 1fr;
+    }
+    &.one-two,
+    &.one-two-one,
+    &.one-one-two {
+      grid-template-columns: 1fr 2fr;
     }
 
   }
@@ -118,6 +127,15 @@
     }
     &.fifths {
       grid-template-columns: repeat( 5, 1fr );
+    }
+    &.one-two-one {
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+    &.one-one-two {
+      grid-template-columns: 1fr 1fr 2fr;
+    }
+    &.two-one-one {
+      grid-template-columns: 2fr 1fr 1fr;
     }
 
 	}
