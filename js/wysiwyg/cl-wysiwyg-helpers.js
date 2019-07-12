@@ -6,6 +6,7 @@
 
  // jshint esversion: 6
  // jscs:disable requireVarDeclFirst
+ // jscs:disable validateQuoteMarks
 var URIWYSIWYGoutStandingRequests = 0;
 var URIWYSIWYGpublishButtonValue;
 
