@@ -8,6 +8,7 @@ CL 3.5.2 is a minor release.
 
 * Corrects readme
 * Fixes issues that prevented Travis CI build from passing
+* Updates development tools
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/149/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
