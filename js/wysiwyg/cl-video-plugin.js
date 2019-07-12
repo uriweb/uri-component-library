@@ -89,8 +89,8 @@
 							{ type: 'textbox', name: 'vid', label: 'YouTube ID (required)', value: args.vid },
 							{ type: 'textbox', name: 'aspect', label: 'Aspect Ratio', 'placeholder': '16:9', value: args.aspect },
 							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
-							{ type: 'textbox', name: 'excerpt', multiline: 'true', label: 'Excerpt', value: args.excerpt }
-							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
+							{ type: 'textbox', name: 'excerpt', multiline: 'true', label: 'Excerpt', value: args.excerpt },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' }
 							],
 							onsubmit: function( e ) {
 
