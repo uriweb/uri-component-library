@@ -4,7 +4,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 ## What's new in 3.5.2
 
-CL 3.5.2 is a minor release.
+CL 3.5.2 is a bug fix release.
 
 * Corrects readme
 * Fixes issues that prevented Travis CI build from passing
