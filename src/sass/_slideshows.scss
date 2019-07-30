@@ -2,25 +2,25 @@
 
 
 .cl-slideshow {
-    
+
 	display: block;
 	width: 100%;
 	text-align: center;
 	box-sizing: border-box;
 	margin: 0 0 2rem;
-	
+
     * {
         box-sizing: border-box;
     }
-    
+
     &:after {
         display: block;
         content: '';
         clear: both;
     }
-    
+
     .carousel-wrapper {
-        
+
 		position: relative;
 		width: 100%;
 		height: 300px;
@@ -28,7 +28,7 @@
 		background: #eee;
 		border-radius: .2rem;
 		margin-bottom: 1rem;
-        
+
         .carousel {
             position: relative;
             display: block;
@@ -38,21 +38,21 @@
             height: 100%;
             list-style: none;
         }
-        
+
         .carousel.transitions {
             transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        
+
         .carousel.reboundLeft {
             animation-name: cl-slideshow-carousel-rebound-left;
             animation-duration: .3s;
         }
-        
+
         .carousel.reboundRight {
             animation-name: cl-slideshow-carousel-rebound-right;
             animation-duration: .3s;
         }
-        
+
         .slide {
             display: inline-block;
             position: relative;
@@ -62,14 +62,15 @@
             max-width: 100%;
             text-align: center;
         }
-        
+
         .slide img {
             height: 100%;
-            width: auto;
+            width: 100%;
+            object-fit: contain;
         }
-        
+
         .controls {
-            
+
 			display: block;
 			position: absolute;
 			top: 0;
@@ -78,31 +79,31 @@
 			height: 100%;
 			opacity: 0;
 			transition: all .4s ease-in-out;
-            
+
             &:after {
                 display: block;
                 clear: both;
                 content: '';
             }
-            
+
             .target {
                 height: 100%;
                 width: 50%;
                 padding: 0 2%;
             }
-            
+
             .target.previous {
                 float: left;
             }
-            
+
             .target.next {
                 float: right;
             }
-            
+
             .target:hover {
                 cursor: pointer;
             }
-            
+
             .controller {
                 position: relative;
                 top: calc(50% - 20px);
@@ -112,7 +113,7 @@
                 border-radius: 50%;
                 transition: padding .2s ease-in-out;
             }
-            
+
             .controller:after {
                 display: block;
                 content: '';
@@ -125,44 +126,44 @@
                 border-right: 1px solid rgba(0,0,0,.5);
                 transition: all .2s ease-in-out;
             }
-            
+
             .target:hover .controller:after {
                 border-top: 1px solid $black;
                 border-right: 1px solid $black;
             }
-            
+
             .target.previous .controller:after {
                 transform: rotate(225deg);
                 left: 34%;
             }
-            
+
             .target.next .controller:after {
                 transform: rotate(45deg);
             }
-            
+
             .target.next .controller {
                 float: right;
             }
-            
+
             &.touch .controller {
                 display: none;
             }
-            
-            
+
+
         } // .cl-slideshow .carouselWrapper .controls
-        
+
         &:hover {
-            
+
             .controls {
                 opacity: 1;
             }
-            
+
         }
-        
+
     } // .cl-slideshow .carouselWrapper
-    
+
     .captions {
-    
+
 		display: block;
 		float: left;
 		list-style: none;
@@ -171,7 +172,7 @@
 		padding: 0;
 		width: 40%;
 		min-width: 250px;
-        
+
         .caption {
             padding: 0;
             margin: 0;
@@ -179,25 +180,25 @@
             font-size: .8rem;
             color: $darkgrey;
         }
-        
+
         .caption.active {
             display: block;
         }
-        
+
     } // .cl-slideshow .captions
-    
+
     .counter {
-        
+
 		display: block;
 		float: right;
 		font-size: .8rem;
 		color: $darkgrey;
 		margin-bottom: 5rem;
-        
+
         span {
             font-weight: 600;
         }
-        
+
     } // .cl-slideshow .counter
 
 } // .cl-slideshow
@@ -209,31 +210,31 @@
 }
 
 @media screen and (min-width: $break1) {
-    
+
     .cl-slideshow .carousel-wrapper {
         height: 400px;
     }
-    
+
     .cl-slideshow .carousel-wrapper .controls .controller {
         top: calc(50% - 25px);
         width: 50px;
         height: 50px;
     }
-    
+
 }
 
 @media screen and (min-width: $break2) {
-    
+
     .cl-slideshow .carousel-wrapper {
         height: 500px;
     }
-    
+
     .cl-slideshow .carousel-wrapper .controls .controller {
         top: calc(50% - 30px);
         width: 60px;
         height: 60px;
     }
-    
+
 }
 
 @keyframes cl-slideshow-carousel-rebound-left {
