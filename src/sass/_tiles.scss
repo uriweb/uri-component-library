@@ -102,7 +102,7 @@
 
   // Set up tiles.fifths at most narrow width
 	&.fifths {
-    grid-template-columns: repeat( 2, 1fr );
+    grid-template-columns: repeat( 2, minmax(0, 1fr) );
 	}
 
 }
@@ -113,10 +113,10 @@
 
     &.thirds,
     &.fourths {
-      grid-template-columns: repeat( 2, 1fr );
+      grid-template-columns: repeat( 2, minmax(0, 1fr) );
     }
     &.fifths {
-      grid-template-columns: repeat( 3, 1fr );
+      grid-template-columns: repeat( 3, minmax(0, 1fr) );
     }
 
 	}
@@ -128,19 +128,19 @@
   .cl-tiles {
 
     &.fourths {
-      grid-template-columns: repeat( 3, 1fr );
+      grid-template-columns: repeat( 3, minmax(0, 1fr) );
     }
     &.fifths {
-      grid-template-columns: repeat( 4, 1fr );
+      grid-template-columns: repeat( 4, minmax(0, 1fr) );
     }
     &.two-one,
     &.two-one-one {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     }
     &.one-two,
     &.one-two-one,
     &.one-one-two {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     }
 
   }
@@ -152,25 +152,25 @@
   .cl-tiles {
 
     &.halves {
-      grid-template-columns: repeat( 2, 1fr );
+      grid-template-columns: repeat( 2, minmax(0, 1fr) );
     }
     &.thirds {
-      grid-template-columns: repeat( 3, 1fr );
+      grid-template-columns: repeat( 3, minmax(0, 1fr) );
     }
     &.fourths {
-      grid-template-columns: repeat( 4, 1fr );
+      grid-template-columns: repeat( 4, minmax(0, 1fr) );
     }
     &.fifths {
-      grid-template-columns: repeat( 5, 1fr );
+      grid-template-columns: repeat( 5, minmax(0, 1fr) );
     }
     &.one-two-one {
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     }
     &.one-one-two {
-      grid-template-columns: 1fr 1fr 2fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
     }
     &.two-one-one {
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
     }
 
 	}
