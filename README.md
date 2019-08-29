@@ -2,7 +2,7 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.5.0
+## What's new in 3.6.0
 
 CL 3.6.0 is a minor release.
 
@@ -13,14 +13,6 @@ CL 3.6.0 is a minor release.
 * Updates development tools
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/154/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
-
-## New in 3.5.1
-
-CL 3.5.1 is a bug fix release.
-
-* Fixes a bug where the Visual Editor would unexpectedly strip class attributes or add button attributes
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/145/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
