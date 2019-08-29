@@ -6,10 +6,10 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 3.6.0 is a minor release.
 
-* Removes prompter arrow from superhero component
 * Uses CSS grids for tiles
 * Adds asymmetrical layout support for tiles
 * Adds option for equal-height cards in tiles
+* Removes prompter arrow from super-formatted hero component
 * Updates development tools
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/154/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
