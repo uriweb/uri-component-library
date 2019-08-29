@@ -2,23 +2,17 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.5.2
+## What's new in 3.6.0
 
-CL 3.5.2 is a bug fix release.
+CL 3.6.0 is a minor release.
 
-* Corrects readme
-* Fixes issues that prevented Travis CI build from passing
+* Uses CSS grids for tiles
+* Adds asymmetrical layout support for tiles
+* Adds option for equal-height cards in tiles
+* Removes prompter arrow from super-formatted hero component
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/149/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
-
-## New in 3.5.1
-
-CL 3.5.1 is a bug fix release.
-
-* Fixes a bug where the Visual Editor would unexpectedly strip class attributes or add button attributes
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/145/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/154/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
@@ -36,4 +30,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 5.0  
-Stable tag: 3.5.2  
+Stable tag: 3.6.0  
