@@ -27,4 +27,40 @@ class URICL {
 
 	}
 
+	static getVideoHost( s ) {
+
+		var domain, host;
+
+		domain = URICL.getURLDomainName( s );
+
+		if ( ! domain ) {
+			return s;
+		}
+
+		if ( domain.indexOf( 'vimeo.com' ) ) {
+			host = 'vimeo';
+		}
+
+		if ( domain.indexOf( 'youtube.com' ) || domain.indexOf( 'youtu.be' ) ) {
+			host = 'yt';
+		}
+
+		return s;
+
+	}
+
+	/*
+	 * Get domain part of url
+	 * @param str url the url
+	 * @return str
+	 */
+	static getURLDomainName( url ) {
+
+		var matches;
+
+		matches = url.match( /^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i );
+		return matches && matches[1];  // Domain will be null if no match is found
+
+	}
+
 }
