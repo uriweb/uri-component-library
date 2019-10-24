@@ -68,7 +68,7 @@ if ( ! empty( $atts['img'] ) ) {
 	$imgurl = $atts['img'];
 }
 
-$image .= '>' . uri_cl_build_img_tag( $atts['img'], $atts['alt'] ) . '</div>'; // image
+$image .= ' style="background-image:url(' . $imgurl . ')"></div>'; // image
 
 $output .= $image;
 $output .= '</div>'; // .hero
