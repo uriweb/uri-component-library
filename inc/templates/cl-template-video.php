@@ -36,7 +36,7 @@ if ( ! empty( $atts['img'] ) ) {
 }
 
 $id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
-$output .= '<img id="' . $id . '" data-id="' . $atts['vid'] . '" src="' . $imgsrc . '" alt="' . $atts['alt'] . '"';
+$output .= '<img id="' . $id . '" data-video="' . $atts['vid'] . '" src="' . $imgsrc . '" alt="' . $atts['alt'] . '"';
 
 if ( ! empty( $atts['aspect'] ) ) {
 	$output .= ' data-aspect="' . $atts['aspect'] . '"';

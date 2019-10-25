@@ -46,7 +46,7 @@ if ( ! empty( $atts['vid'] ) ) {
 
 	$imgurl = 'https://img.youtube.com/vi/' . $atts['vid'] . '/maxresdefault.jpg';
 	$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
-	$image = '<div id="' . $id . '" data-id="' . $atts['vid'] . '" class="poster"';
+	$image = '<div id="' . $id . '" data-video="' . $atts['vid'] . '" class="poster"';
 
 } else if ( ! empty( $atts['animation'] ) ) {
 

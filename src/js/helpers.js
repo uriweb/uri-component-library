@@ -31,21 +31,20 @@ class URICL {
 
 		var domain, host;
 
+		host = 'youtube'; // Default host
 		domain = URICL.getURLDomainName( s );
 
 		if ( ! domain ) {
-			return s;
+			return host;
 		}
 
-		if ( domain.indexOf( 'vimeo.com' ) ) {
-			host = 'vimeo';
+		if ( -1 < domain.indexOf( 'vimeo.com' ) ) {
+			return host = 'vimeo';
 		}
 
-		if ( domain.indexOf( 'youtube.com' ) || domain.indexOf( 'youtu.be' ) ) {
-			host = 'yt';
+		if ( -1 < domain.indexOf( 'youtube.com' ) || -1 < domain.indexOf( 'youtu.be' ) ) {
+			return host = 'youtube';
 		}
-
-		return s;
 
 	}
 

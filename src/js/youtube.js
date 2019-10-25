@@ -12,12 +12,25 @@ class CLYT {
 	 * Load the API
 	 */
 	static loadYouTubeAPI() {
+
 		var tag, firstScriptTag;
 
 		tag = document.createElement( 'script' );
 		tag.src = 'https://www.youtube.com/player_api';
 		firstScriptTag = document.getElementsByTagName( 'script' )[0];
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
+
+	}
+
+	static getVideoID( src ) {
+
+		var patt, match;
+
+		// @see https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url#comment11747164_8260383
+		patt = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+		match = src.match( patt );
+		return ( match && 11 == match[1].length ) ? match[1] : src;
+
 	}
 
 	/*
