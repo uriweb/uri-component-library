@@ -99,3 +99,25 @@ function uri_cl_get_video_platform( $src ) {
 function uri_cl_get_url_host( $src ) {
 	return parse_url( $src )['host'];
 }
+
+/**
+ * Get Vimeo thumbnail
+ *
+ * @param str $src the source url.
+ * @return str
+ */
+function uri_cl_get_vimeo_thumbnail( $src ) {
+
+	if ( ! $src ) {
+			return false;
+	}
+
+	$data = json_decode( file_get_contents( 'http://vimeo.com/api/oembed.json?url=' . $src ) );
+
+	if ( ! $data ) {
+			return false;
+	}
+
+	return explode( '_', $data->thumbnail_url )[0];
+
+}
