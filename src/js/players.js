@@ -83,18 +83,18 @@ function onYouTubePlayerAPIReady() {
 		for ( i = 0; i < vids.length; i++ ) {
 
 			el = vids[i];
-			id = el.getAttribute( 'id' );
 
 			atts = {
 				'poster': el
-			}
+			};
 
 			src = el.getAttribute( 'data-video' );
 			host = el.getAttribute( 'data-platform' );
+			id = el.getAttribute( 'id' );
 
 			if ( 'youtube' == host ) {
 				data.videos.yt[id] = atts;
-				data.heroes.yt[id].src = src;
+				data.videos.yt[id].src = src;
 				requireYouTube = true;
 			}
 

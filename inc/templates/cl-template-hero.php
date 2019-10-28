@@ -47,7 +47,7 @@ if ( ! empty( $atts['vid'] ) ) {
 	$vid = uri_cl_get_video_id( $atts['vid'] );
 	$platform = uri_cl_get_video_platform( $atts['vid'] );
 	$imgurl = ( 'vimeo' == $platform ) ? uri_cl_get_vimeo_thumbnail( $atts['vid'] ) : 'https://img.youtube.com/vi/' . $vid . '/maxresdefault.jpg';
-	$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
+	$id = empty( $atts['id'] ) ? $vid : $atts['id'];
 	$image = '<div id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" class="poster"';
 
 } else if ( ! empty( $atts['animation'] ) ) {
