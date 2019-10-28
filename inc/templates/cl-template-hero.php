@@ -44,9 +44,10 @@ $output .= '</div>'; // .overlay
 
 if ( ! empty( $atts['vid'] ) ) {
 
-	$imgurl = 'https://img.youtube.com/vi/' . $atts['vid'] . '/maxresdefault.jpg';
+	$vid = uri_cl_get_video_id( $atts['vid'] );
+	$imgurl = 'https://img.youtube.com/vi/' . $vid . '/maxresdefault.jpg';
 	$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
-	$image = '<div id="' . $id . '" data-video="' . $atts['vid'] . '" class="poster"';
+	$image = '<div id="' . $id . '" data-video="' . $vid . '" data-platform="' . uri_cl_get_video_platform( $atts['vid'] ) . '" class="poster"';
 
 } else if ( ! empty( $atts['animation'] ) ) {
 

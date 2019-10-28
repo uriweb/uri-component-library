@@ -49,18 +49,19 @@ function onYouTubePlayerAPIReady() {
 				atts = {
 					'parent': parent,
 					'poster': el,
+					'state': 'init',
 					'w': parent.offsetWidth,
 					'h': parent.offsetHeight
 				};
 
 				src = el.getAttribute( 'data-video' );
-				host = URICL.getVideoHost( src );
+				host = el.getAttribute( 'data-platform' );
 				id = el.getAttribute( 'id' );
 
 				if ( 'youtube' == host ) {
 					requireYouTube = true;
 					data.heroes.yt[id] = atts;
-					data.heroes.yt[id].src = CLYT.getVideoID( src );
+					data.heroes.yt[id].src = src;
 				}
 
 				if ( 'vimeo' == host ) {
@@ -89,17 +90,17 @@ function onYouTubePlayerAPIReady() {
 			}
 
 			src = el.getAttribute( 'data-video' );
-			host = URICL.getVideoHost( src );
+			host = el.getAttribute( 'data-platform' );
 
 			if ( 'youtube' == host ) {
 				data.videos.yt[id] = atts;
-				data.heroes.yt[id].src = CLYT.getVideoID( src );
+				data.heroes.yt[id].src = src;
 				requireYouTube = true;
 			}
 
 			if ( 'vimeo' == host ) {
 				data.videos.vimeo[id] = atts;
-				data.videos.yt[id].src = src;
+				data.videos.vimeo[id].src = src;
 				requireVimeo = true;
 			}
 
@@ -113,6 +114,8 @@ function onYouTubePlayerAPIReady() {
 			CLVimeo.loadVimeoAPI();
 		}
 
+		console.log( data );
+
 	}
 
 	/*
@@ -120,13 +123,13 @@ function onYouTubePlayerAPIReady() {
 	 */
 	CLCreateVimeoPlayers = function() {
 
-		var id, value;
+		var id, value, options;
 
 		for ( id in data.heroes.vimeo ) {
 
 			value = data.heroes.vimeo[id];
 
-			var options = {
+			options = {
 				url: value.src,
 				background: true,
 				autoplay: true,
@@ -134,12 +137,50 @@ function onYouTubePlayerAPIReady() {
 				height: value.h
 			};
 
-			value.player = new Vimeo.Player( id, options );
-
-			value.player.on( 'loaded', CLVimeo.onHeroReady.bind( null, value ) );
-			value.player.on( 'error', CLVimeo.onHeroError.bind( null, value ) );
+			createVimeoPlayer( id, value, options );
 
 		}
+
+	}
+
+	function createVimeoPlayer( id, value, options ) {
+
+		value.player = new Vimeo.Player( id, options );
+
+		value.player.on(
+			 'loaded',
+			function( e ) {
+				console.log( e );
+				value.state = 'loaded';
+				CLVimeo.onHeroReady( value );
+			}
+			);
+
+		value.player.on(
+			 'play',
+			function( e ) {
+				value.state = 'playing';
+				CLVimeo.onHeroStateChange( value );
+			}
+			);
+
+		value.player.on(
+			 'pause',
+			function( e ) {
+				value.state = 'paused';
+				CLVimeo.onHeroStateChange( value );
+			}
+			);
+
+		value.player.on(
+			 'ended',
+			function( e ) {
+				value.state = 'ended';
+				CLVimeo.onHeroStateChange( value );
+			}
+			);
+
+		value.player.on( 'error', CLVimeo.onHeroError.bind( null, value ) );
 
 	}
 

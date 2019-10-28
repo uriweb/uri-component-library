@@ -51,3 +51,51 @@ function uri_cl_build_img_tag( $img, $alt = '' ) {
 	return '<img src="' . $img_src . '" srcset="' . $img_srcset . '" alt="' . $alt . '">';
 
 }
+
+/**
+ * Get video id
+ */
+function uri_cl_get_video_id( $src ) {
+
+	$platform = uri_cl_get_video_platform( $src );
+
+	if ( 'vimeo' == $platform ) {
+		return $src;
+	}
+
+	/* Youtube */
+	$pattern = '/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/';
+	preg_match( $pattern, $src, $matches );
+	return ( $matches && 11 == strlen( $matches[1] ) ) ? $matches[1] : $src;
+
+}
+
+/**
+ * Get video platform
+ *
+ * @param str $src the source url.
+ * @return str
+ */
+function uri_cl_get_video_platform( $src ) {
+
+	$host = uri_cl_get_url_host( $src );
+
+	$platform = 'youtube'; // Default platform
+
+	if ( false !== strpos( $host, 'vimeo' ) ) {
+		$platform = 'vimeo';
+	}
+
+	return $platform;
+
+}
+
+/**
+ * Get url host
+ *
+ * @param str $src the source url.
+ * @return str
+ */
+function uri_cl_get_url_host( $src ) {
+	return parse_url( $src )['host'];
+}

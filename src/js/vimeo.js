@@ -30,6 +30,8 @@ class CLVimeo {
 	*/
 	static onHeroReady( data ) {
 
+		var overlay, button;
+
 		// Listen for browser resizing
 		window.addEventListener(
 			 'resize',
@@ -67,18 +69,52 @@ class CLVimeo {
 
 	}
 
-	static determinePlayState( data, button ) {
-		console.log( 'playstate' );
+	static determinePlayState( data ) {
+		var v = window.innerHeight,
+			p = window.pageYOffset,
+			h = data.parent.offsetHeight,
+			o = data.parent.getBoundingClientRect().top + p;
+
+		if ( v + p < o || p > o + h ) {
+			data.player.pause();
+		} else {
+			data.player.play();
+		}
 	}
 
-	static heroControl( data ) {
-		console.log( 'control' );
+	static heroControl( data, button ) {
+		switch ( data.state ) {
+			default:
+			case 'playing':
+				data.player.pause();
+				data.parent.classList.add( 'paused' );
+				button.setAttribute( 'title', 'Play' );
+				break;
+			case 'paused':
+				data.player.play();
+				data.parent.classList.remove( 'paused' );
+				button.setAttribute( 'title', 'Pause' );
+				break;
+		}
+	}
+
+	/*
+	 * Get hero state and decide what to do
+	 * @param obj event the hero player
+	 */
+	static onHeroStateChange( data ) {
+		switch ( data.state ) {
+			case 'playing':
+				if ( window.innerWidth > 750 ) {
+					data.poster.classList.add( 'unveil' );
+				}
+				break;
+		}
 	}
 
 	/*
 	 * Dynamically set the hero height and position based on width
-	 * @param el el the hero
-	 * @param el parent the hero parent container
+	 * @param obj data the data
 	 */
 	static resizeHero( data ) {
 
@@ -103,8 +139,13 @@ class CLVimeo {
 
 	}
 
+	/*
+	 * Revert to poster if there's an error with the hero video
+	 * @param obj data the data
+	 */
 	static onHeroError( data ) {
-		console.log( data );
+		data.poster.classList.remove( 'unveil' );
+		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 }

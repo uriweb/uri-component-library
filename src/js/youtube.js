@@ -22,17 +22,6 @@ class CLYT {
 
 	}
 
-	static getVideoID( src ) {
-
-		var patt, match;
-
-		// @see https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url#comment11747164_8260383
-		patt = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
-		match = src.match( patt );
-		return ( match && 11 == match[1].length ) ? match[1] : src;
-
-	}
-
 	/*
 	 * Dynamically set the hero height and position based on width
 	 * @param el el the hero
