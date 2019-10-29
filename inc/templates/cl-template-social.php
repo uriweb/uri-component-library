@@ -22,22 +22,22 @@ if ( empty( $atts['facebook'] ) && empty( $atts['instagram'] ) && empty( $atts['
 	$output .= '>';
 
 	if ( ! empty( $atts['facebook'] ) ) {
-		$output .= '<li><a href="' . $atts['facebook'] . '" class="cl-social-facebook">Facebook</a></li>';
+		$output .= '<li><a href="' . $atts['facebook'] . '" class="cl-social-facebook" title="Facebook">Facebook</a></li>';
 	}
 	if ( ! empty( $atts['instagram'] ) ) {
-		$output .= '<li><a href="' . $atts['instagram'] . '" class="cl-social-instagram">Instagram</a></li>';
+		$output .= '<li><a href="' . $atts['instagram'] . '" class="cl-social-instagram" title="Instagram">Instagram</a></li>';
 	}
 	if ( ! empty( $atts['twitter'] ) ) {
-		$output .= '<li><a href="' . $atts['twitter'] . '" class="cl-social-twitter">Twitter</a></li>';
+		$output .= '<li><a href="' . $atts['twitter'] . '" class="cl-social-twitter" title="Twitter">Twitter</a></li>';
 	}
 	if ( ! empty( $atts['youtube'] ) ) {
-		$output .= '<li><a href="' . $atts['youtube'] . '" class="cl-social-youtube">YouTube</a></li>';
+		$output .= '<li><a href="' . $atts['youtube'] . '" class="cl-social-youtube" title="YouTube">YouTube</a></li>';
 	}
 	if ( ! empty( $atts['snapchat'] ) ) {
-		$output .= '<li><a href="' . $atts['snapchat'] . '" class="cl-social-snapchat">Snapchat</a></li>';
+		$output .= '<li><a href="' . $atts['snapchat'] . '" class="cl-social-snapchat" title="Snapchat">Snapchat</a></li>';
 	}
 	if ( ! empty( $atts['linkedin'] ) ) {
-		$output .= '<li><a href="' . $atts['linkedin'] . '" class="cl-social-linkedin">LinkedIn</a></li>';
+		$output .= '<li><a href="' . $atts['linkedin'] . '" class="cl-social-linkedin" title="LinkedIn">LinkedIn</a></li>';
 	}
 
 	$output .= '</ul>';

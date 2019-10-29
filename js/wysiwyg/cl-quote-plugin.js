@@ -59,7 +59,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['img', 'alt', 'quote', 'citation'];
+						possibleArgs = ['img', 'alt', 'quote', 'citation', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {
@@ -82,6 +82,7 @@
 							{ type: 'container', label: ' ', html: '<div id="cl-wysiwyg-img-preview">' + imageEl + '</div>' },
 							{ type: 'button', label: 'Image', text: 'Choose an image', onclick: URIWYSIWYG.mediaPicker },
 							{ type: 'textbox', multiline: 'true', name: 'quote', label: 'Quote', value: args.quote, rows: 4, style: '' },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'textbox', name: 'citation', label: 'Citation', value: args.citation }
 							],
 							onsubmit: function( e ) {

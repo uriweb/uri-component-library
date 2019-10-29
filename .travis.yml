@@ -28,6 +28,10 @@ env:
 before_install:
     - phpenv config-rm xdebug.ini
 
+# Start MySQL
+services:
+    - mysql
+
 # Use this to prepare your build for testing.
 before_script:
     # Set up WordPress installation.

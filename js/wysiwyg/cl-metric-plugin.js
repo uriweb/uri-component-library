@@ -59,7 +59,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['metric', 'caption', 'style', 'float'];
+						possibleArgs = ['metric', 'caption', 'style', 'float', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {
@@ -77,6 +77,7 @@
 							body: [
 							{ type: 'textbox', name: 'metric', label: 'Metric', value: args.metric },
 							{ type: 'textbox', name: 'caption', label: 'Caption', value: args.caption },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
 								{ text: 'Default', value: '' },
 								{ text: 'Dark', value: 'dark' },

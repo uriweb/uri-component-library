@@ -61,7 +61,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['title', 'content', 'float'];
+						possibleArgs = ['title', 'content', 'float', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {
@@ -76,6 +76,7 @@
 							body: [
 							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
 							{ type: 'textbox', multiline: 'true', name: 'content', label: 'Content', value: args.content, rows: 7, style: '' },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'listbox', name: 'float', label: 'Alignment', value: args.float, 'values': [
 								{ text: 'Auto', value: '' },
 								{ text: 'Left', value: 'left' },

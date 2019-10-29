@@ -63,7 +63,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['link', 'text', 'tooltip', 'style'];
+						possibleArgs = ['link', 'text', 'tooltip', 'style', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {
@@ -79,6 +79,7 @@
 							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
 							{ type: 'textbox', name: 'text', label: 'Text', 'placeholder':'Explore', value: args.text },
 							{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
 							{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
 								{ text: 'Default', value: '' },
 								{ text: 'Prominent', value: 'prominent' },
