@@ -52,6 +52,10 @@ if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
 
+// Include gutenberg
+include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
+
+
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
