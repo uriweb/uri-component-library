@@ -54,7 +54,7 @@ class CLYT {
 	 * @param el parent the video parent container
 	 */
 	static resizeVideo( event, el, parent ) {
-		el.style.height = parent.offsetWidth / ( event.target.a.offsetWidth / event.target.a.offsetHeight ) + 'px';
+		el.style.height = parent.offsetWidth / ( event.target.a.width / event.target.a.height ) + 'px';
 	}
 
 	/*

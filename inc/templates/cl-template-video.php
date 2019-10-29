@@ -38,8 +38,7 @@ if ( ! empty( $atts['img'] ) ) {
 }
 
 $id = empty( $atts['id'] ) ? $vid : $atts['id'];
-$output .= '<img id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" src="' . $imgurl . '" alt="' . $atts['alt'] . '"';
+$output .= '<div class="poster" id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '"><img src="' . $imgurl . '" alt="' . $atts['alt'] . '"/></div>';
 
-$output .= '>';
 $output .= '</div>';
 $output .= '</section>';

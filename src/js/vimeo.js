@@ -69,6 +69,27 @@ class CLVimeo {
 
 	}
 
+	/*
+	 * Do things with the video when it's loaded
+	 * @param str id the id of the video
+	 */
+	static onVideoReady( data ) {
+
+		data.poster.querySelector( 'img' ).style.display = 'none';
+
+		// Store aspect ratio
+		data.ratio = data.player.element['width'] / data.player.element['height']
+
+		window.addEventListener(
+			'resize',
+			function() {
+				CLVimeo.resizeVideo( data);
+			}
+		);
+		CLVimeo.resizeVideo( data );
+
+	}
+
 	static determinePlayState( data ) {
 		var v = window.innerHeight,
 			p = window.pageYOffset,
@@ -140,12 +161,67 @@ class CLVimeo {
 	}
 
 	/*
+	 * Dynamically set the video height and position based on width
+	 * @param obj event the event
+	 * @param el el the video
+	 * @param el parent the video parent container
+	 */
+	static resizeVideo( data ) {
+		data.player.element.setAttribute( 'height', data.parent.offsetWidth / data.ratio );
+	}
+
+	/*
 	 * Revert to poster if there's an error with the hero video
 	 * @param obj data the data
 	 */
 	static onHeroError( data ) {
 		data.poster.classList.remove( 'unveil' );
 		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
+	}
+
+	/*
+	 * Link the poster to the video on YouTube if there's an error with the video
+	 * @param obj data the data
+	 */
+	static onVideoError( data ) {
+
+		var a, img, alt, iframe;
+
+		a = document.createElement( 'a' );
+		a.href = data.src;
+		a.title = 'Try watching this video on Vimeo';
+
+		img = document.createElement( 'img' );
+		img.src = data.poster.getAttribute( 'src' );
+		alt = data.poster.getAttribute( 'alt' );
+		if ( ! alt ) {
+			alt = 'Poster for video';
+		}
+		img.alt = alt;
+		a.appendChild( img );
+
+		data.parent.replaceChild( a, data.player.element );
+
+	}
+
+	/*
+	 * Get video state and decide what to do
+	 * @param obj data the data
+	 */
+	static onVideoStateChange( data ) {
+
+		var overlay;
+
+		overlay = data.parent.querySelector( '.overlay' );
+
+		switch ( data.state ) {
+			case 'playing':
+			case 'buffering':
+				overlay.classList.add( 'hidden' );
+				break;
+			default:
+				overlay.classList.remove( 'hidden' );
+		}
 	}
 
 }

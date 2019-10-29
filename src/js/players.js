@@ -36,7 +36,7 @@ function onYouTubePlayerAPIReady() {
 		var requireYouTube = false,
 				requireVimeo = false,
 				heroes = document.querySelectorAll( '.cl-hero .poster' ),
-				vids = document.querySelectorAll( '.cl-video img' ),
+				vids = document.querySelectorAll( '.cl-video .poster' ),
 				i, el, id, parent, atts, src, host, placeholder;
 
 		if ( URICL.checkSupport() ) {
@@ -85,7 +85,9 @@ function onYouTubePlayerAPIReady() {
 			el = vids[i];
 
 			atts = {
-				'poster': el
+				'parent': el.parentNode,
+				'poster': el,
+				'state': 'init'
 			};
 
 			src = el.getAttribute( 'data-video' );
@@ -114,8 +116,6 @@ function onYouTubePlayerAPIReady() {
 			CLVimeo.loadVimeoAPI();
 		}
 
-		console.log( data );
-
 	}
 
 	/*
@@ -123,8 +123,9 @@ function onYouTubePlayerAPIReady() {
 	 */
 	CLCreateVimeoPlayers = function() {
 
-		var id, value, options;
+		var id, value, options, callbacks;
 
+		/* Heroes */
 		for ( id in data.heroes.vimeo ) {
 
 			value = data.heroes.vimeo[id];
@@ -137,22 +138,56 @@ function onYouTubePlayerAPIReady() {
 				height: value.h
 			};
 
-			createVimeoPlayer( id, value, options );
+			callbacks = {
+				onReady: CLVimeo.onHeroReady,
+				onStateChange: CLVimeo.onHeroStateChange,
+				onError: CLVimeo.onHeroError
+			}
+
+			createVimeoPlayer( id, value, options, callbacks );
+
+		}
+
+		/* Videos */
+		for ( id in data.videos.vimeo ) {
+
+			value = data.videos.vimeo[id];
+
+			options = {
+				url: value.src
+			};
+
+			callbacks = {
+				onReady: CLVimeo.onVideoReady,
+				onStateChange: CLVimeo.onVideoStateChange,
+				onError: CLVimeo.onVideoError
+			};
+
+			createVimeoPlayer( id, value, options, callbacks );
 
 		}
 
 	}
 
-	function createVimeoPlayer( id, value, options ) {
+	function createVimeoPlayer( id, value, options, callbacks ) {
+
+		console.log( id );
 
 		value.player = new Vimeo.Player( id, options );
 
 		value.player.on(
 			 'loaded',
 			function( e ) {
-				console.log( e );
 				value.state = 'loaded';
-				CLVimeo.onHeroReady( value );
+				callbacks.onReady( value );
+			}
+			);
+
+		value.player.on(
+			 'bufferstart',
+			function( e ) {
+				value.state = 'buffering';
+				callbacks.onStateChange( value );
 			}
 			);
 
@@ -160,7 +195,7 @@ function onYouTubePlayerAPIReady() {
 			 'play',
 			function( e ) {
 				value.state = 'playing';
-				CLVimeo.onHeroStateChange( value );
+				callbacks.onStateChange( value );
 			}
 			);
 
@@ -168,7 +203,7 @@ function onYouTubePlayerAPIReady() {
 			 'pause',
 			function( e ) {
 				value.state = 'paused';
-				CLVimeo.onHeroStateChange( value );
+				callbacks.onStateChange( value );
 			}
 			);
 
@@ -176,11 +211,11 @@ function onYouTubePlayerAPIReady() {
 			 'ended',
 			function( e ) {
 				value.state = 'ended';
-				CLVimeo.onHeroStateChange( value );
+				callbacks.onStateChange( value );
 			}
 			);
 
-		value.player.on( 'error', CLVimeo.onHeroError.bind( null, value ) );
+		value.player.on( 'error', callbacks.onError.bind( null, value ) );
 
 	}
 
