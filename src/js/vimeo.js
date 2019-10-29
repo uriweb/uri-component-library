@@ -78,12 +78,12 @@ class CLVimeo {
 		data.poster.querySelector( 'img' ).style.display = 'none';
 
 		// Store aspect ratio
-		data.ratio = data.player.element['width'] / data.player.element['height']
+		data.ratio = data.player.element.width / data.player.element.height;
 
 		window.addEventListener(
 			'resize',
 			function() {
-				CLVimeo.resizeVideo( data);
+				CLVimeo.resizeVideo( data );
 			}
 		);
 		CLVimeo.resizeVideo( data );

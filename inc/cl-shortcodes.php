@@ -781,7 +781,6 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 			'alt' => '',
 			'title' => '',
 			'excerpt' => '',
-			'aspect' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -801,11 +800,6 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url' ),
-				'req' => false,
-			),
-			array(
-				'attr' => 'aspect',
-				'types' => array( 'ratio' ),
 				'req' => false,
 			),
 		),

@@ -103,6 +103,7 @@ function onYouTubePlayerAPIReady() {
 			if ( 'vimeo' == host ) {
 				data.videos.vimeo[id] = atts;
 				data.videos.vimeo[id].src = src;
+				data.videos.vimeo[id].showinfo = el.getAttribute( 'data-showinfo' );
 				requireVimeo = true;
 			}
 
@@ -123,7 +124,7 @@ function onYouTubePlayerAPIReady() {
 	 */
 	CLCreateVimeoPlayers = function() {
 
-		var id, value, options, callbacks;
+		var id, value, options, showinfo, callbacks;
 
 		/* Heroes */
 		for ( id in data.heroes.vimeo ) {
@@ -153,8 +154,13 @@ function onYouTubePlayerAPIReady() {
 
 			value = data.videos.vimeo[id];
 
+			showinfo = ( '1' == value.showinfo ) ? true : false;
+
 			options = {
-				url: value.src
+				url: value.src,
+				byline: showinfo,
+				title: showinfo,
+				portrait: showinfo
 			};
 
 			callbacks = {

@@ -15,7 +15,12 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
+$showinfo = 1;
+
 if ( ! empty( $atts['title'] ) || ! empty( $atts['excerpt'] ) ) {
+
+	$showinfo = 0;
+
 	$output .= '<div class="overlay">';
 
 	if ( ! empty( $atts['title'] ) ) {
@@ -38,7 +43,7 @@ if ( ! empty( $atts['img'] ) ) {
 }
 
 $id = empty( $atts['id'] ) ? $vid : $atts['id'];
-$output .= '<div class="poster" id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '"><img src="' . $imgurl . '" alt="' . $atts['alt'] . '"/></div>';
+$output .= '<div class="poster" id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" data-showinfo="' . $showinfo . '"><img src="' . $imgurl . '" alt="' . $atts['alt'] . '"/></div>';
 
 $output .= '</div>';
 $output .= '</section>';
