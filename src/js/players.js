@@ -177,8 +177,6 @@ function onYouTubePlayerAPIReady() {
 
 	function createVimeoPlayer( id, value, options, callbacks ) {
 
-		console.log( id );
-
 		value.player = new Vimeo.Player( id, options );
 
 		value.player.on(

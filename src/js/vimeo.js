@@ -185,7 +185,7 @@ class CLVimeo {
 	 */
 	static onVideoError( data ) {
 
-		var a, img, alt, iframe;
+		var a, img, alt;
 
 		a = document.createElement( 'a' );
 		a.href = data.src;

@@ -133,8 +133,7 @@ class CLYT {
 	 */
 	static onVideoReady( event ) {
 		var el = event.target.getIframe(),
-			key = event.target.a.id,
-			parent = event.target.a.parentNode;
+				parent = event.target.a.parentNode;
 
 		window.addEventListener(
 			'resize',
@@ -232,8 +231,7 @@ class CLYT {
 	static onVideoStateChange( event ) {
 
 		var state = event.target.getPlayerState(),
-			key = event.target.a.id,
-			overlay = event.target.a.parentNode.querySelector( '.overlay' );
+				overlay = event.target.a.parentNode.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:
