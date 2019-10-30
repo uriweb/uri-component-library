@@ -143,7 +143,7 @@ function onYouTubePlayerAPIReady() {
 				onReady: CLVimeo.onHeroReady,
 				onStateChange: CLVimeo.onHeroStateChange,
 				onError: CLVimeo.onHeroError
-			}
+			};
 
 			createVimeoPlayer( id, value, options, callbacks );
 
@@ -173,14 +173,14 @@ function onYouTubePlayerAPIReady() {
 
 		}
 
-	}
+	};
 
 	function createVimeoPlayer( id, value, options, callbacks ) {
 
 		value.player = new Vimeo.Player( id, options );
 
 		value.player.on(
-			 'loaded',
+			'loaded',
 			function( e ) {
 				value.state = 'loaded';
 				callbacks.onReady( value );
@@ -188,7 +188,7 @@ function onYouTubePlayerAPIReady() {
 			);
 
 		value.player.on(
-			 'bufferstart',
+			'bufferstart',
 			function( e ) {
 				value.state = 'buffering';
 				callbacks.onStateChange( value );
@@ -196,7 +196,7 @@ function onYouTubePlayerAPIReady() {
 			);
 
 		value.player.on(
-			 'play',
+			'play',
 			function( e ) {
 				value.state = 'playing';
 				callbacks.onStateChange( value );
@@ -204,7 +204,7 @@ function onYouTubePlayerAPIReady() {
 			);
 
 		value.player.on(
-			 'pause',
+			'pause',
 			function( e ) {
 				value.state = 'paused';
 				callbacks.onStateChange( value );
@@ -212,7 +212,7 @@ function onYouTubePlayerAPIReady() {
 			);
 
 		value.player.on(
-			 'ended',
+			'ended',
 			function( e ) {
 				value.state = 'ended';
 				callbacks.onStateChange( value );

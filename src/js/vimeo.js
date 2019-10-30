@@ -34,7 +34,7 @@ class CLVimeo {
 
 		// Listen for browser resizing
 		window.addEventListener(
-			 'resize',
+			'resize',
 			function() {
 				CLVimeo.resizeHero( data );
 			}
@@ -43,7 +43,7 @@ class CLVimeo {
 
 		// Listen for scrolling
 		window.addEventListener(
-			 'scroll',
+			'scroll',
 			function() {
 				if ( ! data.parent.classList.contains( 'paused' ) ) {
 					CLVimeo.determinePlayState( data );
@@ -59,7 +59,7 @@ class CLVimeo {
 		button.className = 'motionswitch';
 		button.title = 'Pause';
 		button.addEventListener(
-			 'click',
+			'click',
 			function() {
 				CLVimeo.heroControl( data, button );
 			}
