@@ -49,10 +49,6 @@
 					display: none;
 				}
 
-				&.transitions {
-            transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
         &.reboundLeft {
             animation-name: cl-slideshow-carousel-rebound-left;
             animation-duration: .3s;
