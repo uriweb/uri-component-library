@@ -79,8 +79,7 @@
 
 		counter = document.createElement( 'div' );
 		counter.className = 'counter';
-		counter.innerHTML = '<span></span> of ' + parsed.length;
-		S.appendChild( counter );
+    S.appendChild( counter );
 
 		for ( i = 0; i < parsed.length; i++ ) {
 
@@ -101,6 +100,7 @@
 
     obj = {
       el: carousel,
+      counter: counter,
       n: parsed.length
     };
 
@@ -193,8 +193,6 @@
 	 */
 	function setPosition( c, index, behavior ) {
 
-		var S, p, active, captions, counter;
-
 		c.el.scroll({
       top: 0,
       left: c.el.offsetWidth * index,
@@ -203,31 +201,24 @@
 
 		c.el.setAttribute( 'data-position', index );
 
-		/*
-    S = c.parentNode.parentNode;
-
-		active = S.querySelector( '.captions .active' );
-		if ( active ) {
-			active.classList.remove( 'active' );
-		}
-
-		captions = S.querySelectorAll( '.caption' );
-		captions[index].classList.add( 'active' );
-
-		counter = S.querySelector( '.counter span' );
-		counter.innerHTML = index + 1;
-    */
+    updateCounter( c, index );
 
 	}
 
+  function updateCounter( c, index ) {
+    c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
+  }
+
   function handleScroll( c ) {
 
-    var p, s;
+    var p, s, i;
 
     p = c.el.getAttribute( 'data-position' );
     s = c.el.scrollLeft;
-    if ( Number.isInteger( s / c.el.offsetWidth ) ) {
-      c.el.setAttribute( 'data-position', s / c.el.offsetWidth );
+    i = s / c.el.offsetWidth;
+    if ( Number.isInteger( i ) ) {
+      c.el.setAttribute( 'data-position', i );
+      updateCounter( c, i );
     }
 
   }
