@@ -17,6 +17,11 @@
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
     "autoprefixer": "^9.7.0",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "gulp": "^4.0.2",
     "gulp-concat": ">=2.6.1",
     "gulp-header": "^2.0.9",

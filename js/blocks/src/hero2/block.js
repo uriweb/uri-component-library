@@ -34,7 +34,7 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/button'
 ];
 const TEMPLATE = [
-  ['core/heading', { level: 1, placeholder: 'My Hero' }],
+  ['core/heading', { level: 1, placeholder: 'My Hero', blockControls: {} }],
   ['core/paragraph', { placeholder: '', dropCap: false }],
   ['uri-cl/button', {}]
 ];

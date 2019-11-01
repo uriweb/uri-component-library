@@ -84,7 +84,7 @@ function scripts(done) {
                   ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.humans[0] %>',
-				  ' * @author <%= pkg.humans[1] %>',
+                  ' * @author <%= pkg.humans[1] %>',
                   ' * @license <%= pkg.license %>',
                   ' * @see <%= pkg.docs %>',
                   ' */',
@@ -177,6 +177,7 @@ function watcher(done) {
 	// watch for PHP change
 	gulp.watch('./**/*.php', sniffs);
 
+	// watch for Gutenberg change
 	gulp.watch('./js/blocks/src/', webpack);
 	gulp.watch('./js/blocks/src/blocks.scss', gutenbergAdminStyles);
 

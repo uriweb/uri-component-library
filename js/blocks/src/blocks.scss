@@ -18,25 +18,19 @@ textarea {
 	border-radius: 0;
 }
 
-/* @todo: temporary styles that belong in the theme */
-.block-editor {
-	.cl-button textarea {
-		font-family: "Hind", sans-serif !important;
-		text-transform: uppercase;
-		background-color: transparent !important;
-	}
-	.editor-styles-wrapper p {
-		font-family: Charter, Georgia, serif;
+.components-placeholder.editor-media-placeholder {
+	.components-placeholder__instructions {
+		font-size: .875rem;
+		margin: .5rem;
 	}
 }
-
 
 .block-editor {
 	.meta {
 		animation: metaReveal .5s;
 		background-color: #fff;
 		border: 2px solid #ddd;
-		margin-top: .75rem;
+		margin-top: .5rem;
 		position: relative;
 		padding: 1rem 0;
 		.row {
@@ -56,29 +50,63 @@ textarea {
 			transform: rotateZ(45deg);
 			width: 1rem;
 		}
-	}
 
-	.meta .link label {
-		float: left;
-		margin-right: .5em;
-		svg {
-			margin-left: .25em;
-			margin-top: .5em;
+		.link {
+			label {
+				float: left;
+				margin-right: .5em;
+				svg {
+					margin-left: .25em;
+					margin-top: .5em;
+				}
+			}
+			input {
+				width: auto;
+			}
 		}
+		
+	}
+	.cl-card+.meta {
+		top: -2rem;
 	}
 }
 
+
+
+
+/* @todo: temporary styles that belong in the theme */
+.block-editor {
+	.cl-button textarea {
+		font-family: "Hind", sans-serif !important;
+		text-transform: uppercase;
+		background-color: transparent !important;
+	}
+	.editor-styles-wrapper p {
+		font-family: Charter, Georgia, serif;
+	}
+}
+
+
+
+/** TABS **/
 .block-editor .cl-tab {
 	border: 1px dashed #ddd;
 	border-width: 1px 0;
 }
 
+
+
+
+/** QUOTES **/
 .block-editor .cl-quote cite textarea {
 	max-width: 50%;
 	position: relative;
 	top: .375rem;
 }
 
+
+
+/** METRICS **/
 .block-editor {
 	.cl-metric textarea, .cl-metric span {
 		text-align: center;
@@ -106,6 +134,9 @@ textarea {
 // 	display: none;
 // }
 
+
+
+/** BUTTONS **/
 .block-editor {
 	.cl-button {
 		// @todo: don't repeat button styles here
@@ -131,25 +162,36 @@ textarea {
 		}
 	
 		textarea {
+			margin: -1rem;
 			text-align: center;
 		}
 		textarea:focus {
 		}
 
 	}
-}
-
-
-.block-editor {
-	.cl-card-block-form {
-		textarea.cl-button {
-			border-radius: 0;
-			color: $black !important;
-		}
+	textarea.cl-button {
+		border-radius: 0;
+		color: $black !important;
+		letter-spacing: .1rem;
 	}
 }
 
 
+/** CARDS **/
+.block-editor {
+	.cl-card-text div {
+		font-size: 1rem;
+	}
+	.cl-card-text>div {
+		margin-bottom: 2rem;
+	}
+}
+
+
+
+
+
+/** HEROES **/
 .edit-post-visual-editor div[data-type="uri-cl/hero"] {
 	max-width: 100%;
 }
