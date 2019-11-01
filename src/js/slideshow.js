@@ -57,7 +57,7 @@
 	 * @param parsed obj the parsed gallery
 	 */
 	function buildSlideshowDOM( el, parsed ) {
-		var S, carouselWrapper, carousel, captions, counter, li, cap, i;
+		var S, carouselWrapper, carousel, captions, counter, slide, fig, cap, i;
 
 		S = document.createElement( 'div' );
 		S.className = 'cl-slideshow';
@@ -66,13 +66,10 @@
 		carouselWrapper.className = 'carousel-wrapper';
 		S.appendChild( carouselWrapper );
 
-		carousel = document.createElement( 'ul' );
+		carousel = document.createElement( 'div' );
 		carousel.className = 'carousel transitions';
+    carousel.setAttribute( 'style', 'grid-template-columns: repeat(' + parsed.length + ',100%)' );
 		carouselWrapper.appendChild( carousel );
-
-		captions = document.createElement( 'ul' );
-		captions.className = 'captions';
-		S.appendChild( captions );
 
 		counter = document.createElement( 'div' );
 		counter.className = 'counter';
@@ -81,21 +78,24 @@
 
 		for ( i = 0; i < parsed.length; i++ ) {
 
-			li = document.createElement( 'li' );
-			li.className = 'slide';
-			li.appendChild( parsed[i].img );
-			carousel.appendChild( li );
+      slide = document.createElement( 'div' );
+      slide.className = 'slide';
 
-			cap = document.createElement( 'li' );
-			cap.className = 'caption';
+			fig = document.createElement( 'figure' );
+			fig.appendChild( parsed[i].img );
+			slide.appendChild( fig );
+
+			cap = document.createElement( 'figcaption' );
 			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
-			captions.appendChild( cap );
+			slide.appendChild( cap );
+
+      carousel.appendChild( slide );
 
 		}
 
 		carouselWrapper.appendChild( makeControlButtons( carousel ) );
 
-		setPosition( carousel, 0 );
+		//setPosition( carousel, 0 );
 
 		el.parentNode.replaceChild( S, el );
 
@@ -183,10 +183,16 @@
 
 		var S, active, captions, counter;
 
-		c.style.transform = 'translateX(-' + ( index * 100 ) + '%)';
+		c.scroll({
+      top: 0,
+      left: c.offsetWidth * index,
+      behavior: 'smooth'
+    });
+    
 		c.setAttribute( 'data-position', index );
 
-		S = c.parentNode.parentNode;
+		/*
+    S = c.parentNode.parentNode;
 
 		active = S.querySelector( '.captions .active' );
 		if ( active ) {
@@ -198,6 +204,7 @@
 
 		counter = S.querySelector( '.counter span' );
 		counter.innerHTML = index + 1;
+    */
 
 	}
 
