@@ -4,7 +4,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 ## What's new in 3.7.0
 
-CL 3.7.0 is a minor release.
+CL 3.7.0 is a minor release focused on Slideshow enhancements and video support.
 
 ### Slideshows:
 * Rebuilt from the ground up to be more fluid and responsive, especially on touch devices
