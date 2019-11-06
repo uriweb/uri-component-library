@@ -15,7 +15,12 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
+$showinfo = 1;
+
 if ( ! empty( $atts['title'] ) || ! empty( $atts['excerpt'] ) ) {
+
+	$showinfo = 0;
+
 	$output .= '<div class="overlay">';
 
 	if ( ! empty( $atts['title'] ) ) {
@@ -29,19 +34,16 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['excerpt'] ) ) {
 	$output .= '</div>';
 }
 
-$imgsrc = 'https://img.youtube.com/vi/' . $atts['vid'] . '/maxresdefault.jpg';
+$vid = uri_cl_get_video_id( $atts['vid'] );
+$platform = uri_cl_get_video_platform( $atts['vid'] );
+$imgurl = ( 'vimeo' == $platform ) ? uri_cl_get_vimeo_thumbnail( $atts['vid'] ) : 'https://img.youtube.com/vi/' . $vid . '/maxresdefault.jpg';
 
 if ( ! empty( $atts['img'] ) ) {
-	$imgsrc = $atts['img'];
+	$imgurl = $atts['img'];
 }
 
-$id = empty( $atts['id'] ) ? $atts['vid'] : $atts['id'];
-$output .= '<img id="' . $id . '" data-id="' . $atts['vid'] . '" src="' . $imgsrc . '" alt="' . $atts['alt'] . '"';
+$id = empty( $atts['id'] ) ? $vid : $atts['id'];
+$output .= '<div class="poster" id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" data-showinfo="' . $showinfo . '"><img src="' . $imgurl . '" alt="' . $atts['alt'] . '"/></div>';
 
-if ( ! empty( $atts['aspect'] ) ) {
-	$output .= ' data-aspect="' . $atts['aspect'] . '"';
-}
-
-$output .= '>';
 $output .= '</div>';
 $output .= '</section>';

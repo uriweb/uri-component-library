@@ -601,6 +601,46 @@ add_shortcode( 'cl-quote', 'uri_cl_shortcode_quote' );
 
 
 /**
+ * Share
+ */
+function uri_cl_shortcode_share( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'platforms' => 'all',
+			'style' => 'color',
+			'class' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Share',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'platforms',
+				'types' => array( 'str' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'style',
+				'types' => array( 'str' ),
+				'values' => array( 'color', 'dark', 'light' ),
+			),
+		),
+		uri_cl_shortcode_get_template( 'share' )
+	);
+
+}
+add_shortcode( 'cl-share', 'uri_cl_shortcode_share' );
+
+
+/**
  * Social
  */
 function uri_cl_shortcode_social( $atts, $content = null ) {
@@ -781,7 +821,6 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 			'alt' => '',
 			'title' => '',
 			'excerpt' => '',
-			'aspect' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -801,11 +840,6 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url' ),
-				'req' => false,
-			),
-			array(
-				'attr' => 'aspect',
-				'types' => array( 'ratio' ),
 				'req' => false,
 			),
 		),

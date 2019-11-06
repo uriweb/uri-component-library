@@ -30,6 +30,11 @@
         margin-left: -50vw;
     }
 
+    div[data-vimeo-initialized] {
+      width: 100%;
+      height: 100%;
+    }
+
     iframe {
         z-index: 1;
         position: relative;

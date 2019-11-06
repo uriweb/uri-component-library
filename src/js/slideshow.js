@@ -11,15 +11,21 @@
 
 	'use strict';
 
+  var carousels = [];
+
 	window.addEventListener( 'load', initCLSlideshow, false );
 
 	function initCLSlideshow() {
+
 		var g, i;
 
 		g = document.querySelectorAll( '.gallery.gallery-size-full' );
 		for ( i = 0; i < g.length; i++ ) {
 			parseWPGallery( g[i] );
 		}
+
+		window.addEventListener( 'resize', handleResize, false );
+
 	}
 
 	/*
@@ -57,7 +63,7 @@
 	 * @param parsed obj the parsed gallery
 	 */
 	function buildSlideshowDOM( el, parsed ) {
-		var S, carouselWrapper, carousel, captions, counter, li, cap, i;
+		var S, carouselWrapper, carousel, counter, slide, fig, cap, i, obj;
 
 		S = document.createElement( 'div' );
 		S.className = 'cl-slideshow';
@@ -66,36 +72,43 @@
 		carouselWrapper.className = 'carousel-wrapper';
 		S.appendChild( carouselWrapper );
 
-		carousel = document.createElement( 'ul' );
+		carousel = document.createElement( 'div' );
 		carousel.className = 'carousel transitions';
+		carousel.setAttribute( 'style', 'grid-template-columns: repeat(' + parsed.length + ',100%)' );
 		carouselWrapper.appendChild( carousel );
-
-		captions = document.createElement( 'ul' );
-		captions.className = 'captions';
-		S.appendChild( captions );
 
 		counter = document.createElement( 'div' );
 		counter.className = 'counter';
-		counter.innerHTML = '<span></span> of ' + parsed.length;
 		S.appendChild( counter );
 
 		for ( i = 0; i < parsed.length; i++ ) {
 
-			li = document.createElement( 'li' );
-			li.className = 'slide';
-			li.appendChild( parsed[i].img );
-			carousel.appendChild( li );
+			slide = document.createElement( 'div' );
+			slide.className = 'slide';
 
-			cap = document.createElement( 'li' );
-			cap.className = 'caption';
+			fig = document.createElement( 'figure' );
+			fig.appendChild( parsed[i].img );
+
+			cap = document.createElement( 'figcaption' );
 			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
-			captions.appendChild( cap );
+			fig.appendChild( cap );
+
+			slide.appendChild( fig );
+			carousel.appendChild( slide );
 
 		}
 
-		carouselWrapper.appendChild( makeControlButtons( carousel ) );
+		obj = {
+			el: carousel,
+			counter: counter,
+			n: parsed.length
+		};
 
-		setPosition( carousel, 0 );
+		carousel.addEventListener( 'scroll', handleScroll.bind( null, obj ), false );
+		carouselWrapper.appendChild( makeControlButtons( obj ) );
+		carousels.push( obj );
+
+		setPosition( obj, 0, 'auto' );
 
 		el.parentNode.replaceChild( S, el );
 
@@ -104,7 +117,7 @@
 	/**
 	 * Create controls
 	 *
-	 * @param c el the carousel
+	 * @param c obj the carousel object
 	 */
 	function makeControlButtons( c ) {
 		var controls, types, target, button, x;
@@ -127,32 +140,30 @@
 			controls.appendChild( target );
 		}
 
-		addTouchControls( controls, c );
-
 		return controls;
 
 	}
 
 	/*
 	 * Control direction of movement
-	 * @param c el the carousel
+	 * @param c obj the carousel object
 	 * @param direction str the direction to move in
 	 * @param mobile bool called from mobile device
 	 */
 	function controlDirection( c, direction, mobile ) {
 		var index, count;
-		index = c.getAttribute( 'data-position' );
-		count = c.children.length - 1;
+		index = c.el.getAttribute( 'data-position' );
+		count = c.el.children.length - 1;
 
 		// Reset the endslide animation
-		c.classList.remove( 'reboundLeft', 'reboundRight' );
+		c.el.classList.remove( 'reboundLeft', 'reboundRight' );
 
 		if ( 'Next' === direction ) {
 			index++;
 			if ( index > count ) {
 				if ( ! mobile ) {
-					void c.offsetWidth; // Trigger reflow to restart animation
-					c.classList.add( 'reboundRight' );
+					void c.el.offsetWidth; // Trigger reflow to restart animation
+					c.el.classList.add( 'reboundRight' );
 					return;
 				} else {
 					index--;
@@ -162,8 +173,8 @@
 			index--;
 			if ( index < 0 ) {
 				if ( ! mobile ) {
-					void c.offsetWidth; // Trigger reflow to restart animation
-					c.classList.add( 'reboundLeft' );
+					void c.el.offsetWidth; // Trigger reflow to restart animation
+					c.el.classList.add( 'reboundLeft' );
 					return;
 				} else {
 					index++;
@@ -171,127 +182,70 @@
 			}
 		}
 
-		setPosition( c, index );
+		setPosition( c, index, 'smooth' );
+
 	}
 
 	/*
 	 * Set position of slideshow
-	 * @param c el the carousel
+	 * @param c obj the carousel object
 	 * @param index int the index to move to
 	 */
-	function setPosition( c, index ) {
+	function setPosition( c, index, behavior ) {
 
-		var S, active, captions, counter;
-
-		c.style.transform = 'translateX(-' + ( index * 100 ) + '%)';
-		c.setAttribute( 'data-position', index );
-
-		S = c.parentNode.parentNode;
-
-		active = S.querySelector( '.captions .active' );
-		if ( active ) {
-			active.classList.remove( 'active' );
+		c.el.scroll(
+			{
+				top: 0,
+				left: c.el.offsetWidth * index,
+				behavior: behavior
 		}
+			);
 
-		captions = S.querySelectorAll( '.caption' );
-		captions[index].classList.add( 'active' );
+		c.el.setAttribute( 'data-position', index );
 
-		counter = S.querySelector( '.counter span' );
-		counter.innerHTML = index + 1;
+		updateCounter( c, index );
+		updateActive( c, index );
 
 	}
 
-	/*
-	 * Check if touch device
-	 */
-	function isTouchDevice() {
-		return 'ontouchstart' in window || navigator.maxTouchPoints;
+	function updateCounter( c, index ) {
+		c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
 	}
 
-	/*
-	 * Add touch controls
-	 * @param el el the control div
-	 * @param c el the carousel
-	 */
-	function addTouchControls( el, c ) {
+	function updateActive( c, index ) {
 
-		var start, dist;
+		var i, slide;
 
-		start = 0;
-		dist = 0;
-
-		if ( true === isTouchDevice ) {
-			el.classList.add( 'touch' );
+		slide = c.el.querySelectorAll( '.slide' );
+		for ( i = 0; i < c.n; i++ ) {
+			slide[i].classList.remove( 'active' );
 		}
 
-		el.addEventListener(
-			'touchstart',
-			function( e ) {
+		slide[index].classList.add( 'active' );
 
-				var touchobj;
+	}
 
-				// Unhook CSS transitions during swipe event for smoother tracking
-				c.classList.remove( 'transitions' );
+	function handleScroll( c ) {
 
-				// Reference first touch point
-				touchobj = e.changedTouches[0];
+		var s, i;
 
-				// Get x position of touch point relative to left edge of browser
-				start = parseInt( touchobj.clientX );
+		s = c.el.scrollLeft;
+		i = s / c.el.offsetWidth;
+		if ( Number.isInteger( i ) ) {
+			c.el.setAttribute( 'data-position', i );
+			updateCounter( c, i );
+			updateActive( c, i );
+		}
 
-				e.preventDefault();
+	}
 
-			},
-			false
-			);
+	function handleResize() {
 
-		el.addEventListener(
-			'touchmove',
-			function( e ) {
+		var i;
 
-				var touchobj, delta, move, t;
-
-				// Reference first touch point for this event
-				touchobj = e.changedTouches[0];
-
-				delta = ( parseInt( touchobj.clientX ) - start ) - dist;
-				dist = parseInt( touchobj.clientX ) - start;
-				move = delta < 0 ? -1 : 1;
-
-				t = c.style.transform.replace( 'translateX(', '' ).replace( '%)', '' );
-				c.style.transform = 'translateX(' + ( parseInt( t ) + move ) + '%)';
-
-				e.preventDefault();
-
-			},
-			false
-			);
-
-		el.addEventListener(
-			'touchend',
-			function( e ) {
-
-				var w, tolerance;
-
-				// Rehook CSS transitions after the swipe is complete to animate snapping
-				c.classList.add( 'transitions' );
-
-				w = c.offsetWidth;
-				tolerance = 0.25; // Set the distance of a valid swipe as a percent of the carousel width
-
-				if ( dist > w * tolerance ) {
-					controlDirection( c, 'Previous', true );
-				} else if ( dist < w * -tolerance ) {
-					controlDirection( c, 'Next', true );
-				} else {
-					setPosition( c, parseInt( c.getAttribute( 'data-position' ) ) );
-				}
-
-				e.preventDefault();
-
-			},
-			false
-			);
+		for ( i = 0; i < carousels.length; i++ ) {
+			setPosition( carousels[i], carousels[i].el.getAttribute( 'data-position' ), 'auto' );
+		}
 
 	}
 

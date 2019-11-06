@@ -1,179 +1,33 @@
 /**
- * HERO VIDS / VIDEOS
+ * YOUTUBE API
  *
  * @package uri-component-library
  */
 
-// Create this in the global scope so the YouTube API can call it locally.
-var CLCreateYouTubePlayers;
-function onYouTubePlayerAPIReady() {
-	CLCreateYouTubePlayers();
-}
-
-( function() {
-
-	'use strict';
-
-	var uriVidHeroes = {},
-		uriVideos = {};
-
-	window.addEventListener( 'load', getVids, false );
-
-	/*
-	 * Get video ID(s) and load the API
-	 */
-	function getVids() {
-
-		var requireYouTube = false,
-			heroes = document.querySelectorAll( '.cl-hero .poster' ),
-			vids = document.querySelectorAll( '.cl-video img' ),
-			el, key, parent, i, start, end, placeholder, aspect;
-
-		if ( URICL.checkSupport() ) {
-
-			for ( i = 0; i < heroes.length; i++ ) {
-
-				el = heroes[i];
-				key = el.getAttribute( 'id' );
-				parent = el.parentNode;
-				start = el.getAttribute( 'data-start' );
-				end = el.getAttribute( 'data-end' );
-
-				uriVidHeroes[key] = {
-					'poster': el,
-					'parent': parent,
-					'ytid': el.getAttribute( 'data-id' ),
-					'w': parent.offsetWidth,
-					'h': parent.offsetHeight,
-					'start': start ? start : 0,
-					'end': end ? end : -1
-				};
-
-				// Remove poster id and create a new placeholder for the video
-				el.removeAttribute( 'id' );
-				placeholder = document.createElement( 'div' );
-				placeholder.id = key;
-				parent.appendChild( placeholder );
-
-				requireYouTube = true;
-
-			}
-
-		}
-
-		for ( i = 0; i < vids.length; i++ ) {
-
-			el = vids[i];
-			key = el.getAttribute( 'id' );
-
-			aspect = 16 / 9; // Set default aspect
-
-			if ( el.getAttribute( 'data-aspect' ) ) {
-				aspect = el.getAttribute( 'data-aspect' ).split( ':' );
-				aspect = aspect[0] / aspect[1];
-			}
-
-			uriVideos[key] = {
-				'poster': el,
-				'ytid': el.getAttribute( 'data-id' ),
-				'parent': el.parentNode,
-				'aspect': aspect
-			};
-
-			requireYouTube = true;
-
-		}
-
-		if ( requireYouTube ) {
-			loadYouTubeAPI();
-		}
-
-	}
+// jshint esversion: 6
+// jscs:disable requireVarDeclFirst
+class CLYT {
 
 	/*
 	 * Load the API
 	 */
-	function loadYouTubeAPI() {
+	static loadYouTubeAPI() {
+
 		var tag, firstScriptTag;
 
 		tag = document.createElement( 'script' );
 		tag.src = 'https://www.youtube.com/player_api';
 		firstScriptTag = document.getElementsByTagName( 'script' )[0];
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
+
 	}
-
-	/*
-	 * Create the player(s)
-	 */
-	CLCreateYouTubePlayers = function() {
-
-		var key, value;
-
-		for ( key in uriVidHeroes ) {
-
-			value = uriVidHeroes[key];
-
-			value.player = new YT.Player(
-				key,
-				{
-					width: value.w,
-					height: value.h,
-					videoId: value.ytid,
-					playerVars: {
-						autoplay: 1,
-						controls: 0,
-						showinfo: 0,
-						start: value.start,
-						end: value.end,
-						modestbranding: 1,
-						iv_load_policy: 3,
-						rel: 0
-					},
-					events: {
-						'onReady': onHeroReady,
-						'onStateChange': onHeroStateChange,
-						'onError': onHeroError
-					}
-			}
-				);
-
-		}
-
-		for ( key in uriVideos ) {
-
-			value = uriVideos[key];
-
-			value.player = new YT.Player(
-				key,
-				{
-					videoId: value.ytid,
-					playerVars: {
-						autoplay: 0,
-						controls: 1,
-						showinfo: 0,
-						color: 'white',
-						modestbranding: 1,
-						iv_load_policy: 3,
-						rel: 0
-					},
-					events: {
-						'onReady': onVideoReady,
-						'onStateChange': onVideoStateChange,
-						'onError': onVideoError
-					}
-			}
-				);
-
-		}
-
-	};
 
 	/*
 	 * Dynamically set the hero height and position based on width
 	 * @param el el the hero
 	 * @param el parent the hero parent container
 	 */
-	function resizeHero( el, parent ) {
+	static resizeHero( el, parent ) {
 		var w = parent.offsetWidth,
 			h = parent.offsetHeight;
 
@@ -195,12 +49,12 @@ function onYouTubePlayerAPIReady() {
 
 	/*
 	 * Dynamically set the video height and position based on width
-	 * @param str key the key of the video in uriVideos
+	 * @param obj event the event
 	 * @param el el the video
 	 * @param el parent the video parent container
 	 */
-	function resizeVideo( key, el, parent ) {
-		el.style.height = parent.offsetWidth / uriVideos[key].aspect + 'px';
+	static resizeVideo( event, el, parent ) {
+		el.style.height = parent.offsetWidth / ( event.target.a.width / event.target.a.height ) + 'px';
 	}
 
 	/*
@@ -208,7 +62,7 @@ function onYouTubePlayerAPIReady() {
 	 * @param obj event the hero player
 	 * @param el parent the hero parent container
 	 */
-	function determinePlayState( event, parent ) {
+	static determinePlayState( event, parent ) {
 		var v = window.innerHeight,
 			p = window.pageYOffset,
 			h = parent.offsetHeight,
@@ -226,7 +80,7 @@ function onYouTubePlayerAPIReady() {
 	 * Do things with the hero when it's loaded
 	 * @param obj event the hero player
 	 */
-	function onHeroReady( event ) {
+	static onHeroReady( event ) {
 
 		var el, parent, overlay, button;
 
@@ -234,27 +88,27 @@ function onYouTubePlayerAPIReady() {
 		event.target.mute();
 
 		el = event.target.getIframe();
-		parent = uriVidHeroes[event.target.a.id].parent;
+		parent = event.target.a.parentNode;
 
 		// Listen for browser resizing
 		window.addEventListener(
 			'resize',
 			function() {
-				resizeHero( el, parent );
+				CLYT.resizeHero( el, parent );
 			}
 		);
-		resizeHero( el, parent );
+		CLYT.resizeHero( el, parent );
 
 		// Listen for scrolling
 		window.addEventListener(
 			'scroll',
 			function() {
 				if ( ! parent.classList.contains( 'paused' ) ) {
-					determinePlayState( event, parent );
+					CLYT.determinePlayState( event, parent );
 				}
 			}
 		);
-		determinePlayState( event, parent );
+		CLYT.determinePlayState( event, parent );
 
 		// Add play/pause button
 		overlay = parent.querySelector( '.overlay' );
@@ -265,7 +119,7 @@ function onYouTubePlayerAPIReady() {
 		button.addEventListener(
 			'click',
 			function() {
-				heroControl( event, parent, this );
+				CLYT.heroControl( event, parent, this );
 			}
 		);
 
@@ -277,18 +131,17 @@ function onYouTubePlayerAPIReady() {
 	 * Do things with the video when it's loaded
 	 * @param str id the id of the video
 	 */
-	function onVideoReady( event ) {
+	static onVideoReady( event ) {
 		var el = event.target.getIframe(),
-			key = event.target.a.id,
-			parent = uriVideos[key].parent;
+				parent = event.target.a.parentNode;
 
 		window.addEventListener(
 			'resize',
 			function() {
-				resizeVideo( key, el, parent );
+				CLYT.resizeVideo( event, el, parent );
 			}
 		);
-		resizeVideo( key, el, parent );
+		CLYT.resizeVideo( event, el, parent );
 
 	}
 
@@ -298,7 +151,7 @@ function onYouTubePlayerAPIReady() {
 	 * @param el parent the hero parent container
 	 * @param el el the .motionswitch element
 	 */
-	function heroControl( event, parent, el ) {
+	static heroControl( event, parent, el ) {
 		switch ( event.target.getPlayerState() ) {
 			default:
 			case 1:
@@ -318,7 +171,7 @@ function onYouTubePlayerAPIReady() {
 	 * Get hero state and decide what to do
 	 * @param obj event the hero player
 	 */
-	function onHeroStateChange( event ) {
+	static onHeroStateChange( event ) {
 		var state = event.target.getPlayerState();
 		switch ( state ) {
 			case 0:
@@ -327,7 +180,7 @@ function onYouTubePlayerAPIReady() {
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					uriVidHeroes[event.target.a.id].poster.classList.add( 'unveil' );
+					event.target.a.previousSibling.classList.add( 'unveil' );
 				}
 				break;
 		}
@@ -335,29 +188,29 @@ function onYouTubePlayerAPIReady() {
 
 	/*
 	 * Revert to poster if there's an error with the hero video
-	 * @param str key the key of the hero in uriVidHeroes
+	 * @param obj event the event
 	 */
-	function onHeroError( event ) {
-		uriVidHeroes[event.target.a.id].poster.classList.remove( 'unveil' );
-		uriVidHeroes[event.target.a.id].parent.querySelector( '.motionswitch' ).style.display = 'none';
+	static onHeroError( event ) {
+		event.target.a.previousSibling.classList.remove( 'unveil' );
+		event.target.a.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/*
 	 * Link the poster to the video on YouTube if there's an error with the video
-	 * @param str key the key of the hero in uriVideos
+	 * @param obj event the event
 	 */
-	function onVideoError( event ) {
-		var el, a, img, alt, iframe;
+	static onVideoError( event ) {
+		var poster, a, img, alt, iframe;
 
-		el = uriVideos[event.target.a.id];
+		poster = event.target.a.previousSibling;
 
 		a = document.createElement( 'a' );
-		a.href = 'http://www.youtube.com/watch?v=' + el.ytid;
+		a.href = 'http://www.youtube.com/watch?v=' + event.target.a.id;
 		a.title = 'Try watching this video on YouTube';
 
 		img = document.createElement( 'img' );
-		img.src = el.poster.getAttribute( 'src' );
-		alt = el.poster.getAttribute( 'alt' );
+		img.src = poster.getAttribute( 'src' );
+		alt = poster.getAttribute( 'alt' );
 		if ( ! alt ) {
 			alt = 'Poster for video';
 		}
@@ -366,7 +219,7 @@ function onYouTubePlayerAPIReady() {
 
 		iframe = document.getElementById( event.target.a.id );
 		if ( iframe ) {
-			el.parent.replaceChild( a, iframe );
+			event.target.a.parentNode.replaceChild( a, iframe );
 		}
 
 	}
@@ -375,11 +228,10 @@ function onYouTubePlayerAPIReady() {
 	 * Get video state and decide what to do
 	 * @param obj event the video player
 	 */
-	function onVideoStateChange( event ) {
+	static onVideoStateChange( event ) {
 
 		var state = event.target.getPlayerState(),
-			key = event.target.a.id,
-			overlay = uriVideos[key].parent.querySelector( '.overlay' );
+				overlay = event.target.a.parentNode.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:
@@ -391,4 +243,4 @@ function onYouTubePlayerAPIReady() {
 		}
 	}
 
-})();
+}
