@@ -28,27 +28,29 @@ textarea {
 .block-editor {
 	.meta {
 		animation: metaReveal .5s;
-		background-color: #fff;
-		border: 2px solid #ddd;
+		background-color: #ddd;
+		border-top: 2px solid #000;
 		margin-top: .5rem;
-		position: relative;
+		position: absolute;
 		padding: 1rem 0;
+		z-index: 10;
 		.row {
 			margin-left: .5rem;
 			margin-right: .5rem;
 		}
 		&:before {
-			background-color: #fff;
-			border: 2px solid #ddd;
-			border-width: 2px 0 0 2px;
 			content: ' ';
 			display: block;
-			height: 1rem;
 			left: 2rem;
 			position: absolute;
-			top: -.6rem;
-			transform: rotateZ(45deg);
-			width: 1rem;
+			top: -12px;
+
+			width: 0; 
+			height: 0; 
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+			border-bottom: 12px solid black;
+
 		}
 
 		.link {
@@ -179,6 +181,9 @@ textarea {
 
 /** CARDS **/
 .block-editor {
+	.cl-card {
+		overflow: visible !important;
+	}
 	.cl-card-text div {
 		font-size: 1rem;
 	}
@@ -243,13 +248,15 @@ textarea {
 
 		.cl-hero.selected {
 			h1 textarea, .subhead div.subhead {
-				background-color: rgba(0,0,0,.5) !important;
 			}
 		}
 
 		.cl-hero.selected.no-image .poster {
 			z-index: 10;
 			height: auto;
+			.wp-block-uri-cl-hero {
+				min-height: 150px;
+			}
 		}
 		.cl-hero.has-image .poster {
 			img {

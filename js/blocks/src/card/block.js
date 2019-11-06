@@ -187,15 +187,17 @@ registerBlockType('uri-cl/card', {
 							keepPlaceholderOnFocus={true}
 						/>
 						</div>
-						<PlainText
-							onChange={ content => setAttributes({ button: content }) }
-							value={ attributes.button }
-							placeholder={__("Your button text")}
-							keepPlaceholderOnFocus={true}
-							className="cl-button"
-						/>
+						<div>
+							<PlainText
+								onChange={ content => setAttributes({ button: content }) }
+								value={ attributes.button }
+								placeholder={__("Your button text")}
+								keepPlaceholderOnFocus={true}
+								className="cl-button"
+							/>
+							{ meta }
+						</div>
 					</div>
-					{ meta }
 				</div>
 			);
 		}
