@@ -13,7 +13,7 @@
 
 	window.addEventListener( 'load', initCLSlideshow, false );
 
-  var carousels = [];
+	var carousels = [];
 
 	function initCLSlideshow() {
 
@@ -24,7 +24,7 @@
 			parseWPGallery( g[i] );
 		}
 
-    window.addEventListener( 'resize', handleResize, false );
+		window.addEventListener( 'resize', handleResize, false );
 
 	}
 
@@ -74,17 +74,17 @@
 
 		carousel = document.createElement( 'div' );
 		carousel.className = 'carousel transitions';
-    carousel.setAttribute( 'style', 'grid-template-columns: repeat(' + parsed.length + ',100%)' );
+		carousel.setAttribute( 'style', 'grid-template-columns: repeat(' + parsed.length + ',100%)' );
 		carouselWrapper.appendChild( carousel );
 
 		counter = document.createElement( 'div' );
 		counter.className = 'counter';
-    S.appendChild( counter );
+		S.appendChild( counter );
 
 		for ( i = 0; i < parsed.length; i++ ) {
 
-      slide = document.createElement( 'div' );
-      slide.className = 'slide';
+			slide = document.createElement( 'div' );
+			slide.className = 'slide';
 
 			fig = document.createElement( 'figure' );
 			fig.appendChild( parsed[i].img );
@@ -94,19 +94,19 @@
 			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
 			slide.appendChild( cap );
 
-      carousel.appendChild( slide );
+			carousel.appendChild( slide );
 
 		}
 
-    obj = {
-      el: carousel,
-      counter: counter,
-      n: parsed.length
-    };
+		obj = {
+			el: carousel,
+			counter: counter,
+			n: parsed.length
+		};
 
-    carousel.addEventListener( 'scroll', handleScroll.bind( null, obj ), false );
+		carousel.addEventListener( 'scroll', handleScroll.bind( null, obj ), false );
 		carouselWrapper.appendChild( makeControlButtons( obj ) );
-    carousels.push( obj );
+		carousels.push( obj );
 
 		setPosition( obj, 0, 'auto' );
 
@@ -193,58 +193,60 @@
 	 */
 	function setPosition( c, index, behavior ) {
 
-		c.el.scroll({
-      top: 0,
-      left: c.el.offsetWidth * index,
-      behavior: behavior
-    });
+		c.el.scroll(
+			{
+				top: 0,
+				left: c.el.offsetWidth * index,
+				behavior: behavior
+		}
+			);
 
 		c.el.setAttribute( 'data-position', index );
 
-    updateCounter( c, index );
-    updateActive( c, index );
+		updateCounter( c, index );
+		updateActive( c, index );
 
 	}
 
-  function updateCounter( c, index ) {
-    c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
-  }
+	function updateCounter( c, index ) {
+		c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
+	}
 
-  function updateActive( c, index ) {
+	function updateActive( c, index ) {
 
-    var i, slide;
+		var i, slide;
 
-    slide = c.el.querySelectorAll( '.slide' );
-    for ( i = 0; i < c.n; i++ ) {
-      slide[i].classList.remove( 'active' );
-    }
+		slide = c.el.querySelectorAll( '.slide' );
+		for ( i = 0; i < c.n; i++ ) {
+			slide[i].classList.remove( 'active' );
+		}
 
-    slide[index].classList.add( 'active' );
+		slide[index].classList.add( 'active' );
 
-  }
+	}
 
-  function handleScroll( c ) {
+	function handleScroll( c ) {
 
-    var s, i;
+		var s, i;
 
-    s = c.el.scrollLeft;
-    i = s / c.el.offsetWidth;
-    if ( Number.isInteger( i ) ) {
-      c.el.setAttribute( 'data-position', i );
-      updateCounter( c, i );
-      updateActive( c, i );
-    }
+		s = c.el.scrollLeft;
+		i = s / c.el.offsetWidth;
+		if ( Number.isInteger( i ) ) {
+			c.el.setAttribute( 'data-position', i );
+			updateCounter( c, i );
+			updateActive( c, i );
+		}
 
-  }
+	}
 
-  function handleResize() {
+	function handleResize() {
 
-    var i;
+		var i;
 
-    for ( i = 0; i < carousels.length; i++ ) {
-      setPosition( carousels[i], carousels[i].el.getAttribute( 'data-position' ), 'auto' );
-    }
+		for ( i = 0; i < carousels.length; i++ ) {
+			setPosition( carousels[i], carousels[i].el.getAttribute( 'data-position' ), 'auto' );
+		}
 
-  }
+	}
 
 })();
