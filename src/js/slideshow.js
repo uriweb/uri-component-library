@@ -63,7 +63,7 @@
 	 * @param parsed obj the parsed gallery
 	 */
 	function buildSlideshowDOM( el, parsed ) {
-		var S, carouselWrapper, carousel, captions, counter, slide, fig, cap, i, obj;
+		var S, carouselWrapper, carousel, counter, slide, fig, cap, i, obj;
 
 		S = document.createElement( 'div' );
 		S.className = 'cl-slideshow';
@@ -239,8 +239,6 @@
   }
 
   function handleResize() {
-
-    console.log( 'resized ');
 
     var i;
 
