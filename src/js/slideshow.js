@@ -202,11 +202,25 @@
 		c.el.setAttribute( 'data-position', index );
 
     updateCounter( c, index );
+    updateActive( c, index );
 
 	}
 
   function updateCounter( c, index ) {
     c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
+  }
+
+  function updateActive( c, index ) {
+
+    var i, slide;
+
+    slide = c.el.querySelectorAll( '.slide' );
+    for ( i = 0; i < c.n; i++ ) {
+      slide[i].classList.remove( 'active' );
+    }
+
+    slide[index].classList.add( 'active' );
+
   }
 
   function handleScroll( c ) {
@@ -219,6 +233,7 @@
     if ( Number.isInteger( i ) ) {
       c.el.setAttribute( 'data-position', i );
       updateCounter( c, i );
+      updateActive( c, i );
     }
 
   }
