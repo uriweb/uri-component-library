@@ -225,9 +225,8 @@
 
   function handleScroll( c ) {
 
-    var p, s, i;
+    var s, i;
 
-    p = c.el.getAttribute( 'data-position' );
     s = c.el.scrollLeft;
     i = s / c.el.offsetWidth;
     if ( Number.isInteger( i ) ) {
