@@ -9,13 +9,14 @@ CL 3.7.0 is a minor release focused on Slideshow enhancements and video support.
 ### Slideshows:
 * Rebuilt from the ground up to be more fluid and responsive, especially on touch devices
 * Introduces a redesigned, more compact interface
-* Slideshow figures and captions are now accessibility compliant
+* Figures and captions are now accessibility compliant
+* Fixes an issue where some images may have been cropped depending on the size of the slideshow
 
 ### Vimeo Support:
 * Video and Hero components now support content from Vimeo using either the full or embed URL
 * Full YouTube URLs may now be used to specify vidoes
 * Backward-compatible with existing shortcodes using the 11-character video id
-* All support is built onto the `vid` shortcode attribute; no additional attributes or modifications to existing shortcodes required
+* All support is built onto the `vid` shortcode attribute; no additional attributes or modifications to existing shortcodes are required
 
 ### Additional Updates:
 * Adds a Share component for sharing the current page or post on social media; currently supports Twitter and Facebook
