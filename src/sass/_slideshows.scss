@@ -4,228 +4,323 @@
 .cl-slideshow {
 
 	display: block;
+	position: relative;
 	width: 100%;
-	text-align: center;
 	box-sizing: border-box;
 	margin: 0 0 2rem;
 
-    * {
-        box-sizing: border-box;
-    }
+  * {
+      box-sizing: border-box;
+  }
 
-    &:after {
-        display: block;
-        content: '';
-        clear: both;
-    }
-
-    .carousel-wrapper {
+  .carousel-wrapper {
 
 		position: relative;
 		width: 100%;
-		height: 300px;
 		overflow: hidden;
 		background: #eee;
 		border-radius: .2rem;
 		margin-bottom: 1rem;
 
-        .carousel {
-            position: relative;
-            display: block;
-            white-space: nowrap;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            list-style: none;
+    .carousel {
+
+			display: grid;
+			grid-template-columns: repeat(1, 100%); // Change this with JS
+      will-change: transform;
+			align-content: center;
+			overflow-x: auto;
+			scroll-snap-coordinate: 0 0;
+			scroll-snap-points-x: repeat( 100% );
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+			transform: translateX(0);
+			width: 100%;
+			height: 100%;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+      &.reboundLeft {
+          animation-name: cl-slideshow-carousel-rebound-left;
+          animation-duration: .3s;
+      }
+
+      &.reboundRight {
+          animation-name: cl-slideshow-carousel-rebound-right;
+          animation-duration: .3s;
+      }
+
+			.slide {
+
+				position: relative;
+        scroll-snap-align: start;
+				height: 300px;
+				border-radius: .2rem;
+				overflow: hidden;
+
+				figure {
+					height: 100%;
+				}
+
+				figcaption {
+					display: inline-block;
+					font-size: .85rem;
+					line-height: 1.1rem;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					background: rgba(255,255,255,.6);
+					color: #000;
+					padding: 8px;
+					border-radius: 0 0 .2rem .2rem;
+					opacity: 0;
+					transition: opacity .4s ease-in-out .1s;
+				}
+
+				figcaption:empty {
+					display: none;
+				}
+
+				img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
         }
 
-        .carousel.transitions {
-            transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
-        }
+      }
 
-        .carousel.reboundLeft {
-            animation-name: cl-slideshow-carousel-rebound-left;
-            animation-duration: .3s;
-        }
+    }
 
-        .carousel.reboundRight {
-            animation-name: cl-slideshow-carousel-rebound-right;
-            animation-duration: .3s;
-        }
+		.controls {
 
-        .slide {
-            display: inline-block;
-            position: relative;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
-            text-align: center;
-        }
-
-        .slide img {
-            height: 100%;
-            width: 100%;
-            object-fit: contain;
-        }
-
-        .controls {
-
-			display: block;
+			display: none;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
 			opacity: 0;
-			transition: all .4s ease-in-out;
+			transition: opacity .4s ease-in-out .1s;
 
-            &:after {
-                display: block;
-                clear: both;
-                content: '';
-            }
+      &:after {
+        display: block;
+        clear: both;
+        content: '';
+      }
 
-            .target {
-                height: 100%;
-                width: 50%;
-                padding: 0 2%;
-            }
+      .target {
+        height: 100%;
+        width: 50%;
+        padding: 0 2%;
+      }
 
-            .target.previous {
-                float: left;
-            }
+      .target.previous {
+        float: left;
+      }
 
-            .target.next {
-                float: right;
-            }
+      .target.next {
+        float: right;
+      }
 
-            .target:hover {
-                cursor: pointer;
-            }
+      .target:hover {
+        cursor: pointer;
+      }
 
-            .controller {
-                position: relative;
-                top: calc(50% - 20px);
-                width: 40px;
-                height: 40px;
-                background-color: rgba(255,255,255,.8);
-                border-radius: 50%;
-                transition: padding .2s ease-in-out;
-            }
+      .controller {
 
-            .controller:after {
-                display: block;
-                content: '';
-                position: relative;
-                top: 26%;
-                left: 17%;
-                width: 45%;
-                height: 45%;
-                border-top: 1px solid rgba(0,0,0,.5);
-                border-right: 1px solid rgba(0,0,0,.5);
-                transition: all .2s ease-in-out;
-            }
+        position: relative;
+        top: calc(50% - 20px);
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255,255,255,.8);
+        border-radius: 50%;
+        transition: padding .2s ease-in-out;
 
-            .target:hover .controller:after {
-                border-top: 1px solid $black;
-                border-right: 1px solid $black;
-            }
+				&:after {
+	        display: block;
+	        content: '';
+	        position: relative;
+	        top: 26%;
+	        left: 17%;
+	        width: 45%;
+	        height: 45%;
+	        border-top: 1px solid rgba(0,0,0,.5);
+	        border-right: 1px solid rgba(0,0,0,.5);
+	        transition: all .2s ease-in-out;
+	      }
 
-            .target.previous .controller:after {
-                transform: rotate(225deg);
-                left: 34%;
-            }
+      }
 
-            .target.next .controller:after {
-                transform: rotate(45deg);
-            }
+      .target:hover .controller:after {
+        border-top: 1px solid $black;
+        border-right: 1px solid $black;
+      }
 
-            .target.next .controller {
-                float: right;
-            }
+      .target.previous .controller:after {
+        transform: rotate(225deg);
+        left: 34%;
+      }
 
-            &.touch .controller {
-                display: none;
-            }
+      .target.next .controller:after {
+        transform: rotate(45deg);
+      }
 
+      .target.next .controller {
+        float: right;
+      }
 
-        } // .cl-slideshow .carouselWrapper .controls
+      &.touch .controller {
+        display: none;
+      }
 
-        &:hover {
+    }
 
-            .controls {
-                opacity: 1;
-            }
+    &:hover {
 
-        }
+      .controls {
+        opacity: 1;
+				transition: opacity .4s ease-in-out .5s;
+      }
 
-    } // .cl-slideshow .carouselWrapper
+			.carousel .slide.active figcaption {
+				opacity: 1;
+			}
 
-    .captions {
+    }
 
-		display: block;
-		float: left;
-		list-style: none;
-		text-align: left;
-		margin: 0;
-		padding: 0;
-		width: 40%;
-		min-width: 250px;
+	}
 
-        .caption {
-            padding: 0;
-            margin: 0;
-            display: none;
-            font-size: .8rem;
-            color: $darkgrey;
-        }
-
-        .caption.active {
-            display: block;
-        }
-
-    } // .cl-slideshow .captions
-
-    .counter {
+  .counter {
 
 		display: block;
-		float: right;
 		font-size: .8rem;
-		color: $darkgrey;
-		margin-bottom: 5rem;
+		color: rgba(0,0,0,0.6);
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		background: rgba(255,255,255,.6);
+		padding: 3px 7px 2px;
+		border-radius: 10px;
 
-        span {
-            font-weight: 600;
-        }
+    span {
+      font-weight: 600;
+    }
 
-    } // .cl-slideshow .counter
+  }
+
+	&.dark {
+
+		.carousel-wrapper {
+
+			background: #222;
+
+			.controls {
+
+				.controller {
+
+					background-color: rgba(0,0,0,.8);
+
+					&:after {
+		        display: block;
+		        content: '';
+		        position: relative;
+		        top: 26%;
+		        left: 17%;
+		        width: 45%;
+		        height: 45%;
+		        border-top: 1px solid rgba(255,255,255,.5);
+		        border-right: 1px solid rgba(255,255,255,.5);
+		        transition: all .2s ease-in-out;
+		      }
+
+				}
+
+	      .target:hover .controller:after {
+	        border-top: 1px solid $white;
+	        border-right: 1px solid $white;
+	      }
+
+			}
+
+			.carousel .slide figcaption {
+				background: rgba(0,0,0,.8);
+				color: #fff;
+			}
+
+		}
+
+		.counter {
+			background: rgba(0,0,0,.8);
+			color: rgba(255,255,255,.8);
+		}
+
+	}
 
 } // .cl-slideshow
 
-
-
 @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .cl-slideshow .carousel-wrapper .controls .controller { -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); background-color: rgba(255,255,255,.5); }
+
+    .cl-slideshow {
+
+			.carousel-wrapper .carousel .slide figcaption,
+			.carousel-wrapper .controls .controller,
+			.counter {
+				backdrop-filter: saturate(180%) blur(20px);
+				background-color: rgba(255,255,255,.5);
+			}
+
+			&.dark {
+
+				.carousel-wrapper .carousel .slide figcaption,
+				.carousel-wrapper .controls .controller,
+				.counter {
+					background-color: rgba(0,0,0,.5);
+				}
+
+			}
+
+		}
+
 }
 
 @media screen and (min-width: $break1) {
 
-    .cl-slideshow .carousel-wrapper {
+    .cl-slideshow .carousel-wrapper .carousel .slide {
+
         height: 400px;
+
+				figcaption {
+					bottom: 1rem;
+					left: 1rem;
+					width: initial;
+					max-width: 400px;
+					padding: 5px 8px 3px;
+					border-radius: 5px;
+				}
+
     }
 
-    .cl-slideshow .carousel-wrapper .controls .controller {
-        top: calc(50% - 25px);
-        width: 50px;
-        height: 50px;
-    }
+    .cl-slideshow .carousel-wrapper .controls {
+
+			display: block;
+
+			.controller {
+	       top: calc(50% - 25px);
+	       width: 50px;
+	       height: 50px;
+	    }
+
+		}
 
 }
 
 @media screen and (min-width: $break2) {
 
-    .cl-slideshow .carousel-wrapper {
+    .cl-slideshow .carousel-wrapper .carousel .slide {
         height: 500px;
     }
 
@@ -238,13 +333,13 @@
 }
 
 @keyframes cl-slideshow-carousel-rebound-left {
-    0% { left: 0; }
-    30% { left: 5%; }
-    100% { left: 0; }
+    0% { transform: translateX(0); }
+    30% { transform: translateX(5%); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes cl-slideshow-carousel-rebound-right {
-    0% { right: 0; }
-    30% { right: 5%; }
-    100% { right: 0; }
+    0% { transform: translateX(0) }
+    30% { transform: translateX(-5%) }
+    100% { transform: translateX(0) }
 }
