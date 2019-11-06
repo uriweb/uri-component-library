@@ -88,12 +88,12 @@
 
 			fig = document.createElement( 'figure' );
 			fig.appendChild( parsed[i].img );
-			slide.appendChild( fig );
 
 			cap = document.createElement( 'figcaption' );
 			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
-			slide.appendChild( cap );
-
+			fig.appendChild( cap );
+      
+      slide.appendChild( fig );
 			carousel.appendChild( slide );
 
 		}
