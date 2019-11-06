@@ -11,9 +11,9 @@
 
 	'use strict';
 
-	window.addEventListener( 'load', initCLSlideshow, false );
+  var carousels = [];
 
-	var carousels = [];
+	window.addEventListener( 'load', initCLSlideshow, false );
 
 	function initCLSlideshow() {
 
