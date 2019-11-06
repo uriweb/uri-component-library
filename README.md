@@ -2,17 +2,27 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.6.0
+## What's new in 3.7.0
 
-CL 3.6.0 is a minor release.
+CL 3.7.0 is a minor release.
 
-* Uses CSS grids for tiles
-* Adds asymmetrical layout support for tiles
-* Adds option for equal-height cards in tiles
-* Removes prompter arrow from super-formatted hero component
+### Slideshows:
+* Rebuilt from the ground up to be more fluid and responsive, especially on touch devices
+* Introduces a redesigned, more compact interface
+* Slideshow figures and captions are now accessibility compliant
+
+### Vimeo Support:
+* Video and Hero components now support content from Vimeo using either the full or embed URL
+* Full YouTube URLs may now be used to specify vidoes
+* Backward-compatible with existing shortcodes using the 11-character video id
+* All support is built onto the `vid` shortcode attribute; no additional attributes or modifications to existing shortcodes required
+
+### Additional Updates:
+* Adds a Share component for sharing the current page or post on social media; currently supports Twitter and Facebook
+* Fixes a contrast issue with link text in Boxouts and Panels
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/154/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/160/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
