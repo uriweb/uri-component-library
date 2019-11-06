@@ -92,8 +92,8 @@
 			cap = document.createElement( 'figcaption' );
 			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
 			fig.appendChild( cap );
-      
-      slide.appendChild( fig );
+
+			slide.appendChild( fig );
 			carousel.appendChild( slide );
 
 		}
