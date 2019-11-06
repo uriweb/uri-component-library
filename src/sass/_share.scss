@@ -1,0 +1,110 @@
+/* ======= SHARE ======= */
+
+.cl-share {
+
+  position: relative;
+  display: inline-block;
+  background: #eee;
+  border-radius: .2rem;
+  overflow: hidden;
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .cl-share-label {
+    display: block;
+    float: left;
+    font-size: .9rem;
+    color: $black;
+    background: rgba(0,0,0,.05);
+    padding: 4px 7px 5px;
+    line-height: 20px;
+  }
+
+  .cl-share-buttons {
+
+    display: block;
+    float: left;
+    list-style: none;
+    padding: 5px 8px 4px;
+  	margin: 0;
+
+    li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+
+    li:not(:first-child) {
+        margin-left: 10px;
+    }
+
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    background-image: url(../i/sprite-social.png);
+    background-repeat: no-repeat;
+    background-size: 60px auto;
+    transform: translateY(0);
+    transition: transform .1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-1px);
+    }
+
+  }
+
+  &.color {
+
+    a.cl-share-facebook {
+      background-position: 0 0;
+    }
+
+    a.cl-share-twitter {
+      background-position: 0 -30px;
+    }
+
+  }
+
+  &.light {
+
+    a.cl-share-facebook {
+      background-position: -20px 0;
+    }
+
+    a.cl-share-twitter {
+      background-position: -20px -30px;
+    }
+
+  }
+
+  &.dark {
+
+    background: $darkgrey;
+
+    .cl-share-label {
+      color: #fff;
+      background: rgba(0,0,0,.1);
+    }
+
+    a.cl-share-facebook {
+      background-position: -40px 0;
+    }
+
+    a.cl-share-twitter {
+      background-position: -40px -30px;
+    }
+
+  }
+
+}
