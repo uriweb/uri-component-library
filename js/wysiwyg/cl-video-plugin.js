@@ -59,7 +59,7 @@
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['img', 'vid', 'alt', 'aspect', 'id', 'title', 'excerpt', 'class'];
+						possibleArgs = ['img', 'vid', 'alt', 'id', 'title', 'excerpt', 'class'];
 						possibleArgs.forEach(
 						function( i ) {
 							if ( ! args[i] ) {
@@ -86,8 +86,7 @@
 							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
 							{ type: 'textbox', name: 'id', id: 'id', value: args.id, subtype: 'hidden' },
-							{ type: 'textbox', name: 'vid', label: 'YouTube ID (required)', value: args.vid },
-							{ type: 'textbox', name: 'aspect', label: 'Aspect Ratio', 'placeholder': '16:9', value: args.aspect },
+							{ type: 'textbox', name: 'vid', label: 'Video URL (required)', value: args.vid },
 							{ type: 'textbox', name: 'title', label: 'Title', value: args.title },
 							{ type: 'textbox', name: 'excerpt', multiline: 'true', label: 'Excerpt', value: args.excerpt },
 							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' }

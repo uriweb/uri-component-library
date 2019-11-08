@@ -100,7 +100,7 @@
 							{ type: 'textbox', name: 'alt', id: 'alt', value: args.alt, subtype: 'hidden' },
 							{ type: 'textbox', name: 'img', id: 'img', value: args.img, subtype: 'hidden' },
 							{ type: 'textbox', name: 'id', id: 'id', value: args.id, subtype: 'hidden' },
-							{ type: 'textbox', name: 'vid', label: 'YouTube ID', value: args.vid },
+							{ type: 'textbox', name: 'vid', label: 'Video URL', value: args.vid },
 							{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
 							{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
 							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
