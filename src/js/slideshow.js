@@ -11,7 +11,7 @@
 
 	'use strict';
 
-  var carousels = [];
+	var carousels = [];
 
 	window.addEventListener( 'load', initCLSlideshow, false );
 

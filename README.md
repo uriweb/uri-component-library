@@ -2,7 +2,15 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.7.0
+## What's new in 3.7.1
+
+CL 3.7.1 is a bug fix release.
+
+* Updates hero and video component visual editors to correspond with changes introduced in [v3.7](https://github.com/uriweb/uri-component-library/releases/tag/3.7.0)
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/162/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+
+## New in 3.7.0
 
 CL 3.7.0 is a minor release focused on Slideshow enhancements and video support.
 
@@ -41,4 +49,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 5.2  
-Stable tag: 3.7.0  
+Stable tag: 3.7.1  
