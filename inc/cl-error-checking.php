@@ -116,6 +116,8 @@ function uri_cl_return_validation( $type, $val, $att ) {
 			return uri_cl_validate_ratio( $val );
 		case 'unit':
 			return uri_cl_validate_unit( $val );
+		case 'date':
+			return uri_cl_validate_date( $val );
 		default:
 			return array(
 				'valid' => true,
@@ -432,6 +434,31 @@ function uri_cl_validate_unit( $val ) {
 
 
 /**
+ * Validate dates, return the value and metadata
+ *
+ * @param str $url the date to validate.
+ * @return arr the validation metadata.
+ */
+function uri_cl_validate_date( $date ) {
+	$valid = false;
+	$status = 'warning';
+
+	if ( strtotime( $date ) ) {
+		$valid = true;
+		$status = 'normal';
+	}
+
+	return array(
+		'valid' => $valid,
+		'value' => $date,
+		'status' => $status,
+		'message' => '"' . $date . '" is not a valid date (see <a href="https://www.php.net/manual/en/datetime.formats.php">accepted formats</a>)',
+	);
+
+}
+
+
+/**
  * Check if given value is in array
  *
  * @param str $val the value to check.
@@ -465,4 +492,3 @@ function uri_cl_accepted_values( $att ) {
 	}
 
 }
-

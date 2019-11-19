@@ -439,6 +439,13 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 		array(
 			'title' => '',
 			'style' => '',
+			'deadline' => '',
+			'show_expired' => false,
+			'dismissable' => true,
+			'until' => 'until',
+			'is_today' => 'is today',
+			'passed' => 'passed',
+			'link' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -456,6 +463,21 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'urgent' ),
+			),
+			array(
+				'attr' => 'deadline',
+				'types' => array( 'date' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'show_expired',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'dismissable',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'notice' )
