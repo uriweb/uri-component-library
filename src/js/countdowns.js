@@ -7,88 +7,88 @@
 
 ( function() {
 
-  'use strict';
+	'use strict';
 
-  window.addEventListener( 'load', init, false );
+	window.addEventListener( 'load', init, false );
 
-  function init() {
+	function init() {
 
-    var countdowns, i;
+		var countdowns, i;
 
-    countdowns = document.querySelectorAll( '.cl-countdown' );
+		countdowns = document.querySelectorAll( '.cl-countdown' );
 
-    for ( i = 0; i < countdowns.length; i++ ) {
-      setupCountdown( countdowns[i] );
-    }
+		for ( i = 0; i < countdowns.length; i++ ) {
+			setupCountdown( countdowns[i] );
+		}
 
-  }
+	}
 
-  function setupCountdown( countdown ) {
+	function setupCountdown( countdown ) {
 
-    var d, cvalue, hash;
+		var d, cvalue, hash;
 
-    d = countdown.querySelector( '.dismiss' );
+		d = countdown.querySelector( '.dismiss' );
 
-    if ( null === d ) {
-      return;
-    }
+		if ( null === d ) {
+			return;
+		}
 
-    d.addEventListener( 'click', dismiss.bind( null, countdown ), false );
-    hash = countdown.getAttribute( 'data-hash' );
-    cvalue = getCookie( 'uri-cl-countdown-' + hash );
+		d.addEventListener( 'click', dismiss.bind( null, countdown ), false );
+		hash = countdown.getAttribute( 'data-hash' );
+		cvalue = getCookie( 'uri-cl-countdown-' + hash );
 
-    if ( 'dismissed' == cvalue ) {
-      dismiss( countdown );
-    }
+		if ( 'dismissed' == cvalue ) {
+			dismiss( countdown );
+		}
 
-  }
+	}
 
-  function dismiss( countdown ) {
+	function dismiss( countdown ) {
 
-    var hash;
+		var hash;
 
-    hash = countdown.getAttribute( 'data-hash' );
+		hash = countdown.getAttribute( 'data-hash' );
 
-    countdown.classList.add( 'dismissed' );
-    setCookie( 'uri-cl-countdown-' + hash, 'dismissed', 30 );
+		countdown.classList.add( 'dismissed' );
+		setCookie( 'uri-cl-countdown-' + hash, 'dismissed', 30 );
 
-  }
+	}
 
-  function setCookie( cname, cvalue, exdays ) {
+	function setCookie( cname, cvalue, exdays ) {
 
-    var d, expires;
+		var d, expires;
 
-    d = new Date();
-    d.setTime( d.getTime() + ( exdays * 24 * 60 * 60 * 1000 ) );
+		d = new Date();
+		d.setTime( d.getTime() + ( exdays * 24 * 60 * 60 * 1000 ) );
 
-    expires = 'expires=' + d.toUTCString();
-    document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+		expires = 'expires=' + d.toUTCString();
+		document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
 
-  }
+	}
 
-  function getCookie( cname ) {
+	function getCookie( cname ) {
 
-    var name, ca, i, c;
+		var name, ca, i, c;
 
-    name = cname + '=';
-    ca = document.cookie.split( ';' );
+		name = cname + '=';
+		ca = document.cookie.split( ';' );
 
-    for ( i = 0; i < ca.length; i++ ) {
+		for ( i = 0; i < ca.length; i++ ) {
 
-      c = ca[i];
+			c = ca[i];
 
-      while ( ' ' == c.charAt( 0 ) ) {
-        c = c.substring( 1 );
-      }
+			while ( ' ' == c.charAt( 0 ) ) {
+				c = c.substring( 1 );
+			}
 
-      if ( 0 == c.indexOf( name ) ) {
-        return c.substring( name.length, c.length );
-      }
+			if ( 0 == c.indexOf( name ) ) {
+				return c.substring( name.length, c.length );
+			}
 
-    }
+		}
 
-    return '';
+		return '';
 
-  }
+	}
 
 })();
