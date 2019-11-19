@@ -441,7 +441,7 @@ function uri_cl_validate_unit( $val ) {
  */
 function uri_cl_validate_date( $date ) {
 	$valid = false;
-	$status = 'warning';
+	$status = 'fatal';
 
 	if ( strtotime( $date ) ) {
 		$valid = true;

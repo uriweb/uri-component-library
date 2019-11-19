@@ -269,6 +269,56 @@ add_shortcode( 'cl-scard', 'uri_cl_shortcode_scard' );
 
 
 /**
+ * Countdown
+ */
+function uri_cl_shortcode_countdown( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'deadline' => '',
+			'event' => 'the deadline',
+			'show_expired' => false,
+			'dismissable' => true,
+			'until' => 'until',
+			'is_today' => 'is today',
+			'passed' => 'passed',
+			'link' => '',
+			'class' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Countdown',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'deadline',
+				'types' => array( 'date' ),
+			),
+			array(
+				'attr' => 'show_expired',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'dismissable',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'countdown' )
+	);
+
+}
+add_shortcode( 'cl-countdown', 'uri_cl_shortcode_countdown' );
+
+
+/**
  * Hero
  */
 function uri_cl_shortcode_hero( $atts, $content = null ) {
@@ -439,13 +489,6 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 		array(
 			'title' => '',
 			'style' => '',
-			'deadline' => '',
-			'show_expired' => false,
-			'dismissable' => true,
-			'until' => 'until',
-			'is_today' => 'is today',
-			'passed' => 'passed',
-			'link' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -463,21 +506,6 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'urgent' ),
-			),
-			array(
-				'attr' => 'deadline',
-				'types' => array( 'date' ),
-				'req' => false,
-			),
-			array(
-				'attr' => 'show_expired',
-				'types' => array( 'bool' ),
-				'req' => false,
-			),
-			array(
-				'attr' => 'dismissable',
-				'types' => array( 'bool' ),
-				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'notice' )
