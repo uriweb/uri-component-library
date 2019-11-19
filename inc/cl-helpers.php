@@ -124,12 +124,13 @@ function uri_cl_get_vimeo_thumbnail( $src ) {
 
 /**
  * Return an array with seconds, days, hours, minutes defined.
- * @param int $secs the number of seconds togo
+ *
+ * @param int $secs the number of seconds togo.
  * @return arr
  */
 function uri_cl_expand_seconds( $secs ) {
 
-	$seconds = (int)$secs;
+	$seconds = (int) $secs;
 	$days = floor( $seconds / 86400 );
 	$hours = floor( ( $seconds - ( $days * 86400 ) ) / 3600 );
 	$minutes = floor( ( $seconds - $days * 86400 - $hours * 3600 ) / 60 );
@@ -140,49 +141,51 @@ function uri_cl_expand_seconds( $secs ) {
 		'minutes' => $minutes,
 		'hours' => $hours,
 		'days' => $days,
-		'tense' => ( $secs >= 0 ) ? 'future' : 'past'
+		'tense' => ( $secs >= 0 ) ? 'future' : 'past',
 	);
 
 }
 
 /**
  * Get a plain language sentence that announces the time remaining.
- * @param arr $a an array with seconds, days, hours, minutes defined
- * @param arr $attributes are the shortcode attributes
+ *
+ * @param arr $a an array with seconds, days, hours, minutes defined.
+ * @param arr $attributes are the shortcode attributes.
  * @return str
  */
 function uri_cl_time_left_in_words( $a, $attributes ) {
 
 	$days = $a['days'];
-	$day_string = ($days == 1 || $days == -1) ? 'day' : 'days';
+	$day_string = ( 1 == $days || -1 == $days ) ? 'day' : 'days';
 
 	$hours = $a['hours'];
-	$hour_string = ($hours == 1 || $hours == -1) ? 'hour' : 'hours';
+	$hour_string = ( 1 == $hours || -1 == $hours ) ? 'hour' : 'hours';
 
-	$minutes = $a['minutes'];;
-	$minute_string = ($minutes == 1 || $minutes == -1) ? 'minute' : 'minutes';
+	$minutes = $a['minutes'];
+	;
+	$minute_string = ( 1 == $minutes || -1 == $minutes ) ? 'minute' : 'minutes';
 
 	$seconds = $a['seconds'];
-	$second_string = ($seconds == 1 || $seconds == -1) ? 'second' : 'seconds';
+	$second_string = ( 1 == $seconds || -1 == $seconds ) ? 'second' : 'seconds';
 
 	// we're loose with months and years since it's so far away
 	$years = round( $days / 365 );
-	$year_string = $years == 1 ? 'year' : 'years';
+	$year_string = 1 == $years ? 'year' : 'years';
 	$months = round( $days / 30 );
-	$month_string = $months == 1 ? 'month' : 'months';
+	$month_string = 1 == $months ? 'month' : 'months';
 
-	if ( $days == 0 ) {
+	if ( 0 == $days ) {
 		// if we want to get really granular, this will do it.
 		// caching more or less defeats the purpose of getting so granular
-// 		if ( $hours > 1 ) {
-// 			$message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $hours, $hour_string, $attributes['event'] );
-// 		} elseif ( $minutes > 0 ) {
-// 			$message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $minutes, $minute_string, $attributes['event'] );
-// 		} else {
-// 			$message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $seconds, $second_string, $attributes['event'] );
-// 		}
+		// if ( $hours > 1 ) {
+		// $message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $hours, $hour_string, $attributes['event'] );
+		// } elseif ( $minutes > 0 ) {
+		// $message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $minutes, $minute_string, $attributes['event'] );
+		// } else {
+		// $message = sprintf('<span class="time-left-number">%d</span> %s until <span class="time-left-event">%s</span>.', $seconds, $second_string, $attributes['event'] );
+		// }
 		$capitalized_event = ucfirst( $attributes['event'] );
-		$message = sprintf('<span class="time-left-event">%s</span> %s.', $capitalized_event, $attributes['is_today'] );
+		$message = sprintf( '<span class="time-left-event">%s</span> %s.', $capitalized_event, $attributes['is_today'] );
 	} elseif ( $days > 59 ) {
 		if ( $years > 0 ) {
 			$message = sprintf( '<span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> %s <span class="time-left-event">%s</span>.', $years, $year_string, $attributes['until'], $attributes['event'] );
@@ -194,24 +197,23 @@ function uri_cl_time_left_in_words( $a, $attributes ) {
 	}
 
 	if ( $days < 0 ) {
-		if ( $attributes['show_expired'] !== FALSE ) {
+		if ( false !== $attributes['show_expired'] ) {
 			if ( $days < -30 ) {
 				if ( $years < 0 ) {
-					$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs($years), $year_string );
+					$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs( $years ), $year_string );
 				} else {
-					$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs($months), $month_string );
+					$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs( $months ), $month_string );
 				}
 			} elseif ( $days < -1 ) {
-				$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs($days), $day_string );
+				$message = sprintf( '<span class="time-left-event">%s</span> %s <span class="time-left"><span class="time-left-number">%d</span> <span class="time-left-unit">%s</span></span> ago.', $attributes['event'], $attributes['passed'], abs( $days ), $day_string );
 			} else {
 				$message = sprintf( '<span class="time-left-event">%s</span> has %s.', $attributes['event'], $attributes['passed'] );
 			}
 		} else {
-			$message = FALSE;
+			$message = false;
 		}
 	}
 
-
-  return $message;
+	return $message;
 
 }

@@ -436,7 +436,7 @@ function uri_cl_validate_unit( $val ) {
 /**
  * Validate dates, return the value and metadata
  *
- * @param str $url the date to validate.
+ * @param str $date the date to validate.
  * @return arr the validation metadata.
  */
 function uri_cl_validate_date( $date ) {
