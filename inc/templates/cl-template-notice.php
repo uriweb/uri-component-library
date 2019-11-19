@@ -8,6 +8,10 @@ switch ( $atts['style'] ) {
 		break;
 }
 
+if ( ! empty( $atts['deadline'] ) ) {
+	$classes .= ' deadline';
+}
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
