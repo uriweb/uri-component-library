@@ -11,7 +11,7 @@ $output = '';
 
 if ( ! empty( $message ) ) {
 
-	$hash = md5( $atts['deadline'] . $atts['event'] . $atts['link'] );
+	$hash = md5( implode( '', $atts ) );
 	$classes = 'cl-countdown';
 
 	if ( ! empty( $atts['class'] ) ) {
