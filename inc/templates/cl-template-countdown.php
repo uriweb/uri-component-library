@@ -1,17 +1,14 @@
 <?php
 
-$deadline = strtotime( $atts['deadline'] );
-$today = time();
-$difference = $deadline - $today;
-
+$difference = uri_cl_get_time_difference( $atts['deadline'] );
 $left = uri_cl_expand_seconds( $difference );
-$message = uri_cl_time_left_in_words( $left, $atts );
+$message = uri_cl_get_time_left_in_words( $left, $atts );
 
 $output = '';
 
 if ( ! empty( $message ) ) {
 
-	$hash = md5( implode( '', $atts ) );
+	$hash = uri_cl_get_hash( $atts );
 	$classes = 'cl-countdown';
 
 	if ( ! empty( $atts['class'] ) ) {

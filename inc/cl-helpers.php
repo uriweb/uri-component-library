@@ -122,10 +122,35 @@ function uri_cl_get_vimeo_thumbnail( $src ) {
 
 }
 
+
+/**
+ * Return the hash of a variable.
+ *
+ * @param mix $var the variable to hash.
+ * @return str
+ */
+function uri_cl_get_hash( $var ) {
+	return md5( is_array( $var ) ? implode( '', $var ) : $var );
+}
+
+
+/**
+ * Return time difference in seconds.
+ *
+ * @param str $date the data string
+ * @return num
+ */
+function uri_cl_get_time_difference( $date ) {
+	$deadline = strtotime( $date );
+	$today = time();
+	return $deadline - $today;
+}
+
+
 /**
  * Return an array with seconds, days, hours, minutes defined.
  *
- * @param int $secs the number of seconds togo.
+ * @param num $secs the number of seconds togo.
  * @return arr
  */
 function uri_cl_expand_seconds( $secs ) {
@@ -153,7 +178,7 @@ function uri_cl_expand_seconds( $secs ) {
  * @param arr $attributes are the shortcode attributes.
  * @return str
  */
-function uri_cl_time_left_in_words( $a, $attributes ) {
+function uri_cl_get_time_left_in_words( $a, $attributes ) {
 
 	$days = $a['days'];
 	$day_string = ( 1 == $days || -1 == $days ) ? 'day' : 'days';

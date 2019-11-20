@@ -1,7 +1,6 @@
 /**
- * COUNTDOWNS
+ * DISMISS
  *
- * @todo: let js takeover the countdown in real time to help defeat caching
  * @package uri-component-library
  */
 
@@ -13,44 +12,44 @@
 
 	function init() {
 
-		var countdowns, i;
+		var els, i;
 
-		countdowns = document.querySelectorAll( '.cl-countdown' );
+		els = document.querySelectorAll( '.cl-countdown, .cl-notice' );
 
-		for ( i = 0; i < countdowns.length; i++ ) {
-			setupCountdown( countdowns[i] );
+		for ( i = 0; i < els.length; i++ ) {
+			setup( els[i] );
 		}
 
 	}
 
-	function setupCountdown( countdown ) {
+	function setup( el ) {
 
 		var d, cvalue, hash;
 
-		d = countdown.querySelector( '.dismiss' );
+		d = el.querySelector( '.dismiss' );
 
 		if ( null === d ) {
 			return;
 		}
 
-		d.addEventListener( 'click', dismiss.bind( null, countdown ), false );
-		hash = countdown.getAttribute( 'data-hash' );
-		cvalue = getCookie( 'uri-cl-countdown-' + hash );
+		d.addEventListener( 'click', dismiss.bind( null, el ), false );
+		hash = el.getAttribute( 'data-hash' );
+		cvalue = getCookie( 'uri-cl-' + hash );
 
 		if ( 'dismissed' == cvalue ) {
-			dismiss( countdown );
+			dismiss( el );
 		}
 
 	}
 
-	function dismiss( countdown ) {
+	function dismiss( el ) {
 
 		var hash;
 
-		hash = countdown.getAttribute( 'data-hash' );
+		hash = el.getAttribute( 'data-hash' );
 
-		countdown.classList.add( 'dismissed' );
-		setCookie( 'uri-cl-countdown-' + hash, 'dismissed', 30 );
+		el.classList.add( 'dismissed' );
+		setCookie( 'uri-cl-' + hash, 'dismissed', 30 );
 
 	}
 

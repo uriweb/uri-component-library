@@ -487,8 +487,11 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
+			'expiration' => '',
 			'title' => '',
 			'style' => '',
+			'show_expired' => false,
+			'dismissable' => true,
 			'class' => '',
 			'css' => '',
 		),
@@ -502,10 +505,24 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 		$content,
 		array(
 			array(
+				'attr' => 'expiration',
+				'types' => array( 'date' ),
+			),
+			array(
 				'attr' => 'style',
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'urgent' ),
+			),
+			array(
+				'attr' => 'show_expired',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'dismissable',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'notice' )
