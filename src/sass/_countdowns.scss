@@ -1,30 +1,43 @@
 /* ======= COUNTDOWNS ======= */
 
 @keyframes reveal-countdown {
-	from { opacity: 0; transform: translateY(-20px); }
-	to { opacity: 1; transform: translateY(0px); }
+
+	from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+	to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
 }
 
 .cl-countdown {
 
 	position: relative;
-	box-sizing: border-box;
 	margin-bottom: 2rem;
-	padding: .75rem 2rem;
-	background: $midgold;
-	border-radius: .2rem;
-	color: $black;
-	text-align: center;
-	opacity: 0;
-	transform: translateY(-20px);
-	animation-name: reveal-countdown;
-	animation-duration: 1s;
-	animation-delay: .5s;
-	animation-fill-mode: forwards;
-	animation-timing-function: ease-in-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation-name: reveal-countdown;
+  animation-duration: 1s;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 
   &.dismissed {
   	display: none;
+  }
+
+  .message {
+    display: block;
+    box-sizing: border-box;
+    padding: .75rem 2rem;
+  	background: $midgold;
+  	border-radius: .2rem;
+  	color: $black;
+  	text-align: center;
   }
 
   a {

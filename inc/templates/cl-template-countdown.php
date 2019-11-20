@@ -28,15 +28,14 @@ if ( ! empty( $message ) ) {
 	$output .= '>';
 
 	if ( ! empty( $atts['link'] ) ) {
-		$output .= '<a href="' . $atts['link'] . '">' . $message . '</a>';
+		$output .= '<a class="message" href="' . $atts['link'] . '">' . $message . '</a>';
 	} else {
-		$output .= $message;
+		$output .= '<div class="message">' . $message . '</div>';
 	}
 
 	if ( $atts['dismissable'] ) {
 		$output .= '<div class="dismiss" title="Dismiss">Dismiss message</div>';
 	}
-
 
 	$output .= '</div>';
 	$output .= '</section>';
