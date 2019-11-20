@@ -6,8 +6,8 @@
     display: block;
     width: 100%;
     background: $lightblue;
-    border-radius: .2rem;
-    border: none;
+    border-radius: .25rem;
+    border: 1px solid #88b6d1;
     margin: 0 0 2rem;
     padding: 1.5rem 2rem .2rem;
     box-sizing: border-box;
@@ -19,12 +19,12 @@
     &:before {
       position: absolute;
       left: 0;
-      top: 1.5rem;
+      top: 1.8rem;
       display: block;
       content: '';
       width: 0;
       height: 0;
-      border-left: 15px solid $white;
+      border-left: 15px solid #88b6d1;
       border-top: 11px solid transparent;
       border-bottom: 11px solid transparent;
     }
@@ -36,10 +36,10 @@
     &.urgent {
 
       background: $midgold;
-      border: none;
+      border: 1px solid #d2a400;
 
       &:before {
-          border-left: 15px solid $black;
+          border-left: 15px solid #d2a400;
       }
 
     }
