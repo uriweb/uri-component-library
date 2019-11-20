@@ -30,7 +30,7 @@ if ( ! empty( $message ) ) {
 		$output .= '<div class="message">' . $message . '</div>';
 	}
 
-	if ( $atts['dismissable'] ) {
+	if ( $atts['dismissible'] ) {
 		$output .= '<div class="dismiss" title="Dismiss">Dismiss message</div>';
 	}
 

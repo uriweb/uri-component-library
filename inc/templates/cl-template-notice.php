@@ -38,7 +38,7 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
-if ( $atts['dismissable'] ) {
+if ( $atts['dismissible'] ) {
 	$output .= '<div class="dismiss" title="Dismiss">Dismiss message</div>';
 }
 
