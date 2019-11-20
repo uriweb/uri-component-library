@@ -507,6 +507,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 			array(
 				'attr' => 'expiration',
 				'types' => array( 'date' ),
+				'req' => false,
 			),
 			array(
 				'attr' => 'style',

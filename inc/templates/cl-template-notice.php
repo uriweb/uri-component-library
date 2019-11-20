@@ -1,9 +1,5 @@
 <?php
 
-$difference = uri_cl_get_time_difference( $atts['expiration'] );
-$left = uri_cl_expand_seconds( $difference );
-$hash = uri_cl_get_hash( $atts );
-
 $classes = 'cl-notice';
 
 switch ( $atts['style'] ) {
@@ -12,18 +8,26 @@ switch ( $atts['style'] ) {
 		break;
 }
 
-if ( 0 >= $difference ) {
+if ( ! empty( $atts['expiration'] ) ) {
 
-	$classes .= ' expired';
+	$difference = uri_cl_get_time_difference( $atts['expiration'] );
+	$left = uri_cl_expand_seconds( $difference );
 
-	if ( ! $atts['show_expired'] ) {
-		$classes .= ' dismissed';
+	if ( 0 >= $difference ) {
+
+		$classes .= ' expired';
+
+		if ( ! $atts['show_expired'] ) {
+			$classes .= ' dismissed';
+		}
+	}
+
+	if ( ! empty( $atts['class'] ) ) {
+		$classes .= ' ' . $atts['class'];
 	}
 }
 
-if ( ! empty( $atts['class'] ) ) {
-	$classes .= ' ' . $atts['class'];
-}
+$hash = uri_cl_get_hash( $atts );
 
 $output = '<section class="cl-wrapper cl-notice-wrapper">';
 $output .= '<div class="' . $classes . '" data-hash="' . $hash . '"';
