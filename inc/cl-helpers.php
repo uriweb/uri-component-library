@@ -137,7 +137,7 @@ function uri_cl_get_hash( $var ) {
 /**
  * Return time difference in seconds.
  *
- * @param str $date the data string
+ * @param str $date the data string.
  * @return num
  */
 function uri_cl_get_time_difference( $date ) {
