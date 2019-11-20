@@ -26,7 +26,7 @@ if ( ! empty( $atts['img'] ) ) {
 $output .= '<div class="cl-dcard-text">';
 
 if ( ! empty( $atts['title'] ) ) {
-	$output .= '<h3>' . $atts['title'] . '</h3>';
+	$output .= '<h2>' . $atts['title'] . '</h2>';
 }
 if ( ! empty( $atts['body'] ) ) {
 	$output .= '<p>' . $atts['body'] . '</p>';

@@ -254,7 +254,7 @@ $adcards: ".cl-card, .cl-dcard";
 
         color: inherit;
 
-        h3, p {
+        h2, p {
             transition: color .1s ease-in-out;
         }
 
@@ -262,7 +262,7 @@ $adcards: ".cl-card, .cl-dcard";
         &:focus,
         &:active {
 
-            h3, p {
+            h2, p {
                 color: $keaneyblue !important;
             }
 

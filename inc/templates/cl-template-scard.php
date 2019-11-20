@@ -73,7 +73,7 @@ if ( $atts['showcat'] && $post_cat ) {
 // --- Begin Body ---
 $output .= '<a class="cl-scard-body" href="' . $post_link . '">';
 
-$output .= '<h3 class="cl-scard-title">' . $post_title . '</h3>';
+$output .= '<h2 class="cl-scard-title">' . $post_title . '</h2>';
 
 if ( $atts['showexcerpt'] && $post_excerpt ) {
 	$output .= '<p class="cl-scard-excerpt">' . $post_excerpt . '</p>';
