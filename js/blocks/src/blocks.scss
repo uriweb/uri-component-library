@@ -29,10 +29,11 @@ textarea {
 	.meta {
 		animation: metaReveal .5s;
 		background-color: #ddd;
-		border-top: 2px solid #000;
+		border-top: 2px solid #057fd4;
 		margin-top: .5rem;
+		min-width: 300px;
 		position: absolute;
-		padding: 1rem 0;
+		padding: .5rem 0 .75rem;
 		z-index: 10;
 		.row {
 			margin-left: .5rem;
@@ -49,7 +50,7 @@ textarea {
 			height: 0; 
 			border-left: 12px solid transparent;
 			border-right: 12px solid transparent;
-			border-bottom: 12px solid black;
+			border-bottom: 12px solid #057fd4;
 
 		}
 
@@ -142,10 +143,14 @@ textarea {
 .block-editor {
 	.cl-button {
 		// @todo: don't repeat button styles here
-		font-size: .8rem;
+		font-size: .85rem;
 		font-weight: 700;
 		padding: 1rem;
 		text-transform: uppercase;
+		textarea {
+			height: 1rem !important;
+			line-height: 1.75;
+		}
 	}
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
@@ -197,35 +202,64 @@ textarea {
 
 
 /** HEROES **/
-.edit-post-visual-editor div[data-type="uri-cl/hero"] {
-	max-width: 100%;
-}
 
 .block-editor {
-	.editor-styles-wrapper {
+	.cl-hero-block-form {
+		//background-color: pink;
+	}
+	.cl-hero {
 
-		.cl-hero {
-			background-color: #fff;
-			overflow: initial;
-			h1, h1 textarea:focus {
+		background-color: #fff;
+		overflow: initial;
+		h1, h1 textarea:focus {
+			color: #fff;
+			textarea::placeholder {
 				color: #fff;
-				textarea::placeholder {
-					color: #fff;
+			}
+		}
+		.subhead {
+			margin: 0 0 2rem;
+		}
+
+		&.selected {
+			margin-bottom: 3rem;
+		}
+
+		&.no-image {
+			background-color: #002147;
+			.poster {
+				color: #fff;
+				height: auto;
+				position: relative;
+				z-index: 20;
+			}
+			.overlay, .block {
+				bottom: 0;
+				height: auto;
+				padding-bottom: 5rem;
+				position: relative;
+			}
+		}
+		&.has-image {
+			.poster {
+				img {
+					height: 100%;
+					object-fit: cover;
+					width: 100%;
 				}
 			}
-			.subhead {
-				margin: 0 0 2rem;
-			}
 		}
-		
 
-		.cl-hero {
-			/* these are WP's block defaults, we honor them for regular heroes */
-			max-width: 610px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.cl-hero.super, .cl-hero.fullwidth {
+
+	}
+
+	/* Sizes in the block editor */
+	.cl-hero {
+		/* these are WP's block defaults, we honor them for regular heroes */
+		max-width: 610px;
+		margin-left: auto;
+		margin-right: auto;
+		&.super, &.fullwidth {
 			/* we override the default block width for full-width and full-screen heroes */
 			max-width: 100%;
 			left: 0;
@@ -236,34 +270,23 @@ textarea {
 				max-width: 400px;
 			}
 		}
-		.cl-hero.super {
+		&.super {
 			h1, textarea, .subhead {
 				text-align: center;
+			}
+			textarea {
+				height: 1em !important;
 			}
 			.meta {
 				margin-left: auto;
 				margin-right: auto;
 			}
-		}
-
-		.cl-hero.selected {
-			h1 textarea, .subhead div.subhead {
-			}
-		}
-
-		.cl-hero.selected.no-image .poster {
-			z-index: 10;
-			height: auto;
-			.wp-block-uri-cl-hero {
-				min-height: 150px;
-			}
-		}
-		.cl-hero.has-image .poster {
-			img {
-				height: 100%;
-				object-fit: cover;
-				width: 100%;
-			}
-		}
+		}	
 	}
+}
+
+
+
+.edit-post-visual-editor div[data-type="uri-cl/hero"] {
+	max-width: 100%;
 }
