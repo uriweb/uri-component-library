@@ -188,6 +188,17 @@ textarea {
 .block-editor {
 	.cl-card {
 		overflow: visible !important;
+		&.no-image {
+
+		}
+		.editor-media-placeholder {
+			display: none;
+		}
+		&.selected {
+				.editor-media-placeholder {
+					display: block;
+				}
+			}
 	}
 	.cl-card-text div {
 		font-size: 1rem;

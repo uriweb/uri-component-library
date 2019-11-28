@@ -42,7 +42,7 @@ const customIcon = () => {
 	);
 }
 
-const classNames = (attributes) => {
+const classNames = (attributes, isSelected) => {
 	let classes = "cl-card";
 	if( !! attributes.className ) {
 		// @todo this gets automatically applied to wrapper... remove it?
@@ -51,6 +51,18 @@ const classNames = (attributes) => {
 	if( !! attributes.alignment ) {
 		classes += " " + attributes.alignment
 	}
+
+	if( !! isSelected ) {
+		classes += ' selected';
+	}
+
+	if ( !! attributes.img ) {
+		classes += ' has-image';
+	} else {
+		classes += ' no-image';
+	}
+
+
 	return classes;
 }
 
@@ -150,8 +162,8 @@ registerBlockType('uri-cl/card', {
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames(attributes);
-
+			let classes = classNames( attributes, isSelected );
+		
 			// set the tooltip
 			let title = "";
 			if( !! attributes.tooltip ) {
