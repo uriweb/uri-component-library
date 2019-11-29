@@ -50,14 +50,14 @@ const customIcon = () => {
 	);
 }
 
-const classNames = (attributes) => {
+const classNames = (attributes, isSelected) => {
 	let classes = "cl-quote";
 	if( !! attributes.className ) {
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += " " + attributes.className
 	}
-	if( !! attributes.reverse ) {
-		classes += " reverse"
+	if( !! isSelected ) {
+		classes += ' selected';
 	}
 	return classes;
 }
@@ -90,7 +90,7 @@ registerBlockType('uri-cl/quote', {
 	},
 
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 
 		// generate the image or the add image section
 		const getImageButton = (openEvent) => {
@@ -123,7 +123,7 @@ registerBlockType('uri-cl/quote', {
 			}
 		};
 
-		let classes = classNames(attributes);
+		let classes = classNames(attributes, isSelected);
 
 		const createContentEditForm = () => {
 			let imageClass = ( !! attributes.mediaID ) ? "cl-quote-image" : "";

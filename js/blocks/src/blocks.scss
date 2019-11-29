@@ -102,10 +102,26 @@ textarea {
 
 
 /** QUOTES **/
-.block-editor .cl-quote cite textarea {
-	max-width: 50%;
-	position: relative;
-	top: .375rem;
+.block-editor {
+	.cl-quote {
+		cite textarea {
+			max-width: 50%;
+			position: relative;
+			top: .375rem;
+		}
+		.cl-quote-image img {
+			border-radius: 50%;
+		}
+		.editor-media-placeholder {
+			display: none;
+		}
+		&.selected {
+			.editor-media-placeholder {
+				display: block;
+			}
+		}
+	}
+	
 }
 
 
@@ -208,9 +224,7 @@ textarea {
 /** HEROES **/
 
 .block-editor {
-	.cl-hero-block-form {
-		//background-color: pink;
-	}
+
 	.cl-hero {
 
 		background-color: #fff;

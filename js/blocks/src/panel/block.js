@@ -32,6 +32,7 @@ const {
 const ALLOWED_BLOCKS = [
 	'core/heading',
 	'core/paragraph',
+	'core/list',
 	'uri-cl/button'
 ];
 const TEMPLATE = [
