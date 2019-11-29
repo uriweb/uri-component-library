@@ -79,7 +79,8 @@ textarea {
 
 /* @todo: temporary styles that belong in the theme */
 .block-editor {
-	.cl-button textarea {
+	.cl-button textarea, textarea.cl-button {
+		border-radius: 0;
 		font-family: "Hind", sans-serif !important;
 		text-transform: uppercase;
 		background-color: transparent !important;
@@ -157,8 +158,7 @@ textarea {
 			padding: 2px 0 0;
 			text-align: center;
 		}
-
-		&.prominent textarea {
+		&.prominent textarea, &:hover textarea {
 			color: #fff;
 		}
 		&.disabled textarea {
@@ -168,9 +168,6 @@ textarea {
 	}
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
-	}
-
-	textarea.cl-button {
 	}
 }
 
@@ -186,16 +183,21 @@ textarea {
 			display: none;
 		}
 		&.selected {
-				.editor-media-placeholder {
-					display: block;
-				}
+			.editor-media-placeholder {
+				display: block;
 			}
-	}
-	.cl-card-text div {
-		font-size: 1rem;
-	}
-	.cl-card-text>div {
-		margin-bottom: 2rem;
+		}
+		.cl-card-text div {
+			font-size: 1rem;
+		}
+		.cl-card-text>div {
+			margin-bottom: 2rem;
+		}
+		&:hover {
+			.cl-button {
+				background-color: #005eff !important;
+			}
+		}
 	}
 }
 
@@ -226,7 +228,6 @@ textarea {
 		&.selected {
 			margin-bottom: 3rem;
 		}
-
 		&.no-image {
 			background-color: #002147;
 			.poster {
@@ -252,6 +253,9 @@ textarea {
 			}
 		}
 
+		.cl-button:hover textarea {
+			color: #005eff;
+		}
 
 	}
 
@@ -268,16 +272,13 @@ textarea {
 			margin-left: 0;
 			margin-right: 0;
 			width: 100%;
-		 .meta {
+		 	.meta {
 				max-width: 400px;
 			}
 		}
 		&.super {
 			h1, textarea, .subhead {
 				text-align: center;
-			}
-			textarea {
-				height: 1em !important;
 			}
 			.meta {
 				margin-left: auto;
