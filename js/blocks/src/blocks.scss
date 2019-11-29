@@ -148,38 +148,29 @@ textarea {
 		padding: 1rem;
 		text-transform: uppercase;
 		textarea {
-			height: 1rem !important;
-			line-height: 1.75;
+			border-radius: 0;
+			color: $black;
+			display: block;
+			height: 1rem;
+			letter-spacing: .1rem;
+			margin: 0;
+			padding: 2px 0 0;
+			text-align: center;
+		}
+
+		&.prominent textarea {
+			color: #fff;
+		}
+		&.disabled textarea {
+			color: rgba(0,0,0,0.4);
+			font-weight: 400;
 		}
 	}
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
 	}
-	.cl-button-block-form {
 
-		vertical-align: middle;
-	
-		label {
-			color: $midgrey;
-		}
-
-		label,
-		.editor-url-input {
-			display: inline;
-		}
-	
-		textarea {
-			margin: -1rem;
-			text-align: center;
-		}
-		textarea:focus {
-		}
-
-	}
 	textarea.cl-button {
-		border-radius: 0;
-		color: $black !important;
-		letter-spacing: .1rem;
 	}
 }
 

@@ -32,37 +32,26 @@ const customIcon = () => {
 	);
 }
 
+const classNames = (attributes, isSelected) => {
+	let classes = "cl-button";
+	if( !! attributes.className ) {
+		// @todo this gets automatically applied to wrapper... remove it?
+		classes += " " + attributes.className
+	}
+	if ( !! attributes.alignment ) {
+		classes += " " + attributes.alignment
+	}
+	if( !! attributes.style ) {
+		classes += " " + attributes.style
+	}
+	if( !! isSelected ) {
+		classes += ' selected';
+	}
 
-
-
-/**
- * Render the shortcode
- */
-function buildShortCode( args ) {
-		// unfortunately, Gutenberg cares a lot about the order in which attributes appear,
-		// so this process is best done manually.
-		var shortcode = '[cl-button ';
-		if (args.link) {
-			shortcode += ' link="' + args.link + '"';
-		}
-		if (args.text) {
-			shortcode += ' text="' + args.text + '"';
-		}
-		if (args.tooltip) {
-			shortcode += ' tooltip="' + args.tooltip + '"';
-		}
-		if (args.style) {
-			shortcode += ' style="' + args.style + '"';
-		}
-		if (args.className) {
-			shortcode += ' class="' + args.className + '"';
-		}
-
-		shortcode += ']';
-
-		return shortcode;
-
+	return classes;
 }
+
+
 
 registerBlockType('uri-cl/button', {   
 
@@ -112,10 +101,7 @@ registerBlockType('uri-cl/button', {
 				)
 			}
 			// set the classnames
-			let classes = "cl-button";
-			if( !! attributes.style ) {
-				classes += ' ' + attributes.style;
-			}
+			let classes = classNames( attributes, isSelected );
 			// set the tooltip
 			let title = "";
 			if( !! attributes.tooltip ) {
@@ -209,10 +195,14 @@ registerBlockType('uri-cl/button', {
 	
 	save({ attributes }) {
 
-		var o = wp.element.createElement( wp.element.RawHTML, null, buildShortCode( attributes ) );
-		// console.log(o);
-		return o;
-		
+		let classes = classNames(attributes);
+
+		return (
+			<a class={classes} href={ attributes.link } title={ attributes.tooltip }>
+				{ attributes.text }
+			</a>
+		);
+
 	}
 	
 	
