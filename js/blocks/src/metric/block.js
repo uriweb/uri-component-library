@@ -39,11 +39,14 @@ const customIcon = () => {
 	);
 }
 
-const classNames = (attributes) => {
+const classNames = (attributes, isSelected) => {
 	let classes = "cl-metric";
 	if( !! attributes.className ) {
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += " " + attributes.className
+	}
+	if( !! isSelected ) {
+		classes += ' selected';
 	}
 	if( !! attributes.style ) {
 		classes += " " + attributes.style
@@ -77,11 +80,11 @@ registerBlockType('uri-cl/metric', {
 	},
 
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames(attributes);
+			let classes = classNames(attributes, isSelected);
 			
 			// set the tooltip
 			let title = "";
