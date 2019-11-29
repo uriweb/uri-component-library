@@ -30,8 +30,7 @@ const {
 
 const ALLOWED_BLOCKS = [
 	'core/heading',
-	'core/paragraph',
-	'uri-cl/button'
+	'core/paragraph'
 ];
 const TEMPLATE = [
   ['core/paragraph', { placeholder: 'Please note', dropCap: false }],

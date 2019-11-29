@@ -18,6 +18,7 @@ const ALLOWED_BLOCKS = [
 	'core/image',
 	'core/heading',
 	'core/paragraph',
+	'core/list',
 	'uri-cl/button'
 ];
 const TEMPLATE = [
@@ -37,11 +38,14 @@ const customIcon = () => {
 	);
 }
 
-const classNames = (attributes) => {
+const classNames = (attributes, isSelected) => {
 	let classes = "cl-boxout";
 	if( !! attributes.className ) {
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += " " + attributes.className
+	}
+	if( !! isSelected ) {
+		classes += ' selected';
 	}
 	if( !! attributes.alignment ) {
 		classes += " " + attributes.alignment
@@ -66,17 +70,17 @@ registerBlockType('uri-cl/boxout', {
 	},
 
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 		// generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames(attributes);
+			let classes = classNames(attributes, isSelected);
 			return (
 				<div className="container">
 					<div class={classes}>
 						<h1><PlainText
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
-							placeholder={__("Your boxout title")}
+							placeholder={__("Title")}
 							keepPlaceholderOnFocus={true}
 						/></h1>
 						<InnerBlocks
