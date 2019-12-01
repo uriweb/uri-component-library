@@ -202,16 +202,17 @@ registerBlockType('uri-cl/panel', {
 									{ [ "standard", "reverse" ].map( ( value ) => {
 
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "default") ? '' : value;
-										const isSelected = key === attributes.style;
-									
+										const key = (value === "standard") ? 'false' : 'true';
+										const r = (attributes.reverse) ? 'true' : 'false';
+										const isSelected = ( key === r );
+										
 										return (
 											<Button
 												key={ key }
 												isDefault
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ reverse: ("reverse" == key) }) }
+												onClick={ content => setAttributes({ reverse: (key==='true') }) }
 											>
 												{ capitalizedValue }
 											</Button>
