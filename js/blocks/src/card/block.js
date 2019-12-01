@@ -22,7 +22,7 @@ const {
 	RichText,
 	PlainText,
 	URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 
 
 // @see https://github.com/WordPress/gutenberg/tree/master/packages/block-library/src

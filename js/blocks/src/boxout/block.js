@@ -12,7 +12,7 @@ const {
 	IconButton,
 	BlockAlignmentToolbar,
 	InnerBlocks // @todo: allow nested blocks
-} = wp.editor;
+} = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
 	'core/image',

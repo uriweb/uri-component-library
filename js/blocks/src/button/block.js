@@ -8,7 +8,7 @@ const {
 	BlockControls,
 	Toolbar,
 	BlockAlignmentToolbar
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Dashicon,
 	PanelBody,

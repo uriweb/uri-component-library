@@ -26,7 +26,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 
 const ALLOWED_BLOCKS = [

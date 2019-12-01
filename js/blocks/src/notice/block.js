@@ -25,8 +25,8 @@ const {
 	Toolbar,
 	IconButton,
 	BlockAlignmentToolbar,
-	InnerBlocks // @todo: allow nested blocks
-} = wp.editor;
+	InnerBlocks
+} = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
 	'core/heading',

@@ -25,7 +25,7 @@ const {
 	Toolbar,
 	IconButton,
 	BlockAlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 
 const customIcon = () => {
 	return(
