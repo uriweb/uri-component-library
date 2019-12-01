@@ -151,8 +151,9 @@ registerBlockType('uri-cl/button', {
 									{ [ "default", "prominent", "disabled" ].map( ( value ) => {
 
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "default") ? '' : value;
-										const isSelected = key === attributes.style;
+										const key = (value === 'default') ? '' : value;
+										const style = (attributes.style == undefined) ? '' : attributes.style; 
+										const isSelected = (key === style);
 									
 										return (
 											<Button
