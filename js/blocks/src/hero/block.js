@@ -308,7 +308,7 @@ registerBlockType('uri-cl/hero', {
 						
 						<PanelRow>
 							<TextControl
-								label="Youtube ID"
+								label="Video URL"
 								onChange={ content => setAttributes({ vid: content }) }
 								value={ attributes.vid }
 								className="meta-field vid"
