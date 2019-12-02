@@ -281,9 +281,14 @@ registerBlockType('uri-cl/hero', {
 								<ButtonGroup aria-label={ __( "Hero Format" ) }>
 									{ [ "default", "fullwidth", "super" ].map( ( value ) => {
 
+										// const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+										// const key = (value === "default") ? '' : value;
+										// const isSelected = key === attributes.format;
+
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "default") ? '' : value;
-										const isSelected = key === attributes.format;
+										const key = (value === 'default') ? '' : value;
+										const format = (attributes.format == undefined) ? '' : attributes.format; 
+										const isSelected = (key === format);
 									
 										return (
 											<Button

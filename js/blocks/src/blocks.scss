@@ -283,9 +283,9 @@ textarea {
 			/* we override the default block width for full-width and full-screen heroes */
 			max-width: 100%;
 			left: 0;
-			margin-left: 0;
+			margin-left: -35vw !important;
 			margin-right: 0;
-			width: 100%;
+			width: 70vw !important;
 		 	.meta {
 				max-width: 400px;
 			}
@@ -305,5 +305,5 @@ textarea {
 
 
 .edit-post-visual-editor div[data-type="uri-cl/hero"] {
-	max-width: 100%;
+//	max-width: 100%;
 }
