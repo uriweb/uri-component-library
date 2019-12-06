@@ -72,13 +72,8 @@ textarea {
 	.cl-card+.meta {
 		top: -2rem;
 	}
-}
 
-
-
-
-/* @todo: temporary styles that belong in the theme */
-.block-editor {
+	/* @todo: temporary styles that belong in the theme */
 	.cl-button textarea, textarea.cl-button {
 		border-radius: 0;
 		font-family: "Hind", sans-serif !important;
@@ -88,21 +83,14 @@ textarea {
 	.editor-styles-wrapper p {
 		font-family: Charter, Georgia, serif;
 	}
-}
 
+	/** TABS **/
+	.cl-tab {
+		border: 1px dashed #ddd;
+		border-width: 1px 0;
+	}
 
-
-/** TABS **/
-.block-editor .cl-tab {
-	border: 1px dashed #ddd;
-	border-width: 1px 0;
-}
-
-
-
-
-/** QUOTES **/
-.block-editor {
+	/** QUOTES **/
 	.cl-quote {
 		cite textarea {
 			max-width: 50%;
@@ -121,13 +109,8 @@ textarea {
 			}
 		}
 	}
-	
-}
 
-
-
-/** METRICS **/
-.block-editor {
+	/** METRICS **/
 	.cl-metric textarea, .cl-metric span {
 		text-align: center;
 	}
@@ -139,25 +122,14 @@ textarea {
 	.cl-metric.dark textarea {
 		color: #fff;
 	}
-}
 
 
-.block-editor {
 	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
 		position: relative;
 		z-index: 5;
 	}
-}
 
-/** This would hide drop caps but probably everywhere. **/
-// .blocks-font-size .components-toggle-control {
-// 	display: none;
-// }
-
-
-
-/** BUTTONS **/
-.block-editor {
+	/** BUTTONS **/
 	.cl-button {
 		// @todo: don't repeat button styles here
 		font-size: .85rem;
@@ -185,11 +157,9 @@ textarea {
 	.cl-button, .cl-button:visited {
 		text-decoration: none !important;
 	}
-}
 
 
-/** CARDS **/
-.block-editor {
+	/** CARDS **/
 	.cl-card {
 		overflow: visible !important;
 		&.no-image {
@@ -215,15 +185,8 @@ textarea {
 			}
 		}
 	}
-}
 
-
-
-
-
-/** HEROES **/
-
-.block-editor {
+	/** HEROES **/
 
 	.cl-hero {
 
@@ -271,10 +234,8 @@ textarea {
 			color: #005eff;
 		}
 
-	}
 
-	/* Sizes in the block editor */
-	.cl-hero {
+		/* Sizes in the block editor */
 		/* these are WP's block defaults, we honor them for regular heroes */
 		max-width: 610px;
 		margin-left: auto;
@@ -299,9 +260,18 @@ textarea {
 				margin-right: auto;
 			}
 		}	
+
 	}
+
+
 }
 
+
+
+/** This would hide drop caps but probably everywhere. **/
+// .blocks-font-size .components-toggle-control {
+// 	display: none;
+// }
 
 
 .edit-post-visual-editor div[data-type="uri-cl/hero"] {
