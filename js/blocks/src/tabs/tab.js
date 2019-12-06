@@ -41,7 +41,7 @@ registerBlockType('uri-cl/tab', {
 		)
 	}, // end edit
 	
-	save({ }) {
+	save({ attributes }) {
 		return (
 			<div class="cl-tab">
 				<InnerBlocks.Content />
