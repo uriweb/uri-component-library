@@ -22,9 +22,6 @@ var sassOptions = {
 };
 
 
-// CSS concat, auto-prefix and minify
-gulp.task('styles', styles);
-
 function styles(done) {
     
     var banner = ['/**',
@@ -53,10 +50,10 @@ function styles(done) {
   done();
   //console.log('styles ran');
 }
+// CSS concat, auto-prefix and minify
+gulp.task('styles', styles);
 
 
-// I don't love this... I'd rather be able to tap into the core stylesheets
-gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
 
 function gutenbergAdminStyles(done) {
     
@@ -70,10 +67,10 @@ function gutenbergAdminStyles(done) {
 
   done();
 }
+// I don't love this... I'd rather be able to tap into the core stylesheets
+gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
 
 
-// JS concat, strip debugging and minify
-gulp.task('scripts', scripts);
 
 function scripts(done) {
     
@@ -122,10 +119,10 @@ function scripts(done) {
 	done();
  // console.log('scripts ran');
 }
+// JS concat, strip debugging and minify
+gulp.task('scripts', scripts);
 
 
-// run codesniffer
-gulp.task('sniffs', sniffs);
 
 function sniffs(done) {
     
@@ -133,9 +130,9 @@ function sniffs(done) {
         .pipe(shell(['./.sniff']));
     
 }
+// run codesniffer
+gulp.task('sniffs', sniffs);
 
-// run webpack
-gulp.task('webpack', webpack);
 
 function webpack(done) {
     
@@ -143,10 +140,9 @@ function webpack(done) {
         .pipe(shell(['npx webpack']));
     
 }
+// run webpack
+gulp.task('webpack', webpack);
 
-
-// Update plugin version
-gulp.task('version', version);
 
 function version(done) {
 		
@@ -160,10 +156,9 @@ function version(done) {
 		.pipe(gulp.dest('./'));
 	
 }
+// Update plugin version
+gulp.task('version', version);
 
-
-// watch
-gulp.task('watcher', watcher);
 
 function watcher(done) {
 	
@@ -183,6 +178,9 @@ function watcher(done) {
 
 	done();
 }
+// watch
+gulp.task('watcher', watcher);
+
 
 gulp.task( 'default',
 	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', 'gutenbergAdminStyles', function(done){
