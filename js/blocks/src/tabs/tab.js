@@ -4,7 +4,7 @@ const {
 } = wp.blocks;
 const {
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 const customIcon = () => {
 	return(
@@ -23,7 +23,7 @@ registerBlockType('uri-cl/tab', {
 
   title: __('Tab'),
   icon: customIcon,
-	parent: [ 'uri-cl/tabs' ],
+  parent: [ 'uri-cl/tabs' ],
   category: 'cl-blocks',
   
 	supports: {
@@ -33,7 +33,7 @@ registerBlockType('uri-cl/tab', {
 	},
 
 	
-	edit({ attributes, className, setAttributes }) {
+	edit({ attributes, className }) {
 		return (
 			<div class="cl-tab">
 				<InnerBlocks templateLock={ false } />
