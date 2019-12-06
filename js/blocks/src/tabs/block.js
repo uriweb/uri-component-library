@@ -12,7 +12,7 @@ const {
 const {
 	InspectorControls,
 	InnerBlocks
-} = wp.blockEeditor;
+} = wp.blockEditor;
 
 
 const ALLOWED_BLOCKS = [
@@ -43,7 +43,7 @@ const classNames = (attributes) => {
 
 const getTabsTemplate = ( tabs ) => {
 
-	return [...Array(tabs)].map(function(x){
+	return [...Array(tabs)].map(function(){
 		return ['uri-cl/tab', {}];
 	});
 	
