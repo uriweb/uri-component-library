@@ -12,7 +12,7 @@ const {
 const {
 	InspectorControls,
 	InnerBlocks
-} = wp.blockEditor;
+} = wp.blockEeditor;
 
 
 const ALLOWED_BLOCKS = [
