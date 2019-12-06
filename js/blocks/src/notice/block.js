@@ -35,7 +35,7 @@ const ALLOWED_BLOCKS = [
 const TEMPLATE = [
   ['core/paragraph', { placeholder: 'Please note', dropCap: false }],
 ];
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
+//const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 
 const customIcon = () => {
