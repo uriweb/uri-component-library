@@ -19,66 +19,61 @@ const {
 	ButtonGroup
 } = wp.components;
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/button.png')}
+			src={( URI_CL_URL + 'i/button.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
-const classNames = (attributes, isSelected) => {
-	let classes = "cl-button";
-	if( !! attributes.className ) {
+const classNames = ( attributes, isSelected ) => {
+	let classes = 'cl-button';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
 	if ( !! attributes.alignment ) {
-		classes += " " + attributes.alignment
+		classes += ' ' + attributes.alignment;
 	}
-	if( !! attributes.style ) {
-		classes += " " + attributes.style
+	if ( !! attributes.style ) {
+		classes += ' ' + attributes.style;
 	}
-	if( !! isSelected ) {
+	if ( !! isSelected ) {
 		classes += ' selected';
 	}
 
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/button', {
 
-
-registerBlockType('uri-cl/button', {   
-
-  title: __('Button'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
+	title: __( 'Button' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 	attributes: {
 		link: {
-			type: 'string',
+			type: 'string'
 		},
 		text: {
-			type: 'string',
+			type: 'string'
 		},
 		tooltip: {
-			type: 'string',
+			type: 'string'
 		},
 		style: {
-			type: 'string',
-		},
+			type: 'string'
+		}
 	},
-	
 
-	
-	edit({ attributes, className, setAttributes, isSelected }) {
+	edit( { attributes, className, setAttributes, isSelected } ) {
 
-		// generate editor view of the button itself
+		// Generate editor view of the button itself
 		const createContentEditForm = () => {
 
 			let meta;
@@ -98,70 +93,71 @@ registerBlockType('uri-cl/button', {
 						/>
 						</fieldset>
 					</form>
-				)
+				);
 			}
-			// set the classnames
+
+			// Set the classnames
 			let classes = classNames( attributes, isSelected );
-			// set the tooltip
-			let title = "";
-			if( !! attributes.tooltip ) {
+
+			// Set the tooltip
+			let title = '';
+			if ( !! attributes.tooltip ) {
 				title = attributes.tooltip;
 			}
 			return (
 				<div className="container cl-button-block-form">
 					<span class={classes} title={title}>
 						<PlainText
-							onChange={ content => setAttributes({ text: content }) }
+							onChange={ content => setAttributes( { text: content } ) }
 							value={ attributes.text }
-							placeholder={__("Your button text")}
-							keepPlaceholderOnFocus={true}
+							placeholder={ __( 'Your button text' ) }
+							keepPlaceholderOnFocus={ true }
 							className="cl-button"
 						/>
 					</span>
 					{ meta }
 				</div>
 			);
-		}
+		};
 
-		// generate block controls for alignment, etc
+		// Generate block controls for alignment, etc
 		// @todo: do we need alignment/float controls on buttons?
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
-						onChange={ content => setAttributes({ alignment: content }) }
+						onChange={ content => setAttributes( { alignment: content } ) }
 					/>
 				</BlockControls>
 			);
 
-		}
-		
+		};
 
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( "Button Style" ) }
+								label={ __( 'Button Style' ) }
 							>
-								<ButtonGroup aria-label={ __( "Button Style" ) }>
-									{ [ "default", "prominent", "disabled" ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Button Style' ) }>
+									{ [ 'default', 'prominent', 'disabled' ].map( ( value ) => {
 
-										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === 'default') ? '' : value;
-										const style = (attributes.style == undefined) ? '' : attributes.style; 
-										const isSelected = (key === style);
-									
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
+										const style = ( undefined == attributes.style ) ? '' : attributes.style;
+										const isSelected = ( key === style );
+
 										return (
 											<Button
 												key={ key }
 												isDefault
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ style: key }) }
+												onClick={ content => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -183,20 +179,19 @@ registerBlockType('uri-cl/button', {
 					</PanelBody>
 				</InspectorControls>
 			);
-		}
+		};
 
-		// send the editor interfaces to the view
-  	return ([
-			//createBlockControls(),
-			createInspectorControls(),
-			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
-	save({ attributes }) {
+	// Send the editor interfaces to the view
+	return ([
+		createInspectorControls(),
+		createContentEditForm()
+	]);
 
-		let classes = classNames(attributes);
+	}, // End edit
+
+	save( { attributes } ) {
+
+		let classes = classNames( attributes );
 
 		return (
 			<a class={classes} href={ attributes.link } title={ attributes.tooltip }>
@@ -205,7 +200,6 @@ registerBlockType('uri-cl/button', {
 		);
 
 	}
-	
-	
+
 });
 

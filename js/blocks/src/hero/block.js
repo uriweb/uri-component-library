@@ -22,91 +22,88 @@ const {
 	AlignmentToolbar,
 	RichText,
 	PlainText,
-	URLInput,
+	URLInput
 } = wp.blockEditor;
-
 
 // @see https://github.com/WordPress/gutenberg/tree/master/packages/block-library/src
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/hero.png')}
+			src={ ( URI_CL_URL + 'i/hero.png' ) }
 			alt="button"
 		/>
 	);
-}
+};
 
 const randomID = () => {
+
 	// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
 	let S4 = () => {
-		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+		return ( ( ( 1 + Math.random() ) * 0x10000 ) | 0 ).toString( 16 ).substring( 1 );
 	};
-	return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
+	return ( S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4() );
+};
 
+registerBlockType( 'uri-cl/hero', {
 
-registerBlockType('uri-cl/hero', {   
+	title: __( 'Hero' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-  title: __('Hero'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
-	// the mediaID is what goes into the shortcode for front-end display
+	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'string'
 		},
 		subhead: {
-			type: 'string',
+			type: 'string'
 		},
 		link: {
-			type: 'string',
+			type: 'string'
 		},
 		mediaID: {
-			type: 'number',
+			type: 'number'
 		},
 		id: {
-			type: 'string',
+			type: 'string'
 		},
 		vid: {
-			type: 'string',
+			type: 'string'
 		},
 		img: {
-			type: 'string',
+			type: 'string'
 		},
 		alt: {
-			type: 'string',
+			type: 'string'
 		},
 		button: {
-			type: 'string',
+			type: 'string'
 		},
 		tooltip: {
-			type: 'string',
+			type: 'string'
 		},
 		format: {
-			type: 'string',
+			type: 'string'
 		},
 		animation: {
-			type: 'string',
+			type: 'string'
 		}
 	},
-	
-	
-	edit({ attributes, className, setAttributes, isSelected }) {
 
-		// generate the image or the add image section
-		const getImageButton = (openEvent) => {
-			if(attributes.mediaID) {
+	edit( { attributes, className, setAttributes, isSelected } ) {
+
+		// Generate the image or the add image section
+		const getImageButton = ( openEvent ) => {
+			if ( attributes.mediaID ) {
 				return (
-					<img 
+					<img
 						src={ attributes.img }
 						alt={ attributes.alt }
 						className="image"
@@ -119,56 +116,59 @@ registerBlockType('uri-cl/hero', {
 						className={ className }
 						labels={ {
 							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
 						} }
-						onSelect={ media => { setAttributes({
-							alt: media.alt,
-							img: media.url,
-							mediaID: media.id
-						}); } }
+						onSelect={ media =>
+							{
+								setAttributes( {
+									alt: media.alt,
+									img: media.url,
+									mediaID: media.id
+								});
+							}
+						}
 						accept="image/*"
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 					/>
 				);
 			}
 		};
-		
-		let meta;
-		if( !! isSelected ) {
-				meta = (
-					<form
-						className="meta"
-						onSubmit={ ( event ) => event.preventDefault() }
-					>
-						<fieldset class="row link">
-						<label title="Links to:"><Dashicon icon="admin-links" /></label>
-						<URLInput
-							value={ attributes.link }
-							onChange={ ( content ) => setAttributes( { link: content } ) }
-							placeholder="https://www.uri.edu/"
-							className="meta-field"
-						/>
-						</fieldset>
-					</form>
-				)
 
+		let meta;
+		if ( !! isSelected ) {
+			meta = (
+				<form
+					className="meta"
+					onSubmit={ ( event ) => event.preventDefault() }
+				>
+					<fieldset class="row link">
+					<label title="Links to:"><Dashicon icon="admin-links" /></label>
+					<URLInput
+						value={ attributes.link }
+						onChange={ ( content ) => setAttributes( { link: content } ) }
+						placeholder="https://www.uri.edu/"
+						className="meta-field"
+					/>
+					</fieldset>
+				</form>
+			);
 		}
 
-		// generate editor view of the hero itself
+		// Generate editor view of the hero itself
 		const createContentEditForm = () => {
 
-			if( ! attributes.id ) {
+			if ( ! attributes.id ) {
 				attributes.id = randomID();
-			}			
+			}
 
-			let classes = "cl-hero";
-			if( !! attributes.style ) {
+			let classes = 'cl-hero';
+			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
-			if( !! attributes.format ) {
+			if ( !! attributes.format ) {
 				classes += ' ' + attributes.format;
 			}
-			if( !! isSelected ) {
+			if ( !! isSelected ) {
 				classes += ' selected';
 			}
 			if ( !! attributes.img ) {
@@ -177,9 +177,9 @@ registerBlockType('uri-cl/hero', {
 				classes += ' no-image';
 			}
 
-			// set the tooltip
-			let title = "";
-			if( !! attributes.tooltip ) {
+			// Set the tooltip
+			let title = '';
+			if ( !! attributes.tooltip ) {
 				title = attributes.tooltip;
 			}
 			return (
@@ -188,14 +188,18 @@ registerBlockType('uri-cl/hero', {
 
 						<div class="poster">
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media =>
+									{
+										setAttributes( {
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id
+										});
+									}
+								}
 								type="image"
 								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton(open) }
+								render={ ({ open }) => getImageButton( open ) }
 							/>
 						</div>
 						<div class="cl-hero-text overlay">
@@ -203,37 +207,34 @@ registerBlockType('uri-cl/hero', {
 								<h1><PlainText
 									onChange={ content => setAttributes({ title: content }) }
 									value={ attributes.title }
-									placeholder={__("Your hero title")}
-									keepPlaceholderOnFocus={true}
+									placeholder={ __( 'Your hero title' ) }
+									keepPlaceholderOnFocus={ true }
 								/></h1>
 								<p class="subhead"><RichText
 									onChange={ content => setAttributes({ subhead: content }) }
 									value={ attributes.subhead }
-									placeholder={__("Your hero subtitle")}
-									keepPlaceholderOnFocus={true}
+									placeholder={ __( 'Your hero subtitle' ) }
+									keepPlaceholderOnFocus={ true }
 									className="subhead"
 								/></p>
 								<span class="cl-button">
 								<PlainText
 									onChange={ content => setAttributes({ button: content }) }
 									value={ attributes.button }
-									placeholder={__("Your button text")}
+									placeholder={ __( 'Your button text' ) }
 									keepPlaceholderOnFocus={true}
 								/></span>
 								{ meta }
 						</div>
-
-
 					</div>
-
 					</div>
 				</div>
 			);
-		}
+		};
 
-		// generate block controls for alignment, etc
+		// Generate block controls for alignment, etc
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
@@ -244,11 +245,15 @@ registerBlockType('uri-cl/hero', {
 					<MediaUploadCheck>
 						<Toolbar>
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media =>
+									{
+										setAttributes({
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id
+										});
+									}
+								}
 								allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={ attributes.mediaID }
 								render={ ( { open } ) => (
@@ -263,33 +268,26 @@ registerBlockType('uri-cl/hero', {
 						</Toolbar>
 					</MediaUploadCheck>
 					) }
-
 				</BlockControls>
 			);
+		};
 
-		}
-
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( "Format" ) }
+								label={ __( 'Format' ) }
 							>
-								<ButtonGroup aria-label={ __( "Hero Format" ) }>
-									{ [ "default", "fullwidth", "super" ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Hero Format' ) }>
+									{ [ 'default', 'fullwidth', 'super' ].map( ( value ) => {
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
+										const format = ( undefined == attributes.format ) ? '' : attributes.format;
+										const isSelected = ( key === format );
 
-										// const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										// const key = (value === "default") ? '' : value;
-										// const isSelected = key === attributes.format;
-
-										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === 'default') ? '' : value;
-										const format = (attributes.format == undefined) ? '' : attributes.format; 
-										const isSelected = (key === format);
-									
 										return (
 											<Button
 												key={ key }
@@ -309,7 +307,7 @@ registerBlockType('uri-cl/hero', {
 						<PanelRow>
 							<TextControl
 								label="Video URL"
-								onChange={ content => setAttributes({ vid: content }) }
+								onChange={ content => setAttributes( { vid: content } ) }
 								value={ attributes.vid }
 								className="meta-field vid"
 								help="For creating a video hero."
@@ -319,7 +317,7 @@ registerBlockType('uri-cl/hero', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ content => setAttributes({ tooltip: content }) }
+								onChange={ content => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
 							/>
@@ -327,41 +325,42 @@ registerBlockType('uri-cl/hero', {
 					</PanelBody>
 				</InspectorControls>
 			);
-		}
+		};
 
-		// send the editor interfaces to the view
-  	return ([
+		// Send the editor interfaces to the view
+	return ([
 			createBlockControls(),
 			createInspectorControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
-	save({ attributes }) {
-	
-		// @todo: use the media ID to build a src set
+	]);
 
-		let classes = "cl-hero";
+	}, // End edit
+
+	save( { attributes } ) {
+
+		// @todo: use the media ID to build a src set
+		let classes = 'cl-hero';
 		if ( !! attributes.className ) {
+
 			// @todo this gets automatically applied to wrapper... remove it?
-			classes += " " + attributes.className
+			classes += ' ' + attributes.className;
 		}
 		if ( !! attributes.format ) {
-			classes += " " + attributes.format
+			classes += ' ' + attributes.format;
 		}
-		let bg = "";
+		let bg = '';
 		if ( !! attributes.img ) {
-			bg = "background-image:url(" + attributes.img + ")";
+			bg = 'background-image:url(' + attributes.img + ')';
 		}
-		let still = "still";
+		let still = 'still';
 		if ( !! attributes.vid ) {
-			still = "poster";
+			still = 'poster';
 		}
-		let button = "";
-		if( !! attributes.button && !! attributes.link ) {
+		let button = '';
+		if ( !! attributes.button && !! attributes.link ) {
 			button = ( <a class="cl-button" href={ attributes.link }>{ attributes.button }</a> );
 		}
+
 		// @todo add still photo animations... e.g. "animation shift"
 
 		return (
@@ -376,9 +375,7 @@ registerBlockType('uri-cl/hero', {
 				<div id={attributes.id} data-id={attributes.vid} class={still} style={bg}></div>
 			</div>
 		);
-		
+
 	}
-	
-	
 });
 

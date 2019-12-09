@@ -28,7 +28,6 @@ const {
 	InnerBlocks
 } = wp.blockEditor;
 
-
 const ALLOWED_BLOCKS = [
 	'core/heading',
 	'core/paragraph',
@@ -42,66 +41,62 @@ const TEMPLATE = [
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/panel.png')}
+			src={( URI_CL_URL + 'i/panel.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
-const classNames = (attributes) => {
-	let classes = "cl-panel";
-	if( !! attributes.className ) {
+const classNames = ( attributes ) => {
+	let classes = 'cl-panel';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
-	if( !! attributes.reverse ) {
-		classes += " reverse"
+	if ( !! attributes.reverse ) {
+		classes += ' reverse';
 	}
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/panel', {
 
+	title: __( 'Panel' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-registerBlockType('uri-cl/panel', {   
-
-  title: __('Panel'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'string'
 		},
 		reverse: {
-			type: 'boolean',
+			type: 'boolean'
 		},
 		img: {
-			type: 'string',
+			type: 'string'
 		},
 		alt: {
-			type: 'string',
+			type: 'string'
 		},
 		mediaID: {
-			type: 'number',
-		},
-
+			type: 'number'
+		}
 	},
 
-	
 	edit({ attributes, className, setAttributes }) {
 
-		// generate the image or the add image section
-		const getImageButton = (openEvent) => {
-			if(attributes.mediaID) {
+		// Generate the image or the add image section
+		const getImageButton = ( openEvent ) => {
+			if ( attributes.mediaID ) {
 				return (
-					<img 
+					<img
 						src={ attributes.img }
 						alt={ attributes.alt }
 						className="image"
@@ -114,13 +109,17 @@ registerBlockType('uri-cl/panel', {
 						className={ className }
 						labels={ {
 							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
 						} }
-						onSelect={ media => { setAttributes({
-							alt: media.alt,
-							img: media.url,
-							mediaID: media.id
-						}); } }
+						onSelect={ media =>
+							{
+								setAttributes({
+									alt: media.alt,
+									img: media.url,
+									mediaID: media.id
+								});
+							}
+						}
 						accept="image/*"
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 					/>
@@ -128,7 +127,7 @@ registerBlockType('uri-cl/panel', {
 			}
 		};
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
 		const createContentEditForm = () => {
 			return (
@@ -136,14 +135,18 @@ registerBlockType('uri-cl/panel', {
 					<div class={classes}>
 						<figure class="poster">
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media =>
+									{
+										setAttributes({
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id
+										});
+									}
+								}
 								type="image"
 								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton(open) }
+								render={ ({ open }) => getImageButton( open ) }
 							/>
 						</figure>
 						<article>
@@ -155,20 +158,24 @@ registerBlockType('uri-cl/panel', {
 					</div>
 				</div>
 			);
-		}
+		};
 
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					{ !! attributes.img && (
 					<MediaUploadCheck>
 						<Toolbar>
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media =>
+									{
+										setAttributes({
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id
+										});
+									}
+								}
 								allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={ attributes.mediaID }
 								render={ ( { open } ) => (
@@ -186,33 +193,32 @@ registerBlockType('uri-cl/panel', {
 
 				</BlockControls>
 			);
+		};
 
-		}
-
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( "Panel Style" ) }
+								label={ __( 'Panel Style' ) }
 							>
-								<ButtonGroup aria-label={ __( "Panel Style" ) }>
-									{ [ "standard", "reverse" ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Panel Style' ) }>
+									{ [ 'standard', 'reverse' ].map( ( value ) => {
 
-										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "standard") ? 'false' : 'true';
-										const r = (attributes.reverse) ? 'true' : 'false';
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'standard' === value ) ? 'false' : 'true';
+										const r = ( attributes.reverse ) ? 'true' : 'false';
 										const isSelected = ( key === r );
-										
+
 										return (
 											<Button
 												key={ key }
 												isDefault
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ reverse: (key==='true') }) }
+												onClick={ content => setAttributes({ reverse: ( 'true' === key ) }) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -221,27 +227,23 @@ registerBlockType('uri-cl/panel', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
-
 					</PanelBody>
 				</InspectorControls>
-
-
 			);
-		}
-  	
+		};
 
-		// send the editor interfaces to the view
-  	return ([
-  		createBlockControls(),
+		// Send the editor interfaces to the view
+		return ([
+			createBlockControls(),
 			createInspectorControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
+		]);
+
+	}, // End edit
+
 	save({ attributes }) {
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
 		return (
 
@@ -256,7 +258,6 @@ registerBlockType('uri-cl/panel', {
 
 		);
 	}
-	
-	
+
 });
 

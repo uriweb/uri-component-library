@@ -33,48 +33,43 @@ const ALLOWED_BLOCKS = [
 	'core/paragraph'
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Please note', dropCap: false }],
+  ['core/paragraph', { placeholder: 'Please note', dropCap: false }]
 ];
-//const ALLOWED_MEDIA_TYPES = [ 'image' ];
-
 
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/notice.png')}
+			src={ ( URI_CL_URL + 'i/notice.png' ) }
 			alt="button"
 		/>
 	);
-}
+};
 
-
-registerBlockType('uri-cl/notice', {   
-
-  title: __('Notice'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
+registerBlockType( 'uri-cl/notice', {
+	title: __( 'Notice' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 	attributes: {
 		style: {
-			type: 'string',
-		},
+			type: 'string'
+		}
 	},
 
-	
 	edit({ attributes, className, setAttributes }) {
 
 		const createContentEditForm = () => {
-			let classes = "cl-notice";
-			if( !! attributes.className ) {
+			let classes = 'cl-notice';
+			if ( !! attributes.className ) {
+
 				// @todo this gets automatically applied to wrapper... remove it?
-				classes += " " + attributes.className
+				classes += ' ' + attributes.className;
 			}
 
 			if ( !! attributes.style ) {
-				classes += " " + attributes.style
+				classes += ' ' + attributes.style;
 			}
 
 			return (
@@ -87,23 +82,23 @@ registerBlockType('uri-cl/notice', {
 					</div>
 				</div>
 			);
-		}
+		};
 
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( "Notice Style" ) }
+								label={ __( 'Notice Style' ) }
 							>
-								<ButtonGroup aria-label={ __( "Notice Style" ) }>
-									{ [ "default", "urgent" ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Notice Style' ) }>
+									{ [ 'default', 'urgent' ].map( ( value ) => {
 
-										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "default") ? '' : value;
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
 										const isSelected = key === attributes.style;
-									
+
 										return (
 											<Button
 												key={ key }
@@ -119,30 +114,29 @@ registerBlockType('uri-cl/notice', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
-
 					</PanelBody>
 				</InspectorControls>
 			);
-		}
+		};
 
-
-		// send the editor interfaces to the view
-  	return ([
+		// Send the editor interfaces to the view
+		return ([
 			createContentEditForm(),
 			createInspectorControls()
-  	]);
-  	
-	}, // end edit
-	
+		]);
+
+	}, // End edit
+
 	save({ attributes }) {
-		let classes = "cl-notice";
-		if( !! attributes.className ) {
+		let classes = 'cl-notice';
+		if ( !! attributes.className ) {
+
 			// @todo this gets automatically applied to wrapper... remove it?
-			classes += " " + attributes.className
+			classes += ' ' + attributes.className;
 		}
 
 		if ( !! attributes.style ) {
-			classes += " " + attributes.style
+			classes += ' ' + attributes.style;
 		}
 
 		return (
@@ -151,7 +145,5 @@ registerBlockType('uri-cl/notice', {
 			</div>
 		);
 	}
-	
-	
 });
 

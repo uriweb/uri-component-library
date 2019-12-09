@@ -24,71 +24,70 @@ const {
 	BlockControls,
 	Toolbar,
 	IconButton,
-	BlockAlignmentToolbar,
+	BlockAlignmentToolbar
 } = wp.blockEditor;
 
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/metric.png')}
+			src={( URI_CL_URL + 'i/metric.png' )}
 			alt="metric"
 		/>
 	);
-}
+};
 
-const classNames = (attributes, isSelected) => {
-	let classes = "cl-metric";
-	if( !! attributes.className ) {
+const classNames = ( attributes, isSelected ) => {
+	let classes = 'cl-metric';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
-	if( !! isSelected ) {
+	if ( !! isSelected ) {
 		classes += ' selected';
 	}
-	if( !! attributes.style ) {
-		classes += " " + attributes.style
+	if ( !! attributes.style ) {
+		classes += ' ' + attributes.style;
 	}
-	if( !! attributes.alignment ) {
-		classes += " " + attributes.alignment
+	if ( !! attributes.alignment ) {
+		classes += ' ' + attributes.alignment;
 	}
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/metric', {
 
-registerBlockType('uri-cl/metric', {   
+	title: __( 'Metric' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-  title: __('Metric'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
 	attributes: {
 		metric: {
-			type: 'string',
+			type: 'string'
 		},
 		caption: {
-			type: 'string',
+			type: 'string'
 		},
 		style: {
-			type: 'string',
+			type: 'string'
 		},
 		alignment: {
-			type: 'string',
+			type: 'string'
 		}
 	},
 
-	
 	edit({ attributes, className, setAttributes, isSelected }) {
 
-		// generate editor view of the card itself
+		// Generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames(attributes, isSelected);
-			
-			// set the tooltip
-			let title = "";
-			if( !! attributes.tooltip ) {
+			let classes = classNames( attributes, isSelected );
+
+			// Set the tooltip
+			let title = '';
+			if ( !! attributes.tooltip ) {
 				title = attributes.tooltip;
 			}
 			return (
@@ -97,41 +96,39 @@ registerBlockType('uri-cl/metric', {
 						<span><PlainText
 							onChange={ content => setAttributes({ metric: content }) }
 							value={ attributes.metric }
-							placeholder={__("100%")}
+							placeholder={ __( '100%' ) }
 							keepPlaceholderOnFocus={true}
 						/></span>
 						<span><PlainText
 							onChange={ content => setAttributes({ caption: content }) }
 							tagname="p"
 							value={ attributes.caption }
-							placeholder={__("metrics on this page")}
+							placeholder={ __( 'metrics on this page' ) }
 							keepPlaceholderOnFocus={true}
 						/></span>
 
 					</div>
 				</div>
 			);
-		}
+		};
 
-		// generate block controls for alignment, etc
+		// Generate block controls for alignment, etc
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
 						onChange={ content => setAttributes({ alignment: content }) }
 					/>
-
 				</BlockControls>
 			);
+		};
 
-		}
-
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		// @todo: technically, you can have a clear and dark metric
-		// 				our buttongroup only allows users to select one
+		// our buttongroup only allows users to select one
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
@@ -144,15 +141,15 @@ registerBlockType('uri-cl/metric', {
 						</PanelRow>
 						<PanelRow>
 							<BaseControl
-								label={ __( "Metric Style" ) }
+								label={ __( 'Metric Style' ) }
 							>
-								<ButtonGroup aria-label={ __( "Metric Style" ) }>
-									{ [ "standard", "clear", "dark", "overlay" ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Metric Style' ) }>
+									{ [ 'standard', 'clear', 'dark', 'overlay' ].map( ( value ) => {
 
-										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-										const key = (value === "default") ? '' : value;
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
 										const isSelected = key === attributes.style;
-									
+
 										return (
 											<Button
 												key={ key }
@@ -168,29 +165,26 @@ registerBlockType('uri-cl/metric', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
-
 					</PanelBody>
 				</InspectorControls>
-
-
 			);
-		}
+		};
 
-		// send the editor interfaces to the view
-  	return ([
+		// Send the editor interfaces to the view
+		return ([
 			createBlockControls(),
 			createInspectorControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
+		]);
+
+	}, // End edit
+
 	save({ attributes }) {
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
-		let title = "";
-		if( !! attributes.tooltip ) {
+		let title = '';
+		if ( !! attributes.tooltip ) {
 			title = attributes.tooltip;
 		}
 
@@ -200,10 +194,7 @@ registerBlockType('uri-cl/metric', {
 				<span>{ attributes.caption }</span>
 			</div>
 		);
-
-
 	}
-	
-	
+
 });
 

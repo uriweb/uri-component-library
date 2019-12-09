@@ -21,17 +21,13 @@ const {
 	AlignmentToolbar,
 	RichText,
 	PlainText,
-	URLInput,
+	URLInput
 } = wp.blockEditor;
-
-
-// @see https://github.com/WordPress/gutenberg/tree/master/packages/block-library/src
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<svg
 			width="20"
 			height="20"
@@ -40,19 +36,20 @@ const customIcon = () => {
 			<path d="M2,8 L2,16 L16,16 L16,8 L2,8 Z M2,7 L16,7 L16,2 L2,2 L2,7 Z M18,1 L18,17 C18,17 18,18 18,18 C18,18 17,18 17,18 L1,18 C1,18 0,18 0,18 C0,18 0,17 0,17 L0,1 C0,1 0,0 0,0 C0,0 1,0 1,0 L17,0 C17,0 18,0 18,0 C18,0 18,1 18,1 Z M15,15 L3,15 L3,12 L15,12 L15,15 Z"/>
 		</svg>
 	);
-}
+};
 
-const classNames = (attributes, isSelected) => {
-	let classes = "cl-card";
-	if( !! attributes.className ) {
+const classNames = ( attributes, isSelected ) => {
+	let classes = 'cl-card';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
-	if( !! attributes.alignment ) {
-		classes += " " + attributes.alignment
+	if ( !! attributes.alignment ) {
+		classes += ' ' + attributes.alignment;
 	}
 
-	if( !! isSelected ) {
+	if ( !! isSelected ) {
 		classes += ' selected';
 	}
 
@@ -62,57 +59,54 @@ const classNames = (attributes, isSelected) => {
 		classes += ' no-image';
 	}
 
-
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/card', {
 
-registerBlockType('uri-cl/card', {   
+	title: __( 'Card' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-  title: __('Card'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
-	// the mediaID is what goes into the shortcode for front-end display
+	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'string'
 		},
 		body: {
-			type: 'string',
+			type: 'string'
 		},
 		link: {
-			type: 'string',
+			type: 'string'
 		},
 		mediaID: {
-			type: 'number',
+			type: 'number'
 		},
 		img: {
-			type: 'string',
+			type: 'string'
 		},
 		alt: {
-			type: 'string',
+			type: 'string'
 		},
 		button: {
-			type: 'string',
+			type: 'string'
 		},
 		tooltip: {
-			type: 'string',
+			type: 'string'
 		},
 		alignment: {
-			type: 'string',
+			type: 'string'
 		}
 	},
-	
-	
-	edit({ attributes, className, setAttributes, isSelected }) {
 
-		// generate the image or the add image section
-		const getImageButton = (openEvent) => {
-			if(attributes.mediaID) {
+	edit( { attributes, className, setAttributes, isSelected } ) {
+
+		// Generate the image or the add image section
+		const getImageButton = ( openEvent ) => {
+			if ( attributes.mediaID ) {
 				return (
-					<img 
+					<img
 						src={ attributes.img }
 						alt={ attributes.alt }
 						className="image"
@@ -125,22 +119,26 @@ registerBlockType('uri-cl/card', {
 						className={ className }
 						labels={ {
 							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
 						} }
-						onSelect={ media => { setAttributes({
-							alt: media.alt,
-							img: media.url,
-							mediaID: media.id
-						}); } }
+						onSelect={ media =>
+							{
+								setAttributes({
+									alt: media.alt,
+									img: media.url,
+									mediaID: media.id
+								});
+							}
+						}
 						accept="image/*"
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 					/>
 				);
 			}
 		};
-		
+
 		let meta;
-		if( !! isSelected ) {
+		if ( !! isSelected ) {
 				meta = (
 					<form
 						className="meta"
@@ -156,17 +154,17 @@ registerBlockType('uri-cl/card', {
 						/>
 						</fieldset>
 					</form>
-				)
+				);
 
 		}
 
-		// generate editor view of the card itself
+		// Generate editor view of the card itself
 		const createContentEditForm = () => {
 			let classes = classNames( attributes, isSelected );
-		
-			// set the tooltip
-			let title = "";
-			if( !! attributes.tooltip ) {
+
+			// Set the tooltip
+			let title = '';
+			if ( !! attributes.tooltip ) {
 				title = attributes.tooltip;
 			}
 			return (
@@ -174,28 +172,32 @@ registerBlockType('uri-cl/card', {
 					<div className={classes} title={title}>
 
 						<MediaUpload
-							onSelect={ media => { setAttributes({
-								alt: media.alt,
-								img: media.url,
-								mediaID: media.id
-							}); } }
+							onSelect={ media =>
+								{
+									setAttributes({
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id
+									});
+								}
+							}
 							type="image"
 							value={ attributes.mediaID }
-							render={ ({ open }) => getImageButton(open) }
+							render={ ({ open }) => getImageButton( open ) }
 						/>
 
 						<div class="cl-card-text">
 						<h3><PlainText
 							onChange={ content => setAttributes({ title: content }) }
 							value={ attributes.title }
-							placeholder={__("Your card title")}
+							placeholder={__( 'Your card title' )}
 							keepPlaceholderOnFocus={true}
 						/></h3>
 						<RichText
 							onChange={ content => setAttributes({ body: content }) }
 							tagname="p"
 							value={ attributes.body }
-							placeholder={__("Your card text")}
+							placeholder={__( 'Your card text' )}
 							keepPlaceholderOnFocus={true}
 						/>
 						</div>
@@ -203,8 +205,8 @@ registerBlockType('uri-cl/card', {
 							<PlainText
 								onChange={ content => setAttributes({ button: content }) }
 								value={ attributes.button }
-								placeholder={__("Your button text")}
-								keepPlaceholderOnFocus={true}
+								placeholder={__( 'Your button text' )}
+								keepPlaceholderOnFocus={ true }
 								className="cl-button"
 							/>
 							{ meta }
@@ -212,11 +214,11 @@ registerBlockType('uri-cl/card', {
 					</div>
 				</div>
 			);
-		}
+		};
 
-		// generate block controls for alignment, etc
+		// Generate block controls for alignment, etc
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
@@ -227,11 +229,15 @@ registerBlockType('uri-cl/card', {
 					<MediaUploadCheck>
 						<Toolbar>
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media =>
+									{
+										setAttributes({
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id
+										});
+									}
+								}
 								allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={ attributes.mediaID }
 								render={ ( { open } ) => (
@@ -249,12 +255,11 @@ registerBlockType('uri-cl/card', {
 
 				</BlockControls>
 			);
+		};
 
-		}
-
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
@@ -268,25 +273,25 @@ registerBlockType('uri-cl/card', {
 					</PanelBody>
 				</InspectorControls>
 			);
-		}
+		};
 
-		// send the editor interfaces to the view
-  	return ([
+		// Send the editor interfaces to the view
+	return ([
 			createBlockControls(),
 			createInspectorControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
-	save({ attributes }) {
-	
+	]);
+
+	}, // End edit
+
+	save( { attributes } ) {
+
 		// @todo: use the media ID to build a src set
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
 		if ( !! attributes.alignment ) {
-			classes += " " + attributes.alignment
+			classes += ' ' + attributes.alignment;
 		}
 		return (
 			<div>
@@ -303,10 +308,5 @@ registerBlockType('uri-cl/card', {
 				</a>
 			</div>
 		);
-		
-		
 	}
-	
-	
 });
-

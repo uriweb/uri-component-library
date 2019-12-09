@@ -1,5 +1,6 @@
 {
     "preset": "wordpress",
+    "validateQuoteMarks": { "mark": "'", "escape": true, "ignoreJSX": true },
     "fileExtensions": [ ".js" ],
     "excludeFiles": [
         "gulpfile.js",

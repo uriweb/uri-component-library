@@ -14,75 +14,71 @@ const {
 	InnerBlocks
 } = wp.blockEditor;
 
-
 const ALLOWED_BLOCKS = [
 	'uri-cl/tab'
 ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/tabs.png')}
+			src={( URI_CL_URL + 'i/tabs.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
-const classNames = (attributes) => {
-	let classes = "cl-tabs";
-	if( !! attributes.className ) {
+const classNames = ( attributes ) => {
+	let classes = 'cl-tabs';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
 	return classes;
-}
+};
 
 const getTabsTemplate = ( tabs ) => {
 
-	return [...Array(tabs)].map(function(){
+	return [...Array( tabs )].map( function() {
 		return ['uri-cl/tab', {}];
 	});
-	
-}
 
+};
 
+registerBlockType( 'uri-cl/tabs', {
 
-registerBlockType('uri-cl/tabs', {   
+	title: __( 'Tabs' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-  title: __('Tabs'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
 	attributes: {
 		tabs: {
 			type: 'number',
-			default: 2,
-		},
+			default: 2
+		}
 	},
 
-	
 	edit({ attributes, className, setAttributes }) {
 
-		// generate the image or the add image section
+		// Generate the image or the add image section
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
-		// generate sidebar inspector controls for other custom attributes
+		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
-			return(
+			return (
 				<InspectorControls>
 					<PanelBody>
 						<PanelRow>
 							<RangeControl
-								label={ __( "Tabs" ) }
+								label={ __( 'Tabs' ) }
 								value={ attributes.tabs }
 								onChange={ ( nextTabs ) => {
 									setAttributes( {
-										tabs: nextTabs,
+										tabs: nextTabs
 									} );
 								} }
 								min={ 2 }
@@ -92,8 +88,7 @@ registerBlockType('uri-cl/tabs', {
 					</PanelBody>
 				</InspectorControls>
 			);
-		}
-  
+		};
 
 		const createContentEditForm = () => {
 			return (
@@ -106,19 +101,19 @@ registerBlockType('uri-cl/tabs', {
 					</div>
 				</div>
 			);
-		}
+		};
 
-		// send the editor interfaces to the view
-  	return ([
-  		createInspectorControls(),
+		// Send the editor interfaces to the view
+		return ([
+			createInspectorControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
+		]);
+
+	}, // End edit
+
 	save({ attributes }) {
 
-		let classes = classNames(attributes);
+		let classes = classNames( attributes );
 
 		return (
 			<div class={classes}>	
@@ -126,7 +121,6 @@ registerBlockType('uri-cl/tabs', {
 			</div>
 		);
 	}
-	
-	
+
 });
 

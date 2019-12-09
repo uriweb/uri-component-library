@@ -28,7 +28,6 @@ const {
 	InnerBlocks
 } = wp.blockEditor;
 
-
 const ALLOWED_BLOCKS = [
 	'core/paragraph'
 ];
@@ -37,66 +36,62 @@ const TEMPLATE = [
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/quote.png')}
+			src={( URI_CL_URL + 'i/quote.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
-const classNames = (attributes, isSelected) => {
-	let classes = "cl-quote";
-	if( !! attributes.className ) {
+const classNames = ( attributes, isSelected ) => {
+	let classes = 'cl-quote';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
-	if( !! isSelected ) {
+	if ( !! isSelected ) {
 		classes += ' selected';
 	}
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/quote', {
 
+	title: __( 'Quote' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 
-registerBlockType('uri-cl/quote', {   
-
-  title: __('Quote'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
 	attributes: {
 		quote: {
-			type: 'string',
+			type: 'string'
 		},
 		citation: {
-			type: 'string',
+			type: 'string'
 		},
 		img: {
-			type: 'string',
+			type: 'string'
 		},
 		alt: {
-			type: 'string',
+			type: 'string'
 		},
 		mediaID: {
-			type: 'number',
-		},
-
+			type: 'number'
+		}
 	},
 
-	
 	edit({ attributes, className, setAttributes, isSelected }) {
 
-		// generate the image or the add image section
-		const getImageButton = (openEvent) => {
-			if(attributes.mediaID) {
+		// Generate the image or the add image section
+		const getImageButton = ( openEvent ) => {
+			if ( attributes.mediaID ) {
 				return (
-					<img 
+					<img
 						src={ attributes.img }
 						alt={ attributes.alt }
 						className="image"
@@ -109,13 +104,15 @@ registerBlockType('uri-cl/quote', {
 						className={ className }
 						labels={ {
 							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
 						} }
-						onSelect={ media => { setAttributes({
-							alt: media.alt,
-							img: media.url,
-							mediaID: media.id
-						}); } }
+						onSelect={ media => {
+							setAttributes({
+								alt: media.alt,
+								img: media.url,
+								mediaID: media.id
+							});
+						} }
 						accept="image/*"
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 					/>
@@ -123,24 +120,26 @@ registerBlockType('uri-cl/quote', {
 			}
 		};
 
-		let classes = classNames(attributes, isSelected);
+		let classes = classNames( attributes, isSelected );
 
 		const createContentEditForm = () => {
-			let imageClass = ( !! attributes.mediaID ) ? "cl-quote-image" : "";
+			let imageClass = ( !! attributes.mediaID ) ? 'cl-quote-image' : '';
 			return (
 				<div className="container">
 
 					<div class={classes}>
 						<div class={imageClass}>
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media => {
+									setAttributes({
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id
+									});
+								} }
 								type="image"
 								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton(open) }
+								render={ ({ open }) => getImageButton( open ) }
 							/>
 						</div>
 						<blockquote>
@@ -152,27 +151,29 @@ registerBlockType('uri-cl/quote', {
 						<cite><PlainText
 							onChange={ content => setAttributes({ citation: content }) }
 							value={ attributes.citation }
-							placeholder={__("Anonymous")}
+							placeholder={ __( 'Anonymous' ) }
 							keepPlaceholderOnFocus={true}
 						/></cite>
 					</div>				
 
 				</div>
 			);
-		}
+		};
 
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					{ !! attributes.img && (
 					<MediaUploadCheck>
 						<Toolbar>
 							<MediaUpload
-								onSelect={ media => { setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								}); } }
+								onSelect={ media => {
+									setAttributes({
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id
+									});
+								} }
 								allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={ attributes.mediaID }
 								render={ ( { open } ) => (
@@ -187,26 +188,23 @@ registerBlockType('uri-cl/quote', {
 						</Toolbar>
 					</MediaUploadCheck>
 					) }
-
 				</BlockControls>
 			);
+		};
 
-		}
-
-
-		// send the editor interfaces to the view
-  	return ([
-  		createBlockControls(),
+		// Send the editor interfaces to the view
+		return ([
+			createBlockControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
+		]);
+
+	}, // End edit
+
 	save({ attributes }) {
 
-		let classes = classNames(attributes);
-		
-		let imageStyle = "background-image:url(" + attributes.img + ")";
+		let classes = classNames( attributes );
+
+		let imageStyle = 'background-image:url(' + attributes.img + ')';
 
 		return (
 
@@ -216,11 +214,10 @@ registerBlockType('uri-cl/quote', {
 							<InnerBlocks.Content />
 						</blockquote>
 						<cite>{attributes.citation}</cite>
-					</div>				
+					</div>
 
 		);
 	}
-	
-	
+
 });
 

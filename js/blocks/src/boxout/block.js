@@ -13,7 +13,6 @@ const {
 	BlockAlignmentToolbar,
 	InnerBlocks // @todo: allow nested blocks
 } = wp.blockEditor;
-
 const ALLOWED_BLOCKS = [
 	'core/image',
 	'core/heading',
@@ -22,79 +21,77 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/button'
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Your boxout content...', dropCap: false }],
+  ['core/paragraph', { placeholder: 'Your boxout content...', dropCap: false }]
 ];
 
-
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/boxout.png')}
+			src={( URI_CL_URL + 'i/boxout.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
-const classNames = (attributes, isSelected) => {
-	let classes = "cl-boxout";
-	if( !! attributes.className ) {
+const classNames = ( attributes, isSelected ) => {
+	let classes = 'cl-boxout';
+	if ( !! attributes.className ) {
+
 		// @todo this gets automatically applied to wrapper... remove it?
-		classes += " " + attributes.className
+		classes += ' ' + attributes.className;
 	}
-	if( !! isSelected ) {
+	if ( !! isSelected ) {
 		classes += ' selected';
 	}
-	if( !! attributes.alignment ) {
-		classes += " " + attributes.alignment
+	if ( !! attributes.alignment ) {
+		classes += ' ' + attributes.alignment;
 	}
 	return classes;
-}
+};
 
+registerBlockType( 'uri-cl/boxout', {
 
-registerBlockType('uri-cl/boxout', {   
-
-  title: __('Boxout'),
-  icon: customIcon,
-  category: 'cl-blocks',
-  
+	title: __( 'Boxout' ),
+	icon: customIcon,
+	category: 'cl-blocks',
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'string'
 		},
 		alignment: {
-			type: 'string',
-		},
+			type: 'string'
+		}
 	},
 
-	
-	edit({ attributes, className, setAttributes, isSelected }) {
-		// generate editor view of the card itself
+	edit( { attributes, className, setAttributes, isSelected } ) {
+
+		// Generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames(attributes, isSelected);
+			let classes = classNames( attributes, isSelected );
 			return (
 				<div className="container">
 					<div class={classes}>
 						<h1><PlainText
-							onChange={ content => setAttributes({ title: content }) }
+							onChange={ content => setAttributes( { title: content } ) }
 							value={ attributes.title }
-							placeholder={__("Title")}
-							keepPlaceholderOnFocus={true}
+							placeholder={ __( 'Title' ) }
+							keepPlaceholderOnFocus={ true }
 						/></h1>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={TEMPLATE}
+							template={ TEMPLATE }
 						/>
 					</div>
 				</div>
 			);
-		}
+		};
 
-		// generate block controls for alignment, etc
+		// Generate block controls for alignment, etc
 		const createBlockControls = () => {
-			return(
+			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
@@ -103,21 +100,19 @@ registerBlockType('uri-cl/boxout', {
 				</BlockControls>
 			);
 
-		}
+		};
 
-
-
-		// send the editor interfaces to the view
-  	return ([
+		// Send the editor interfaces to the view
+		return ([
 			createBlockControls(),
 			createContentEditForm()
-  	]);
-  	
-	}, // end edit
-	
-	save({ attributes }) {
-		let classes = classNames(attributes);
-		
+		]);
+
+	}, // End edit
+
+	save( { attributes } ) {
+		let classes = classNames( attributes );
+
 		return (
 			<div>
 				<div class={classes}>
@@ -127,7 +122,6 @@ registerBlockType('uri-cl/boxout', {
 			</div>
 		);
 	}
-	
-	
-});
+
+} );
 

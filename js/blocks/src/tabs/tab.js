@@ -7,48 +7,45 @@ const {
 } = wp.blockEditor;
 
 const customIcon = () => {
-	return(
+	return (
 		<img
 			width="20"
 			height="20"
 			className="dashicon"
-			src={(URI_CL_URL + 'i/tab.png')}
+			src={( URI_CL_URL + 'i/tab.png' )}
 			alt="button"
 		/>
 	);
-}
+};
 
+registerBlockType( 'uri-cl/tab', {
 
-registerBlockType('uri-cl/tab', {   
+	title: __( 'Tab' ),
+	icon: customIcon,
+	parent: [ 'uri-cl/tabs' ],
+	category: 'cl-blocks',
 
-  title: __('Tab'),
-  icon: customIcon,
-  parent: [ 'uri-cl/tabs' ],
-  category: 'cl-blocks',
-  
 	supports: {
 		inserter: false,
 		reusable: false,
-		html: false,
+		html: false
 	},
 
-	
 	edit({ attributes, className }) {
 		return (
 			<div class="cl-tab">
 				<InnerBlocks templateLock={ false } />
 			</div>
-		)
-	}, // end edit
-	
+		);
+	}, // End edit
+
 	save({ attributes }) {
 		return (
 			<div class="cl-tab">
 				<InnerBlocks.Content />
 			</div>
-		)
+		);
 	}
-	
-	
+
 });
 
