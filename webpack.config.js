@@ -6,7 +6,7 @@
  */
 
 // var ExtractText = require('extract-text-webpack-plugin');
-var debug = process.env.NODE_ENV !== 'production';
+var debug = 'production' !== process.env.NODE_ENV;
 var webpack = require( 'webpack' );
 
 var plugins = [];
@@ -30,7 +30,8 @@ module.exports = {
 				loader: 'babel-loader'
 			}
 			]
-		},
+		}
+		
 		// {
 		// test: /editor\.scss$/,
 		// exclude: /node_modules/,

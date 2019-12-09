@@ -4,6 +4,7 @@
     "excludeFiles": [
         "gulpfile.js",
         "js/cl.built.js",
+        "js/blocks/build/**",
 		"js/wysiwyg/noneditable/**"
     ]
 }
