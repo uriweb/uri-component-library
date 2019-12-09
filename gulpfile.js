@@ -22,9 +22,6 @@ var sassOptions = {
 };
 
 
-// CSS concat, auto-prefix and minify
-gulp.task('styles', styles);
-
 function styles(done) {
     
     var banner = ['/**',
@@ -53,10 +50,27 @@ function styles(done) {
   done();
   //console.log('styles ran');
 }
+// CSS concat, auto-prefix and minify
+gulp.task('styles', styles);
 
 
-// JS concat, strip debugging and minify
-gulp.task('scripts', scripts);
+
+function gutenbergAdminStyles(done) {
+    
+	gulp.src('./js/blocks/src/blocks.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(concat('blocks.build.css'))
+        .pipe(postcss([ autoprefixer() ]))
+		.pipe(sourcemaps.write('map'))
+		.pipe(gulp.dest('./js/blocks/build/'));
+
+  done();
+}
+// I don't love this... I'd rather be able to tap into the core stylesheets
+gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
+
+
 
 function scripts(done) {
     
@@ -67,7 +81,7 @@ function scripts(done) {
                   ' * ',
                   ' * @version v<%= pkg.version %>',
                   ' * @author <%= pkg.humans[0] %>',
-				  ' * @author <%= pkg.humans[1] %>',
+                  ' * @author <%= pkg.humans[1] %>',
                   ' * @license <%= pkg.license %>',
                   ' * @see <%= pkg.docs %>',
                   ' */',
@@ -105,10 +119,10 @@ function scripts(done) {
 	done();
  // console.log('scripts ran');
 }
+// JS concat, strip debugging and minify
+gulp.task('scripts', scripts);
 
 
-// run codesniffer
-gulp.task('sniffs', sniffs);
 
 function sniffs(done) {
     
@@ -116,10 +130,19 @@ function sniffs(done) {
         .pipe(shell(['./.sniff']));
     
 }
+// run codesniffer
+gulp.task('sniffs', sniffs);
 
 
-// Update plugin version
-gulp.task('version', version);
+function webpack(done) {
+    
+    return gulp.src('.', {read:false})
+        .pipe(shell(['npx webpack']));
+    
+}
+// run webpack
+gulp.task('webpack', webpack);
+
 
 function version(done) {
 		
@@ -133,28 +156,34 @@ function version(done) {
 		.pipe(gulp.dest('./'));
 	
 }
+// Update plugin version
+gulp.task('version', version);
 
-
-// watch
-gulp.task('watcher', watcher);
 
 function watcher(done) {
 	
 	// watch for CSS changes
 	gulp.watch('./src/sass/*.scss', styles);
     
-    // watch for JS changes
+  // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
 	gulp.watch('./js/wysiwyg/*.js', scripts);
 	
 	// watch for PHP change
-    gulp.watch('./**/*.php', sniffs);
+	gulp.watch('./**/*.php', sniffs);
+
+	// watch for Gutenberg change
+	gulp.watch('./js/blocks/src/', webpack);
+	gulp.watch('./js/blocks/src/blocks.scss', gutenbergAdminStyles);
 
 	done();
 }
+// watch
+gulp.task('watcher', watcher);
+
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'version', 'watcher', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', 'gutenbergAdminStyles', function(done){
 		done();
 	})
 );

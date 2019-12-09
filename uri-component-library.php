@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'URI_CL_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'URI_CL_URL', str_replace( '/js', '/', plugins_url( 'js', __FILE__ ) ) );
 
 /**
  * Return the plugin base url
@@ -50,6 +51,10 @@ include( URI_CL_DIR_PATH . 'inc/cl-display-posts.php' );
 if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
+
+// Include gutenberg
+include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
+
 
 // Enable styles in the WYSIWYG Editor
 if ( is_admin() ) {
