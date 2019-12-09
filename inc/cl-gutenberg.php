@@ -55,10 +55,10 @@ add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
 
 
 /**
- * Defines a custom category
+ * Defines a custom category.
  *
  * @param array $categories are the block editor categories
- * param obj $post is the current post type
+ * param obj $post is the current post type.
  */
 function uri_cl_gutenberg_add_categories( $categories ) {
 	return array_merge(

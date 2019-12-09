@@ -5,7 +5,6 @@
  * @package uri-component-library
  */
 
-// var ExtractText = require('extract-text-webpack-plugin');
 var debug = 'production' !== process.env.NODE_ENV;
 var webpack = require( 'webpack' );
 
@@ -21,8 +20,7 @@ module.exports = {
 		filename: 'blocks.build.js'
 	},
 	module: {
-		rules: [
-		{
+		rules: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
 			use: [
@@ -30,19 +28,7 @@ module.exports = {
 				loader: 'babel-loader'
 			}
 			]
-		}
-		
-		// {
-		// test: /editor\.scss$/,
-		// exclude: /node_modules/,
-		// use: extractEditorSCSS.extract(scssConfig)
-		// },
-		// {
-		// test: /style\.scss$/,
-		// exclude: /node_modules/,
-		// use: extractBlockSCSS.extract(scssConfig)
-		// }
-		]
+		}]
 	},
 	plugins: plugins
 };
