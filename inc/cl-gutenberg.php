@@ -19,6 +19,7 @@ include 'blocks/cl-boxout.php';
 include 'blocks/cl-button.php';
 include 'blocks/cl-card.php';
 include 'blocks/cl-hero.php';
+include 'blocks/cl-metric.php';
 
 /**
  * Include the Gutenberg block scripts and styles if active
