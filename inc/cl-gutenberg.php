@@ -22,6 +22,7 @@ include 'blocks/cl-hero.php';
 include 'blocks/cl-metric.php';
 include 'blocks/cl-panel.php';
 include 'blocks/cl-quote.php';
+include 'blocks/cl-tabs.php';
 
 /**
  * Include the Gutenberg block scripts and styles if active

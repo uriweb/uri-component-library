@@ -3,8 +3,22 @@ const {
 	registerBlockType
 } = wp.blocks;
 const {
+	PlainText,
 	InnerBlocks
 } = wp.blockEditor;
+const ALLOWED_BLOCKS = [
+	'core/image',
+	'core/heading',
+	'core/paragraph',
+	'core/list',
+	'uri-cl/button',
+	'uri-cl/card',
+	'uri-cl/metric',
+	'uri-cl/quote'
+];
+const TEMPLATE = [
+  ['core/paragraph', { placeholder: 'Your tab content...', dropCap: false }]
+];
 
 const customIcon = () => {
 	return (
@@ -31,21 +45,34 @@ registerBlockType( 'uri-cl/tab', {
 		html: false
 	},
 
-	edit({ attributes, className }) {
+	attributes: {
+		title: {
+			type: 'string'
+		}
+	},
+
+	edit({ attributes, className, setAttributes }) {
 		return (
 			<div class="cl-tab">
-				<InnerBlocks templateLock={ false } />
+				<h1><PlainText
+					onChange={ content => setAttributes({ title: content }) }
+					value={ attributes.title }
+					placeholder={ __( 'Tab Title' ) }
+					keepPlaceholderOnFocus={true}
+				/></h1>
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ TEMPLATE }
+					templateLock={false}
+				/>
 			</div>
 		);
 	}, // End edit
 
 	save({ attributes }) {
 		return (
-			<div class="cl-tab">
-				<InnerBlocks.Content />
-			</div>
+			<InnerBlocks.Content />
 		);
 	}
 
 });
-
