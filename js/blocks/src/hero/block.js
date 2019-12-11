@@ -334,6 +334,6 @@ registerBlockType( 'uri-cl/hero', {
 			createContentEditForm()
 	]);
 
-	}, // End edit
+	} // End edit
 
 });

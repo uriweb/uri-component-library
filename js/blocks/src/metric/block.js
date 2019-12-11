@@ -177,6 +177,6 @@ registerBlockType( 'uri-cl/metric', {
 			createContentEditForm()
 		]);
 
-	}, // End edit
+	} // End edit
 
 });

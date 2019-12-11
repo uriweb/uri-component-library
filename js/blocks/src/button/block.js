@@ -187,6 +187,6 @@ registerBlockType( 'uri-cl/button', {
 		createContentEditForm()
 	]);
 
-	}, // End edit
+	} // End edit
 
 });

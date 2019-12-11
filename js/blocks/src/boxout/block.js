@@ -116,5 +116,4 @@ registerBlockType( 'uri-cl/boxout', {
 		);
 	}
 
-
 } );

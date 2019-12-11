@@ -282,6 +282,6 @@ registerBlockType( 'uri-cl/card', {
 			createContentEditForm()
 	]);
 
-	}, // End edit
+	} // End edit
 
 });

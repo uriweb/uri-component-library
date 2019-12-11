@@ -198,6 +198,6 @@ registerBlockType( 'uri-cl/quote', {
 			createContentEditForm()
 		]);
 
-	}, // End edit
+	} // End edit
 
 });
