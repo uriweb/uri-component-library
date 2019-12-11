@@ -8,7 +8,7 @@
  /**
   * Register the block
   */
-function cl_hero_block_init() {
+function uri_cl_block_register_hero() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -21,4 +21,4 @@ function cl_hero_block_init() {
 		)
 		);
 }
-add_action( 'init', 'cl_hero_block_init' );
+add_action( 'init', 'uri_cl_block_register_hero' );
