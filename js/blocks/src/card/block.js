@@ -284,29 +284,4 @@ registerBlockType( 'uri-cl/card', {
 
 	}, // End edit
 
-	save( { attributes } ) {
-
-		// @todo: use the media ID to build a src set
-
-		let classes = classNames( attributes );
-
-		if ( !! attributes.alignment ) {
-			classes += ' ' + attributes.alignment;
-		}
-		return (
-			<div>
-				<a class={classes} href={ attributes.link }>
-					<img src={ attributes.img } alt={ attributes.alt } />
-					<div class="cl-card-text">
-						<h3>{ attributes.title }</h3>
-						<RichText.Content
-							tagName="p"
-							value={ attributes.body }
-						/>
-					</div>
-					<div class="cl-button">{ attributes.button }</div>
-				</a>
-			</div>
-		);
-	}
 });

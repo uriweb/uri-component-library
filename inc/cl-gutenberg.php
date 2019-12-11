@@ -12,9 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * Include Gutenberg block registrations
+ */
+include( URI_CL_DIR_PATH . 'inc/blocks/cl-button.php' );
+include( URI_CL_DIR_PATH . 'inc/blocks/cl-card.php' );
 
 /**
- * Include the Gutenberg blocks if gutenberg is active
+ * Include the Gutenberg block scripts and styles if active
  */
 function uri_cl_gutenberg_is_active() {
 
