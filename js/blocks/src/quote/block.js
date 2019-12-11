@@ -142,19 +142,19 @@ registerBlockType( 'uri-cl/quote', {
 								render={ ({ open }) => getImageButton( open ) }
 							/>
 						</div>
-						<blockquote>
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={TEMPLATE}
-							/>
-						</blockquote>
+						<blockquote><PlainText
+							onChange={ content => setAttributes({ quote: content }) }
+							value={ attributes.quote }
+							placeholder={ __( 'The quote' ) }
+							keepPlaceholderOnFocus={true}
+						/></blockquote>
 						<cite><PlainText
 							onChange={ content => setAttributes({ citation: content }) }
 							value={ attributes.citation }
 							placeholder={ __( 'Anonymous' ) }
 							keepPlaceholderOnFocus={true}
 						/></cite>
-					</div>				
+					</div>
 
 				</div>
 			);
@@ -200,24 +200,4 @@ registerBlockType( 'uri-cl/quote', {
 
 	}, // End edit
 
-	save({ attributes }) {
-
-		let classes = classNames( attributes );
-
-		let imageStyle = 'background-image:url(' + attributes.img + ')';
-
-		return (
-
-					<div class={classes}>
-						<div class="cl-quote-image" style={imageStyle}></div>
-						<blockquote>
-							<InnerBlocks.Content />
-						</blockquote>
-						<cite>{attributes.citation}</cite>
-					</div>
-
-		);
-	}
-
 });
-

@@ -95,6 +95,10 @@ textarea {
 			max-width: 50%;
 			position: relative;
 			top: .375rem;
+			text-align: center;
+		}
+		blockquote textarea {
+			text-align: center;
 		}
 		.cl-quote-image img {
 			border-radius: 50%;
@@ -107,6 +111,10 @@ textarea {
 				display: block;
 			}
 		}
+	}
+
+	.editor-styles-wrapper .cl-quote cite:before {
+		display: none;
 	}
 
 	/** METRICS **/
