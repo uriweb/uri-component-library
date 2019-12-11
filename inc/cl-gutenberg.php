@@ -20,6 +20,7 @@ include 'blocks/cl-button.php';
 include 'blocks/cl-card.php';
 include 'blocks/cl-hero.php';
 include 'blocks/cl-metric.php';
+include 'blocks/cl-panel.php';
 
 /**
  * Include the Gutenberg block scripts and styles if active

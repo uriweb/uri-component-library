@@ -66,7 +66,7 @@ textarea {
 				width: auto;
 			}
 		}
-		
+
 	}
 	.cl-card+.meta {
 		top: -2rem;
@@ -257,6 +257,17 @@ textarea {
 			}
 		}
 
+	}
+
+
+	/** PANELS **/
+
+	// Disable superpanel blur in the editor for performance reasons
+	@supports ( filter: blur(0) ) {
+	  .editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
+			background: #333;
+			filter: initial;
+		}
 	}
 
 

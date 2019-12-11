@@ -54,7 +54,7 @@ const customIcon = () => {
 };
 
 const classNames = ( attributes ) => {
-	let classes = 'cl-panel';
+	let classes = ( 'super' === attributes.format ) ? 'cl-panel-super' : 'cl-panel';
 	if ( !! attributes.className ) {
 
 		// @todo this gets automatically applied to wrapper... remove it?
@@ -83,6 +83,9 @@ registerBlockType( 'uri-cl/panel', {
 			type: 'string'
 		},
 		alt: {
+			type: 'string'
+		},
+		format: {
 			type: 'string'
 		},
 		mediaID: {
@@ -130,34 +133,68 @@ registerBlockType( 'uri-cl/panel', {
 		let classes = classNames( attributes );
 
 		const createContentEditForm = () => {
-			return (
-				<div className="container">
-					<div class={classes}>
-						<figure class="poster">
-							<MediaUpload
-								onSelect={ media =>
-									{
-										setAttributes({
-											alt: media.alt,
-											img: media.url,
-											mediaID: media.id
-										});
-									}
-								}
-								type="image"
-								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton( open ) }
-							/>
-						</figure>
-						<article>
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={TEMPLATE}
-							/>
-						</article>
+			if ( 'super' === attributes.format ) {
+				return (
+					<div className="container">
+						<div class={classes}>
+							<div class="cl-panel-super-blur"></div>
+							<div class="cl-panel-super-content">
+								<div class="cl-panel-super-image">
+									<MediaUpload
+										onSelect={ media =>
+											{
+												setAttributes({
+													alt: media.alt,
+													img: media.url,
+													mediaID: media.id
+												});
+											}
+										}
+										type="image"
+										value={ attributes.mediaID }
+										render={ ({ open }) => getImageButton( open ) }
+									/>
+								</div>
+								<div class="cl-panel-super-text">
+									<InnerBlocks
+										allowedBlocks={ ALLOWED_BLOCKS }
+										template={TEMPLATE}
+									/>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			);
+				);
+			} else {
+				return (
+					<div className="container">
+						<div class={classes}>
+							<figure class="poster">
+								<MediaUpload
+									onSelect={ media =>
+										{
+											setAttributes({
+												alt: media.alt,
+												img: media.url,
+												mediaID: media.id
+											});
+										}
+									}
+									type="image"
+									value={ attributes.mediaID }
+									render={ ({ open }) => getImageButton( open ) }
+								/>
+							</figure>
+							<article>
+								<InnerBlocks
+									allowedBlocks={ ALLOWED_BLOCKS }
+									template={TEMPLATE}
+								/>
+							</article>
+						</div>
+					</div>
+				);
+			}
 		};
 
 		const createBlockControls = () => {
@@ -202,13 +239,13 @@ registerBlockType( 'uri-cl/panel', {
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( 'Panel Style' ) }
+								label={ __( 'Panel Layout' ) }
 							>
-								<ButtonGroup aria-label={ __( 'Panel Style' ) }>
-									{ [ 'standard', 'reverse' ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Panel Layout' ) }>
+									{ [ 'default', 'reverse' ].map( ( value ) => {
 
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
-										const key = ( 'standard' === value ) ? 'false' : 'true';
+										const key = ( 'default' === value ) ? 'false' : 'true';
 										const r = ( attributes.reverse ) ? 'true' : 'false';
 										const isSelected = ( key === r );
 
@@ -219,6 +256,34 @@ registerBlockType( 'uri-cl/panel', {
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
 												onClick={ content => setAttributes({ reverse: ( 'true' === key ) }) }
+											>
+												{ capitalizedValue }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</BaseControl>
+						</PanelRow>
+
+						<PanelRow>
+							<BaseControl
+								label={ __( 'Format' ) }
+								help={ __( 'To increase performance, super panel previews will appear simplified in the editor window.' )}
+							>
+								<ButtonGroup aria-label={ __( 'Panel Format' ) }>
+									{ [ 'default', 'super' ].map( ( value ) => {
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
+										const format = ( undefined == attributes.format ) ? '' : attributes.format;
+										const isSelected = ( key === format );
+
+										return (
+											<Button
+												key={ key }
+												isDefault
+												isPrimary={ isSelected }
+												aria-pressed={ isSelected }
+												onClick={ content => setAttributes({ format: key }) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -242,22 +307,9 @@ registerBlockType( 'uri-cl/panel', {
 	}, // End edit
 
 	save({ attributes }) {
-
-		let classes = classNames( attributes );
-
 		return (
-
-			<div class={classes}>	
-				<figure>
-					<img src={attributes.img} alt={attributes.alt}/>
-				</figure>
-				<article>
-					<InnerBlocks.Content />
-				</article>
-			</div>
-
+			<InnerBlocks.Content />
 		);
 	}
 
 });
-
