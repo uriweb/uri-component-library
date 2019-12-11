@@ -5,6 +5,9 @@
  * @package uri-component-library
  */
 
+ /**
+  * Register the block
+  */
 function cl_card_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
