@@ -1,6 +1,6 @@
 <?php
 /**
- * CL Gutenberg Implementation
+ * COMPONENT LIBRARY GUTENBERG IMPLEMENTATION
  *
  * @package uri-component-library
  * @author John Pennypacker <jpennypacker@uri.edu>
@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Include Gutenberg block registrations
  */
-include( URI_CL_DIR_PATH . 'inc/blocks/cl-button.php' );
-include( URI_CL_DIR_PATH . 'inc/blocks/cl-card.php' );
+include 'blocks/cl-button.php';
+include 'blocks/cl-card.php';
 
 /**
  * Include the Gutenberg block scripts and styles if active

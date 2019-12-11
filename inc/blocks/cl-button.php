@@ -1,4 +1,9 @@
 <?php
+/**
+ * COMPONENT LIBRARY BUTTON BLOCK REGISTRATION
+ *
+ * @package uri-component-library
+ */
 
 function cl_button_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
