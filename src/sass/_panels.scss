@@ -267,6 +267,20 @@
 
 		}
 
+    &.reverse {
+
+      .cl-panel-super-image {
+        text-align: right;
+        order: 2;
+      }
+
+      .cl-panel-super-text {
+        padding: 30vh 8vw 3rem;
+        order: 1;
+      }
+
+    }
+
   }
 
 }
