@@ -10,7 +10,8 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
+	ToggleControl
 } = wp.components;
 const {
 	BlockControls,
@@ -87,6 +88,15 @@ registerBlockType( 'uri-cl/hero', {
 			type: 'string'
 		},
 		tooltip: {
+			type: 'string'
+		},
+		use_caption: {
+			type: 'boolean'
+		},
+		caption: {
+			type: 'string'
+		},
+		credit: {
 			type: 'string'
 		},
 		format: {
@@ -185,48 +195,49 @@ registerBlockType( 'uri-cl/hero', {
 			return (
 				<div className="container cl-hero-block-form">
 					<div className={classes} title={title}>
-
-						<div class="poster">
-							<MediaUpload
-								onSelect={ media =>
-									{
-										setAttributes( {
-											alt: media.alt,
-											img: media.url,
-											mediaID: media.id
-										});
+						<div class="cl-hero-proper">
+							<div class="poster">
+								<MediaUpload
+									onSelect={ media =>
+										{
+											setAttributes( {
+												alt: media.alt,
+												img: media.url,
+												mediaID: media.id
+											});
+										}
 									}
-								}
-								type="image"
-								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton( open ) }
-							/>
+									type="image"
+									value={ attributes.mediaID }
+									render={ ({ open }) => getImageButton( open ) }
+								/>
+							</div>
+							<div class="cl-hero-text overlay">
+								<div class="block">
+									<h1><PlainText
+										onChange={ content => setAttributes({ headline: content }) }
+										value={ attributes.headline }
+										placeholder={ __( 'Your hero title' ) }
+										keepPlaceholderOnFocus={ true }
+									/></h1>
+									<p class="subhead"><RichText
+										onChange={ content => setAttributes({ subhead: content }) }
+										value={ attributes.subhead }
+										placeholder={ __( 'Your hero subtitle' ) }
+										keepPlaceholderOnFocus={ true }
+										className="subhead"
+									/></p>
+									<span class="cl-button">
+									<PlainText
+										onChange={ content => setAttributes({ button: content }) }
+										value={ attributes.button }
+										placeholder={ __( 'Your button text' ) }
+										keepPlaceholderOnFocus={true}
+									/></span>
+									{ meta }
+								</div>
+							</div>
 						</div>
-						<div class="cl-hero-text overlay">
-							<div class="block">
-								<h1><PlainText
-									onChange={ content => setAttributes({ headline: content }) }
-									value={ attributes.headline }
-									placeholder={ __( 'Your hero title' ) }
-									keepPlaceholderOnFocus={ true }
-								/></h1>
-								<p class="subhead"><RichText
-									onChange={ content => setAttributes({ subhead: content }) }
-									value={ attributes.subhead }
-									placeholder={ __( 'Your hero subtitle' ) }
-									keepPlaceholderOnFocus={ true }
-									className="subhead"
-								/></p>
-								<span class="cl-button">
-								<PlainText
-									onChange={ content => setAttributes({ button: content }) }
-									value={ attributes.button }
-									placeholder={ __( 'Your button text' ) }
-									keepPlaceholderOnFocus={true}
-								/></span>
-								{ meta }
-						</div>
-					</div>
 					</div>
 				</div>
 			);
@@ -311,6 +322,35 @@ registerBlockType( 'uri-cl/hero', {
 								value={ attributes.vid }
 								className="meta-field vid"
 								help="For creating a video hero."
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Use WordPress caption"
+								help="Setting a custom caption below will override any WordPress caption."
+								checked={ attributes.use_caption }
+								onChange={ content => setAttributes( { use_caption: content } ) }
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<TextControl
+								label="Caption"
+								onChange={ content => setAttributes( { caption: content } ) }
+								value={ attributes.caption }
+								className="meta-field vid"
+								help="Set a caption for the hero."
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<TextControl
+								label="Credit"
+								onChange={ content => setAttributes( { credit: content } ) }
+								value={ attributes.credit }
+								className="meta-field vid"
+								help="Specify credit for the hero media."
 							/>
 						</PanelRow>
 

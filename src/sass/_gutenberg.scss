@@ -188,10 +188,14 @@ textarea {
 
 	/** HEROES **/
 
-	.cl-hero {
+	.editor-styles-wrapper .cl-hero {
 
 		background-color: #fff;
-		overflow: initial;
+
+		.cl-hero-proper {
+			overflow: initial;
+		}
+
 		h1, h1 textarea:focus {
 			color: #fff;
 			textarea::placeholder {
