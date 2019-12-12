@@ -112,15 +112,9 @@ registerBlockType( 'uri-cl/tabs', {
 	}, // End edit
 
 	save({ attributes }) {
-
-		let classes = classNames( attributes );
-
 		return (
-			<div class={classes}>	
-				<InnerBlocks.Content />
-			</div>
+			<InnerBlocks.Content />
 		);
 	}
 
 });
-

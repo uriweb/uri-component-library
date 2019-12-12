@@ -59,7 +59,7 @@ registerBlockType( 'uri-cl/hero', {
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
 	attributes: {
-		title: {
+		headline: {
 			type: 'string'
 		},
 		subhead: {
@@ -205,8 +205,8 @@ registerBlockType( 'uri-cl/hero', {
 						<div class="cl-hero-text overlay">
 							<div class="block">
 								<h1><PlainText
-									onChange={ content => setAttributes({ title: content }) }
-									value={ attributes.title }
+									onChange={ content => setAttributes({ headline: content }) }
+									value={ attributes.headline }
 									placeholder={ __( 'Your hero title' ) }
 									keepPlaceholderOnFocus={ true }
 								/></h1>
@@ -303,7 +303,7 @@ registerBlockType( 'uri-cl/hero', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
-						
+
 						<PanelRow>
 							<TextControl
 								label="Video URL"
@@ -312,7 +312,7 @@ registerBlockType( 'uri-cl/hero', {
 								className="meta-field vid"
 								help="For creating a video hero."
 							/>
-						</PanelRow>						
+						</PanelRow>
 
 						<PanelRow>
 							<TextControl
@@ -334,48 +334,6 @@ registerBlockType( 'uri-cl/hero', {
 			createContentEditForm()
 	]);
 
-	}, // End edit
+	} // End edit
 
-	save( { attributes } ) {
-
-		// @todo: use the media ID to build a src set
-		let classes = 'cl-hero';
-		if ( !! attributes.className ) {
-
-			// @todo this gets automatically applied to wrapper... remove it?
-			classes += ' ' + attributes.className;
-		}
-		if ( !! attributes.format ) {
-			classes += ' ' + attributes.format;
-		}
-		let bg = '';
-		if ( !! attributes.img ) {
-			bg = 'background-image:url(' + attributes.img + ')';
-		}
-		let still = 'still';
-		if ( !! attributes.vid ) {
-			still = 'poster';
-		}
-		let button = '';
-		if ( !! attributes.button && !! attributes.link ) {
-			button = ( <a class="cl-button" href={ attributes.link }>{ attributes.button }</a> );
-		}
-
-		// @todo add still photo animations... e.g. "animation shift"
-
-		return (
-			<div class={classes}>
-				<div class="overlay">
-					<div class="block">
-						<h1>{ attributes.title }</h1>
-						<p>{ attributes.subhead }</p>
-						{button}
-					</div>
-				</div>
-				<div id={attributes.id} data-id={attributes.vid} class={still} style={bg}></div>
-			</div>
-		);
-
-	}
 });
-

@@ -177,24 +177,6 @@ registerBlockType( 'uri-cl/metric', {
 			createContentEditForm()
 		]);
 
-	}, // End edit
-
-	save({ attributes }) {
-
-		let classes = classNames( attributes );
-
-		let title = '';
-		if ( !! attributes.tooltip ) {
-			title = attributes.tooltip;
-		}
-
-		return (
-			<div class={classes} title={title}>
-				<span>{ attributes.metric }</span>
-				<span>{ attributes.caption }</span>
-			</div>
-		);
-	}
+	} // End edit
 
 });
-

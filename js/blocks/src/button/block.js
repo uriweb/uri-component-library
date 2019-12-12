@@ -187,19 +187,6 @@ registerBlockType( 'uri-cl/button', {
 		createContentEditForm()
 	]);
 
-	}, // End edit
-
-	save( { attributes } ) {
-
-		let classes = classNames( attributes );
-
-		return (
-			<a class={classes} href={ attributes.link } title={ attributes.tooltip }>
-				{ attributes.text }
-			</a>
-		);
-
-	}
+	} // End edit
 
 });
-

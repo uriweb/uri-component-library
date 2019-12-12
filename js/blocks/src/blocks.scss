@@ -66,7 +66,7 @@ textarea {
 				width: auto;
 			}
 		}
-		
+
 	}
 	.cl-card+.meta {
 		top: -2rem;
@@ -95,6 +95,10 @@ textarea {
 			max-width: 50%;
 			position: relative;
 			top: .375rem;
+			text-align: center;
+		}
+		blockquote textarea {
+			text-align: center;
 		}
 		.cl-quote-image img {
 			border-radius: 50%;
@@ -107,6 +111,10 @@ textarea {
 				display: block;
 			}
 		}
+	}
+
+	.editor-styles-wrapper .cl-quote cite:before {
+		display: none;
 	}
 
 	/** METRICS **/
@@ -257,6 +265,17 @@ textarea {
 			}
 		}
 
+	}
+
+
+	/** PANELS **/
+
+	// Disable superpanel blur in the editor for performance reasons
+	@supports ( filter: blur(0) ) {
+	  .editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
+			background: #333;
+			filter: initial;
+		}
 	}
 
 

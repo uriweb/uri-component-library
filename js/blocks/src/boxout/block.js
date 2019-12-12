@@ -111,17 +111,9 @@ registerBlockType( 'uri-cl/boxout', {
 	}, // End edit
 
 	save( { attributes } ) {
-		let classes = classNames( attributes );
-
 		return (
-			<div>
-				<div class={classes}>
-					<h1>{ attributes.title }</h1>
-					<InnerBlocks.Content />
-				</div>
-			</div>
+			<InnerBlocks.Content />
 		);
 	}
 
 } );
-
