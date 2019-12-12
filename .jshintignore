@@ -1,4 +1,4 @@
 gulpfile.js
 js/cl.built.js
-js/blocks/build
+js/blocks.built.js
 js/wysiwyg/noneditable
