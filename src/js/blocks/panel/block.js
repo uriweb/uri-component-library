@@ -12,7 +12,8 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
+	ToggleControl
 } = wp.components;
 
 const {
@@ -237,34 +238,7 @@ registerBlockType( 'uri-cl/panel', {
 			return (
 				<InspectorControls>
 					<PanelBody>
-						<PanelRow>
-							<BaseControl
-								label={ __( 'Panel Layout' ) }
-							>
-								<ButtonGroup aria-label={ __( 'Panel Layout' ) }>
-									{ [ 'default', 'reverse' ].map( ( value ) => {
-
-										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
-										const key = ( 'default' === value ) ? 'false' : 'true';
-										const r = ( attributes.reverse ) ? 'true' : 'false';
-										const isSelected = ( key === r );
-
-										return (
-											<Button
-												key={ key }
-												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ reverse: ( 'true' === key ) }) }
-											>
-												{ capitalizedValue }
-											</Button>
-										);
-									} ) }
-								</ButtonGroup>
-							</BaseControl>
-						</PanelRow>
-
+					
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
@@ -292,6 +266,15 @@ registerBlockType( 'uri-cl/panel', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Flip panel layout"
+								checked={ attributes.reverse }
+								onChange={ content => setAttributes( { reverse: content } ) }
+							/>
+						</PanelRow>
+
 					</PanelBody>
 				</InspectorControls>
 			);

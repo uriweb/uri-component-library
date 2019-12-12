@@ -270,6 +270,10 @@ textarea {
 
 	/** PANELS **/
 
+	.editor-styles-wrapper .cl-panel-super .cl-button textarea::placeholder {
+		color: rgba(255,255,255,.3);
+	}
+
 	// Disable superpanel blur in the editor for performance reasons
 	@supports ( filter: blur(0) ) {
 	  .editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
