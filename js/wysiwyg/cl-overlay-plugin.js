@@ -49,7 +49,7 @@
 						title: 'Overlay',
 						text: '',
 						cmd: wName,
-						image: url + '/i/overlay.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/overlay.png'
 				}
 				);
 

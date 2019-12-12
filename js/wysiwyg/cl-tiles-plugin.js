@@ -63,7 +63,7 @@
 						title: 'Tiles',
 						text: '',
 						cmd: wName,
-						image: url + '/i/tiles.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/tiles.png'
 				}
 				);
 

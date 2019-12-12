@@ -445,7 +445,8 @@ class URIWYSIWYG {
 			author: URIComponentLibrary.Author,
 			authorurl: URIComponentLibrary.AuthorURI,
 			infourl: 'https://github.com/uriweb/uri-component-library',
-			version: URIComponentLibrary.Version
+			version: URIComponentLibrary.Version,
+			path: URIComponentLibrary.Path
 		};
 
 	}

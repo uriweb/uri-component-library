@@ -42,7 +42,7 @@
 						title: 'Metric',
 						text: '',
 						cmd: wName,
-						image: url + '/i/metric.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/metric.png'
 				}
 				);
 

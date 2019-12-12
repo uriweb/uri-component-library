@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function uri_cl_wysiwyg_register_tinymce_plugin( $plugin_array ) {
 
 	$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+	$values['Path'] = URI_CL_URL;
 	wp_enqueue_script( 'uricl-wysiwyg-helpers', uri_cl_dir_url() . 'js/wysiwyg/cl-wysiwyg-helpers.js', array(), $values['Version'] );
 	wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
 

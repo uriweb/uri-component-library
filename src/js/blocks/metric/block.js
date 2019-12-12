@@ -33,7 +33,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/metric.png' )}
+			src={( URI_CL_URL + 'i/icons/metric.png' )}
 			alt="metric"
 		/>
 	);

@@ -42,7 +42,7 @@
 						title: 'Video',
 						text: '',
 						cmd: wName,
-						image: url + '/i/video.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/video.png'
 				}
 				);
 

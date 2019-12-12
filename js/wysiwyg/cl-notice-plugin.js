@@ -42,7 +42,7 @@
 						title: 'Notice',
 						text: '',
 						cmd: wName,
-						image: url + '/i/notice.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/notice.png'
 				}
 				);
 
