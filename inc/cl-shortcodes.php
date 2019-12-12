@@ -336,6 +336,9 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'animation' => '',
 			'format' => '',
 			'img' => '',
+			'use_caption' => false,
+			'caption' => '',
+			'credit' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -374,6 +377,11 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'super', 'fullwidth' ),
+			),
+			array(
+				'attr' => 'use_caption',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'hero' )

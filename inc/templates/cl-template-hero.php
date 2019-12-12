@@ -24,6 +24,8 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
+$output .= '<div class="cl-hero-proper">';
+
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 
@@ -67,11 +69,44 @@ if ( ! empty( $atts['vid'] ) ) {
 }
 
 if ( ! empty( $atts['img'] ) ) {
+
 	$imgurl = $atts['img'];
+
+	if ( $atts['use_caption'] ) {
+
+		$img_id = attachment_url_to_postid( $imgurl );
+
+		if ( 0 !== $img_id ) {
+			$caption = wp_get_attachment_caption( $img_id );
+		}
+	}
 }
 
 $image .= ' style="background-image:url(' . $imgurl . ')"></div>'; // image
 
 $output .= $image;
-$output .= '</div>'; // .hero
+
+$output .= '</div>'; // .cl-hero-proper
+
+if ( ! empty( $atts['caption'] ) ) {
+	$caption = $atts['caption'];
+}
+
+if ( ( $atts['use_caption'] && ! empty( $caption ) ) || ! empty( $atts['caption'] ) || ! empty( $atts['credit'] ) ) {
+
+	$output .= '<div class="cl-hero-caption-wrapper">';
+
+	if ( ! empty( $caption ) ) {
+		$output .= '<div class="cl-hero-caption">' . $caption . '</div>';
+	}
+
+	if ( ! empty( $atts['credit'] ) ) {
+		$output .= '<div class="cl-hero-credit">' . $atts['credit'] . '</div>';
+	}
+
+	$output .= '</div>';
+
+}
+
+$output .= '</div>'; // .cl-hero
 $output .= '</section>';
