@@ -246,11 +246,17 @@ textarea {
 		margin-right: auto;
 		&.super, &.fullwidth {
 			/* we override the default block width for full-width and full-screen heroes */
-			max-width: 100%;
-			left: 0;
+			max-width: initial;
 			margin-left: -35vw !important;
 			margin-right: 0;
+			position: relative;
+			left: 50%;
 			width: 70vw !important;
+			.cl-hero-proper {
+				width: 100%;
+				margin: 0;
+				left: 0;
+			}
 		 	.meta {
 				max-width: 400px;
 			}
