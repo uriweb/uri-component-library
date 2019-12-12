@@ -23,7 +23,7 @@ var sassOptions = {
 
 
 function styles(done) {
-    
+
     var banner = ['/**',
                   ' * <%= pkg.name %>',
                   ' * ',
@@ -37,7 +37,7 @@ function styles(done) {
                   ' */',
                   '',
                   ''].join('\n');
-    
+
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass(sassOptions).on('error', sass.logError))
@@ -54,26 +54,8 @@ function styles(done) {
 gulp.task('styles', styles);
 
 
-
-function gutenbergAdminStyles(done) {
-    
-	gulp.src('./js/blocks/src/blocks.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(concat('blocks.build.css'))
-        .pipe(postcss([ autoprefixer() ]))
-		.pipe(sourcemaps.write('map'))
-		.pipe(gulp.dest('./js/blocks/build/'));
-
-  done();
-}
-// I don't love this... I'd rather be able to tap into the core stylesheets
-gulp.task('gutenbergAdminStyles', gutenbergAdminStyles);
-
-
-
 function scripts(done) {
-    
+
   var banner = ['/**',
                   ' * <%= pkg.name %>',
                   ' * ',
@@ -87,27 +69,27 @@ function scripts(done) {
                   ' */',
                   '',
                   ''].join('\n');
-    
+
 	// Run JSHint for src js
     gulp.src('./src/js/*.js')
         .pipe(jshint(done))
         .pipe(jshint.reporter('default'));
-	
+
 	// Run JSHint for wysiwyg js
 	gulp.src('./js/wysiwyg/*.js')
         .pipe(jshint(done))
         .pipe(jshint.reporter('default'));
-    
+
 	// Run jscs for src js
     gulp.src('./src/js/*.js')
         .pipe(jscs(done))
         .pipe(jscs.reporter());
-	
+
 	// Run jscs for wysiwyg js
 	gulp.src('./js/wysiwyg/*.js')
         .pipe(jscs(done))
         .pipe(jscs.reporter());
-  
+
 	// Compile src js
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
@@ -115,7 +97,7 @@ function scripts(done) {
         .pipe(terser())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./js/'));
-    
+
 	done();
  // console.log('scripts ran');
 }
@@ -125,27 +107,27 @@ gulp.task('scripts', scripts);
 
 
 function sniffs(done) {
-    
+
     return gulp.src('.', {read:false})
         .pipe(shell(['./.sniff']));
-    
+
 }
 // run codesniffer
 gulp.task('sniffs', sniffs);
 
 
 function webpack(done) {
-    
+
     return gulp.src('.', {read:false})
         .pipe(shell(['npx webpack']));
-    
+
 }
 // run webpack
 gulp.task('webpack', webpack);
 
 
 function version(done) {
-		
+
 	gulp.src('./uri-component-library.php')
 		.pipe(replace({
 			patterns: [{
@@ -154,27 +136,24 @@ function version(done) {
 			}]
 		}))
 		.pipe(gulp.dest('./'));
-	
+
 }
 // Update plugin version
 gulp.task('version', version);
 
 
 function watcher(done) {
-	
+
 	// watch for CSS changes
 	gulp.watch('./src/sass/*.scss', styles);
-    
+
   // watch for JS changes
 	gulp.watch('./src/js/*.js', scripts);
 	gulp.watch('./js/wysiwyg/*.js', scripts);
-	
+  gulp.watch('./src/js/blocks/', webpack);
+
 	// watch for PHP change
 	gulp.watch('./**/*.php', sniffs);
-
-	// watch for Gutenberg change
-	gulp.watch('./js/blocks/src/', webpack);
-	gulp.watch('./js/blocks/src/blocks.scss', gutenbergAdminStyles);
 
 	done();
 }
@@ -183,7 +162,7 @@ gulp.task('watcher', watcher);
 
 
 gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', 'gutenbergAdminStyles', function(done){
+	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', function(done){
 		done();
 	})
 );

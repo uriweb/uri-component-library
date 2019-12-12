@@ -14,10 +14,10 @@ module.exports = {
 	context: __dirname,
 	devtool: debug ? 'inline-sourcemap' : null,
 	mode: debug ? 'development' : 'production',
-	entry: './js/blocks/src/blocks.js',
+	entry: './src/js/blocks/blocks.js',
 	output: {
-		path: __dirname + '/js/blocks/build/',
-		filename: 'blocks.build.js'
+		path: __dirname + '/js/',
+		filename: 'blocks.built.js'
 	},
 	module: {
 		rules: [{
