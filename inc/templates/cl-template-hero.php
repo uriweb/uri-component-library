@@ -74,6 +74,7 @@ if ( ! empty( $atts['img'] ) ) {
 
 	if ( $atts['use_caption'] ) {
 
+		$caption = '';
 		$img_id = attachment_url_to_postid( $imgurl );
 
 		if ( 0 !== $img_id ) {
