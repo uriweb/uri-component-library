@@ -20,7 +20,6 @@
   	overflow: hidden;
   	position: relative;
   	background: #002147;
-  	//transition: height .2s ease-in-out;
   	z-index: 1;
   	box-sizing: border-box;
 
@@ -175,17 +174,18 @@
   .cl-button {
 
     border: none;
-    background: rgba(255,255,255,.9);
+    background: $white; /*changed*/
     box-shadow: $level3;
     position: relative;
     top: 0;
+    text-shadow: none;
     max-width: 100%;
 
     &:hover,
     &:focus {
-      background: $white;
+      //background: $white;
       border: none;
-      color: $link;
+      color: $white; /*changed*/
       top: -3px;
     }
 
@@ -286,8 +286,8 @@
   .cl-hero {
     a.cl-button,
     span.cl-button {
-      backdrop-filter: saturate(180%) blur(10px);
-      background-color: rgba(255,255,255,.7);
+      //backdrop-filter: saturate(180%) blur(10px);
+      //background-color: rgba(255,255,255,.7);
     }
   }
 }
