@@ -174,7 +174,7 @@
   .cl-button {
 
     border: none;
-    background: $white; /*changed*/
+    background: $white;
     box-shadow: $level3;
     position: relative;
     top: 0;
@@ -183,9 +183,8 @@
 
     &:hover,
     &:focus {
-      //background: $white;
       border: none;
-      color: $white; /*changed*/
+      color: $white;
       top: -3px;
     }
 
@@ -280,16 +279,6 @@
     color: $darkgrey;
   }
 
-}
-
-@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-  .cl-hero {
-    a.cl-button,
-    span.cl-button {
-      //backdrop-filter: saturate(180%) blur(10px);
-      //background-color: rgba(255,255,255,.7);
-    }
-  }
 }
 
 @media screen and (min-width: 750px) {
