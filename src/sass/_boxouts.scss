@@ -10,10 +10,6 @@
     padding: 6% 5%;
     margin: 0 0 2rem;
     background: #efefef;
-    border-radius: 2px;
-    box-shadow: inset 0 .15rem .2rem rgba(0,0,0,.06);
-    border-bottom: 1px solid #fff;
-    transition: width .2s ease-in-out;
 
 	* {
 		box-sizing: border-box;
@@ -21,27 +17,12 @@
 
 	img {
 		width: 100%;
-		margin: 1.2rem 0;
-		border-radius: 2px;
 	}
 
-	img:first-child {
-		margin-top: 0;
-	}
-
-	p {
-		width: 100%;
-	}
-
-    a.cl-button,
-    span.cl-button {
-        border-radius: 2px;
-    }
-
-    .cl-button:hover,
-    .cl-button:focus {
-        cursor: pointer;
-    }
+  .cl-button:hover,
+  .cl-button:focus {
+      cursor: pointer;
+  }
 
 }
 
