@@ -5,9 +5,8 @@
     position: relative;
     display: block;
     width: 100%;
-    background: $lightblue;
-    border-radius: .25rem;
-    border: 1px solid #88b6d1;
+    background: $white;
+    border: 1px solid $grey;
     margin: 0 0 2rem;
     padding: 1.5rem 2rem .2rem;
     box-sizing: border-box;
@@ -16,41 +15,24 @@
       box-sizing: border-box;
     }
 
-    &:before {
-      position: absolute;
-      left: 0;
-      top: 1.8rem;
-      display: block;
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 12px solid #88b6d1;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-    }
-
     &.dismissed {
     	display: none;
     }
 
     &.urgent {
 
-      background: $midgold;
-      border: 1px solid #d2a400;
+      background: $darkgrey;
+      border: 1px solid $black;
+      color: $white;
 
-      &:before {
-          border-left: 12px solid #d2a400;
+      h1 {
+        color: $white;
       }
 
     }
 
     h1 {
-      color: $blue;
       text-transform: none;
-    }
-
-    &.urgent h1 {
-      color: $black;
     }
 
     .dismiss {
@@ -63,17 +45,14 @@
       overflow: hidden;
       padding-left: 16px;
       padding-bottom: 16px;
-      opacity: .5;
       background-image: url(../i/dismiss.jpg);
       background-position: center center;
       background-size: 100% auto;
       background-repeat: no-repeat;
       border-radius: 8px;
-      transition: opacity .2s ease-in-out;
 
       &:hover,
       &:focus {
-        opacity: 1;
         cursor: pointer;
       }
 

@@ -100,13 +100,7 @@ $adcards: ".cl-card, .cl-dcard";
         background: inherit;
         border: none;
         border-top: 1px solid #eee;
-        font-size: .8rem;
-        font-weight: 700;
-        letter-spacing: .1rem;
-        text-transform: uppercase;
         text-align: center;
-        color: $blue;
-        transition: all .2s;
     }
 
     &:hover .cl-button,
@@ -116,7 +110,6 @@ $adcards: ".cl-card, .cl-dcard";
         background: $link;
         border-top: 1px solid $link;
         color: $white;
-        transition: all .3s;
     }
 
 }
@@ -155,13 +148,8 @@ $adcards: ".cl-card, .cl-dcard";
 
 .cl-scard {
 
-    border-radius: .2rem .2rem 0 0;
     box-shadow: none;
     border: 1px solid #eee;
-
-    img {
-        border-radius: .2rem .2rem 0 0;
-    }
 
     .cl-scard-img-container {
         position: relative;
@@ -176,36 +164,23 @@ $adcards: ".cl-card, .cl-dcard";
         height: 100%;
         width: 100%;
         border-radius: .2rem .2rem 0 0;
-        background: rgba(0,0,0,.7);
+        background: rgba(0,0,0,.5);
         opacity: 0;
-        transition: all .2s ease-in-out;
         text-align: center;
 
         &:hover,
         &:focus {
             opacity: 1;
-
-            span {
-                font-size: 1.25rem;
-                left: -.625rem;
-                padding-left: 1.85rem;
-            }
-
-            span:before {
-                width: 1.35rem;
-                height: 1.25rem;
-            }
         }
 
         span {
             display: inline-block;
             position: relative;
-            font-size: 1rem;
+            font-size: 1.25rem;
             top: calc( 50% - .5rem );
-            left: -.5rem;
-            padding-left: 1.6rem;
+            left: -.625rem;
+            padding-left: 1.85rem;
             color: #fff;
-            transition: all .1s ease-in-out;
         }
 
         span:before {
@@ -214,56 +189,33 @@ $adcards: ".cl-card, .cl-dcard";
             left: 0;
             top: 0;
             content: '';
-            width: 1.1rem;
-            height: 1rem;
+            width: 1.35rem;
+            height: 1.25rem;
             background-image: url(../i/read.png);
             background-repeat: no-repeat;
             background-position: center center;
             background-size: 100% auto;
-            transition: all .1s ease-in-out;
         }
 
     }
 
     .cl-scard-category {
         display: inline-block;
-        color: #555;
         font-size: 1rem;
         margin-bottom: 1rem;
         letter-spacing: 0.05rem;
-    }
-
-    .cl-scard-category:after {
-        display: block;
-        content: '';
-        position: relative;
-        left: 0;
-        bottom: 0;
-        width: 1.5rem;
-        height: .5rem;
-        border-bottom: 1px solid #ddd;
-        transition: width .2s ease-in-out;
-    }
-
-    .cl-scard-category:hover:after,
-    .cl-scard-category:focus:after {
-        width: 100%;
     }
 
     .cl-scard-body {
 
         color: inherit;
 
-        h2, p {
-            transition: color .1s ease-in-out;
-        }
-
         &:hover,
         &:focus,
         &:active {
 
             h2, p {
-                color: $keaneyblue !important;
+                color: $link !important;
             }
 
         }
@@ -274,8 +226,7 @@ $adcards: ".cl-card, .cl-dcard";
 
         margin-bottom: .9rem;
         font-size: .9rem;
-        color: #999;
-        border-top: 1px solid #eee;
+        border-top: 1px solid #000;
         padding-top: 1rem;
 
         &:after {
@@ -295,12 +246,4 @@ $adcards: ".cl-card, .cl-dcard";
         float: right;
     }
 
-}
-
-@supports ( (backdrop-filter: initial) or (-webkit-backdrop-filter: initial) ) {
-    .cl-scard .cl-scard-img-overlay {
-        background: rgba(0,0,0,.1);
-        -webkit-backdrop-filter: blur(20px) saturate(250%);
-        backdrop-filter: blur(20px) saturate(250%);
-    }
 }

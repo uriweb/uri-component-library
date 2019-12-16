@@ -22,7 +22,6 @@
 
     iframe {
         width: 100%;
-        //height: auto;
         order: 1;
     }
 
@@ -33,32 +32,11 @@
 
     .overlay {
         background: #eee;
-        border-radius: 0 0 .2rem .2rem;
         padding: 1.5rem 1rem 1rem;
         opacity: 1;
         display: block;
         order: 2;
         z-index: 2;
-    }
-
-    h1 {
-        position: relative;
-        text-align: left;
-        color: $black;
-        transform: all .2s ease-in-out;
-        padding: 0;
-        margin: 0;
-        line-height: 1.2;
-    }
-
-    p {
-        color: $black;
-        font-weight: 400;
-        font-size: 0.9rem;
-    }
-
-    p:first-child {
-        padding-top: 0;
     }
 
 }
@@ -72,9 +50,7 @@
             top: 1rem;
             left: 1rem;
             background: rgba(0,0,0,.8);
-            border-radius: .5rem;
             order: 1;
-            transition: opacity .2s ease-in-out, top .2s ease-in-out;
         }
         .overlay.hidden {
             opacity: 0;
@@ -85,32 +61,12 @@
             order: 2;
         }
         h1 {
-            font-size: 1.6rem;
             color: $white;
         }
         p {
-            font-size: 1rem;
             color: $white;
         }
-        .cl-button,
-        .cl-button:hover,
-        .cl-button:focus {
-            border: none;
-        }
+
     }
 
-    @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-        .cl-video .overlay { -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); background-color: rgba(0,0,0,.5); }
-    }
-}
-
-@media screen and (min-width: $break2) {
-    .cl-video {
-        h1 {
-            font-size: 1.8rem;
-        }
-        p {
-            font-size: 1.1rem;
-        }
-    }
 }
