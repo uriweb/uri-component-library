@@ -45,8 +45,8 @@ const classNames = ( attributes, isSelected ) => {
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
-	if ( !! attributes.alignment ) {
-		classes += ' ' + attributes.alignment;
+	if ( !! attributes.float ) {
+		classes += ' ' + attributes.float;
 	}
 
 	if ( !! isSelected ) {
@@ -95,7 +95,7 @@ registerBlockType( 'uri-cl/card', {
 		tooltip: {
 			type: 'string'
 		},
-		alignment: {
+		float: {
 			type: 'string'
 		}
 	},
@@ -221,8 +221,8 @@ registerBlockType( 'uri-cl/card', {
 			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ content => setAttributes({ alignment: content }) }
+						value={ attributes.float }
+						onChange={ content => setAttributes({ float: content }) }
 					/>
 
 					{ !! attributes.img && (
