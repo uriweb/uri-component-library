@@ -11,6 +11,7 @@ textarea {
 }
 
 .block-editor {
+
 	.meta {
 		animation: metaReveal .5s;
 		background-color: #ddd;
@@ -106,20 +107,27 @@ textarea {
 
 	/** HEROES **/
 
-	.editor-styles-wrapper .cl-hero {
+	.cl-hero {
 
-		background-color: #fff;
+		margin-left: auto;
+		margin-right: auto;
 
 		.cl-hero-proper {
-			overflow: initial;
+			overflow: initial !important;
 		}
 
-		h1, h1 textarea:focus {
-			color: #fff;
+		h1 {
+
+			color: $white;
+			margin-bottom: 1rem;
+
+			textarea:focus,
 			textarea::placeholder {
 				color: #fff;
 			}
+
 		}
+
 		.subhead {
 			margin: 0 0 2rem;
 		}
@@ -127,65 +135,79 @@ textarea {
 		&.selected {
 			margin-bottom: 3rem;
 		}
+
 		&.no-image {
-			background-color: #002147;
+
 			.poster {
 				color: #fff;
 				height: auto;
 				position: relative;
 				z-index: 20;
 			}
-			.overlay, .block {
+
+			.overlay,
+			.block {
 				bottom: 0;
 				height: auto;
 				padding-bottom: 5rem;
 				position: relative;
 			}
-		}
-		&.has-image {
-			.poster {
-				img {
-					height: 100%;
-					object-fit: cover;
-					width: 100%;
-				}
-			}
+
 		}
 
-		.cl-button:hover textarea {
-			color: #005eff;
+		&.has-image .poster img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
 		}
 
+		&.super,
+		&.fullwidth {
 
-		/* Sizes in the block editor */
-		/* these are WP's block defaults, we honor them for regular heroes */
-		margin-left: auto;
-		margin-right: auto;
-		&.super, &.fullwidth {
-			/* we override the default block width for full-width and full-screen heroes */
 			max-width: initial;
 			margin-left: -35vw !important;
 			margin-right: 0;
 			position: relative;
 			left: 50%;
 			width: 70vw !important;
+
 			.cl-hero-proper {
 				width: 100%;
 				margin: 0;
 				left: 0;
 			}
+
 		 	.meta {
 				max-width: 400px;
 			}
+
 		}
+
 		&.super {
-			h1, textarea, .subhead {
+
+			h1,
+			textarea,
+			.subhead {
 				text-align: center;
 			}
+
 			.meta {
 				margin-left: auto;
 				margin-right: auto;
 			}
+
+		}
+
+		.cl-button {
+
+			textarea {
+				background: transparent !important;
+			}
+
+			&:hover textarea:focus {
+				color: inherit;
+			}
+
 		}
 
 	}
