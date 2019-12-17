@@ -57,23 +57,11 @@ textarea {
 		top: -2rem;
 	}
 
-	/* @todo: temporary styles that belong in the theme */
-
-	/** TABS **/
-	.cl-tab {
-		border: 1px dashed #ddd;
-		border-width: 1px 0;
-	}
-
-
-
-
-
+	/** BOXOUTS **/
 	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
 		position: relative;
 		z-index: 5;
 	}
-
 
 	/** BUTTONS **/
 	textarea.cl-button {
@@ -93,30 +81,27 @@ textarea {
 
 	}
 
-
-
 	/** CARDS **/
 	.cl-card {
+
 		overflow: visible !important;
+
 		.editor-media-placeholder {
 			display: none;
 		}
-		&.selected {
-			.editor-media-placeholder {
-				display: block;
-			}
+
+		&.selected .editor-media-placeholder {
+			display: block;
 		}
-		.cl-card-text div {
-			font-size: 1rem;
-		}
+
 		.cl-card-text>div {
 			margin-bottom: 2rem;
 		}
-		&:hover {
-			.cl-button {
-				background-color: #005eff !important;
-			}
+
+		&:hover .cl-button {
+			background-color: $link !important;
 		}
+
 	}
 
 	/** HEROES **/
@@ -264,6 +249,12 @@ textarea {
       color: #fff;
     }
 
+	}
+
+	/** TABS **/
+	.cl-tab {
+		border: 1px dashed #ddd;
+		border-width: 1px 0;
 	}
 
 
