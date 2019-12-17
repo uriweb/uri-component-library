@@ -5,20 +5,9 @@
 	to   { transform: rotateX(0deg); 	transform-origin: top; }
 }
 
-.editor-styles-wrapper {
-	line-height: 1.2;
-}
-
 textarea {
 	background-color: inherit !important;
 	border-radius: 0;
-}
-
-.components-placeholder.editor-media-placeholder {
-	.components-placeholder__instructions {
-		font-size: .875rem;
-		margin: .5rem;
-	}
 }
 
 .block-editor {
@@ -69,15 +58,6 @@ textarea {
 	}
 
 	/* @todo: temporary styles that belong in the theme */
-	.cl-button textarea, textarea.cl-button {
-		border-radius: 0;
-		font-family: "Hind", sans-serif !important;
-		text-transform: uppercase;
-		background-color: transparent !important;
-	}
-	.editor-styles-wrapper p {
-		font-family: Charter, Georgia, serif;
-	}
 
 	/** TABS **/
 	.cl-tab {
@@ -85,46 +65,8 @@ textarea {
 		border-width: 1px 0;
 	}
 
-	/** QUOTES **/
-	.cl-quote {
-		cite textarea {
-			max-width: 50%;
-			position: relative;
-			top: .375rem;
-			text-align: center;
-		}
-		blockquote textarea {
-			text-align: center;
-		}
-		.cl-quote-image img {
-			border-radius: 50%;
-		}
-		.editor-media-placeholder {
-			display: none;
-		}
-		&.selected {
-			.editor-media-placeholder {
-				display: block;
-			}
-		}
-	}
 
-	.editor-styles-wrapper .cl-quote cite:before {
-		display: none;
-	}
 
-	/** METRICS **/
-	.cl-metric textarea, .cl-metric span {
-		text-align: center;
-	}
-	.cl-metric.right, .cl-metric.left {
-		position: relative;
-		width: 35%;
-		z-index: 5;
-	}
-	.cl-metric.dark textarea {
-		color: #fff;
-	}
 
 
 	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
@@ -132,34 +74,7 @@ textarea {
 		z-index: 5;
 	}
 
-	/** BUTTONS **/
-	.cl-button {
-		// @todo: don't repeat button styles here
-		font-size: .85rem;
-		font-weight: 700;
-		padding: 1rem;
-		text-transform: uppercase;
-		textarea {
-			border-radius: 0;
-			color: $black;
-			display: block;
-			height: 1rem;
-			letter-spacing: .1rem;
-			margin: 0;
-			padding: 2px 0 0;
-			text-align: center;
-		}
-		&.prominent textarea, &:hover textarea {
-			color: #fff;
-		}
-		&.disabled textarea {
-			color: rgba(0,0,0,0.4);
-			font-weight: 400;
-		}
-	}
-	.cl-button, .cl-button:visited {
-		text-decoration: none !important;
-	}
+	
 
 
 	/** CARDS **/
@@ -241,7 +156,6 @@ textarea {
 
 		/* Sizes in the block editor */
 		/* these are WP's block defaults, we honor them for regular heroes */
-		max-width: 610px;
 		margin-left: auto;
 		margin-right: auto;
 		&.super, &.fullwidth {

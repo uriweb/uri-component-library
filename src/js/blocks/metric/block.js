@@ -52,8 +52,8 @@ const classNames = ( attributes, isSelected ) => {
 	if ( !! attributes.style ) {
 		classes += ' ' + attributes.style;
 	}
-	if ( !! attributes.alignment ) {
-		classes += ' ' + attributes.alignment;
+	if ( !! attributes.float ) {
+		classes += ' ' + attributes.float;
 	}
 	return classes;
 };
@@ -74,7 +74,7 @@ registerBlockType( 'uri-cl/metric', {
 		style: {
 			type: 'string'
 		},
-		alignment: {
+		float: {
 			type: 'string'
 		}
 	},
@@ -117,8 +117,8 @@ registerBlockType( 'uri-cl/metric', {
 			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ content => setAttributes({ alignment: content }) }
+						value={ attributes.float }
+						onChange={ content => setAttributes({ float: content }) }
 					/>
 				</BlockControls>
 			);
