@@ -74,7 +74,25 @@ textarea {
 		z-index: 5;
 	}
 
-	
+
+	/** BUTTONS **/
+	textarea.cl-button {
+	  background-color: transparent !important;
+	}
+
+	.cl-button {
+
+		&:not(.disabled):hover textarea:focus {
+			color: $white;
+		}
+
+		textarea {
+		  padding: 2px 0 0;
+		  text-align: center;
+		}
+
+	}
+
 
 
 	/** CARDS **/
@@ -200,6 +218,52 @@ textarea {
 			background: #333;
 			filter: initial;
 		}
+	}
+
+	/** QUOTES **/
+	.cl-quote {
+
+    textarea {
+      font: inherit;
+    }
+
+    cite textarea {
+      position: relative;
+      top: .375rem;
+    }
+
+    .cl-quote-image img {
+      border-radius: 50%;
+    }
+
+    .editor-media-placeholder {
+      display: none;
+    }
+
+    &.selected .editor-media-placeholder {
+      display: block;
+    }
+
+	}
+
+	/** METRICS **/
+	.cl-metric {
+
+    textarea, span {
+      text-align: center;
+    }
+
+    &.right,
+		&.left {
+      position: relative;
+      width: 35%;
+      z-index: 5;
+    }
+
+    &.dark textarea {
+      color: #fff;
+    }
+
 	}
 
 
