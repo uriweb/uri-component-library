@@ -46,8 +46,8 @@ const classNames = ( attributes, isSelected ) => {
 	if ( !! isSelected ) {
 		classes += ' selected';
 	}
-	if ( !! attributes.alignment ) {
-		classes += ' ' + attributes.alignment;
+	if ( !! attributes.float ) {
+		classes += ' ' + attributes.float;
 	}
 	return classes;
 };
@@ -61,7 +61,7 @@ registerBlockType( 'uri-cl/boxout', {
 		title: {
 			type: 'string'
 		},
-		alignment: {
+		float: {
 			type: 'string'
 		}
 	},
@@ -94,8 +94,8 @@ registerBlockType( 'uri-cl/boxout', {
 			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ content => setAttributes({ alignment: content }) }
+						value={ attributes.float }
+						onChange={ content => setAttributes({ float: content }) }
 					/>
 				</BlockControls>
 			);
