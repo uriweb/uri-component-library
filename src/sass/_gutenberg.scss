@@ -287,8 +287,17 @@ textarea {
 
 	/** TABS **/
 	.cl-tab {
+
+		padding: 1rem 0;
 		border: 1px dashed #ddd;
 		border-width: 1px 0;
+
+		&:after {
+			display: block;
+			content: '';
+			clear: both;
+		}
+
 	}
 
 
