@@ -198,11 +198,11 @@ function uri_cl_return_error( $cname, $fatal, $errors ) {
 	if ( $fatal ) {
 		$classes .= ' cl-errors-shortcode-failure';
 		$output .= $classes . '">';
-		$output .= '<div class="cl-error-message">' . $cname . ' shortcode could not load.</div>';
+		$output .= '<div class="cl-error-message">' . $cname . ' could not load.</div>';
 	} else {
 		$classes .= ' cl-errors-shortcode-success';
 		$output .= $classes . '">';
-		$output .= '<div class="cl-error-message">' . $cname . ' shortcode loaded with ' . $num_errors . ' warning' . $plural . '.</div>';
+		$output .= '<div class="cl-error-message">' . $cname . ' loaded with ' . $num_errors . ' warning' . $plural . '.</div>';
 	}
 
 	$output .= '<ul>';
