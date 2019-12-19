@@ -232,12 +232,24 @@ textarea {
 
     textarea {
       font: inherit;
+			text-align: center;
     }
 
-    cite textarea {
-      position: relative;
-      top: .375rem;
-    }
+		cite {
+
+			left: 0 !important;
+			margin-top: 0 !important;
+
+			&:before {
+				display: none !important;
+			}
+
+	    textarea {
+	      position: relative;
+	      top: .375rem;
+	    }
+
+		}
 
     .cl-quote-image img {
       border-radius: 50%;
