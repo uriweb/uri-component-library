@@ -39,7 +39,7 @@
 			list.classList.remove( 'cl-menu-list-no-js' );
 
 			menus[i].insertBefore( toggle, list );
-			menus[i].classList.add( '.cl-menu-js' );
+			menus[i].classList.add( 'cl-menu-js' );
 		}
 
 		uls = document.querySelectorAll( '.cl-menu-list ul' );
