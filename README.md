@@ -26,7 +26,7 @@ Components can now be built using the Gutenberg block editor (WordPress v5.0 and
 ### General Improvements
 * Improves support for heroes in the Classic Editor
 * Cards now use `h2` for titles
-* Fixes an issue that cased floated elements in Tabs to overflow the tab in certain cases
+* Fixes an issue that caused floated elements in Tabs to overflow the tab in certain cases
 * Other bug fixes
 * Updates development tools
 
