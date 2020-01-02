@@ -2,36 +2,35 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 3.7.1
+## What's new in 4.0
 
-CL 3.7.1 is a bug fix release.
+CL 4.0 is a major release focused Gutenberg support and customization.
 
-* Updates hero and video component visual editors to correspond with changes introduced in [v3.7](https://github.com/uriweb/uri-component-library/releases/tag/3.7.0)
+### Introducing Gutenberg Support
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/162/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+Components can now be built using the Gutenberg block editor (WordPress v5.0 and later).
 
-## New in 3.7.0
+* Using Gutenberg is the fastest, easiest way to create and edit components
+* Components can be edited directly and render more accurately than ever in the editor window
+* Full support is maintained for existing components built using shortcodes (shortcode components will not appear styled in the editor window unless included in a Classic Editor block)
+* Gutenberg currently supports the following components: Boxouts, Buttons, Cards, Heroes, Metrics, Panels, Quotes, and Tabs.  Some components may have restrictions.
 
-CL 3.7.0 is a minor release focused on Slideshow enhancements and video support.
+### Component Updates
+* All components are now styled generically.  Any customization should be done in the theme.
+* Adds a Countdown component
+* Notices can now be dismissible and expire
+* Heroes can now display the media caption, or display a custom caption and credit
+* Video Heroes using Vimeo are now visible and play automatically on mobile devices
+* Panels formatted as `super` can now have reversed layouts
 
-### Slideshows:
-* Rebuilt from the ground up to be more fluid and responsive, especially on touch devices
-* Introduces a redesigned, more compact interface
-* Figures and captions are now accessibility compliant
-* Fixes an issue where some images may have been cropped depending on the size of the slideshow
-
-### Vimeo Support:
-* Video and Hero components now support content from Vimeo using either the full or embed URL
-* Full YouTube URLs may now be used to specify vidoes
-* Backward-compatible with existing shortcodes using the 11-character video id
-* All support is built onto the `vid` shortcode attribute; no additional attributes or modifications to existing shortcodes are required
-
-### Additional Updates:
-* Adds a Share component for sharing the current page or post on social media; currently supports Twitter and Facebook
-* Fixes a contrast issue with link text in Boxouts and Panels
+### General Improvements
+* Improves support for heroes in the Classic Editor
+* Cards now use `h2` for titles
+* Fixes an issue that cased floated elements in Tabs to overflow the tab in certain cases
+* Other bug fixes
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/160/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/170/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
