@@ -2,9 +2,9 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 4.0
+## What's new in 4.0.0
 
-CL 4.0 is a major release focused Gutenberg support and customization.
+CL 4.0.0 is a major release focused Gutenberg support and customization.
 
 ### Introducing Gutenberg Support
 
