@@ -15,8 +15,15 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
-$output .= '<div class="cl-promo-backdrop">';
-$output .= '<div class="cl-promo-backdrop-blur" style="background-image:url(' . $atts['img'] . ')"></div>';
+$output .= '<div class="cl-promo-backdrop-wrapper">';
+
+$background = '<div class="cl-promo-backdrop blur" style="background-image:url(' . $atts['img'] . ')"></div>';
+
+if ( 'confetti' == $atts['format'] ) {
+	$background = '<div class="cl-promo-backdrop confetti"></div>';
+}
+
+$output .= $background;
 $output .= '</div>';
 
 $output .= '<div class="cl-promo-content">';

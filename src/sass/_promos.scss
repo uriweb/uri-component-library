@@ -7,24 +7,34 @@
   position: relative !important;
   left: 50% !important;
   margin-left: -50vw !important;
+  margin-bottom: 2rem;
 
-  .cl-promo-backdrop {
+  .cl-promo-backdrop-wrapper {
 
     position: absolute;
     height: 100%;
     width: 100%;
     overflow: hidden;
 
-    .cl-promo-backdrop-blur {
+    .cl-promo-backdrop {
+
       background: linear-gradient(#00054d, #1b3559);
     	background-position: center center;
     	background-repeat: no-repeat;
     	background-size: cover;
       height: 100%;
       width: 100%;
-      transform-origin: center center;
-      transform: scale( 1.5 );
-      filter: blur(50px);
+
+      &.blur {
+        transform-origin: center center;
+        transform: scale( 1.5 );
+        filter: blur(50px);
+      }
+
+      &.confetti {
+        background-image: url('../i/confetti.jpg');
+      }
+
     }
 
   }
@@ -33,7 +43,7 @@
 
   	position: relative;
   	box-sizing: border-box;
-  	padding: 3rem 25px;
+  	padding: 4rem 25px 5rem;
     margin: 0 auto;
   	text-align: center;
 
@@ -146,7 +156,7 @@
           position: absolute;
           right: 25px;
           top: calc( .5rem + 2px );
-          width: 35%;
+          width: 40%;
         }
 
         img {
@@ -168,7 +178,7 @@
     .cl-promo-content {
 
       width: 1000px;
-      padding: 3rem 0;
+      padding: 4rem 0 5rem;
 
       .cl-promo-img {
         width: 1050px;

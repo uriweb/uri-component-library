@@ -674,7 +674,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 				'attr' => 'format',
 				'types' => array( 'str' ),
 				'req' => false,
-				'values' => array( 'default' ),
+				'values' => array( 'default', 'confetti' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'promo' )
