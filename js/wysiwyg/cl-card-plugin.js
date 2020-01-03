@@ -45,7 +45,7 @@
 						title: 'Card',
 						text: '',
 						cmd: wName,
-						image: url + '/i/card.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/card.png'
 				}
 				);
 

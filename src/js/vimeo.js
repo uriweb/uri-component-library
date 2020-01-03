@@ -126,9 +126,7 @@ class CLVimeo {
 	static onHeroStateChange( data ) {
 		switch ( data.state ) {
 			case 'playing':
-				if ( window.innerWidth > 750 ) {
-					data.poster.classList.add( 'unveil' );
-				}
+				data.poster.classList.add( 'unveil' );
 				break;
 		}
 	}

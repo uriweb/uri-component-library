@@ -1,0 +1,316 @@
+/* ======= GUTENBERG ======= */
+
+@keyframes metaReveal {
+	from { transform: rotateX(90deg); 	transform-origin: top; }
+	to   { transform: rotateX(0deg); 	transform-origin: top; }
+}
+
+textarea {
+	background-color: inherit !important;
+	border-radius: 0;
+}
+
+.block-editor {
+
+	.meta {
+		animation: metaReveal .5s;
+		background-color: #ddd;
+		border-top: 2px solid #057fd4;
+		margin-top: .5rem;
+		min-width: 300px;
+		position: absolute;
+		padding: .5rem 0 .75rem;
+		z-index: 10;
+		.row {
+			margin-left: .5rem;
+			margin-right: .5rem;
+		}
+		&:before {
+			content: ' ';
+			display: block;
+			left: 2rem;
+			position: absolute;
+			top: -12px;
+			width: 0;
+			height: 0;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+			border-bottom: 12px solid #057fd4;
+
+		}
+
+		.link {
+			label {
+				float: left;
+				margin-right: .5em;
+				svg {
+					margin-left: .25em;
+					margin-top: .5em;
+				}
+			}
+			input {
+				width: auto;
+			}
+		}
+
+	}
+	.cl-card+.meta {
+		top: -2rem;
+	}
+
+	/** BOXOUTS **/
+	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
+		position: relative;
+		z-index: 5;
+	}
+
+	/** BUTTONS **/
+	textarea.cl-button {
+	  background-color: transparent !important;
+	}
+
+	.cl-button {
+
+		&:not(.disabled):hover textarea:focus {
+			color: $white;
+		}
+
+		textarea {
+		  padding: 2px 0 0;
+		  text-align: center;
+		}
+
+	}
+
+	/** CARDS **/
+	.cl-card {
+
+		overflow: visible !important;
+
+		.editor-media-placeholder {
+			display: none;
+		}
+
+		&.selected .editor-media-placeholder {
+			display: block;
+		}
+
+		.cl-card-text>div {
+			margin-bottom: 2rem;
+		}
+
+		&:hover .cl-button {
+			background-color: $link !important;
+		}
+
+	}
+
+	/** HEROES **/
+
+	.cl-hero {
+
+		margin-left: auto;
+		margin-right: auto;
+
+		.cl-hero-proper {
+			overflow: initial !important;
+		}
+
+		h1 {
+
+			color: $white;
+			margin-bottom: 1rem;
+
+			textarea:focus,
+			textarea::placeholder {
+				color: #fff;
+			}
+
+		}
+
+		.subhead {
+			margin: 0 0 2rem;
+		}
+
+		&.selected {
+			margin-bottom: 3rem;
+		}
+
+		&.no-image {
+
+			.poster {
+				color: #fff;
+				height: auto;
+				position: relative;
+				z-index: 20;
+			}
+
+			.overlay,
+			.block {
+				bottom: 0;
+				height: auto;
+				padding-bottom: 5rem;
+				position: relative;
+			}
+
+		}
+
+		&.has-image .poster img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		&.super,
+		&.fullwidth {
+
+			max-width: initial;
+			margin-left: -35vw !important;
+			margin-right: 0;
+			position: relative;
+			left: 50%;
+			width: 70vw !important;
+
+			.cl-hero-proper {
+				width: 100% !important;
+				margin: 0 !important;
+				left: 0 !important;
+			}
+
+		 	.meta {
+				max-width: 400px;
+			}
+
+		}
+
+		&.super {
+
+			h1,
+			textarea,
+			.subhead {
+				text-align: center;
+			}
+
+			.meta {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+		}
+
+		.cl-button {
+
+			textarea {
+				background: transparent !important;
+			}
+
+			&:hover textarea:focus {
+				color: inherit;
+			}
+
+		}
+
+	}
+
+
+	/** PANELS **/
+
+	.editor-styles-wrapper .cl-panel-super .cl-button textarea::placeholder {
+		color: rgba(255,255,255,.3);
+	}
+
+	// Disable superpanel blur in the editor for performance reasons
+	@supports ( filter: blur(0) ) {
+	  .editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
+			background: #333;
+			filter: initial;
+		}
+	}
+
+	/** QUOTES **/
+	.cl-quote {
+
+    textarea {
+      font: inherit;
+			text-align: center;
+    }
+
+		cite {
+
+			left: 0 !important;
+			margin-top: 0 !important;
+
+			&:before {
+				display: none !important;
+			}
+
+	    textarea {
+	      position: relative;
+	      top: .375rem;
+	    }
+
+		}
+
+    .cl-quote-image img {
+      border-radius: 50%;
+    }
+
+    .editor-media-placeholder {
+      display: none;
+    }
+
+    &.selected .editor-media-placeholder {
+      display: block;
+    }
+
+	}
+
+	/** METRICS **/
+	.cl-metric {
+
+    textarea, span {
+      text-align: center;
+    }
+
+    &.right,
+		&.left {
+      position: relative;
+      width: 35%;
+      z-index: 5;
+    }
+
+    &.dark textarea {
+      color: #fff;
+    }
+
+	}
+
+	/** TABS **/
+	.cl-tab {
+
+		padding: 1rem 0;
+		border: 1px dashed #ddd;
+		border-width: 1px 0;
+
+		&:after {
+			display: block;
+			content: '';
+			clear: both;
+		}
+
+	}
+
+
+}
+
+
+
+/** This would hide drop caps but probably everywhere. **/
+// .blocks-font-size .components-toggle-control {
+// 	display: none;
+// }
+
+
+// .edit-post-visual-editor div[data-type="uri-cl/hero"] {
+//	max-width: 100%;
+// }

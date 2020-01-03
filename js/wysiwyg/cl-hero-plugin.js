@@ -18,6 +18,12 @@
 			params.button = 'Explore';
 		}
 
+		if ( true == params.use_caption ) {
+			params.use_caption = 'true';
+		} else {
+			params.use_caption = 'false';
+		}
+
 		for ( i in params ) {
 			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
 		}
@@ -46,7 +52,7 @@
 						title: 'Hero',
 						text: '',
 						cmd: wName,
-						image: url + '/i/hero.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/hero.png'
 				}
 				);
 
@@ -75,6 +81,9 @@
 						'alt',
 						'format',
 						'animation',
+						'use_caption',
+						'caption',
+						'credit',
 						'class'
 						];
 						possibleArgs.forEach(
@@ -103,6 +112,9 @@
 							{ type: 'textbox', name: 'vid', label: 'Video URL', value: args.vid },
 							{ type: 'textbox', name: 'headline', label: 'Headline', value: args.headline },
 							{ type: 'textbox', multiline: 'true', name: 'subhead', label: 'Subheader', value: args.subhead },
+							{ type: 'checkbox', name: 'use_caption', label: 'Use WP Caption', checked: ( 'true' == args.use_caption ) },
+							{ type: 'textbox', name: 'caption', label: 'Caption', value: args.caption },
+							{ type: 'textbox', name: 'credit', label: 'Credit', value: args.credit },
 							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
 							{ type: 'textbox', name: 'button', label: 'Button Text', 'placeholder':'Explore', value: args.button },
 							{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },

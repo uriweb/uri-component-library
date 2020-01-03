@@ -2,6 +2,7 @@
 
 $classes = 'cl-metric';
 $override_bgcolor = false;
+$output = '';
 
 switch ( $atts['style'] ) {
 	case 'dark':

@@ -28,7 +28,7 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 	$output .= '<div class="cl-card-text">';
 
 	if ( ! empty( $atts['title'] ) ) {
-		$output .= '<h3>' . $atts['title'] . '</h3>';
+		$output .= '<h2>' . $atts['title'] . '</h2>';
 	}
 
 	if ( ! empty( $atts['body'] ) ) {

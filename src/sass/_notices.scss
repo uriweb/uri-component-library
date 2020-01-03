@@ -1,48 +1,61 @@
 /* ======= NOTICES ======= */
 
-.cl-notice * {
-    box-sizing: border-box;
-}
-
 .cl-notice {
+
     position: relative;
     display: block;
     width: 100%;
-    background: $lightblue;
-    border-radius: .2rem;
-    border: none;
+    background: $white;
+    border: 1px solid $grey;
     margin: 0 0 2rem;
     padding: 1.5rem 2rem .2rem;
     box-sizing: border-box;
-}
 
-.cl-notice:before {
-    position: absolute;
-    left: 0;
-    top: 1.5rem;
-    display: block;
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 15px solid $white;
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.cl-notice.urgent:before {
-    border-left: 15px solid $black;
-}
+    &.dismissed {
+    	display: none;
+    }
 
-.cl-notice.urgent {
-    background: $midgold;
-    border: none;
-}
+    &.urgent {
 
-.cl-notice h1 {
-    color: $blue;
-    text-transform: none;
-}
+      background: $darkgrey;
+      border: 1px solid $black;
+      color: $white;
 
-.cl-notice.urgent h1 {
-    color: $black;
+      h1 {
+        color: $white;
+      }
+
+    }
+
+    h1 {
+      text-transform: none;
+    }
+
+    .dismiss {
+
+      position: absolute;
+      right: .75rem;
+      top: .75rem;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      padding-left: 16px;
+      padding-bottom: 16px;
+      background-image: url(../i/dismiss.jpg);
+      background-position: center center;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+
+    }
+
 }

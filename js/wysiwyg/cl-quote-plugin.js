@@ -42,7 +42,7 @@
 						title: 'Quote',
 						text: '',
 						cmd: wName,
-						image: url + '/i/quote.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/quote.png'
 				}
 				);
 

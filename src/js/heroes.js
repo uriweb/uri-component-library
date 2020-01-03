@@ -78,7 +78,7 @@ var CLResizeSuperheroes;
 
 		if ( URICL.checkSupport() ) {
 
-			els = document.querySelectorAll( '.cl-hero .poster' );
+			els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
 
 			window.addEventListener(
 				'resize',
@@ -103,7 +103,7 @@ var CLResizeSuperheroes;
 
 		var H = [], els, n, i;
 
-		els = document.querySelectorAll( '.cl-hero.super' );
+		els = document.querySelectorAll( '.cl-hero.super .cl-hero-proper' );
 		n = els.length;
 
 		for ( i = 0; i < n; i++ ) {

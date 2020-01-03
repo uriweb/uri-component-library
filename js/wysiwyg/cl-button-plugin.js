@@ -46,7 +46,7 @@
 						title: 'Button',
 						text: '',
 						cmd: wName,
-						image: url + '/i/button.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button.png'
 				}
 				);
 

@@ -6,11 +6,18 @@
 }
 
 .cl-tabs>section {
+
     margin: 4rem 0;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
 }
 
 .cl-tabs.cl-tabs-js {
-    
+
 	box-shadow: $level1;
 	background: #eee;
 
@@ -19,7 +26,7 @@
         list-style: none;
         margin: 0;
     }
-    
+
     [role="tablist"]:after {
         display: block;
         content: '';
@@ -51,21 +58,21 @@
         padding: 1.5rem;
         margin: 0;
     }
-    
+
     *:focus {
         outline: none;
     }
-    
+
     [hidden] {
         display: none;
     }
-    
+
 } // .cl-tabs.cl-tabs-js
 
 @media (max-width: 550px) {
-    
+
     .cl-tabs.cl-tabs-js {
-  
+
         [role="tablist"] li, [role="tablist"] a {
             float: none;
             position: static;
@@ -86,7 +93,7 @@
             border-top: 0;
             padding: 1.5rem 1rem;
         }
-        
+
     } // .cl-tabs.cl-tabs-js
-  
+
 }

@@ -44,7 +44,7 @@
 						title: 'Boxout',
 						text: '',
 						cmd: wName,
-						image: url + '/i/boxout.png'
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/boxout.png'
 				}
 				);
 

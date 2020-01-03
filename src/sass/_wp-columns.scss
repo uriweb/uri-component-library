@@ -1,0 +1,11 @@
+/* ======= WORDPRESS GUTENBERG COLUMNS ======= */
+
+
+.wp-block-columns .wp-block-column {
+	margin-right: 0;
+	margin-left: 0;
+	&:not(:last-child) {
+		margin-right: 1%;
+	}
+}
+

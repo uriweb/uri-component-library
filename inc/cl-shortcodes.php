@@ -269,6 +269,56 @@ add_shortcode( 'cl-scard', 'uri_cl_shortcode_scard' );
 
 
 /**
+ * Countdown
+ */
+function uri_cl_shortcode_countdown( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'deadline' => '',
+			'event' => 'the deadline',
+			'show_expired' => false,
+			'dismissible' => true,
+			'until' => 'until',
+			'is_today' => 'is today',
+			'passed' => 'passed',
+			'link' => '',
+			'class' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Countdown',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'deadline',
+				'types' => array( 'date' ),
+			),
+			array(
+				'attr' => 'show_expired',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'dismissible',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'countdown' )
+	);
+
+}
+add_shortcode( 'cl-countdown', 'uri_cl_shortcode_countdown' );
+
+
+/**
  * Hero
  */
 function uri_cl_shortcode_hero( $atts, $content = null ) {
@@ -286,6 +336,9 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'animation' => '',
 			'format' => '',
 			'img' => '',
+			'use_caption' => false,
+			'caption' => '',
+			'credit' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -324,6 +377,11 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'super', 'fullwidth' ),
+			),
+			array(
+				'attr' => 'use_caption',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'hero' )
@@ -437,8 +495,11 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
+			'expiration' => '',
 			'title' => '',
 			'style' => '',
+			'show_expired' => false,
+			'dismissible' => true,
 			'class' => '',
 			'css' => '',
 		),
@@ -452,10 +513,25 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 		$content,
 		array(
 			array(
+				'attr' => 'expiration',
+				'types' => array( 'date' ),
+				'req' => false,
+			),
+			array(
 				'attr' => 'style',
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'urgent' ),
+			),
+			array(
+				'attr' => 'show_expired',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'dismissible',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'notice' )

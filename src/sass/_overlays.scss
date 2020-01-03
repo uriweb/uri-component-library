@@ -1,12 +1,12 @@
 /* ======= OVERLAYS ======= */
 
 .cl-overlay {
-	
+
 	width: 100%;
 	margin: 0 0 2rem;
 	position: relative;
 	box-sizing: border-box;
-	
+
 	.cl-overlay-artwork {
 		display: block;
 		position: absolute;
@@ -21,7 +21,7 @@
 		background-position: center center;
 		border-bottom: 1px solid #ddd;
 	}
-	
+
 	.cl-overlay-block {
 		display: block;
 		justify-content: space-between;
@@ -35,29 +35,29 @@
 		background-color: rgba(255,255,255,.9);
 		transition: left .3s ease-in-out, min-height .2s ease-in-out;
 	}
-	
+
 	.cl-overlay-text {
 		overflow: hidden;
 		padding: 2rem 25px;
 		background: #fff;
 		min-height: 250px;
 	}
-	
+
 	.cl-overlay-slider {
-		
+
 		display: block;
 		position: relative;
 		width: 100%;
 		height: 50px;
 		background: transparent;
 		transition: background .1s ease-in-out;
-		
+
 		&:hover,
 		&:focus {
 			cursor: pointer;
 			background: rgba(255,255,255,.5);
 		}
-		
+
 		.cl-overlay-prompter {
 			position: absolute;
 			top: 20px;
@@ -70,70 +70,63 @@
 			border-bottom: 1px solid rgba(0,0,0,.5);
 			transform: rotate(135deg);
 		}
-		
+
 	}
-	
+
 	&.dark .cl-overlay-block {
-		
+
 		background-color: rgba(0,0,0,.9);
 		color: #fff;
-		
+
 		h1 {
 			color: #fff;
 		}
-		
+
 		.cl-overlay-text {
 			background: #111;
 		}
-		
+
 		.cl-overlay-slider {
-						
+
 			&:hover,
 			&:focus {
 				background: rgba(0,0,0,.5);
 			}
-			
+
 			.cl-overlay-prompter {
 				border-left: 1px solid rgba(255,255,255,.5);
 				border-bottom: 1px solid rgba(255,255,255,.5);
 			}
-				
+
 		}
-		
+
 	}
-	
+
 	.cl-overlay-block.hidden {
-		
+
 		min-height: 0;
-		border-radius: 0 0 .3rem .3rem;
-		
+
 		.cl-overlay-text {
 			height: 0;
 			min-height: 0;
 			padding-top: 0;
 			padding-bottom: 0;
 		}
-		
-		.cl-overlay-slider {
-			
-			border-radius: 0 0 .3rem .3rem;
-			
-			.cl-overlay-prompter {
-				transform: rotate(-45deg);
-				top: 8px;
-			}
-			
+
+		.cl-overlay-slider .cl-overlay-prompter {
+			transform: rotate(-45deg);
+			top: 8px;
 		}
-		
+
 	}
-	
+
 }
 
 @media screen and (min-width: $break1) {
     .cl-overlay {
-		
+
 		min-height: 400px;
-		
+
 		.cl-overlay-artwork {
 			height: 100%;
 			width: 100vw;
@@ -151,100 +144,72 @@
 			width: calc( 50% + 25px );
 			min-height: 400px;
 		}
-		
+
 		.cl-overlay-text {
 			padding: 25px;
 			min-height: initial;
 			width: calc(100% - 50px);
 		}
-		
+
 		.cl-overlay-slider {
-			
+
 			flex: 0 0 50px;
 			height: initial;
 			width: initial;
-			
+
 			.cl-overlay-prompter {
 				transform: rotate(45deg);
 				top: calc( 50% - 11px );
 				left: 20px;
 			}
-			
+
 		}
-		
+
 		.cl-overlay-block.hidden {
-			
+
 			min-height: 400px;
 			left: calc( -50vw + 25px );
-			border-radius: 0;
-		
+
 			.cl-overlay-text {
 				height: initial;
 				padding-top: 25px;
 				padding-bottom: 25px;
 			}
-			
-			.cl-overlay-slider {
-				
-				border-radius: 0;
-				
-				.cl-overlay-prompter {
-					transform: rotate(-135deg);
-					top: calc( 50% - 11px );
-					left: 8px;
-				}
-				
+
+			.cl-overlay-slider .cl-overlay-prompter {
+				transform: rotate(-135deg);
+				top: calc( 50% - 11px );
+				left: 8px;
 			}
-			
+
 		}
-		
-    }
+
+  }
+
 }
 
 @media screen and (min-width: $break2) {
-    .cl-overlay {
-        
+  .cl-overlay {
+
 		min-height: 500px;
 		padding: 2rem 0;
 
 		.cl-overlay-artwork {
 			background-position: center center;
 		}
-		
+
 		.cl-overlay-block {
 			width: 50%;
 			min-height: initial;
 			left: 0;
-			border-radius: .3rem;
 			box-shadow: $level3;
 		}
-		
-		.cl-overlay-slider {
-			border-radius: 0 .3rem .3rem 0;
-		}
-		
+
 		.cl-overlay-block.hidden {
-			
-			border-radius: 0 .3rem .3rem 0;
 			min-height: initial;
 			left: calc( -50vw + 50px );
-			
-			.cl-overlay-slider {
-				border-radius: 0 .3rem .3rem 0;
-			}
-			
 		}
-		
-    }
-}
 
-@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-    .cl-overlay .cl-overlay-block {
-		backdrop-filter: saturate(200%) blur(30px);
-		background-color: rgba(255,255,255,.7);
-	}
-	.cl-overlay.dark .cl-overlay-block {
-		backdrop-filter: saturate(200%) blur(30px);
-		background-color: rgba(0,0,0,.7);
-	}
+  }
+
 }

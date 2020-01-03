@@ -1,11 +1,3 @@
-## Issue Type
-
-<!-- Put an X between the brackets of one or more items below: -->
-
-[] Bug  
-[] New Feature  
-[] Enhancement  
-    
 ## Description
 
 [Description of the issue]

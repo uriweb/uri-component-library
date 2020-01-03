@@ -1,0 +1,62 @@
+/* ======= COUNTDOWNS ======= */
+
+.cl-countdown {
+
+	position: relative;
+	margin-bottom: 2rem;
+
+  &.dismissed {
+  	display: none;
+  }
+
+  .message {
+    display: block;
+    box-sizing: border-box;
+    padding: .75rem 2rem;
+  	background: $white;
+    border: 1px solid $grey;
+  	color: $black;
+  	text-align: center;
+  }
+
+  a.message {
+
+    border: none;
+    box-shadow: $level1;
+  	color: $black;
+
+    &:hover,
+    &:focus {
+    	text-decoration: underline;
+    }
+
+  }
+
+  .time-left {
+  	font-weight: 700;
+  }
+
+  .dismiss {
+
+  	position: absolute;
+  	right: .75rem;
+  	top: .75rem;
+  	width: 0;
+  	height: 0;
+  	overflow: hidden;
+  	padding-left: 16px;
+  	padding-bottom: 16px;
+  	background-image: url(../i/dismiss.jpg);
+  	background-position: center center;
+  	background-size: 100% auto;
+  	background-repeat: no-repeat;
+  	border-radius: 8px;
+
+    &:hover,
+    &:focus {
+    	cursor: pointer;
+    }
+
+  }
+
+}
