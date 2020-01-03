@@ -636,6 +636,55 @@ add_shortcode( 'cl-panel', 'uri_cl_shortcode_panel' );
 
 
 /**
+ * Promo
+ */
+function uri_cl_shortcode_promo( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => '',
+			'body' => '',
+			'link' => '',
+			'linktext' => '',
+			'img' => '',
+			'format' => 'default',
+			'class' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Promo',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'img',
+				'types' => array( 'url', 'num' ),
+			),
+			array(
+				'attr' => 'link',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'format',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default' ),
+			),
+		),
+		uri_cl_shortcode_get_template( 'promo' )
+	);
+
+}
+add_shortcode( 'cl-promo', 'uri_cl_shortcode_promo' );
+
+
+/**
  * Quote
  */
 function uri_cl_shortcode_quote( $atts, $content = null ) {
