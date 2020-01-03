@@ -4,7 +4,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 ## What's new in 4.0.0
 
-CL 4.0.0 is a major release focused Gutenberg support and customization.
+CL 4.0.0 is a major release focused on Gutenberg support and making it easier for themes to customize component look and feel.
 
 ### Introducing Gutenberg Support
 
@@ -16,19 +16,19 @@ Components can now be built using the Gutenberg block editor (WordPress v5.0 and
 * Gutenberg currently supports the following components: Boxouts, Buttons, Cards, Heroes, Metrics, Panels, Quotes, and Tabs.  Some components may have restrictions.
 
 ### Component Updates
-* All components are now styled generically.  Any customization should be done in the theme.
-* Adds a Countdown component
+* All components are now styled generically out-of-the-box.  Any customization should be done in the theme.
+* Adds a Countdown component for displaying dynamic, deadline-driven information
 * Notices can now be dismissible and expire
 * Heroes can now display the media caption, or display a custom caption and credit
 * Video Heroes using Vimeo are now visible and play automatically on mobile devices
 * Panels formatted as `super` can now have reversed layouts
 
 ### General Improvements
-* Improves support for heroes in the Classic Editor
+* Updates support for heroes in the Classic Editor
 * Cards now use `h2` for titles
 * Fixes an issue that caused floated elements in Tabs to overflow the tab in certain cases
-* Other bug fixes
 * Updates development tools
+* Other bug fixes
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/170/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
