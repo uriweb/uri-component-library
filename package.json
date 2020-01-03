@@ -16,16 +16,22 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
+<<<<<<< Updated upstream
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.5",
+=======
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@wordpress/eslint-plugin": "^3.3.0",
+>>>>>>> Stashed changes
     "autoprefixer": "^9.7.3",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "gulp": "^4.0.2",
     "gulp-concat": ">=2.6.1",
+    "gulp-eslint": "^6.0.0",
     "gulp-header": "^2.0.9",
-    "gulp-jscs": ">=4.1.0",
     "gulp-jshint": ">=2.0.4",
     "gulp-postcss": "^8.0.0",
     "gulp-replace-task": "^0.11.0",

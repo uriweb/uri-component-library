@@ -1,0 +1,18 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": [ "plugin:@wordpress/eslint-plugin/recommended" ],
+  "rules": {
+    "quotes": [ "error", "double" ],
+    "no-console": [ "error", { "allow": ["warn", "error"] } ]
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "gulpfile.js",
+    "js/cl.built.js",
+    "js/blocks.built.js",
+    "js/wysiwyg/noneditable/**"
+  ]
+}
