@@ -648,6 +648,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'link' => '',
 			'linktext' => '',
 			'img' => '',
+			'alt' => '',
 			'format' => 'default',
 			'class' => '',
 			'css' => '',
@@ -668,7 +669,6 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			array(
 				'attr' => 'link',
 				'types' => array( 'url' ),
-				'req' => false,
 			),
 			array(
 				'attr' => 'format',
