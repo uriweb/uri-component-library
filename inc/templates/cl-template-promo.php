@@ -28,6 +28,8 @@ $output .= '</div>';
 
 $output .= '<div class="cl-promo-content">';
 
+$output .= '<div class="cl-promo-text">';
+
 if ( ! empty( $atts['title'] ) ) {
 	$output .= '<h1>' . $atts['title'] . '</h1>';
 }
@@ -39,6 +41,8 @@ if ( ! empty( $atts['body'] ) ) {
 if ( ! empty( $atts['linktext'] ) ) {
 	$output .= '<p><a class="cl-promo-text-link" href="' . $atts['link'] . '">' . $atts['linktext'] . '</a></p>';
 }
+
+$output .= '</div>';
 
 $output .= '<div class="cl-promo-img-wrapper">';
 $output .= '<div class="cl-promo-img">';

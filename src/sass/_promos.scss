@@ -125,14 +125,19 @@
 
   		text-align: left;
 
+      .cl-promo-text {
+        position: relative;
+        width: 55%;
+      }
+
       h1 {
-    		width: 57%;
+    		width: 100%;
     		font-size: 2.6rem;
     		margin-top: 2rem;
     	}
 
     	p {
-    		width: 57%;
+    		width: 100%;
     	}
 
       .cl-promo-img-wrapper {
