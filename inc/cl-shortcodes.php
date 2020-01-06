@@ -404,6 +404,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 			'style' => '',
 			'float' => '',
 			'bgcolor' => '',
+			'format' => '',
 			'class' => '',
 			'css' => '',
 		),
@@ -418,7 +419,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 		array(
 			array(
 				'attr' => 'metric',
-				'types' => array( 'str' ),
+				'types' => array( 'str', 'date' ),
 			),
 			array(
 				'attr' => 'caption',
@@ -435,6 +436,12 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'left', 'right' ),
+			),
+			array(
+				'attr' => 'format',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default', 'date' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'metric' )
