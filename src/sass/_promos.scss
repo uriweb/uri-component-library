@@ -147,6 +147,7 @@
         top: calc( -2vw - .5rem - 2px );
         left: 50% !important;
         margin-left: -50vw !important;
+        pointer-events: none;
       }
 
     	.cl-promo-img {
@@ -162,6 +163,7 @@
           right: 25px;
           top: calc( .5rem + 2px );
           width: 40%;
+          pointer-events: all;
         }
 
         img {
