@@ -15,6 +15,11 @@
         box-sizing: border-box;
     }
 
+    &.date {
+      background: none;
+      padding: 0;
+    }
+
     span {
         display: block;
         width: 100%;
@@ -52,6 +57,82 @@
 
     &.dark.clear {
         text-shadow: 0 .1rem .3rem rgba(0,0,0,.2);
+    }
+
+    .cl-metric-date-wrapper {
+
+      //overflow: hidden;
+      background: #ddd;
+      display: block;
+      width: 100px;
+      margin: 0 auto 1rem;
+      border: 5px solid #ddd;
+      border-radius: .2rem;
+
+      .cl-metric-month {
+
+        padding: .6rem .5rem .5rem;
+        color: #fff;
+        font-size: .9rem;
+        background: #d25353;
+        text-align: center;
+        position: relative;
+        border-radius: .1rem .1rem 0 0;
+
+        &:before,
+        &:after {
+          display: block;
+          position: absolute;
+          top: -8px;
+          content: '';
+          width: 6px;
+          height: 14px;
+          border-radius: 3px;
+          background: #aaa;
+        }
+
+        &:before {
+          left: calc( 25% - 3px );
+        }
+
+        &:after {
+          left: calc( 75% - 3px );
+        }
+
+      }
+
+      .cl-metric-day {
+        font-size: 3rem;
+        text-align: center;
+        padding: .5rem;
+        background: #fff;
+        border-radius: 0 0 .1rem .1rem;
+      }
+
+    }
+
+    .cl-metric-caption-wrapper {
+
+      position: relative;
+      background: #eee;
+      padding: .5rem 1rem;
+      font-size: .9rem;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+
+      &:before {
+        position: absolute;
+        display: block;
+        content: '';
+        background: #eee;
+        width: .8rem;
+        height: .8rem;
+        transform: rotate( 45deg );
+        top: -.4rem;
+        left: calc( 50% - .4rem );
+      }
+
     }
 
 }
