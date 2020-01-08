@@ -61,34 +61,104 @@
 
     .cl-metric-date-wrapper {
 
-      //overflow: hidden;
+      position: relative;
       background: #ddd;
       display: block;
       width: 100px;
-      margin: 0 auto 1rem;
-      border: 5px solid #ddd;
+      margin: 0 auto 1.5rem;
       border-radius: .2rem;
+      transform: scale(1);
+      transition: transform .2s ease-in-out;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: -1rem;
+        left: calc( 50% - 8px );
+        width: 16px;
+        height: 4px;
+        background-image: url(../i/more.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% auto;
+        opacity: 1;
+        transition: opacity .1s ease-in-out .1s;
+      }
+
+      &:hover,
+      &:focus {
+
+        transform: scale( .95 );
+        cursor: pointer;
+
+        &:after {
+          opacity: 0;
+          transition-delay: 0s;
+        }
+
+        & ~ .cl-metric-caption-wrapper {
+          opacity: 1;
+          transform: translateY(0);
+          transition-duration: .4s;
+          transition-delay: .05s;
+        }
+
+        .cl-metric-date {
+          box-shadow: $level2;
+          transform: scale(1.05);
+          transition-duration: .15s;
+        }
+
+        .cl-metric-month {
+
+          padding: .55rem .5rem;
+          transition-duration: .15s;
+
+          &:before,
+          &:after {
+            opacity: 0;
+            transform: scaleY(0);
+            transition-duration: .15s;
+          }
+        }
+
+      }
+
+      .cl-metric-date {
+        box-shadow: 0 2px 2px rgba(0,0,0,.2);
+        transform: scale( .9 );
+        transition:
+          transform .1s ease-in-out,
+          box-shadow .1s ease-in-out;
+      }
 
       .cl-metric-month {
 
         padding: .6rem .5rem .5rem;
         color: #fff;
         font-size: .9rem;
-        background: #d25353;
+        background: #2277b3; //#d25353;
         text-align: center;
         position: relative;
         border-radius: .1rem .1rem 0 0;
+        transition: padding .1s ease-in-out;
 
         &:before,
         &:after {
           display: block;
           position: absolute;
-          top: -8px;
+          top: -12px;
           content: '';
           width: 6px;
-          height: 14px;
+          height: 20px;
           border-radius: 3px;
-          background: #aaa;
+          background: #333;
+          transform: scaleY( 1 );
+          opacity: 1;
+          transition:
+            transform .2s ease-in-out,
+            opacity .2s ease-in-out;
         }
 
         &:before {
@@ -102,9 +172,10 @@
       }
 
       .cl-metric-day {
-        font-size: 3rem;
+        font-size: 3.5rem;
+        color: #333;
         text-align: center;
-        padding: .5rem;
+        padding: .4rem .5rem .5rem;
         background: #fff;
         border-radius: 0 0 .1rem .1rem;
       }
@@ -120,6 +191,13 @@
       width: 80%;
       margin: 0 auto;
       text-align: center;
+      border-radius: .2rem;
+      border: 1px solid #ddd;
+      opacity: 0;
+      transform: translateY(.2rem);
+      transition:
+        transform .2s ease-in-out,
+        opacity .2s ease-in-out;
 
       &:before {
         position: absolute;
@@ -128,8 +206,10 @@
         background: #eee;
         width: .8rem;
         height: .8rem;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
         transform: rotate( 45deg );
-        top: -.4rem;
+        top: -.45rem;
         left: calc( 50% - .4rem );
       }
 

@@ -65,14 +65,26 @@ if ( 'date' != $atts['format'] ) {
 	$output .= '<span>' . $atts['metric'] . '</span>';
 	$output .= '<span>' . $atts['caption'] . '</span>';
 } else {
+
 	$output .= '<div class="cl-metric-date-wrapper">';
-	$output .= '<div class="cl-metric-month">' . substr( $date_parts['month'], 0, 3 ) . ' ' . $date_parts['year'] . '</div>';
+	$output .= '<div class="cl-metric-date">';
+	$output .= '<div class="cl-metric-month">';
+
+	if ( $atts['show_year'] ) {
+		$output .= substr( $date_parts['month'], 0, 3 ) . ' ' . $date_parts['year'];
+	} else {
+		$output .= $date_parts['month'];
+	}
+
+	$output .= '</div>';
 	$output .= '<div class="cl-metric-day">' . $date_parts['mday'] . '</div>';
+	$output .= '</div>';
 	$output .= '</div>';
 
 	$output .= '<div class="cl-metric-caption-wrapper">';
 	$output .= '<div class="cl-metric-caption">' . $atts['caption'] . '</div>';
 	$output .= '</div>';
+
 }
 
 $output .= '</div>';
