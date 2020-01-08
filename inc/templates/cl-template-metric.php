@@ -2,34 +2,19 @@
 
 $classes = 'cl-metric';
 $override_bgcolor = false;
-$date_metric = false;
 $output = '';
 
-$timestamp = strtotime( $atts['metric'] );
-if ( $timestamp ) {
-	$override_bgcolor = true;
-	$date_parts = getdate( $timestamp );
-	if ( 'default' != $atts['format'] ) {
-		$atts['format'] = 'date';
-	}
-}
-
-if ( 'date' != $atts['format'] ) {
-
-	switch ( $atts['style'] ) {
-		case 'dark':
-			$classes .= ' dark';
-			break;
-		case 'clear':
-			$classes .= ' clear';
-			break;
-		case 'overlay':
-			$classes .= ' dark clear';
-			$override_bgcolor = true;
-			break;
-	}
-} else {
-	$classes .= ' date';
+switch ( $atts['style'] ) {
+	case 'dark':
+		$classes .= ' dark';
+		break;
+	case 'clear':
+		$classes .= ' clear';
+		break;
+	case 'overlay':
+		$classes .= ' dark clear';
+		$override_bgcolor = true;
+		break;
 }
 
 if ( ! empty( $atts['float'] ) ) {
@@ -56,36 +41,13 @@ if ( ! empty( $atts['css'] ) || ! empty( $atts['bgcolor'] ) ) {
 	}
 
 	$output .= '"';
-
 }
 
 $output .= '>';
 
-if ( 'date' != $atts['format'] ) {
-	$output .= '<span>' . $atts['metric'] . '</span>';
-	$output .= '<span>' . $atts['caption'] . '</span>';
-} else {
+$output .= '<span>' . $atts['metric'] . '</span>';
 
-	$output .= '<div class="cl-metric-date-wrapper">';
-	$output .= '<div class="cl-metric-date">';
-	$output .= '<div class="cl-metric-month">';
-
-	if ( $atts['show_year'] ) {
-		$output .= substr( $date_parts['month'], 0, 3 ) . ' ' . $date_parts['year'];
-	} else {
-		$output .= $date_parts['month'];
-	}
-
-	$output .= '</div>';
-	$output .= '<div class="cl-metric-day">' . $date_parts['mday'] . '</div>';
-	$output .= '</div>';
-	$output .= '</div>';
-
-	$output .= '<div class="cl-metric-caption-wrapper">';
-	$output .= '<div class="cl-metric-caption">' . $atts['caption'] . '</div>';
-	$output .= '</div>';
-
-}
+$output .= '<span>' . $atts['caption'] . '</span>';
 
 $output .= '</div>';
 if ( ! empty( $atts['float'] ) ) {
