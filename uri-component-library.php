@@ -28,14 +28,29 @@ function uri_cl_dir_url() {
 }
 
 /**
+ * Returns version from package.json to be used for cache busting
+ *
+ * @return str
+ */
+function uri_cl_cache_buster() {
+	static $cache_buster;
+	if ( empty( $cache_buster ) ) {
+		$str = file_get_contents( URI_CL_URL . 'package.json' );
+		$json = json_decode( $str, true );
+		$cache_buster = $json['version'];
+	}
+	return $cache_buster;
+}
+
+/**
  * Include css and js
  */
 function uri_cl_enqueues() {
 
-	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ) );
+	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ), array(), uri_cl_cache_buster(), 'all' );
 	wp_enqueue_style( 'uricl-css' );
 
-	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ) );
+	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array(), uri_cl_cache_buster(), true );
 	wp_enqueue_script( 'uricl-js' );
 
 }
