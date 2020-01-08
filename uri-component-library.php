@@ -35,9 +35,8 @@ function uri_cl_dir_url() {
 function uri_cl_cache_buster() {
 	static $cache_buster;
 	if ( empty( $cache_buster ) ) {
-		$str = file_get_contents( URI_CL_URL . 'package.json' );
-		$json = json_decode( $str, true );
-		$cache_buster = $json['version'];
+		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+		$cache_buster = $values['Version'];
 	}
 	return $cache_buster;
 }
