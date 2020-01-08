@@ -40,45 +40,6 @@
         transition: opacity .1s ease-in-out .1s;
       }
 
-      &:hover,
-      &:focus {
-
-        transform: scale( .95 );
-        cursor: pointer;
-
-        &:after {
-          opacity: 0;
-          transition-delay: 0s;
-        }
-
-        & ~ .cl-date-caption-wrapper {
-          opacity: 1;
-          transform: translateY(0);
-          transition-duration: .4s;
-          transition-delay: .05s;
-        }
-
-        .cl-date-content {
-          box-shadow: $level2;
-          transform: scale(1.05);
-          transition-duration: .15s;
-        }
-
-        .cl-date-month {
-
-          padding: .55rem .5rem;
-          transition-duration: .15s;
-
-          &:before,
-          &:after {
-            opacity: 0;
-            transform: scaleY(0);
-            transition-duration: .15s;
-          }
-        }
-
-      }
-
       .cl-date-content {
         box-shadow: 0 2px 2px rgba(0,0,0,.2);
         transform: scale( .9 );
@@ -165,6 +126,46 @@
         transform: rotate( 45deg );
         top: -.45rem;
         left: calc( 50% - .4rem );
+      }
+
+    }
+
+    &.pinned .cl-date-content-wrapper,
+    .cl-date-content-wrapper:hover,
+    .cl-date-content-wrapper:focus {
+
+      transform: scale( .95 );
+      cursor: pointer;
+
+      &:after {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+
+      & ~ .cl-date-caption-wrapper {
+        opacity: 1;
+        transform: translateY(0);
+        transition-duration: .4s;
+        transition-delay: .05s;
+      }
+
+      .cl-date-content {
+        box-shadow: $level2;
+        transform: scale(1.05);
+        transition-duration: .15s;
+      }
+
+      .cl-date-month {
+
+        padding: .55rem .5rem;
+        transition-duration: .15s;
+
+        &:before,
+        &:after {
+          opacity: 0;
+          transform: scaleY(0);
+          transition-duration: .15s;
+        }
       }
 
     }

@@ -15,7 +15,9 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$output .= '<div class="' . $classes . '"';
+$hash = uri_cl_get_hash( $atts );
+
+$output .= '<div class="' . $classes . '" data-hash="' . $hash . '"';
 
 if ( ! empty( $atts['css'] ) ) {
 	$output .= ' style="' . $atts['css'] . '"';
@@ -23,7 +25,7 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
-$output .= '<div class="cl-date-content-wrapper">';
+$output .= '<div class="cl-date-content-wrapper pin">';
 $output .= '<div class="cl-date-content">';
 $output .= '<div class="cl-date-month">';
 
