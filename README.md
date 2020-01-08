@@ -2,7 +2,16 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 4.0.0
+## What's new in 4.0.1
+
+CL 4.0.1 is a bug fix release.
+
+* Fixes an issue with cache busting of main script and stylesheet
+* Fixes an issue that caused the motion button on video heroes to not change state when paused
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/172/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+
+## New in 4.0.0
 
 CL 4.0.0 is a major release focused on Gutenberg support and making it easier for themes to customize component look and feel.
 
