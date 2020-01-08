@@ -224,7 +224,7 @@
 
   }
 
-  &.paused .motionswitch {
+  .cl-hero-proper.paused .motionswitch {
     &:before {
       height: 10px;
       border-width: 5px 0 5px 10px;
