@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 
 const {
@@ -13,7 +13,7 @@ const {
 	TextControl,
 	Button,
 	ButtonGroup,
-	ToggleControl
+	ToggleControl,
 } = wp.components;
 
 const {
@@ -26,19 +26,19 @@ const {
 	InspectorControls,
 	BlockControls,
 	BlockAlignmentToolbar,
-	InnerBlocks
+	InnerBlocks,
 } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
 	'core/heading',
 	'core/paragraph',
 	'core/list',
-	'uri-cl/button'
+	'uri-cl/button',
 ];
 const TEMPLATE = [
-  ['core/heading', { level: 1, placeholder: 'My Panel' }],
-  ['core/paragraph', { placeholder: '', dropCap: false }],
-  ['uri-cl/button', {}]
+	[ 'core/heading', { level: 1, placeholder: 'My Panel' } ],
+	[ 'core/paragraph', { placeholder: '', dropCap: false } ],
+	[ 'uri-cl/button', {} ],
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
@@ -48,7 +48,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/panel.png' )}
+			src={ ( URI_CL_URL + 'i/icons/panel.png' ) }
 			alt="button"
 		/>
 	);
@@ -57,7 +57,6 @@ const customIcon = () => {
 const classNames = ( attributes ) => {
 	let classes = ( 'super' === attributes.format ) ? 'cl-panel-super' : 'cl-panel';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -75,27 +74,26 @@ registerBlockType( 'uri-cl/panel', {
 
 	attributes: {
 		title: {
-			type: 'string'
+			type: 'string',
 		},
 		reverse: {
-			type: 'boolean'
+			type: 'boolean',
 		},
 		img: {
-			type: 'string'
+			type: 'string',
 		},
 		alt: {
-			type: 'string'
+			type: 'string',
 		},
 		format: {
-			type: 'string'
+			type: 'string',
 		},
 		mediaID: {
-			type: 'number'
-		}
+			type: 'number',
+		},
 	},
 
-	edit({ attributes, className, setAttributes }) {
-
+	edit( { attributes, className, setAttributes } ) {
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
 			if ( attributes.mediaID ) {
@@ -106,127 +104,121 @@ registerBlockType( 'uri-cl/panel', {
 						className="image"
 					/>
 				);
-			} else {
-				return (
-					<MediaPlaceholder
-						icon={ 'format-image' }
-						className={ className }
-						labels={ {
-							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
-						} }
-						onSelect={ media =>
-							{
-								setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								});
-							}
-						}
-						accept="image/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					/>
-				);
 			}
+			return (
+				<MediaPlaceholder
+					icon={ 'format-image' }
+					className={ className }
+					labels={ {
+						title: 'Add an image',
+						instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+					} }
+					onSelect={ ( media ) => {
+						setAttributes( {
+							alt: media.alt,
+							img: media.url,
+							mediaID: media.id,
+						} );
+					}
+					}
+					accept="image/*"
+					allowedTypes={ ALLOWED_MEDIA_TYPES }
+				/>
+			);
 		};
 
-		let classes = classNames( attributes );
+		const classes = classNames( attributes );
 
 		const createContentEditForm = () => {
 			if ( 'super' === attributes.format ) {
 				return (
 					<div className="container">
-						<div class={classes}>
-							<div class="cl-panel-super-blur"></div>
-							<div class="cl-panel-super-content">
-								<div class="cl-panel-super-image">
+						<div className={ classes }>
+							<div className="cl-panel-super-blur"></div>
+							<div className="cl-panel-super-content">
+								<div className="cl-panel-super-image">
 									<MediaUpload
-										onSelect={ media =>
-											{
-												setAttributes({
-													alt: media.alt,
-													img: media.url,
-													mediaID: media.id
-												});
-											}
+										onSelect={ ( media ) => {
+											setAttributes( {
+												alt: media.alt,
+												img: media.url,
+												mediaID: media.id,
+											} );
+										}
 										}
 										type="image"
 										value={ attributes.mediaID }
-										render={ ({ open }) => getImageButton( open ) }
+										render={ ( { open } ) => getImageButton( open ) }
 									/>
 								</div>
-								<div class="cl-panel-super-text">
+								<div className="cl-panel-super-text">
 									<InnerBlocks
 										allowedBlocks={ ALLOWED_BLOCKS }
-										template={TEMPLATE}
+										template={ TEMPLATE }
 									/>
 								</div>
 							</div>
 						</div>
 					</div>
 				);
-			} else {
-				return (
-					<div className="container">
-						<div class={classes}>
-							<figure class="poster">
-								<MediaUpload
-									onSelect={ media =>
-										{
-											setAttributes({
-												alt: media.alt,
-												img: media.url,
-												mediaID: media.id
-											});
-										}
-									}
-									type="image"
-									value={ attributes.mediaID }
-									render={ ({ open }) => getImageButton( open ) }
-								/>
-							</figure>
-							<article>
-								<InnerBlocks
-									allowedBlocks={ ALLOWED_BLOCKS }
-									template={TEMPLATE}
-								/>
-							</article>
-						</div>
-					</div>
-				);
 			}
+			return (
+				<div className="container">
+					<div className={ classes }>
+						<figure className="poster">
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( {
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id,
+									} );
+								}
+								}
+								type="image"
+								value={ attributes.mediaID }
+								render={ ( { open } ) => getImageButton( open ) }
+							/>
+						</figure>
+						<article>
+							<InnerBlocks
+								allowedBlocks={ ALLOWED_BLOCKS }
+								template={ TEMPLATE }
+							/>
+						</article>
+					</div>
+				</div>
+			);
 		};
 
 		const createBlockControls = () => {
 			return (
 				<BlockControls key="controls">
 					{ !! attributes.img && (
-					<MediaUploadCheck>
-						<Toolbar>
-							<MediaUpload
-								onSelect={ media =>
-									{
-										setAttributes({
+						<MediaUploadCheck>
+							<Toolbar>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setAttributes( {
 											alt: media.alt,
 											img: media.url,
-											mediaID: media.id
-										});
+											mediaID: media.id,
+										} );
 									}
-								}
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ attributes.mediaID }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit media' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</Toolbar>
-					</MediaUploadCheck>
+									}
+									allowedTypes={ ALLOWED_MEDIA_TYPES }
+									value={ attributes.mediaID }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit media' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+							</Toolbar>
+						</MediaUploadCheck>
 					) }
 
 				</BlockControls>
@@ -238,17 +230,18 @@ registerBlockType( 'uri-cl/panel', {
 			return (
 				<InspectorControls>
 					<PanelBody>
-					
+
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
-								help={ __( 'To increase performance, super panel previews will appear simplified in the editor window.' )}
+								help={ __( 'To increase performance, super panel previews will appear simplified in the editor window.' ) }
+								id="panel-format"
 							>
 								<ButtonGroup aria-label={ __( 'Panel Format' ) }>
 									{ [ 'default', 'super' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const format = ( undefined == attributes.format ) ? '' : attributes.format;
+										const format = ( undefined === attributes.format ) ? '' : attributes.format;
 										const isSelected = ( key === format );
 
 										return (
@@ -257,7 +250,7 @@ registerBlockType( 'uri-cl/panel', {
 												isDefault
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ format: key }) }
+												onClick={ ( content ) => setAttributes( { format: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -271,7 +264,7 @@ registerBlockType( 'uri-cl/panel', {
 							<ToggleControl
 								label="Flip panel layout"
 								checked={ attributes.reverse }
-								onChange={ content => setAttributes( { reverse: content } ) }
+								onChange={ ( content ) => setAttributes( { reverse: content } ) }
 							/>
 						</PanelRow>
 
@@ -281,18 +274,17 @@ registerBlockType( 'uri-cl/panel', {
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createBlockControls(),
 			createInspectorControls(),
-			createContentEditForm()
-		]);
-
+			createContentEditForm(),
+		] );
 	}, // End edit
 
-	save({ attributes }) {
+	save( { attributes } ) {
 		return (
 			<InnerBlocks.Content />
 		);
-	}
+	},
 
-});
+} );
