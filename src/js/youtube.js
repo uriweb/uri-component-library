@@ -7,19 +7,14 @@
 // jshint esversion: 6
 // jscs:disable requireVarDeclFirst
 class CLYT {
-
 	/*
 	 * Load the API
 	 */
 	static loadYouTubeAPI() {
-
-		var tag, firstScriptTag;
-
-		tag = document.createElement( 'script' );
+		const tag = document.createElement( 'script' );
 		tag.src = 'https://www.youtube.com/player_api';
-		firstScriptTag = document.getElementsByTagName( 'script' )[0];
+		const firstScriptTag = document.getElementsByTagName( 'script' )[ 0 ];
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
-
 	}
 
 	/*
@@ -28,20 +23,20 @@ class CLYT {
 	 * @param el parent the hero parent container
 	 */
 	static resizeHero( el, parent ) {
-		var w = parent.offsetWidth,
-			h = parent.offsetHeight;
+		let w = parent.offsetWidth;
+		const h = parent.offsetHeight;
 
 		if ( w / h > 16 / 9 ) {
-			el.style.height = w * 9 / 16 + 'px';
+			el.style.height = ( w * 9 / 16 ) + 'px';
 			el.style.width = '100%';
 			el.style.left = 0;
-			el.style.top = ( h - ( w * 9 / 16 ) ) / 2 + 'px';
+			el.style.top = ( ( h - ( w * 9 / 16 ) ) / 2 ) + 'px';
 			el.style.marginLeft = 0;
 		} else {
 			w = h * 16 / 9;
 			el.style.height = '100%';
 			el.style.width = w + 'px';
-			el.style.left = 0 - w / 2 + 'px';
+			el.style.left = 0 - ( w / 2 ) + 'px';
 			el.style.top = 0;
 			el.style.marginLeft = '50%';
 		}
@@ -54,7 +49,7 @@ class CLYT {
 	 * @param el parent the video parent container
 	 */
 	static resizeVideo( event, el, parent ) {
-		el.style.height = parent.offsetWidth / ( event.target.a.width / event.target.a.height ) + 'px';
+		el.style.height = ( parent.offsetWidth / ( event.target.a.width / event.target.a.height ) ) + 'px';
 	}
 
 	/*
@@ -63,7 +58,7 @@ class CLYT {
 	 * @param el parent the hero parent container
 	 */
 	static determinePlayState( event, parent ) {
-		var v = window.innerHeight,
+		const v = window.innerHeight,
 			p = window.pageYOffset,
 			h = parent.offsetHeight,
 			o = parent.getBoundingClientRect().top + p;
@@ -73,7 +68,6 @@ class CLYT {
 		} else {
 			event.target.playVideo();
 		}
-
 	}
 
 	/*
@@ -81,14 +75,11 @@ class CLYT {
 	 * @param obj event the hero player
 	 */
 	static onHeroReady( event ) {
-
-		var el, parent, overlay, button;
-
 		// Mute the vid
 		event.target.mute();
 
-		el = event.target.getIframe();
-		parent = event.target.a.parentNode;
+		const el = event.target.getIframe();
+		const parent = event.target.a.parentNode;
 
 		// Listen for browser resizing
 		window.addEventListener(
@@ -111,8 +102,8 @@ class CLYT {
 		CLYT.determinePlayState( event, parent );
 
 		// Add play/pause button
-		overlay = parent.querySelector( '.overlay' );
-		button = document.createElement( 'div' );
+		const overlay = parent.querySelector( '.overlay' );
+		const button = document.createElement( 'div' );
 
 		button.className = 'motionswitch';
 		button.title = 'Pause';
@@ -124,7 +115,6 @@ class CLYT {
 		);
 
 		overlay.appendChild( button );
-
 	}
 
 	/*
@@ -132,8 +122,8 @@ class CLYT {
 	 * @param str id the id of the video
 	 */
 	static onVideoReady( event ) {
-		var el = event.target.getIframe(),
-				parent = event.target.a.parentNode;
+		const el = event.target.getIframe(),
+			parent = event.target.a.parentNode;
 
 		window.addEventListener(
 			'resize',
@@ -142,7 +132,6 @@ class CLYT {
 			}
 		);
 		CLYT.resizeVideo( event, el, parent );
-
 	}
 
 	/*
@@ -172,7 +161,7 @@ class CLYT {
 	 * @param obj event the hero player
 	 */
 	static onHeroStateChange( event ) {
-		var state = event.target.getPlayerState();
+		const state = event.target.getPlayerState();
 		switch ( state ) {
 			case 0:
 				event.target.playVideo();
@@ -200,15 +189,15 @@ class CLYT {
 	 * @param obj event the event
 	 */
 	static onVideoError( event ) {
-		var poster, a, img, alt, iframe;
+		let alt;
 
-		poster = event.target.a.previousSibling;
+		const poster = event.target.a.previousSibling;
 
-		a = document.createElement( 'a' );
+		const a = document.createElement( 'a' );
 		a.href = 'http://www.youtube.com/watch?v=' + event.target.a.id;
 		a.title = 'Try watching this video on YouTube';
 
-		img = document.createElement( 'img' );
+		const img = document.createElement( 'img' );
 		img.src = poster.getAttribute( 'src' );
 		alt = poster.getAttribute( 'alt' );
 		if ( ! alt ) {
@@ -217,11 +206,10 @@ class CLYT {
 		img.alt = alt;
 		a.appendChild( img );
 
-		iframe = document.getElementById( event.target.a.id );
+		const iframe = document.getElementById( event.target.a.id );
 		if ( iframe ) {
 			event.target.a.parentNode.replaceChild( a, iframe );
 		}
-
 	}
 
 	/*
@@ -229,9 +217,8 @@ class CLYT {
 	 * @param obj event the video player
 	 */
 	static onVideoStateChange( event ) {
-
-		var state = event.target.getPlayerState(),
-				overlay = event.target.a.parentNode.querySelector( '.overlay' );
+		const state = event.target.getPlayerState(),
+			overlay = event.target.a.parentNode.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:
@@ -242,5 +229,4 @@ class CLYT {
 				overlay.classList.remove( 'hidden' );
 		}
 	}
-
 }
