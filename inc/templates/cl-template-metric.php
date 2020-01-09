@@ -41,7 +41,6 @@ if ( ! empty( $atts['css'] ) || ! empty( $atts['bgcolor'] ) ) {
 	}
 
 	$output .= '"';
-
 }
 
 $output .= '>';

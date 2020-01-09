@@ -319,6 +319,57 @@ add_shortcode( 'cl-countdown', 'uri_cl_shortcode_countdown' );
 
 
 /**
+ * Date
+ */
+function uri_cl_shortcode_date( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'date' => '',
+			'caption' => '',
+			'float' => '',
+			'show_year' => false,
+			'class' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Date',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'date',
+				'types' => array( 'date' ),
+			),
+			array(
+				'attr' => 'caption',
+				'types' => array( 'str' ),
+			),
+			array(
+				'attr' => 'float',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'left', 'right' ),
+			),
+			array(
+				'attr' => 'show_year',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'date' )
+	);
+
+}
+add_shortcode( 'cl-date', 'uri_cl_shortcode_date' );
+
+
+/**
  * Hero
  */
 function uri_cl_shortcode_hero( $atts, $content = null ) {

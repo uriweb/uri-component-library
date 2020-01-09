@@ -1,5 +1,5 @@
 /**
- * DISMISS
+ * DISMISS AND PIN
  *
  * @package uri-component-library
  */
@@ -8,21 +8,29 @@
 
 	'use strict';
 
-	window.addEventListener( 'load', init, false );
+	window.addEventListener( 'DOMContentLoaded', init, false );
 
 	function init() {
 
 		var els, i;
 
+		// Dismissible elements.
 		els = document.querySelectorAll( '.cl-countdown, .cl-notice' );
 
 		for ( i = 0; i < els.length; i++ ) {
-			setup( els[i] );
+			setupDismiss( els[i] );
+		}
+
+		// Pinable elements.
+		els = document.querySelectorAll( '.cl-date' );
+
+		for ( i = 0; i < els.length; i++ ) {
+			setupPin( els[i] );
 		}
 
 	}
 
-	function setup( el ) {
+	function setupDismiss( el ) {
 
 		var d, cvalue, hash;
 
@@ -34,7 +42,7 @@
 
 		d.addEventListener( 'click', dismiss.bind( null, el ), false );
 		hash = el.getAttribute( 'data-hash' );
-		cvalue = getCookie( 'uri-cl-' + hash );
+		cvalue = URICL.getCookie( 'uri-cl-' + hash );
 
 		if ( 'dismissed' == cvalue ) {
 			dismiss( el );
@@ -49,44 +57,45 @@
 		hash = el.getAttribute( 'data-hash' );
 
 		el.classList.add( 'dismissed' );
-		setCookie( 'uri-cl-' + hash, 'dismissed', 30 );
+		URICL.setCookie( 'uri-cl-' + hash, 'dismissed', 30 );
 
 	}
 
-	function setCookie( cname, cvalue, exdays ) {
+	function setupPin( el ) {
 
-		var d, expires;
+		var p, cvalue, hash;
 
-		d = new Date();
-		d.setTime( d.getTime() + ( exdays * 24 * 60 * 60 * 1000 ) );
+		p = el.querySelector( '.pin' );
 
-		expires = 'expires=' + d.toUTCString();
-		document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-
-	}
-
-	function getCookie( cname ) {
-
-		var name, ca, i, c;
-
-		name = cname + '=';
-		ca = document.cookie.split( ';' );
-
-		for ( i = 0; i < ca.length; i++ ) {
-
-			c = ca[i];
-
-			while ( ' ' == c.charAt( 0 ) ) {
-				c = c.substring( 1 );
-			}
-
-			if ( 0 == c.indexOf( name ) ) {
-				return c.substring( name.length, c.length );
-			}
-
+		if ( null === p ) {
+			return;
 		}
 
-		return '';
+		p.addEventListener( 'click', pin.bind( null, el, p ), false );
+		hash = el.getAttribute( 'data-hash' );
+		cvalue = URICL.getCookie( 'uri-cl-' + hash );
+
+		if ( 'pinned' == cvalue ) {
+			pin( el, p );
+		}
+
+	}
+
+	function pin( el, p ) {
+
+		var hash;
+
+		hash = el.getAttribute( 'data-hash' );
+
+		if ( el.classList.contains( 'pinned' ) ) {
+			el.classList.remove( 'pinned' );
+			p.setAttribute( 'title', 'Pin this date' );
+			URICL.setCookie( 'uri-cl-' + hash, 'unpinned', 30 );
+		} else {
+			el.classList.add( 'pinned' );
+			p.setAttribute( 'title', 'Unpin this date' );
+			URICL.setCookie( 'uri-cl-' + hash, 'pinned', 30 );
+		}
 
 	}
 
