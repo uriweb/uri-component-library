@@ -5,25 +5,23 @@
  * @package uri-component-library
  */
 
-(function() {
-
-	var cName = 'cl-button',
+( function() {
+	const cName = 'cl-button',
 		wName = 'CLButton';
 
 	function generateButtonShortcode( params ) {
-
-		var attributes = [], i;
+		let i;
+		const attributes = [];
 
 		if ( ! params.text ) {
 			params.text = 'Explore';
 		}
 
 		for ( i in params ) {
-			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[i] ) + '"' );
+			attributes.push( i + '="' + URIWYSIWYG.htmlEscape( params[ i ] ) + '"' );
 		}
 
 		return '[' + cName + ' ' + attributes.join( ' ' ) + ']';
-
 	}
 
 	tinymce.create(
@@ -37,81 +35,74 @@
 			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init: function( ed, url ) {
-
+			init( ed, url ) {
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName,
+					wName,
 					{
 						title: 'Button',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button.png'
-				}
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button.png',
+					}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName,
+					wName,
 					function( target, args ) {
-
-						var possibleArgs;
-
 						// Create an empty object if args is empty
 						if ( ! args ) {
 							args = {};
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['link', 'text', 'tooltip', 'style', 'class'];
+						const possibleArgs = [ 'link', 'text', 'tooltip', 'style', 'class' ];
 						possibleArgs.forEach(
-						function( i ) {
-							if ( ! args[i] ) {
-								args[i] = '';
+							function( i ) {
+								if ( ! args[ i ] ) {
+									args[ i ] = '';
+								}
 							}
-						}
 						);
 
 						ed.windowManager.open(
-						{
-							title: 'Insert / Update Button',
-							body: [
-							{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
-							{ type: 'textbox', name: 'text', label: 'Text', 'placeholder':'Explore', value: args.text },
-							{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
-							{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
-							{ type: 'listbox', name: 'style', label: 'Style', value: args.style, 'values': [
-								{ text: 'Default', value: '' },
-								{ text: 'Prominent', value: 'prominent' },
-								{ text: 'Disabled', value: 'disabled' }
-								]
-							}
-							],
-							onsubmit: function( e ) {
-
+							{
+								title: 'Insert / Update Button',
+								body: [
+									{ type: 'textbox', name: 'link', label: 'Link', value: args.link },
+									{ type: 'textbox', name: 'text', label: 'Text', placeholder: 'Explore', value: args.text },
+									{ type: 'textbox', name: 'tooltip', label: 'Tooltip', value: args.tooltip },
+									{ type: 'textbox', name: 'class', id: 'class', value: args.class, subtype: 'hidden' },
+									{ type: 'listbox', name: 'style', label: 'Style', value: args.style, values: [
+										{ text: 'Default', value: '' },
+										{ text: 'Prominent', value: 'prominent' },
+										{ text: 'Disabled', value: 'disabled' },
+									],
+									},
+								],
+								onsubmit( e ) {
 								// Insert content when the window form is submitted
-								shortcode = generateButtonShortcode( e.data );
-								ed.execCommand( 'mceInsertContent', 0, shortcode );
-
+									shortcode = generateButtonShortcode( e.data );
+									ed.execCommand( 'mceInsertContent', 0, shortcode );
+								},
+							},
+							{
+								wp,
 							}
-						},
-						{
-							wp: wp
-						}
 						);
-
 					}
 				);
 
 				ed.on(
-				 'BeforeSetContent',
+					'BeforeSetContent',
 					function( event ) {
 						event.content = URIWYSIWYG.replaceShortcodes( event.content, cName, true, this );
 					}
 				);
 
 				ed.on(
-				 'PostProcess',
+					'PostProcess',
 					function( event ) {
 						if ( event.get ) {
 							event.content = URIWYSIWYG.restoreShortcodes( event.content, cName );
@@ -121,12 +112,11 @@
 
 				// Open popup on placeholder double click
 				ed.on(
-				'DblClick',
+					'DblClick',
 					function( event ) {
 						URIWYSIWYG.openPopup( event.target, ed, cName, wName );
 					}
 				);
-
 			},
 
 			/**
@@ -135,14 +125,13 @@
 			 *
 			 * @return {Object} Name/value array containing information about the plugin.
 			 */
-			getInfo: function() {
+			getInfo() {
 				return URIWYSIWYG.getPluginInfo();
-			}
+			},
 
-	}
-		);
+		}
+	);
 
 	// Register plugin
 	tinymce.PluginManager.add( 'uri_cl_wysiwyg_button', tinymce.plugins.uri_cl_wysiwyg_button );
-
-})();
+}() );
