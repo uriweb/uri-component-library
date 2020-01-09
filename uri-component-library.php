@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 3.7.1
+ * Version: 4.0.2
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -28,14 +28,28 @@ function uri_cl_dir_url() {
 }
 
 /**
+ * Returns version from package.json to be used for cache busting
+ *
+ * @return str
+ */
+function uri_cl_cache_buster() {
+	static $cache_buster;
+	if ( empty( $cache_buster ) ) {
+		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
+		$cache_buster = $values['Version'];
+	}
+	return $cache_buster;
+}
+
+/**
  * Include css and js
  */
 function uri_cl_enqueues() {
 
-	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ) );
+	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ), array(), uri_cl_cache_buster(), 'all' );
 	wp_enqueue_style( 'uricl-css' );
 
-	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ) );
+	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array(), uri_cl_cache_buster(), true );
 	wp_enqueue_script( 'uricl-js' );
 
 }
