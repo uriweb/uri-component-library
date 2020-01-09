@@ -5,25 +5,24 @@
  */
 
 // Create this in the global scope so the YouTube API can call it locally.
-var CLCreateYouTubePlayers,
-		CLCreateVimeoPlayers;
+let CLCreateYouTubePlayers,
+	CLCreateVimeoPlayers;
 function onYouTubePlayerAPIReady() {
 	CLCreateYouTubePlayers();
 }
 
 ( function() {
-
 	'use strict';
 
-	var data = {
+	const data = {
 		heroes: {
 			vimeo: {},
-			yt: {}
+			yt: {},
 		},
 		videos: {
 			vimeo: {},
-			yt: {}
-		}
+			yt: {},
+		},
 	};
 
 	window.addEventListener( 'load', getVids, false );
@@ -32,42 +31,40 @@ function onYouTubePlayerAPIReady() {
 	 * Get video ID(s) and load the API
 	 */
 	function getVids() {
+		let requireYouTube = false,
+			requireVimeo = false,
+			i, el, id, parent, atts, src, host, placeholder;
 
-		var requireYouTube = false,
-				requireVimeo = false,
-				heroes = document.querySelectorAll( '.cl-hero .poster' ),
-				vids = document.querySelectorAll( '.cl-video .poster' ),
-				i, el, id, parent, atts, src, host, placeholder;
+		const heroes = document.querySelectorAll( '.cl-hero .poster' );
+		const vids = document.querySelectorAll( '.cl-video .poster' );
 
 		if ( URICL.checkSupport() ) {
-
 			for ( i = 0; i < heroes.length; i++ ) {
-
-				el = heroes[i];
+				el = heroes[ i ];
 				parent = el.parentNode;
 
 				atts = {
-					'parent': parent,
-					'poster': el,
-					'state': 'init',
-					'w': parent.offsetWidth,
-					'h': parent.offsetHeight
+					parent,
+					poster: el,
+					state: 'init',
+					w: parent.offsetWidth,
+					h: parent.offsetHeight,
 				};
 
 				src = el.getAttribute( 'data-video' );
 				host = el.getAttribute( 'data-platform' );
 				id = el.getAttribute( 'id' );
 
-				if ( 'youtube' == host ) {
+				if ( 'youtube' === host ) {
 					requireYouTube = true;
-					data.heroes.yt[id] = atts;
-					data.heroes.yt[id].src = src;
+					data.heroes.yt[ id ] = atts;
+					data.heroes.yt[ id ].src = src;
 				}
 
-				if ( 'vimeo' == host ) {
+				if ( 'vimeo' === host ) {
 					requireVimeo = true;
-					data.heroes.vimeo[id] = atts;
-					data.heroes.vimeo[id].src = src;
+					data.heroes.vimeo[ id ] = atts;
+					data.heroes.vimeo[ id ].src = src;
 				}
 
 				// Remove poster id and create a new placeholder for the video
@@ -75,38 +72,34 @@ function onYouTubePlayerAPIReady() {
 				placeholder = document.createElement( 'div' );
 				placeholder.id = id;
 				parent.appendChild( placeholder );
-
 			}
-
 		}
 
 		for ( i = 0; i < vids.length; i++ ) {
-
-			el = vids[i];
+			el = vids[ i ];
 
 			atts = {
-				'parent': el.parentNode,
-				'poster': el,
-				'state': 'init'
+				parent: el.parentNode,
+				poster: el,
+				state: 'init',
 			};
 
 			src = el.getAttribute( 'data-video' );
 			host = el.getAttribute( 'data-platform' );
 			id = el.getAttribute( 'id' );
 
-			if ( 'youtube' == host ) {
-				data.videos.yt[id] = atts;
-				data.videos.yt[id].src = src;
+			if ( 'youtube' === host ) {
+				data.videos.yt[ id ] = atts;
+				data.videos.yt[ id ].src = src;
 				requireYouTube = true;
 			}
 
-			if ( 'vimeo' == host ) {
-				data.videos.vimeo[id] = atts;
-				data.videos.vimeo[id].src = src;
-				data.videos.vimeo[id].showinfo = el.getAttribute( 'data-showinfo' );
+			if ( 'vimeo' === host ) {
+				data.videos.vimeo[ id ] = atts;
+				data.videos.vimeo[ id ].src = src;
+				data.videos.vimeo[ id ].showinfo = el.getAttribute( 'data-showinfo' );
 				requireVimeo = true;
 			}
-
 		}
 
 		if ( requireYouTube ) {
@@ -116,67 +109,59 @@ function onYouTubePlayerAPIReady() {
 		if ( requireVimeo ) {
 			CLVimeo.loadVimeoAPI();
 		}
-
 	}
 
 	/*
 	 * Create the Vimeo player(s)
 	 */
 	CLCreateVimeoPlayers = function() {
-
-		var id, value, options, showinfo, callbacks;
+		let id, value, options, showinfo, callbacks;
 
 		/* Heroes */
 		for ( id in data.heroes.vimeo ) {
-
-			value = data.heroes.vimeo[id];
+			value = data.heroes.vimeo[ id ];
 
 			options = {
 				url: value.src,
 				background: true,
 				autoplay: true,
 				width: value.w,
-				height: value.h
+				height: value.h,
 			};
 
 			callbacks = {
 				onReady: CLVimeo.onHeroReady,
 				onStateChange: CLVimeo.onHeroStateChange,
-				onError: CLVimeo.onHeroError
+				onError: CLVimeo.onHeroError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
-
 		}
 
 		/* Videos */
 		for ( id in data.videos.vimeo ) {
+			value = data.videos.vimeo[ id ];
 
-			value = data.videos.vimeo[id];
-
-			showinfo = ( '1' == value.showinfo ) ? true : false;
+			showinfo = ( '1' === value.showinfo ) ? true : false;
 
 			options = {
 				url: value.src,
 				byline: showinfo,
 				title: showinfo,
-				portrait: showinfo
+				portrait: showinfo,
 			};
 
 			callbacks = {
 				onReady: CLVimeo.onVideoReady,
 				onStateChange: CLVimeo.onVideoStateChange,
-				onError: CLVimeo.onVideoError
+				onError: CLVimeo.onVideoError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
-
 		}
-
 	};
 
 	function createVimeoPlayer( id, value, options, callbacks ) {
-
 		value.player = new Vimeo.Player( id, options );
 
 		value.player.on(
@@ -185,7 +170,7 @@ function onYouTubePlayerAPIReady() {
 				value.state = 'loaded';
 				callbacks.onReady( value );
 			}
-			);
+		);
 
 		value.player.on(
 			'bufferstart',
@@ -193,7 +178,7 @@ function onYouTubePlayerAPIReady() {
 				value.state = 'buffering';
 				callbacks.onStateChange( value );
 			}
-			);
+		);
 
 		value.player.on(
 			'play',
@@ -201,7 +186,7 @@ function onYouTubePlayerAPIReady() {
 				value.state = 'playing';
 				callbacks.onStateChange( value );
 			}
-			);
+		);
 
 		value.player.on(
 			'pause',
@@ -209,7 +194,7 @@ function onYouTubePlayerAPIReady() {
 				value.state = 'paused';
 				callbacks.onStateChange( value );
 			}
-			);
+		);
 
 		value.player.on(
 			'ended',
@@ -217,22 +202,19 @@ function onYouTubePlayerAPIReady() {
 				value.state = 'ended';
 				callbacks.onStateChange( value );
 			}
-			);
+		);
 
 		value.player.on( 'error', callbacks.onError.bind( null, value ) );
-
 	}
 
 	/*
 	 * Create the YouTube player(s)
 	 */
 	CLCreateYouTubePlayers = function() {
-
-		var id, value;
+		let id, value;
 
 		for ( id in data.heroes.yt ) {
-
-			value = data.heroes.yt[id];
+			value = data.heroes.yt[ id ];
 
 			value.player = new YT.Player(
 				id,
@@ -246,21 +228,19 @@ function onYouTubePlayerAPIReady() {
 						showinfo: 0,
 						modestbranding: 1,
 						iv_load_policy: 3,
-						rel: 0
+						rel: 0,
 					},
 					events: {
-						'onReady': CLYT.onHeroReady,
-						'onStateChange': CLYT.onHeroStateChange,
-						'onError': CLYT.onHeroError
-					}
-			}
-				);
-
+						onReady: CLYT.onHeroReady,
+						onStateChange: CLYT.onHeroStateChange,
+						onError: CLYT.onHeroError,
+					},
+				}
+			);
 		}
 
 		for ( id in data.videos.yt ) {
-
-			value = data.videos.yt[id];
+			value = data.videos.yt[ id ];
 
 			value.player = new YT.Player(
 				id,
@@ -273,18 +253,15 @@ function onYouTubePlayerAPIReady() {
 						color: 'white',
 						modestbranding: 1,
 						iv_load_policy: 3,
-						rel: 0
+						rel: 0,
 					},
 					events: {
-						'onReady': CLYT.onVideoReady,
-						'onStateChange': CLYT.onVideoStateChange,
-						'onError': CLYT.onVideoError
-					}
-			}
-				);
-
+						onReady: CLYT.onVideoReady,
+						onStateChange: CLYT.onVideoStateChange,
+						onError: CLYT.onVideoError,
+					},
+				}
+			);
 		}
-
 	};
-
-})();
+}() );
