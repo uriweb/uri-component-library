@@ -1,21 +1,21 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 
 const {
 	PanelBody,
 	PanelRow,
-	RangeControl
+	RangeControl,
 } = wp.components;
 
 const {
 	InspectorControls,
-	InnerBlocks
+	InnerBlocks,
 } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
-	'uri-cl/tab'
+	'uri-cl/tab',
 ];
 
 const customIcon = () => {
@@ -24,7 +24,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/tabs.png' )}
+			src={ ( URI_CL_URL + 'i/icons/tabs.png' ) }
 			alt="button"
 		/>
 	);
@@ -33,7 +33,6 @@ const customIcon = () => {
 const classNames = ( attributes ) => {
 	let classes = 'cl-tabs';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -41,11 +40,9 @@ const classNames = ( attributes ) => {
 };
 
 const getTabsTemplate = ( tabs ) => {
-
-	return [...Array( tabs )].map( function() {
-		return ['uri-cl/tab', {}];
-	});
-
+	return [ ...Array( tabs ) ].map( function() {
+		return [ 'uri-cl/tab', {} ];
+	} );
 };
 
 registerBlockType( 'uri-cl/tabs', {
@@ -57,15 +54,14 @@ registerBlockType( 'uri-cl/tabs', {
 	attributes: {
 		tabs: {
 			type: 'number',
-			default: 2
-		}
+			default: 2,
+		},
 	},
 
-	edit({ attributes, className, setAttributes }) {
-
+	edit( { attributes, className, setAttributes } ) {
 		// Generate the image or the add image section
 
-		let classes = classNames( attributes );
+		const classes = classNames( attributes );
 
 		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
@@ -78,7 +74,7 @@ registerBlockType( 'uri-cl/tabs', {
 								value={ attributes.tabs }
 								onChange={ ( nextTabs ) => {
 									setAttributes( {
-										tabs: nextTabs
+										tabs: nextTabs,
 									} );
 								} }
 								min={ 2 }
@@ -93,28 +89,27 @@ registerBlockType( 'uri-cl/tabs', {
 		const createContentEditForm = () => {
 			return (
 				<div className="container">
-					<div class={classes}>
-							<InnerBlocks
-								template={ getTabsTemplate( attributes.tabs ) }
-								templateLock="all"
-								allowedBlocks={ ALLOWED_BLOCKS } />
+					<div className={ classes }>
+						<InnerBlocks
+							template={ getTabsTemplate( attributes.tabs ) }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
 			);
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createInspectorControls(),
-			createContentEditForm()
-		]);
-
+			createContentEditForm(),
+		] );
 	}, // End edit
 
-	save({ attributes }) {
+	save( { attributes } ) {
 		return (
 			<InnerBlocks.Content />
 		);
-	}
+	},
 
-});
+} );
