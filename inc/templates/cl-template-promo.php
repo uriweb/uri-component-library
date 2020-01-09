@@ -17,10 +17,17 @@ $output .= '>';
 
 $output .= '<div class="cl-promo-backdrop-wrapper">';
 
-$background = '<div class="cl-promo-backdrop blur" style="background-image:url(' . $atts['img'] . ')"></div>';
-
-if ( 'confetti' == $atts['format'] ) {
-	$background = '<div class="cl-promo-backdrop confetti"></div>';
+switch ( $atts['style'] ) {
+	case 'confetti':
+		$background = '<div class="cl-promo-backdrop style-confetti"></div>';
+		break;
+	case 'brand':
+		$background = '<div class="cl-promo-backdrop style-brand"></div>';
+		break;
+	case 'default':
+	default:
+		$background = '<div class="cl-promo-backdrop style-blur" style="background-image:url(' . $atts['img'] . ')"></div>';
+		break;
 }
 
 $output .= $background;
@@ -54,42 +61,3 @@ $output .= '</div>';
 
 $output .= '</div>';
 $output .= '</section>';
-
-
-?>
-<!--
-<section>
-  <div class="campaign-promo breakout">
-	<div class="campaign-promo-content content-width">
-	  <h1>Calling all big thinkers</h1>
-	  <a href="https://www.uri.edu/thinkbig/video">Watch the video</a>
-	  <div class="campaign-promo-img">
-		<a class="campaign-promo-img-link" href="https://www.uri.edu/thinkbig/video">
-		  <img class="alignnone size-full wp-image-28469" src="https://www.uri.edu/wp-content/uploads/home/2019/09/2019FC-homepage-video-poster.jpg" alt="Poster frame for the campaign video. A woman looks into the camera." width="1000" height="562">
-		</a>
-	  </div>
-	</div>
-  </div>
-</section>
-
--->
-
-<!-- INSTAGRAM -->
-
-<!--
-
-<section>
-  <div class="instagram-promo breakout">
-	<div class="instagram-promo-content content-width">
-	  <h1>Congrats to our EA admits!</h1>
-	  Share your <a href="https://www.instagram.com/universityofri/">#InAtURI</a> post with us today!
-	  <div class="instagram-promo-embed">
-
-	  https://www.instagram.com/p/BtELKKcBQcO/
-
-	  </div>
-	</div>
-  </div>
-</section>
-
--->

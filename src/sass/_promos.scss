@@ -18,21 +18,27 @@
 
     .cl-promo-backdrop {
 
-      background: linear-gradient(#00054d, #1b3559);
+      background-color: #333;
     	background-position: center center;
     	background-repeat: no-repeat;
-    	background-size: cover;
       height: 100%;
       width: 100%;
 
-      &.blur {
+      &.style-blur {
+        background-size: cover;
         transform-origin: center center;
         transform: scale( 1.5 );
         filter: blur(50px);
       }
 
-      &.confetti {
+      &.style-confetti {
+        background: linear-gradient(#00054d, #1b3559);
+        background-size: cover;
         background-image: url('../i/confetti.jpg');
+      }
+
+      &.style-brand {
+        background-color: #002147;
       }
 
     }

@@ -649,7 +649,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'linktext' => '',
 			'img' => '',
 			'alt' => '',
-			'format' => 'default',
+			'style' => 'default',
 			'class' => '',
 			'css' => '',
 		),
@@ -671,10 +671,10 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 				'types' => array( 'url' ),
 			),
 			array(
-				'attr' => 'format',
+				'attr' => 'style',
 				'types' => array( 'str' ),
 				'req' => false,
-				'values' => array( 'default', 'confetti' ),
+				'values' => array( 'default', 'confetti', 'brand' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'promo' )
