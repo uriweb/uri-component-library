@@ -7,7 +7,9 @@
   "rules": {
     "no-undef": ["warn"],
     "no-unused-vars": ["warn"],
-    "no-console": [ "error", { "allow": ["warn", "error"] } ]
+    "no-console": [ "error", { "allow": ["warn", "error"] } ],
+    "jsx-a11y/label-has-associated-control": ["warn"],
+    "jsx-a11y/label-has-for": [0]
   },
   "ignorePatterns": [
     "node_modules/",
