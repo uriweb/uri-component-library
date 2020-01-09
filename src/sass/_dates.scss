@@ -48,6 +48,31 @@
           box-shadow .1s ease-in-out;
       }
 
+      .cl-date-pin {
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        z-index: 1;
+        display: block;
+        opacity: 0;
+        transform: scale( 0 );
+        transform-origin: center center;
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        background-image: url(../i/pin.svg);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: 100% auto;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2);
+        transition:
+          transform .1s ease-in-out,
+          opacity .1s ease-in-out,
+          background-color .1s ease-in-out;
+      }
+
       .cl-date-month {
 
         padding: .6rem .5rem .5rem;
@@ -155,6 +180,11 @@
         transition-duration: .15s;
       }
 
+      .cl-date-pin {
+        opacity: 1;
+        transform: scale(1);
+      }
+
       .cl-date-month {
 
         padding: .55rem .5rem;
@@ -168,6 +198,17 @@
         }
       }
 
+    }
+
+    &.pinned .cl-date-content-wrapper .cl-date-pin {
+      background-color: #ff5427;
+      background-position: center 100%;
+      transform: scale(1.1);
+    }
+
+    &.pinned .cl-date-content-wrapper:active,
+    .cl-date-content-wrapper:active {
+      transform: scale(.9);
     }
 
 }

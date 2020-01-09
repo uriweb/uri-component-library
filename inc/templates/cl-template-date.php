@@ -25,8 +25,9 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
-$output .= '<div class="cl-date-content-wrapper pin">';
+$output .= '<div class="cl-date-content-wrapper pin" title="Pin this date">';
 $output .= '<div class="cl-date-content">';
+$output .= '<div class="cl-date-pin"></div>';
 $output .= '<div class="cl-date-month">';
 
 if ( $atts['show_year'] ) {

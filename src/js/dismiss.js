@@ -1,5 +1,5 @@
 /**
- * DISMISS
+ * DISMISS AND PIN
  *
  * @package uri-component-library
  */
@@ -8,7 +8,7 @@
 
 	'use strict';
 
-	window.addEventListener( 'load', init, false );
+	window.addEventListener( 'DOMContentLoaded', init, false );
 
 	function init() {
 
@@ -63,25 +63,25 @@
 
 	function setupPin( el ) {
 
-		var d, cvalue, hash;
+		var p, cvalue, hash;
 
-		d = el.querySelector( '.pin' );
+		p = el.querySelector( '.pin' );
 
-		if ( null === d ) {
+		if ( null === p ) {
 			return;
 		}
 
-		d.addEventListener( 'click', pin.bind( null, el ), false );
+		p.addEventListener( 'click', pin.bind( null, el, p ), false );
 		hash = el.getAttribute( 'data-hash' );
 		cvalue = URICL.getCookie( 'uri-cl-' + hash );
 
 		if ( 'pinned' == cvalue ) {
-			pin( el );
+			pin( el, p );
 		}
 
 	}
 
-	function pin( el ) {
+	function pin( el, p ) {
 
 		var hash;
 
@@ -89,9 +89,11 @@
 
 		if ( el.classList.contains( 'pinned' ) ) {
 			el.classList.remove( 'pinned' );
+			p.setAttribute( 'title', 'Pin this date' );
 			URICL.setCookie( 'uri-cl-' + hash, 'unpinned', 30 );
 		} else {
 			el.classList.add( 'pinned' );
+			p.setAttribute( 'title', 'Unpin this date' );
 			URICL.setCookie( 'uri-cl-' + hash, 'pinned', 30 );
 		}
 
