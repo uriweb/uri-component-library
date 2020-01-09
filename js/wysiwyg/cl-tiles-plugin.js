@@ -5,14 +5,13 @@
  * @package uri-component-library
  */
 
-(function() {
-
-	var cName = 'cl-tiles',
+( function() {
+	const cName = 'cl-tiles',
 		wName = 'CLTiles';
 
 	function generateTilesHTML( params ) {
-		var classes, out, i;
-		classes = cName + ' ' + getTilesColumns( params.columns );
+		let out, i;
+		const classes = cName + ' ' + getTilesColumns( params.columns );
 		out = '<div class="' + classes + '">';
 		for ( i = 0; i < params.columns; i++ ) {
 			out += '<div> </div>';
@@ -25,20 +24,20 @@
 	}
 
 	function getTilesColumns( count ) {
-		var columns;
+		let columns;
 		switch ( count ) {
 			case '2':
 				columns = 'halves';
-			break;
+				break;
 			case '3':
 				columns = 'thirds';
-			break;
+				break;
 			case '4':
 				columns = 'fourths';
-			break;
+				break;
 			case '5':
 				columns = 'fifths';
-			break;
+				break;
 		}
 		return columns;
 	}
@@ -54,70 +53,63 @@
 			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init: function( ed, url ) {
-
+			init( ed, url ) {
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
-				wName,
+					wName,
 					{
 						title: 'Tiles',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/tiles.png'
-				}
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/tiles.png',
+					}
 				);
 
 				// Add a js callback for the button
 				ed.addCommand(
-				wName,
+					wName,
 					function( target, args ) {
-
-						var possibleArgs;
-
 						// Create an empty object if args is empty
 						if ( ! args ) {
 							args = {};
 						}
 
 						// Create an empty property so nothing is null
-						possibleArgs = ['columns'];
+						const possibleArgs = [ 'columns' ];
 						possibleArgs.forEach(
-						function( i ) {
-							if ( ! args[i] ) {
-								args[i] = '';
+							function( i ) {
+								if ( ! args[ i ] ) {
+									args[ i ] = '';
+								}
 							}
-						}
 						);
 
 						// Prevent nested quotes... escape / unescape instead?
 						args = URIWYSIWYG.unEscapeQuotesDeep( args );
 
 						ed.windowManager.open(
-						{
-							title: 'Insert / Update Tiles',
-							body: [
-							{ type: 'listbox', name: 'columns', label: 'Columns', value: args.columns, 'values': [
-								{ text: 'Two', value: '2' },
-								{ text: 'Three', value: '3' },
-								{ text: 'Four', value: '4' },
-								{ text: 'Five', value: '5' }
-								]
-							}
-							],
-							onsubmit: function( e ) {
-
+							{
+								title: 'Insert / Update Tiles',
+								body: [
+									{ type: 'listbox', name: 'columns', label: 'Columns', value: args.columns, values: [
+										{ text: 'Two', value: '2' },
+										{ text: 'Three', value: '3' },
+										{ text: 'Four', value: '4' },
+										{ text: 'Five', value: '5' },
+									],
+									},
+								],
+								onsubmit( e ) {
 								// Insert content when the window form is submitted
-								e.data = URIWYSIWYG.escapeQuotesDeep( e.data );
-								shortcode = generateTilesHTML( e.data );
-								ed.execCommand( 'mceInsertContent', 0, shortcode );
-
+									e.data = URIWYSIWYG.escapeQuotesDeep( e.data );
+									shortcode = generateTilesHTML( e.data );
+									ed.execCommand( 'mceInsertContent', 0, shortcode );
+								},
+							},
+							{
+								wp,
 							}
-						},
-						{
-							wp: wp
-						}
 						);
-
 					}
 				);
 			},
@@ -128,14 +120,13 @@
 			 *
 			 * @return {Object} Name/value array containing information about the plugin.
 			 */
-			getInfo: function() {
+			getInfo() {
 				return URIWYSIWYG.getPluginInfo();
-			}
+			},
 
-	}
-		);
+		}
+	);
 
 	// Register plugin
 	tinymce.PluginManager.add( 'uri_cl_wysiwyg_tiles', tinymce.plugins.uri_cl_wysiwyg_tiles );
-
-})();
+}() );
