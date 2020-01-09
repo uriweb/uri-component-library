@@ -8,100 +8,94 @@
  */
 
 ( function() {
-
 	'use strict';
 
-	var carousels = [];
+	const carousels = [];
 
 	window.addEventListener( 'load', initCLSlideshow, false );
 
 	function initCLSlideshow() {
+		let i;
+		const g = document.querySelectorAll( '.gallery.gallery-size-full' );
 
-		var g, i;
-
-		g = document.querySelectorAll( '.gallery.gallery-size-full' );
 		for ( i = 0; i < g.length; i++ ) {
-			parseWPGallery( g[i] );
+			parseWPGallery( g[ i ] );
 		}
 
 		window.addEventListener( 'resize', handleResize, false );
-
 	}
 
-	/*
+	/**
 	 * Parse gallery element
-	 * @param el el the gallery element
+	 *
+	 * @param {Object} el The gallery element
 	 */
 	function parseWPGallery( el ) {
+		let i, parts, caption;
 
-		var figs, i, parts, caption, parsed = [];
-
-		figs = el.querySelectorAll( 'figure' );
+		const parsed = [];
+		const figs = el.querySelectorAll( 'figure' );
 
 		for ( i = 0; i < figs.length; i++ ) {
-
 			parts = {};
 
-			parts.img = figs[i].querySelector( 'img' );
+			parts.img = figs[ i ].querySelector( 'img' );
 
-			caption = figs[i].querySelector( 'figcaption' );
+			caption = figs[ i ].querySelector( 'figcaption' );
 			if ( caption ) {
 				parts.caption = caption.innerHTML;
 			}
 
 			parsed.push( parts );
-
 		}
 
 		buildSlideshowDOM( el, parsed );
-
 	}
 
-	/*
+	/**
 	 * Build slideshow DOM
-	 * @param el el the gallery element
-	 * @param parsed obj the parsed gallery
+	 *
+	 * @param {Object} el The gallery element
+	 * @param {Object} parsed The parsed gallery
 	 */
 	function buildSlideshowDOM( el, parsed ) {
-		var S, carouselWrapper, carousel, counter, slide, fig, cap, i, obj;
+		let slide, fig, cap, i;
 
-		S = document.createElement( 'div' );
+		const S = document.createElement( 'div' );
 		S.className = 'cl-slideshow';
 
-		carouselWrapper = document.createElement( 'div' );
+		const carouselWrapper = document.createElement( 'div' );
 		carouselWrapper.className = 'carousel-wrapper';
 		S.appendChild( carouselWrapper );
 
-		carousel = document.createElement( 'div' );
+		const carousel = document.createElement( 'div' );
 		carousel.className = 'carousel transitions';
 		carousel.setAttribute( 'style', 'grid-template-columns: repeat(' + parsed.length + ',100%)' );
 		carouselWrapper.appendChild( carousel );
 
-		counter = document.createElement( 'div' );
+		const counter = document.createElement( 'div' );
 		counter.className = 'counter';
 		S.appendChild( counter );
 
 		for ( i = 0; i < parsed.length; i++ ) {
-
 			slide = document.createElement( 'div' );
 			slide.className = 'slide';
 
 			fig = document.createElement( 'figure' );
-			fig.appendChild( parsed[i].img );
+			fig.appendChild( parsed[ i ].img );
 
 			cap = document.createElement( 'figcaption' );
-			cap.innerHTML = parsed[i].caption ? parsed[i].caption : '';
+			cap.innerHTML = parsed[ i ].caption ? parsed[ i ].caption : '';
 			fig.appendChild( cap );
 
 			slide.appendChild( fig );
 			carousel.appendChild( slide );
-
 		}
 
-		obj = {
+		const obj = {
 			el: carousel,
-			counter: counter,
-			n: parsed.length
+			counter,
+			n: parsed.length,
 		};
 
 		carousel.addEventListener( 'scroll', handleScroll.bind( null, obj ), false );
@@ -111,27 +105,26 @@
 		setPosition( obj, 0, 'auto' );
 
 		el.parentNode.replaceChild( S, el );
-
 	}
 
 	/**
 	 * Create controls
 	 *
-	 * @param c obj the carousel object
+	 * @param {Object} c the carousel object
 	 */
 	function makeControlButtons( c ) {
-		var controls, types, target, button, x;
+		let target, button, x;
+		const controls = document.createElement( 'div' );
 
-		controls = document.createElement( 'div' );
 		controls.className = 'controls';
 
-		types = ['Previous', 'Next'];
+		const types = [ 'Previous', 'Next' ];
 
 		for ( x in types ) {
 			target = document.createElement( 'div' );
-			target.className = 'target ' + types[x].toLowerCase();
-			target.title = types[x];
-			target.addEventListener( 'click', controlDirection.bind( null, c, types[x], false ) );
+			target.className = 'target ' + types[ x ].toLowerCase();
+			target.title = types[ x ];
+			target.addEventListener( 'click', controlDirection.bind( null, c, types[ x ], false ) );
 
 			button = document.createElement( 'div' );
 			button.className = 'controller';
@@ -141,19 +134,20 @@
 		}
 
 		return controls;
-
 	}
 
-	/*
+	/**
 	 * Control direction of movement
-	 * @param c obj the carousel object
-	 * @param direction str the direction to move in
-	 * @param mobile bool called from mobile device
+	 *
+	 * @param {Object} c The carousel object
+	 * @param {string} direction The direction to move in
+	 * @param {boolean} mobile Called from mobile device
 	 */
 	function controlDirection( c, direction, mobile ) {
-		var index, count;
+		let index;
 		index = c.el.getAttribute( 'data-position' );
-		count = c.el.children.length - 1;
+
+		const count = c.el.children.length - 1;
 
 		// Reset the endslide animation
 		c.el.classList.remove( 'reboundLeft', 'reboundRight' );
@@ -165,9 +159,8 @@
 					void c.el.offsetWidth; // Trigger reflow to restart animation
 					c.el.classList.add( 'reboundRight' );
 					return;
-				} else {
-					index--;
 				}
+				index--;
 			}
 		} else {
 			index--;
@@ -176,77 +169,66 @@
 					void c.el.offsetWidth; // Trigger reflow to restart animation
 					c.el.classList.add( 'reboundLeft' );
 					return;
-				} else {
-					index++;
 				}
+				index++;
 			}
 		}
 
 		setPosition( c, index, 'smooth' );
-
 	}
 
-	/*
+	/**
 	 * Set position of slideshow
-	 * @param c obj the carousel object
-	 * @param index int the index to move to
+	 *
+	 * @param {Object} c The carousel object
+	 * @param {number} index The index to move to
+	 * @param {string} behavior
 	 */
 	function setPosition( c, index, behavior ) {
-
 		c.el.scroll(
 			{
 				top: 0,
 				left: c.el.offsetWidth * index,
-				behavior: behavior
-		}
-			);
+				behavior,
+			}
+		);
 
 		c.el.setAttribute( 'data-position', index );
 
 		updateCounter( c, index );
 		updateActive( c, index );
-
 	}
 
 	function updateCounter( c, index ) {
-		c.counter.innerHTML = '<span>' + ( index * 1 + 1 ) + '</span> of ' + c.n;
+		c.counter.innerHTML = '<span>' + ( ( index * 1 ) + 1 ) + '</span> of ' + c.n;
 	}
 
 	function updateActive( c, index ) {
+		let i;
 
-		var i, slide;
-
-		slide = c.el.querySelectorAll( '.slide' );
+		const slide = c.el.querySelectorAll( '.slide' );
 		for ( i = 0; i < c.n; i++ ) {
-			slide[i].classList.remove( 'active' );
+			slide[ i ].classList.remove( 'active' );
 		}
 
-		slide[index].classList.add( 'active' );
-
+		slide[ index ].classList.add( 'active' );
 	}
 
 	function handleScroll( c ) {
-
-		var s, i;
-
-		s = c.el.scrollLeft;
-		i = s / c.el.offsetWidth;
+		const s = c.el.scrollLeft;
+		const i = s / c.el.offsetWidth;
 		if ( Number.isInteger( i ) ) {
 			c.el.setAttribute( 'data-position', i );
 			updateCounter( c, i );
 			updateActive( c, i );
 		}
-
 	}
 
 	function handleResize() {
-
-		var i;
+		let i;
 
 		for ( i = 0; i < carousels.length; i++ ) {
-			setPosition( carousels[i], carousels[i].el.getAttribute( 'data-position' ), 'auto' );
+			setPosition( carousels[ i ], carousels[ i ].el.getAttribute( 'data-position' ), 'auto' );
 		}
-
 	}
-
-})();
+}() );
