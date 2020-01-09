@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var pkg = require('./package.json');
 
 // include plug-ins
-var jshint = require('gulp-jshint');
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 //var stripDebug = require('gulp-strip-debug');
@@ -69,16 +68,6 @@ function scripts(done) {
                   ' */',
                   '',
                   ''].join('\n');
-
-	// Run JSHint for src js
-    gulp.src('./src/js/*.js')
-        .pipe(jshint(done))
-        .pipe(jshint.reporter('default'));
-
-	// Run JSHint for wysiwyg js
-	gulp.src('./js/wysiwyg/*.js')
-        .pipe(jshint(done))
-        .pipe(jshint.reporter('default'));
 
 	// Run eslint for src js
     gulp.src('./src/js/*.js')
