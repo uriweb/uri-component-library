@@ -11,7 +11,7 @@ const {
 	TextControl,
 	Button,
 	ButtonGroup,
-	ToggleControl
+	ToggleControl,
 } = wp.components;
 const {
 	BlockControls,
@@ -23,7 +23,7 @@ const {
 	AlignmentToolbar,
 	RichText,
 	PlainText,
-	URLInput
+	URLInput,
 } = wp.blockEditor;
 
 // @see https://github.com/WordPress/gutenberg/tree/master/packages/block-library/src
@@ -43,9 +43,8 @@ const customIcon = () => {
 };
 
 const randomID = () => {
-
 	// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
-	let S4 = () => {
+	const S4 = () => {
 		return ( ( ( 1 + Math.random() ) * 0x10000 ) | 0 ).toString( 16 ).substring( 1 );
 	};
 	return ( S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4() );
@@ -61,54 +60,53 @@ registerBlockType( 'uri-cl/hero', {
 	// the img and alt are for editor placeholders
 	attributes: {
 		headline: {
-			type: 'string'
+			type: 'string',
 		},
 		subhead: {
-			type: 'string'
+			type: 'string',
 		},
 		link: {
-			type: 'string'
+			type: 'string',
 		},
 		mediaID: {
-			type: 'number'
+			type: 'number',
 		},
 		id: {
-			type: 'string'
+			type: 'string',
 		},
 		vid: {
-			type: 'string'
+			type: 'string',
 		},
 		img: {
-			type: 'string'
+			type: 'string',
 		},
 		alt: {
-			type: 'string'
+			type: 'string',
 		},
 		button: {
-			type: 'string'
+			type: 'string',
 		},
 		tooltip: {
-			type: 'string'
+			type: 'string',
 		},
 		use_caption: {
-			type: 'boolean'
+			type: 'boolean',
 		},
 		caption: {
-			type: 'string'
+			type: 'string',
 		},
 		credit: {
-			type: 'string'
+			type: 'string',
 		},
 		format: {
-			type: 'string'
+			type: 'string',
 		},
 		animation: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
-
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
 			if ( attributes.mediaID ) {
@@ -119,29 +117,27 @@ registerBlockType( 'uri-cl/hero', {
 						className="image"
 					/>
 				);
-			} else {
-				return (
-					<MediaPlaceholder
-						icon={ 'format-image' }
-						className={ className }
-						labels={ {
-							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
-						} }
-						onSelect={ media =>
-							{
-								setAttributes( {
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								});
-							}
-						}
-						accept="image/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					/>
-				);
 			}
+			return (
+				<MediaPlaceholder
+					icon={ 'format-image' }
+					className={ className }
+					labels={ {
+						title: 'Add an image',
+						instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+					} }
+					onSelect={ ( media ) => {
+						setAttributes( {
+							alt: media.alt,
+							img: media.url,
+							mediaID: media.id,
+						} );
+					}
+					}
+					accept="image/*"
+					allowedTypes={ ALLOWED_MEDIA_TYPES }
+				/>
+			);
 		};
 
 		let meta;
@@ -151,14 +147,14 @@ registerBlockType( 'uri-cl/hero', {
 					className="meta"
 					onSubmit={ ( event ) => event.preventDefault() }
 				>
-					<fieldset class="row link">
-					<label title="Links to:"><Dashicon icon="admin-links" /></label>
-					<URLInput
-						value={ attributes.link }
-						onChange={ ( content ) => setAttributes( { link: content } ) }
-						placeholder="https://www.uri.edu/"
-						className="meta-field"
-					/>
+					<fieldset className="row link">
+						<label title="Links to:"><Dashicon icon="admin-links" /></label>
+						<URLInput
+							value={ attributes.link }
+							onChange={ ( content ) => setAttributes( { link: content } ) }
+							placeholder="https://www.uri.edu/"
+							className="meta-field"
+						/>
 					</fieldset>
 				</form>
 			);
@@ -166,7 +162,6 @@ registerBlockType( 'uri-cl/hero', {
 
 		// Generate editor view of the hero itself
 		const createContentEditForm = () => {
-
 			if ( ! attributes.id ) {
 				attributes.id = randomID();
 			}
@@ -194,46 +189,45 @@ registerBlockType( 'uri-cl/hero', {
 			}
 			return (
 				<div className="container cl-hero-block-form">
-					<div className={classes} title={title}>
-						<div class="cl-hero-proper">
-							<div class="poster">
+					<div className={ classes } title={ title }>
+						<div className="cl-hero-proper">
+							<div className="poster">
 								<MediaUpload
-									onSelect={ media =>
-										{
-											setAttributes( {
-												alt: media.alt,
-												img: media.url,
-												mediaID: media.id
-											});
-										}
+									onSelect={ ( media ) => {
+										setAttributes( {
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id,
+										} );
+									}
 									}
 									type="image"
 									value={ attributes.mediaID }
-									render={ ({ open }) => getImageButton( open ) }
+									render={ ( { open } ) => getImageButton( open ) }
 								/>
 							</div>
-							<div class="cl-hero-text overlay">
-								<div class="block">
+							<div className="cl-hero-text overlay">
+								<div className="block">
 									<h1><PlainText
-										onChange={ content => setAttributes({ headline: content }) }
+										onChange={ ( content ) => setAttributes( { headline: content } ) }
 										value={ attributes.headline }
 										placeholder={ __( 'Your hero title' ) }
 										keepPlaceholderOnFocus={ true }
 									/></h1>
-									<p class="subhead"><RichText
-										onChange={ content => setAttributes({ subhead: content }) }
+									<p className="subhead"><RichText
+										onChange={ ( content ) => setAttributes( { subhead: content } ) }
 										value={ attributes.subhead }
 										placeholder={ __( 'Your hero subtitle' ) }
 										keepPlaceholderOnFocus={ true }
 										className="subhead"
 									/></p>
-									<span class="cl-button">
-									<PlainText
-										onChange={ content => setAttributes({ button: content }) }
-										value={ attributes.button }
-										placeholder={ __( 'Your button text' ) }
-										keepPlaceholderOnFocus={true}
-									/></span>
+									<span className="cl-button">
+										<PlainText
+											onChange={ ( content ) => setAttributes( { button: content } ) }
+											value={ attributes.button }
+											placeholder={ __( 'Your button text' ) }
+											keepPlaceholderOnFocus={ true }
+										/></span>
 									{ meta }
 								</div>
 							</div>
@@ -249,35 +243,34 @@ registerBlockType( 'uri-cl/hero', {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
-						onChange={ content => setAttributes({ alignment: content }) }
+						onChange={ ( content ) => setAttributes( { alignment: content } ) }
 					/>
 
 					{ !! attributes.img && (
-					<MediaUploadCheck>
-						<Toolbar>
-							<MediaUpload
-								onSelect={ media =>
-									{
-										setAttributes({
+						<MediaUploadCheck>
+							<Toolbar>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setAttributes( {
 											alt: media.alt,
 											img: media.url,
-											mediaID: media.id
-										});
+											mediaID: media.id,
+										} );
 									}
-								}
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ attributes.mediaID }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit media' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</Toolbar>
-					</MediaUploadCheck>
+									}
+									allowedTypes={ ALLOWED_MEDIA_TYPES }
+									value={ attributes.mediaID }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit media' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+							</Toolbar>
+						</MediaUploadCheck>
 					) }
 				</BlockControls>
 			);
@@ -291,13 +284,15 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
+								id="hero-format"
 							>
 								<ButtonGroup aria-label={ __( 'Hero Format' ) }>
 									{ [ 'default', 'fullwidth', 'super' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const format = ( undefined == attributes.format ) ? '' : attributes.format;
-										const isSelected = ( key === format );
+										const format = ( undefined === attributes.format ) ? '' : attributes.format;
+
+										isSelected = ( key === format );
 
 										return (
 											<Button
@@ -305,7 +300,7 @@ registerBlockType( 'uri-cl/hero', {
 												isDefault
 												isPrimary={ isSelected }
 												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ format: key }) }
+												onClick={ ( content ) => setAttributes( { format: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -318,7 +313,7 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<TextControl
 								label="Video URL"
-								onChange={ content => setAttributes( { vid: content } ) }
+								onChange={ ( content ) => setAttributes( { vid: content } ) }
 								value={ attributes.vid }
 								className="meta-field vid"
 								help="For creating a video hero."
@@ -330,14 +325,14 @@ registerBlockType( 'uri-cl/hero', {
 								label="Use WordPress caption"
 								help="Setting a custom caption below will override any WordPress caption."
 								checked={ attributes.use_caption }
-								onChange={ content => setAttributes( { use_caption: content } ) }
+								onChange={ ( content ) => setAttributes( { use_caption: content } ) }
 							/>
 						</PanelRow>
 
 						<PanelRow>
 							<TextControl
 								label="Caption"
-								onChange={ content => setAttributes( { caption: content } ) }
+								onChange={ ( content ) => setAttributes( { caption: content } ) }
 								value={ attributes.caption }
 								className="meta-field vid"
 								help="Set a caption for the hero."
@@ -347,7 +342,7 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<TextControl
 								label="Credit"
-								onChange={ content => setAttributes( { credit: content } ) }
+								onChange={ ( content ) => setAttributes( { credit: content } ) }
 								value={ attributes.credit }
 								className="meta-field vid"
 								help="Specify credit for the hero media."
@@ -357,7 +352,7 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ content => setAttributes( { tooltip: content } ) }
+								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
 							/>
@@ -368,12 +363,11 @@ registerBlockType( 'uri-cl/hero', {
 		};
 
 		// Send the editor interfaces to the view
-	return ([
+		return ( [
 			createBlockControls(),
 			createInspectorControls(),
-			createContentEditForm()
-	]);
+			createContentEditForm(),
+		] );
+	}, // End edit
 
-	} // End edit
-
-});
+} );
