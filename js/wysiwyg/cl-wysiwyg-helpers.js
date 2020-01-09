@@ -4,28 +4,27 @@
  * @package uri-component-library
  */
 
- // jshint esversion: 6
- // jscs:disable requireVarDeclFirst
- // jscs:disable validateQuoteMarks
-var URIWYSIWYGoutStandingRequests = 0;
-var URIWYSIWYGpublishButtonValue;
+// jshint esversion: 6
+let URIWYSIWYGoutStandingRequests = 0;
+let URIWYSIWYGpublishButtonValue;
 
 jQuery( document ).ready(
 	function() {
 		URIWYSIWYGpublishButtonValue = jQuery( '#publish' ).val();
 	}
-	);
+);
 
 class URIWYSIWYG {
-
 	/**
 	 * Escapes quotes on every element in an array (if element is a string)
+	 *
+	 * @param a
 	 */
 	static escapeQuotesDeep( a ) {
-		var i;
+		let i;
 		for ( i in a ) {
-			if ( 'string' === typeof a[i] ) {
-				a[i] = this.escapeQuotes( a[i] );
+			if ( 'string' === typeof a[ i ] ) {
+				a[ i ] = this.escapeQuotes( a[ i ] );
 			}
 		}
 		return a;
@@ -33,6 +32,8 @@ class URIWYSIWYG {
 
 	/**
 	 * Replace quotes with curly quotes
+	 *
+	 * @param s
 	 */
 	static escapeQuotes( s ) {
 		s = s.replace( /"\b/g, '&#8220;' );
@@ -42,12 +43,14 @@ class URIWYSIWYG {
 
 	/**
 	 * Unescapes quotes on every element in an array (if element is a string)
+	 *
+	 * @param a
 	 */
 	static unEscapeQuotesDeep( a ) {
-		var i;
+		let i;
 		for ( i in a ) {
-			if ( 'string' === typeof a[i] ) {
-				a[i] = this.unEscapeQuotes( a[i] );
+			if ( 'string' === typeof a[ i ] ) {
+				a[ i ] = this.unEscapeQuotes( a[ i ] );
 			}
 		}
 		return a;
@@ -55,6 +58,8 @@ class URIWYSIWYG {
 
 	/**
 	 * Replace %25 with "
+	 *
+	 * @param s
 	 */
 	static unEscapeQuotes( s ) {
 		return s.replace( /%25/g, '"' );
@@ -62,14 +67,14 @@ class URIWYSIWYG {
 
 	/**
 	 * Replace HTML ASCII characters with their HTML entities
-	 * Specifically, replace &, ", ', <, and >
-	 * note: replaces straight quotes (double primes) with curly quotes
+Specifically, replace &, ", ', <, and >
+note: replaces straight quotes (double primes) with curly quotes
 	 *
+	 * @param s
 	 * @param str s
 	 * @return str
 	 */
 	static htmlEscape( s ) {
-
 		// Tend to quotes... using the entities here will cause the visual editor to
 		// Display them literally, that's why this doesn't call escapeQuotes()
 		// Replace all quotes before a word boundary with an opening curly quote
@@ -100,11 +105,11 @@ class URIWYSIWYG {
 	 * Replace HTML entities with their ASCII characters
 	 *
 	 * @see htmlEscape()
+	 * @param s
 	 * @param str s
 	 * @return str
 	 */
 	static htmlUnescape( s ) {
-
 		// jscs:disable validateQuoteMarks
 		return s
 			.replace( /&#34;/g, '"' )
@@ -123,93 +128,82 @@ class URIWYSIWYG {
 	 * @param sc str the shortcode
 	 * @return obj and html object
 	 */
-	static getWrapper ( html, sc ) {
-
+	static getWrapper( html, sc ) {
 		if ( ! html.getAttribute( 'data-shortcode' ) ) {
-
 			// See if the component has a wrapper element
-			html = jQuery( html ).closest( '.' + sc + '-wrapper' )[0];
-
+			html = jQuery( html ).closest( '.' + sc + '-wrapper' )[ 0 ];
 		}
 
 		return html;
 	}
 
 	static getHTML( ed, shortcode, id, classes ) {
-
 		// https://api.jquery.com/jQuery.ajax/
 		jQuery.ajax(
-			 wp.ajax.settings.url,
+			wp.ajax.settings.url,
 			{
 				data: {
 					action: 'uri_cl_wysiwyg',
-					sc: shortcode
+					sc: shortcode,
 				},
 				dataType: 'json',
 				method: 'post',
-				error: function( jqXHR, textStatus, errorThrown ) {
-					console.log( 'failed to retrieve shortcode HTML.' );
-					console.log( textStatus );
-					console.log( errorThrown );
+				error( jqXHR, textStatus, errorThrown ) {
+					//console.log( 'failed to retrieve shortcode HTML.' );
+					//console.log( textStatus );
+					//console.log( errorThrown );
 				},
-				beforeSend: function() {
+				beforeSend() {
 					URIWYSIWYGoutStandingRequests++;
 					jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', true );
 					jQuery( '#publish' ).val( 'loading' );
 				},
-				success: function( data, textStatus, jqXHR ) {
-
-					var placeHolder, d;
+				success( data, textStatus, jqXHR ) {
+					let placeHolder, d;
 
 					if ( ed.$ ) {
-
 						placeHolder = ed.$( '#' + id );
 						d = document.createElement( 'div' );
 
 						if ( data.match( 'class="cl-card' ) ) {
-
 							// Replace the <a class="cl-card"> element with a <div>
 							// Because TinyMCE doesn't like block-level elements inside of inline elements
 							data = data.replace( '<a ', '<div ' );
 							data = data.replace( '</a>', '</div>' );
-
 						}
 
 						if ( data.match( 'class="cl-button' ) ) {
-
 							// Replace the <a class="cl-button"> element with a <span>
 							// Buttons render funny when selected if they're an anchor
 							data = data.replace( '<a ', '<span ' );
 							data = data.replace( '</a>', '</span>' );
-
 						}
 
 						jQuery( d ).addClass( classes ).append( data );
 
 						placeHolder.after( d.innerHTML );
-						var el = placeHolder.next();
+						const el = placeHolder.next();
 
 						el.attr(
 							{
 								'data-shortcode': window.encodeURIComponent( shortcode ),
-								'contenteditable': 'false'
+								contenteditable: 'false',
 							}
-							);
+						);
 						el.addClass( classes );
 
 						placeHolder.remove();
 					}
-
 				},
-				complete: function() {
+				complete() {
 					URIWYSIWYGoutStandingRequests--;
 					if ( URIWYSIWYGoutStandingRequests < 1 ) {
 						jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', null );
 						jQuery( '#publish' ).val( URIWYSIWYGpublishButtonValue );
 					}
-				}
-		}
-			);
+				},
+			}
+		);
 	}
 
 	/**
@@ -221,26 +215,21 @@ class URIWYSIWYG {
 	 * @param ed obj The editor
 	 */
 	static replaceShortcodes( content, shortcodeName, selfclosing, ed ) {
-
-		var re = selfclosing ? new RegExp( '\\[' + shortcodeName + '([^\\]]*)\\]', 'g' ) : new RegExp( '\\[' + shortcodeName + '[^]+?\\[/' + shortcodeName + '\\]', 'g' );
+		const re = selfclosing ? new RegExp( '\\[' + shortcodeName + '([^\\]]*)\\]', 'g' ) : new RegExp( '\\[' + shortcodeName + '[^]+?\\[/' + shortcodeName + '\\]', 'g' );
 
 		return content.replace(
-			 re,
+			re,
 			function( match ) {
+				const safeData = window.encodeURIComponent( match );
+				const classes = URIWYSIWYG.generateNonEditableClasses( shortcodeName );
 
-				var safeData, classes, out, id;
-
-				safeData = window.encodeURIComponent( match );
-				classes = URIWYSIWYG.generateNonEditableClasses( shortcodeName );
-
-				id = URIWYSIWYG.generateID();
-				out = URIWYSIWYG.generateLoadingDiv( safeData, id );
+				const id = URIWYSIWYG.generateID();
+				const out = URIWYSIWYG.generateLoadingDiv( safeData, id );
 
 				URIWYSIWYG.getHTML( ed, match, id, classes );
 				return out;
-
 			}
-			);
+		);
 	}
 
 	/**
@@ -252,19 +241,16 @@ class URIWYSIWYG {
 	 * @param cName mixed The component name
 	 */
 	static insertMultiMediaComponent( target, shortcode, ed, cName ) {
-
-		var id;
+		let id;
 
 		if ( target ) {
 			id = URIWYSIWYG.generateID();
 			jQuery( target ).replaceWith( URIWYSIWYG.generateLoadingDiv( window.encodeURIComponent( shortcode ), id ) );
 
 			URIWYSIWYG.getHTML( ed, shortcode, id, URIWYSIWYG.generateNonEditableClasses( cName ) );
-
 		} else {
 			ed.execCommand( 'mceInsertContent', 0, shortcode );
 		}
-
 	}
 
 	/**
@@ -273,18 +259,14 @@ class URIWYSIWYG {
 	 * @param name str The shortcode name
 	 */
 	static generateNonEditableClasses( name ) {
-
 		return 'mceNonEditable ' + name + '-noneditable';
-
 	}
 
 	/**
 	 * Generates a random ID
 	 */
 	static generateID() {
-
 		return '_' + Math.random().toString( 36 ).substr( 2, 9 );
-
 	}
 
 	/**
@@ -294,30 +276,27 @@ class URIWYSIWYG {
 	 * @param id The random id
 	 */
 	static generateLoadingDiv( data, id ) {
-
 		return '<div class="cl-wysiwyg-loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
-
 	}
 
 	/* Parses a short code and returns an array of attributes
 	 * @param sc string The shortcode
 	 */
 	static parseShortCodeAttributes( sc ) {
+		let x, key, value;
 
-		var attributes, atts, innerContent, x, key, value;
-
-		attributes = {};
-		atts = sc.match( /[\w-]+="[^"]*"/gi );
+		const attributes = {};
+		const atts = sc.match( /[\w-]+="[^"]*"/gi );
 
 		for ( x in atts ) {
-			key = atts[x].substr( 0, atts[x].indexOf( '=' ) );
-			value = atts[x].substr( atts[x].indexOf( '=' ) + 1 );
-			attributes[key.toLowerCase()] = value.replace( /"/gi, '' );
+			key = atts[ x ].substr( 0, atts[ x ].indexOf( '=' ) );
+			value = atts[ x ].substr( atts[ x ].indexOf( '=' ) + 1 );
+			attributes[ key.toLowerCase() ] = value.replace( /"/gi, '' );
 		}
 
-		innerContent = sc.match( /\][^]+?\[/gi );
+		const innerContent = sc.match( /\][^]+?\[/gi );
 		if ( innerContent ) {
-			attributes.content = innerContent[0].replace( /^\]|\[$/gi, '' ).trim();
+			attributes.content = innerContent[ 0 ].replace( /^\]|\[$/gi, '' ).trim();
 		}
 
 		return attributes;
@@ -330,55 +309,51 @@ class URIWYSIWYG {
 	 * @param sc string The shortcode name
 	 */
 	static restoreShortcodes( content, sc ) {
-
-		var html, componentElements, target, i, t;
+		let target, i, t;
 
 		// Convert the content string into a DOM tree so we can parse it easily
-		html = document.createElement( 'div' );
+		const html = document.createElement( 'div' );
 		html.innerHTML = content;
-		componentElements = html.querySelectorAll( '.' + sc );
+		const componentElements = html.querySelectorAll( '.' + sc );
 
 		// Var componentElements contains an array of the shortcodes
 		for ( i = 0; i < componentElements.length; i++ ) {
-			target = this.getWrapper( componentElements[i], sc );
+			target = this.getWrapper( componentElements[ i ], sc );
 			t = document.createTextNode( window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) ) );
 			target.parentNode.replaceChild( t, target );
 		}
 
 		// Return the DOM tree as a string
-		var out = this.htmlUnescape( html.innerHTML );
+		const out = this.htmlUnescape( html.innerHTML );
 		return out;
-
 	}
 
 	/**
 	 * Invokes the wp media picker from a tinymce modal
+	 *
+	 * @param e
 	 */
 	static mediaPicker( e ) {
-
-		var picker;
-
 		e.preventDefault();
 
-		picker = wp.media.frames.picker = wp.media(
+		const picker = wp.media.frames.picker = wp.media(
 			{
 				title: 'Select an image',
 				button: { text: 'Add an image' },
 				library: { type: [ 'image' ] },
-				multiple: false
-		}
-			);
+				multiple: false,
+			}
+		);
 
 		picker.on(
 			'select',
 			function() {
+				let alt;
 
-				var imgurl, altEl, attachment, alt;
+				const imgurl = document.getElementById( 'img' );
+				const altEl = document.getElementById( 'alt' );
 
-				imgurl = document.getElementById( 'img' );
-				altEl = document.getElementById( 'alt' );
-
-				attachment = picker.state().get( 'selection' ).first().toJSON();
+				const attachment = picker.state().get( 'selection' ).first().toJSON();
 
 				imgurl.value = attachment.sizes.full.url;
 
@@ -392,44 +367,35 @@ class URIWYSIWYG {
 				altEl.value = alt;
 
 				URIWYSIWYG.mediaPickerPreview( imgurl.value, altEl.value );
-
 			}
-			);
+		);
 
 		picker.open();
 
 		return false;
-
 	}
 
 	static mediaPickerPreview( src, alt ) {
-
-		var preview;
-
-		preview = document.createElement( 'img' );
+		const preview = document.createElement( 'img' );
 		preview.src = src;
 		preview.alt = alt;
 		document.getElementById( 'cl-wysiwyg-img-preview' ).innerHTML = '';
 		document.getElementById( 'cl-wysiwyg-img-preview' ).appendChild( preview );
-
 	}
 
 	static openPopup( target, ed, cName, wName ) {
-
-		var isTarget = false, sc, attributes;
+		let isTarget = false,
+			sc, attributes;
 
 		while ( false === isTarget && target.parentNode ) {
 			if ( jQuery( target ).hasClass( cName ) ) {
 				isTarget = true;
-			} else {
-				if ( target.parentNode ) {
-					target = target.parentNode;
-				}
+			} else if ( target.parentNode ) {
+				target = target.parentNode;
 			}
 		}
 
 		if ( isTarget ) {
-
 			target = this.getWrapper( target, cName );
 
 			sc = window.decodeURIComponent( target.getAttribute( 'data-shortcode' ) );
@@ -439,16 +405,13 @@ class URIWYSIWYG {
 	}
 
 	static getPluginInfo() {
-
 		return {
 			longname: URIComponentLibrary.Name,
 			author: URIComponentLibrary.Author,
 			authorurl: URIComponentLibrary.AuthorURI,
 			infourl: 'https://github.com/uriweb/uri-component-library',
 			version: URIComponentLibrary.Version,
-			path: URIComponentLibrary.Path
+			path: URIComponentLibrary.Path,
 		};
-
 	}
-
 }
