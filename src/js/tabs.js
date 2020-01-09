@@ -5,20 +5,17 @@
  */
 
 ( function() {
-
 	'use strict';
 
 	window.addEventListener( 'load', initCLTabs, false );
 
 	function initCLTabs() {
+		let i;
 
-		var els, i;
-
-		els = document.querySelectorAll( '.cl-tabs' );
+		const els = document.querySelectorAll( '.cl-tabs' );
 		for ( i = 0; i < els.length; i++ ) {
-			formatTabs( els[i], i + 1 );
+			formatTabs( els[ i ], i + 1 );
 		}
-
 	}
 
 	/*
@@ -27,30 +24,28 @@
 	 * @param tabbedIndex num the index of tabbed on the page
 	 */
 	function formatTabs( tabbed, tabbedIndex ) {
-
-		var header, href, tabs, tablist, panels, li, a, i, numtabs, anchor;
+		let header, href, li, a, i, numtabs;
 
 		// Add a hook for the js version styles
 		tabbed.classList.add( 'cl-tabs-js' );
 
-		panels = tabbed.querySelectorAll( '.cl-tab' );
+		const panels = tabbed.querySelectorAll( '.cl-tab' );
 
 		// Create tabs
-		tablist = document.createElement( 'ul' );
+		const tablist = document.createElement( 'ul' );
 		tablist.setAttribute( 'role', 'tablist' );
 
 		numtabs = 0;
 
 		for ( i = 0; i < panels.length; i++ ) {
-
 			numtabs++;
 
 			// Try to use panel h1 or h2 for tab names, otherwise use generic name
-			header = panels[i].querySelector( 'h1' );
+			header = panels[ i ].querySelector( 'h1' );
 			if ( header ) {
 				header = header.innerHTML;
 			} else {
-				header = panels[i].querySelector( 'h2' );
+				header = panels[ i ].querySelector( 'h2' );
 				if ( header ) {
 					header = header.innerHTML;
 				} else {
@@ -59,10 +54,10 @@
 			}
 
 			// Try to use panel id for tab href, otherwise create generic id for panel and href.
-			href = panels[i].id;
+			href = panels[ i ].id;
 			if ( '' === href ) {
 				href = 'cl-tabs-' + tabbedIndex + '-tab-section-' + numtabs;
-				panels[i].id = href;
+				panels[ i ].id = href;
 			}
 
 			li = document.createElement( 'li' );
@@ -79,46 +74,43 @@
 			tablist.appendChild( li );
 		}
 
-		tabbed.insertBefore( tablist, panels[0] );
+		tabbed.insertBefore( tablist, panels[ 0 ] );
 
 		// Add event listeners to tabs
-		tabs = tablist.querySelectorAll( 'a' );
+		const tabs = tablist.querySelectorAll( 'a' );
 		for ( i = 0; i < tabs.length; i++ ) {
-			tabs[i].addEventListener(
+			tabs[ i ].addEventListener(
 				'click',
 				function( e ) {
 					handleClick( e, tabs, tablist, panels );
 				}
-				);
-			tabs[i].addEventListener(
+			);
+			tabs[ i ].addEventListener(
 				'keydown',
 				function( e ) {
 					handleKeystroke( e, tabs, panels );
 				}
-				);
+			);
 		}
 
 		// Add tab panel semantics and hide them all
 		for ( i = 0; i < panels.length; i++ ) {
-
-			panels[i].setAttribute( 'role', 'tabpanel' );
-			panels[i].setAttribute( 'tabindex', '-1' );
-			panels[i].setAttribute( 'aria-labelledby', tabs[i].id );
-			panels[i].hidden = true;
-
+			panels[ i ].setAttribute( 'role', 'tabpanel' );
+			panels[ i ].setAttribute( 'tabindex', '-1' );
+			panels[ i ].setAttribute( 'aria-labelledby', tabs[ i ].id );
+			panels[ i ].hidden = true;
 		}
 
 		// Initially activate the first tab and reveal the first tab panel
-		tabs[0].removeAttribute( 'tabindex' );
-		tabs[0].setAttribute( 'aria-selected', 'true' );
-		panels[0].hidden = false;
+		tabs[ 0 ].removeAttribute( 'tabindex' );
+		tabs[ 0 ].setAttribute( 'aria-selected', 'true' );
+		panels[ 0 ].hidden = false;
 
 		// Go to the anchored tab, if there is one
-		anchor = getAnchoredElement( tabbed );
+		const anchor = getAnchoredElement( tabbed );
 		if ( null !== anchor ) {
 			switchTab( tabs, panels, tablist.querySelector( '[aria-selected]' ), anchor );
 		}
-
 	}
 
 	/*
@@ -127,24 +119,20 @@
 	 * @return the tab <a> that controls the anchored panel
 	 */
 	function getAnchoredElement( tabbed ) {
+		let section, anchor;
 
-		var urlParts, section, anchor;
-
-		urlParts = document.URL.split( '#' );
+		const urlParts = document.URL.split( '#' );
 		anchor = null;
 
 		if ( urlParts.length > 1 ) {
-
-			section = tabbed.querySelector( '#' + urlParts[1] );
+			section = tabbed.querySelector( '#' + urlParts[ 1 ] );
 
 			if ( null !== section ) {
 				anchor = document.getElementById( section.getAttribute( 'aria-labelledby' ) );
 			}
-
 		}
 
 		return anchor;
-
 	}
 
 	/*
@@ -152,17 +140,13 @@
 	 * @param e obj the event object
 	 */
 	function handleClick( e, tabs, tablist, panels ) {
-
-		var currentTab;
-
 		e.preventDefault();
 
-		currentTab = tablist.querySelector( '[aria-selected]' );
+		const currentTab = tablist.querySelector( '[aria-selected]' );
 
 		if ( e.currentTarget !== currentTab ) {
 			switchTab( tabs, panels, currentTab, e.currentTarget );
 		}
-
 	}
 
 	/*
@@ -170,13 +154,22 @@
 	 * @param e obj the event object
 	 */
 	function handleKeystroke( e, tabs, panels ) {
+		let dir;
 
 		// Get the index of the current tab in the tabs node list
-		var index = Array.prototype.indexOf.call( tabs, e.currentTarget );
+		const index = Array.prototype.indexOf.call( tabs, e.currentTarget );
 
 		// Work out which key the user is pressing and
 		// Calculate the new tab's index where appropriate
-		var dir = 37 === e.which ? index - 1 : 39 === e.which ? index + 1 : 40 === e.which ? 'down' : null;
+		if ( 37 === e.which ) {
+			dir = index - 1;
+		} else if ( 39 === e.which ) {
+			dir = index + 1;
+		} else if ( 40 === e.which ) {
+			dir = 'down';
+		} else {
+			dir = null;
+		}
 
 		if ( null !== dir ) {
 			e.preventDefault();
@@ -184,13 +177,12 @@
 			// If the down key is pressed, move focus to the open panel,
 			// otherwise switch to the adjacent tab
 			if ( 'down' === dir ) {
-				panels[index].focus();
-			} else if ( tabs[dir] ) {
-				switchTab( tabs, panels, e.currentTarget, tabs[dir] );
+				panels[ index ].focus();
+			} else if ( tabs[ dir ] ) {
+				switchTab( tabs, panels, e.currentTarget, tabs[ dir ] );
 			} else {
 				void 0;
 			}
-
 		}
 	}
 
@@ -200,9 +192,6 @@
 	 * @param newTab el the tab selected
 	 */
 	function switchTab( tabs, panels, oldTab, newTab ) {
-
-		var index, oldIndex;
-
 		newTab.focus();
 
 		// Make the active tab focusable by the user (Tab key)
@@ -215,11 +204,9 @@
 
 		// Get the indices of the new and old tabs to find the correct
 		// tab panels to show and hide
-		index = Array.prototype.indexOf.call( tabs, newTab );
-		oldIndex = Array.prototype.indexOf.call( tabs, oldTab );
-		panels[oldIndex].hidden = true;
-		panels[index].hidden = false;
-
+		const index = Array.prototype.indexOf.call( tabs, newTab );
+		const oldIndex = Array.prototype.indexOf.call( tabs, oldTab );
+		panels[ oldIndex ].hidden = true;
+		panels[ index ].hidden = false;
 	}
-
-})();
+}() );
