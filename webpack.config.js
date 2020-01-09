@@ -5,10 +5,10 @@
  * @package uri-component-library
  */
 
-var debug = 'production' !== process.env.NODE_ENV;
-var webpack = require( 'webpack' );
+const debug = 'production' !== process.env.NODE_ENV;
+const webpack = require( 'webpack' );
 
-var plugins = [];
+const plugins = [];
 
 module.exports = {
 	context: __dirname,
@@ -17,18 +17,18 @@ module.exports = {
 	entry: './src/js/blocks/blocks.js',
 	output: {
 		path: __dirname + '/js/',
-		filename: 'blocks.built.js'
+		filename: 'blocks.built.js',
 	},
 	module: {
-		rules: [{
+		rules: [ {
 			test: /\.js$/,
 			exclude: /node_modules/,
 			use: [
-			{
-				loader: 'babel-loader'
-			}
-			]
-		}]
+				{
+					loader: 'babel-loader',
+				},
+			],
+		} ],
 	},
-	plugins: plugins
+	plugins,
 };
