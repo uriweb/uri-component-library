@@ -72,7 +72,7 @@ before_script:
     # Install ESLint
     - npm install -g eslint
     # Install WP JS standards
-    - npm install -g @wordpress/eslint-plugin
+    - npm install @wordpress/eslint-plugin --save-dev
 
 # Run test script commands.
 script:
