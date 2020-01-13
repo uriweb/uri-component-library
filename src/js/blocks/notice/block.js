@@ -95,14 +95,14 @@ registerBlockType( 'uri-cl/notice', {
 									{ [ 'default', 'urgent' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const isSelected = key === attributes.style;
+										const selected = key === attributes.style;
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
+												isPrimary={ selected }
+												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }

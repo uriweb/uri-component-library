@@ -291,15 +291,14 @@ registerBlockType( 'uri-cl/hero', {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
 										const format = ( undefined === attributes.format ) ? '' : attributes.format;
-
-										isSelected = ( key === format );
+										const selected = ( key === format );
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
+												isPrimary={ selected }
+												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { format: key } ) }
 											>
 												{ capitalizedValue }
