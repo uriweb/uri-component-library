@@ -28,7 +28,7 @@
 	/**
 	 * Parse gallery element
 	 *
-	 * @param {Object} el The gallery element
+	 * @param {Object} el The gallery element.
 	 */
 	function parseWPGallery( el ) {
 		let i, parts, caption;
@@ -55,8 +55,8 @@
 	/**
 	 * Build slideshow DOM
 	 *
-	 * @param {Object} el The gallery element
-	 * @param {Object} parsed The parsed gallery
+	 * @param {Object} el The gallery element.
+	 * @param {Object} parsed The parsed gallery.
 	 */
 	function buildSlideshowDOM( el, parsed ) {
 		let slide, fig, cap, i;
@@ -110,7 +110,7 @@
 	/**
 	 * Create controls
 	 *
-	 * @param {Object} c the carousel object
+	 * @param {Object} c The carousel object.
 	 */
 	function makeControlButtons( c ) {
 		let target, button, x;
@@ -139,9 +139,9 @@
 	/**
 	 * Control direction of movement
 	 *
-	 * @param {Object} c The carousel object
-	 * @param {string} direction The direction to move in
-	 * @param {boolean} mobile Called from mobile device
+	 * @param {Object} c The carousel object.
+	 * @param {string} direction The direction to move in.
+	 * @param {boolean} mobile Called from mobile device.
 	 */
 	function controlDirection( c, direction, mobile ) {
 		let index;
@@ -180,9 +180,9 @@
 	/**
 	 * Set position of slideshow
 	 *
-	 * @param {Object} c The carousel object
-	 * @param {number} index The index to move to
-	 * @param {string} behavior
+	 * @param {Object} c The carousel object.
+	 * @param {number} index The index to move to.
+	 * @param {string} behavior The scroll behavior.
 	 */
 	function setPosition( c, index, behavior ) {
 		c.el.scroll(

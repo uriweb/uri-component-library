@@ -4,8 +4,6 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
-// jscs:disable requireVarDeclFirst
 class CLVimeo {
 	/*
 	 * Load the API
@@ -20,10 +18,11 @@ class CLVimeo {
 		tag.addEventListener( 'load', CLCreateVimeoPlayers, false );
 	}
 
-	/*
-	* Do things with the hero when it's loaded
-	* @param obj event the hero player
-	*/
+	/**
+	 * Do things with the hero when it's loaded
+	 *
+	 * @param {Object} data The player data.
+	 */
 	static onHeroReady( data ) {
 		// Listen for browser resizing
 		window.addEventListener(
@@ -61,9 +60,10 @@ class CLVimeo {
 		overlay.appendChild( button );
 	}
 
-	/*
+	/**
 	 * Do things with the video when it's loaded
-	 * @param str id the id of the video
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static onVideoReady( data ) {
 		data.poster.querySelector( 'img' ).style.display = 'none';
@@ -109,9 +109,10 @@ class CLVimeo {
 		}
 	}
 
-	/*
+	/**
 	 * Get hero state and decide what to do
-	 * @param obj event the hero player
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static onHeroStateChange( data ) {
 		switch ( data.state ) {
@@ -121,9 +122,10 @@ class CLVimeo {
 		}
 	}
 
-	/*
+	/**
 	 * Dynamically set the hero height and position based on width
-	 * @param obj data the data
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static resizeHero( data ) {
 		let w = data.parent.offsetWidth;
@@ -146,28 +148,29 @@ class CLVimeo {
 		}
 	}
 
-	/*
+	/**
 	 * Dynamically set the video height and position based on width
-	 * @param obj event the event
-	 * @param el el the video
-	 * @param el parent the video parent container
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static resizeVideo( data ) {
 		data.player.element.setAttribute( 'height', data.parent.offsetWidth / data.ratio );
 	}
 
-	/*
+	/**
 	 * Revert to poster if there's an error with the hero video
-	 * @param obj data the data
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static onHeroError( data ) {
 		data.poster.classList.remove( 'unveil' );
 		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
-	/*
+	/**
 	 * Link the poster to the video on YouTube if there's an error with the video
-	 * @param obj data the data
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static onVideoError( data ) {
 		let alt;
@@ -188,9 +191,10 @@ class CLVimeo {
 		data.parent.replaceChild( a, data.player.element );
 	}
 
-	/*
+	/**
 	 * Get video state and decide what to do
-	 * @param obj data the data
+	 *
+	 * @param {Object} data The player data.
 	 */
 	static onVideoStateChange( data ) {
 		const overlay = data.parent.querySelector( '.overlay' );

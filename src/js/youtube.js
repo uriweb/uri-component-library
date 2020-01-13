@@ -4,8 +4,6 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
-// jscs:disable requireVarDeclFirst
 class CLYT {
 	/*
 	 * Load the API
@@ -17,10 +15,11 @@ class CLYT {
 		firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
 	}
 
-	/*
+	/**
 	 * Dynamically set the hero height and position based on width
-	 * @param el el the hero
-	 * @param el parent the hero parent container
+	 *
+	 * @param {Object} el The hero.
+	 * @param {Object} parent The hero parent container.
 	 */
 	static resizeHero( el, parent ) {
 		let w = parent.offsetWidth;
@@ -42,20 +41,22 @@ class CLYT {
 		}
 	}
 
-	/*
+	/**
 	 * Dynamically set the video height and position based on width
-	 * @param obj event the event
-	 * @param el el the video
-	 * @param el parent the video parent container
+	 *
+	 * @param {Object} event The player event.
+	 * @param {Object} el The video.
+	 * @param {Object} parent The video parent container.
 	 */
 	static resizeVideo( event, el, parent ) {
 		el.style.height = ( parent.offsetWidth / ( event.target.a.width / event.target.a.height ) ) + 'px';
 	}
 
-	/*
+	/**
 	 * Pause the hero when it's completely out of the viewport
-	 * @param obj event the hero player
-	 * @param el parent the hero parent container
+	 *
+	 * @param {Object} event The player event.
+	 * @param {Object} parent The hero parent container.
 	 */
 	static determinePlayState( event, parent ) {
 		const v = window.innerHeight,
@@ -70,9 +71,10 @@ class CLYT {
 		}
 	}
 
-	/*
+	/**
 	 * Do things with the hero when it's loaded
-	 * @param obj event the hero player
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onHeroReady( event ) {
 		// Mute the vid
@@ -117,9 +119,10 @@ class CLYT {
 		overlay.appendChild( button );
 	}
 
-	/*
+	/**
 	 * Do things with the video when it's loaded
-	 * @param str id the id of the video
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onVideoReady( event ) {
 		const el = event.target.getIframe(),
@@ -134,11 +137,12 @@ class CLYT {
 		CLYT.resizeVideo( event, el, parent );
 	}
 
-	/*
+	/**
 	 * User control of the hero video
-	 * @param obj event the hero player
-	 * @param el parent the hero parent container
-	 * @param el el the .motionswitch element
+	 *
+	 * @param {Object} event The player event.
+	 * @param {Object} parent The hero parent container.
+	 * @param {Object} el The .motionswitch element.
 	 */
 	static heroControl( event, parent, el ) {
 		switch ( event.target.getPlayerState() ) {
@@ -156,9 +160,10 @@ class CLYT {
 		}
 	}
 
-	/*
+	/**
 	 * Get hero state and decide what to do
-	 * @param obj event the hero player
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onHeroStateChange( event ) {
 		const state = event.target.getPlayerState();
@@ -175,18 +180,20 @@ class CLYT {
 		}
 	}
 
-	/*
+	/**
 	 * Revert to poster if there's an error with the hero video
-	 * @param obj event the event
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onHeroError( event ) {
 		event.target.a.previousSibling.classList.remove( 'unveil' );
 		event.target.a.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
-	/*
+	/**
 	 * Link the poster to the video on YouTube if there's an error with the video
-	 * @param obj event the event
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onVideoError( event ) {
 		let alt;
@@ -212,9 +219,10 @@ class CLYT {
 		}
 	}
 
-	/*
+	/**
 	 * Get video state and decide what to do
-	 * @param obj event the video player
+	 *
+	 * @param {Object} event The player event.
 	 */
 	static onVideoStateChange( event ) {
 		const state = event.target.getPlayerState(),

@@ -18,10 +18,11 @@
 		}
 	}
 
-	/*
+	/**
 	 * Restyle the component to make it look great
-	 * @param tabbed el the .cl-tabs element
-	 * @param tabbedIndex num the index of tabbed on the page
+	 *
+	 * @param {Object} tabbed The .cl-tabs element.
+	 * @param {number} tabbedIndex The index of tabbed on the page.
 	 */
 	function formatTabs( tabbed, tabbedIndex ) {
 		let header, href, li, a, i, numtabs;
@@ -113,10 +114,11 @@
 		}
 	}
 
-	/*
+	/**
 	 * Get any URL anchor and return the corresponding tab
-	 * @param tabbed el the current .cl-tabs element
-	 * @return the tab <a> that controls the anchored panel
+	 *
+	 * @param {Object} tabbed The current .cl-tabs element.
+	 * @return {Object} The tab <a> that controls the anchored panel.
 	 */
 	function getAnchoredElement( tabbed ) {
 		let section, anchor;
@@ -135,9 +137,13 @@
 		return anchor;
 	}
 
-	/*
+	/**
 	 * Handle tab clicking
-	 * @param e obj the event object
+	 *
+	 * @param {Object} e The event object.
+	 * @param {Array} tabs The tab <a>'s.
+	 * @param {Object} tablist The tabs <ul>.
+	 * @param {Array} panels The tab sections.
 	 */
 	function handleClick( e, tabs, tablist, panels ) {
 		e.preventDefault();
@@ -149,9 +155,12 @@
 		}
 	}
 
-	/*
+	/**
 	 * Handle key input
-	 * @param e obj the event object
+	 *
+	 * @param {Object} e The event object.
+	 * @param {Array} tabs The tab <a>'s.
+	 * @param {Array} panels The tab sections.
 	 */
 	function handleKeystroke( e, tabs, panels ) {
 		let dir;
@@ -186,10 +195,13 @@
 		}
 	}
 
-	/*
+	/**
 	 * The tab switching function
-	 * @param oldTab el the current tab
-	 * @param newTab el the tab selected
+	 *
+	 * @param {Array} tabs The tab <a>'s.
+	 * @param {Array} panels The tab sections.
+	 * @param {Object} oldTab The current tab.
+	 * @param {Object} newTab The tab selected.
 	 */
 	function switchTab( tabs, panels, oldTab, newTab ) {
 		newTab.focus();

@@ -4,11 +4,11 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
 class URICL {
-	/*
+	/**
 	 * Check browser support (essentially anything but IE)
-	 * @return bool
+	 *
+	 * @return {boolean} Support.
 	 */
 	static checkSupport() {
 		let support = true;
