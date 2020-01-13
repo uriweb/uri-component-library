@@ -145,15 +145,14 @@ registerBlockType( 'uri-cl/button', {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
 										const style = ( undefined === attributes.style ) ? '' : attributes.style;
-
-										isSelected = ( key === style );
+										const selected = ( key === style );
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
+												isPrimary={ selected }
+												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
