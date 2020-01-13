@@ -10,7 +10,7 @@
 	outline: 1px dashed #999;
 }
 
-.cl-hero.super {
+.cl-hero.super .cl-hero-proper {
 	max-height: 800px;
 }
 
