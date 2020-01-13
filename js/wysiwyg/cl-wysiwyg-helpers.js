@@ -4,7 +4,6 @@
  * @package uri-component-library
  */
 
-// jshint esversion: 6
 let URIWYSIWYGoutStandingRequests = 0;
 let URIWYSIWYGpublishButtonValue;
 
@@ -18,7 +17,7 @@ class URIWYSIWYG {
 	/**
 	 * Escapes quotes on every element in an array (if element is a string)
 	 *
-	 * @param a
+	 * @param {Array} a The array.
 	 */
 	static escapeQuotesDeep( a ) {
 		let i;
@@ -33,7 +32,7 @@ class URIWYSIWYG {
 	/**
 	 * Replace quotes with curly quotes
 	 *
-	 * @param s
+	 * @param {string} s The string.
 	 */
 	static escapeQuotes( s ) {
 		s = s.replace( /"\b/g, '&#8220;' );
@@ -44,7 +43,7 @@ class URIWYSIWYG {
 	/**
 	 * Unescapes quotes on every element in an array (if element is a string)
 	 *
-	 * @param a
+	 * @param {Array} a The array.
 	 */
 	static unEscapeQuotesDeep( a ) {
 		let i;
@@ -59,7 +58,7 @@ class URIWYSIWYG {
 	/**
 	 * Replace %25 with "
 	 *
-	 * @param s
+	 * @param {string} s The string.
 	 */
 	static unEscapeQuotes( s ) {
 		return s.replace( /%25/g, '"' );
@@ -70,9 +69,8 @@ class URIWYSIWYG {
 Specifically, replace &, ", ', <, and >
 note: replaces straight quotes (double primes) with curly quotes
 	 *
-	 * @param s
-	 * @param str s
-	 * @return str
+	 * @param {string} s The string.
+	 * @return {string} The replaced string.
 	 */
 	static htmlEscape( s ) {
 		// Tend to quotes... using the entities here will cause the visual editor to
@@ -105,28 +103,24 @@ note: replaces straight quotes (double primes) with curly quotes
 	 * Replace HTML entities with their ASCII characters
 	 *
 	 * @see htmlEscape()
-	 * @param s
-	 * @param str s
-	 * @return str
+	 * @param {string} s The string.
+	 * @return {string} The replaced string.
 	 */
 	static htmlUnescape( s ) {
-		// jscs:disable validateQuoteMarks
 		return s
 			.replace( /&#34;/g, '"' )
 			.replace( /&#39;/g, "'" )
 			.replace( /&lt;/g, '<' )
 			.replace( /&gt;/g, '>' )
 			.replace( /&amp;/g, '&' );
-
-		// jscs:enable validateQuoteMarks
 	}
 
 	/**
 	 * Find a shortcode's wrapper element if it has one, and return the html element
 	 *
-	 * @param html obj an html object
-	 * @param sc str the shortcode
-	 * @return obj and html object
+	 * @param {Object} html An html object.
+	 * @param {string} sc The shortcode.
+	 * @return {Object} An html object.
 	 */
 	static getWrapper( html, sc ) {
 		if ( ! html.getAttribute( 'data-shortcode' ) ) {
@@ -209,10 +203,10 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Replace shortcode with HTML
 	 *
-	 * @param content string The editor content
-	 * @param shortcodeName string The shortcode name
-	 * @param selfclosing bool Whether or not the shortcode is self-closing
-	 * @param ed obj The editor
+	 * @param {string} content The editor content.
+	 * @param {string} shortcodeName The shortcode name.
+	 * @param {boolean} selfclosing Whether or not the shortcode is self-closing.
+	 * @param {Object} ed The editor.
 	 */
 	static replaceShortcodes( content, shortcodeName, selfclosing, ed ) {
 		const re = selfclosing ? new RegExp( '\\[' + shortcodeName + '([^\\]]*)\\]', 'g' ) : new RegExp( '\\[' + shortcodeName + '[^]+?\\[/' + shortcodeName + '\\]', 'g' );
@@ -235,10 +229,10 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Insert/Replace multimedia content
 	 *
-	 * @param target obj The target component
-	 * @param shortcode str The shortcode
-	 * @param ed obj The editor instance
-	 * @param cName mixed The component name
+	 * @param {Object} target The target component.
+	 * @param {string} shortcode The shortcode.
+	 * @param {Object} ed The editor instance.
+	 * @param {string} cName The component name.
 	 */
 	static insertMultiMediaComponent( target, shortcode, ed, cName ) {
 		let id;
@@ -256,7 +250,7 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Generates the mceNonEditable classes
 	 *
-	 * @param name str The shortcode name
+	 * @param {string} name The shortcode name.
 	 */
 	static generateNonEditableClasses( name ) {
 		return 'mceNonEditable ' + name + '-noneditable';
@@ -272,15 +266,17 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Generates the loading div
 	 *
-	 * @param data str The shortcode data
-	 * @param id The random id
+	 * @param {string} data The shortcode data.
+	 * @param {string} id The random id.
 	 */
 	static generateLoadingDiv( data, id ) {
 		return '<div class="cl-wysiwyg-loading" data-shortcode="' + data + '" id="' + id + '">Loading...</div>';
 	}
 
-	/* Parses a short code and returns an array of attributes
-	 * @param sc string The shortcode
+	/**
+	 * Parses a short code and returns an array of attributes
+	 *
+	 * @param {string} sc The shortcode.
 	 */
 	static parseShortCodeAttributes( sc ) {
 		let x, key, value;
@@ -305,8 +301,8 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Replace HTML with shortcode
 	 *
-	 * @param content string The editor content
-	 * @param sc string The shortcode name
+	 * @param {string} content The editor content.
+	 * @param {string} sc The shortcode name.
 	 */
 	static restoreShortcodes( content, sc ) {
 		let target, i, t;
@@ -331,7 +327,7 @@ note: replaces straight quotes (double primes) with curly quotes
 	/**
 	 * Invokes the wp media picker from a tinymce modal
 	 *
-	 * @param e
+	 * @param {Object} e An event.
 	 */
 	static mediaPicker( e ) {
 		e.preventDefault();

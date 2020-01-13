@@ -35,7 +35,7 @@
 			 * This call is done before the editor instance has finished it's initialization so use the onInit event
 			 * of the editor instance to intercept that event.
 			 *
-			 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
+			 * @param {Object} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
 			init( ed, url ) {
