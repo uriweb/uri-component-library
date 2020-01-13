@@ -2,8 +2,7 @@ var gulp = require('gulp');
 var pkg = require('./package.json');
 
 // include plug-ins
-var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
+var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 //var stripDebug = require('gulp-strip-debug');
 var terser = require('gulp-terser');
@@ -70,25 +69,15 @@ function scripts(done) {
                   '',
                   ''].join('\n');
 
-	// Run JSHint for src js
+	// Run eslint for src js
     gulp.src('./src/js/*.js')
-        .pipe(jshint(done))
-        .pipe(jshint.reporter('default'));
+        .pipe(eslint(done))
+        .pipe(eslint.format());
 
-	// Run JSHint for wysiwyg js
+	// Run eslint for wysiwyg js
 	gulp.src('./js/wysiwyg/*.js')
-        .pipe(jshint(done))
-        .pipe(jshint.reporter('default'));
-
-	// Run jscs for src js
-    gulp.src('./src/js/*.js')
-        .pipe(jscs(done))
-        .pipe(jscs.reporter());
-
-	// Run jscs for wysiwyg js
-	gulp.src('./js/wysiwyg/*.js')
-        .pipe(jscs(done))
-        .pipe(jscs.reporter());
+        .pipe(eslint(done))
+        .pipe(eslint.format());
 
 	// Compile src js
     gulp.src('./src/js/*.js')

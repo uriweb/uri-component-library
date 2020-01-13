@@ -9,7 +9,7 @@ const {
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button
+	Button,
 } = wp.components;
 const {
 	BlockControls,
@@ -21,7 +21,7 @@ const {
 	AlignmentToolbar,
 	RichText,
 	PlainText,
-	URLInput
+	URLInput,
 } = wp.blockEditor;
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -32,7 +32,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/card.png' )}
+			src={ ( URI_CL_URL + 'i/icons/card.png' ) }
 			alt="button"
 		/>
 	);
@@ -41,7 +41,6 @@ const customIcon = () => {
 const classNames = ( attributes, isSelected ) => {
 	let classes = 'cl-card';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -72,36 +71,35 @@ registerBlockType( 'uri-cl/card', {
 	// the img and alt are for editor placeholders
 	attributes: {
 		title: {
-			type: 'string'
+			type: 'string',
 		},
 		body: {
-			type: 'string'
+			type: 'string',
 		},
 		link: {
-			type: 'string'
+			type: 'string',
 		},
 		mediaID: {
-			type: 'number'
+			type: 'number',
 		},
 		img: {
-			type: 'string'
+			type: 'string',
 		},
 		alt: {
-			type: 'string'
+			type: 'string',
 		},
 		button: {
-			type: 'string'
+			type: 'string',
 		},
 		tooltip: {
-			type: 'string'
+			type: 'string',
 		},
 		float: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
-
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
 			if ( attributes.mediaID ) {
@@ -112,39 +110,37 @@ registerBlockType( 'uri-cl/card', {
 						className="image"
 					/>
 				);
-			} else {
-				return (
-					<MediaPlaceholder
-						icon={ 'format-image' }
-						className={ className }
-						labels={ {
-							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
-						} }
-						onSelect={ media =>
-							{
-								setAttributes({
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id
-								});
-							}
-						}
-						accept="image/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					/>
-				);
 			}
+			return (
+				<MediaPlaceholder
+					icon={ 'format-image' }
+					className={ className }
+					labels={ {
+						title: 'Add an image',
+						instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+					} }
+					onSelect={ ( media ) => {
+						setAttributes( {
+							alt: media.alt,
+							img: media.url,
+							mediaID: media.id,
+						} );
+					}
+					}
+					accept="image/*"
+					allowedTypes={ ALLOWED_MEDIA_TYPES }
+				/>
+			);
 		};
 
 		let meta;
 		if ( !! isSelected ) {
-				meta = (
-					<form
-						className="meta"
-						onSubmit={ ( event ) => event.preventDefault() }
-					>
-						<fieldset class="row link">
+			meta = (
+				<form
+					className="meta"
+					onSubmit={ ( event ) => event.preventDefault() }
+				>
+					<fieldset className="row link">
 						<label title="Links to:"><Dashicon icon="admin-links" /></label>
 						<URLInput
 							value={ attributes.link }
@@ -152,15 +148,14 @@ registerBlockType( 'uri-cl/card', {
 							placeholder="https://www.uri.edu/"
 							className="meta-field"
 						/>
-						</fieldset>
-					</form>
-				);
-
+					</fieldset>
+				</form>
+			);
 		}
 
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames( attributes, isSelected );
+			const classes = classNames( attributes, isSelected );
 
 			// Set the tooltip
 			let title = '';
@@ -169,43 +164,42 @@ registerBlockType( 'uri-cl/card', {
 			}
 			return (
 				<div className="container cl-card-block-form">
-					<div className={classes} title={title}>
+					<div className={ classes } title={ title }>
 
 						<MediaUpload
-							onSelect={ media =>
-								{
-									setAttributes({
-										alt: media.alt,
-										img: media.url,
-										mediaID: media.id
-									});
-								}
+							onSelect={ ( media ) => {
+								setAttributes( {
+									alt: media.alt,
+									img: media.url,
+									mediaID: media.id,
+								} );
+							}
 							}
 							type="image"
 							value={ attributes.mediaID }
-							render={ ({ open }) => getImageButton( open ) }
+							render={ ( { open } ) => getImageButton( open ) }
 						/>
 
-						<div class="cl-card-text">
-						<h3><PlainText
-							onChange={ content => setAttributes({ title: content }) }
-							value={ attributes.title }
-							placeholder={__( 'Your card title' )}
-							keepPlaceholderOnFocus={true}
-						/></h3>
-						<RichText
-							onChange={ content => setAttributes({ body: content }) }
-							tagname="p"
-							value={ attributes.body }
-							placeholder={__( 'Your card text' )}
-							keepPlaceholderOnFocus={true}
-						/>
+						<div className="cl-card-text">
+							<h3><PlainText
+								onChange={ ( content ) => setAttributes( { title: content } ) }
+								value={ attributes.title }
+								placeholder={ __( 'Your card title' ) }
+								keepPlaceholderOnFocus={ true }
+							/></h3>
+							<RichText
+								onChange={ ( content ) => setAttributes( { body: content } ) }
+								tagname="p"
+								value={ attributes.body }
+								placeholder={ __( 'Your card text' ) }
+								keepPlaceholderOnFocus={ true }
+							/>
 						</div>
 						<div>
 							<PlainText
-								onChange={ content => setAttributes({ button: content }) }
+								onChange={ ( content ) => setAttributes( { button: content } ) }
 								value={ attributes.button }
-								placeholder={__( 'Your button text' )}
+								placeholder={ __( 'Your button text' ) }
 								keepPlaceholderOnFocus={ true }
 								className="cl-button"
 							/>
@@ -222,35 +216,34 @@ registerBlockType( 'uri-cl/card', {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.float }
-						onChange={ content => setAttributes({ float: content }) }
+						onChange={ ( content ) => setAttributes( { float: content } ) }
 					/>
 
 					{ !! attributes.img && (
-					<MediaUploadCheck>
-						<Toolbar>
-							<MediaUpload
-								onSelect={ media =>
-									{
-										setAttributes({
+						<MediaUploadCheck>
+							<Toolbar>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setAttributes( {
 											alt: media.alt,
 											img: media.url,
-											mediaID: media.id
-										});
+											mediaID: media.id,
+										} );
 									}
-								}
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ attributes.mediaID }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit media' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</Toolbar>
-					</MediaUploadCheck>
+									}
+									allowedTypes={ ALLOWED_MEDIA_TYPES }
+									value={ attributes.mediaID }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit media' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+							</Toolbar>
+						</MediaUploadCheck>
 					) }
 
 				</BlockControls>
@@ -265,7 +258,7 @@ registerBlockType( 'uri-cl/card', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ content => setAttributes({ tooltip: content }) }
+								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
 							/>
@@ -276,12 +269,11 @@ registerBlockType( 'uri-cl/card', {
 		};
 
 		// Send the editor interfaces to the view
-	return ([
+		return ( [
 			createBlockControls(),
 			createInspectorControls(),
-			createContentEditForm()
-	]);
+			createContentEditForm(),
+		] );
+	}, // End edit
 
-	} // End edit
-
-});
+} );

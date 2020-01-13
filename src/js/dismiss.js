@@ -5,87 +5,69 @@
  */
 
 ( function() {
-
 	'use strict';
 
 	window.addEventListener( 'DOMContentLoaded', init, false );
 
 	function init() {
-
-		var els, i;
+		let els, i;
 
 		// Dismissible elements.
 		els = document.querySelectorAll( '.cl-countdown, .cl-notice' );
 
 		for ( i = 0; i < els.length; i++ ) {
-			setupDismiss( els[i] );
+			setupDismiss( els[ i ] );
 		}
 
 		// Pinable elements.
 		els = document.querySelectorAll( '.cl-date' );
 
 		for ( i = 0; i < els.length; i++ ) {
-			setupPin( els[i] );
+			setupPin( els[ i ] );
 		}
-
 	}
 
 	function setupDismiss( el ) {
-
-		var d, cvalue, hash;
-
-		d = el.querySelector( '.dismiss' );
+		const d = el.querySelector( '.dismiss' );
 
 		if ( null === d ) {
 			return;
 		}
 
 		d.addEventListener( 'click', dismiss.bind( null, el ), false );
-		hash = el.getAttribute( 'data-hash' );
-		cvalue = URICL.getCookie( 'uri-cl-' + hash );
+		const hash = el.getAttribute( 'data-hash' );
+		const cvalue = URICL.getCookie( 'uri-cl-' + hash );
 
-		if ( 'dismissed' == cvalue ) {
+		if ( 'dismissed' === cvalue ) {
 			dismiss( el );
 		}
-
 	}
 
 	function dismiss( el ) {
-
-		var hash;
-
-		hash = el.getAttribute( 'data-hash' );
+		const hash = el.getAttribute( 'data-hash' );
 
 		el.classList.add( 'dismissed' );
 		URICL.setCookie( 'uri-cl-' + hash, 'dismissed', 30 );
-
 	}
 
 	function setupPin( el ) {
-
-		var p, cvalue, hash;
-
-		p = el.querySelector( '.pin' );
+		const p = el.querySelector( '.pin' );
 
 		if ( null === p ) {
 			return;
 		}
 
 		p.addEventListener( 'click', pin.bind( null, el, p ), false );
-		hash = el.getAttribute( 'data-hash' );
-		cvalue = URICL.getCookie( 'uri-cl-' + hash );
+		const hash = el.getAttribute( 'data-hash' );
+		const cvalue = URICL.getCookie( 'uri-cl-' + hash );
 
-		if ( 'pinned' == cvalue ) {
+		if ( 'pinned' === cvalue ) {
 			pin( el, p );
 		}
-
 	}
 
 	function pin( el, p ) {
-
-		var hash;
-
-		hash = el.getAttribute( 'data-hash' );
+		const hash = el.getAttribute( 'data-hash' );
 
 		if ( el.classList.contains( 'pinned' ) ) {
 			el.classList.remove( 'pinned' );
@@ -96,7 +78,5 @@
 			p.setAttribute( 'title', 'Unpin this date' );
 			URICL.setCookie( 'uri-cl-' + hash, 'pinned', 30 );
 		}
-
 	}
-
-})();
+}() );

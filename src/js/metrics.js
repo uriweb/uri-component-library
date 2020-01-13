@@ -5,46 +5,38 @@
  */
 
 ( function() {
-
 	'use strict';
 
 	window.addEventListener( 'load', initCLMetrics, false );
 
 	function initCLMetrics() {
-
-		var metrics, i;
-
-		metrics = document.querySelectorAll( '.cl-metric' );
+		let i;
+		const metrics = document.querySelectorAll( '.cl-metric' );
 
 		if ( metrics.length > 0 ) {
-
 			for ( i = 0; i < metrics.length; i++ ) {
-				metrics[i].setAttribute( 'data-font-max', window.getComputedStyle( metrics[i].querySelector( 'span' ) ).getPropertyValue( 'font-size' ).match( /\d+/ )[0] );
+				metrics[ i ].setAttribute( 'data-font-max', window.getComputedStyle( metrics[ i ].querySelector( 'span' ) ).getPropertyValue( 'font-size' ).match( /\d+/ )[ 0 ] );
 			}
 
 			fitMetricsToContainer( metrics );
 
 			window.addEventListener( 'resize', fitMetricsToContainer.bind( null, metrics ) );
-
 		}
-
 	}
 
 	function fitMetricsToContainer( metrics ) {
-
-		var i, m;
+		let i, m;
 
 		for ( i = 0; i < metrics.length; i++ ) {
-
 			m = {};
 
-			m.el = metrics[i];
+			m.el = metrics[ i ];
 			m.num = m.el.querySelector( 'span' );
 			m.w = m.num.clientWidth;
 			m.fs = window.getComputedStyle( m.num ).getPropertyValue( 'font-size' ); // Instantaneous computed font size
 			m.sw = m.num.scrollWidth;
 			m.mfs = m.el.getAttribute( 'data-font-max' ); // Original font size set by CSS
-			m.nfs = m.fs.match( /\d+/ )[0]; // Trim units off font-size
+			m.nfs = m.fs.match( /\d+/ )[ 0 ]; // Trim units off font-size
 
 			if ( m.sw > m.w ) {
 				m.num.classList.add( 'autosized' );
@@ -60,9 +52,6 @@
 					m.sw = m.num.scrollWidth;
 				}
 			}
-
 		}
-
 	}
-
-})();
+}() );

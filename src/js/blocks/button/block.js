@@ -7,7 +7,7 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	BlockAlignmentToolbar
+	BlockAlignmentToolbar,
 } = wp.blockEditor;
 const {
 	Dashicon,
@@ -16,7 +16,7 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
 } = wp.components;
 
 const customIcon = () => {
@@ -25,7 +25,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/button.png' )}
+			src={ ( URI_CL_URL + 'i/icons/button.png' ) }
 			alt="button"
 		/>
 	);
@@ -34,7 +34,6 @@ const customIcon = () => {
 const classNames = ( attributes, isSelected ) => {
 	let classes = 'cl-button';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -58,24 +57,22 @@ registerBlockType( 'uri-cl/button', {
 	category: 'cl-blocks',
 	attributes: {
 		link: {
-			type: 'string'
+			type: 'string',
 		},
 		text: {
-			type: 'string'
+			type: 'string',
 		},
 		tooltip: {
-			type: 'string'
+			type: 'string',
 		},
 		style: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
-
 		// Generate editor view of the button itself
 		const createContentEditForm = () => {
-
 			let meta;
 			if ( !! isSelected ) {
 				meta = (
@@ -83,21 +80,21 @@ registerBlockType( 'uri-cl/button', {
 						className="meta"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
-						<fieldset class="row link">
-						<label title="Links to:"><Dashicon icon="admin-links" /></label>
-						<URLInput
-							value={ attributes.link }
-							onChange={ ( content ) => setAttributes( { link: content } ) }
-							placeholder="https://www.uri.edu/"
-							className="meta-field"
-						/>
+						<fieldset className="row link">
+							<label title="Links to:"><Dashicon icon="admin-links" /></label>
+							<URLInput
+								value={ attributes.link }
+								onChange={ ( content ) => setAttributes( { link: content } ) }
+								placeholder="https://www.uri.edu/"
+								className="meta-field"
+							/>
 						</fieldset>
 					</form>
 				);
 			}
 
 			// Set the classnames
-			let classes = classNames( attributes, isSelected );
+			const classes = classNames( attributes, isSelected );
 
 			// Set the tooltip
 			let title = '';
@@ -106,9 +103,9 @@ registerBlockType( 'uri-cl/button', {
 			}
 			return (
 				<div className="container cl-button-block-form">
-					<span class={classes} title={title}>
+					<span className={ classes } title={ title }>
 						<PlainText
-							onChange={ content => setAttributes( { text: content } ) }
+							onChange={ ( content ) => setAttributes( { text: content } ) }
 							value={ attributes.text }
 							placeholder={ __( 'Your button text' ) }
 							keepPlaceholderOnFocus={ true }
@@ -127,11 +124,10 @@ registerBlockType( 'uri-cl/button', {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.alignment }
-						onChange={ content => setAttributes( { alignment: content } ) }
+						onChange={ ( content ) => setAttributes( { alignment: content } ) }
 					/>
 				</BlockControls>
 			);
-
 		};
 
 		// Generate sidebar inspector controls for other custom attributes
@@ -142,22 +138,22 @@ registerBlockType( 'uri-cl/button', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Button Style' ) }
+								id="button-style"
 							>
 								<ButtonGroup aria-label={ __( 'Button Style' ) }>
 									{ [ 'default', 'prominent', 'disabled' ].map( ( value ) => {
-
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const style = ( undefined == attributes.style ) ? '' : attributes.style;
-										const isSelected = ( key === style );
+										const style = ( undefined === attributes.style ) ? '' : attributes.style;
+										const selected = ( key === style );
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
-												onClick={ content => setAttributes( { style: key } ) }
+												isPrimary={ selected }
+												aria-pressed={ selected }
+												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -170,7 +166,7 @@ registerBlockType( 'uri-cl/button', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ content => setAttributes({ tooltip: content }) }
+								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
 							/>
@@ -181,12 +177,11 @@ registerBlockType( 'uri-cl/button', {
 			);
 		};
 
-	// Send the editor interfaces to the view
-	return ([
-		createInspectorControls(),
-		createContentEditForm()
-	]);
+		// Send the editor interfaces to the view
+		return ( [
+			createInspectorControls(),
+			createContentEditForm(),
+		] );
+	}, // End edit
 
-	} // End edit
-
-});
+} );

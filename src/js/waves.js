@@ -5,16 +5,13 @@
  */
 
 ( function() {
-
 	'use strict';
 
 	window.addEventListener( 'load', initCLWaves, false );
 
 	function initCLWaves() {
-		var els, i;
-
-		els = document.querySelectorAll( '.cl-wave' );
-		i = window.pageYOffset;
+		const els = document.querySelectorAll( '.cl-wave' );
+		const i = window.pageYOffset;
 
 		window.addEventListener(
 			'scroll',
@@ -22,20 +19,18 @@
 				moveWaves( els, i );
 			}
 		);
-
 	}
 
 	function moveWaves( els, i ) {
-		var offset, move, n, el;
+		let n, el;
 
-		offset = window.pageYOffset;
-		move = offset - i;
+		const offset = window.pageYOffset;
+		const move = offset - i;
 
 		for ( n = 0; n < els.length; n++ ) {
-			el = els[n];
+			el = els[ n ];
 			el.firstElementChild.style.backgroundPositionX = move + 'px';
 			el.lastElementChild.style.backgroundPositionX = move + 'px';
 		}
 	}
-
-})();
+}() );

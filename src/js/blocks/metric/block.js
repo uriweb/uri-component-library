@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 
 const {
@@ -10,7 +10,7 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
 } = wp.components;
 
 const {
@@ -24,7 +24,7 @@ const {
 	BlockControls,
 	Toolbar,
 	IconButton,
-	BlockAlignmentToolbar
+	BlockAlignmentToolbar,
 } = wp.blockEditor;
 
 const customIcon = () => {
@@ -33,7 +33,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/metric.png' )}
+			src={ ( URI_CL_URL + 'i/icons/metric.png' ) }
 			alt="metric"
 		/>
 	);
@@ -42,7 +42,6 @@ const customIcon = () => {
 const classNames = ( attributes, isSelected ) => {
 	let classes = 'cl-metric';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -66,24 +65,23 @@ registerBlockType( 'uri-cl/metric', {
 
 	attributes: {
 		metric: {
-			type: 'string'
+			type: 'string',
 		},
 		caption: {
-			type: 'string'
+			type: 'string',
 		},
 		style: {
-			type: 'string'
+			type: 'string',
 		},
 		float: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
-	edit({ attributes, className, setAttributes, isSelected }) {
-
+	edit( { attributes, className, setAttributes, isSelected } ) {
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames( attributes, isSelected );
+			const classes = classNames( attributes, isSelected );
 
 			// Set the tooltip
 			let title = '';
@@ -92,19 +90,19 @@ registerBlockType( 'uri-cl/metric', {
 			}
 			return (
 				<div className="container cl-metric-block-form">
-					<div className={classes} title={title}>
+					<div className={ classes } title={ title }>
 						<span><PlainText
-							onChange={ content => setAttributes({ metric: content }) }
+							onChange={ ( content ) => setAttributes( { metric: content } ) }
 							value={ attributes.metric }
 							placeholder={ __( '100%' ) }
-							keepPlaceholderOnFocus={true}
+							keepPlaceholderOnFocus={ true }
 						/></span>
 						<span><PlainText
-							onChange={ content => setAttributes({ caption: content }) }
+							onChange={ ( content ) => setAttributes( { caption: content } ) }
 							tagname="p"
 							value={ attributes.caption }
 							placeholder={ __( 'metrics on this page' ) }
-							keepPlaceholderOnFocus={true}
+							keepPlaceholderOnFocus={ true }
 						/></span>
 
 					</div>
@@ -118,7 +116,7 @@ registerBlockType( 'uri-cl/metric', {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.float }
-						onChange={ content => setAttributes({ float: content }) }
+						onChange={ ( content ) => setAttributes( { float: content } ) }
 					/>
 				</BlockControls>
 			);
@@ -134,7 +132,7 @@ registerBlockType( 'uri-cl/metric', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ content => setAttributes({ tooltip: content }) }
+								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
 							/>
@@ -142,21 +140,21 @@ registerBlockType( 'uri-cl/metric', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Metric Style' ) }
+								id="metric-style"
 							>
 								<ButtonGroup aria-label={ __( 'Metric Style' ) }>
 									{ [ 'standard', 'clear', 'dark', 'overlay' ].map( ( value ) => {
-
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const isSelected = key === attributes.style;
+										const selected = key === attributes.style;
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ style: key }) }
+												isPrimary={ selected }
+												aria-pressed={ selected }
+												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -171,12 +169,11 @@ registerBlockType( 'uri-cl/metric', {
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createBlockControls(),
 			createInspectorControls(),
-			createContentEditForm()
-		]);
+			createContentEditForm(),
+		] );
+	}, // End edit
 
-	} // End edit
-
-});
+} );
