@@ -2,16 +2,17 @@
 
 ignore=node_modules,work_files,gulpfile.js,webpack.config.js,js/cl.built.js,js/blocks.built.js,src/js/blocks
 ruleset=.codesniffer.ruleset.xml
+extensions=php
 warn=-n
 
 if hash phpcs 2>/dev/null; then
 
     echo Running php code beautifier...
-    phpcbf --standard=$ruleset --ignore=$ignore $warn .
+    phpcbf --standard=$ruleset --ignore=$ignore --extensions=$extensions $warn .
     echo done beautifying.
 
     echo Running php codesniffer...
-    phpcs --standard=$ruleset --ignore=$ignore $warn .
+    phpcs --standard=$ruleset --ignore=$ignore --extensions=$extensions $warn .
     echo done sniffing.
 
     echo done with sniff.
