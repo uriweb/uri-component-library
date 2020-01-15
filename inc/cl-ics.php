@@ -5,9 +5,11 @@
  * @package uri-component-library
  */
 
-header( 'Content-Type: text/calendar; charset=utf-8' );
-header( 'Content-Disposition: attachment; filename=invite.ics' );
+$summary = $_POST['summary'];
 $dt = new DateTime( 'now' );
+
+header( 'Content-Type: text/calendar; charset=utf-8' );
+header( 'Content-Disposition: attachment; filename=' . $_POST['filename'] );
 
 $ics = array(
 	'BEGIN:VCALENDAR',
@@ -16,7 +18,7 @@ $ics = array(
 	'CALSCALE:GREGORIAN',
 	'BEGIN:VEVENT',
 	'DTSTART;VALUE=DATE:' . $_POST['date_start'],
-	'SUMMARY:' . $_POST['summary'],
+	'SUMMARY:' . $summary,
 	'DTSTAMP:' . $dt->format( 'Ymd\THis\Z' ),
 	'UID:' . uniqid(),
 	'END:VEVENT',

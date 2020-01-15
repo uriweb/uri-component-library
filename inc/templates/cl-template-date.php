@@ -28,9 +28,10 @@ $output .= '>';
 
 // ICS FILE
 
-$output .= '<form method="post" action="' . URI_CL_URL . '/inc/cl-ics.php">';
+$output .= '<form method="post" action="' . URI_CL_URL . 'inc/cl-ics.php">';
 $output .= '<input type="hidden" name="date_start" value="' . $date_start . '">';
 $output .= '<input type="hidden" name="summary" value="' . $atts['caption'] . '">';
+$output .= '<input type="hidden" name="filename" value="' . sanitize_title_with_dashes( $atts['caption'] ) . '.ics">';
 $output .= '<input type="submit" value="Add to Calendar">';
 $output .= '</form>';
 
