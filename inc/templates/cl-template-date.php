@@ -5,6 +5,7 @@ $output = '';
 
 $timestamp = strtotime( $atts['date'] );
 $date_parts = getdate( $timestamp );
+$date_start = date( 'Ymd', strtotime( $atts['date'] ) );
 
 if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
@@ -25,9 +26,19 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
-$output .= '<div class="cl-date-content-wrapper pin" title="Pin this date">';
+// ICS FILE
+
+$output .= '<form method="post" action="' . URI_CL_URL . '/inc/cl-ics.php">';
+$output .= '<input type="hidden" name="date_start" value="' . $date_start . '">';
+$output .= '<input type="hidden" name="summary" value="' . $atts['caption'] . '">';
+$output .= '<input type="submit" value="Add to Calendar">';
+$output .= '</form>';
+
+// END
+
+$output .= '<div class="cl-date-content-wrapper" title="Add to my calendar">';
 $output .= '<div class="cl-date-content">';
-$output .= '<div class="cl-date-pin"></div>';
+$output .= '<div class="cl-date-download"></div>';
 $output .= '<div class="cl-date-month">';
 
 if ( $atts['show_year'] ) {

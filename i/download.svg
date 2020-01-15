@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 256 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Arrow-Left-Icon" serif:id="Arrow Left Icon" transform="matrix(5.64889,0,0,5.69445,-595.057,-2113.2)">
+        <path d="M129.499,381.995L129.499,399.363L135.904,392.953L138.05,395.1L128,405.158L117.949,395.1L120.096,392.953L126.501,399.363L126.501,381.995L129.499,381.995Z" style="fill:rgb(85,85,85);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-4.24408,-18.3073)">
+        <path d="M113.928,427.91L187.467,354.37L198.488,365.391L113.635,450.244L102.615,439.223L66,402.609L77.314,391.295L113.928,427.91Z" style="fill:white;"/>
+    </g>
+</svg>
