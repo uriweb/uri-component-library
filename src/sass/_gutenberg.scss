@@ -5,12 +5,12 @@
 	to   { transform: rotateX(0deg); 	transform-origin: top; }
 }
 
-textarea {
-	background-color: inherit !important;
-	border-radius: 0;
-}
-
 .block-editor {
+
+	textarea {
+		background-color: inherit !important;
+		border-radius: 0;
+	}
 
 	.meta {
 		animation: metaReveal .5s;
