@@ -10,6 +10,7 @@ if ( ! empty( $message ) ) {
 
 	$hash = uri_cl_get_hash( $atts );
 	$classes = 'cl-countdown';
+	$atts['class'] = $atts['class'] . ' ' . $atts['className'];
 
 	if ( ! empty( $atts['class'] ) ) {
 		$classes .= ' ' . $atts['class'];

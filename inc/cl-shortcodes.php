@@ -20,6 +20,7 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 			'title' => '',
 			'float' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -60,6 +61,7 @@ function uri_cl_shortcode_button( $atts, $content = null ) {
 			'tooltip' => '',
 			'style' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -106,6 +108,7 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 			'tooltip' => '',
 			'float' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -156,6 +159,7 @@ function uri_cl_shortcode_dcard( $atts, $content = null ) {
 			'tooltip' => '',
 			'float' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -210,6 +214,7 @@ function uri_cl_shortcode_scard( $atts, $content = null ) {
 			'showsocial' => true,
 			'showdate' => true,
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -285,6 +290,7 @@ function uri_cl_shortcode_countdown( $atts, $content = null ) {
 			'passed' => 'passed',
 			'link' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -331,6 +337,7 @@ function uri_cl_shortcode_date( $atts, $content = null ) {
 			'float' => '',
 			'show_year' => false,
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -391,6 +398,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'caption' => '',
 			'credit' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -456,6 +464,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 			'float' => '',
 			'bgcolor' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -509,6 +518,7 @@ function uri_cl_shortcode_menu( $atts, $content = null ) {
 			'showtitle' => false,
 			'title' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -552,6 +562,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 			'show_expired' => false,
 			'dismissible' => true,
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -604,6 +615,7 @@ function uri_cl_shortcode_overlay( $atts, $content = null ) {
 			'title' => '',
 			'style' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -647,6 +659,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			'reverse' => false,
 			'format' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -702,6 +715,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'alt' => '',
 			'style' => 'default',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -748,6 +762,7 @@ function uri_cl_shortcode_quote( $atts, $content = null ) {
 			'quote' => '',
 			'citation' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -787,6 +802,7 @@ function uri_cl_shortcode_share( $atts, $content = null ) {
 			'platforms' => 'all',
 			'style' => 'color',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -826,6 +842,7 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 		array(
 			'style' => 'color',
 			'class' => '',
+			'className' => '',
 			'facebook' => '',
 			'instagram' => '',
 			'twitter' => '',
@@ -895,6 +912,7 @@ function uri_cl_shortcode_tabs( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -944,6 +962,7 @@ function uri_cl_shortcode_tiles( $atts, $content = null ) {
 			'compact' => false,
 			'animated' => false,
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -998,6 +1017,7 @@ function uri_cl_shortcode_video( $atts, $content = null ) {
 			'title' => '',
 			'excerpt' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts
@@ -1037,6 +1057,7 @@ function uri_cl_shortcode_waves( $atts, $content = null ) {
 			'placement' => 'bottom',
 			'offset' => '',
 			'class' => '',
+			'className' => '',
 			'css' => '',
 		),
 		$atts

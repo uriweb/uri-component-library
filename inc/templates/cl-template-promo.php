@@ -1,6 +1,7 @@
 <?php
 
 $classes = 'cl-promo';
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
 
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];

@@ -6,6 +6,8 @@ if ( $atts['reverse'] ) {
 	$classes .= ' reverse';
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
