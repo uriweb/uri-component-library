@@ -5,7 +5,7 @@ $output = '';
 
 $timestamp = strtotime( $atts['date'] );
 $date_parts = getdate( $timestamp );
-$date_start = date( 'Ymd', strtotime( $atts['date'] ) );
+$date_start = gmdate( 'Ymd', strtotime( $atts['date'] ) );
 
 if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
