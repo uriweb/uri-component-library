@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 
 const {
@@ -12,7 +12,7 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
 } = wp.components;
 
 const {
@@ -25,14 +25,14 @@ const {
 	InspectorControls,
 	BlockControls,
 	BlockAlignmentToolbar,
-	InnerBlocks
+	InnerBlocks,
 } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
-	'core/paragraph'
+	'core/paragraph',
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: '', dropCap: false }]
+	[ 'core/paragraph', { placeholder: '', dropCap: false } ],
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
@@ -42,7 +42,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/quote.png' )}
+			src={ ( URI_CL_URL + 'i/icons/quote.png' ) }
 			alt="button"
 		/>
 	);
@@ -51,7 +51,6 @@ const customIcon = () => {
 const classNames = ( attributes, isSelected ) => {
 	let classes = 'cl-quote';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -69,24 +68,23 @@ registerBlockType( 'uri-cl/quote', {
 
 	attributes: {
 		quote: {
-			type: 'string'
+			type: 'string',
 		},
 		citation: {
-			type: 'string'
+			type: 'string',
 		},
 		img: {
-			type: 'string'
+			type: 'string',
 		},
 		alt: {
-			type: 'string'
+			type: 'string',
 		},
 		mediaID: {
-			type: 'number'
-		}
+			type: 'number',
+		},
 	},
 
-	edit({ attributes, className, setAttributes, isSelected }) {
-
+	edit( { attributes, className, setAttributes, isSelected } ) {
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
 			if ( attributes.mediaID ) {
@@ -97,62 +95,61 @@ registerBlockType( 'uri-cl/quote', {
 						className="image"
 					/>
 				);
-			} else {
-				return (
-					<MediaPlaceholder
-						icon={ 'format-image' }
-						className={ className }
-						labels={ {
-							title: 'Add an image',
-							instructions: __( 'Drag an image, upload a new one or select a file from your library.' )
-						} }
-						onSelect={ media => {
-							setAttributes({
-								alt: media.alt,
-								img: media.url,
-								mediaID: media.id
-							});
-						} }
-						accept="image/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					/>
-				);
 			}
+			return (
+				<MediaPlaceholder
+					icon={ 'format-image' }
+					className={ className }
+					labels={ {
+						title: 'Add an image',
+						instructions: __( 'Drag an image, upload a new one or select a file from your library.' ),
+					} }
+					onSelect={ ( media ) => {
+						setAttributes( {
+							alt: media.alt,
+							img: media.url,
+							mediaID: media.id,
+						} );
+					} }
+					accept="image/*"
+					allowedTypes={ ALLOWED_MEDIA_TYPES }
+				/>
+			);
 		};
 
-		let classes = classNames( attributes, isSelected );
+		const classes = classNames( attributes, isSelected );
 
 		const createContentEditForm = () => {
-			let imageClass = ( !! attributes.mediaID ) ? 'cl-quote-image' : '';
+			const imageClass = ( !! attributes.mediaID ) ? 'cl-quote-image' : '';
 			return (
 				<div className="container">
 
-					<div class={classes}>
-						<div class={imageClass}>
+					<div className={ classes }>
+						<div className={ imageClass }>
 							<MediaUpload
-								onSelect={ media => {
-									setAttributes({
+								onSelect={ ( media ) => {
+									setAttributes( {
 										alt: media.alt,
 										img: media.url,
-										mediaID: media.id
-									});
+										mediaID: media.id,
+									} );
 								} }
 								type="image"
 								value={ attributes.mediaID }
-								render={ ({ open }) => getImageButton( open ) }
+								render={ ( { open } ) => getImageButton( open ) }
 							/>
 						</div>
 						<blockquote><PlainText
-							onChange={ content => setAttributes({ quote: content }) }
+							onChange={ ( content ) => setAttributes( { quote: content } ) }
 							value={ attributes.quote }
 							placeholder={ __( 'The quote' ) }
-							keepPlaceholderOnFocus={true}
+							keepPlaceholderOnFocus={ true }
 						/></blockquote>
 						<cite><PlainText
-							onChange={ content => setAttributes({ citation: content }) }
+							onChange={ ( content ) => setAttributes( { citation: content } ) }
 							value={ attributes.citation }
 							placeholder={ __( 'Anonymous' ) }
-							keepPlaceholderOnFocus={true}
+							keepPlaceholderOnFocus={ true }
 						/></cite>
 					</div>
 
@@ -164,40 +161,39 @@ registerBlockType( 'uri-cl/quote', {
 			return (
 				<BlockControls key="controls">
 					{ !! attributes.img && (
-					<MediaUploadCheck>
-						<Toolbar>
-							<MediaUpload
-								onSelect={ media => {
-									setAttributes({
-										alt: media.alt,
-										img: media.url,
-										mediaID: media.id
-									});
-								} }
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ attributes.mediaID }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit media' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</Toolbar>
-					</MediaUploadCheck>
+						<MediaUploadCheck>
+							<Toolbar>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setAttributes( {
+											alt: media.alt,
+											img: media.url,
+											mediaID: media.id,
+										} );
+									} }
+									allowedTypes={ ALLOWED_MEDIA_TYPES }
+									value={ attributes.mediaID }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit media' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+							</Toolbar>
+						</MediaUploadCheck>
 					) }
 				</BlockControls>
 			);
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createBlockControls(),
-			createContentEditForm()
-		]);
+			createContentEditForm(),
+		] );
+	}, // End edit
 
-	} // End edit
-
-});
+} );

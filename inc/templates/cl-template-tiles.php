@@ -31,6 +31,8 @@ if ( $atts['animated'] ) {
 	$classes .= ' reveal';
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }

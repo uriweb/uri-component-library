@@ -22,6 +22,8 @@ if ( ! empty( $atts['float'] ) ) {
 	$output = '<aside class="cl-wrapper cl-metric-wrapper">';
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
@@ -41,7 +43,6 @@ if ( ! empty( $atts['css'] ) || ! empty( $atts['bgcolor'] ) ) {
 	}
 
 	$output .= '"';
-
 }
 
 $output .= '>';

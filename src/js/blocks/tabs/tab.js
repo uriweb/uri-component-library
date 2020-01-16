@@ -1,10 +1,10 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 const {
 	PlainText,
-	InnerBlocks
+	InnerBlocks,
 } = wp.blockEditor;
 const ALLOWED_BLOCKS = [
 	'core/image',
@@ -14,10 +14,10 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/button',
 	'uri-cl/card',
 	'uri-cl/metric',
-	'uri-cl/quote'
+	'uri-cl/quote',
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Your tab content...', dropCap: false }]
+	[ 'core/paragraph', { placeholder: 'Your tab content...', dropCap: false } ],
 ];
 
 const customIcon = () => {
@@ -26,7 +26,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/tab.png' )}
+			src={ ( URI_CL_URL + 'i/icons/tab.png' ) }
 			alt="button"
 		/>
 	);
@@ -42,37 +42,37 @@ registerBlockType( 'uri-cl/tab', {
 	supports: {
 		inserter: false,
 		reusable: false,
-		html: false
+		html: false,
 	},
 
 	attributes: {
 		title: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
-	edit({ attributes, className, setAttributes }) {
+	edit( { attributes, className, setAttributes } ) {
 		return (
-			<div class="cl-tab">
+			<div className="cl-tab">
 				<h1><PlainText
-					onChange={ content => setAttributes({ title: content }) }
+					onChange={ ( content ) => setAttributes( { title: content } ) }
 					value={ attributes.title }
 					placeholder={ __( 'Tab Title' ) }
-					keepPlaceholderOnFocus={true}
+					keepPlaceholderOnFocus={ true }
 				/></h1>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
-					templateLock={false}
+					templateLock={ false }
 				/>
 			</div>
 		);
 	}, // End edit
 
-	save({ attributes }) {
+	save( { attributes } ) {
 		return (
 			<InnerBlocks.Content />
 		);
-	}
+	},
 
-});
+} );

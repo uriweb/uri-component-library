@@ -8,6 +8,8 @@ if ( ! empty( $atts['float'] ) ) {
 	$wrapper = 'aside';
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }

@@ -7,6 +7,8 @@ if ( ! empty( $atts['id'] ) ) {
 	$output .= ' id="' . $atts['id'] . '"';
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }

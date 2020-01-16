@@ -8,6 +8,8 @@ switch ( $atts['style'] ) {
 		break;
 }
 
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
+
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }

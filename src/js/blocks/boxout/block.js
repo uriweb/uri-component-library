@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 const {
 	PlainText,
@@ -11,17 +11,17 @@ const {
 	Toolbar,
 	IconButton,
 	BlockAlignmentToolbar,
-	InnerBlocks // @todo: allow nested blocks
+	InnerBlocks, // @todo: allow nested blocks
 } = wp.blockEditor;
 const ALLOWED_BLOCKS = [
 	'core/image',
 	'core/heading',
 	'core/paragraph',
 	'core/list',
-	'uri-cl/button'
+	'uri-cl/button',
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Your boxout content...', dropCap: false }]
+	[ 'core/paragraph', { placeholder: 'Your boxout content...', dropCap: false } ],
 ];
 
 const customIcon = () => {
@@ -30,7 +30,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={( URI_CL_URL + 'i/icons/boxout.png' )}
+			src={ ( URI_CL_URL + 'i/icons/boxout.png' ) }
 			alt="button"
 		/>
 	);
@@ -39,7 +39,6 @@ const customIcon = () => {
 const classNames = ( attributes, isSelected ) => {
 	let classes = 'cl-boxout';
 	if ( !! attributes.className ) {
-
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
@@ -59,23 +58,22 @@ registerBlockType( 'uri-cl/boxout', {
 	category: 'cl-blocks',
 	attributes: {
 		title: {
-			type: 'string'
+			type: 'string',
 		},
 		float: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
-
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
-			let classes = classNames( attributes, isSelected );
+			const classes = classNames( attributes, isSelected );
 			return (
 				<div className="container">
-					<div class={classes}>
+					<div className={ classes }>
 						<h1><PlainText
-							onChange={ content => setAttributes( { title: content } ) }
+							onChange={ ( content ) => setAttributes( { title: content } ) }
 							value={ attributes.title }
 							placeholder={ __( 'Title' ) }
 							keepPlaceholderOnFocus={ true }
@@ -95,25 +93,23 @@ registerBlockType( 'uri-cl/boxout', {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.float }
-						onChange={ content => setAttributes({ float: content }) }
+						onChange={ ( content ) => setAttributes( { float: content } ) }
 					/>
 				</BlockControls>
 			);
-
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createBlockControls(),
-			createContentEditForm()
-		]);
-
+			createContentEditForm(),
+		] );
 	}, // End edit
 
 	save( { attributes } ) {
 		return (
 			<InnerBlocks.Content />
 		);
-	}
+	},
 
 } );

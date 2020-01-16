@@ -1,6 +1,7 @@
 <?php
 
 $classes = 'cl-wave ' . $atts['placement'];
+$atts['class'] = $atts['class'] . ' ' . $atts['className'];
 
 if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];

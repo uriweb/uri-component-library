@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const {
-	registerBlockType
+	registerBlockType,
 } = wp.blocks;
 
 const {
@@ -10,7 +10,7 @@ const {
 	BaseControl,
 	TextControl,
 	Button,
-	ButtonGroup
+	ButtonGroup,
 } = wp.components;
 
 const {
@@ -25,15 +25,15 @@ const {
 	Toolbar,
 	IconButton,
 	BlockAlignmentToolbar,
-	InnerBlocks
+	InnerBlocks,
 } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
 	'core/heading',
-	'core/paragraph'
+	'core/paragraph',
 ];
 const TEMPLATE = [
-  ['core/paragraph', { placeholder: 'Please note', dropCap: false }]
+	[ 'core/paragraph', { placeholder: 'Please note', dropCap: false } ],
 ];
 
 const customIcon = () => {
@@ -54,16 +54,14 @@ registerBlockType( 'uri-cl/notice', {
 	category: 'cl-blocks',
 	attributes: {
 		style: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
-	edit({ attributes, className, setAttributes }) {
-
+	edit( { attributes, className, setAttributes } ) {
 		const createContentEditForm = () => {
 			let classes = 'cl-notice';
 			if ( !! attributes.className ) {
-
 				// @todo this gets automatically applied to wrapper... remove it?
 				classes += ' ' + attributes.className;
 			}
@@ -74,10 +72,10 @@ registerBlockType( 'uri-cl/notice', {
 
 			return (
 				<div className="container">
-					<div class={classes}>
+					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={TEMPLATE}
+							template={ TEMPLATE }
 						/>
 					</div>
 				</div>
@@ -91,21 +89,21 @@ registerBlockType( 'uri-cl/notice', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Notice Style' ) }
+								id="notice-style"
 							>
 								<ButtonGroup aria-label={ __( 'Notice Style' ) }>
 									{ [ 'default', 'urgent' ].map( ( value ) => {
-
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const isSelected = key === attributes.style;
+										const selected = key === attributes.style;
 
 										return (
 											<Button
 												key={ key }
 												isDefault
-												isPrimary={ isSelected }
-												aria-pressed={ isSelected }
-												onClick={ content => setAttributes({ style: key }) }
+												isPrimary={ selected }
+												aria-pressed={ selected }
+												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -120,17 +118,15 @@ registerBlockType( 'uri-cl/notice', {
 		};
 
 		// Send the editor interfaces to the view
-		return ([
+		return ( [
 			createContentEditForm(),
-			createInspectorControls()
-		]);
-
+			createInspectorControls(),
+		] );
 	}, // End edit
 
-	save({ attributes }) {
+	save( { attributes } ) {
 		let classes = 'cl-notice';
 		if ( !! attributes.className ) {
-
 			// @todo this gets automatically applied to wrapper... remove it?
 			classes += ' ' + attributes.className;
 		}
@@ -140,9 +136,9 @@ registerBlockType( 'uri-cl/notice', {
 		}
 
 		return (
-			<div class={classes}>
+			<div className={ classes }>
 				<InnerBlocks.Content />
 			</div>
 		);
-	}
-});
+	},
+} );

@@ -1,0 +1,348 @@
+/* ======= DATES ======= */
+
+.cl-date {
+
+    position: relative;
+    box-sizing: border-box;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 2rem;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: .5rem;
+    }
+
+    &.has-js form {
+      display: none;
+    }
+
+    .cl-date-download-dialogue {
+
+      position: absolute;
+      z-index: 10;
+      background: #fff;
+      width: 130px;
+      margin-left: 50%;
+      left: -65px;
+      top: 1.5rem;
+      font-size: .8rem;
+      box-shadow: $level3;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0);
+      transition:
+        transform .15s ease-in-out,
+        opacity .15s ease-in-out;
+
+      &>div:nth-child(1) {
+        text-align: center;
+        padding: .5rem 0 .3rem;
+        border-bottom: 1px solid #ddd;
+      }
+
+      &>div:nth-child(2) {
+
+        display: flex;
+
+        &>div {
+          width: 50%;
+          padding: .6rem .5rem .5rem;
+          text-align: center;
+
+          &:hover,
+          &:focus {
+            cursor: pointer;
+            background: $lightgrey;
+          }
+
+        }
+
+      }
+
+      .cl-date-download-confirm {
+        color: $link;
+      }
+
+      .cl-date-download-cancel {
+        border-right: 1px solid #ddd;
+        color: #555;
+      }
+
+    }
+
+    .cl-date-content-wrapper {
+
+      position: relative;
+      background: #ddd;
+      display: block;
+      width: 100px;
+      margin: 0 auto 1.5rem;
+      border-radius: .2rem;
+      transform: scale(1);
+      transition: transform .2s ease-in-out;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: -1rem;
+        left: calc( 50% - 8px );
+        width: 16px;
+        height: 4px;
+        background-image: url(../i/more.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% auto;
+        opacity: 1;
+        transition: opacity .1s ease-in-out .1s;
+      }
+
+      .cl-date-content {
+        box-shadow: 0 2px 2px rgba(0,0,0,.2);
+        transform: scale( .9 );
+        transition:
+          transform .1s ease-in-out,
+          box-shadow .1s ease-in-out;
+      }
+
+      .cl-date-download-indicator {
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        z-index: 1;
+        display: block;
+        opacity: 0;
+        transform: scale( 0 );
+        transform-origin: center center;
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        background-image: url(../i/download.svg);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: 100% auto;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2);
+        transition:
+          transform .1s ease-in-out,
+          opacity .1s ease-in-out,
+          background-color .1s ease-in-out;
+      }
+
+      .cl-date-month {
+
+        padding: .6rem .5rem .5rem;
+        color: #fff;
+        font-size: .9rem;
+        background: #074ece;
+        text-align: center;
+        position: relative;
+        border-radius: .1rem .1rem 0 0;
+        transition: padding .1s ease-in-out;
+
+        &:before,
+        &:after {
+          display: block;
+          position: absolute;
+          top: -12px;
+          content: '';
+          width: 6px;
+          height: 20px;
+          border-radius: 3px;
+          background: #333;
+          transform: scaleY( 1 );
+          opacity: 1;
+          transition:
+            transform .2s ease-in-out,
+            opacity .2s ease-in-out;
+        }
+
+        &:before {
+          left: calc( 25% - 3px );
+        }
+
+        &:after {
+          left: calc( 75% - 3px );
+        }
+
+      }
+
+      .cl-date-day {
+        font-size: 3.5rem;
+        color: #333;
+        text-align: center;
+        padding: .4rem .5rem .5rem;
+        background: #fff;
+        border-radius: 0 0 .1rem .1rem;
+      }
+
+    }
+
+    .cl-date-caption-wrapper {
+
+      position: relative;
+      background: #eee;
+      padding: .5rem 1rem;
+      font-size: .9rem;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid #ddd;
+      opacity: 0;
+      transform: translateY(.2rem);
+      transition:
+        transform .2s ease-in-out,
+        opacity .2s ease-in-out;
+
+      &:before {
+        position: absolute;
+        display: block;
+        content: '';
+        background: #eee;
+        width: .8rem;
+        height: .8rem;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        transform: rotate( 45deg );
+        top: -.45rem;
+        left: calc( 50% - .4rem );
+      }
+
+    }
+
+    .cl-date-download-notice {
+      display: none;
+      font-size: .7rem;
+      color: #999;
+      margin: .5rem auto;
+      text-align: center;
+      width: 80%;
+      line-height: .8rem;
+    }
+
+    &.dialogue {
+      .cl-date-download-dialogue {
+        opacity: 1;
+        transform: scale(1.5);
+        pointer-events: all;
+      }
+    }
+
+    &.cl-date-red .cl-date-content-wrapper .cl-date-month {
+      background: #d25353;
+    }
+
+    &.cl-date-grey .cl-date-content-wrapper .cl-date-month {
+      background: #555;
+    }
+
+    &.downloaded .cl-date-content-wrapper,
+    &.dialogue .cl-date-content-wrapper,
+    .cl-date-content-wrapper:hover,
+    .cl-date-content-wrapper:focus {
+
+      transform: scale( .95 );
+      cursor: pointer;
+
+      &:after {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+
+      & ~ .cl-date-caption-wrapper {
+        opacity: 1;
+        transform: translateY(0);
+        transition-duration: .4s;
+        transition-delay: .05s;
+      }
+
+      .cl-date-content {
+        box-shadow: $level2;
+        transform: scale(1.05);
+        transition-duration: .15s;
+      }
+
+      .cl-date-download-indicator {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .cl-date-month {
+
+        padding: .55rem .5rem;
+        transition-duration: .15s;
+
+        &:before,
+        &:after {
+          opacity: 0;
+          transform: scaleY(0);
+          transition-duration: .15s;
+        }
+      }
+
+    }
+
+    &.downloaded .cl-date-content-wrapper {
+
+      cursor: default;
+
+      .cl-date-content {
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      }
+
+      .cl-date-download-indicator {
+        background-color: #0ecc10;
+        background-position: center 100%;
+        transform: scale(1.1);
+      }
+
+      & ~ .cl-date-download-notice {
+        display: block;
+      }
+
+    }
+
+    &:not(.downloaded) .cl-date-content-wrapper:active {
+      transform: scale(.9);
+    }
+
+    &.dialogue .cl-date-content-wrapper {
+      opacity: .7;
+    }
+
+}
+
+@media screen and (min-width: $break1) {
+    .cl-date {
+
+      .cl-date-download-dialogue {
+        font-size: .9rem;
+      }
+
+      &.dialogue .cl-date-download-dialogue {
+        transform: scale(1);
+      }
+      
+    }
+    .cl-date.left,
+    .cl-date.right {
+        width: auto;
+        display: inline-block;
+    }
+    .cl-date.left {
+        float: left;
+        margin: 0 2rem 2rem 0;
+    }
+    .cl-date.right {
+        float: right;
+        margin: 0 0 2rem 2rem;
+    }
+}
