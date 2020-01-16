@@ -4,7 +4,7 @@ The Component Library exists in order to standardize the look and feel of web el
 
 ## What's new in 4.1.0
 
-CL 4.1.0 is a minor release focused on adding new components.
+CL 4.1.0 is a minor release focused on code quality and adding new components.
 
 * Adds a Promo component for displaying timely promotional information (shortcode support only)
 * Adds a Date component for displaying dates (shortcode support only)
@@ -12,7 +12,7 @@ CL 4.1.0 is a minor release focused on adding new components.
   - Downloaded state persists for 12 hours
 * All scripts are now linted with ESLint; JSCS and JSHint have been removed
 * Panels formatted as `super` now have a bottom margin by default
-* Fixes an issue that prevented CSS classes added in the Block Editor Inspector from passing to components
+* Fixes an issue that prevented CSS classes added in the Block Editor Inspector from being passed to components
 * Fixes an issue with padding on cards placed in equal-height tiles
 * Updates development tools
 
