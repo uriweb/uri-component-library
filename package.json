@@ -1,7 +1,7 @@
 {
   "name": "uri-component-library",
   "description": "URI Component Library",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "homepage": "https://www.uri.edu",
   "repository": "https://github.com/uriweb/uri-component-library",
   "docs": "https://www.uri.edu/styleguide",
@@ -16,10 +16,10 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "@wordpress/eslint-plugin": "^3.3.0",
-    "autoprefixer": "^9.7.3",
+    "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
