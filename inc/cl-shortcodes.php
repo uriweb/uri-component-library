@@ -336,6 +336,7 @@ function uri_cl_shortcode_date( $atts, $content = null ) {
 			'caption' => '',
 			'float' => '',
 			'show_year' => false,
+			'color' => 'blue',
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -367,6 +368,12 @@ function uri_cl_shortcode_date( $atts, $content = null ) {
 				'attr' => 'show_year',
 				'types' => array( 'bool' ),
 				'req' => false,
+			),
+			array(
+				'attr' => 'color',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'blue', 'red', 'grey' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'date' )

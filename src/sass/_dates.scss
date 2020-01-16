@@ -2,6 +2,7 @@
 
 .cl-date {
 
+    position: relative;
     box-sizing: border-box;
     font-size: 1rem;
     display: block;
@@ -20,6 +21,60 @@
 
     &.has-js form {
       display: none;
+    }
+
+    .cl-date-download-dialogue {
+
+      position: absolute;
+      z-index: 10;
+      background: #fff;
+      width: 130px;
+      margin-left: 50%;
+      left: -65px;
+      top: 1.5rem;
+      font-size: .9rem;
+      box-shadow: $level3;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0);
+      transition:
+        transform .15s ease-in-out,
+        opacity .15s ease-in-out;
+
+      &>div:nth-child(1) {
+        text-align: center;
+        padding: .5rem 0 .3rem;
+        border-bottom: 1px solid #ddd;
+      }
+
+      &>div:nth-child(2) {
+
+        display: flex;
+
+        &>div {
+          width: 50%;
+          padding: .5rem;
+          text-align: center;
+
+          &:hover,
+          &:focus {
+            cursor: pointer;
+            background: $lightgrey;
+          }
+
+        }
+
+      }
+
+      .cl-date-download-confirm {
+        color: $link;
+      }
+
+      .cl-date-download-cancel {
+        border-right: 1px solid #ddd;
+        color: #555;
+      }
+
     }
 
     .cl-date-content-wrapper {
@@ -57,7 +112,7 @@
           box-shadow .1s ease-in-out;
       }
 
-      .cl-date-download {
+      .cl-date-download-indicator {
         position: absolute;
         top: -7px;
         right: -7px;
@@ -87,7 +142,7 @@
         padding: .6rem .5rem .5rem;
         color: #fff;
         font-size: .9rem;
-        background: #d25353;
+        background: #074ece;
         text-align: center;
         position: relative;
         border-radius: .1rem .1rem 0 0;
@@ -163,7 +218,34 @@
 
     }
 
+    .cl-date-download-notice {
+      display: none;
+      font-size: .7rem;
+      color: #999;
+      margin: .5rem auto;
+      text-align: center;
+      width: 80%;
+      line-height: .8rem;
+    }
+
+    &.dialogue {
+      .cl-date-download-dialogue {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: all;
+      }
+    }
+
+    &.cl-date-red .cl-date-content-wrapper .cl-date-month {
+      background: #d25353;
+    }
+
+    &.cl-date-grey .cl-date-content-wrapper .cl-date-month {
+      background: #555;
+    }
+
     &.downloaded .cl-date-content-wrapper,
+    &.dialogue .cl-date-content-wrapper,
     .cl-date-content-wrapper:hover,
     .cl-date-content-wrapper:focus {
 
@@ -188,7 +270,7 @@
         transition-duration: .15s;
       }
 
-      .cl-date-download {
+      .cl-date-download-indicator {
         opacity: 1;
         transform: scale(1);
       }
@@ -208,14 +290,32 @@
 
     }
 
-    &.downloaded .cl-date-content-wrapper .cl-date-download {
-      background-color: #0ecc10;
-      background-position: center 100%;
-      transform: scale(1.1);
+    &.downloaded .cl-date-content-wrapper {
+
+      cursor: default;
+
+      .cl-date-content {
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      }
+
+      .cl-date-download-indicator {
+        background-color: #0ecc10;
+        background-position: center 100%;
+        transform: scale(1.1);
+      }
+
+      & ~ .cl-date-download-notice {
+        display: block;
+      }
+
     }
 
     &:not(.downloaded) .cl-date-content-wrapper:active {
       transform: scale(.9);
+    }
+
+    &.dialogue .cl-date-content-wrapper {
+      opacity: .7;
     }
 
 }
