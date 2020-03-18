@@ -590,7 +590,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 				'attr' => 'style',
 				'types' => array( 'str' ),
 				'req' => false,
-				'values' => array( 'urgent' ),
+				'values' => array( 'urgent', 'covid19' ),
 			),
 			array(
 				'attr' => 'show_expired',

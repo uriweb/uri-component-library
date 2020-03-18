@@ -6,6 +6,10 @@ switch ( $atts['style'] ) {
 	case 'urgent':
 		$classes .= ' urgent';
 		break;
+	case 'covid19':
+		$classes .= ' covid19';
+		$atts['dismissible'] = false;
+		break;
 }
 
 if ( ! empty( $atts['expiration'] ) ) {
