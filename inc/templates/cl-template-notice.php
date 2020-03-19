@@ -8,7 +8,6 @@ switch ( $atts['style'] ) {
 		break;
 	case 'covid19':
 		$classes .= ' covid19';
-		$atts['dismissible'] = false;
 		break;
 }
 
@@ -46,6 +45,10 @@ $output .= '>';
 
 if ( $atts['dismissible'] ) {
 	$output .= '<div class="dismiss" title="Dismiss">Dismiss message</div>';
+}
+
+if ( 'covid19' == $atts['style'] ) {
+	$output .= '<div class="banner type-sans">COVID-19</div>';
 }
 
 if ( ! empty( $atts['title'] ) ) {
