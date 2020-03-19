@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 4.1.0
+ * Version: 4.1.1
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -34,9 +34,11 @@ function uri_cl_dir_url() {
  */
 function uri_cl_cache_buster() {
 	static $cache_buster;
-	if ( empty( $cache_buster ) ) {
+	if ( empty( $cache_buster ) && function_exists( 'get_plugin_data' ) ) {
 		$values = get_plugin_data( URI_CL_DIR_PATH . 'uri-component-library.php', false );
 		$cache_buster = $values['Version'];
+	} else {
+		$cache_buster = gmdate( 'Ymd', strtotime( 'now' ) );
 	}
 	return $cache_buster;
 }

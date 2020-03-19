@@ -112,7 +112,7 @@ function uri_cl_get_vimeo_thumbnail( $src ) {
 			return false;
 	}
 
-	$data = json_decode( file_get_contents( 'http://vimeo.com/api/oembed.json?url=' . $src ) );
+	$data = json_decode( file_get_contents( 'https://vimeo.com/api/oembed.json?url=' . $src ) );
 
 	if ( ! $data ) {
 			return false;
