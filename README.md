@@ -2,21 +2,16 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 4.1.0
+## What's new in 4.1.1
 
-CL 4.1.0 is a minor release focused on code quality and adding new components.
+CL 4.1.1 is a bug fix release with special considerations for COVID-19.
 
-* Adds a Promo component for displaying timely promotional information (shortcode support only)
-* Adds a Date component for displaying dates (shortcode support only)
-  - Generates a downloadable ICS file
-  - Downloaded state persists for 12 hours
-* All scripts are now linted with ESLint; JSCS and JSHint have been removed
-* Panels formatted as `super` now have a bottom margin by default
-* Fixes an issue that prevented CSS classes added in the Block Editor Inspector from being passed to components
-* Fixes an issue with padding on cards placed in equal-height tiles
+* Adds a notice style for COVID-19 related messages
+* Fixes an issue that caused components using Vimeo to load insecure content
+* Other minor fixes
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/184/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/188/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
