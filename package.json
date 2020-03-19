@@ -16,9 +16,9 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@wordpress/eslint-plugin": "^3.3.0",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@wordpress/eslint-plugin": "^4.0.0",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
@@ -30,13 +30,13 @@
     "gulp-postcss": "^8.0.0",
     "gulp-replace-task": "^0.11.0",
     "gulp-sass": "^4.0.2",
-    "gulp-shell": "^0.7.1",
+    "gulp-shell": "^0.8.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-debug": "^3.0.0",
     "gulp-terser": ">=1.1.7",
     "lodash": ">=4.17.13",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.9"
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
   },
   "browserslist": {
     "production": [
