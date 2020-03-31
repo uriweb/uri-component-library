@@ -48,7 +48,7 @@ if ( $atts['dismissible'] ) {
 }
 
 if ( 'covid19' == $atts['style'] ) {
-	$output .= '<div class="banner type-sans">COVID-19</div>';
+	$output .= '<div class="banner type-sans">COVID-19 Response</div>';
 }
 
 if ( ! empty( $atts['title'] ) ) {

@@ -2,16 +2,15 @@
 
 The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
 
-## What's new in 4.1.1
+## What's new in 4.1.2
 
-CL 4.1.1 is a bug fix release with special considerations for COVID-19.
+CL 4.1.2 is a bug fix release.
 
-* Adds a notice style for COVID-19 related messages
-* Fixes an issue that caused components using Vimeo to load insecure content
-* Other minor fixes
+* Fixes an issue that prevented YouTube videos in video and hero components from automatically playing and resizing properly
+* Updates header syntax on notice components styled as `covid19`
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/188/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/191/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
@@ -29,4 +28,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: plugins  
 Requires at least: 4.0  
 Tested up to: 5.3  
-Stable tag: 4.1.1  
+Stable tag: 4.1.2  
