@@ -49,7 +49,7 @@ class CLYT {
 	 * @param {Object} parent The video parent container.
 	 */
 	static resizeVideo( event, el, parent ) {
-		el.style.height = ( parent.offsetWidth / ( event.target.a.width / event.target.a.height ) ) + 'px';
+		el.style.height = ( parent.offsetWidth / ( event.target.f.width / event.target.f.height ) ) + 'px';
 	}
 
 	/**
@@ -81,7 +81,7 @@ class CLYT {
 		event.target.mute();
 
 		const el = event.target.getIframe();
-		const parent = event.target.a.parentNode;
+		const parent = event.target.f.parentNode;
 
 		// Listen for browser resizing
 		window.addEventListener(
@@ -126,7 +126,7 @@ class CLYT {
 	 */
 	static onVideoReady( event ) {
 		const el = event.target.getIframe(),
-			parent = event.target.a.parentNode;
+			parent = event.target.f.parentNode;
 
 		window.addEventListener(
 			'resize',
@@ -174,7 +174,7 @@ class CLYT {
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					event.target.a.previousSibling.classList.add( 'unveil' );
+					event.target.f.previousSibling.classList.add( 'unveil' );
 				}
 				break;
 		}
@@ -186,8 +186,8 @@ class CLYT {
 	 * @param {Object} event The player event.
 	 */
 	static onHeroError( event ) {
-		event.target.a.previousSibling.classList.remove( 'unveil' );
-		event.target.a.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
+		event.target.f.previousSibling.classList.remove( 'unveil' );
+		event.target.f.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/**
@@ -198,10 +198,10 @@ class CLYT {
 	static onVideoError( event ) {
 		let alt;
 
-		const poster = event.target.a.previousSibling;
+		const poster = event.target.f.previousSibling;
 
 		const a = document.createElement( 'a' );
-		a.href = 'http://www.youtube.com/watch?v=' + event.target.a.id;
+		a.href = 'http://www.youtube.com/watch?v=' + event.target.f.id;
 		a.title = 'Try watching this video on YouTube';
 
 		const img = document.createElement( 'img' );
@@ -213,9 +213,9 @@ class CLYT {
 		img.alt = alt;
 		a.appendChild( img );
 
-		const iframe = document.getElementById( event.target.a.id );
+		const iframe = document.getElementById( event.target.f.id );
 		if ( iframe ) {
-			event.target.a.parentNode.replaceChild( a, iframe );
+			event.target.f.parentNode.replaceChild( a, iframe );
 		}
 	}
 
@@ -226,7 +226,7 @@ class CLYT {
 	 */
 	static onVideoStateChange( event ) {
 		const state = event.target.getPlayerState(),
-			overlay = event.target.a.parentNode.querySelector( '.overlay' );
+			overlay = event.target.f.parentNode.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:
