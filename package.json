@@ -16,11 +16,11 @@
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "@wordpress/eslint-plugin": "^4.0.0",
-    "autoprefixer": "^9.7.4",
-    "babel-loader": "^8.0.4",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "gulp": "^4.0.2",
@@ -35,7 +35,7 @@
     "gulp-strip-debug": "^3.0.0",
     "gulp-terser": ">=1.1.7",
     "lodash": ">=4.17.13",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "browserslist": {
