@@ -6,12 +6,11 @@ The Component Library exists in order to standardize the look and feel of web el
 
 CL 4.1.1 is a bug fix release with special considerations for COVID-19.
 
-* Adds a notice style for COVID-19 related messages
-* Fixes an issue that caused components using Vimeo to load insecure content
-* Other minor fixes
+* Fixes an issue that prevented YouTube videos in video and hero components from automatically playing and resizing properly
+* Updates header syntax on notices styled as `covid19`
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/188/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/191/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## Plugin Details
 
