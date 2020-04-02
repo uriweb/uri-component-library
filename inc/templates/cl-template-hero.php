@@ -87,8 +87,11 @@ if ( ! empty( $atts['img'] ) ) {
 
 $image .= ' style="background-image:url(' . $imgurl . ');';
 
-if ( ! empty( $atts['position'] ) ) {
-	$image .= 'background-position:' . $atts['position'] . ';';
+if ( ! empty( $atts['positionX'] ) || 0.5 != $atts['positionX'] || ! empty( $atts['positionY'] ) || 0.5 != $atts['positionY'] ) {
+
+	$position = $atts['positionX'] * 100 . '% ' . $atts['positionY'] * 100 . '%';
+	$image .= 'background-position:' . $position . ';';
+
 }
 
 $image .= '"></div>'; // image

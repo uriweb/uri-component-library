@@ -404,7 +404,8 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'use_caption' => false,
 			'caption' => '',
 			'credit' => '',
-			'position' => '',
+			'positionX' => 0.5,
+			'positionY' => 0.5,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -448,6 +449,16 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			array(
 				'attr' => 'use_caption',
 				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'positionX',
+				'types' => array( 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'positionY',
+				'types' => array( 'num' ),
 				'req' => false,
 			),
 		),
