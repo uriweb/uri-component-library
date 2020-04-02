@@ -169,7 +169,7 @@ registerBlockType( 'uri-cl/notice', {
 
 						<PanelRow>
 							<ToggleControl
-								label="Show when expired"
+								label="Show after expired"
 								checked={ attributes.show_expired }
 								onChange={ ( content ) => setAttributes( { show_expired: content } ) }
 							/>
