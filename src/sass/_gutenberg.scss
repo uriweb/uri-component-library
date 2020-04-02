@@ -58,6 +58,18 @@
 		}
 
 	}
+
+	.cl-component-message {
+		font-size: 1rem;
+		padding: 1.25em 1em 1em 2.5em;
+		background-color: rgba(139,139,150,.1);
+		background-image: url( '../i/admin-info.png' );
+		background-position: 1em center;
+		background-size: 1em;
+		background-repeat: no-repeat;
+		margin-bottom: .2rem;
+	}
+
 	.cl-card+.meta {
 		top: -2rem;
 	}
