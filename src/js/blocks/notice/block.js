@@ -105,7 +105,8 @@ registerBlockType( 'uri-cl/notice', {
 									{ [ 'default', 'urgent', 'covid19' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const selected = key === attributes.style;
+										const style = ( undefined === attributes.style ) ? '' : attributes.style;
+										const selected = ( key === style );
 
 										return (
 											<Button
