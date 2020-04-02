@@ -11,6 +11,8 @@ const {
 	TextControl,
 	Button,
 	ButtonGroup,
+	ToggleControl,
+	DatePicker,
 } = wp.components;
 
 const {
@@ -52,8 +54,20 @@ registerBlockType( 'uri-cl/notice', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	attributes: {
+		expiration: {
+			type: 'string',
+		},
+		title: {
+			type: 'string',
+		},
 		style: {
 			type: 'string',
+		},
+		show_expired: {
+			type: 'bool',
+		},
+		dismissible: {
+			type: 'bool',
 		},
 		contentWrapper: {
 			type: 'string',
@@ -72,10 +86,23 @@ registerBlockType( 'uri-cl/notice', {
 				classes += ' ' + attributes.style;
 			}
 
+			// Display a message on the admin screen if the notice is expired
+			const date = new Date();
+			const exp = new Date( attributes.expiration );
+			let expirationMessage = '';
+			let syntax = 'and will not';
+			if ( !! attributes.show_expired ) {
+				syntax = 'but will still';
+			}
+			if ( !! attributes.expiration && exp.getTime() <= date.getTime() ) {
+				expirationMessage = <div className="cl-component-message">This notice has expired { syntax } be visible when published.</div>;
+			}
+
 			setAttributes( { contentWrapper: '' } );
 
 			return (
 				<div className="container">
+					{ expirationMessage }
 					<div className={ classes }>
 						<h1><PlainText
 							onChange={ ( content ) => setAttributes( { title: content } ) }
@@ -123,6 +150,31 @@ registerBlockType( 'uri-cl/notice', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Dismissible"
+								checked={ attributes.dismissible }
+								onChange={ ( content ) => setAttributes( { dismissible: content } ) }
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<DatePicker
+								label="Expiration date"
+								currentDate={ attributes.expiration }
+								onChange={ ( date ) => setAttributes( { expiration: date } ) }
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Show when expired"
+								checked={ attributes.show_expired }
+								onChange={ ( content ) => setAttributes( { show_expired: content } ) }
+							/>
+						</PanelRow>
+
 					</PanelBody>
 				</InspectorControls>
 			);
