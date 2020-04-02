@@ -582,6 +582,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 			'dismissible' => true,
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts

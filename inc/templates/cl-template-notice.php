@@ -55,7 +55,11 @@ if ( ! empty( $atts['title'] ) ) {
 	$output .= '<h1>' . $atts['title'] . '</h1>';
 }
 
-$output .= '<p>' . do_shortcode( $content ) . '</p>';
+if ( ! empty( $atts['contentWrapper'] ) ) {
+	$output .= '<' . $atts['contentWrapper'] . '>' . do_shortcode( $content ) . '</' . $atts['contentWrapper'] . '>';
+} else {
+	$output .= do_shortcode( $content );
+}
 
 $output .= '</div>';
 $output .= '</section>';

@@ -55,6 +55,9 @@ registerBlockType( 'uri-cl/notice', {
 		style: {
 			type: 'string',
 		},
+		contentWrapper: {
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes } ) {
@@ -68,6 +71,8 @@ registerBlockType( 'uri-cl/notice', {
 			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
+
+			setAttributes( { contentWrapper: '' } );
 
 			return (
 				<div className="container">
