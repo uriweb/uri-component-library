@@ -12,6 +12,10 @@
 		border-radius: 0;
 	}
 
+	.editor-styles-wrapper *[class^="cl-"] p:empty {
+	    display: initial;
+	}
+
 	.meta {
 		animation: metaReveal .5s;
 		background-color: #ddd;
