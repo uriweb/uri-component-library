@@ -28,11 +28,11 @@ const {
 } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [
-	'core/heading',
 	'core/paragraph',
 ];
+
 const TEMPLATE = [
-	[ 'core/paragraph', { placeholder: 'Please note', dropCap: false } ],
+	[ 'core/paragraph', { placeholder: 'Your notice content...', dropCap: false } ],
 ];
 
 const customIcon = () => {
@@ -72,6 +72,12 @@ registerBlockType( 'uri-cl/notice', {
 			return (
 				<div className="container">
 					<div className={ classes }>
+						<h1><PlainText
+							onChange={ ( content ) => setAttributes( { title: content } ) }
+							value={ attributes.title }
+							placeholder={ __( 'Your notice title' ) }
+							keepPlaceholderOnFocus={ true }
+						/></h1>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
@@ -91,7 +97,7 @@ registerBlockType( 'uri-cl/notice', {
 								id="notice-style"
 							>
 								<ButtonGroup aria-label={ __( 'Notice Style' ) }>
-									{ [ 'default', 'urgent' ].map( ( value ) => {
+									{ [ 'default', 'urgent', 'covid19' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
 										const selected = key === attributes.style;
@@ -124,20 +130,9 @@ registerBlockType( 'uri-cl/notice', {
 	}, // End edit
 
 	save( { attributes } ) {
-		let classes = 'cl-notice';
-		if ( !! attributes.className ) {
-			// @todo this gets automatically applied to wrapper... remove it?
-			classes += ' ' + attributes.className;
-		}
-
-		if ( !! attributes.style ) {
-			classes += ' ' + attributes.style;
-		}
-
 		return (
-			<div className={ classes }>
-				<InnerBlocks.Content />
-			</div>
+			<InnerBlocks.Content />
 		);
 	},
+
 } );
