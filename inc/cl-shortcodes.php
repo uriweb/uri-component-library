@@ -404,6 +404,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'use_caption' => false,
 			'caption' => '',
 			'credit' => '',
+			'position' => '',
 			'class' => '',
 			'className' => '',
 			'css' => '',

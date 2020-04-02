@@ -85,7 +85,13 @@ if ( ! empty( $atts['img'] ) ) {
 	}
 }
 
-$image .= ' style="background-image:url(' . $imgurl . ')"></div>'; // image
+$image .= ' style="background-image:url(' . $imgurl . ');';
+
+if ( ! empty( $atts['position'] ) ) {
+	$image .= 'background-position:' . $atts['position'] . ';';
+}
+
+$image .= '"></div>'; // image
 
 $output .= $image;
 
