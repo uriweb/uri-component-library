@@ -23,7 +23,7 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	IconButton,
+	Button,
 	BlockAlignmentToolbar,
 	InnerBlocks,
 } = wp.blockEditor;
@@ -100,7 +100,7 @@ registerBlockType( 'uri-cl/notice', {
 										return (
 											<Button
 												key={ key }
-												isDefault
+												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { style: key } ) }

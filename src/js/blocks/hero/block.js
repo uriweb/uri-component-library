@@ -2,14 +2,13 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
 	Dashicon,
-	IconButton,
+	Button,
 	PanelBody,
 	PanelRow,
 	Toolbar,
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button,
 	ButtonGroup,
 	ToggleControl,
 } = wp.components;
@@ -261,7 +260,7 @@ registerBlockType( 'uri-cl/hero', {
 									allowedTypes={ ALLOWED_MEDIA_TYPES }
 									value={ attributes.mediaID }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit media' ) }
 											icon="edit"
@@ -296,7 +295,7 @@ registerBlockType( 'uri-cl/hero', {
 										return (
 											<Button
 												key={ key }
-												isDefault
+												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { format: key } ) }

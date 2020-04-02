@@ -9,7 +9,7 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	IconButton,
+	Button,
 	BlockAlignmentToolbar,
 	InnerBlocks, // @todo: allow nested blocks
 } = wp.blockEditor;
