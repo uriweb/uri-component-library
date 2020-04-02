@@ -23,7 +23,6 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	Button,
 	BlockAlignmentToolbar,
 	InnerBlocks,
 } = wp.blockEditor;
