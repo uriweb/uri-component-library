@@ -98,8 +98,16 @@ registerBlockType( 'uri-cl/date', {
 				month = date.toLocaleString( 'default', { month: 'short' } ) + ' ' + date.getFullYear();
 			}
 
+			// Display a message on the admin screen if the notice is expired
+			const today = new Date();
+			let expirationMessage = '';
+			if ( !! attributes.date && date.getTime() <= today.getTime() ) {
+				expirationMessage = <div className="cl-component-message">This date may no longer be relevant.</div>;
+			}
+
 			return (
 				<div className="container">
+					{ expirationMessage }
 					<div className={ classes }>
 						<div className="cl-date-content-wrapper">
 							<div className="cl-date-content">
