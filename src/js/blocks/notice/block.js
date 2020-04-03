@@ -86,6 +86,10 @@ registerBlockType( 'uri-cl/notice', {
 				classes += ' ' + attributes.style;
 			}
 
+			if ( undefined === attributes.dismissible ) {
+				attributes.dismissible = true;
+			}
+
 			// Display a message on the admin screen if the notice is expired
 			const date = new Date();
 			const exp = new Date( attributes.expiration );
@@ -153,7 +157,7 @@ registerBlockType( 'uri-cl/notice', {
 
 						<PanelRow>
 							<ToggleControl
-								label="Dismissible"
+								label="Allow visitors to dismiss this notice"
 								checked={ attributes.dismissible }
 								onChange={ ( content ) => setAttributes( { dismissible: content } ) }
 							/>
