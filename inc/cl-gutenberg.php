@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 include 'blocks/cl-boxout.php';
 include 'blocks/cl-button.php';
 include 'blocks/cl-card.php';
+include 'blocks/cl-date.php';
 include 'blocks/cl-hero.php';
 include 'blocks/cl-metric.php';
 include 'blocks/cl-notice.php';
