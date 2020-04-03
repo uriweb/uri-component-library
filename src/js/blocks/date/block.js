@@ -86,11 +86,36 @@ registerBlockType( 'uri-cl/date', {
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
 			const classes = classNames( attributes, isSelected );
+			const date = new Date( attributes.date );
+
+			let month = date.toLocaleString( 'default', { month: 'long' } );
+			if ( !! attributes.show_year ) {
+				month = date.toLocaleString( 'default', { month: 'short' } ) + ' ' + date.getFullYear();
+			}
 
 			return (
 				<div className="container">
 					<div className={ classes }>
-						<div>Date placeholder</div>
+						<div className="cl-date-content-wrapper">
+							<div className="cl-date-content">
+								<div className="cl-date-month">
+									{ month }
+								</div>
+								<div className="cl-date-day">
+									{ date.getDate() }
+								</div>
+							</div>
+						</div>
+						<div className="cl-date-caption-wrapper">
+							<div className="cl-date-caption">
+								<PlainText
+									onChange={ ( content ) => setAttributes( { caption: content } ) }
+									value={ attributes.caption }
+									placeholder={ __( 'Your date caption' ) }
+									keepPlaceholderOnFocus={ true }
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			);
@@ -121,7 +146,7 @@ registerBlockType( 'uri-cl/date', {
 								<ButtonGroup aria-label={ __( 'Date Color' ) }>
 									{ [ 'blue', 'red', 'grey' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
-										const key = ( 'default' === value ) ? '' : value;
+										const key = ( 'blue' === value ) ? '' : value;
 										const color = ( undefined === attributes.color ) ? '' : attributes.color;
 										const selected = ( key === color );
 
