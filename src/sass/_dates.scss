@@ -246,6 +246,7 @@
 
     &.downloaded .cl-date-content-wrapper,
     &.dialogue .cl-date-content-wrapper,
+    &.selected .cl-date-content-wrapper, // for block editor
     .cl-date-content-wrapper:hover,
     .cl-date-content-wrapper:focus {
 
@@ -330,7 +331,7 @@
       &.dialogue .cl-date-download-dialogue {
         transform: scale(1);
       }
-      
+
     }
     .cl-date.left,
     .cl-date.right {
