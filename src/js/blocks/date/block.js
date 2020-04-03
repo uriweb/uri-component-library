@@ -86,6 +86,11 @@ registerBlockType( 'uri-cl/date', {
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
 			const classes = classNames( attributes, isSelected );
+
+			if ( ! attributes.date ) {
+				setAttributes( { date: new Date() } );
+			}
+
 			const date = new Date( attributes.date );
 
 			let month = date.toLocaleString( 'default', { month: 'long' } );
