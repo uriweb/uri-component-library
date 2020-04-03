@@ -88,7 +88,7 @@ registerBlockType( 'uri-cl/date', {
 			const classes = classNames( attributes, isSelected );
 
 			return (
-				<div className="container cl-date-block-form">
+				<div className="container">
 					<div className={ classes }>
 						<div>Date placeholder</div>
 					</div>
@@ -116,7 +116,7 @@ registerBlockType( 'uri-cl/date', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Date Color' ) }
-								id="metric-style"
+								id="date-color"
 							>
 								<ButtonGroup aria-label={ __( 'Date Color' ) }>
 									{ [ 'blue', 'red', 'grey' ].map( ( value ) => {
