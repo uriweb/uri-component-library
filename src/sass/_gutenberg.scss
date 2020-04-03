@@ -123,8 +123,16 @@
 
 	/** DATES **/
 
-	.cl-date textarea {
-		text-align: center;
+	.editor-styles-wrapper .cl-date {
+
+		.cl-date-content-wrapper:after {
+			background-image: none;
+		}
+
+		textarea {
+			text-align: center;
+		}
+
 	}
 
 	/** HEROES **/
