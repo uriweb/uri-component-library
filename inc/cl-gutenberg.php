@@ -23,6 +23,7 @@ include 'blocks/cl-hero.php';
 include 'blocks/cl-metric.php';
 include 'blocks/cl-notice.php';
 include 'blocks/cl-panel.php';
+include 'blocks/cl-promo.php';
 include 'blocks/cl-quote.php';
 include 'blocks/cl-tabs.php';
 
