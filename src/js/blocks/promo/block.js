@@ -75,6 +75,9 @@ registerBlockType( 'uri-cl/promo', {
 		style: {
 			type: 'string',
 		},
+		format: {
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
@@ -239,6 +242,35 @@ registerBlockType( 'uri-cl/promo', {
 			return (
 				<InspectorControls>
 					<PanelBody>
+
+						<PanelRow>
+							<BaseControl
+								label={ __( 'Format' ) }
+								id="promo-style"
+							>
+								<ButtonGroup aria-label={ __( 'Promo Format' ) }>
+									{ [ 'default', 'micro' ].map( ( value ) => {
+										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+										const key = ( 'default' === value ) ? '' : value;
+										const format = ( undefined === attributes.format ) ? '' : attributes.format;
+										const selected = ( key === format );
+
+										return (
+											<Button
+												key={ key }
+												isSecondary
+												isPrimary={ selected }
+												aria-pressed={ selected }
+												onClick={ ( content ) => setAttributes( { format: key } ) }
+											>
+												{ capitalizedValue }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</BaseControl>
+						</PanelRow>
+
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Style' ) }
@@ -267,6 +299,7 @@ registerBlockType( 'uri-cl/promo', {
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
+
 					</PanelBody>
 				</InspectorControls>
 			);

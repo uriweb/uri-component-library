@@ -733,7 +733,8 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'linktext' => '',
 			'img' => '',
 			'alt' => '',
-			'style' => 'default',
+			'style' => '',
+			'format' => '',
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -760,6 +761,12 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'default', 'confetti', 'brand' ),
+			),
+			array(
+				'attr' => 'format',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default', 'micro' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'promo' )
