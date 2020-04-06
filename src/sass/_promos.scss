@@ -84,7 +84,7 @@
     	width: 100%;
       margin-top: 2rem;
 
-      a {
+      .cl-promo-img-link {
 
         display: block;
 
@@ -162,7 +162,7 @@
         overflow: hidden;
         margin-top: 0;
 
-        a {
+        .cl-promo-img-link {
           position: absolute;
           right: 25px;
           top: calc( .5rem + 2px );

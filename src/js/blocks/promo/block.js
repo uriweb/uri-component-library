@@ -67,7 +67,7 @@ registerBlockType( 'uri-cl/promo', {
 			type: 'string',
 		},
 		mediaID: {
-			type: 'string',
+			type: 'number',
 		},
 		alt: {
 			type: 'string',
@@ -134,17 +134,62 @@ registerBlockType( 'uri-cl/promo', {
 		// Generate editor view of the promo itself
 		const createContentEditForm = () => {
 			let classes = 'cl-promo';
-			if ( !! attributes.style ) {
-				classes += ' ' + attributes.style;
-			}
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
 
+			let style = 'style-blur';
+			if ( !! attributes.style && 'default' !== attributes.style ) {
+				style = 'style-' + attributes.style;
+			}
+			style = 'cl-promo-backdrop ' + style;
+
 			return (
 				<div className="container cl-promo-block-form">
 					<div className={ classes }>
-						Promo preview
+						<div className="cl-promo-backdrop-wrapper">
+							<div className={ style }></div>
+						</div>
+						<div className="cl-promo-content">
+							<div className="cl-promo-text">
+								<h1><PlainText
+									onChange={ ( content ) => setAttributes( { title: content } ) }
+									value={ attributes.title }
+									placeholder={ __( 'Your promo title' ) }
+									keepPlaceholderOnFocus={ true }
+								/></h1>
+								<p><PlainText
+									onChange={ ( content ) => setAttributes( { body: content } ) }
+									value={ attributes.body }
+									placeholder={ __( 'Your promo text' ) }
+									keepPlaceholderOnFocus={ true }
+								/></p>
+								<p><span className="cl-promo-text-link"><PlainText
+									onChange={ ( content ) => setAttributes( { linktext: content } ) }
+									value={ attributes.linktext }
+									placeholder={ __( 'Your link text' ) }
+									keepPlaceholderOnFocus={ true }
+								/></span></p>
+							</div>
+							<div className="cl-promo-img-wrapper">
+								<div className="cl-promo-img"><span className="cl-promo-img-link">
+									<span className="cl-promo-block-editor-meta">{ meta }</span>
+									<MediaUpload
+										onSelect={ ( media ) => {
+											setAttributes( {
+												alt: media.alt,
+												img: media.url,
+												mediaID: media.id,
+											} );
+										}
+										}
+										type="image"
+										value={ attributes.mediaID }
+										render={ ( { open } ) => getImageButton( open ) }
+									/>
+								</span></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			);
@@ -197,6 +242,7 @@ registerBlockType( 'uri-cl/promo', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Style' ) }
+								help={ __( 'To increase performance, promo previews will appear simplified in the editor window.' ) }
 								id="promo-style"
 							>
 								<ButtonGroup aria-label={ __( 'Promo Style' ) }>
@@ -212,7 +258,7 @@ registerBlockType( 'uri-cl/promo', {
 												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { styke: key } ) }
+												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
