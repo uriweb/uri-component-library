@@ -282,6 +282,18 @@
 
 		}
 
+		&.micro  {
+
+			h1 textarea {
+				text-align: right;
+			}
+
+			.cl-promo-micro-text-link:after {
+				display: none;
+			}
+
+		}
+
 		.cl-promo-content .cl-promo-text {
 			width: 35vw !important;
 		}
@@ -292,7 +304,8 @@
 			left: 20px;
 		}
 
-		.cl-promo-text-link {
+		.cl-promo-text-link,
+		.cl-promo-micro-text-link {
 
 			color: #ffd453;
 			font-weight: bold;

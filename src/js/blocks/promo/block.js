@@ -141,6 +141,31 @@ registerBlockType( 'uri-cl/promo', {
 				classes += ' selected';
 			}
 
+			if ( 'micro' === attributes.format ) {
+				classes += ' micro';
+
+				return (
+					<div className="container cl-promo-block-form">
+						<div className={ classes }>
+							<div className="cl-promo-micro-content-wrapper">
+								<h1><PlainText
+									onChange={ ( content ) => setAttributes( { title: content } ) }
+									value={ attributes.title }
+									placeholder={ __( 'Your promo title' ) }
+									keepPlaceholderOnFocus={ true }
+								/></h1>
+								<span className="cl-promo-micro-text-link"><PlainText
+									onChange={ ( content ) => setAttributes( { linktext: content } ) }
+									value={ attributes.linktext }
+									placeholder={ __( 'Your link text' ) }
+									keepPlaceholderOnFocus={ true }
+								/>{ meta }</span>
+							</div>
+						</div>
+					</div>
+				);
+			}
+
 			let style = 'style-blur';
 			if ( !! attributes.style && 'default' !== attributes.style ) {
 				style = 'style-' + attributes.style;
@@ -246,7 +271,7 @@ registerBlockType( 'uri-cl/promo', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
-								id="promo-style"
+								id="promo-format"
 							>
 								<ButtonGroup aria-label={ __( 'Promo Format' ) }>
 									{ [ 'default', 'micro' ].map( ( value ) => {

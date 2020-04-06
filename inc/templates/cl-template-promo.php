@@ -19,7 +19,7 @@ $output .= ' class="' . $classes;
 if ( 'micro' == $atts['format'] ) {
 
 	$output .= ' micro">';
-	$output .= '<a href="' . $atts['link'] . '">';
+	$output .= '<a href="' . $atts['link'] . '" class="cl-promo-micro-content-wrapper">';
 	$output .= '<div class="cl-promo-micro-content">';
 
 	if ( ! empty( $atts['title'] ) ) {

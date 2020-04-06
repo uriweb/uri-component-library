@@ -751,6 +751,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url', 'num' ),
+				'req' => false,
 			),
 			array(
 				'attr' => 'link',
