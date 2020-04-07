@@ -89,7 +89,7 @@ function uri_cl_get_site_menus() {
  */
 function uri_cl_register_api_route_menus() {
 	register_rest_route(
-		 'uri-component-library/v2',
+		 'uri-component-library/v1',
 		'/menus',
 		array(
 			'methods' => 'GET',
