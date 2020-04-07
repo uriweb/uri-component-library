@@ -148,25 +148,11 @@
     }
 
     .cl-promo-micro-text-link {
-
       position: relative;
       display: inline-block;
       color: #ffd453;
-      padding-right: 1.5rem;
       font-size: 1rem;
       text-transform: uppercase;
-
-      &:after {
-        position: absolute;
-      	right: 0;
-      	top: 1px;
-      	display: block;
-      	content: '';
-      	border-left: 10px solid #ffd453;
-      	border-top: 5px solid transparent;
-      	border-bottom: 5px solid transparent;
-      }
-
     }
 
   }
