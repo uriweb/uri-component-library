@@ -4,6 +4,7 @@ import './card/block';
 import './date/block';
 import './hero/block';
 import './metric/block';
+import './menu/block';
 import './notice/block';
 import './panel/block';
 import './promo/block';
