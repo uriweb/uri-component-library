@@ -262,6 +262,40 @@ registerBlockType( 'uri-cl/promo', {
 			);
 		};
 
+		let styleControl;
+		if ( 'micro' !== attributes.format ) {
+			styleControl = (
+				<PanelRow>
+					<BaseControl
+						label={ __( 'Style' ) }
+						help={ __( 'To increase performance, promo previews will appear simplified in the editor window.' ) }
+						id="promo-style"
+					>
+						<ButtonGroup aria-label={ __( 'Promo Style' ) }>
+							{ [ 'default', 'brand', 'confetti' ].map( ( value ) => {
+								const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
+								const key = ( 'default' === value ) ? '' : value;
+								const format = ( undefined === attributes.style ) ? '' : attributes.style;
+								const selected = ( key === format );
+
+								return (
+									<Button
+										key={ key }
+										isSecondary
+										isPrimary={ selected }
+										aria-pressed={ selected }
+										onClick={ ( content ) => setAttributes( { style: key } ) }
+									>
+										{ capitalizedValue }
+									</Button>
+								);
+							} ) }
+						</ButtonGroup>
+					</BaseControl>
+				</PanelRow>
+			);
+		}
+
 		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
 			return (
@@ -296,34 +330,7 @@ registerBlockType( 'uri-cl/promo', {
 							</BaseControl>
 						</PanelRow>
 
-						<PanelRow>
-							<BaseControl
-								label={ __( 'Style' ) }
-								help={ __( 'To increase performance, promo previews will appear simplified in the editor window.' ) }
-								id="promo-style"
-							>
-								<ButtonGroup aria-label={ __( 'Promo Style' ) }>
-									{ [ 'default', 'brand', 'confetti' ].map( ( value ) => {
-										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
-										const key = ( 'default' === value ) ? '' : value;
-										const format = ( undefined === attributes.style ) ? '' : attributes.style;
-										const selected = ( key === format );
-
-										return (
-											<Button
-												key={ key }
-												isSecondary
-												isPrimary={ selected }
-												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { style: key } ) }
-											>
-												{ capitalizedValue }
-											</Button>
-										);
-									} ) }
-								</ButtonGroup>
-							</BaseControl>
-						</PanelRow>
+						{ styleControl }
 
 					</PanelBody>
 				</InspectorControls>
