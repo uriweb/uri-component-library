@@ -78,6 +78,28 @@ if ( is_admin() ) {
 }
 
 /**
+ * Callback for REST API menus route
+ */
+function uri_cl_get_site_menus() {
+	return wp_get_nav_menus();
+}
+
+/**
+ * Register REST API endpoint for navigation menus
+ */
+function uri_cl_register_api_route_menus() {
+	register_rest_route(
+		 'uri-component-library/v2',
+		'/menus',
+		array(
+			'methods' => 'GET',
+			'callback' => 'uri_cl_get_site_menus',
+		)
+		);
+}
+add_action( 'rest_api_init', 'uri_cl_register_api_route_menus' );
+
+/**
  * URI Autoupdater
  */
 function uri_component_library_update() {
