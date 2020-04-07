@@ -17,6 +17,8 @@ const {
 	TextControl,
 	Button,
 	ButtonGroup,
+	RangeControl,
+	ToggleControl,
 } = wp.components;
 
 const customIcon = () => {
@@ -51,9 +53,11 @@ registerBlockType( 'uri-cl/menu', {
 		},
 		depth: {
 			type: 'number',
+			default: 1,
 		},
 		showtitle: {
 			type: 'bool',
+			default: false,
 		},
 		title: {
 			type: 'string',
@@ -66,15 +70,21 @@ registerBlockType( 'uri-cl/menu', {
 			// Set the classnames
 			const classes = classNames( attributes, isSelected );
 
-			// Set the tooltip
-			let title = '';
-			if ( !! attributes.title ) {
-				title = ': ' + attributes.title;
+			let name = '';
+			if ( !! attributes.name ) {
+				name = ': ' + attributes.name;
 			}
+
+			let title = '';
+			if ( !! attributes.title && attributes.showtitle ) {
+				title = <span className="cl-menu-toggle"> { attributes.title } </span>;
+			}
+
 			return (
 				<div className="container cl-menu-block-form">
-					<div className={ classes } title={ title }>
-						Menu placeholder{ title }
+					<div className={ classes }>
+						{ title }
+						<div className="cl-menu-placeholder">Menu placeholder{ name }</div>
 					</div>
 				</div>
 			);
@@ -88,7 +98,7 @@ registerBlockType( 'uri-cl/menu', {
 
 						<PanelRow>
 							<TextControl
-								label="Menu name"
+								label={ __( 'Menu name' ) }
 								onChange={ ( content ) => setAttributes( { name: content } ) }
 								value={ attributes.name }
 								className="meta-field"
@@ -97,10 +107,29 @@ registerBlockType( 'uri-cl/menu', {
 
 						<PanelRow>
 							<TextControl
-								label="Title"
+								label={ __( 'Title' ) }
 								onChange={ ( content ) => setAttributes( { title: content } ) }
 								value={ attributes.title }
 								className="meta-field"
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label={ __( 'Show title on desktop' ) }
+								help={ __( 'Titles are always shown on mobile' ) }
+								checked={ attributes.showtitle }
+								onChange={ ( content ) => setAttributes( { showtitle: content } ) }
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<RangeControl
+								label={ __( 'Depth' ) }
+								max={ 2 }
+								min={ 1 }
+								onChange={ ( depth ) => setAttributes( { depth } ) }
+								value={ attributes.depth }
 							/>
 						</PanelRow>
 
