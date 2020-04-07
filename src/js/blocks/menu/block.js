@@ -77,7 +77,7 @@ registerBlockType( 'uri-cl/menu', {
 
 			let title = '';
 			if ( !! attributes.title && attributes.showtitle ) {
-				title = <span className="cl-menu-toggle"> { attributes.title } </span>;
+				title = <span className="cl-menu-toggle">{ attributes.title }</span>;
 			}
 
 			return (
