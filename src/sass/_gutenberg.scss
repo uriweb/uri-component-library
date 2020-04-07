@@ -12,8 +12,16 @@
 		border-radius: 0;
 	}
 
-	.editor-styles-wrapper *[class^="cl-"] p:empty {
-	    display: initial;
+	.editor-styles-wrapper *[class^="cl-"] {
+
+		.wp-block {
+			max-width: 100%;
+		}
+
+		p:empty {
+		  display: initial;
+		}
+
 	}
 
 	.meta {
