@@ -184,6 +184,9 @@ registerBlockType( 'uri-cl/hero', {
 			}
 
 			let classes = 'cl-hero';
+			if ( !! attributes.className ) {
+				classes += ' ' + attributes.className;
+			}
 			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
