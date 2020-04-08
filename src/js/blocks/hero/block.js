@@ -265,10 +265,6 @@ registerBlockType( 'uri-cl/hero', {
 		const createBlockControls = () => {
 			return (
 				<BlockControls key="controls">
-					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ ( content ) => setAttributes( { alignment: content } ) }
-					/>
 
 					{ !! attributes.img && (
 						<MediaUploadCheck>
