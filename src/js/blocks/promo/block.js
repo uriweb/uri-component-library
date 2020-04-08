@@ -137,6 +137,10 @@ registerBlockType( 'uri-cl/promo', {
 		// Generate editor view of the promo itself
 		const createContentEditForm = () => {
 			let classes = 'cl-promo';
+			if ( !! attributes.className ) {
+				classes += ' ' + attributes.className;
+			}
+
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
@@ -227,10 +231,6 @@ registerBlockType( 'uri-cl/promo', {
 		const createBlockControls = () => {
 			return (
 				<BlockControls key="controls">
-					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ ( content ) => setAttributes( { alignment: content } ) }
-					/>
 
 					{ !! attributes.img && (
 						<MediaUploadCheck>
