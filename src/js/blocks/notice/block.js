@@ -65,9 +65,11 @@ registerBlockType( 'uri-cl/notice', {
 		},
 		show_expired: {
 			type: 'bool',
+			default: false,
 		},
 		dismissible: {
 			type: 'bool',
+			default: true,
 		},
 		contentWrapper: {
 			type: 'string',
@@ -84,10 +86,6 @@ registerBlockType( 'uri-cl/notice', {
 
 			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
-			}
-
-			if ( undefined === attributes.dismissible ) {
-				attributes.dismissible = true;
 			}
 
 			// Display a message on the admin screen if the notice is expired
