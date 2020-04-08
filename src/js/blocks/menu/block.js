@@ -124,51 +124,59 @@ registerBlockType( 'uri-cl/menu', {
 			);
 		};
 
+		let inspectorControls = (
+			<PanelBody>
+				<PanelRow>
+					<div style={ { paddingRight: '7px' } }><Dashicon icon="warning" /></div>
+					<div>This site has no menus.  Create one under the Appearance tab.</div>
+				</PanelRow>
+			</PanelBody>
+		);
+
+		if ( !! menuNames ) {
+			inspectorControls = (
+				<PanelBody>
+					<SelectControl
+						label={ __( 'Menu' ) }
+						value={ attributes.name }
+						onChange={ ( name ) => setAttributes( { name } ) }
+						options={ menuNames }
+					/>
+					<PanelRow>
+						<TextControl
+							label={ __( 'Title' ) }
+							help={ __( 'If no title is provided, the menu name will be used.' ) }
+							onChange={ ( content ) => setAttributes( { title: content } ) }
+							value={ attributes.title }
+							className="meta-field"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ __( 'Show title on desktop' ) }
+							help={ __( 'Titles are always shown on mobile.' ) }
+							checked={ attributes.showtitle }
+							onChange={ ( content ) => setAttributes( { showtitle: content } ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Depth' ) }
+							max={ 2 }
+							min={ 1 }
+							onChange={ ( depth ) => setAttributes( { depth } ) }
+							value={ attributes.depth }
+						/>
+					</PanelRow>
+				</PanelBody>
+			);
+		}
+
 		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
 			return (
 				<InspectorControls>
-					<PanelBody>
-
-						<PanelRow>
-							<SelectControl
-								label={ __( 'Menu' ) }
-								value={ attributes.name }
-								onChange={ ( name ) => setAttributes( { name } ) }
-								options={ menuNames }
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<TextControl
-								label={ __( 'Title' ) }
-								help={ __( 'If no title is provided, the menu name will be used.' ) }
-								onChange={ ( content ) => setAttributes( { title: content } ) }
-								value={ attributes.title }
-								className="meta-field"
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<ToggleControl
-								label={ __( 'Show title on desktop' ) }
-								help={ __( 'Titles are always shown on mobile.' ) }
-								checked={ attributes.showtitle }
-								onChange={ ( content ) => setAttributes( { showtitle: content } ) }
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<RangeControl
-								label={ __( 'Depth' ) }
-								max={ 2 }
-								min={ 1 }
-								onChange={ ( depth ) => setAttributes( { depth } ) }
-								value={ attributes.depth }
-							/>
-						</PanelRow>
-
-					</PanelBody>
+					{ inspectorControls }
 				</InspectorControls>
 			);
 		};
