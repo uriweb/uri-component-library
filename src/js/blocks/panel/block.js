@@ -56,7 +56,6 @@ const customIcon = () => {
 const classNames = ( attributes ) => {
 	let classes = ( 'super' === attributes.format ) ? 'cl-panel-super' : 'cl-panel';
 	if ( !! attributes.className ) {
-		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
 	if ( !! attributes.reverse ) {
