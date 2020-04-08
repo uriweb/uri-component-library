@@ -77,6 +77,7 @@ registerBlockType( 'uri-cl/panel', {
 		},
 		reverse: {
 			type: 'boolean',
+			default: false,
 		},
 		img: {
 			type: 'string',
