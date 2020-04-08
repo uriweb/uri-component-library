@@ -47,6 +47,7 @@ function uri_cl_gutenberg_is_active() {
 			filemtime( URI_CL_DIR_PATH . 'js/blocks.built.js' ) // cache buster
 		);
 		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', URI_CL_URL );
+		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', get_site_url() );
 	}
 
 }

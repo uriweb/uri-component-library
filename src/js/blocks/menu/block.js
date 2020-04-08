@@ -19,6 +19,7 @@ const {
 	ButtonGroup,
 	RangeControl,
 	ToggleControl,
+	SelectControl,
 } = wp.components;
 
 const customIcon = () => {
@@ -41,6 +42,33 @@ const classNames = ( attributes, isSelected ) => {
 
 	return classes;
 };
+
+let menuNames = false;
+
+const getMenuNames = () => {
+	const xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = () => {
+		if ( xmlhttp.readyState === XMLHttpRequest.DONE ) {
+			if ( 200 === xmlhttp.status ) {
+				const parsed = JSON.parse( xmlhttp.responseText );
+				const list = [];
+				for ( const m of parsed ) {
+					list.push( {
+						label: m.name,
+						value: m.name,
+					} );
+				}
+				menuNames = list;
+			}
+			return false;
+		}
+	};
+
+	xmlhttp.open( 'GET', URI_CL_SITE_URL + '/wp-json/uri-component-library/v1/menus', true );
+	xmlhttp.send();
+};
+
+getMenuNames();
 
 registerBlockType( 'uri-cl/menu', {
 
@@ -71,19 +99,25 @@ registerBlockType( 'uri-cl/menu', {
 			const classes = classNames( attributes, isSelected );
 
 			let name = '';
+			let title = '';
 			if ( !! attributes.name ) {
 				name = ': ' + attributes.name;
+				title = attributes.name;
 			}
 
-			let title = '';
-			if ( !! attributes.title && attributes.showtitle ) {
-				title = <span className="cl-menu-toggle">{ attributes.title }</span>;
+			if ( !! attributes.title ) {
+				title = attributes.title;
+			}
+
+			let titleMeta = '';
+			if ( attributes.showtitle ) {
+				titleMeta = <span className="cl-menu-toggle">{ title }</span>;
 			}
 
 			return (
 				<div className="container cl-menu-block-form">
 					<div className={ classes }>
-						{ title }
+						{ titleMeta }
 						<div className="cl-menu-placeholder">Menu placeholder{ name }</div>
 					</div>
 				</div>
@@ -97,17 +131,18 @@ registerBlockType( 'uri-cl/menu', {
 					<PanelBody>
 
 						<PanelRow>
-							<TextControl
-								label={ __( 'Menu name' ) }
-								onChange={ ( content ) => setAttributes( { name: content } ) }
+							<SelectControl
+								label={ __( 'Menu' ) }
 								value={ attributes.name }
-								className="meta-field"
+								onChange={ ( name ) => setAttributes( { name } ) }
+								options={ menuNames }
 							/>
 						</PanelRow>
 
 						<PanelRow>
 							<TextControl
 								label={ __( 'Title' ) }
+								help={ __( 'If no title is provided, the menu name will be used.' ) }
 								onChange={ ( content ) => setAttributes( { title: content } ) }
 								value={ attributes.title }
 								className="meta-field"
@@ -117,7 +152,7 @@ registerBlockType( 'uri-cl/menu', {
 						<PanelRow>
 							<ToggleControl
 								label={ __( 'Show title on desktop' ) }
-								help={ __( 'Titles are always shown on mobile' ) }
+								help={ __( 'Titles are always shown on mobile.' ) }
 								checked={ attributes.showtitle }
 								onChange={ ( content ) => setAttributes( { showtitle: content } ) }
 							/>
