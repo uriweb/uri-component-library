@@ -14,7 +14,7 @@ CL 4.2.0 is a minor release focused on Block Editor support.
 
 ### General Improvements
 * Adds a new `micro` format for Promos
-* The content wrapper HTML tag can now be specified in Boxouts, Notices, and Panels
+* The content wrapper HTML tag can now be customized in Boxouts, Notices, and Panels (default is `p`)
 * Updates admin icons with a cleaner, more consistent look
 * Fixes an issue that caused the interface to freeze when fully deleting a component's paragraph content in the Block Editor
 * Updates development tools
