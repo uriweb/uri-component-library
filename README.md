@@ -7,14 +7,14 @@ The Component Library exists in order to standardize the look and feel of web el
 CL 4.2.0 is a minor release focused on Block Editor support.
 
 ### Enhancements in the Block Editor
-* Adds support for creating Notices, Dates, Promos, and Menus
+* Adds support for creating Dates, Menus, Notices, and Promos
 * Background images of Heroes can now be positioned using the Focal Point Picker
 * More components can now preview custom CSS classes in the editor
 * Removes the alignment block control on components for which it is not applicable
 
 ### General Improvements
 * Adds a new `micro` format for Promos
-* The content wrapper HTML tag can now be specified in Notice components
+* The content wrapper HTML tag can now be specified in Boxouts, Notices, and Panels
 * Updates admin icons with a cleaner, more consistent look
 * Fixes an issue that caused the interface to freeze when fully deleting a component's paragraph content in the Block Editor
 * Updates development tools
