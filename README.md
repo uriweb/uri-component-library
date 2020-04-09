@@ -10,7 +10,7 @@ CL 4.2.0 is a minor release focused on Block Editor support.
 * Adds support for creating Dates, Menus, Notices, and Promos
 * Background images of Heroes can now be positioned using the Focal Point Picker
 * More components can now preview custom CSS classes in the editor
-* Removes the alignment block control on components for which it is not applicable
+* The alignment block control has been removed from components that do not support floating
 
 ### General Improvements
 * Adds a new `micro` format for Promos
