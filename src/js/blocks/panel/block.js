@@ -90,6 +90,9 @@ registerBlockType( 'uri-cl/panel', {
 		mediaID: {
 			type: 'number',
 		},
+		contentWrapper: {
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes } ) {
@@ -127,6 +130,8 @@ registerBlockType( 'uri-cl/panel', {
 		};
 
 		const classes = classNames( attributes );
+
+		setAttributes( { contentWrapper: '' } );
 
 		const createContentEditForm = () => {
 			if ( 'super' === attributes.format ) {

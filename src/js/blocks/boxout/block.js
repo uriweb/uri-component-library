@@ -63,12 +63,16 @@ registerBlockType( 'uri-cl/boxout', {
 		float: {
 			type: 'string',
 		},
+		contentWrapper: {
+			type: 'string',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
 		// Generate editor view of the card itself
 		const createContentEditForm = () => {
 			const classes = classNames( attributes, isSelected );
+			setAttributes( { contentWrapper: '' } );
 			return (
 				<div className="container">
 					<div className={ classes }>
