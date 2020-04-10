@@ -7,11 +7,10 @@ const {
 	PanelBody,
 	PanelRow,
 	Toolbar,
-	IconButton,
+	Button,
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button,
 	ButtonGroup,
 } = wp.components;
 
@@ -174,7 +173,7 @@ registerBlockType( 'uri-cl/quote', {
 									allowedTypes={ ALLOWED_MEDIA_TYPES }
 									value={ attributes.mediaID }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit media' ) }
 											icon="edit"

@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 4.1.2
+ * Version: 4.2.0
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -76,6 +76,28 @@ include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
 if ( is_admin() ) {
 	add_editor_style( plugins_url( 'css/cl.built.css', __FILE__ ) );
 }
+
+/**
+ * Callback for REST API menus route
+ */
+function uri_cl_get_site_menus() {
+	return wp_get_nav_menus();
+}
+
+/**
+ * Register REST API endpoint for navigation menus
+ */
+function uri_cl_register_api_route_menus() {
+	register_rest_route(
+		 'uri-component-library/v1',
+		'/menus',
+		array(
+			'methods' => 'GET',
+			'callback' => 'uri_cl_get_site_menus',
+		)
+		);
+}
+add_action( 'rest_api_init', 'uri_cl_register_api_route_menus' );
 
 /**
  * URI Autoupdater

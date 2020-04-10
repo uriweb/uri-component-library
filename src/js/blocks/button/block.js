@@ -150,7 +150,7 @@ registerBlockType( 'uri-cl/button', {
 										return (
 											<Button
 												key={ key }
-												isDefault
+												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { style: key } ) }

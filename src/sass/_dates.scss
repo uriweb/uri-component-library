@@ -126,7 +126,7 @@
         height: 20px;
         border-radius: 50%;
         background-color: #fff;
-        background-image: url(../i/download.svg);
+        background-image: url(../i/sprite-download.svg);
         background-repeat: no-repeat;
         background-position: center 0;
         background-size: 100% auto;
@@ -193,6 +193,7 @@
       padding: .5rem 1rem;
       font-size: .9rem;
       width: 80%;
+      max-width: $maxcardwidth;
       margin: 0 auto;
       text-align: center;
       border: 1px solid #ddd;
@@ -246,6 +247,7 @@
 
     &.downloaded .cl-date-content-wrapper,
     &.dialogue .cl-date-content-wrapper,
+    &.selected .cl-date-content-wrapper, // for block editor
     .cl-date-content-wrapper:hover,
     .cl-date-content-wrapper:focus {
 
@@ -330,7 +332,7 @@
       &.dialogue .cl-date-download-dialogue {
         transform: scale(1);
       }
-      
+
     }
     .cl-date.left,
     .cl-date.right {

@@ -2,14 +2,13 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
 	Dashicon,
-	IconButton,
+	Button,
 	PanelBody,
 	PanelRow,
 	Toolbar,
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button,
 } = wp.components;
 const {
 	BlockControls,
@@ -234,7 +233,7 @@ registerBlockType( 'uri-cl/card', {
 									allowedTypes={ ALLOWED_MEDIA_TYPES }
 									value={ attributes.mediaID }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit media' ) }
 											icon="edit"

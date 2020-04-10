@@ -2,15 +2,15 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
 	Dashicon,
-	IconButton,
+	Button,
 	PanelBody,
 	PanelRow,
 	Toolbar,
 	withNotices,
 	BaseControl,
 	TextControl,
-	Button,
 	ButtonGroup,
+	FocalPointPicker,
 	ToggleControl,
 } = wp.components;
 const {
@@ -58,6 +58,7 @@ registerBlockType( 'uri-cl/hero', {
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
+	// the mediaHeight and mediaWidth are for the focal point picker component
 	attributes: {
 		headline: {
 			type: 'string',
@@ -69,6 +70,12 @@ registerBlockType( 'uri-cl/hero', {
 			type: 'string',
 		},
 		mediaID: {
+			type: 'number',
+		},
+		mediaHeight: {
+			type: 'number',
+		},
+		mediaWidth: {
 			type: 'number',
 		},
 		id: {
@@ -97,6 +104,12 @@ registerBlockType( 'uri-cl/hero', {
 		},
 		credit: {
 			type: 'string',
+		},
+		positionX: {
+			type: 'number',
+		},
+		positionY: {
+			type: 'number',
 		},
 		format: {
 			type: 'string',
@@ -131,6 +144,10 @@ registerBlockType( 'uri-cl/hero', {
 							alt: media.alt,
 							img: media.url,
 							mediaID: media.id,
+							mediaHeight: media.height,
+							mediaWidth: media.width,
+							positionX: 0.5,
+							positionY: 0.5,
 						} );
 					}
 					}
@@ -167,6 +184,9 @@ registerBlockType( 'uri-cl/hero', {
 			}
 
 			let classes = 'cl-hero';
+			if ( !! attributes.className ) {
+				classes += ' ' + attributes.className;
+			}
 			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
@@ -176,8 +196,15 @@ registerBlockType( 'uri-cl/hero', {
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
+			let style = {};
+			let poster = 'poster';
 			if ( !! attributes.img ) {
 				classes += ' has-image';
+				poster = 'still';
+				style = {
+					backgroundPosition: `${ attributes.positionX * 100 }% ${ attributes.positionY * 100 }%`,
+					backgroundImage: `url(${ attributes.img })`,
+				};
 			} else {
 				classes += ' no-image';
 			}
@@ -191,7 +218,7 @@ registerBlockType( 'uri-cl/hero', {
 				<div className="container cl-hero-block-form">
 					<div className={ classes } title={ title }>
 						<div className="cl-hero-proper">
-							<div className="poster">
+							<div className={ poster } style={ style }>
 								<MediaUpload
 									onSelect={ ( media ) => {
 										setAttributes( {
@@ -241,10 +268,6 @@ registerBlockType( 'uri-cl/hero', {
 		const createBlockControls = () => {
 			return (
 				<BlockControls key="controls">
-					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ ( content ) => setAttributes( { alignment: content } ) }
-					/>
 
 					{ !! attributes.img && (
 						<MediaUploadCheck>
@@ -255,13 +278,17 @@ registerBlockType( 'uri-cl/hero', {
 											alt: media.alt,
 											img: media.url,
 											mediaID: media.id,
+											mediaHeight: media.height,
+											mediaWidth: media.width,
+											positionX: 0.5,
+											positionY: 0.5,
 										} );
 									}
 									}
 									allowedTypes={ ALLOWED_MEDIA_TYPES }
 									value={ attributes.mediaID }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit media' ) }
 											icon="edit"
@@ -296,7 +323,7 @@ registerBlockType( 'uri-cl/hero', {
 										return (
 											<Button
 												key={ key }
-												isDefault
+												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { format: key } ) }
@@ -307,6 +334,15 @@ registerBlockType( 'uri-cl/hero', {
 									} ) }
 								</ButtonGroup>
 							</BaseControl>
+						</PanelRow>
+
+						<PanelRow>
+							<FocalPointPicker
+								url={ attributes.img }
+								dimensions={ { width: attributes.mediaWidth, height: attributes.mediaHeight } }
+								value={ { x: attributes.positionX, y: attributes.positionY } }
+								onChange={ ( focalPoint ) => setAttributes( { positionX: ( focalPoint.x * 1 ), positionY: ( focalPoint.y * 1 ) } ) }
+							/>
 						</PanelRow>
 
 						<PanelRow>

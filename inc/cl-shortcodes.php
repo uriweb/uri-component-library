@@ -21,6 +21,7 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 			'float' => '',
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts
@@ -404,6 +405,8 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'use_caption' => false,
 			'caption' => '',
 			'credit' => '',
+			'positionX' => 0.5,
+			'positionY' => 0.5,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -447,6 +450,16 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			array(
 				'attr' => 'use_caption',
 				'types' => array( 'bool' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'positionX',
+				'types' => array( 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'positionY',
+				'types' => array( 'num' ),
 				'req' => false,
 			),
 		),
@@ -570,6 +583,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 			'dismissible' => true,
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts
@@ -667,6 +681,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			'format' => '',
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts
@@ -720,7 +735,8 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'linktext' => '',
 			'img' => '',
 			'alt' => '',
-			'style' => 'default',
+			'style' => '',
+			'format' => '',
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -737,6 +753,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url', 'num' ),
+				'req' => false,
 			),
 			array(
 				'attr' => 'link',
@@ -747,6 +764,12 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'default', 'confetti', 'brand' ),
+			),
+			array(
+				'attr' => 'format',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default', 'micro' ),
 			),
 		),
 		uri_cl_shortcode_get_template( 'promo' )

@@ -18,9 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 include 'blocks/cl-boxout.php';
 include 'blocks/cl-button.php';
 include 'blocks/cl-card.php';
+include 'blocks/cl-date.php';
 include 'blocks/cl-hero.php';
+include 'blocks/cl-menu.php';
 include 'blocks/cl-metric.php';
+include 'blocks/cl-notice.php';
 include 'blocks/cl-panel.php';
+include 'blocks/cl-promo.php';
 include 'blocks/cl-quote.php';
 include 'blocks/cl-tabs.php';
 
@@ -43,6 +47,7 @@ function uri_cl_gutenberg_is_active() {
 			filemtime( URI_CL_DIR_PATH . 'js/blocks.built.js' ) // cache buster
 		);
 		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', URI_CL_URL );
+		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', get_site_url() );
 	}
 
 }

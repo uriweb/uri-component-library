@@ -23,7 +23,6 @@ const {
 	InspectorControls,
 	BlockControls,
 	Toolbar,
-	IconButton,
 	BlockAlignmentToolbar,
 } = wp.blockEditor;
 
@@ -151,7 +150,7 @@ registerBlockType( 'uri-cl/metric', {
 										return (
 											<Button
 												key={ key }
-												isDefault
+												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
 												onClick={ ( content ) => setAttributes( { style: key } ) }

@@ -12,6 +12,22 @@
 		border-radius: 0;
 	}
 
+	textarea::placeholder {
+		opacity: .5;
+	}
+
+	.editor-styles-wrapper *[class^="cl-"] {
+
+		.wp-block {
+			max-width: 100%;
+		}
+
+		p:empty {
+		  display: initial;
+		}
+
+	}
+
 	.meta {
 		animation: metaReveal .5s;
 		background-color: #ddd;
@@ -54,6 +70,18 @@
 		}
 
 	}
+
+	.cl-component-message {
+		font-size: 1rem;
+		padding: 1.25em 1em 1em 2.5em;
+		background-color: rgba(139,139,150,.1);
+		background-image: url( '../i/admin-info.png' );
+		background-position: 1em center;
+		background-size: 1em;
+		background-repeat: no-repeat;
+		margin-bottom: .5rem;
+	}
+
 	.cl-card+.meta {
 		top: -2rem;
 	}
@@ -101,6 +129,20 @@
 
 		&:hover .cl-button {
 			background-color: $link !important;
+		}
+
+	}
+
+	/** DATES **/
+
+	.editor-styles-wrapper .cl-date {
+
+		.cl-date-content-wrapper:after {
+			background-image: none;
+		}
+
+		textarea {
+			text-align: center;
 		}
 
 	}
@@ -198,6 +240,10 @@
 
 		}
 
+		.still img {
+			display: none;
+		}
+
 		.cl-button {
 
 			textarea {
@@ -227,13 +273,81 @@
 		}
 	}
 
+
+	/** PROMOS **/
+
+	.editor-styles-wrapper .cl-promo {
+
+		h1, p {
+
+			color: $white;
+			margin-bottom: 1rem;
+
+			textarea:focus,
+			textarea::placeholder {
+				color: #fff;
+			}
+
+		}
+
+		&.micro  {
+
+			h1 textarea {
+				text-align: right;
+			}
+
+		}
+
+		.cl-promo-content .cl-promo-text {
+			width: 35vw !important;
+		}
+
+		.cl-promo-block-editor-meta {
+			position: relative;
+			top: 280px;
+			left: 20px;
+		}
+
+		.cl-promo-text-link,
+		.cl-promo-micro-text-link {
+
+			color: #ffd453;
+			font-weight: bold;
+
+			textarea:focus,
+			textarea::placeholder {
+				color: #ffd453;
+	    	font-weight: bold;
+			}
+
+		}
+
+		&.selected {
+			margin-bottom: 3rem;
+		}
+
+		.cl-promo-backdrop-wrapper .cl-promo-backdrop.style-confetti {
+			background-image: linear-gradient(#00054d, #1b3559);
+		}
+
+		.cl-promo-text {
+			max-width: initial;
+			margin-left: -30vw !important;
+			margin-right: 0;
+			position: relative;
+			left: 50%;
+			width: 60vw !important;
+		}
+
+	}
+
 	/** QUOTES **/
 	.cl-quote {
 
-    textarea {
-      font: inherit;
+		textarea {
+			font: inherit;
 			text-align: center;
-    }
+		}
 
 		cite {
 
@@ -244,26 +358,34 @@
 				display: none !important;
 			}
 
-	    textarea {
-	      position: relative;
-	      top: .375rem;
-	    }
+			textarea {
+				position: relative;
+				top: .375rem;
+			}
 
 		}
 
-    .cl-quote-image img {
-      border-radius: 50%;
-    }
+		.cl-quote-image img {
+			border-radius: 50%;
+		}
 
-    .editor-media-placeholder {
-      display: none;
-    }
+		.editor-media-placeholder {
+			display: none;
+		}
 
-    &.selected .editor-media-placeholder {
-      display: block;
-    }
+		&.selected .editor-media-placeholder {
+			display: block;
+		}
 
 	}
+
+
+	/** MENUS **/
+	.cl-menu .cl-menu-placeholder {
+		padding: 1rem;
+		background: #eee;
+	}
+
 
 	/** METRICS **/
 	.cl-metric {
