@@ -21,6 +21,7 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 			'float' => '',
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts
@@ -680,6 +681,7 @@ function uri_cl_shortcode_panel( $atts, $content = null ) {
 			'format' => '',
 			'class' => '',
 			'className' => '',
+			'contentWrapper' => 'p',
 			'css' => '',
 		),
 		$atts
