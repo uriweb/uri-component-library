@@ -118,7 +118,8 @@ $adcards: ".cl-card, .cl-dcard";
 
 @media screen and (min-width: $break1 ) {
 
-  .cl-card {
+  .cl-card,
+  .cl-tiles.flow > *:nth-child(1) .cl-card {
 
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -145,7 +146,8 @@ $adcards: ".cl-card, .cl-dcard";
 
   }
 
-  .cl-tiles .cl-card {
+  .cl-tiles .cl-card,
+  .wp-block-columns .cl-card {
 
     display: block;
 

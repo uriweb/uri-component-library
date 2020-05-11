@@ -165,45 +165,53 @@ registerBlockType( 'uri-cl/card', {
 				<div className="container cl-card-block-form">
 					<div className={ classes } title={ title }>
 
-						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( {
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id,
-								} );
-							}
-							}
-							type="image"
-							value={ attributes.mediaID }
-							render={ ( { open } ) => getImageButton( open ) }
-						/>
+						<div className="cl-card-container">
 
-						<div className="cl-card-text">
-							<h3><PlainText
-								onChange={ ( content ) => setAttributes( { title: content } ) }
-								value={ attributes.title }
-								placeholder={ __( 'Your card title' ) }
-								keepPlaceholderOnFocus={ true }
-							/></h3>
-							<RichText
-								onChange={ ( content ) => setAttributes( { body: content } ) }
-								tagname="p"
-								value={ attributes.body }
-								placeholder={ __( 'Your card text' ) }
-								keepPlaceholderOnFocus={ true }
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( {
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id,
+									} );
+								}
+								}
+								type="image"
+								value={ attributes.mediaID }
+								render={ ( { open } ) => getImageButton( open ) }
 							/>
+
 						</div>
-						<div>
-							<PlainText
-								onChange={ ( content ) => setAttributes( { button: content } ) }
-								value={ attributes.button }
-								placeholder={ __( 'Your button text' ) }
-								keepPlaceholderOnFocus={ true }
-								className="cl-button"
-							/>
-							{ meta }
+						<div className="cl-card-container">
+
+							<div className="cl-card-text">
+								<h3><PlainText
+									onChange={ ( content ) => setAttributes( { title: content } ) }
+									value={ attributes.title }
+									placeholder={ __( 'Your card title' ) }
+									keepPlaceholderOnFocus={ true }
+								/></h3>
+								<RichText
+									onChange={ ( content ) => setAttributes( { body: content } ) }
+									tagname="p"
+									value={ attributes.body }
+									placeholder={ __( 'Your card text' ) }
+									keepPlaceholderOnFocus={ true }
+								/>
+							</div>
+							<div>
+								<PlainText
+									onChange={ ( content ) => setAttributes( { button: content } ) }
+									value={ attributes.button }
+									placeholder={ __( 'Your button text' ) }
+									keepPlaceholderOnFocus={ true }
+									className="cl-button"
+								/>
+								{ meta }
+							</div>
+
 						</div>
+
 					</div>
 				</div>
 			);
