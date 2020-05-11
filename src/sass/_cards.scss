@@ -114,6 +114,22 @@ $adcards: ".cl-card, .cl-dcard";
 
 }
 
+@media screen and (min-width: $break1 ) {
+
+  .cl-card {
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    .cl-card-container {
+      overflow: hidden;
+    }
+
+  }
+
+
+}
+
 
 /* Detail Cards */
 
