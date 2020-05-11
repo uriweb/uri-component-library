@@ -21,8 +21,12 @@ if ( ! empty( $atts['css'] ) ) {
 $output .= '>';
 
 if ( ! empty( $atts['img'] ) ) {
+	$output .= '<div class="cl-card-container">';
 	$output .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+	$output .= '</div>';
 }
+
+$output .= '<div class="cl-card-container">';
 
 if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 
@@ -42,6 +46,8 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 if ( ! empty( $atts['button'] ) ) {
 	$output .= '<div class="cl-button">' . $atts['button'] . '</div>';
 }
+
+$output .= '</div>';
 
 $output .= '</a>';
 $output .= '</div>';
