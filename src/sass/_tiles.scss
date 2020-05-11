@@ -135,12 +135,12 @@
     }
     &.two-one,
     &.two-one-one {
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
     }
     &.one-two,
     &.one-two-one,
     &.one-one-two {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
     }
 
   }
