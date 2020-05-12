@@ -122,7 +122,7 @@ $adcards: ".cl-card, .cl-dcard";
   .cl-tiles.flow > *:nth-child(1) .cl-card {
 
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     .cl-card-container {
       position: relative;
@@ -151,14 +151,29 @@ $adcards: ".cl-card, .cl-dcard";
 
     display: block;
 
+    .cl-card-container {
+      position: initial;
+    }
+
     .cl-button {
       position: relative;
     }
 
   }
 
+}
+
+@media screen and (min-width: $break2 ) {
+
+  .cl-card,
+  .cl-tiles.flow > *:nth-child(1) .cl-card {
+
+    grid-template-columns: 2fr 1fr;
+
+  }
 
 }
+
 
 
 /* Detail Cards */
