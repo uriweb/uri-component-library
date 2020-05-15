@@ -23,6 +23,9 @@ function onYouTubePlayerAPIReady() {
 			vimeo: {},
 			yt: {},
 		},
+		cards: {
+			vimeo: {},
+		},
 	};
 
 	window.addEventListener( 'load', getVids, false );
@@ -37,6 +40,7 @@ function onYouTubePlayerAPIReady() {
 
 		const heroes = document.querySelectorAll( '.cl-hero .poster' );
 		const vids = document.querySelectorAll( '.cl-video .poster' );
+		const cards = document.querySelectorAll( '.cl-card .poster' );
 
 		if ( URICL.checkSupport() ) {
 			for ( i = 0; i < heroes.length; i++ ) {
@@ -102,6 +106,25 @@ function onYouTubePlayerAPIReady() {
 			}
 		}
 
+		for ( i = 0; i < cards.length; i++ ) {
+			el = cards[ i ];
+
+			atts = {
+				parent: el.parentNode,
+				poster: el,
+				state: 'init',
+			};
+
+			src = el.getAttribute( 'data-video' );
+			host = el.getAttribute( 'data-platform' );
+			id = el.getAttribute( 'id' );
+
+			data.cards.vimeo[ id ] = atts;
+			data.cards.vimeo[ id ].src = src;
+			data.cards.vimeo[ id ].showinfo = el.getAttribute( 'data-showinfo' );
+			requireVimeo = true;
+		}
+
 		if ( requireYouTube ) {
 			CLYT.loadYouTubeAPI();
 		}
@@ -149,6 +172,25 @@ function onYouTubePlayerAPIReady() {
 				byline: showinfo,
 				title: showinfo,
 				portrait: showinfo,
+			};
+
+			callbacks = {
+				onReady: CLVimeo.onVideoReady,
+				onStateChange: CLVimeo.onVideoStateChange,
+				onError: CLVimeo.onVideoError,
+			};
+
+			createVimeoPlayer( id, value, options, callbacks );
+		}
+
+		/* Cards */
+		for ( id in data.cards.vimeo ) {
+			value = data.cards.vimeo[ id ];
+
+			options = {
+				url: value.src,
+				background: true,
+				autoplay: true,
 			};
 
 			callbacks = {

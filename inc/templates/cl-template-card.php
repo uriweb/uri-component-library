@@ -22,7 +22,17 @@ $output .= '>';
 
 if ( ! empty( $atts['img'] ) ) {
 	$output .= '<div class="cl-card-container">';
-	$output .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+
+	if ( 'vimeo' == uri_cl_get_video_platform( $atts['img'] ) ) {
+
+		$vid = uri_cl_get_video_id( $atts['img'] );
+		$imgurl = uri_cl_get_vimeo_thumbnail( $atts['img'] );
+		$output .= '<div id="' . $vid . '" data-video="' . $vid . '" data-platform="vimeo" class="poster" style="background-image:url(' . $imgurl . ')"></div>';
+
+	} else {
+		$output .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+	}
+
 	$output .= '</div>';
 }
 
