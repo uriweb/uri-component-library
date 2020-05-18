@@ -80,6 +80,47 @@ class CLVimeo {
 		CLVimeo.resizeVideo( data );
 	}
 
+	/**
+	 * Do things with the hero when it's loaded
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onCardReady( data ) {
+		// Listen for browser resizing
+		window.addEventListener(
+			'resize',
+			function() {
+				CLVimeo.resizeCard( data );
+			}
+		);
+		CLVimeo.resizeCard( data );
+
+		// Listen for scrolling
+		window.addEventListener(
+			'scroll',
+			function() {
+				if ( ! data.parent.classList.contains( 'paused' ) ) {
+					CLVimeo.determinePlayState( data );
+				}
+			}
+		);
+		CLVimeo.determinePlayState( data );
+
+		// Add play/pause button
+		const button = document.createElement( 'div' );
+
+		button.className = 'motionswitch';
+		button.title = 'Pause';
+		button.addEventListener(
+			'click',
+			function() {
+				CLVimeo.heroControl( data, button );
+			}
+		);
+
+		data.parent.appendChild( button );
+	}
+
 	static determinePlayState( data ) {
 		const v = window.innerHeight,
 			p = window.pageYOffset,
@@ -155,6 +196,32 @@ class CLVimeo {
 	 */
 	static resizeVideo( data ) {
 		data.player.element.setAttribute( 'height', data.parent.offsetWidth / data.ratio );
+	}
+
+	/**
+	 * Dynamically set the card video dimensions
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static resizeCard( data ) {
+		let w = data.parent.offsetWidth;
+		const el = data.parent.querySelector( 'iframe' );
+		const h = data.parent.offsetHeight;
+
+		if ( w / h > 16 / 9 ) {
+			el.style.height = ( w * 9 / 16 ) + 'px';
+			el.style.width = '100%';
+			el.style.left = 0;
+			el.style.top = ( ( h - ( w * 9 / 16 ) ) / 2 ) + 'px';
+			el.style.marginLeft = 0;
+		} else {
+			w = h * 16 / 9;
+			el.style.height = '100%';
+			el.style.width = w + 'px';
+			el.style.left = 0 - ( w / 2 ) + 'px';
+			el.style.top = 0;
+			el.style.marginLeft = '50%';
+		}
 	}
 
 	/**

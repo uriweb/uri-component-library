@@ -81,6 +81,40 @@ $adcards: ".cl-card, .cl-dcard";
         display: block;
     }
 
+    iframe {
+        z-index: 1;
+        position: relative;
+        max-width: initial;
+        max-height: initial;
+    }
+
+    .overlay {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 3;
+    }
+
+    .poster {
+
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-size: cover;
+      background-position: center center;
+      opacity: 1;
+      transition: all .4s ease-in-out;
+
+      &.unveil {
+        opacity: 0;
+        transition-delay: .5s;
+      }
+
+    }
+
 }
 
 .cl-boxout .cl-card img {
@@ -114,6 +148,16 @@ $adcards: ".cl-card, .cl-dcard";
         color: $white;
     }
 
+    .cl-card-container {
+
+      position: relative;
+      overflow: hidden;
+
+      &.video {
+        min-height: 300px;
+      }
+    }
+
 }
 
 @media screen and (min-width: $break1 ) {
@@ -123,11 +167,6 @@ $adcards: ".cl-card, .cl-dcard";
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-    .cl-card-container {
-      position: relative;
-      overflow: hidden;
-    }
 
     .cl-card-text {
       padding-bottom: 2rem;
@@ -169,6 +208,10 @@ $adcards: ".cl-card, .cl-dcard";
   .cl-tiles.flow > *:nth-child(1) .cl-card {
 
     grid-template-columns: 2fr 1fr;
+
+    .cl-card-container.video {
+      min-height: 375px;
+    }
 
   }
 

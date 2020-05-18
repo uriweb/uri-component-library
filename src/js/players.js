@@ -194,9 +194,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onVideoReady,
-				onStateChange: CLVimeo.onVideoStateChange,
-				onError: CLVimeo.onVideoError,
+				onReady: CLVimeo.onCardReady,
+				onStateChange: CLVimeo.onCardStateChange,
+				onError: CLVimeo.onCardError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
