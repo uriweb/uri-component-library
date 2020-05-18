@@ -108,9 +108,10 @@ function onYouTubePlayerAPIReady() {
 
 		for ( i = 0; i < cards.length; i++ ) {
 			el = cards[ i ];
+			parent = el.parentNode;
 
 			atts = {
-				parent: el.parentNode,
+				parent,
 				poster: el,
 				state: 'init',
 			};
@@ -119,10 +120,15 @@ function onYouTubePlayerAPIReady() {
 			host = el.getAttribute( 'data-platform' );
 			id = el.getAttribute( 'id' );
 
+			requireVimeo = true;
 			data.cards.vimeo[ id ] = atts;
 			data.cards.vimeo[ id ].src = src;
-			data.cards.vimeo[ id ].showinfo = el.getAttribute( 'data-showinfo' );
-			requireVimeo = true;
+
+			// Remove poster id and create a new placeholder for the video
+			el.removeAttribute( 'id' );
+			placeholder = document.createElement( 'div' );
+			placeholder.id = id;
+			parent.appendChild( placeholder );
 		}
 
 		if ( requireYouTube ) {
@@ -195,7 +201,7 @@ function onYouTubePlayerAPIReady() {
 
 			callbacks = {
 				onReady: CLVimeo.onCardReady,
-				onStateChange: CLVimeo.onCardStateChange,
+				onStateChange: CLVimeo.onHeroStateChange,
 				onError: CLVimeo.onCardError,
 			};
 

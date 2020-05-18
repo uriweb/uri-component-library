@@ -105,20 +105,6 @@ class CLVimeo {
 			}
 		);
 		CLVimeo.determinePlayState( data );
-
-		// Add play/pause button
-		const button = document.createElement( 'div' );
-
-		button.className = 'motionswitch';
-		button.title = 'Pause';
-		button.addEventListener(
-			'click',
-			function() {
-				CLVimeo.heroControl( data, button );
-			}
-		);
-
-		data.parent.appendChild( button );
 	}
 
 	static determinePlayState( data ) {
@@ -256,6 +242,16 @@ class CLVimeo {
 		a.appendChild( img );
 
 		data.parent.replaceChild( a, data.player.element );
+	}
+
+	/**
+	 * Revert to poster if there's an error with the card video
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onCardError( data ) {
+		data.poster.classList.remove( 'unveil' );
+		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/**
