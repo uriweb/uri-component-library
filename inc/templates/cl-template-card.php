@@ -11,6 +11,10 @@ if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
 }
 
+if ( ! empty( $atts['feature'] ) ) {
+	$classes .= ' cl-card-video-feature';
+}
+
 $output = '<div class="cl-wrapper cl-card-wrapper">';
 $output .= '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 
@@ -19,6 +23,17 @@ if ( ! empty( $atts['css'] ) ) {
 }
 
 $output .= '>';
+
+if ( ! empty( $atts['feature'] ) ) {
+	$output .= '<div class="cl-card-feature-wrapper">';
+
+	$vid = uri_cl_get_video_id( $atts['feature'] );
+	$imgurl = uri_cl_get_vimeo_thumbnail( $atts['feature'] );
+	$output .= '<div class="feature" id="' . $vid . '" data-video="' . $vid . '" data-platform="vimeo" data-showinfo="false"><img src="' . $imgurl . '" alt="video poster frame"/></div>';
+
+	$output .= '</div>';
+
+}
 
 if ( ! empty( $atts['img'] ) ) {
 	$output .= '<div class="cl-card-container';
