@@ -10,7 +10,7 @@
 	window.addEventListener( 'load', init, false );
 
 	function init() {
-		const els = document.querySelectorAll( '.cl-card-video-feature' );
+		const els = document.querySelectorAll( '.cl-card-theatre' );
 
 		for ( let i = 0; i < els.length; i++ ) {
 			setupCard( els[ i ] );
