@@ -183,9 +183,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onHeroReady,
-				onStateChange: CLVimeo.onHeroStateChange,
-				onError: CLVimeo.onHeroError,
+				onReady: CLHeroVimeo.onReady,
+				onStateChange: CLHeroVimeo.onStateChange,
+				onError: CLHeroVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
@@ -205,9 +205,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onVideoReady,
-				onStateChange: CLVimeo.onVideoStateChange,
-				onError: CLVimeo.onVideoError,
+				onReady: CLVideoVimeo.onReady,
+				onStateChange: CLVideoVimeo.onStateChange,
+				onError: CLVideoVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
@@ -224,9 +224,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onCardReady,
-				onStateChange: CLVimeo.onHeroStateChange,
-				onError: CLVimeo.onCardError,
+				onReady: CLCardVimeo.onReady,
+				onStateChange: CLCardVimeo.onStateChange,
+				onError: CLCardVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
@@ -244,9 +244,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onVideoReady,
-				onStateChange: CLVimeo.onVideoStateChange,
-				onError: CLVimeo.onVideoError,
+				onReady: CLVideoVimeo.onReady,
+				onStateChange: CLVideoVimeo.onStateChange,
+				onError: CLVideoVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
