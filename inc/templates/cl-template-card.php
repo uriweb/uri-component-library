@@ -25,14 +25,7 @@ if ( ! empty( $atts['css'] ) ) {
 $output .= '>';
 
 if ( ! empty( $atts['feature'] ) ) {
-	$output .= '<div class="cl-card-theatre-wrapper">';
-
-	$vid = uri_cl_get_video_id( $atts['feature'] );
-	$imgurl = uri_cl_get_vimeo_thumbnail( $atts['feature'] );
-	$output .= '<div class="feature" id="' . $vid . '" data-video="' . $vid . '" data-platform="vimeo" data-showinfo="false"><img src="' . $imgurl . '" alt="video poster frame"/></div>';
-
-	$output .= '</div>';
-
+	$output .= do_shortcode( '[cl-video vid="' . $atts['feature'] . '"]' );
 }
 
 if ( ! empty( $atts['img'] ) ) {

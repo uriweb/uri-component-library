@@ -127,14 +127,16 @@ $adcards: ".cl-card, .cl-dcard";
       height: 100%;
     }
 
-    .cl-card-theatre-wrapper {
+    .cl-video {
+      height: 100%;
+    }
+
+    .cl-video-wrapper {
+
+      z-index: 0;
       position: absolute;
       height: 100%;
       width: 100%;
-    }
-
-    .feature {
-
       background: #000;
 
       iframe {
@@ -172,8 +174,15 @@ $adcards: ".cl-card, .cl-dcard";
 
     &.feature-visible {
 
-      .cl-card-theatre-wrapper {
+      .cl-video-wrapper {
+
         opacity: 1;
+
+        iframe {
+          opacity: 1;
+          transform: scale(1);
+        }
+
       }
 
       .cl-card-container {
@@ -189,11 +198,6 @@ $adcards: ".cl-card, .cl-dcard";
           transform: translateX(100%);
         }
 
-      }
-
-      .feature iframe {
-        opacity: 1;
-        transform: scale(1);
       }
 
     }
