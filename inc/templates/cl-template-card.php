@@ -25,7 +25,12 @@ if ( ! empty( $atts['css'] ) ) {
 $output .= '>';
 
 if ( ! empty( $atts['feature'] ) ) {
-	$output .= do_shortcode( '[cl-video vid="' . $atts['feature'] . '"]' );
+	$output .= '<div class="cl-card-feature-video-wrapper">';
+	$output .= '<div class="theatre-controls">';
+	$output .= '<span class="close">close</span>';
+	$output .= '</div>';
+	$output .= do_shortcode( '[cl-video class="cl-card-feature-video" vid="' . $atts['feature'] . '"]' );
+	$output .= '</div>';
 }
 
 if ( ! empty( $atts['img'] ) ) {

@@ -23,6 +23,10 @@ class CLVideoVimeo {
 			}
 		);
 		CLVimeo.resizeProportionate( data );
+
+		if ( data.parent.classList.contains( 'cl-card-feature-video' ) ) {
+			CLCardVimeo.theatreControl( data );
+		}
 	}
 
 	/**

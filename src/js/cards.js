@@ -48,7 +48,27 @@ class CLCardVimeo {
 		data.poster.classList.remove( 'unveil' );
 		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
-}
+
+	static theatreControl( data ) {
+		const featureWrapper = data.parent.parentNode.parentNode;
+		const controls = {
+			el: featureWrapper.querySelector( '.theatre-controls' ),
+		};
+
+		controls.close = controls.el.querySelector( '.close' );
+		controls.close.addEventListener( 'click', CLCardVimeo.closeTheatre.bind( null, data ), false );
+
+		featureWrapper.parentNode.addEventListener( 'click', function( e ) {
+			if ( 'close' !== e.target.className ) {
+				data.player.play();
+			}
+		}, false );
+	}
+
+	static closeTheatre( data ) {
+		data.player.pause();
+	}
+} // END CLCardVimeo
 
 ( function() {
 	'use strict';
@@ -71,6 +91,6 @@ class CLCardVimeo {
 	}
 
 	function handleClick( el ) {
-		el.classList.add( 'feature-visible' );
+		el.classList.toggle( 'theatre-open' );
 	}
 }() );
