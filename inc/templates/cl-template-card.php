@@ -74,11 +74,11 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 	$output .= '</div>';
 }
 
+$output .= '</div>';
+
 if ( ! empty( $atts['button'] ) ) {
 	$output .= '<div class="cl-button">' . $atts['button'] . '</div>';
 }
-
-$output .= '</div>';
 
 $output .= '</a>';
 $output .= '</div>';

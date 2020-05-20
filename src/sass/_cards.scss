@@ -25,6 +25,30 @@ $adcards: ".cl-card, .cl-dcard";
 
 }
 
+.cl-tiles.equal-height #{$cards} {
+
+  height: calc( 100% - 2rem );
+
+  &.fitted {
+    height: 100%;
+  }
+
+  .cl-button,
+  .cl-scard-meta {
+    position: absolute;
+    bottom: 0
+  }
+
+  .cl-scard-meta {
+    width: calc( 100% - 2.4rem );
+  }
+
+  p:last-child {
+    margin-bottom: 4rem;
+  }
+
+}
+
 @media screen and (min-width: $break1) {
 
   #{$cards} {
@@ -54,7 +78,7 @@ $adcards: ".cl-card, .cl-dcard";
     color: inherit;
   }
 
-  &::not(.cl-card-theatre) {
+  &:not(.cl-card-theatre) {
 
     &:hover,
     &:focus {
@@ -70,17 +94,14 @@ $adcards: ".cl-card, .cl-dcard";
 
 }
 
-.cl-card .cl-card-text,
-.cl-tiles .cl-card .cl-card-text,
-.cl-scard .cl-scard-text,
-.cl-tiles .cl-scard .cl-scard-text {
-  padding: 1.5rem 1.2rem 0;
-}
-
 .cl-card,
 .cl-tiles .cl-card,
 .cl-scard,
 .cl-tiles .cl-scard {
+
+  .cl-card-text {
+    padding: 1.5rem 1.2rem 0;
+  }
 
   p {
     margin-bottom: 2rem;
@@ -299,18 +320,24 @@ $adcards: ".cl-card, .cl-dcard";
 }
 
 @media screen and (min-width: $break0) {
+
   .cl-card .cl-card-container.video {
     min-height: 230px;
   }
+
 }
 
 @media screen and (min-width: $break1 ) {
 
   .cl-card,
-  .cl-tiles.flow > *:nth-child(1) .cl-card {
+  .cl-tiles.magic > *:nth-child(1) .cl-card {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 0;
+    grid-template-areas:
+      "media text"
+      "media button";
 
     &.theatre-open .cl-card-container {
 
@@ -324,6 +351,23 @@ $adcards: ".cl-card, .cl-dcard";
 
     }
 
+    .cl-card-container {
+
+      &.media {
+        grid-area: media;
+      }
+
+      &.text {
+        grid-area: text;
+      }
+
+    }
+
+    .cl-button {
+      grid-area: button;
+      align-self: end;
+    }
+
     .cl-card-text {
       padding-bottom: 2rem;
     }
@@ -334,9 +378,14 @@ $adcards: ".cl-card, .cl-dcard";
       width: 100%;
     }
 
-    .cl-button {
+  }
+
+  .cl-tiles.magic.square-image > *:nth-child(1) .cl-card {
+
+    grid-template-rows: minmax( 445px, 1fr ) auto;
+
+    img {
       position: absolute;
-      bottom: 0;
     }
 
   }
@@ -360,10 +409,6 @@ $adcards: ".cl-card, .cl-dcard";
 
     }
 
-    .cl-card-container {
-      position: initial;
-    }
-
     .cl-button {
       position: relative;
     }
@@ -375,7 +420,7 @@ $adcards: ".cl-card, .cl-dcard";
 @media screen and (min-width: $break2 ) {
 
   .cl-card,
-  .cl-tiles.flow > *:nth-child(1) .cl-card {
+  .cl-tiles.magic > *:nth-child(1) .cl-card {
 
     grid-template-columns: 2fr 1fr;
 
@@ -385,13 +430,28 @@ $adcards: ".cl-card, .cl-dcard";
 
   }
 
+  .cl-tiles.magic.square-image > *:nth-child(2) .cl-card .cl-card-container.media {
+
+    height: 0;
+    padding-bottom: calc( 191 / 294 * 100% );
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+  }
+
   .cl-tiles .cl-card,
   .wp-block-columns .cl-card,
   .cl-card.left,
   .cl-card.right {
+
     .cl-card-container.video {
       min-height: 280px;
     }
+
   }
 
 }
