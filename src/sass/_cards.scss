@@ -290,11 +290,17 @@ $adcards: ".cl-card, .cl-dcard";
       overflow: hidden;
 
       &.video {
-        min-height: 300px;
+        min-height: 200px;
       }
 
     }
 
+}
+
+@media screen and (min-width: $break0) {
+  .cl-card .cl-card-container.video {
+    min-height: 230px;
+  }
 }
 
 @media screen and (min-width: $break1 ) {
@@ -335,7 +341,9 @@ $adcards: ".cl-card, .cl-dcard";
   }
 
   .cl-tiles .cl-card,
-  .wp-block-columns .cl-card {
+  .wp-block-columns .cl-card,
+  .cl-card.left,
+  .cl-card.right {
 
     display: block;
 
@@ -374,6 +382,15 @@ $adcards: ".cl-card, .cl-dcard";
       min-height: 375px;
     }
 
+  }
+
+  .cl-tiles .cl-card,
+  .wp-block-columns .cl-card,
+  .cl-card.left,
+  .cl-card.right {
+    .cl-card-container.video {
+      min-height: 280px;
+    }
   }
 
 }
