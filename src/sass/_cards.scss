@@ -33,7 +33,7 @@ $adcards: ".cl-card, .cl-dcard";
     height: 100%;
   }
 
-  .cl-button,
+  .button,
   .cl-scard-meta {
     position: absolute;
     bottom: 0
@@ -225,7 +225,7 @@ $adcards: ".cl-card, .cl-dcard";
 
   }
 
-  .cl-card-container {
+  &.cl-card-theatre .cl-card-container {
 
     opacity: 1;
     transform: translate(0);
@@ -239,8 +239,18 @@ $adcards: ".cl-card, .cl-dcard";
     }
 
     &.text {
-      background: #fff;
+      color: #fff;
+      background: #222;
       transform-origin: left center;
+    }
+
+    &.button {
+      background: transparent;
+      transform-origin: left center;
+    }
+
+    h2 {
+      color: #fff;
     }
 
   }
@@ -265,7 +275,8 @@ $adcards: ".cl-card, .cl-dcard";
         transform: translate(0,-100%);
       }
 
-      &.text {
+      &.text,
+      &.button {
         transform: translate(0,100%);
       }
 
@@ -286,7 +297,7 @@ $adcards: ".cl-card, .cl-dcard";
 
   display: block;
 
-    .cl-button {
+    .button {
       display: block;
       width: 100%;
       max-width: 100%;
@@ -297,10 +308,10 @@ $adcards: ".cl-card, .cl-dcard";
       text-align: center;
     }
 
-    &:hover .cl-button,
-    &:focus .cl-button,
-    .cl-button:hover,
-    .cl-button:focus {
+    &:hover .button,
+    &:focus .button,
+    .button:hover,
+    .button:focus {
       background: $link;
       border-top: 1px solid $link;
       color: $white;
@@ -345,7 +356,8 @@ $adcards: ".cl-card, .cl-dcard";
         transform: translate(-100%, 0);
       }
 
-      &.text {
+      &.text,
+      &.button {
         transform: translate(100%, 0);
       }
 
@@ -361,11 +373,11 @@ $adcards: ".cl-card, .cl-dcard";
         grid-area: text;
       }
 
-    }
+      &.button {
+        grid-area: button;
+        align-self: end;
+      }
 
-    .cl-button {
-      grid-area: button;
-      align-self: end;
     }
 
     .cl-card-text {
@@ -403,13 +415,14 @@ $adcards: ".cl-card, .cl-dcard";
         transform: translate(0, -100%);
       }
 
-      &.text {
+      &.text,
+      &.button {
         transform: translate(0, 100%);
       }
 
     }
 
-    .cl-button {
+    .button {
       position: relative;
     }
 

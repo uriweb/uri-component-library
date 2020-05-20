@@ -77,7 +77,7 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 $output .= '</div>';
 
 if ( ! empty( $atts['button'] ) ) {
-	$output .= '<div class="cl-button">' . $atts['button'] . '</div>';
+	$output .= '<div class="cl-card-container button">' . $atts['button'] . '</div>';
 }
 
 $output .= '</a>';
