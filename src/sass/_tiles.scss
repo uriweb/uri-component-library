@@ -27,8 +27,13 @@
 	}
 
   // Adjust contents for equal-height option
-  &.equal-height .cl-wrapper {
-    height: 100%;
+  &.equal-height {
+
+    .content,
+    .cl-wrapper {
+      height: 100%;
+    }
+
   }
 
 	&.square {
