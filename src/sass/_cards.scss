@@ -20,46 +20,53 @@ $adcards: ".cl-card, .cl-dcard";
     transition: width .2s ease-in-out, transform .1s ease-in-out, box-shadow .1s ease-in-out;
 
 	* {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
 
 }
 
 @media screen and (min-width: $break1) {
-    #{$cards} {
-        &.left {
-            float: left;
-            margin: 0 2rem 2rem 0;
-            max-width: $maxcardwidth;
-        }
-        &.right {
-            float: right;
-            margin: 0 0 2rem 2rem;
-            max-width: $maxcardwidth;
-        }
+
+  #{$cards} {
+
+    &.left {
+      float: left;
+      margin: 0 2rem 2rem 0;
+      max-width: $maxcardwidth;
     }
+
+    &.right {
+      float: right;
+      margin: 0 0 2rem 2rem;
+      max-width: $maxcardwidth;
+    }
+
+  }
+
 }
 
 #{$adcards} {
 
+  &:hover,
+  &:focus {
+    box-shadow: $level2;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  &::not(.cl-card-theatre) {
+
     &:hover,
     &:focus {
-        box-shadow: $level2;
-        cursor: pointer;
-        color: inherit;
+      transform: translateY(-2px);
     }
 
-    &::not(.cl-card-theatre) {
-      &:hover,
-      &:focus {
-        transform: translateY(-2px);
-      }
-    }
+  }
 
-    &:active {
-        box-shadow: $level3;
-        color: inherit;
-    }
+  &:active {
+    box-shadow: $level3;
+    color: inherit;
+  }
 
 }
 
@@ -67,7 +74,7 @@ $adcards: ".cl-card, .cl-dcard";
 .cl-tiles .cl-card .cl-card-text,
 .cl-scard .cl-scard-text,
 .cl-tiles .cl-scard .cl-scard-text {
-    padding: 1.5rem 1.2rem 0;
+  padding: 1.5rem 1.2rem 0;
 }
 
 .cl-card,
@@ -75,110 +82,70 @@ $adcards: ".cl-card, .cl-dcard";
 .cl-scard,
 .cl-tiles .cl-scard {
 
-    p {
-        margin-bottom: 2rem;
+  p {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+}
+
+.cl-card,
+.cl-tiles .cl-card {
+
+  iframe {
+    position: relative;
+    z-index: 1;
+    max-width: initial;
+    max-height: initial;
+  }
+
+  div[data-vimeo-initialized] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+  }
+
+  .poster {
+
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center center;
+    opacity: 1;
+    transition: all .4s ease-in-out;
+
+    &.unveil {
+      opacity: 0;
+      transition-delay: .5s;
     }
 
-    img {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        display: block;
-    }
+  }
 
-    iframe {
-        z-index: 1;
-        position: relative;
-        max-width: initial;
-        max-height: initial;
-    }
+  .cl-card-feature-video-wrapper {
 
-    .overlay {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      z-index: 3;
-    }
-
-    .poster {
-
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-repeat: no-repeat;
-      background-color: transparent;
-      background-size: cover;
-      background-position: center center;
-      opacity: 1;
-      transition: all .4s ease-in-out;
-
-      &.unveil {
-        opacity: 0;
-        transition-delay: .5s;
-      }
-
-    }
-
-    div[data-vimeo-initialized] {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .cl-card-feature-video-wrapper {
-
-      position: absolute;
-      z-index: 0;
-      height: 100%;
-      width: 100%;
-      background: #000;
-
-    }
-
-    .cl-video {
-      height: 100%;
-    }
-
-    .cl-video-wrapper {
-
-      position: relative;
-      z-index: 0;
-      height: 100%;
-
-      iframe {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transform: scale(.95);
-        transition-property: opacity, transform;
-        transition-duration: .3s;
-        transition-timing-function: ease-in-out;
-      }
-
-    }
-
-    .cl-card-container {
-
-      opacity: 1;
-      transform: translate(0);
-      transition-property: opacity, transform;
-      transition-duration: .5s;
-      transition-timing-function: ease-in-out;
-      transition-delay: .1s;
-
-      &.media {
-        transform-origin: right center;
-      }
-
-      &.text {
-        background: #fff;
-        transform-origin: left center;
-      }
-
-    }
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
 
     .theatre-controls {
 
@@ -211,33 +178,78 @@ $adcards: ".cl-card, .cl-dcard";
 
     }
 
-    &.theatre-open {
+    .cl-video-wrapper {
 
-      .cl-video-wrapper iframe {
-        opacity: 1;
-        transform: scale(1);
-        transition-duration: .5s;
-        transition-delay: .3s;
+      position: relative;
+      z-index: 0;
+      height: 100%;
+
+      .cl-video {
+        height: 100%;
       }
 
-      .cl-card-container {
-
+      iframe {
+        position: relative;
+        width: 100%;
+        height: 100%;
         opacity: 0;
-        pointer-events: none;
-        transition-duration: .8s;
-        transition-delay: 0s;
-
-        &.media {
-          transform: translate(0,-100%);
-        }
-
-        &.text {
-          transform: translate(0,100%);
-        }
-
+        transform: scale(.95);
+        transition-property: opacity, transform;
+        transition-duration: .3s;
+        transition-timing-function: ease-in-out;
       }
 
     }
+
+  }
+
+  .cl-card-container {
+
+    opacity: 1;
+    transform: translate(0);
+    transition-property: opacity, transform;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: .1s;
+
+    &.media {
+      transform-origin: right center;
+    }
+
+    &.text {
+      background: #fff;
+      transform-origin: left center;
+    }
+
+  }
+
+  &.theatre-open {
+
+    .cl-video-wrapper iframe {
+      opacity: 1;
+      transform: scale(1);
+      transition-duration: .5s;
+      transition-delay: .3s;
+    }
+
+    .cl-card-container {
+
+      opacity: 0;
+      pointer-events: none;
+      transition-duration: .8s;
+      transition-delay: 0s;
+
+      &.media {
+        transform: translate(0,-100%);
+      }
+
+      &.text {
+        transform: translate(0,100%);
+      }
+
+    }
+
+  }
 
 }
 
@@ -253,23 +265,23 @@ $adcards: ".cl-card, .cl-dcard";
   display: block;
 
     .cl-button {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        padding: calc(1.5% + 1em) 1rem;
-        background: inherit;
-        border: none;
-        border-top: 1px solid #eee;
-        text-align: center;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: calc(1.5% + 1em) 1rem;
+      background: inherit;
+      border: none;
+      border-top: 1px solid #eee;
+      text-align: center;
     }
 
     &:hover .cl-button,
     &:focus .cl-button,
     .cl-button:hover,
     .cl-button:focus {
-        background: $link;
-        border-top: 1px solid $link;
-        color: $white;
+      background: $link;
+      border-top: 1px solid $link;
+      color: $white;
     }
 
     .cl-card-container {
@@ -280,6 +292,7 @@ $adcards: ".cl-card, .cl-dcard";
       &.video {
         min-height: 300px;
       }
+
     }
 
 }
@@ -366,32 +379,31 @@ $adcards: ".cl-card, .cl-dcard";
 }
 
 
-
 /* Detail Cards */
 
 .cl-dcard:after {
-    content: '';
-    display: block;
-    clear: both;
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .cl-dcard,
 .cl-tiles .cl-dcard {
 
-    img {
-        float: right;
-        width: 30%;
-        margin: .5rem .5rem .5rem 1rem;
-    }
+  img {
+    float: right;
+    width: 30%;
+    margin: .5rem .5rem .5rem 1rem;
+  }
 
-    .cl-dcard-text {
-        padding: 1rem 1rem 0;
-    }
+  .cl-dcard-text {
+    padding: 1rem 1rem 0;
+  }
 
-    p {
-        font-size: .9rem;
-        margin-bottom: 1.2rem;
-    }
+  p {
+    font-size: .9rem;
+    margin-bottom: 1.2rem;
+  }
 
 }
 
@@ -400,102 +412,102 @@ $adcards: ".cl-card, .cl-dcard";
 
 .cl-scard {
 
-    box-shadow: none;
-    border: 1px solid #eee;
+  box-shadow: none;
+  border: 1px solid #eee;
 
-    .cl-scard-img-container {
-        position: relative;
-        display: block;
+  .cl-scard-img-container {
+      position: relative;
+      display: block;
+  }
+
+  .cl-scard-img-overlay {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: .2rem .2rem 0 0;
+    background: rgba(0,0,0,.5);
+    opacity: 0;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
     }
 
-    .cl-scard-img-overlay {
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        border-radius: .2rem .2rem 0 0;
-        background: rgba(0,0,0,.5);
-        opacity: 0;
-        text-align: center;
-
-        &:hover,
-        &:focus {
-            opacity: 1;
-        }
-
-        span {
-            display: inline-block;
-            position: relative;
-            font-size: 1.25rem;
-            top: calc( 50% - .5rem );
-            left: -.625rem;
-            padding-left: 1.85rem;
-            color: #fff;
-        }
-
-        span:before {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            content: '';
-            width: 1.35rem;
-            height: 1.25rem;
-            background-image: url(../i/read.png);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 100% auto;
-        }
-
+    span {
+      display: inline-block;
+      position: relative;
+      font-size: 1.25rem;
+      top: calc( 50% - .5rem );
+      left: -.625rem;
+      padding-left: 1.85rem;
+      color: #fff;
     }
 
-    .cl-scard-category {
-        display: inline-block;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        letter-spacing: 0.05rem;
+    span:before {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+      width: 1.35rem;
+      height: 1.25rem;
+      background-image: url(../i/read.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100% auto;
     }
 
-    .cl-scard-body {
+  }
 
-        color: inherit;
+  .cl-scard-category {
+    display: inline-block;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+  }
 
-        &:hover,
-        &:focus,
-        &:active {
+  .cl-scard-body {
 
-            h2, p {
-                color: $link !important;
-            }
+    color: inherit;
 
-        }
+    &:hover,
+    &:focus,
+    &:active {
 
-    }
-
-    .cl-scard-meta {
-
-        margin-bottom: .9rem;
-        font-size: .9rem;
-        border-top: 1px solid #000;
-        padding-top: 1rem;
-
-        &:after {
-            display: block;
-            content: '';
-            clear: both;
-        }
+      h2, p {
+        color: $link !important;
+      }
 
     }
 
-    .cl-scard-date {
-        line-height: 20px;
-        float: left;
+  }
+
+  .cl-scard-meta {
+
+    margin-bottom: .9rem;
+    font-size: .9rem;
+    border-top: 1px solid #000;
+    padding-top: 1rem;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
     }
 
-    .cl-scard-social {
-        float: right;
-    }
+  }
+
+  .cl-scard-date {
+    line-height: 20px;
+    float: left;
+  }
+
+  .cl-scard-social {
+    float: right;
+  }
 
 }
