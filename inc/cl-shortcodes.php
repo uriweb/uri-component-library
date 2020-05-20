@@ -101,6 +101,7 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 	$atts = shortcode_atts(
 		array(
 			'img' => '',
+			'feature' => '',
 			'alt' => '',
 			'title' => '',
 			'body' => '',
@@ -128,6 +129,11 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 			array(
 				'attr' => 'img',
 				'types' => array( 'url', 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'feature',
+				'types' => array( 'url' ),
 				'req' => false,
 			),
 			array(

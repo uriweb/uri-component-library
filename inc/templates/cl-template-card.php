@@ -11,6 +11,10 @@ if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
 }
 
+if ( ! empty( $atts['feature'] ) ) {
+	$classes .= ' cl-card-theatre';
+}
+
 $output = '<div class="cl-wrapper cl-card-wrapper">';
 $output .= '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 
@@ -20,13 +24,40 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
+if ( ! empty( $atts['feature'] ) ) {
+
+	$output .= '<div class="cl-card-feature-video-wrapper">';
+	$output .= '<div class="theatre-controls">';
+	$output .= '<span class="close" title="Close video">close</span>';
+	$output .= '</div>';
+	$output .= do_shortcode( '[cl-video class="cl-card-feature-video" vid="' . $atts['feature'] . '"]' );
+	$output .= '</div>';
+
+	if ( empty( $atts['button'] ) ) {
+		$atts['button'] = 'Play Video';
+	}
+}
+
 if ( ! empty( $atts['img'] ) ) {
-	$output .= '<div class="cl-card-container">';
-	$output .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+	$output .= '<div class="cl-card-container media';
+
+	if ( 'vimeo' == uri_cl_get_video_platform( $atts['img'] ) ) {
+
+		$output .= ' video">';
+		$output .= '<div class="overlay"></div>';
+
+		$vid = uri_cl_get_video_id( $atts['img'] );
+		$imgurl = uri_cl_get_vimeo_thumbnail( $atts['img'] );
+		$output .= '<div id="' . $vid . '" data-video="' . $vid . '" data-platform="vimeo" class="poster" style="background-image:url(' . $imgurl . ')"></div>';
+
+	} else {
+		$output .= '">' . uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+	}
+
 	$output .= '</div>';
 }
 
-$output .= '<div class="cl-card-container">';
+$output .= '<div class="cl-card-container text">';
 
 if ( ! empty( $atts['title'] ) || ! empty( $atts['body'] ) ) {
 
