@@ -287,9 +287,10 @@ $adcards: ".cl-card, .cl-dcard";
 @media screen and (min-width: $break1 ) {
 
   .cl-card,
-  .cl-tiles .cl-card,
-  .cl-scard,
-  .cl-tiles .cl-scard {
+  .cl-tiles.flow > *:nth-child(1) .cl-card {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     &.theatre-open .cl-card-container {
 
@@ -302,14 +303,6 @@ $adcards: ".cl-card, .cl-dcard";
       }
 
     }
-
-  }
-
-  .cl-card,
-  .cl-tiles.flow > *:nth-child(1) .cl-card {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
 
     .cl-card-text {
       padding-bottom: 2rem;
@@ -332,6 +325,18 @@ $adcards: ".cl-card, .cl-dcard";
   .wp-block-columns .cl-card {
 
     display: block;
+
+    &.theatre-open .cl-card-container {
+
+      &.media {
+        transform: translate(0, -100%);
+      }
+
+      &.text {
+        transform: translate(0, 100%);
+      }
+
+    }
 
     .cl-card-container {
       position: initial;
