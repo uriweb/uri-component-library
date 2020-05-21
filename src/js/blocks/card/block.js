@@ -165,7 +165,7 @@ registerBlockType( 'uri-cl/card', {
 				<div className="container cl-card-block-form">
 					<div className={ classes } title={ title }>
 
-						<div className="cl-card-container">
+						<div className="cl-card-container media">
 
 							<MediaUpload
 								onSelect={ ( media ) => {
@@ -182,7 +182,7 @@ registerBlockType( 'uri-cl/card', {
 							/>
 
 						</div>
-						<div className="cl-card-container">
+						<div className="cl-card-container text">
 
 							<div className="cl-card-text">
 								<h3><PlainText
@@ -199,17 +199,16 @@ registerBlockType( 'uri-cl/card', {
 									keepPlaceholderOnFocus={ true }
 								/>
 							</div>
-							<div>
-								<PlainText
-									onChange={ ( content ) => setAttributes( { button: content } ) }
-									value={ attributes.button }
-									placeholder={ __( 'Your button text' ) }
-									keepPlaceholderOnFocus={ true }
-									className="cl-button"
-								/>
-								{ meta }
-							</div>
 
+						</div>
+						<div className="cl-card-container button">
+							<PlainText
+								onChange={ ( content ) => setAttributes( { button: content } ) }
+								value={ attributes.button }
+								placeholder={ __( 'Your button text' ) }
+								keepPlaceholderOnFocus={ true }
+							/>
+							{ meta }
 						</div>
 
 					</div>

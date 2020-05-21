@@ -5,6 +5,15 @@
 	to   { transform: rotateX(0deg); 	transform-origin: top; }
 }
 
+.wp-block-columns.equal-height {
+
+	.content,
+	.cl-wrapper {
+		height: 100%;
+	}
+
+}
+
 .block-editor {
 
 	textarea {
