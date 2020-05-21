@@ -15,6 +15,10 @@ if ( ! empty( $atts['feature'] ) ) {
 	$classes .= ' cl-card-theatre';
 }
 
+if ( $atts['reverse'] ) {
+	$classes .= ' reverse';
+}
+
 $output = '<div class="cl-wrapper cl-card-wrapper">';
 $output .= '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 

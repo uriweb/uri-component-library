@@ -353,23 +353,46 @@ $adcards: ".cl-card, .cl-dcard";
       "media text"
       "media button";
 
+    &.reverse {
+      grid-template-areas:
+        "text media"
+        "button media";
+    }
+
     &.cl-card-theatre .cl-card-container.button {
       background: transparent;
     }
 
-    &.theatre-open .cl-card-container {
+    &.theatre-open {
 
-      &.media {
-        transform: translate(-100%, 0);
+      .cl-card-container {
+
+        &.media {
+          transform: translate(-100%, 0);
+        }
+
+        &.text,
+        &.button {
+          transform: translate(100%, 0);
+        }
+
+        &.button {
+          opacity: 0;
+        }
+
       }
 
-      &.text,
-      &.button {
-        transform: translate(100%, 0);
-      }
+      &.reverse .cl-card-container {
 
-      &.button {
-        opacity: 0;
+        &.media {
+          transform: translate(100%, 0);
+        }
+
+        &.text,
+        &.button {
+          transform: translate(-100%, 0);
+        }
+
       }
 
     }
@@ -443,6 +466,10 @@ $adcards: ".cl-card, .cl-dcard";
   .cl-tiles.magic > *:nth-child(1) .cl-card {
 
     grid-template-columns: 2fr 1fr;
+
+    &.reverse {
+      grid-template-columns: 1fr 2fr;
+    }
 
     .cl-card-container.video {
       min-height: 375px;
