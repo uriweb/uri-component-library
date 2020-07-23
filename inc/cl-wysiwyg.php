@@ -23,7 +23,6 @@ function uri_cl_wysiwyg_register_tinymce_plugin( $plugin_array ) {
 	wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
 
 	wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-
 	// load up the noneditable plugin from TinyMCE
 	$plugin_array['noneditable'] = uri_cl_dir_url() . 'js/wysiwyg/noneditable/plugin.min.js';
 

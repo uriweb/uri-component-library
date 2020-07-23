@@ -42,7 +42,6 @@ if ( ! empty( $atts['css'] ) ) {
 $output .= '>';
 
 // ICS FILE
-
 $output .= '<form method="post" action="' . URI_CL_URL . 'inc/cl-ics.php">';
 $output .= '<input type="hidden" name="date_start" value="' . $date_start . '">';
 $output .= '<input type="hidden" name="summary" value="' . $atts['caption'] . '">';
@@ -51,7 +50,6 @@ $output .= '<input type="submit" value="Add to Calendar">';
 $output .= '</form>';
 
 // END
-
 $output .= '<div class="cl-date-download-dialogue">';
 $output .= '<div>Add to calendar?</div>';
 $output .= '<div><div class="cl-date-download-cancel">Cancel</div><div class="cl-date-download-confirm">Add</div></div>';

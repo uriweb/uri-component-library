@@ -64,9 +64,20 @@ include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 include( URI_CL_DIR_PATH . 'inc/cl-display-posts.php' );
 
 // Include WYSIWYG buttons on all themes except URI Responsive
-if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
+function load_wysiwyg() {
+	global $pagenow;
+	// do not load the WYSIWYG editor in the responsive theme
+	if ( 'responz-child' === wp_get_theme()->get_stylesheet() ) {
+		return;
+	}
+	// do not load the WYSIWYG editor in the WP All Import Admin interface
+	if ( 'admin.php' === $pagenow && false !== strpos( $_GET['page'], 'pmxi' ) ) {
+		return;
+	}
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
+
+add_action( 'init', 'load_wysiwyg' );
 
 // Include gutenberg
 include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
