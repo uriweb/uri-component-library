@@ -100,13 +100,14 @@ function uri_cl_get_site_menus() {
  */
 function uri_cl_register_api_route_menus() {
 	register_rest_route(
-		 'uri-component-library/v1',
+		'uri-component-library/v1',
 		'/menus',
 		array(
 			'methods' => 'GET',
 			'callback' => 'uri_cl_get_site_menus',
+			'permission_callback' => TRUE
 		)
-		);
+	);
 }
 add_action( 'rest_api_init', 'uri_cl_register_api_route_menus' );
 
