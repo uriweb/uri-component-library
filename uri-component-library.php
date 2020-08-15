@@ -105,7 +105,7 @@ function uri_cl_register_api_route_menus() {
 		array(
 			'methods' => 'GET',
 			'callback' => 'uri_cl_get_site_menus',
-			'permission_callback' => TRUE
+			'permission_callback' => true,
 		)
 	);
 }
