@@ -63,7 +63,9 @@ include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 // Include display posts extensions
 include( URI_CL_DIR_PATH . 'inc/cl-display-posts.php' );
 
-// Include WYSIWYG buttons on all themes except URI Responsive
+/**
+ * Include WYSIWYG buttons on all themes except URI Responsive
+ */
 function load_wysiwyg() {
 	global $pagenow;
 	// do not load the WYSIWYG editor in the responsive theme
