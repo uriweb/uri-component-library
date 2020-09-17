@@ -34,7 +34,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-debug": "^3.0.0",
     "gulp-terser": ">=1.1.7",
-    "lodash": ">=4.17.13",
+    "lodash": ">=4.17.19",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
