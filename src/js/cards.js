@@ -1,7 +1,5 @@
 /**
  * CARDS
- *
- * @package uri-component-library
  */
 
 class CLCardVimeo {

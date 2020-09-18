@@ -1,7 +1,5 @@
 /**
  * OVERLAYS
- *
- * @package uri-component-library
  */
 
 ( function() {

@@ -2,7 +2,6 @@
  * CL Quote WYSIWYG Plugin
  *
  * @see https://code.tutsplus.com/tutorials/guide-to-creating-your-own-wordpress-editor-buttons--wp-30182
- * @package uri-component-library
  */
 
 ( function() {

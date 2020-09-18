@@ -1,7 +1,5 @@
 /**
  * HERO VIDS / VIDEOS
- *
- * @package uri-component-library
  */
 
 // Create this in the global scope so the YouTube API can call it locally.

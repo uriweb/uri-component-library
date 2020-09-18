@@ -3,8 +3,6 @@
  *
  * Turn WP image galleries into something pretty.
  * Hooks into WP full-size image galleries only.
- *
- * @package uri-component-library
  */
 
 ( function() {

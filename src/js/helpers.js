@@ -1,7 +1,5 @@
 /**
  * CL Helper Function
- *
- * @package uri-component-library
  */
 
 class URICL {

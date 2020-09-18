@@ -1,7 +1,5 @@
 /**
  * WYSIWYG Helper Function
- *
- * @package uri-component-library
  */
 
 let URIWYSIWYGoutStandingRequests = 0;

@@ -1,7 +1,5 @@
 /**
  * DISMISS
- *
- * @package uri-component-library
  */
 
 ( function() {

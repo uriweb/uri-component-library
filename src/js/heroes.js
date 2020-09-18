@@ -1,7 +1,5 @@
 /**
  * HEROS
- *
- * @package uri-component-library
  */
 
 let CLResizeSuperheroes;

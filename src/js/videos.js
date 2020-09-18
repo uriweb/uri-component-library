@@ -1,7 +1,5 @@
 /**
  * VIDEOS
- *
- * @package uri-component-library
  */
 
 class CLVideoVimeo {

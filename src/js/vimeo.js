@@ -1,7 +1,5 @@
 /**
  * VIMEO API
- *
- * @package uri-component-library
  */
 
 class CLVimeo {

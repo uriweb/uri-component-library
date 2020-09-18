@@ -1,7 +1,5 @@
 /**
  * YOUTUBE API
- *
- * @package uri-component-library
  */
 
 class CLYT {
