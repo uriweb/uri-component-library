@@ -492,8 +492,9 @@ $adcards: ".cl-card, .cl-dcard";
 
     img {
       object-fit: cover;
-      height: 100%;
+      height: auto;
       width: 100%;
+      transform: translateY( -17.5% );
     }
 
   }
