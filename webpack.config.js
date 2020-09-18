@@ -1,8 +1,6 @@
 /**
  * Webpack config for Gutenberg implementation
  * allows us to work in JSX
- *
- * @package uri-component-library
  */
 
 const debug = 'production' !== process.env.NODE_ENV;
