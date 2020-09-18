@@ -14,10 +14,11 @@
     "jsx-a11y/label-has-for": [0]
   },
   "ignorePatterns": [
-    "node_modules/",
     "gulpfile.js",
     "js/cl.built.js",
     "js/blocks.built.js",
-    "js/wysiwyg/noneditable/**"
+    "js/wysiwyg/noneditable/**",
+    "node_modules/",
+    "webpack.config.js"
   ]
 }
