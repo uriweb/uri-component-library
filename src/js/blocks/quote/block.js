@@ -41,7 +41,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/quote.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/quote.svg' ) }
 			alt="button"
 		/>
 	);

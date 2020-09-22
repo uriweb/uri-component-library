@@ -43,7 +43,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/notice.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/notice.svg' ) }
 			alt="button"
 		/>
 	);
