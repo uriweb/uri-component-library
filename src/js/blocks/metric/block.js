@@ -61,6 +61,7 @@ registerBlockType( 'uri-cl/metric', {
 	title: __( 'Metric' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use metrics to illustrate a fact that is concise and easy to consume.' ),
 
 	attributes: {
 		metric: {

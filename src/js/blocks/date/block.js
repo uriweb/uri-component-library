@@ -63,6 +63,7 @@ registerBlockType( 'uri-cl/date', {
 	title: __( 'Date' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use dates to display a downloadable calendar event.' ),
 
 	attributes: {
 		date: {

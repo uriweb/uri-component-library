@@ -53,6 +53,7 @@ registerBlockType( 'uri-cl/notice', {
 	title: __( 'Notice' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use notices to display content that is particularly urgent.' ),
 	attributes: {
 		expiration: {
 			type: 'string',

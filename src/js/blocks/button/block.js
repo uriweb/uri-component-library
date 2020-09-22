@@ -55,6 +55,7 @@ registerBlockType( 'uri-cl/button', {
 	title: __( 'Button' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use buttons to attract attention to the primary call to action on a page.' ),
 	attributes: {
 		link: {
 			type: 'string',

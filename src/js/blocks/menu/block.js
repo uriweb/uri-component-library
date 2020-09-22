@@ -75,6 +75,7 @@ registerBlockType( 'uri-cl/menu', {
 	title: __( 'Menu' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use menus when the same collection of links must appear on multiple pages.' ),
 	attributes: {
 		name: {
 			type: 'string',

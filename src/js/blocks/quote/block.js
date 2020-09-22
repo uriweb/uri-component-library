@@ -64,6 +64,7 @@ registerBlockType( 'uri-cl/quote', {
 	title: __( 'Quote' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use quotes to create a blockquote element that stands out from the page.' ),
 
 	attributes: {
 		quote: {

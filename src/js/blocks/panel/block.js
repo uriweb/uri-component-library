@@ -69,6 +69,7 @@ registerBlockType( 'uri-cl/panel', {
 	title: __( 'Panel' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use panels to provide a deep, visual context for a particular topic.' ),
 
 	attributes: {
 		title: {

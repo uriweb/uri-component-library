@@ -55,6 +55,7 @@ registerBlockType( 'uri-cl/hero', {
 	title: __( 'Hero' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use heroes to engage with the visitor and create the sense of desire.' ),
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders

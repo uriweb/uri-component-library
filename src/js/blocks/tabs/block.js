@@ -50,6 +50,7 @@ registerBlockType( 'uri-cl/tabs', {
 	title: __( 'Tabs' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use tabs to display content that has a correlation but is not directly related.' ),
 
 	attributes: {
 		tabs: {

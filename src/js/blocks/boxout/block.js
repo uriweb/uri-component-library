@@ -56,6 +56,7 @@ registerBlockType( 'uri-cl/boxout', {
 	title: __( 'Boxout' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use boxouts to contain text that is ancillary to the page’s content.' ),
 	attributes: {
 		title: {
 			type: 'string',

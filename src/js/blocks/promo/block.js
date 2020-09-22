@@ -47,6 +47,7 @@ registerBlockType( 'uri-cl/promo', {
 	title: __( 'Promo' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use promos to showcase timely marketing information.' ),
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders

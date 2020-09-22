@@ -65,6 +65,7 @@ registerBlockType( 'uri-cl/card', {
 	title: __( 'Card' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use cards to explain and link to a single idea.' ),
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
