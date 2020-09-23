@@ -83,6 +83,8 @@ add_action( 'init', 'load_wysiwyg' );
 
 // Include gutenberg
 include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
+// Include block pattern library manager
+include( URI_CL_DIR_PATH . 'inc/cl-block-patterns.php' );
 
 
 // Enable styles in the WYSIWYG Editor
