@@ -64,6 +64,12 @@ registerBlockType( 'uri-cl/date', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use dates to display a downloadable calendar event.' ),
+	example: {
+		attributes: {
+			date: __( 'July 28, 2061' ),
+			caption: __( 'Halley’s Comet reaches perihelion' ),
+		},
+	},
 
 	attributes: {
 		date: {

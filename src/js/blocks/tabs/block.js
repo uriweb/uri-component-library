@@ -51,6 +51,53 @@ registerBlockType( 'uri-cl/tabs', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use tabs to display content that has a correlation but is not directly related.' ),
+	example: {
+		attributes: {
+			tabs: 2,
+		},
+		innerBlocks: [
+			{
+				name: 'uri-cl/tab',
+				attributes: {
+					title: 'Apples',
+				},
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content: __( 'Each tab can contain paragraphs, links, and other components.' ),
+						},
+					},
+					{
+						name: 'uri-cl/button',
+						attributes: {
+							text: __( 'More about fruit' ),
+						},
+					},
+				],
+			},
+			{
+				name: 'uri-cl/tab',
+				attributes: {
+					title: 'Oranges',
+				},
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content: __( 'This tab will have different information than the first tab, but the information should correlate somehow.' ),
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content: __( 'Only one tab will be visible at a time on the live page.' ),
+						},
+					},
+				],
+			},
+		],
+	},
 
 	attributes: {
 		tabs: {
