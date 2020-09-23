@@ -142,6 +142,13 @@
 
 	}
 
+	.cl-card.no-image .media {
+		display: none;
+	}
+	.cl-card.no-image.selected .media {
+		display: block;
+	}
+
 	/** DATES **/
 
 	.editor-styles-wrapper .cl-date {
@@ -265,6 +272,12 @@
 
 		}
 
+	}
+	.cl-hero.no-image .poster {
+		visibility: hidden;
+	}
+	.cl-hero.no-image.selected .poster {
+		visibility: visible;
 	}
 
 
