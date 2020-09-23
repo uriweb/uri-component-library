@@ -51,22 +51,32 @@ function uri_cl_manage_patterns() {
 	_uri_cl_prepend_uri_pattern_category();
 
 	_uri_cl_add_pattern(
-		 'three-cards-in-columns',
-		'Three cards',
+		'three-buttons-in-columns',
+		'Three buttons',
 		array(
-			'description' => 'Three cards in columns.',
-			'keywords' => 'card',
-			'categories'  => array( 'uri', 'columns' ),
+			'description' => 'Three buttons in columns.',
+			'keywords' => 'button',
+			'categories'  => array( 'uri' ),
 		)
 		);
 
 	_uri_cl_add_pattern(
-		 'four-cards-in-columns',
+		'three-cards-in-columns',
+		'Three cards',
+		array(
+			'description' => 'Three cards in columns.',
+			'keywords' => 'card',
+			'categories'  => array( 'uri' ),
+		)
+		);
+
+	_uri_cl_add_pattern(
+		'four-cards-in-columns',
 		'Four cards',
 		array(
 			'description' => 'Four cards in columns.',
 			'keywords' => 'card',
-			'categories'  => array( 'uri', 'columns' ),
+			'categories'  => array( 'uri' ),
 		)
 		);
 
