@@ -23,6 +23,7 @@ function uri_cl_manage_patterns() {
 	}
 
 	// unregister every core pattern
+
 	/*
 	$patterns = WP_Block_Patterns_Registry::get_instance()->get_all_registered();
 	foreach( $patterns as $p ) {
@@ -52,9 +53,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'three-buttons-in-columns',
-		'Three buttons',
+		__( 'Three buttons', 'uri' ),
 		array(
-			'description' => 'Three buttons in columns.',
+			'description' => _x( 'Three buttons in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'button',
 			'categories'  => array( 'uri' ),
 		)
@@ -62,9 +63,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'three-cards-in-columns',
-		'Three cards',
+		__( 'Three cards', 'uri' ),
 		array(
-			'description' => 'Three cards in columns.',
+			'description' => _x( 'Three cards in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'card',
 			'categories'  => array( 'uri' ),
 		)
@@ -72,9 +73,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'four-cards-in-columns',
-		'Four cards',
+		__( 'Four cards', 'uri' ),
 		array(
-			'description' => 'Four cards in columns.',
+			'description' => _x( 'Four cards in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'card',
 			'categories'  => array( 'uri' ),
 		)
@@ -89,13 +90,13 @@ add_action( 'init', 'uri_cl_manage_patterns' );
 /**
  * Wrapper for register_block_pattern.
  *
- * @param str $name is the computer name of the pattern
- * @param str $title is the user-facing name of the pattern
+ * @param str $name is the computer name of the pattern.
+ * @param str $title is the user-facing name of the pattern.
  * @param arr $args an array with optional keys:
  *  - text_domain: string (uri is default)
  *  - description: a user-facing text description of the pattern
  *  - keywords: an array of keywords for searching
- *  - categories: an array of pattern categories to place the pattern into
+ *  - categories: an array of pattern categories to place the pattern into.
  * @return mixed
  */
 function _uri_cl_add_pattern( $name, $title, $args ) {
@@ -127,7 +128,6 @@ function _uri_cl_add_pattern( $name, $title, $args ) {
 	$include = ob_get_contents();
 	ob_end_clean();
 
-	$text_domain = isset( $args['text_domain'] ) ? $args['text_domain'] : 'uri';
 	$keywords = is_array( $args['keywords'] ) ? $args['keywords'] : array();
 	$categories = is_array( $args['categories'] ) ? $args['categories'] : array();
 	$description = isset( $args['description'] ) ? $args['description'] : '';
@@ -135,8 +135,8 @@ function _uri_cl_add_pattern( $name, $title, $args ) {
 	return register_block_pattern(
 		'uri-cl/' . $name,
 		array(
-			'title'       => __( $title, 'uri' ),
-			'description' => _x( $description, 'Block pattern description', $text_domain ),
+			'title'       => $title,
+			'description' => $description,
 			'content'     => $include,
 			'keywords'     => $keywords,
 			'categories'  => $categories,
