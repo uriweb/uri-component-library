@@ -66,6 +66,15 @@ registerBlockType( 'uri-cl/card', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use cards to explain and link to a single idea.' ),
+	example: {
+		attributes: {
+			title: __( 'One idea' ),
+			body: __( 'Since the entire card must be a single link, it’s perfect for linking to broad topics where you need more words or a photo to describe the linked resource.' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+			button: __( 'Learn More' ),
+		},
+	},
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders

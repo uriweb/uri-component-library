@@ -54,6 +54,17 @@ registerBlockType( 'uri-cl/notice', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use notices to display content that is particularly urgent.' ),
+	example: {
+		attributes: {
+			title: __( 'Please Note' ),
+		},
+		innerBlocks: [ {
+			name: 'core/paragraph',
+			attributes: {
+				content: __( 'Notices are meant to be temporary and timely and should only be used to communicate an exceptional condition.' ),
+			},
+		} ],
+	},
 	attributes: {
 		expiration: {
 			type: 'string',
