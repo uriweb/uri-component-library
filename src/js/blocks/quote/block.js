@@ -56,6 +56,13 @@ const classNames = ( attributes, isSelected ) => {
 	if ( !! isSelected ) {
 		classes += ' selected';
 	}
+
+	if ( !! attributes.img ) {
+		classes += ' has-image';
+	} else {
+		classes += ' no-image';
+	}
+
 	return classes;
 };
 

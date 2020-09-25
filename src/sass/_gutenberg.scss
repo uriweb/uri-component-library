@@ -400,6 +400,12 @@
 		}
 
 	}
+	.cl-quote.no-image .block-editor-media-placeholder {
+		display: none;
+	}
+	.cl-quote.no-image.selected .block-editor-media-placeholder {
+		display: block;
+	}
 
 
 	/** MENUS **/

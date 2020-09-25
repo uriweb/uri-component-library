@@ -34,7 +34,7 @@ function uri_cl_manage_patterns() {
 	// unregister selected core patterns
 	unregister_block_pattern( 'core/two-buttons' );
 	unregister_block_pattern( 'core/three-buttons' );
-	// unregister_block_pattern( 'core/text-two-columns' );
+	unregister_block_pattern( 'core/text-two-columns' );
 	// unregister_block_pattern( 'core/two-images' );
 	// unregister_block_pattern( 'core/text-two-columns-with-images' );
 	unregister_block_pattern( 'core/text-three-columns-buttons' );
@@ -51,34 +51,64 @@ function uri_cl_manage_patterns() {
 	_uri_cl_prepend_uri_pattern_category();
 
 	_uri_cl_add_pattern(
+		'boxout-two-buttons-right',
+		'Boxout with two buttons, floated right.',
+		array(
+			'description' => 'Boxout with two buttons, floated right.',
+			'keywords' => 'button, boxout',
+			'categories'  => array( 'uri' ),
+		)
+	);
+
+	_uri_cl_add_pattern(
 		'three-buttons-in-columns',
 		'Three buttons',
 		array(
 			'description' => 'Three buttons in columns.',
-			'keywords' => 'button',
+			'keywords' => 'button, column',
 			'categories'  => array( 'uri' ),
 		)
-		);
+	);
 
 	_uri_cl_add_pattern(
 		'three-cards-in-columns',
 		'Three cards',
 		array(
 			'description' => 'Three cards in columns.',
-			'keywords' => 'card',
+			'keywords' => 'card, column',
 			'categories'  => array( 'uri' ),
 		)
-		);
+	);
 
 	_uri_cl_add_pattern(
 		'four-cards-in-columns',
 		'Four cards',
 		array(
 			'description' => 'Four cards in columns.',
-			'keywords' => 'card',
+			'keywords' => 'card, column',
 			'categories'  => array( 'uri' ),
 		)
-		);
+	);
+
+	_uri_cl_add_pattern(
+		'four-metrics-in-columns',
+		'Four metrics',
+		array(
+			'description' => 'Four cards in columns.',
+			'keywords' => 'metric, column',
+			'categories'  => array( 'uri' ),
+		)
+	);
+
+	_uri_cl_add_pattern(
+		'headline-three-columns',
+		'Headline and three columns.',
+		array(
+			'description' => 'Headline and three columns.',
+			'keywords' => 'headline, paragraph, column',
+			'categories'  => array( 'uri' ),
+		)
+	);
 
 }
 add_action( 'init', 'uri_cl_manage_patterns' );
