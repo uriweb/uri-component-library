@@ -168,6 +168,7 @@ function _uri_cl_add_pattern( $name, $title, $args ) {
 
 	$keywords = is_array( $args['keywords'] ) ? $args['keywords'] : array();
 	$categories = is_array( $args['categories'] ) ? $args['categories'] : array();
+	$description = is_array( $args['description'] ) ? $args['description'] : '';
 
 	return register_block_pattern(
 		'uri-cl/' . $name,
