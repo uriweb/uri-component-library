@@ -1,6 +1,12 @@
 <?php
 
-echo <<<PATTERN
+	$slug = basename( __FILE__, '.php' );
+	$title = __( 'Four metrics', 'uri' );
+	$description = _x( 'Four cards in columns.', 'Block pattern description', 'uri' );
+	$keywords = 'metric, column';
+	$categories  = array( 'uri' );
+
+	$pattern = <<<PATTERN
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:uri-cl/metric {"metric":"195","caption":"Academic programs"} /--></div>

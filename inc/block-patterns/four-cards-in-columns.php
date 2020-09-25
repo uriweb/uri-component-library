@@ -1,6 +1,12 @@
 <?php
 
-echo <<<PATTERN
+	$slug = basename( __FILE__, '.php' );
+	$title = __( 'Four cards', 'uri' );
+	$description = _x( 'Four cards in columns.', 'Block pattern description', 'uri' );
+	$keywords = 'card, column';
+	$categories  = array( 'uri' );
+
+	$pattern = <<<PATTERN
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:uri-cl/card {"title":"Home","body":"The University ...","link":"https://www.uri.edu/","button":"Explore URI"} /--></div>

@@ -1,6 +1,12 @@
 <?php
 
-echo <<<PATTERN
+	$slug = basename( __FILE__, '.php' );
+	$title = __( 'Boxout with two buttons, floated right', 'uri' );
+	$description = _x( 'Boxout with two buttons, floated right.', 'Block pattern description', 'uri' );
+	$keywords = 'button, boxout';
+	$categories  = array( 'uri' );
+
+	$pattern = <<<PATTERN
 <!-- wp:uri-cl/boxout {"title":"Athletics","float":"right","contentWrapper":""} -->
 <!-- wp:paragraph {"placeholder":"Your boxout content..."} -->
 <p>Learn about varsity, intramural, and club athletics at the University of Rhode Island, buy tickets, Rhody gear, and get the latest news about your favorite teams.</p>

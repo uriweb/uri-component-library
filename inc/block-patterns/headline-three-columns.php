@@ -1,6 +1,12 @@
 <?php
 
-echo <<<PATTERN
+	$slug = basename( __FILE__, '.php' );
+	$title = __( 'Headline and three columns', 'uri' );
+	$description = _x( 'Headline and three columns.', 'Block pattern description', 'uri' );
+	$keywords = 'headline, paragraph, column';
+	$categories  = array( 'uri' );
+
+	$pattern = <<<PATTERN
 <!-- wp:group -->
 <div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:heading -->
 <h2>Why Africana Studies at URI?</h2>
