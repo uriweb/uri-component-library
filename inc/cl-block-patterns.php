@@ -52,9 +52,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'boxout-two-buttons-right',
-		'Boxout with two buttons, floated right.',
+		__( 'Boxout with two buttons, floated right', 'uri' ),
 		array(
-			'description' => 'Boxout with two buttons, floated right.',
+			'description' => _x( 'Boxout with two buttons, floated right.', 'Block pattern description', 'uri' ),
 			'keywords' => 'button, boxout',
 			'categories'  => array( 'uri' ),
 		)
@@ -62,9 +62,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'three-buttons-in-columns',
-		'Three buttons',
+		__( 'Three buttons', 'uri' ),
 		array(
-			'description' => 'Three buttons in columns.',
+			'description' => _x( 'Three buttons in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'button, column',
 			'categories'  => array( 'uri' ),
 		)
@@ -72,9 +72,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'three-cards-in-columns',
-		'Three cards',
+		__( 'Three cards', 'uri' ),
 		array(
-			'description' => 'Three cards in columns.',
+			'description' => _x( 'Three cards in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'card, column',
 			'categories'  => array( 'uri' ),
 		)
@@ -82,9 +82,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'four-cards-in-columns',
-		'Four cards',
+		__( 'Four cards', 'uri' ),
 		array(
-			'description' => 'Four cards in columns.',
+			'description' => _x( 'Four cards in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'card, column',
 			'categories'  => array( 'uri' ),
 		)
@@ -92,9 +92,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'four-metrics-in-columns',
-		'Four metrics',
+		__( 'Four metrics', 'uri' ),
 		array(
-			'description' => 'Four cards in columns.',
+			'description' => _x( 'Four cards in columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'metric, column',
 			'categories'  => array( 'uri' ),
 		)
@@ -102,9 +102,9 @@ function uri_cl_manage_patterns() {
 
 	_uri_cl_add_pattern(
 		'headline-three-columns',
-		'Headline and three columns.',
+		__( 'Headline and three columns', 'uri' ),
 		array(
-			'description' => 'Headline and three columns.',
+			'description' => _x( 'Headline and three columns.', 'Block pattern description', 'uri' ),
 			'keywords' => 'headline, paragraph, column',
 			'categories'  => array( 'uri' ),
 		)
@@ -158,7 +158,6 @@ function _uri_cl_add_pattern( $name, $title, $args ) {
 
 	$keywords = is_array( $args['keywords'] ) ? $args['keywords'] : array();
 	$categories = is_array( $args['categories'] ) ? $args['categories'] : array();
-	$description = isset( $args['description'] ) ? $args['description'] : '';
 
 	return register_block_pattern(
 		'uri-cl/' . $name,
