@@ -62,7 +62,13 @@ registerBlockType( 'uri-cl/metric', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use metrics to illustrate a fact that is concise and easy to consume.' ),
-
+	example: {
+		attributes: {
+			metric: __( '40K' ),
+			caption: __( 'Leagues under the sea' ),
+			style: 'dark',
+		},
+	},
 	attributes: {
 		metric: {
 			type: 'string',

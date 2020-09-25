@@ -70,7 +70,33 @@ registerBlockType( 'uri-cl/panel', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use panels to provide a deep, visual context for a particular topic.' ),
-
+	example: {
+		attributes: {
+			title: __( 'A Bit More' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+			reverse: true,
+		},
+		innerBlocks: [ {
+			name: 'core/heading',
+			attributes: {
+				level: 2,
+				content: __( 'Options' ),
+			},
+		},
+		{
+			name: 'core/paragraph',
+			attributes: {
+				content: __( 'A panel is different from a card in that a panel may include <a href="#">multiple links</a> or buttons.' ),
+			},
+		},
+		{
+			name: 'uri-cl/button',
+			attributes: {
+				text: __( 'Learn More' ),
+			},
+		} ],
+	},
 	attributes: {
 		title: {
 			type: 'string',

@@ -72,6 +72,14 @@ registerBlockType( 'uri-cl/quote', {
 	icon: customIcon,
 	category: 'cl-blocks',
 	description: __( 'Use quotes to create a blockquote element that stands out from the page.' ),
+	example: {
+		attributes: {
+			quote: __( 'Ocean, who is the source of all.' ),
+			citation: __( 'Homer' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example_square.jpg',
+		},
+	},
 
 	attributes: {
 		quote: {
