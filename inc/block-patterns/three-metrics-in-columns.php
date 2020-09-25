@@ -1,10 +1,8 @@
 <?php
 
-	$slug = basename( __FILE__, '.php' );
 	$title = __( 'Three metrics', 'uri' );
 	$description = _x( 'Three metrics in columns.', 'Block pattern description', 'uri' );
 	$keywords = 'metric, column';
-	$categories  = array( 'uri' );
 
 	$pattern = <<<PATTERN
 <!-- wp:columns -->

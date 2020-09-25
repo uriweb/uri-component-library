@@ -1,10 +1,8 @@
 <?php
 
-	$slug = basename( __FILE__, '.php' );
 	$title = __( 'Three cards', 'uri' );
 	$description = _x( 'Three cards in columns.', 'Block pattern description', 'uri' );
 	$keywords = 'card, column';
-	$categories  = array( 'uri' );
 
 	$pattern = <<<PATTERN
 <!-- wp:columns -->

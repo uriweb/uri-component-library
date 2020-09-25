@@ -1,10 +1,8 @@
 <?php
 
-	$slug = basename( __FILE__, '.php' );
 	$title = __( 'Boxout with two buttons, floated right', 'uri' );
 	$description = _x( 'Boxout with two buttons, floated right.', 'Block pattern description', 'uri' );
 	$keywords = 'button, boxout';
-	$categories  = array( 'uri' );
 
 	$pattern = <<<PATTERN
 <!-- wp:uri-cl/boxout {"title":"Athletics","float":"right","contentWrapper":""} -->

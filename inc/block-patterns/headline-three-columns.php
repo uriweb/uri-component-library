@@ -1,10 +1,8 @@
 <?php
 
-	$slug = basename( __FILE__, '.php' );
 	$title = __( 'Headline and three columns', 'uri' );
 	$description = _x( 'Headline and three columns.', 'Block pattern description', 'uri' );
 	$keywords = 'headline, paragraph, column';
-	$categories  = array( 'uri' );
 
 	$pattern = <<<PATTERN
 <!-- wp:group -->

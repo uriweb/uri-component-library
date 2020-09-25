@@ -68,7 +68,15 @@ function uri_cl_manage_patterns() {
 
 			include_once( $pattern_dir . '/' . $f );
 
-			if ( isset( $slug ) && isset( $pattern ) && isset( $title ) ) {
+			if ( ! isset( $slug ) ) {
+				$slug = $f[0];
+			}
+
+			if ( ! isset( $categories ) ) {
+				$categories = array( 'uri' );
+			}
+
+			if ( isset( $pattern ) && isset( $title ) ) {
 				register_block_pattern(
 					'uri-cl/' . $slug,
 					array(
