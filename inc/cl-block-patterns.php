@@ -81,6 +81,16 @@ function uri_cl_manage_patterns() {
 	);
 
 	_uri_cl_add_pattern(
+		'three-metrics-in-columns',
+		__( 'Three metrics', 'uri' ),
+		array(
+			'description' => _x( 'Three metrics in columns.', 'Block pattern description', 'uri' ),
+			'keywords' => 'metric, column',
+			'categories'  => array( 'uri' ),
+		)
+	);
+
+	_uri_cl_add_pattern(
 		'four-cards-in-columns',
 		__( 'Four cards', 'uri' ),
 		array(
