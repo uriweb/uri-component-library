@@ -273,11 +273,31 @@
 		}
 
 	}
-	.cl-hero.no-image .poster {
+	.cl-hero.no-image .poster, .cl-hero.no-image .still  {
 		visibility: hidden;
 	}
-	.cl-hero.no-image.selected .poster {
+	.cl-hero.no-image.selected .poster, .cl-hero.no-image.selected .still {
 		visibility: visible;
+	}
+	.cl-hero .block-editor-media-placeholder, .cl-hero.selected.has-image .block-editor-media-placeholder {
+		visibility: hidden;
+	}
+	.cl-hero.selected .block-editor-media-placeholder {
+		visibility: visible;
+	}
+	
+	.cl-hero.no-subhead .subhead {
+		display: none;
+	}
+	.cl-hero.no-subhead.selected .subhead {
+		display: block;
+	}
+
+	.cl-hero.no-link .cl-button {
+		display: none;
+	}
+	.cl-hero.no-link.selected .cl-button {
+		display: block;
 	}
 
 
