@@ -48,12 +48,42 @@ function uri_cl_manage_patterns() {
 	// unregister_block_pattern_category( 'gallery' );
 	// unregister_block_pattern_category( 'header' );
 	// unregister_block_pattern_category( 'text' );
+	/*
+		Create a URI pattern category at the top of the list.
+		@todo:  it probably makes more sense to use WP categories than
+						lumping everything under one generic heading
+	*/
 	_uri_cl_prepend_uri_pattern_category();
 
+	// read the pattern files,
+	// prepare an array of pattern arguments to be sorted and registered.
+	$patterns = _uri_cl_get_patterns();
+
+	// sort patterns
+	ksort( $patterns, SORT_NATURAL );
+
+	// activate patterns
+	foreach ( $patterns as $pattern ) {
+		call_user_func_array( 'register_block_pattern', $pattern );
+	}
+
+}
+add_action( 'init', 'uri_cl_manage_patterns' );
+
+
+
+/**
+ * Reads the files in the patterns directory and prepares an array of patterns.
+ *
+ * @return arr
+ */
+function _uri_cl_get_patterns() {
 	$pattern_dir = URI_CL_DIR_PATH . '/inc/block-patterns/';
 	$pattern_files = scandir( $pattern_dir );
+	$patterns = array();
+	// read the pattern files,
+	// prepare an array of pattern arguments to be sorted and registered.
 	foreach ( $pattern_files as $f ) {
-
 		// skip over anything that begins with _ or .
 		// that eliminates directories and allows us to "comment out" patterns by using _
 		if ( '.' !== $f[0] && '_' !== $f[0] ) {
@@ -65,6 +95,7 @@ function uri_cl_manage_patterns() {
 			unset( $description );
 			unset( $keywords );
 			unset( $categories );
+			unset( $weight );
 
 			include_once( $pattern_dir . '/' . $f );
 
@@ -73,7 +104,17 @@ function uri_cl_manage_patterns() {
 			}
 
 			if ( isset( $pattern ) && isset( $title ) ) {
-				register_block_pattern(
+				if ( isset( $weight ) ) {
+					$k = (int) $weight;
+					// make sure the array key isn't already in use.
+					while ( array_key_exists( $k, $patterns ) ) {
+						$k = $k + 1;
+					}
+				} else {
+					$k = $slug;
+				}
+
+				$patterns[ $k ] = array(
 					'uri-cl/' . $slug,
 					array(
 						'title'       => $title,
@@ -81,15 +122,13 @@ function uri_cl_manage_patterns() {
 						'description' => ( isset( $description ) ? $description : '' ),
 						'keywords'    => ( isset( $keywords ) ? $keywords : 'uri' ),
 						'categories'  => ( isset( $categories ) ? $categories : array( 'uri' ) ),
-					)
+					),
 				);
 			}
 		}
 	}
-
+	return $patterns;
 }
-add_action( 'init', 'uri_cl_manage_patterns' );
-
 
 
 
