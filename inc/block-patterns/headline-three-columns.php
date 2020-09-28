@@ -3,6 +3,7 @@
 	$title = __( 'Headline and three columns', 'uri' );
 	$description = _x( 'Headline and three columns.', 'Block pattern description', 'uri' );
 	$keywords = 'headline, paragraph, column';
+	$categories = array( 'columns' );
 
 	$pattern = <<<PATTERN
 <!-- wp:group -->

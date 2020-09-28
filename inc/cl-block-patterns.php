@@ -43,7 +43,7 @@ function uri_cl_manage_patterns() {
 	// unregister_block_pattern( 'core/heading-paragraph' );
 	// unregister_block_pattern( 'core/quote' );
 	// unregister every core category
-	unregister_block_pattern_category( 'buttons' );
+	// unregister_block_pattern_category( 'buttons' );
 	// unregister_block_pattern_category( 'columns' );
 	// unregister_block_pattern_category( 'gallery' );
 	// unregister_block_pattern_category( 'header' );

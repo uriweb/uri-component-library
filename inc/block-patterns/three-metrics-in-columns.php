@@ -3,8 +3,9 @@
 	$title = __( 'Three metrics', 'uri' );
 	$description = _x( 'Three metrics in columns.', 'Block pattern description', 'uri' );
 	$keywords = 'metric, column';
+	$categories = array( 'columns' );
 
-	$weight = 0;
+	$weight = 40;
 
 	$pattern = <<<PATTERN
 <!-- wp:columns -->

@@ -3,6 +3,7 @@
 	$title = __( 'Boxout with two buttons, floated right', 'uri' );
 	$description = _x( 'Boxout with two buttons, floated right.', 'Block pattern description', 'uri' );
 	$keywords = 'button, boxout';
+	$categories = array( 'text' );
 
 	$pattern = <<<PATTERN
 <!-- wp:uri-cl/boxout {"title":"Athletics","float":"right","contentWrapper":""} -->

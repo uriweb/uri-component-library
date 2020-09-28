@@ -3,6 +3,9 @@
 	$title = __( 'Four cards', 'uri' );
 	$description = _x( 'Four cards in columns.', 'Block pattern description', 'uri' );
 	$keywords = 'card, column';
+	$categories = array( 'columns' );
+
+	$weight = 70;
 
 	$pattern = <<<PATTERN
 <!-- wp:columns -->

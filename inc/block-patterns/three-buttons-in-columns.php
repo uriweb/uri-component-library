@@ -3,6 +3,7 @@
 	$title = __( 'Three buttons', 'uri' );
 	$description = _x( 'Three buttons in columns.', 'Block pattern description', 'uri' );
 	$keywords = 'button, column';
+	$categories = array( 'buttons', 'columns' );
 
 	$pattern = <<<PATTERN
 <!-- wp:columns -->
