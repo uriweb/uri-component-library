@@ -69,11 +69,7 @@ function uri_cl_manage_patterns() {
 			include_once( $pattern_dir . '/' . $f );
 
 			if ( ! isset( $slug ) ) {
-				$slug = $f[0];
-			}
-
-			if ( ! isset( $categories ) ) {
-				$categories = array( 'uri' );
+				$slug = basename( $f, '.php' );
 			}
 
 			if ( isset( $pattern ) && isset( $title ) ) {
@@ -84,7 +80,7 @@ function uri_cl_manage_patterns() {
 						'content'     => $pattern,
 						'description' => ( isset( $description ) ? $description : '' ),
 						'keywords'    => ( isset( $keywords ) ? $keywords : 'uri' ),
-						'categories'  => ( isset( $categories ) ? $categories : 'uri' ),
+						'categories'  => ( isset( $categories ) ? $categories : array( 'uri' ) ),
 					)
 				);
 			}
