@@ -69,7 +69,7 @@ function uri_cl_manage_patterns() {
 			include_once( $pattern_dir . '/' . $f );
 
 			if ( ! isset( $slug ) ) {
-				$slug = basename( $f, '.php' );
+				$slug = esc_attr( basename( $f, '.php' ) );
 			}
 
 			if ( isset( $pattern ) && isset( $title ) ) {
