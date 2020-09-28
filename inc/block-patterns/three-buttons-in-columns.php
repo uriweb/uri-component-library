@@ -5,6 +5,8 @@
 	$keywords = 'button, column';
 	$categories = array( 'buttons', 'columns' );
 
+	$weight = 20;
+
 	$pattern = <<<PATTERN
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
