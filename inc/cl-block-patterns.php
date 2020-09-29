@@ -22,36 +22,38 @@ function uri_cl_manage_patterns() {
 		return false;
 	}
 
-	/*
 	// unregister every core pattern
 	$patterns = WP_Block_Patterns_Registry::get_instance()->get_all_registered();
-	foreach( $patterns as $p ) {
+	foreach ( $patterns as $p ) {
 		if ( 'core' === substr( $p['name'], 0, 4 ) ) {
 			unregister_block_pattern( $p['name'] );
 		}
 	}
-	*/
-	// unregister selected core patterns
-	unregister_block_pattern( 'core/two-buttons' );
-	unregister_block_pattern( 'core/three-buttons' );
-	unregister_block_pattern( 'core/text-two-columns' );
+	/*
+	// Unregister selected core patterns.
+	// unregister_block_pattern( 'core/two-buttons' );
+	// unregister_block_pattern( 'core/three-buttons' );
+	// unregister_block_pattern( 'core/text-two-columns' );
 	// unregister_block_pattern( 'core/two-images' );
 	// unregister_block_pattern( 'core/text-two-columns-with-images' );
-	unregister_block_pattern( 'core/text-three-columns-buttons' );
-	unregister_block_pattern( 'core/large-header' );
-	unregister_block_pattern( 'core/large-header-button' );
-	unregister_block_pattern( 'core/heading-paragraph' );
+	// unregister_block_pattern( 'core/text-three-columns-buttons' );
+	// unregister_block_pattern( 'core/large-header' );
+	// unregister_block_pattern( 'core/large-header-button' );
+	// unregister_block_pattern( 'core/heading-paragraph' );
 	// unregister_block_pattern( 'core/quote' );
-	// unregister every core category
+	*/
+
+	/*
+	// Unregister every core category.
 	// unregister_block_pattern_category( 'buttons' );
 	// unregister_block_pattern_category( 'columns' );
 	// unregister_block_pattern_category( 'gallery' );
 	// unregister_block_pattern_category( 'header' );
 	// unregister_block_pattern_category( 'text' );
+	*/
+
 	/*
 		Create a URI pattern category at the top of the list.
-		@todo:  it probably makes more sense to use WP categories than
-						lumping everything under one generic heading
 	*/
 	_uri_cl_prepend_uri_pattern_category();
 
