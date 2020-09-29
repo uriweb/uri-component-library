@@ -53,9 +53,16 @@ function uri_cl_manage_patterns() {
 	*/
 
 	/*
-		Create a URI pattern category at the top of the list.
+		Create a URI pattern category.
+		The way to add it to the top of the list is probably going to be fragile, and it's ok
+		if it comes after the rest now that all categories are populated with URI patterns
+		_uri_cl_prepend_uri_pattern_category();
+
 	*/
-	_uri_cl_prepend_uri_pattern_category();
+	register_block_pattern_category(
+		'uri',
+		array( 'label' => __( 'URI', 'uri' ) )
+	);
 
 	// read the pattern files,
 	// prepare an array of pattern arguments to be sorted and registered.
