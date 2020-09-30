@@ -29,6 +29,7 @@ function uri_cl_manage_patterns() {
 			unregister_block_pattern( $p['name'] );
 		}
 	}
+
 	/*
 	// Unregister selected core patterns.
 	// unregister_block_pattern( 'core/two-buttons' );
