@@ -125,7 +125,7 @@ registerBlockType( 'uri-cl/panel', {
 	edit( { attributes, className, setAttributes } ) {
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
-			if ( attributes.mediaID ) {
+			if ( attributes.mediaID || attributes.img ) {
 				return (
 					<img
 						src={ attributes.img }
