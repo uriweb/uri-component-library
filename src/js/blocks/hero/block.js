@@ -204,6 +204,16 @@ registerBlockType( 'uri-cl/hero', {
 			if ( !! attributes.format ) {
 				classes += ' ' + attributes.format;
 			}
+			if ( !! attributes.link ) {
+				classes += ' has-link';
+			} else {
+				classes += ' no-link';
+			}
+			if ( !! attributes.subhead ) {
+				classes += ' has-subhead';
+			} else {
+				classes += ' no-subhead';
+			}
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
