@@ -38,7 +38,7 @@
 						title: 'Quote',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/quote.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/quote_wysiwyg.svg',
 					}
 				);
 

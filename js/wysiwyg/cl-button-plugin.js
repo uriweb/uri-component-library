@@ -42,7 +42,7 @@
 						title: 'Button',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button_wysiwyg.svg',
 					}
 				);
 

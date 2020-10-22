@@ -48,7 +48,7 @@
 						title: 'Hero',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/hero.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/hero_wysiwyg.svg',
 					}
 				);
 

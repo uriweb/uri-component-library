@@ -38,7 +38,7 @@
 						title: 'Notice',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/notice.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/notice_wysiwyg.svg',
 					}
 				);
 

@@ -38,7 +38,7 @@
 						title: 'Metric',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/metric.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/metric_wysiwyg.svg',
 					}
 				);
 

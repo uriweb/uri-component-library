@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-364,-317)">
+        <g id="video_wysiwyg" transform="matrix(0.016,0,0,0.032,364,317)">
+            <rect x="0" y="0" width="2000" height="1000" style="fill:none;"/>
+            <g transform="matrix(1.6875,0,0,0.84375,-7268.75,-3212.5)">
+                <path d="M5400,4700.93C5400,4741.84 5366.84,4775 5325.93,4775C5140.74,4775 4659.26,4775 4474.07,4775C4433.16,4775 4400,4741.84 4400,4700.93C4400,4557.34 4400,4242.66 4400,4099.07C4400,4058.16 4433.16,4025 4474.07,4025C4659.26,4025 5140.74,4025 5325.93,4025C5366.84,4025 5400,4058.16 5400,4099.07C5400,4242.66 5400,4557.34 5400,4700.93ZM5087.5,4400L4775,4556.21L4775,4243.71L5087.5,4400Z" style="fill:rgb(84,93,102);"/>
+            </g>
+        </g>
+    </g>
+</svg>

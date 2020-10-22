@@ -38,7 +38,7 @@
 						title: 'Video',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/video.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/video_wysiwyg.svg',
 					}
 				);
 

@@ -51,7 +51,7 @@
 						title: 'Panel',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/panel.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/panel_wysiwyg.svg',
 					}
 				);
 

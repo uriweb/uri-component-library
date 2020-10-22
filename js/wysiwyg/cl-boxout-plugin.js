@@ -40,7 +40,7 @@
 						title: 'Boxout',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/boxout.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/boxout_wysiwyg.svg',
 					}
 				);
 

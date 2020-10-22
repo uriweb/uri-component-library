@@ -42,7 +42,7 @@
 						title: 'Card',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/card.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/card_wysiwyg.svg',
 					}
 				);
 

@@ -45,7 +45,7 @@
 						title: 'Overlay',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/overlay.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/overlay_wysiwyg.svg',
 					}
 				);
 
