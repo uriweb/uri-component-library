@@ -24,11 +24,9 @@ CL 5.0.0 is a major release focused on cards, tiles, and enhancements in the Blo
   - Using Magic Tiles replaces a specified column count (e.g. `thirds`)
 * Asymmetric tile layouts have been adjusted to make grid layouts appear more organic, and to help content from becoming too narrow.
 
-
 ### Block Editor
 * Block patterns featuring typical compound component usage have been added, which make it easy to build layouts quickly and consistently.
 * Descriptions and examples have been added to the block picker, providing inline documentation and a preview of the component before adding it to the page.
-
 
 ### General Improvements
 * The Slideshow component now works with WordPress gallery blocks that are set to one column
