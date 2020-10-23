@@ -1,6 +1,18 @@
 # URI Component Library
 
+[![GitHub release](https://img.shields.io/github/release/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/uriweb/uri-component-library)
+![GitHub](https://img.shields.io/github/license/uriweb/uri-component-library)
+[![Master Build Status](https://travis-ci.com/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.com/uriweb/uri-component-library)
+![GitHub top language](https://img.shields.io/github/languages/top/uriweb/uri-component-library)
+[![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
+[![Codacy Badge](https://img.shields.io/codacy/grade/043fca0aa28b4b2db799d5daacf2d27d.svg)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
+[![devDependencies Status](https://david-dm.org/uriweb/uri-component-library/dev-status.svg)](https://david-dm.org/uriweb/uri-component-library?type=dev)
+
 The Component Library standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.
+
+See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
 ## What's new in 5.0.0
 
@@ -58,18 +70,10 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 
 ## Plugin Details
 
-[![GitHub release](https://img.shields.io/github/release/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
-[![GitHub Release Date](https://img.shields.io/github/release-date/uriweb/uri-component-library.svg)](https://github.com/uriweb/uri-component-library/releases/latest)
-[![Master Build Status](https://travis-ci.com/uriweb/uri-component-library.svg?branch=master "Master build status")](https://travis-ci.com/uriweb/uri-component-library)
-[![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
-[![Codacy Badge](https://img.shields.io/codacy/grade/043fca0aa28b4b2db799d5daacf2d27d.svg)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
-[![devDependencies Status](https://david-dm.org/uriweb/uri-component-library/dev-status.svg)](https://david-dm.org/uriweb/uri-component-library?type=dev)
-
-URI Component Library  
-Add the component library, including shortcodes and visual editor support, to WordPress.  
-
-Contributors: Brandon Fuller, John Pennypacker  
-Tags: plugins  
-Requires at least: 4.0  
-Tested up to: 5.5  
-Stable tag: 5.0.0  
+__Contributors:__ Brandon Fuller, John Pennypacker  
+__Tags:__ plugins, shortcode  
+__Requires at least:__ 4.0  
+__Tested up to:__ 5.5  
+__Stable tag:__ 5.0.0  
+__License:__ GPL-3.0  
+__Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
