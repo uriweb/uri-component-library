@@ -1,6 +1,6 @@
 # URI Component Library
 
-The Component Library exists in order to standardize the look and feel of web elements, and make it fast and simple to build webpages that look great and stay on-brand.
+The Component Library standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.
 
 ## What's new in 5.0.0
 
@@ -47,6 +47,13 @@ CL 5.0.0 is a major release focused on cards, tiles, and enhancements in the Blo
 _Note: Card constructions is a breaking change that will affect existing cards built with HTML. Existing cards built with the Visual (TinyMCE) Editor and Block Editor will not be affected._
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/204/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+
+## How do I get set up?
+
+1. Grab a copy of the [latest version](https://github.com/uriweb/uri-component-library/releases/latest)
+2. [Install it](https://wordpress.org/support/article/managing-plugins/#installing-plugins) into your WordPress `wp-content/plugins` directory
+3. Activate it in your site's plugin manager
+4. Read up on [component documentation](https://www.uri.edu/wordpress/components/)
 
 ## Plugin Details
 
