@@ -1,10 +1,8 @@
 /**
  * YOUTUBE API
- *
- * @package uri-component-library
  */
 
-class CLYT {
+class CLYT { // eslint-disable-line no-unused-vars
 	/*
 	 * Load the API
 	 */

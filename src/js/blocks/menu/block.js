@@ -28,7 +28,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/menu.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/menu.svg' ) }
 			alt="button"
 		/>
 	);
@@ -75,6 +75,14 @@ registerBlockType( 'uri-cl/menu', {
 	title: __( 'Menu' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use menus when the same collection of links must appear on multiple pages.' ),
+	example: {
+		attributes: {
+			name: 'menu1',
+			title: __( 'Main Menu' ),
+			showtitle: true,
+		},
+	},
 	attributes: {
 		name: {
 			type: 'string',

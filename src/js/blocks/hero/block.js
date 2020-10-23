@@ -36,7 +36,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/hero.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/hero.svg' ) }
 			alt="button"
 		/>
 	);
@@ -55,6 +55,17 @@ registerBlockType( 'uri-cl/hero', {
 	title: __( 'Hero' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use heroes to engage with the visitor and create the sense of desire.' ),
+	example: {
+		attributes: {
+			headline: __( 'Aspirational' ),
+			subhead: __( 'Heroes always are.' ),
+			button: __( 'Be one' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+			format: 'super',
+		},
+	},
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
@@ -192,6 +203,16 @@ registerBlockType( 'uri-cl/hero', {
 			}
 			if ( !! attributes.format ) {
 				classes += ' ' + attributes.format;
+			}
+			if ( !! attributes.link ) {
+				classes += ' has-link';
+			} else {
+				classes += ' no-link';
+			}
+			if ( !! attributes.subhead ) {
+				classes += ' has-subhead';
+			} else {
+				classes += ' no-subhead';
 			}
 			if ( !! isSelected ) {
 				classes += ' selected';

@@ -47,7 +47,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/panel.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/panel.svg' ) }
 			alt="button"
 		/>
 	);
@@ -69,7 +69,34 @@ registerBlockType( 'uri-cl/panel', {
 	title: __( 'Panel' ),
 	icon: customIcon,
 	category: 'cl-blocks',
-
+	description: __( 'Use panels to provide a deep, visual context for a particular topic.' ),
+	example: {
+		attributes: {
+			title: __( 'A Bit More' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+			reverse: true,
+		},
+		innerBlocks: [ {
+			name: 'core/heading',
+			attributes: {
+				level: 2,
+				content: __( 'Options' ),
+			},
+		},
+		{
+			name: 'core/paragraph',
+			attributes: {
+				content: __( 'A panel is different from a card in that a panel may include <a href="#">multiple links</a> or buttons.' ),
+			},
+		},
+		{
+			name: 'uri-cl/button',
+			attributes: {
+				text: __( 'Learn More' ),
+			},
+		} ],
+	},
 	attributes: {
 		title: {
 			type: 'string',
@@ -98,7 +125,7 @@ registerBlockType( 'uri-cl/panel', {
 	edit( { attributes, className, setAttributes } ) {
 		// Generate the image or the add image section
 		const getImageButton = ( openEvent ) => {
-			if ( attributes.mediaID ) {
+			if ( attributes.mediaID || attributes.img ) {
 				return (
 					<img
 						src={ attributes.img }

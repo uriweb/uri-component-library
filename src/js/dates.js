@@ -1,7 +1,5 @@
 /**
  * DATES
- *
- * @package uri-component-library
  */
 
 ( function() {

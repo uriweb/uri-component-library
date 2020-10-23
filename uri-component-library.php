@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 4.2.0
+ * Version: 5.0.0
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
@@ -63,13 +63,28 @@ include( URI_CL_DIR_PATH . 'inc/cl-shortcodes.php' );
 // Include display posts extensions
 include( URI_CL_DIR_PATH . 'inc/cl-display-posts.php' );
 
-// Include WYSIWYG buttons on all themes except URI Responsive
-if ( 'responz-child' != wp_get_theme()->get_stylesheet() ) {
+/**
+ * Include WYSIWYG buttons on all themes except URI Responsive
+ */
+function load_wysiwyg() {
+	global $pagenow;
+	// do not load the WYSIWYG editor in the responsive theme
+	if ( 'responz-child' === wp_get_theme()->get_stylesheet() ) {
+		return;
+	}
+	// do not load the WYSIWYG editor in the WP All Import Admin interface
+	if ( 'admin.php' === $pagenow && false !== strpos( $_GET['page'], 'pmxi' ) ) {
+		return;
+	}
 	include( URI_CL_DIR_PATH . 'inc/cl-wysiwyg.php' );
 }
 
+add_action( 'init', 'load_wysiwyg' );
+
 // Include gutenberg
 include( URI_CL_DIR_PATH . 'inc/cl-gutenberg.php' );
+// Include block pattern library manager
+include( URI_CL_DIR_PATH . 'inc/cl-block-patterns.php' );
 
 
 // Enable styles in the WYSIWYG Editor
@@ -89,13 +104,14 @@ function uri_cl_get_site_menus() {
  */
 function uri_cl_register_api_route_menus() {
 	register_rest_route(
-		 'uri-component-library/v1',
+		'uri-component-library/v1',
 		'/menus',
 		array(
 			'methods' => 'GET',
 			'callback' => 'uri_cl_get_site_menus',
+			'permission_callback' => true,
 		)
-		);
+	);
 }
 add_action( 'rest_api_init', 'uri_cl_register_api_route_menus' );
 

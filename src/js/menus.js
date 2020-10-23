@@ -1,7 +1,5 @@
 /**
  * MENUS
- *
- * @package uri-component-library
  */
 
 ( function() {

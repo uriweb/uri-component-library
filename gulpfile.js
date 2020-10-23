@@ -23,26 +23,26 @@ var sassOptions = {
 
 function styles(done) {
 
-    var banner = ['/**',
-                  ' * <%= pkg.name %>',
-                  ' * ',
-                  ' * --styles--',
-                  ' * ',
-                  ' * @version v<%= pkg.version %>',
-                  ' * @author <%= pkg.humans[0] %>',
-				  ' * @author <%= pkg.humans[1] %>',
-                  ' * @license <%= pkg.license %>',
-                  ' * @see <%= pkg.docs %>',
-                  ' */',
-                  '',
-                  ''].join('\n');
+  var banner = ['/**',
+                ' * <%= pkg.name %>',
+                ' * ',
+                ' * --styles--',
+                ' * ',
+                ' * @version v<%= pkg.version %>',
+                ' * @author <%= pkg.humans[0] %>',
+			          ' * @author <%= pkg.humans[1] %>',
+                ' * @license <%= pkg.license %>',
+                ' * @see <%= pkg.docs %>',
+                ' */',
+                '',
+                ''].join('\n');
 
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(concat('cl.built.css'))
-        .pipe(postcss([ autoprefixer() ]))
-        .pipe(header(banner, { pkg : pkg } ))
+    .pipe(postcss([ autoprefixer() ]))
+    .pipe(header(banner, { pkg : pkg } ))
 		.pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest('./css/'));
 

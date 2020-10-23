@@ -36,7 +36,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/promo.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/promo.svg' ) }
 			alt="button"
 		/>
 	);
@@ -47,6 +47,15 @@ registerBlockType( 'uri-cl/promo', {
 	title: __( 'Promo' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use promos to showcase timely marketing information.' ),
+	example: {
+		attributes: {
+			title: __( 'Title' ),
+			body: __( 'Some body text' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+		},
+	},
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders

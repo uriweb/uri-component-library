@@ -1,7 +1,5 @@
 /**
  * METRICS
- *
- * @package uri-component-library
  */
 
 ( function() {

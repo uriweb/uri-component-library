@@ -34,7 +34,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/date.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/date.svg' ) }
 			alt="date"
 		/>
 	);
@@ -63,6 +63,13 @@ registerBlockType( 'uri-cl/date', {
 	title: __( 'Date' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use dates to display a downloadable calendar event.' ),
+	example: {
+		attributes: {
+			date: __( 'July 28, 2061' ),
+			caption: __( 'Halley’s Comet reaches perihelion' ),
+		},
+	},
 
 	attributes: {
 		date: {

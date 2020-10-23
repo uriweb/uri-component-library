@@ -1,7 +1,5 @@
 /**
  * WAVES
- *
- * @package uri-component-library
  */
 
 ( function() {

@@ -23,7 +23,6 @@ function uri_cl_wysiwyg_register_tinymce_plugin( $plugin_array ) {
 	wp_localize_script( 'uricl-wysiwyg-helpers', 'URIComponentLibrary', $values );
 
 	wp_enqueue_style( 'uricl-wysiwyg-admin-styles', uri_cl_dir_url() . 'css/cl-wysiwyg-admin.css' );
-
 	// load up the noneditable plugin from TinyMCE
 	$plugin_array['noneditable'] = uri_cl_dir_url() . 'js/wysiwyg/noneditable/plugin.min.js';
 
@@ -97,7 +96,7 @@ function uri_cl_wysiwyg_get_html() {
 		return;
 	}
 
-	$shortcode = ( get_magic_quotes_gpc() ) ? $_REQUEST['sc'] : stripslashes( $_REQUEST['sc'] );
+	$shortcode = stripslashes( $_REQUEST['sc'] );
 	$shortcode = mb_convert_encoding( $shortcode, 'HTML-ENTITIES', 'UTF-8' );
 
 	$out = do_shortcode( $shortcode );

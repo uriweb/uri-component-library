@@ -30,7 +30,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/boxout.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/boxout.svg' ) }
 			alt="button"
 		/>
 	);
@@ -56,6 +56,24 @@ registerBlockType( 'uri-cl/boxout', {
 	title: __( 'Boxout' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use boxouts to contain text that is ancillary to the page’s content.' ),
+	example: {
+		attributes: {
+			title: __( 'Side note' ),
+		},
+		innerBlocks: [ {
+			name: 'core/paragraph',
+			attributes: {
+				content: __( 'Boxout content supports the rest of the page’s message without being directly related.' ),
+			},
+		},
+		{
+			name: 'uri-cl/button',
+			attributes: {
+				text: __( 'Learn More' ),
+			},
+		} ],
+	},
 	attributes: {
 		title: {
 			type: 'string',

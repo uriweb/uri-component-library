@@ -25,7 +25,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/button.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/button.svg' ) }
 			alt="button"
 		/>
 	);
@@ -55,6 +55,12 @@ registerBlockType( 'uri-cl/button', {
 	title: __( 'Button' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use buttons to attract attention to the primary call to action on a page.' ),
+	example: {
+		attributes: {
+			text: __( 'Explore' ),
+		},
+	},
 	attributes: {
 		link: {
 			type: 'string',

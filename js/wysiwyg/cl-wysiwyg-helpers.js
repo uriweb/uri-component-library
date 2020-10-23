@@ -1,7 +1,5 @@
 /**
  * WYSIWYG Helper Function
- *
- * @package uri-component-library
  */
 
 let URIWYSIWYGoutStandingRequests = 0;
@@ -13,7 +11,7 @@ jQuery( document ).ready(
 	}
 );
 
-class URIWYSIWYG {
+class URIWYSIWYG { // eslint-disable-line no-unused-vars
 	/**
 	 * Escapes quotes on every element in an array (if element is a string)
 	 *
@@ -142,7 +140,7 @@ note: replaces straight quotes (double primes) with curly quotes
 				},
 				dataType: 'json',
 				method: 'post',
-				error( jqXHR, textStatus, errorThrown ) {
+				error( jqXHR, textStatus, errorThrown ) { // eslint-disable-line no-unused-vars
 					//console.log( 'failed to retrieve shortcode HTML.' );
 					//console.log( textStatus );
 					//console.log( errorThrown );
@@ -152,7 +150,7 @@ note: replaces straight quotes (double primes) with curly quotes
 					jQuery( '#publish, #content-tmce, #content-html' ).attr( 'disabled', true );
 					jQuery( '#publish' ).val( 'loading' );
 				},
-				success( data, textStatus, jqXHR ) {
+				success( data, textStatus, jqXHR ) { // eslint-disable-line no-unused-vars
 					let placeHolder, d;
 
 					if ( ed.$ ) {

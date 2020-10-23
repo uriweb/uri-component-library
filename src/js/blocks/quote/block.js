@@ -41,7 +41,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/quote.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/quote.svg' ) }
 			alt="button"
 		/>
 	);
@@ -56,6 +56,13 @@ const classNames = ( attributes, isSelected ) => {
 	if ( !! isSelected ) {
 		classes += ' selected';
 	}
+
+	if ( !! attributes.img ) {
+		classes += ' has-image';
+	} else {
+		classes += ' no-image';
+	}
+
 	return classes;
 };
 
@@ -64,6 +71,15 @@ registerBlockType( 'uri-cl/quote', {
 	title: __( 'Quote' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use quotes to create a blockquote element that stands out from the page.' ),
+	example: {
+		attributes: {
+			quote: __( 'Ocean, who is the source of all.' ),
+			citation: __( 'Homer' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example_square.jpg',
+		},
+	},
 
 	attributes: {
 		quote: {

@@ -32,7 +32,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/metric.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/metric.svg' ) }
 			alt="metric"
 		/>
 	);
@@ -61,7 +61,14 @@ registerBlockType( 'uri-cl/metric', {
 	title: __( 'Metric' ),
 	icon: customIcon,
 	category: 'cl-blocks',
-
+	description: __( 'Use metrics to illustrate a fact that is concise and easy to consume.' ),
+	example: {
+		attributes: {
+			metric: __( '40K' ),
+			caption: __( 'Leagues under the sea' ),
+			style: 'dark',
+		},
+	},
 	attributes: {
 		metric: {
 			type: 'string',

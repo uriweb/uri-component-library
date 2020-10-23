@@ -3,8 +3,6 @@
  *
  * Turn WP image galleries into something pretty.
  * Hooks into WP full-size image galleries only.
- *
- * @package uri-component-library
  */
 
 ( function() {
@@ -16,7 +14,7 @@
 
 	function initCLSlideshow() {
 		let i;
-		const g = document.querySelectorAll( '.gallery.gallery-size-full' );
+		const g = document.querySelectorAll( '.gallery.gallery-size-full, .wp-block-gallery.columns-1' );
 
 		for ( i = 0; i < g.length; i++ ) {
 			parseWPGallery( g[ i ] );

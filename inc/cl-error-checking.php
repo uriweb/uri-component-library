@@ -42,7 +42,7 @@ function uri_cl_validate( $cname, $atts, $content, $check_atts, $template ) {
 		}
 
 		// Check for empty entry, otherwise validate if it's set
-		if ( $this_attr['req'] && empty( $this_attr['val'] ) ) {
+		if ( $this_attr['req'] && ( ! isset( $this_attr['val'] ) || '' === $this_attr['val'] ) ) {
 
 			$errors[] = array(
 				'attr' => $this_attr['name'],

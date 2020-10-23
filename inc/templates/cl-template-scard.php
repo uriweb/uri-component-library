@@ -63,7 +63,7 @@ if ( $post_thumbnail ) {
 }
 
 // --- Begin Text Area ---
-$output .= '<div class="cl-scard-text">';
+$output .= '<div class="cl-card-text">';
 
 // Category
 if ( $atts['showcat'] && $post_cat ) {

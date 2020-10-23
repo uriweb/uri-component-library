@@ -97,7 +97,10 @@ function uri_cl_get_video_platform( $src ) {
  * @return str
  */
 function uri_cl_get_url_host( $src ) {
-	return parse_url( $src )['host'];
+	$url = parse_url( $src );
+	if ( isset( $url['host'] ) ) {
+		return $url['host'];
+	}
 }
 
 /**

@@ -1,7 +1,5 @@
 /**
  * TABS
- *
- * @package uri-component-library
  */
 
 ( function() {

@@ -1,13 +1,10 @@
 /**
  * HERO VIDS / VIDEOS
- *
- * @package uri-component-library
  */
 
 // Create this in the global scope so the YouTube API can call it locally.
-let CLCreateYouTubePlayers,
-	CLCreateVimeoPlayers;
-function onYouTubePlayerAPIReady() {
+let CLCreateYouTubePlayers, CLCreateVimeoPlayers; // eslint-disable-line no-unused-vars
+function onYouTubePlayerAPIReady() { // eslint-disable-line no-unused-vars
 	CLCreateYouTubePlayers();
 }
 
@@ -23,6 +20,12 @@ function onYouTubePlayerAPIReady() {
 			vimeo: {},
 			yt: {},
 		},
+		cards: {
+			vimeo: {},
+		},
+		cardFeatures: {
+			vimeo: {},
+		},
 	};
 
 	window.addEventListener( 'load', getVids, false );
@@ -37,6 +40,7 @@ function onYouTubePlayerAPIReady() {
 
 		const heroes = document.querySelectorAll( '.cl-hero .poster' );
 		const vids = document.querySelectorAll( '.cl-video .poster' );
+		const cards = document.querySelectorAll( '.cl-card .cl-card-container.video .poster' );
 
 		if ( URICL.checkSupport() ) {
 			for ( i = 0; i < heroes.length; i++ ) {
@@ -102,6 +106,31 @@ function onYouTubePlayerAPIReady() {
 			}
 		}
 
+		for ( i = 0; i < cards.length; i++ ) {
+			el = cards[ i ];
+			parent = el.parentNode;
+
+			atts = {
+				parent,
+				poster: el,
+				state: 'init',
+			};
+
+			src = el.getAttribute( 'data-video' );
+			host = el.getAttribute( 'data-platform' );
+			id = el.getAttribute( 'id' );
+
+			requireVimeo = true;
+			data.cards.vimeo[ id ] = atts;
+			data.cards.vimeo[ id ].src = src;
+
+			// Remove poster id and create a new placeholder for the video
+			el.removeAttribute( 'id' );
+			placeholder = document.createElement( 'div' );
+			placeholder.id = id;
+			parent.appendChild( placeholder );
+		}
+
 		if ( requireYouTube ) {
 			CLYT.loadYouTubeAPI();
 		}
@@ -130,9 +159,9 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onHeroReady,
-				onStateChange: CLVimeo.onHeroStateChange,
-				onError: CLVimeo.onHeroError,
+				onReady: CLHeroVimeo.onReady,
+				onStateChange: CLHeroVimeo.onStateChange,
+				onError: CLHeroVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
@@ -152,9 +181,28 @@ function onYouTubePlayerAPIReady() {
 			};
 
 			callbacks = {
-				onReady: CLVimeo.onVideoReady,
-				onStateChange: CLVimeo.onVideoStateChange,
-				onError: CLVimeo.onVideoError,
+				onReady: CLVideoVimeo.onReady,
+				onStateChange: CLVideoVimeo.onStateChange,
+				onError: CLVideoVimeo.onError,
+			};
+
+			createVimeoPlayer( id, value, options, callbacks );
+		}
+
+		/* Cards */
+		for ( id in data.cards.vimeo ) {
+			value = data.cards.vimeo[ id ];
+
+			options = {
+				url: value.src,
+				background: true,
+				autoplay: true,
+			};
+
+			callbacks = {
+				onReady: CLCardVimeo.onReady,
+				onStateChange: CLCardVimeo.onStateChange,
+				onError: CLCardVimeo.onError,
 			};
 
 			createVimeoPlayer( id, value, options, callbacks );
@@ -166,7 +214,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'loaded',
-			function( e ) {
+			function() {
 				value.state = 'loaded';
 				callbacks.onReady( value );
 			}
@@ -174,7 +222,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'bufferstart',
-			function( e ) {
+			function() {
 				value.state = 'buffering';
 				callbacks.onStateChange( value );
 			}
@@ -182,7 +230,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'play',
-			function( e ) {
+			function() {
 				value.state = 'playing';
 				callbacks.onStateChange( value );
 			}
@@ -190,7 +238,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'pause',
-			function( e ) {
+			function() {
 				value.state = 'paused';
 				callbacks.onStateChange( value );
 			}
@@ -198,7 +246,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'ended',
-			function( e ) {
+			function() {
 				value.state = 'ended';
 				callbacks.onStateChange( value );
 			}

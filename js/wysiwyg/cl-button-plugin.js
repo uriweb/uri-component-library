@@ -2,7 +2,6 @@
  * CL Button WYSIWYG Plugin
  *
  * @see https://code.tutsplus.com/tutorials/guide-to-creating-your-own-wordpress-editor-buttons--wp-30182
- * @package uri-component-library
  */
 
 ( function() {
@@ -35,7 +34,7 @@
 			 * @param {Object} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init( ed, url ) {
+			init( ed, url ) { // eslint-disable-line no-unused-vars
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 					wName,
@@ -43,7 +42,7 @@
 						title: 'Button',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/button_wysiwyg.svg',
 					}
 				);
 
@@ -83,7 +82,7 @@
 								],
 								onsubmit( e ) {
 								// Insert content when the window form is submitted
-									shortcode = generateButtonShortcode( e.data );
+									const shortcode = generateButtonShortcode( e.data );
 									ed.execCommand( 'mceInsertContent', 0, shortcode );
 								},
 							},

@@ -31,7 +31,7 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/card.png' ) }
+			src={ ( URI_CL_URL + 'i/icons/card.svg' ) }
 			alt="button"
 		/>
 	);
@@ -65,6 +65,16 @@ registerBlockType( 'uri-cl/card', {
 	title: __( 'Card' ),
 	icon: customIcon,
 	category: 'cl-blocks',
+	description: __( 'Use cards to explain and link to a single idea.' ),
+	example: {
+		attributes: {
+			title: __( 'One idea' ),
+			body: __( 'Since the entire card must be a single link, it’s perfect for linking to broad topics where you need more words or a photo to describe the linked resource.' ),
+			mediaID: true,
+			img: URI_CL_URL + 'i/example.jpg',
+			button: __( 'Learn More' ),
+		},
+	},
 
 	// The mediaID is what goes into the shortcode for front-end display
 	// the img and alt are for editor placeholders
@@ -165,45 +175,52 @@ registerBlockType( 'uri-cl/card', {
 				<div className="container cl-card-block-form">
 					<div className={ classes } title={ title }>
 
-						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( {
-									alt: media.alt,
-									img: media.url,
-									mediaID: media.id,
-								} );
-							}
-							}
-							type="image"
-							value={ attributes.mediaID }
-							render={ ( { open } ) => getImageButton( open ) }
-						/>
+						<div className="cl-card-container media">
 
-						<div className="cl-card-text">
-							<h3><PlainText
-								onChange={ ( content ) => setAttributes( { title: content } ) }
-								value={ attributes.title }
-								placeholder={ __( 'Your card title' ) }
-								keepPlaceholderOnFocus={ true }
-							/></h3>
-							<RichText
-								onChange={ ( content ) => setAttributes( { body: content } ) }
-								tagname="p"
-								value={ attributes.body }
-								placeholder={ __( 'Your card text' ) }
-								keepPlaceholderOnFocus={ true }
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( {
+										alt: media.alt,
+										img: media.url,
+										mediaID: media.id,
+									} );
+								}
+								}
+								type="image"
+								value={ attributes.mediaID }
+								render={ ( { open } ) => getImageButton( open ) }
 							/>
+
 						</div>
-						<div>
+						<div className="cl-card-container text">
+
+							<div className="cl-card-text">
+								<h3><PlainText
+									onChange={ ( content ) => setAttributes( { title: content } ) }
+									value={ attributes.title }
+									placeholder={ __( 'Your card title' ) }
+									keepPlaceholderOnFocus={ true }
+								/></h3>
+								<RichText
+									onChange={ ( content ) => setAttributes( { body: content } ) }
+									tagname="p"
+									value={ attributes.body }
+									placeholder={ __( 'Your card text' ) }
+									keepPlaceholderOnFocus={ true }
+								/>
+							</div>
+
+						</div>
+						<div className="cl-card-container button">
 							<PlainText
 								onChange={ ( content ) => setAttributes( { button: content } ) }
 								value={ attributes.button }
 								placeholder={ __( 'Your button text' ) }
 								keepPlaceholderOnFocus={ true }
-								className="cl-button"
 							/>
 							{ meta }
 						</div>
+
 					</div>
 				</div>
 			);
