@@ -96,7 +96,7 @@ function uri_cl_wysiwyg_get_html() {
 		return;
 	}
 
-	$shortcode = ( get_magic_quotes_gpc() ) ? $_REQUEST['sc'] : stripslashes( $_REQUEST['sc'] );
+	$shortcode = stripslashes( $_REQUEST['sc'] );
 	$shortcode = mb_convert_encoding( $shortcode, 'HTML-ENTITIES', 'UTF-8' );
 
 	$out = do_shortcode( $shortcode );

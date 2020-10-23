@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-316,-145)">
-        <g id="share-bar" transform="matrix(0.016,0,0,0.032,316,145)">
+    <g transform="matrix(1,0,0,1,-316,-144)">
+        <g id="share-bar" transform="matrix(0.016,0,0,0.032,316,144)">
             <rect x="0" y="0" width="2000" height="1000" style="fill:none;"/>
             <g transform="matrix(62.5,0,0,31.25,-19750,-4531.25)">
                 <path d="M332.529,165.009L341,156.538L341,173C341,173.53 340.789,174.039 340.414,174.414C340.039,174.789 339.53,175 339,175C334.481,175 324.523,175 320.004,175C319.474,175 318.965,174.789 318.59,174.414C318.215,174.039 318.004,173.53 318.004,173C318.004,168.48 318.004,158.52 318.004,154C318.004,153.47 318.215,152.961 318.59,152.586C318.965,152.211 319.474,152 320.004,152C324.969,152 336.462,152 336.462,152L327.973,160.489C327.796,160.632 327.274,161.274 327.274,161.274C326.957,161.773 326.773,162.365 326.773,163C326.773,164.782 328.22,166.229 330.002,166.229C330.637,166.229 331.229,166.045 331.728,165.728C331.728,165.728 332.376,165.201 332.529,165.009Z" style="fill:rgb(29,29,29);"/>

@@ -4,7 +4,7 @@
 
 let CLResizeSuperheroes;
 
-class CLHeroVimeo {
+class CLHeroVimeo { // eslint-disable-line no-unused-vars
 	/**
 	 * Do things with the hero when it's loaded
 	 *

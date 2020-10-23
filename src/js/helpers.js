@@ -2,7 +2,7 @@
  * CL Helper Function
  */
 
-class URICL {
+class URICL { // eslint-disable-line no-unused-vars
 	/**
 	 * Check browser support (essentially anything but IE)
 	 *

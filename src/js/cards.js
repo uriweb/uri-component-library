@@ -2,7 +2,7 @@
  * CARDS
  */
 
-class CLCardVimeo {
+class CLCardVimeo { // eslint-disable-line no-unused-vars
 	/**
 	 * Do things with the card when it's loaded
 	 *

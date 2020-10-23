@@ -3,9 +3,8 @@
  */
 
 // Create this in the global scope so the YouTube API can call it locally.
-let CLCreateYouTubePlayers,
-	CLCreateVimeoPlayers;
-function onYouTubePlayerAPIReady() {
+let CLCreateYouTubePlayers, CLCreateVimeoPlayers; // eslint-disable-line no-unused-vars
+function onYouTubePlayerAPIReady() { // eslint-disable-line no-unused-vars
 	CLCreateYouTubePlayers();
 }
 
@@ -215,7 +214,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'loaded',
-			function( e ) {
+			function() {
 				value.state = 'loaded';
 				callbacks.onReady( value );
 			}
@@ -223,7 +222,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'bufferstart',
-			function( e ) {
+			function() {
 				value.state = 'buffering';
 				callbacks.onStateChange( value );
 			}
@@ -231,7 +230,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'play',
-			function( e ) {
+			function() {
 				value.state = 'playing';
 				callbacks.onStateChange( value );
 			}
@@ -239,7 +238,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'pause',
-			function( e ) {
+			function() {
 				value.state = 'paused';
 				callbacks.onStateChange( value );
 			}
@@ -247,7 +246,7 @@ function onYouTubePlayerAPIReady() {
 
 		value.player.on(
 			'ended',
-			function( e ) {
+			function() {
 				value.state = 'ended';
 				callbacks.onStateChange( value );
 			}

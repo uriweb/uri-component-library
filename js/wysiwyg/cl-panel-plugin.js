@@ -12,8 +12,9 @@
 		let i;
 		const attributes = [];
 
+		// @todo: maybe there is a better way of accomplishing this besides a browser alert
 		if ( ! params.img ) {
-			alert( 'Image is required for panels' );
+			alert( 'Image is required for panels' ); // eslint-disable-line no-alert
 			return false;
 		}
 
@@ -43,7 +44,7 @@
 			 * @param {Object} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init( ed, url ) {
+			init( ed, url ) { // eslint-disable-line no-unused-vars
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 					wName,
@@ -51,7 +52,7 @@
 						title: 'Panel',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/panel.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/panel_wysiwyg.svg',
 					}
 				);
 

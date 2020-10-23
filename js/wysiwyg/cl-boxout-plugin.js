@@ -32,7 +32,7 @@
 			 * @param {Object} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init( ed, url ) {
+			init( ed, url ) { // eslint-disable-line no-unused-vars
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 					wName,
@@ -40,7 +40,7 @@
 						title: 'Boxout',
 						text: '',
 						cmd: wName,
-						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/boxout.png',
+						image: URIWYSIWYG.getPluginInfo().path + 'i/icons/boxout_wysiwyg.svg',
 					}
 				);
 
@@ -79,7 +79,7 @@
 								],
 								onsubmit( e ) {
 								// Insert content when the window form is submitted
-									shortcode = generateBoxoutShortcode( e.data );
+									const shortcode = generateBoxoutShortcode( e.data );
 									ed.execCommand( 'mceInsertContent', 0, shortcode );
 								},
 							},
