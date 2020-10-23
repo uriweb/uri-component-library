@@ -16,6 +16,8 @@ CL 5.0.0 is a major release focused on cards, tiles, and enhancements in the Blo
   - A video can now be used in place of an image
   - Theatre Mode: Cards can also feature a user-controllable video that is revealed when the card is clicked
 * Equal-height cards render more consistently and now work with WordPress column blocks in addition to Tiles
+* Story cards can now be made equal-height in Tiles and columns
+* Cards appear more accurately styled in the Block Editor
 
 ### Enhancements to Tiles
 * __Introducing Magic Tiles__
