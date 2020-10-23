@@ -2,7 +2,7 @@
  * VIMEO API
  */
 
-class CLVimeo {
+class CLVimeo { // eslint-disable-line no-unused-vars
 	/*
 	 * Load the API
 	 */

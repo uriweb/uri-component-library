@@ -13,6 +13,22 @@
     "jsx-a11y/label-has-associated-control": ["warn"],
     "jsx-a11y/label-has-for": [0]
   },
+  "globals": {
+    "CLCardVimeo": "readonly",
+    "CLCreateVimeoPlayers": "readonly",
+    "CLHeroVimeo": "readonly",
+    "CLVideoVimeo": "readonly",
+    "CLVimeo": "readonly",
+    "CLYT": "readonly",
+    "jQuery": "readonly",
+    "onYouTubePlayerAPIReady": "readonly",
+    "tinymce": "readonly",
+    "URICL": "readonly",
+    "URIComponentLibrary": "readonly",
+    "URIWYSIWYG": "readonly",
+    "Vimeo": "readonly",
+    "YT": "readonly"
+  },
   "ignorePatterns": [
     "gulpfile.js",
     "js/cl.built.js",

@@ -2,7 +2,7 @@
  * VIDEOS
  */
 
-class CLVideoVimeo {
+class CLVideoVimeo { // eslint-disable-line no-unused-vars
 	/**
 	 * Do things with the video when it's loaded
 	 *

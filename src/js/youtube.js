@@ -2,7 +2,7 @@
  * YOUTUBE API
  */
 
-class CLYT {
+class CLYT { // eslint-disable-line no-unused-vars
 	/*
 	 * Load the API
 	 */

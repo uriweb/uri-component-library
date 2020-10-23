@@ -52,7 +52,7 @@
 			 * @param {Object} ed Editor instance that the plugin is initialized in.
 			 * @param {string} url Absolute URL to where the plugin is located.
 			 */
-			init( ed, url ) {
+			init( ed, url ) { // eslint-disable-line no-unused-vars
 				// Add the button that the WP plugin defined in the mce_buttons filter callback
 				ed.addButton(
 					wName,
@@ -101,7 +101,7 @@
 								onsubmit( e ) {
 								// Insert content when the window form is submitted
 									e.data = URIWYSIWYG.escapeQuotesDeep( e.data );
-									shortcode = generateTilesHTML( e.data );
+									const shortcode = generateTilesHTML( e.data );
 									ed.execCommand( 'mceInsertContent', 0, shortcode );
 								},
 							},
