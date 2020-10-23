@@ -53,7 +53,8 @@ For complete details, see the [commit history](https://github.com/uriweb/uri-com
 1. Grab a copy of the [latest version](https://github.com/uriweb/uri-component-library/releases/latest)
 2. [Install it](https://wordpress.org/support/article/managing-plugins/#installing-plugins) into your WordPress `wp-content/plugins` directory
 3. Activate it in your site's plugin manager
-4. Read up on [component documentation](https://www.uri.edu/wordpress/components/)
+
+For help with using components, see [documentation](https://www.uri.edu/wordpress/components/).
 
 ## Plugin Details
 
