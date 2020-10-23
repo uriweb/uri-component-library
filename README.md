@@ -70,8 +70,8 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 
 ## Plugin Details
 
-__Contributors:__ Brandon Fuller, John Pennypacker  
-__Tags:__ plugins, shortcode  
+__Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker)  
+__Tags:__ plugins, shortcodes  
 __Requires at least:__ 4.0  
 __Tested up to:__ 5.5  
 __Stable tag:__ 5.0.0  
