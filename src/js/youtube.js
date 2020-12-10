@@ -79,8 +79,9 @@ class CLYT { // eslint-disable-line no-unused-vars
 		event.target.mute();
 
 		const el = event.target.getIframe();
-		const parent = event.target.f.parentNode;
-
+		
+		const parent = el.parentNode;
+		
 		// Listen for browser resizing
 		window.addEventListener(
 			'resize',
@@ -124,7 +125,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 */
 	static onVideoReady( event ) {
 		const el = event.target.getIframe(),
-			parent = event.target.f.parentNode;
+			parent = el.parentNode;
 
 		window.addEventListener(
 			'resize',
@@ -165,6 +166,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 */
 	static onHeroStateChange( event ) {
 		const state = event.target.getPlayerState();
+		const el = event.target.getIframe();
 		switch ( state ) {
 			case 0:
 				event.target.playVideo();
@@ -172,7 +174,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					event.target.f.previousSibling.classList.add( 'unveil' );
+					el.previousSibling.classList.add( 'unveil' );
 				}
 				break;
 		}
