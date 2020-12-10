@@ -79,9 +79,8 @@ class CLYT { // eslint-disable-line no-unused-vars
 		event.target.mute();
 
 		const el = event.target.getIframe();
-		
 		const parent = el.parentNode;
-		
+
 		// Listen for browser resizing
 		window.addEventListener(
 			'resize',
