@@ -10,7 +10,17 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.0.0
+## What's new in 5.0.1
+
+CL 5.0.1 is a bug fix release.
+
+* Fixes an issue that prevented YouTube videos in hero components from playing
+* Fixes an issue that caused YouTube videos in video components to size properly
+* Updates development tools
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/207/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+
+## New in 5.0.0
 
 CL 5.0.0 is a major release focused on cards, tiles, and enhancements in the Block Editor.
 
