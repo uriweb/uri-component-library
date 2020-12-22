@@ -42,12 +42,11 @@ class CLYT { // eslint-disable-line no-unused-vars
 	/**
 	 * Dynamically set the video height and position based on width
 	 *
-	 * @param {Object} event The player event.
 	 * @param {Object} el The video.
 	 * @param {Object} parent The video parent container.
 	 */
-	static resizeVideo( event, el, parent ) {
-		el.style.height = ( parent.offsetWidth / ( event.target.f.width / event.target.f.height ) ) + 'px';
+	static resizeVideo( el, parent ) {
+		el.style.height = ( parent.offsetWidth / ( el.width / el.height ) ) + 'px';
 	}
 
 	/**
@@ -129,10 +128,10 @@ class CLYT { // eslint-disable-line no-unused-vars
 		window.addEventListener(
 			'resize',
 			function() {
-				CLYT.resizeVideo( event, el, parent );
+				CLYT.resizeVideo( el, parent );
 			}
 		);
-		CLYT.resizeVideo( event, el, parent );
+		CLYT.resizeVideo( el, parent );
 	}
 
 	/**
@@ -185,8 +184,9 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 * @param {Object} event The player event.
 	 */
 	static onHeroError( event ) {
-		event.target.f.previousSibling.classList.remove( 'unveil' );
-		event.target.f.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
+		const el = event.target.getIframe();
+		el.previousSibling.classList.remove( 'unveil' );
+		el.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/**
@@ -197,10 +197,11 @@ class CLYT { // eslint-disable-line no-unused-vars
 	static onVideoError( event ) {
 		let alt;
 
-		const poster = event.target.f.previousSibling;
+		const el = event.target.getIframe();
+		const poster = el.previousSibling;
 
 		const a = document.createElement( 'a' );
-		a.href = 'http://www.youtube.com/watch?v=' + event.target.f.id;
+		a.href = 'http://www.youtube.com/watch?v=' + el.id;
 		a.title = 'Try watching this video on YouTube';
 
 		const img = document.createElement( 'img' );
@@ -212,9 +213,9 @@ class CLYT { // eslint-disable-line no-unused-vars
 		img.alt = alt;
 		a.appendChild( img );
 
-		const iframe = document.getElementById( event.target.f.id );
+		const iframe = document.getElementById( el.id );
 		if ( iframe ) {
-			event.target.f.parentNode.replaceChild( a, iframe );
+			el.parentNode.replaceChild( a, iframe );
 		}
 	}
 
@@ -224,16 +225,21 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 * @param {Object} event The player event.
 	 */
 	static onVideoStateChange( event ) {
-		const state = event.target.getPlayerState(),
-			overlay = event.target.f.parentNode.querySelector( '.overlay' );
+		const state = event.target.getPlayerState();
+		const el = event.target.getIframe();
+		const overlay = el.parentNode.querySelector( '.overlay' );
 
 		switch ( state ) {
 			case 1:
 			case 3:
-				overlay.classList.add( 'hidden' );
+				if ( null !== overlay ) {
+					overlay.classList.add( 'hidden' );
+				}
 				break;
 			default:
-				overlay.classList.remove( 'hidden' );
+				if ( null !== overlay ) {
+					overlay.classList.remove( 'hidden' );
+				}
 		}
 	}
 }
