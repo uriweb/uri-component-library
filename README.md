@@ -14,8 +14,8 @@ See [this documentation](https://www.uri.edu/wordpress/components/) to learn abo
 
 CL 5.0.1 is a bug fix release.
 
-* Fixes an issue that prevented YouTube videos in hero components from playing
-* Fixes an issue that caused YouTube videos in video components to size properly
+* Fixes multiple issues with sizing, resizing, and controlling YouTube videos in video and hero components
+* Fixes a warning when custom classes aren't set in tabs
 * Updates development tools
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/207/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
