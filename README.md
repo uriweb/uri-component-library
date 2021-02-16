@@ -10,61 +10,15 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.0.1
+## What's new in 5.0.2
 
-CL 5.0.1 is a bug fix release.
+CL 5.0.2 is a bug fix release.
 
-* Fixes multiple issues with sizing, resizing, and controlling YouTube videos in video and hero components
-* Fixes a warning when custom classes aren't set in tabs
+* Fixes an issue where the Menu block options would indicate that no menus were available, even if ones existed
+* Improves WAI-ARIA keyboard interactions for components with media pickers (see [Wordpress](https://developer.wordpress.org/block-editor/components/toolbar-button/) and [W3](https://www.w3.org/TR/wai-aria-practices/#toolbar) docs for details)
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/207/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
-
-## New in 5.0.0
-
-CL 5.0.0 is a major release focused on cards, tiles, and enhancements in the Block Editor.
-
-### Enhancements to Cards
-* __Cards have an all-new DOM construction__ that allows for flexibility and makes it easier to add new features in the future (__this is a *breaking change*__: see note below).
-* __Cards have a new full-width default layout__
-  - Card display is optimized based on context
-  - When space allows, cards not in tiles or columns now display similar to Panels, with image and body content appearing side-by-side
-  - On mobile, card images and body content stack traditionally
-* __Cards now support videos__
-  - A video can now be used in place of an image
-  - Theatre Mode: Cards can also feature a user-controllable video that is revealed when the card is clicked
-* Equal-height cards render more consistently and now work with WordPress column blocks in addition to Tiles
-* Story cards can now be made equal-height in Tiles and columns
-* Cards appear more accurately styled in the Block Editor
-
-### Enhancements to Tiles
-* __Introducing Magic Tiles__
-  - With Magic Tiles, tiles flow from full-width, to asymmetric halves, to thirds automatically.
-  - Magic Tiles are useful for generating hierarchy that dynamically adjusts when content is updated.
-  - Using Magic Tiles replaces a specified column count (e.g. `thirds`)
-* Asymmetric tile layouts have been adjusted to make grid layouts appear more organic, and to help content from becoming too narrow.
-
-### Block Editor
-* Block patterns featuring typical compound component usage have been added, which make it easy to build layouts quickly and consistently.
-* Descriptions and examples have been added to the block picker, providing inline documentation and a preview of the component before adding it to the page.
-
-### General Improvements
-* The Slideshow component now works with WordPress gallery blocks that are set to one column
-* Component icons have been refreshed across the interface for clarity and consistency
-* The image upload interface and media picker now only appear when appropriate
-
-### Bug Fixes and Development
-* Prevents loading of TinyMCE buttons in admin contexts where they don't work (specifically, the WordPress All Import screen)
-* Removes deprecated PHP functions (no longer supports PHP v5.3 and earlier)
-* Fixes an issue where `0` was considered empty in required shortcode attributes
-* Updates development tools, including major versions with breaking changes:
-  - Migration to Autoprefixer v10 (plus required peer dependencies)
-  - Migration to Webpack v5
-* Other bug fixes
-
-_Note: Card constructions is a breaking change that will affect existing cards built with HTML. Existing cards built with the Visual (TinyMCE) Editor and Block Editor will not be affected._
-
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/204/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/210/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## How do I get set up?
 
@@ -84,6 +38,6 @@ __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](h
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 4.0  
 __Tested up to:__ 5.5  
-__Stable tag:__ 5.0.1  
+__Stable tag:__ 5.0.2  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html

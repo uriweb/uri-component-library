@@ -6,6 +6,7 @@ const {
 	PanelBody,
 	PanelRow,
 	Toolbar,
+	ToolbarButton,
 	withNotices,
 	BaseControl,
 	TextControl,
@@ -292,7 +293,7 @@ registerBlockType( 'uri-cl/hero', {
 
 					{ !! attributes.img && (
 						<MediaUploadCheck>
-							<Toolbar>
+							<Toolbar label="Choose media">
 								<MediaUpload
 									onSelect={ ( media ) => {
 										setAttributes( {
@@ -309,7 +310,7 @@ registerBlockType( 'uri-cl/hero', {
 									allowedTypes={ ALLOWED_MEDIA_TYPES }
 									value={ attributes.mediaID }
 									render={ ( { open } ) => (
-										<Button
+										<ToolbarButton
 											className="components-toolbar__control"
 											label={ __( 'Edit media' ) }
 											icon="edit"
