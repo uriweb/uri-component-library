@@ -122,11 +122,7 @@ if ( ! empty( $atts['body'] ) ) {
 
 // The button
 if ( ! empty( $atts['link'] ) ) {
-	$button = '<a class="cl-generic-hero-button" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '">' . $atts['button'] . '</a>';
-	if ( function_exists( 'uri_cl_shortcode_button' ) ) {
-		$button = do_shortcode( '[cl-button link="' . $atts['link'] . '" text="' . $atts['button'] . '"]' );
-	}
-	$output .= $button;
+	$output .= do_shortcode( '[cl-button link="' . $atts['link'] . '" text="' . $atts['button'] . '"]' );
 }
 
 $output .= '</div>'; // .cl-generic-hero-text
