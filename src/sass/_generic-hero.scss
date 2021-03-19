@@ -427,14 +427,21 @@
 
   .cl-generic-hero .cl-generic-hero-proper {
 
-    &.has-img .cl-generic-hero-content-wrapper {
-      grid-template-rows: 1fr;
-      grid-template-columns: 200px 700px;
+    &.has-img {
+
+      .cl-generic-hero-content-wrapper {
+        grid-template-rows: 1fr;
+        grid-template-columns: 200px 700px;
+      }
+
+      .cl-generic-hero-text {
+        padding-left: 50px;
+        border-left: 1px solid rgba(255,255,255,.5);
+      }
+
     }
 
     .cl-generic-hero-text {
-      padding-left: 50px;
-      border-left: 1px solid rgba(255,255,255,.5);
 
       h1 {
         font-size: 4rem;
