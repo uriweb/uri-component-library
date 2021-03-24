@@ -1,6 +1,7 @@
 <?php
 
 $classes = 'cl-generic-hero';
+$wrapper = 'section';
 
 $atts['class'] = $atts['class'] . ' ' . $atts['className'];
 
@@ -8,7 +9,7 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$output = '<section class="cl-generic-hero-wrapper">';
+$output = '<' . $wrapper . ' class="cl-wrapper cl-generic-hero-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if ( ! empty( $atts['css'] ) ) {
@@ -133,4 +134,4 @@ $output .= '</div>'; // .cl-generic-hero-proper
 
 
 $output .= '</div>'; // .cl-generic-hero
-$output .= '</section>';
+$output .= '</' . $wrapper . '>';
