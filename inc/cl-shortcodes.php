@@ -50,6 +50,43 @@ add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
 
 
 /**
+ * Breakout
+ */
+function uri_cl_shortcode_breakout( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'use_content_width' => true,
+			'class' => '',
+			'className' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	// (string $cname , array $atts , array $check_atts , string $template)
+	return uri_cl_validate(
+		 'Breakout',
+		$atts,
+		$content,
+		array(
+			// (string $attr , string $types [, bool $req [, array $values]])
+			array(
+				'attr' => 'use_content_width',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'breakout' )
+	);
+
+}
+add_shortcode( 'cl-breakout', 'uri_cl_shortcode_breakout' );
+
+
+/**
  * Button
  */
 function uri_cl_shortcode_button( $atts, $content = null ) {
