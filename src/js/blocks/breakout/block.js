@@ -28,6 +28,7 @@ const ALLOWED_BLOCKS = [
 	'uri-cl/boxout',
 	'uri-cl/card',
 	'uri-cl/date',
+	'uri-cl/hero',
 	'uri-cl/metric',
 	'uri-cl/quote',
 ];
