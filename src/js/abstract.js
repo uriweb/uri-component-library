@@ -6,7 +6,7 @@
 	function init() {
 		let i;
 		const H = [];
-		const els = document.querySelectorAll( '.cl-generic-hero .cl-generic-hero-proper' );
+		const els = document.querySelectorAll( '.cl-abstract .cl-abstract-proper' );
 		const n = els.length;
 
 		for ( i = 0; i < n; i++ ) {

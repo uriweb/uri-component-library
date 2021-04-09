@@ -76,39 +76,39 @@
 }
 
 :root {
-  --cl-generic-hero-grid-size: calc(4.5rem + 2vw);
-  --cl-generic-hero-grid-size-y: calc(var(--cl-generic-hero-grid-size) * 0.8660254);
-  --cl-generic-hero-grid-column-gap-mult: 0.023;
-  --cl-generic-hero-num-cols: 9;
+  --cl-abstract-grid-size: calc(4.5rem + 2vw);
+  --cl-abstract-grid-size-y: calc(var(--cl-abstract-grid-size) * 0.8660254);
+  --cl-abstract-grid-column-gap-mult: 0.023;
+  --cl-abstract-num-cols: 9;
 }
 
 @media (min-width: 570px) {
   :root {
-    --cl-generic-hero-num-cols: 13;
+    --cl-abstract-num-cols: 13;
   }
 }
 
 @media (min-width: 810px) {
   :root {
-    --cl-generic-hero-num-cols: 17;
+    --cl-abstract-num-cols: 17;
   }
 }
 
 @media (min-width: 1120px) {
   :root {
-    --cl-generic-hero-num-cols: 19;
+    --cl-abstract-num-cols: 19;
   }
 }
 
 @media (min-width: 1600px) {
   :root {
-    --cl-generic-hero-num-cols: 21;
+    --cl-abstract-num-cols: 21;
   }
 }
 
 // OKAY, NOW FOR THE ACTUAL STYLES
 
-.cl-generic-hero {
+.cl-abstract {
 
   position: relative;
   margin: 0 0 2rem;
@@ -117,7 +117,7 @@
      box-sizing: border-box;
   }
 
-  .cl-generic-hero-backdrop {
+  .cl-abstract-backdrop {
 
     position: absolute;
     top: 0;
@@ -129,10 +129,10 @@
     &.lattice {
       display: grid;
       overflow: hidden;
-      grid-auto-rows: var(--cl-generic-hero-grid-size-y);
-      grid-template-columns: repeat(var(--cl-generic-hero-num-cols), var(--cl-generic-hero-grid-size));
-      grid-row-gap: var(--cl-generic-hero-grid-size-y);
-      grid-column-gap: calc(var(--cl-generic-hero-grid-size) * var(--cl-generic-hero-grid-column-gap-mult));
+      grid-auto-rows: var(--cl-abstract-grid-size-y);
+      grid-template-columns: repeat(var(--cl-abstract-num-cols), var(--cl-abstract-grid-size));
+      grid-row-gap: var(--cl-abstract-grid-size-y);
+      grid-column-gap: calc(var(--cl-abstract-grid-size) * var(--cl-abstract-grid-column-gap-mult));
       justify-content: center;
     }
 
@@ -314,7 +314,7 @@
 
   }
 
-  .cl-generic-hero-proper {
+  .cl-abstract-proper {
 
     display: grid;
   	width: 100vw;
@@ -322,7 +322,7 @@
   	position: relative;
   	z-index: 1;
 
-    &.has-img .cl-generic-hero-content-wrapper {
+    &.has-img .cl-abstract-content-wrapper {
       display: grid;
       grid-template-rows: 125px 1fr;
       grid-template-columns: 1fr;
@@ -330,12 +330,12 @@
 
   }
 
-  .cl-generic-hero-content-wrapper {
+  .cl-abstract-content-wrapper {
     place-self: center;
     padding: 0 25px;
   }
 
-  .cl-generic-hero-img {
+  .cl-abstract-img {
 
     place-self: start left;
 
@@ -358,7 +358,7 @@
     opacity: .5;
   }
 
-  .cl-generic-hero-text {
+  .cl-abstract-text {
 
     h1 {
       font-size: 2rem;
@@ -373,7 +373,7 @@
       max-width: 500px;
     }
 
-    .cl-generic-hero-button {
+    .cl-abstract-button {
       display: inline-block;
       padding: 1rem;
       background: #fff;
@@ -391,13 +391,13 @@
 
 @media screen and (min-width:680px) {
 
-  .cl-generic-hero .cl-generic-hero-proper {
+  .cl-abstract .cl-abstract-proper {
 
-    &.has-img .cl-generic-hero-content-wrapper {
+    &.has-img .cl-abstract-content-wrapper {
       grid-template-rows: 150px 1fr;
     }
 
-    .cl-generic-hero-text {
+    .cl-abstract-text {
 
       h1 {
         font-size: 2.5rem;
@@ -410,7 +410,7 @@
 
     }
 
-    .cl-generic-hero-img {
+    .cl-abstract-img {
 
       .img-wrapper {
         width: 125px;
@@ -425,23 +425,23 @@
 
 @media screen and (min-width:950px) {
 
-  .cl-generic-hero .cl-generic-hero-proper {
+  .cl-abstract .cl-abstract-proper {
 
     &.has-img {
 
-      .cl-generic-hero-content-wrapper {
+      .cl-abstract-content-wrapper {
         grid-template-rows: 1fr;
         grid-template-columns: 200px 700px;
       }
 
-      .cl-generic-hero-text {
+      .cl-abstract-text {
         padding-left: 50px;
         border-left: 1px solid rgba(255,255,255,.5);
       }
 
     }
 
-    .cl-generic-hero-text {
+    .cl-abstract-text {
 
       h1 {
         font-size: 4rem;
@@ -455,7 +455,7 @@
 
     }
 
-    .cl-generic-hero-img {
+    .cl-abstract-img {
 
       place-self: center left;
 
@@ -474,7 +474,7 @@
 
 @media (min-width:1201px) { /* <- 10-9  hexagons per row */
 
-  .cl-generic-hero .cl-generic-hero-backdrop.honeycomb {
+  .cl-abstract .cl-abstract-backdrop.honeycomb {
 
     .hex {
 
@@ -492,7 +492,7 @@
 
 @media (max-width: 1200px) and (min-width:901px) { /* <- 8-7  hexagons per row */
 
-  .cl-generic-hero .cl-generic-hero-backdrop.honeycomb {
+  .cl-abstract .cl-abstract-backdrop.honeycomb {
 
     .hex {
 
@@ -510,7 +510,7 @@
 
 @media (max-width: 900px) and (min-width:601px) { /* <- 6-5  hexagons per row */
 
-  .cl-generic-hero .cl-generic-hero-backdrop.honeycomb {
+  .cl-abstract .cl-abstract-backdrop.honeycomb {
 
     .hex {
 
@@ -528,7 +528,7 @@
 
 @media (max-width: 600px) { /* <- 5-4  hexagons per row */
 
-  .cl-generic-hero .cl-generic-hero-backdrop.honeycomb {
+  .cl-abstract .cl-abstract-backdrop.honeycomb {
 
     .hex {
 

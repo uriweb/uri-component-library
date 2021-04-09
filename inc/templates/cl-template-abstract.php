@@ -1,6 +1,6 @@
 <?php
 
-$classes = 'cl-generic-hero';
+$classes = 'cl-abstract';
 $wrapper = 'section';
 
 $atts['class'] = $atts['class'] . ' ' . $atts['className'];
@@ -9,7 +9,7 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$output = '<' . $wrapper . ' class="cl-wrapper cl-generic-hero-wrapper">';
+$output = '<' . $wrapper . ' class="cl-wrapper cl-abstract-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if ( ! empty( $atts['css'] ) ) {
@@ -19,7 +19,7 @@ if ( ! empty( $atts['css'] ) ) {
 $output .= '>';
 
 // The backdrop
-$bgclasses = 'cl-generic-hero-backdrop';
+$bgclasses = 'cl-abstract-backdrop';
 if ( 'lattice' == $atts['style'] ) {
 	$bgclasses .= ' lattice';
 }
@@ -92,11 +92,11 @@ $bg .= '</div>';
 $output .= $bg;
 
 $img = '';
-$proper_classes = 'cl-generic-hero-proper animate-text';
+$proper_classes = 'cl-abstract-proper animate-text';
 
 if ( ! empty( $atts['img'] ) ) {
 	$proper_classes .= ' has-img';
-	$img .= '<div class="cl-generic-hero-img">';
+	$img .= '<div class="cl-abstract-img">';
 	$img .= '<div class="img-wrapper">';
 	$img .= '<img src="' . $atts['img'] . '">';
 	$img .= '</div>';
@@ -105,11 +105,11 @@ if ( ! empty( $atts['img'] ) ) {
 
 $output .= '<div class="' . $proper_classes . '">';
 
-$output .= '<div class="cl-generic-hero-content-wrapper">';
+$output .= '<div class="cl-abstract-content-wrapper">';
 
 $output .= $img;
 
-$output .= '<div class="cl-generic-hero-text">';
+$output .= '<div class="cl-abstract-text">';
 
 // The title
 if ( ! empty( $atts['title'] ) ) {
@@ -126,12 +126,12 @@ if ( ! empty( $atts['link'] ) ) {
 	$output .= do_shortcode( '[cl-button link="' . $atts['link'] . '" text="' . $atts['button'] . '"]' );
 }
 
-$output .= '</div>'; // .cl-generic-hero-text
+$output .= '</div>'; // .cl-abstract-text
 
-$output .= '</div>'; // .cl-generic-hero-content-wrapper
+$output .= '</div>'; // .cl-abstract-content-wrapper
 
-$output .= '</div>'; // .cl-generic-hero-proper
+$output .= '</div>'; // .cl-abstract-proper
 
 
-$output .= '</div>'; // .cl-generic-hero
+$output .= '</div>'; // .cl-abstract
 $output .= '</' . $wrapper . '>';
