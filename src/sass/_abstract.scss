@@ -111,7 +111,10 @@
 .cl-abstract {
 
   position: relative;
-  margin: 0 0 2rem;
+  width: 100vw;
+  max-width: initial;
+  left: 50%;
+  margin: 0 0 2rem -50vw;
 
   * {
      box-sizing: border-box;
