@@ -97,6 +97,7 @@ registerBlockType( 'uri-cl/abstract', {
 		},
 		style: {
 			type: 'string',
+			default: 'bars',
 		},
 	},
 
@@ -164,27 +165,14 @@ registerBlockType( 'uri-cl/abstract', {
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
 			}
-			if ( !! attributes.style ) {
-				classes += ' ' + attributes.style;
-			}
-			if ( !! attributes.link ) {
-				classes += ' has-link';
-			} else {
-				classes += ' no-link';
-			}
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
 
-			// Set the tooltip
-			let title = '';
-			if ( !! attributes.tooltip ) {
-				title = attributes.tooltip;
-			}
 			return (
 				<div className="container cl-abstract-block-form">
-					<div className={ classes } title={ title }>
-						<div className="cl-abstract-proper">
+					<div className={ classes }>
+						<div className="cl-abstract-proper has-img">
 							<div className="cl-abstract-content-wrapper">
 								<div className="cl-abstract-img">
 									<div className="img-wrapper">
@@ -205,17 +193,16 @@ registerBlockType( 'uri-cl/abstract', {
 								</div>
 								<div className="cl-abstract-text">
 									<h1><PlainText
-										onChange={ ( content ) => setAttributes( { headline: content } ) }
-										value={ attributes.headline }
+										onChange={ ( content ) => setAttributes( { title: content } ) }
+										value={ attributes.title }
 										placeholder={ __( 'Your abstract title' ) }
 										keepPlaceholderOnFocus={ true }
 									/></h1>
-									<p className="subhead"><RichText
-										onChange={ ( content ) => setAttributes( { subhead: content } ) }
-										value={ attributes.subhead }
+									<p><RichText
+										onChange={ ( content ) => setAttributes( { body: content } ) }
+										value={ attributes.body }
 										placeholder={ __( 'Your abstract text' ) }
 										keepPlaceholderOnFocus={ true }
-										className="subhead"
 									/></p>
 									<span className="cl-button">
 										<PlainText
@@ -278,7 +265,7 @@ registerBlockType( 'uri-cl/abstract', {
 								label={ __( 'Format' ) }
 								id="abstract-format"
 							>
-								<ButtonGroup aria-label={ __( 'abstract Format' ) }>
+								<ButtonGroup aria-label={ __( 'Abstract Format' ) }>
 									{ [ 'bars', 'discs', 'lattice', 'honeycomb' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
