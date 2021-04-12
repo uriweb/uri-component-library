@@ -89,6 +89,13 @@ registerBlockType( 'uri-cl/abstract', {
 			type: 'string',
 			default: '#002147',
 		},
+		bgcolorpicker: {
+			type: 'string',
+			default: '#002147',
+		},
+		bgcss: {
+			type: 'string',
+		},
 		style: {
 			type: 'string',
 			default: 'bars',
@@ -157,6 +164,11 @@ registerBlockType( 'uri-cl/abstract', {
 			}
 			if ( !! isSelected ) {
 				classes += ' selected';
+			}
+
+			attributes.background = attributes.bgcolorpicker;
+			if ( !! attributes.bgcss ) {
+				attributes.background = attributes.bgcss;
 			}
 
 			return (
@@ -286,9 +298,15 @@ registerBlockType( 'uri-cl/abstract', {
 								id="abstract-background"
 							>
 								<ColorPicker
-									color={ attributes.background }
-									onChangeComplete={ ( value ) => setAttributes( { background: value.hex } ) }
+									color={ attributes.bgcolorpicker }
+									onChangeComplete={ ( value ) => setAttributes( { bgcolorpicker: value.hex } ) }
 									disableAlpha
+								/>
+								<TextControl
+									label="Background CSS"
+									onChange={ ( content ) => setAttributes( { bgcss: content } ) }
+									value={ attributes.bgcss }
+									help="Set a CSS value for the background color (overrides the color picker)."
 								/>
 							</BaseControl>
 						</PanelRow>
