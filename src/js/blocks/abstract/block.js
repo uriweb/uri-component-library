@@ -294,7 +294,6 @@ registerBlockType( 'uri-cl/abstract', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Background Color' ) }
-								help={ __( 'Define the background color.' ) }
 								id="abstract-background"
 							>
 								<ColorPicker
@@ -303,10 +302,10 @@ registerBlockType( 'uri-cl/abstract', {
 									disableAlpha
 								/>
 								<TextControl
-									label="Background CSS"
+									label="Custom Background CSS"
 									onChange={ ( content ) => setAttributes( { bgcss: content } ) }
 									value={ attributes.bgcss }
-									help="Set a CSS value for the background color (overrides the color picker)."
+									help="Set a CSS value for the background color (overrides the color picker setting)."
 								/>
 							</BaseControl>
 						</PanelRow>
