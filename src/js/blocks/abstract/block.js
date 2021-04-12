@@ -13,6 +13,7 @@ const {
 	ButtonGroup,
 	FocalPointPicker,
 	ToggleControl,
+	ColorPicker,
 } = wp.components;
 const {
 	BlockControls,
@@ -41,14 +42,6 @@ const customIcon = () => {
 			alt="button"
 		/>
 	);
-};
-
-const randomID = () => {
-	// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
-	const S4 = () => {
-		return ( ( ( 1 + Math.random() ) * 0x10000 ) | 0 ).toString( 16 ).substring( 1 );
-	};
-	return ( S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4() );
 };
 
 registerBlockType( 'uri-cl/abstract', {
@@ -94,6 +87,7 @@ registerBlockType( 'uri-cl/abstract', {
 		},
 		background: {
 			type: 'string',
+			default: '#002147',
 		},
 		style: {
 			type: 'string',
@@ -157,10 +151,6 @@ registerBlockType( 'uri-cl/abstract', {
 
 		// Generate editor view of the abstract itself
 		const createContentEditForm = () => {
-			if ( ! attributes.id ) {
-				attributes.id = randomID();
-			}
-
 			let classes = 'cl-abstract';
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
@@ -171,7 +161,7 @@ registerBlockType( 'uri-cl/abstract', {
 
 			return (
 				<div className="container cl-abstract-block-form">
-					<div className={ classes }>
+					<div className={ classes } style={ { background: attributes.background } }>
 						<div className="cl-abstract-proper has-img">
 							<div className="cl-abstract-content-wrapper">
 								<div className="cl-abstract-img">
@@ -263,6 +253,7 @@ registerBlockType( 'uri-cl/abstract', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
+								help={ __( 'To increase performance, abstract previews will appear simplified in the editor window.' ) }
 								id="abstract-format"
 							>
 								<ButtonGroup aria-label={ __( 'Abstract Format' ) }>
@@ -285,6 +276,20 @@ registerBlockType( 'uri-cl/abstract', {
 										);
 									} ) }
 								</ButtonGroup>
+							</BaseControl>
+						</PanelRow>
+
+						<PanelRow>
+							<BaseControl
+								label={ __( 'Background Color' ) }
+								help={ __( 'Define the background color.' ) }
+								id="abstract-background"
+							>
+								<ColorPicker
+									color={ attributes.background }
+									onChangeComplete={ ( value ) => setAttributes( { background: value.hex } ) }
+									disableAlpha
+								/>
 							</BaseControl>
 						</PanelRow>
 
