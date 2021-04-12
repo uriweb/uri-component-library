@@ -301,13 +301,16 @@ registerBlockType( 'uri-cl/abstract', {
 									onChangeComplete={ ( value ) => setAttributes( { bgcolorpicker: value.hex } ) }
 									disableAlpha
 								/>
-								<TextControl
-									label="Custom Background CSS"
-									onChange={ ( content ) => setAttributes( { bgcss: content } ) }
-									value={ attributes.bgcss }
-									help="Set a CSS value for the background color (overrides the color picker setting)."
-								/>
 							</BaseControl>
+						</PanelRow>
+
+						<PanelRow>
+							<TextControl
+								label="Custom Background CSS"
+								onChange={ ( content ) => setAttributes( { bgcss: content } ) }
+								value={ attributes.bgcss }
+								help="Set a CSS value for the background color (overrides the color picker setting)."
+							/>
 						</PanelRow>
 
 					</PanelBody>
