@@ -52,9 +52,9 @@ registerBlockType( 'uri-cl/abstract', {
 	description: __( 'Use abstracts to introduce content in a visual mannor, especially when suitable photography is not available.' ),
 	example: {
 		attributes: {
-			title: __( 'Inspiring' ),
-			body: __( 'Abstracts always are.' ),
-			button: __( 'Be one' ),
+			title: __( 'A grand vision' ),
+			body: __( 'Set the groundwork for the story, and entice readers to explore fully.' ),
+			button: __( 'Continue' ),
 			mediaID: true,
 			img: URI_CL_URL + 'i/example.jpg',
 		},
