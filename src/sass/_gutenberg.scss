@@ -163,6 +163,60 @@
 
 	}
 
+	/** ABSTRACTS **/
+
+	.cl-abstract {
+
+		max-width: initial;
+		margin-left: -35vw !important;
+		margin-right: 0;
+		position: relative;
+		left: 50%;
+		width: 70vw !important;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+
+		&.selected {
+			margin-bottom: 3rem;
+		}
+
+		.cl-abstract-proper {
+			width: 100% !important;
+			margin: 0 !important;
+			left: 0 !important;
+			overflow: initial !important;
+		}
+
+		h1 {
+
+			color: $white;
+			margin-bottom: 1rem;
+
+			textarea:focus,
+			textarea::placeholder {
+				color: #fff;
+			}
+
+		}
+
+		.meta {
+			max-width: 400px;
+		}
+
+		.cl-button {
+
+			textarea {
+				background: transparent !important;
+			}
+
+			&:hover textarea:focus {
+				color: inherit;
+			}
+
+		}
+
+	}
+
 	/** HEROES **/
 
 	.cl-hero {
@@ -285,7 +339,7 @@
 	.cl-hero.selected .block-editor-media-placeholder {
 		visibility: visible;
 	}
-	
+
 	.cl-hero.no-subhead .subhead {
 		display: none;
 	}

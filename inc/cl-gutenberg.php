@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Include Gutenberg block registrations
  */
+include 'blocks/cl-abstract.php';
 include 'blocks/cl-boxout.php';
 include 'blocks/cl-breakout.php';
 include 'blocks/cl-button.php';

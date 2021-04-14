@@ -10,6 +10,58 @@ include 'cl-error-checking.php';
 include 'cl-helpers.php';
 
 /**
+ * Abstract
+ */
+function uri_cl_shortcode_abstract( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => '',
+			'body' => '',
+			'img' => '',
+			'alt' => '',
+			'button' => '',
+			'link' => '',
+			'background' => '',
+			'style' => '',
+			'class' => '',
+			'className' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Abstract',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'img',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'link',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'style',
+				'types' => array( 'str' ),
+				'values' => array( 'bars', 'discs', 'lattice', 'honeycomb' ),
+			),
+		),
+		uri_cl_shortcode_get_template( 'abstract' )
+	);
+
+}
+add_shortcode( 'cl-abstract', 'uri_cl_shortcode_abstract' );
+
+
+/**
  * Boxout
  */
 function uri_cl_shortcode_boxout( $atts, $content = null ) {

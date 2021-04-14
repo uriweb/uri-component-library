@@ -1,3 +1,4 @@
+import './abstract/block';
 import './boxout/block';
 import './breakout/block';
 import './button/block';
