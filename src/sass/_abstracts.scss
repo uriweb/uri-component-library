@@ -1,10 +1,10 @@
 /* ==============================
-   GENERIC HERO
+   ABSTRACTS
    ============================== */
 
 // SET UP A FEW THINGS
 
-@keyframes generic-bg-movement {
+@keyframes cl-abstract-bg-movement {
   0% { transform: translateX(0); }
   20% { transform: translateX(20vw); }
   60% { transform: translateX(-20vw); }
@@ -12,7 +12,7 @@
   100% { transform: translateX(-5vw); }
 }
 
-@keyframes generic-bg-opacity {
+@keyframes cl-abstract-bg-opacity {
   0% { opacity: 0 }
   25% { opacity: .8 }
   50% { opacity: .3 }
@@ -20,7 +20,7 @@
   100% { opacity: .2 }
 }
 
-@keyframes generic-disc-blur {
+@keyframes cl-abstract-disc-blur {
   0% { filter: blur(20px) }
   25% { filter: blur(5px) }
   50% { filter: blur(2px) }
@@ -28,47 +28,47 @@
   100% { filter: blur(0px) }
 }
 
-@keyframes generic-disc-rotation {
+@keyframes cl-abstract-disc-rotation {
   from { transform: rotate(0); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes generic-triangle-flash-slow {
+@keyframes cl-abstract-triangle-flash-slow {
   0% { opacity: .1; background: #000 }
   50% { opacity: .1; background: #000 }
   75% { opacity: .5; background: #fff }
   100% { opacity: .1; background: #000 }
 }
 
-@keyframes generic-triangle-flash-medium {
+@keyframes cl-abstract-triangle-flash-medium {
   0% { opacity: .1; background: #000 }
   65% { opacity: .1; background: #000 }
   82.5% { opacity: .5; background: #fff }
   100% { opacity: .1; background: #000 }
 }
 
-@keyframes generic-triangle-flash-fast {
+@keyframes cl-abstract-triangle-flash-fast {
   0% { opacity: .1; background: #000 }
   80% { opacity: .1; background: #000 }
   90% { opacity: .5; background: #fff }
   100% { opacity: .1; background: #000 }
 }
 
-@keyframes generic-hex-pulse-slow {
+@keyframes cl-abstract-hex-pulse-slow {
   0% { opacity: 0; }
   8.333% { opacity: 1; }
   16.666% { opacity: 0; }
   100% { opacity: 0; }
 }
 
-@keyframes generic-hex-pulse-medium {
+@keyframes cl-abstract-hex-pulse-medium {
   0% { opacity: 0; }
   62.5% { opacity: 1; }
   75% { opacity: 0; }
   100% { opacity: 0; }
 }
 
-@keyframes generic-hex-pulse-fast {
+@keyframes cl-abstract-hex-pulse-fast {
   0% { opacity: 0; }
   35% { opacity: 1; }
   60% { opacity: 0; }
@@ -160,7 +160,7 @@
         rgba(255,255,255,0.1) 80%,
         rgba(255,255,255,0) 100%
       );
-      animation-name: generic-bg-movement, generic-bg-opacity;
+      animation-name: cl-abstract-bg-movement, cl-abstract-bg-opacity;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
       animation-direction: alternate;
@@ -187,7 +187,7 @@
       filter: blur(20px);
       opacity: 0;
       mix-blend-mode: soft-light;
-      animation-name: generic-disc-rotation, generic-disc-blur;
+      animation-name: cl-abstract-disc-rotation, cl-abstract-disc-blur;
       animation-iteration-count: infinite;
       animation-timing-function: linear, ease-in-out;
       animation-direction: normal, alternate;
@@ -233,15 +233,15 @@
       animation-delay: -10s;
 
       &.speed-low {
-        animation-name: generic-triangle-flash-slow;
+        animation-name: cl-abstract-triangle-flash-slow;
       }
 
       &.speed-medium {
-        animation-name: generic-triangle-flash-medium;
+        animation-name: cl-abstract-triangle-flash-medium;
       }
 
       &.speed-high {
-        animation-name: generic-triangle-flash-fast;
+        animation-name: cl-abstract-triangle-flash-fast;
       }
 
       &:nth-child(odd) {
@@ -274,17 +274,17 @@
       }
 
       &.speed-low {
-        animation-name: generic-hex-pulse-slow;
+        animation-name: cl-abstract-hex-pulse-slow;
         animation-duration: 30s;
       }
 
       &.speed-medium {
-        animation-name: generic-hex-pulse-medium;
+        animation-name: cl-abstract-hex-pulse-medium;
         animation-duration: 20s;
       }
 
       &.speed-high {
-        animation-name: generic-hex-pulse-fast;
+        animation-name: cl-abstract-hex-pulse-fast;
         animation-duration: 10s;
       }
 
