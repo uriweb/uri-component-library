@@ -5,16 +5,19 @@
 
 	function init() {
 		let i;
-		const H = [];
-		const els = document.querySelectorAll( '.cl-abstract .cl-abstract-proper' );
+		let proper;
+		const A = [];
+		const els = document.querySelectorAll( '.cl-abstract' );
 		const n = els.length;
 
 		for ( i = 0; i < n; i++ ) {
-			// Save a list of generic heroes and their initial offsets
-			H.push(
+			setupControls( els[ i ] );
+
+			proper = els[ i ].querySelector( '.cl-abstract-proper' );
+			A.push(
 				{
-					el: els[ i ],
-					offset: els[ i ].getBoundingClientRect().top,
+					proper,
+					offset: proper.getBoundingClientRect().top,
 				}
 			);
 		}
@@ -23,22 +26,56 @@
 		window.dispatchEvent( new Event( 'scroll' ) );
 
 		// Resize the generic heroes.
-		resize( H, n );
+		resize( A, n );
 
 		// Listen for any browser resizing.
-		window.addEventListener( 'resize', resize.bind( null, H, n ), false );
+		window.addEventListener( 'resize', resize.bind( null, A, n ), false );
 	}
 
-	function resize( H, n ) {
-		let i, h, p;
+	function setupControls( el ) {
+		const contrast = el.querySelector( '.cl-abstract-control.contrast-control' );
+		const motion = el.querySelector( '.cl-abstract-control.motion-control' );
+
+		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast ), false );
+		motion.addEventListener( 'click', controlMotion.bind( null, el, motion ), false );
+	}
+
+	function controlContrast( el, a ) {
+		const className = 'contrast-improved';
+		if ( el.classList.contains( className ) ) {
+			el.classList.remove( className );
+			a.setAttribute( 'title', 'Reset contrast' );
+			a.innerHTML = 'Reset contrast';
+		} else {
+			el.classList.add( className );
+			a.setAttribute( 'title', 'Improve text contrast' );
+			a.innerHTML = 'Improve text contrast';
+		}
+	}
+
+	function controlMotion( el, a ) {
+		const className = 'motion-paused';
+		if ( el.classList.contains( className ) ) {
+			el.classList.remove( className );
+			a.setAttribute( 'title', 'Pause motion' );
+			a.innerHTML = 'Pause motion';
+		} else {
+			el.classList.add( className );
+			a.setAttribute( 'title', 'Play motion' );
+			a.innerHTML = 'Play motion';
+		}
+	}
+
+	function resize( A, n ) {
+		let i, a, p;
 
 		const vh = window.innerHeight;
 		const vw = window.innerWidth;
 		const s = window.pageYOffset;
 
 		for ( i = 0; i < n; i++ ) {
-			h = H[ i ];
-			p = ( h.offset + s ) / vh;
+			a = A[ i ];
+			p = ( a.offset + s ) / vh;
 
 			/**
 			 * IF the browser aspect ratio is at least 4:3 and the browser is less than 675px high
@@ -46,13 +83,13 @@
 			 * THEN set the hero height to 90% of the browser height or 500px, whichever is greater
 			 */
 			if ( ( vh < vw * 0.75 && vh < 675 ) || ( p > 0.3 ) ) {
-				h.el.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
+				a.proper.style.height = Math.max( 0.9 * vh, 500 ) + 'px';
 			} else {
 				/**
 				 * ELSE set the hero height to 98% of the browser height,
 				 * less the distance between the top of the page and the top of the hero
 				 */
-				h.el.style.height = 98 - ( p * 100 ) + 'vh';
+				a.proper.style.height = 98 - ( p * 100 ) + 'vh';
 			}
 		}
 	}

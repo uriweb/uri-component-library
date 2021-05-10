@@ -18,6 +18,13 @@ if ( ! empty( $atts['css'] ) ) {
 
 $output .= '>';
 
+$output .= '<div class="cl-abstract-controls-container">';
+$output .= '<div class="cl-abstract-controls">';
+$output .= '<div class="cl-abstract-control motion-control" title="Pause motion">Pause motion</div>';
+$output .= '<div class="cl-abstract-control contrast-control" title="Increase text contrast">Increase text contrast</div>';
+$output .= '</div>';
+$output .= '</div>';
+
 // The backdrop
 $bgclasses = 'cl-abstract-backdrop';
 if ( 'lattice' == $atts['style'] ) {
@@ -31,6 +38,8 @@ if ( ! empty( $atts['background'] ) ) {
 	$bg .= ' style="background:' . $atts['background'] . '"';
 }
 $bg .= '>';
+
+$bg .= '<div class="cl-abstract-backdrop-elements">';
 
 $speeds = array(
 	'low',
@@ -89,10 +98,11 @@ if ( 'honeycomb' == $atts['style'] ) {
 }
 
 $bg .= '</div>';
+$bg .= '</div>';
 $output .= $bg;
 
 $img = '';
-$proper_classes = 'cl-abstract-proper animate-text';
+$proper_classes = 'cl-abstract-proper';
 
 if ( ! empty( $atts['img'] ) ) {
 	$proper_classes .= ' has-img';
