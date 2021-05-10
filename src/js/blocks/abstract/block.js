@@ -91,7 +91,7 @@ registerBlockType( 'uri-cl/abstract', {
 		},
 		bgcolorpicker: {
 			type: 'string',
-			default: '#002147',
+			default: '#1b5da9',
 		},
 		bgcss: {
 			type: 'string',
@@ -162,6 +162,9 @@ registerBlockType( 'uri-cl/abstract', {
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
 			}
+			if ( !! attributes.style ) {
+				classes += ' ' + attributes.style;
+			}
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
@@ -174,6 +177,7 @@ registerBlockType( 'uri-cl/abstract', {
 			return (
 				<div className="container cl-abstract-block-form">
 					<div className={ classes } style={ { background: attributes.background } }>
+						<div className="cl-abstract-backdrop-preview"></div>
 						<div className="cl-abstract-proper has-img">
 							<div className="cl-abstract-content-wrapper">
 								<div className="cl-abstract-img">
