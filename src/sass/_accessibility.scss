@@ -3,9 +3,9 @@
    ============================== */
 
 
-*[class^='cl-'] {
+.cl-has-accessibility-controls {
 
-  .cl-abstract-controls-container {
+  .cl-accessibility-controls-container {
 
     position: absolute;
     z-index: 10;
@@ -14,7 +14,7 @@
     height: 200px;
     width: 260px;
 
-    .cl-abstract-controls {
+    .cl-accessibility-controls {
 
       position: absolute;
       bottom: 2rem;
@@ -46,7 +46,7 @@
 
     }
 
-    .accessibility-icon {
+    .cl-accessibility-icon {
       pointer-events: none;
       position: absolute;
       width: 0;
@@ -62,7 +62,7 @@
       transition: opacity .2s ease-in-out .2s;
     }
 
-    .cl-abstract-control {
+    .cl-accessibility-control {
 
       padding: 0 10px;
       margin: 10px 0;
@@ -74,17 +74,17 @@
         border-left: 1px solid rgba(255,255,255,.3);
       }
 
-      &.motion-control .control-button {
+      &.cl-accessibility-motion-control .cl-accessibility-control-button {
         background-position: 0 -56px;
       }
 
-      &.contrast-control .control-button {
+      &.cl-accessibility-contrast-control .cl-accessibility-control-button {
         background-position: 0 -84px;
       }
 
     }
 
-    .control-label {
+    .cl-accessibility-control-label {
 
       text-align: center;
       font-size: .7rem;
@@ -92,14 +92,14 @@
       color: rgba(0,0,0,.7);
       margin-top: 10px;
 
-      .syntax {
+      .cl-accessibility-syntax {
         display: block;
         font-weight: normal;
       }
 
     }
 
-    .control-button {
+    .cl-accessibility-control-button {
 
       position: relative;
       left: calc( 50% - 14px );
@@ -125,17 +125,17 @@
     &:hover,
     &:focus {
 
-      .accessibility-icon {
+      .cl-accessibility-icon {
         opacity: 0;
         transition: opacity .05s ease-in-out;
       }
 
-      .cl-abstract-controls {
+      .cl-accessibility-controls {
         height: 100px;
         width: 160px;
       }
 
-      .cl-abstract-control {
+      .cl-accessibility-control {
         opacity: 1;
         transition: opacity .2s ease-in-out .1s;
       }
@@ -144,11 +144,11 @@
 
   }
 
-  &.cl-accessibility-motion-paused .cl-abstract-control.motion-control .control-button {
+  &.cl-accessibility-motion-paused .cl-accessibility-control.cl-accessibility-motion-control .cl-accessibility-control-button {
     background-position: 0 -28px;
   }
 
-  &.cl-accessibility-contrast-improved .cl-abstract-control.contrast-control .control-button {
+  &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
     background-position: 0 -112px;
   }
 

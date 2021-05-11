@@ -9,6 +9,8 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
+$classes .= ' cl-has-accessibility-controls';
+
 $output = '<' . $wrapper . ' class="cl-wrapper cl-abstract-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
@@ -135,24 +137,8 @@ $output .= '</div>'; // .cl-abstract-content-wrapper
 
 $output .= '</div>'; // .cl-abstract-proper
 
-// The accessibility controls
-$output .= '<div class="cl-abstract-controls-container">';
-$output .= '<div class="cl-abstract-controls">';
 
-$output .= '<div class="accessibility-icon" title="Accessibility controls">Accessibility controls</div>';
-
-$output .= '<div class="cl-abstract-control motion-control">';
-$output .= '<div class="control-button" title="Pause motion">Pause motion</div>';
-$output .= '<div class="control-label">Motion: <span class="syntax">On</span></div>';
-$output .= '</div>';
-
-$output .= '<div class="cl-abstract-control contrast-control">';
-$output .= '<div class="control-button" title="Increase text contrast">Increase text contrast</div>';
-$output .= '<div class="control-label">Contrast: <span class="syntax">Standard</span></div>';
-$output .= '</div>';
-
-$output .= '</div>';
-$output .= '</div>';
+include uri_cl_shortcode_get_template( 'accessibility', true );
 
 
 $output .= '</div>'; // .cl-abstract

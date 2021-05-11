@@ -37,10 +37,10 @@
 	}
 
 	function setupControls( el ) {
-		const contrast = el.querySelector( '.contrast-control .control-button' );
-		const contrastLabel = el.querySelector( '.contrast-control .syntax' );
-		const motion = el.querySelector( '.motion-control .control-button' );
-		const motionLabel = el.querySelector( '.motion-control .syntax' );
+		const contrast = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-control-button' );
+		const contrastLabel = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-syntax' );
+		const motion = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
+		const motionLabel = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-syntax' );
 
 		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast, contrastLabel ), false );
 		motion.addEventListener( 'click', controlMotion.bind( null, el, motion, motionLabel ), false );
