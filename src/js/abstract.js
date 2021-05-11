@@ -33,36 +33,42 @@
 	}
 
 	function setupControls( el ) {
-		const contrast = el.querySelector( '.cl-abstract-control.contrast-control' );
-		const motion = el.querySelector( '.cl-abstract-control.motion-control' );
+		const contrast = el.querySelector( '.contrast-control .control-button' );
+		const contrastLabel = el.querySelector( '.contrast-control .syntax' );
+		const motion = el.querySelector( '.motion-control .control-button' );
+		const motionLabel = el.querySelector( '.motion-control .syntax' );
 
-		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast ), false );
-		motion.addEventListener( 'click', controlMotion.bind( null, el, motion ), false );
+		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast, contrastLabel ), false );
+		motion.addEventListener( 'click', controlMotion.bind( null, el, motion, motionLabel ), false );
 	}
 
-	function controlContrast( el, a ) {
+	function controlContrast( el, a, s ) {
 		const className = 'contrast-improved';
 		if ( el.classList.contains( className ) ) {
 			el.classList.remove( className );
-			a.setAttribute( 'title', 'Reset contrast' );
-			a.innerHTML = 'Reset contrast';
-		} else {
-			el.classList.add( className );
 			a.setAttribute( 'title', 'Improve text contrast' );
 			a.innerHTML = 'Improve text contrast';
+			s.innerHTML = 'Normal';
+		} else {
+			el.classList.add( className );
+			a.setAttribute( 'title', 'Reset contrast' );
+			a.innerHTML = 'Reset contrast';
+			s.innerHTML = 'Improved';
 		}
 	}
 
-	function controlMotion( el, a ) {
+	function controlMotion( el, a, s ) {
 		const className = 'motion-paused';
 		if ( el.classList.contains( className ) ) {
 			el.classList.remove( className );
 			a.setAttribute( 'title', 'Pause motion' );
 			a.innerHTML = 'Pause motion';
+			s.innerHTML = 'On';
 		} else {
 			el.classList.add( className );
 			a.setAttribute( 'title', 'Play motion' );
 			a.innerHTML = 'Play motion';
+			s.innerHTML = 'Off';
 		}
 	}
 
