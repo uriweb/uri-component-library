@@ -1,3 +1,7 @@
+/**
+ * ABSTRACTS
+ */
+
 ( function() {
 	'use strict';
 
