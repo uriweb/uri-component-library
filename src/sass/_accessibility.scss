@@ -1,0 +1,155 @@
+/* ==============================
+   ACCESSIBILITY CONTROLS
+   ============================== */
+
+
+*[class^='cl-'] {
+
+  .cl-abstract-controls-container {
+
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+    height: 200px;
+    width: 260px;
+
+    .cl-abstract-controls {
+
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(255,255,255,.5);
+      opacity: .7;
+      border-radius: 16px;
+      height: 32px;
+      width: 32px;
+      overflow: hidden;
+      box-sizing: border-box;
+      transition:
+        opacity .25s ease-in-out,
+        height .15s ease-in-out,
+        width .15s ease-in-out;
+
+      @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+        & {
+          backdrop-filter: blur(20px);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+
+    }
+
+    .accessibility-icon {
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      height: 32px;
+      padding-left: 32px;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity .2s ease-in-out;
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: 0 0;
+      transition: opacity .2s ease-in-out .2s;
+    }
+
+    .cl-abstract-control {
+
+      padding: 0 10px;
+      margin: 10px 0;
+      width: 80px;
+      opacity: 0;
+      transition: opacity .1s ease-in-out;
+
+      &:last-child {
+        border-left: 1px solid rgba(255,255,255,.3);
+      }
+
+      &.motion-control .control-button {
+        background-position: 0 -56px;
+      }
+
+      &.contrast-control .control-button {
+        background-position: 0 -84px;
+      }
+
+    }
+
+    .control-label {
+
+      text-align: center;
+      font-size: .7rem;
+      font-weight: bold;
+      color: rgba(0,0,0,.7);
+      margin-top: 10px;
+
+      .syntax {
+        display: block;
+        font-weight: normal;
+      }
+
+    }
+
+    .control-button {
+
+      position: relative;
+      left: calc( 50% - 14px );
+      width: 0;
+      height: 28px;
+      margin-top: 10px;
+      padding-left: 28px;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: rgba(255,255,255,.3);
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255,255,255,.8);
+        cursor: pointer;
+      }
+
+    }
+
+    &:hover,
+    &:focus {
+
+      .accessibility-icon {
+        opacity: 0;
+        transition: opacity .05s ease-in-out;
+      }
+
+      .cl-abstract-controls {
+        height: 100px;
+        width: 160px;
+      }
+
+      .cl-abstract-control {
+        opacity: 1;
+        transition: opacity .2s ease-in-out .1s;
+      }
+
+    }
+
+  }
+
+  &.cl-accessibility-motion-paused .cl-abstract-control.motion-control .control-button {
+    background-position: 0 -28px;
+  }
+
+  &.cl-accessibility-contrast-improved .cl-abstract-control.contrast-control .control-button {
+    background-position: 0 -112px;
+  }
+
+}

@@ -47,12 +47,12 @@
 	}
 
 	function controlContrast( el, a, s ) {
-		const className = 'contrast-improved';
+		const className = 'cl-accessibility-contrast-improved';
 		if ( el.classList.contains( className ) ) {
 			el.classList.remove( className );
 			a.setAttribute( 'title', 'Improve text contrast' );
 			a.innerHTML = 'Improve text contrast';
-			s.innerHTML = 'Normal';
+			s.innerHTML = 'Standard';
 		} else {
 			el.classList.add( className );
 			a.setAttribute( 'title', 'Reset contrast' );
@@ -62,7 +62,7 @@
 	}
 
 	function controlMotion( el, a, s ) {
-		const className = 'motion-paused';
+		const className = 'cl-accessibility-motion-paused';
 		if ( el.classList.contains( className ) ) {
 			el.classList.remove( className );
 			a.setAttribute( 'title', 'Pause motion' );

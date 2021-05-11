@@ -148,7 +148,7 @@ $output .= '</div>';
 
 $output .= '<div class="cl-abstract-control contrast-control">';
 $output .= '<div class="control-button" title="Increase text contrast">Increase text contrast</div>';
-$output .= '<div class="control-label">Contrast: <span class="syntax">Normal</span></div>';
+$output .= '<div class="control-label">Contrast: <span class="syntax">Standard</span></div>';
 $output .= '</div>';
 
 $output .= '</div>';
