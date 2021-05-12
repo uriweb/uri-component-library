@@ -14,7 +14,7 @@
  * 2. /plugins/uri-component-library/templates/cl-template-*.php
  *
  * @param str  $name the name of the shortcode, as used in the filename.
- * @param bool $is_sibling whether the requested template is a sibling of the calling template
+ * @param bool $is_sibling whether the requested template is a sibling of the calling template.
  * @return the path to the template file (rel for default templates, abs for theme templates)
  */
 function uri_cl_shortcode_get_template( $name, $is_sibling = false ) {
