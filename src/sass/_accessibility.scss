@@ -22,27 +22,33 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       background: rgba(255,255,255,.5);
-      opacity: .7;
       border-radius: 16px;
       height: 32px;
       width: 32px;
       overflow: hidden;
       box-sizing: border-box;
       transition:
-        opacity .25s ease-in-out,
+        background .25s ease-in-out,
         height .15s ease-in-out,
         width .15s ease-in-out;
 
+      &:hover,
+      &:focus {
+        background: rgba(255,255,255,.65);
+      }
+
       @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
         & {
+          background: rgba(255,255,255,.3);
           backdrop-filter: blur(20px);
+        }
+        &:hover,
+        &:focus {
+          background: rgba(255,255,255,.5);
         }
       }
 
-      &:hover,
-      &:focus {
-        opacity: 1;
-      }
+
 
     }
 
