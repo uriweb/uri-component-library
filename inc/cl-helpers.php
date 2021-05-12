@@ -13,24 +13,28 @@
  * 1. /themes/theme/template-parts/cl/cl-template-*.php
  * 2. /plugins/uri-component-library/templates/cl-template-*.php
  *
- * @param str  $name the name of the shortcode, as used in the filename.
- * @param bool $is_sibling whether the requested template is a sibling of the calling template.
+ * @param str $name the name of the shortcode, as used in the filename.
  * @return the path to the template file (rel for default templates, abs for theme templates)
  */
-function uri_cl_shortcode_get_template( $name, $is_sibling = false ) {
+function uri_cl_shortcode_get_template( $name ) {
 
 	$template = get_stylesheet_directory() . '/template-parts/cl/cl-template-' . $name . '.php';
 
 	if ( ! is_file( $template ) ) {
-
 		$template = 'templates/cl-template-' . $name . '.php';
-
-		if ( $is_sibling ) {
-			$template = 'cl-template-' . $name . '.php';
-		}
 	}
 
 	return $template;
+
+}
+
+
+/**
+ * Get accessibility controls
+ */
+function uri_cl_get_accessibility_controls() {
+
+	return URI_CL_DIR_PATH . 'inc/templates/cl-template-accessibility.php';
 
 }
 
