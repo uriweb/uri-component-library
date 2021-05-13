@@ -15,8 +15,6 @@
 		const n = els.length;
 
 		for ( i = 0; i < n; i++ ) {
-			setupControls( els[ i ] );
-
 			proper = els[ i ].querySelector( '.cl-abstract-proper' );
 			A.push(
 				{
@@ -34,46 +32,6 @@
 
 		// Listen for any browser resizing.
 		window.addEventListener( 'resize', resize.bind( null, A, n ), false );
-	}
-
-	function setupControls( el ) {
-		const contrast = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-control-button' );
-		const contrastLabel = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-syntax' );
-		const motion = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
-		const motionLabel = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-syntax' );
-
-		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast, contrastLabel ), false );
-		motion.addEventListener( 'click', controlMotion.bind( null, el, motion, motionLabel ), false );
-	}
-
-	function controlContrast( el, a, s ) {
-		const className = 'cl-accessibility-contrast-improved';
-		if ( el.classList.contains( className ) ) {
-			el.classList.remove( className );
-			a.setAttribute( 'title', 'Improve text contrast' );
-			a.innerHTML = 'Improve text contrast';
-			s.innerHTML = 'Standard';
-		} else {
-			el.classList.add( className );
-			a.setAttribute( 'title', 'Reset contrast' );
-			a.innerHTML = 'Reset contrast';
-			s.innerHTML = 'High';
-		}
-	}
-
-	function controlMotion( el, a, s ) {
-		const className = 'cl-accessibility-motion-paused';
-		if ( el.classList.contains( className ) ) {
-			el.classList.remove( className );
-			a.setAttribute( 'title', 'Pause motion' );
-			a.innerHTML = 'Pause motion';
-			s.innerHTML = 'On';
-		} else {
-			el.classList.add( className );
-			a.setAttribute( 'title', 'Play motion' );
-			a.innerHTML = 'Play motion';
-			s.innerHTML = 'Off';
-		}
 	}
 
 	function resize( A, n ) {

@@ -34,7 +34,9 @@ function uri_cl_shortcode_get_template( $name ) {
  */
 function uri_cl_get_accessibility_controls() {
 
-	return URI_CL_DIR_PATH . 'inc/templates/cl-template-accessibility.php';
+	include 'templates/cl-template-accessibility.php';
+
+	return $output;
 
 }
 

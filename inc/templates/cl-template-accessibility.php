@@ -1,11 +1,6 @@
 <?php
-/**
- * GLOBAL ACCESSIBILITY CONTROLS
- *
- * @package uri-component-library
- */
 
-$output .= '<div class="cl-accessibility-controls-container">';
+$output = '<div class="cl-accessibility-controls-container">';
 $output .= '<div class="cl-accessibility-controls">';
 
 $output .= '<div class="cl-accessibility-icon" title="Accessibility controls">Accessibility controls</div>';

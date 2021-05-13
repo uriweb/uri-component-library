@@ -138,7 +138,7 @@ $output .= '</div>'; // .cl-abstract-content-wrapper
 $output .= '</div>'; // .cl-abstract-proper
 
 
-include uri_cl_get_accessibility_controls();
+$output .= uri_cl_get_accessibility_controls();
 
 
 $output .= '</div>'; // .cl-abstract
