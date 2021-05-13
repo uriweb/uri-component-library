@@ -163,8 +163,8 @@
 @media screen and (min-width: $break1) {
   .cl-has-accessibility-controls {
     .cl-accessibility-controls-container {
-      height: calc( 200px + 2rem );
-      width: calc( 260px + 2rem );
+      height: 200px;
+      width: 260px;
     }
   }
 }
