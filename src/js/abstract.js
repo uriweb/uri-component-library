@@ -57,7 +57,7 @@
 			el.classList.add( className );
 			a.setAttribute( 'title', 'Reset contrast' );
 			a.innerHTML = 'Reset contrast';
-			s.innerHTML = 'Improved';
+			s.innerHTML = 'High';
 		}
 	}
 

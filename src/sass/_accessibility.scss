@@ -11,8 +11,8 @@
     z-index: 10;
     bottom: 0;
     right: 0;
-    height: 200px;
-    width: 260px;
+    height: calc( 100px + 2rem );
+    width: calc( 160px + 2rem );
 
     .cl-accessibility-controls {
 
@@ -158,4 +158,13 @@
     background-position: 0 -112px;
   }
 
+}
+
+@media screen and (min-width: $break1) {
+  .cl-has-accessibility-controls {
+    .cl-accessibility-controls-container {
+      height: calc( 200px + 2rem );
+      width: calc( 260px + 2rem );
+    }
+  }
 }
