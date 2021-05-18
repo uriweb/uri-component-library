@@ -48,8 +48,6 @@
         }
       }
 
-
-
     }
 
     .cl-accessibility-icon {
@@ -63,7 +61,7 @@
       transition: opacity .2s ease-in-out;
       background-image: url('../i/controls.svg');
       background-repeat: no-repeat;
-      background-size: 100% auto;
+      background-size: 64px auto;
       background-position: 0 0;
       transition: opacity .2s ease-in-out .2s;
     }
@@ -118,7 +116,7 @@
       background-color: rgba(255,255,255,.3);
       background-image: url('../i/controls.svg');
       background-repeat: no-repeat;
-      background-size: 100% auto;
+      background-size: 56px auto;
 
       &:hover,
       &:focus {
@@ -156,6 +154,79 @@
 
   &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
     background-position: 0 -112px;
+  }
+
+  &.dark {
+
+    .cl-accessibility-controls-container {
+
+      .cl-accessibility-controls {
+
+        background: rgba(0,0,0,.5);
+
+        &:hover,
+        &:focus {
+          background: rgba(0,0,0,.65);
+        }
+
+        @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+          & {
+            background: rgba(0,0,0,.4);
+            backdrop-filter: blur(20px) brightness(150%) saturate(150%);
+          }
+          &:hover,
+          &:focus {
+            background: rgba(0,0,0,.3);
+          }
+        }
+
+      }
+
+      .cl-accessibility-icon {
+        background-position: -32px 0;
+      }
+
+      .cl-accessibility-control {
+
+        &:last-child {
+          border-left: 1px solid rgba(255,255,255,.1);
+        }
+
+        &.cl-accessibility-motion-control .cl-accessibility-control-button {
+          background-position: -28px -56px;
+        }
+
+        &.cl-accessibility-contrast-control .cl-accessibility-control-button {
+          background-position: -28px -84px;
+        }
+
+      }
+
+      .cl-accessibility-control-label {
+        color: rgba(255,255,255,.7);
+      }
+
+      .cl-accessibility-control-button {
+
+        background-color: rgba(255,255,255,.1);
+
+        &:hover,
+        &:focus {
+          background-color: rgba(255,255,255,.2);
+        }
+
+      }
+
+    }
+
+    &.cl-accessibility-motion-paused .cl-accessibility-control.cl-accessibility-motion-control .cl-accessibility-control-button {
+      background-position: -28px -28px;
+    }
+
+    &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
+      background-position: -28px -112px;
+    }
+
   }
 
 }
