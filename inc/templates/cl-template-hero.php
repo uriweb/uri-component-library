@@ -17,6 +17,8 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
+$classes .= ' cl-has-accessibility-controls dark';
+
 $output = '<section class="cl-wrapper cl-hero-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
@@ -95,6 +97,8 @@ if ( 0.5 != $atts['positionX'] || 0.5 != $atts['positionY'] ) {
 $image .= '"></div>'; // image
 
 $output .= $image;
+
+$output .= uri_cl_get_accessibility_controls();
 
 $output .= '</div>'; // .cl-hero-proper
 
