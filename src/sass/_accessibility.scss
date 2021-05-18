@@ -34,6 +34,7 @@
 
       &:hover,
       &:focus {
+        cursor: default;
         background: rgba(255,255,255,.65);
       }
 
@@ -225,6 +226,20 @@
 
     &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
       background-position: -28px -112px;
+    }
+
+  }
+
+}
+
+.cl-card.cl-has-accessibility-controls:not(.reverse) {
+
+  .cl-accessibility-controls-container {
+
+    left: 0;
+
+    .cl-accessibility-controls {
+      left: 2rem;
     }
 
   }

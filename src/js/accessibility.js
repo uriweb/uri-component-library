@@ -20,11 +20,19 @@
 	function setupControls( el ) {
 		const contrast = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-control-button' );
 		const contrastLabel = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-syntax' );
+
+		contrast.addEventListener( 'click', function( e ) {
+			e.preventDefault();
+			controlContrast( el, contrast, contrastLabel );
+		}, false );
+
 		const motion = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
 		const motionLabel = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-syntax' );
 
-		contrast.addEventListener( 'click', controlContrast.bind( null, el, contrast, contrastLabel ), false );
-		motion.addEventListener( 'click', controlMotion.bind( null, el, motion, motionLabel ), false );
+		motion.addEventListener( 'click', function( e ) {
+			e.preventDefault();
+			controlMotion( el, motion, motionLabel );
+		}, false );
 	}
 
 	function controlContrast( el, a, s ) {

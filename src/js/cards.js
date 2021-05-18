@@ -22,6 +22,30 @@ class CLCardVimeo { // eslint-disable-line no-unused-vars
 			}
 		} );
 		CLVimeo.determinePlayState( data );
+
+		// Add play/pause button
+		const motion = data.parent.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
+
+		motion.addEventListener(
+			'click',
+			function() {
+				CLCardVimeo.control( data );
+			}
+		);
+	}
+
+	static control( data ) {
+		switch ( data.state ) {
+			default:
+			case 'playing':
+				data.player.pause();
+				data.parent.classList.add( 'paused' );
+				break;
+			case 'paused':
+				data.player.play();
+				data.parent.classList.remove( 'paused' );
+				break;
+		}
 	}
 
 	/**
@@ -44,7 +68,6 @@ class CLCardVimeo { // eslint-disable-line no-unused-vars
 	 */
 	static onError( data ) {
 		data.poster.classList.remove( 'unveil' );
-		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	static theatreControl( data ) {
@@ -57,6 +80,9 @@ class CLCardVimeo { // eslint-disable-line no-unused-vars
 		controls.close.addEventListener( 'click', CLCardVimeo.closeTheatre.bind( null, data ), false );
 
 		featureWrapper.parentNode.addEventListener( 'click', function( e ) {
+			if ( CLCardVimeo.isClickAccessibilityRelated( e ) ) {
+				return;
+			}
 			if ( 'close' !== e.target.className ) {
 				data.player.play();
 			}
@@ -65,6 +91,14 @@ class CLCardVimeo { // eslint-disable-line no-unused-vars
 
 	static closeTheatre( data ) {
 		data.player.pause();
+	}
+
+	static isClickAccessibilityRelated( e ) {
+		let bool = false;
+		if ( e.target.classList.contains( 'cl-accessibility-control' ) || e.target.classList.contains( 'cl-accessibility-control-button' ) ) {
+			bool = true;
+		}
+		return bool;
 	}
 } // END CLCardVimeo
 
@@ -84,6 +118,9 @@ class CLCardVimeo { // eslint-disable-line no-unused-vars
 	function setupCard( el ) {
 		el.addEventListener( 'click', function( e ) {
 			e.preventDefault();
+			if ( CLCardVimeo.isClickAccessibilityRelated( e ) ) {
+				return;
+			}
 			handleClick( el );
 		} );
 	}
