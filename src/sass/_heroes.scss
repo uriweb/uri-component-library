@@ -196,65 +196,6 @@
 
   }
 
-  .motionswitch {
-
-		display: none;
-		position: absolute;
-		right: 5%;
-		top: 5%;
-		z-index: 5;
-		opacity: 0;
-		width: 40px;
-		height: 40px;
-		background: #000;
-		border: 1px solid #fff;
-		border-radius: 50%;
-		transition: all .3s ease-in-out;
-
-		&:before,
-    &:after {
-      content: '';
-      position: absolute;
-      top: 9px;
-      left: 11px;
-      height: 20px;
-      border-style: solid;
-      border-width: 0 0 0 6px;
-      border-color: transparent transparent transparent #fff;
-      transition: all .2s ease-in-out;
-    }
-
-    &:after {
-        left: 21px;
-    }
-
-  }
-
-  .cl-hero-proper.paused .motionswitch {
-    &:before {
-      height: 10px;
-      border-width: 5px 0 5px 10px;
-      border-color: transparent transparent transparent #fff;
-    }
-    &:after {
-      top: 14px;
-      height: 0;
-      border-width: 5px 0 5px 10px;
-      border-color: transparent transparent transparent #fff;
-    }
-  }
-
-  .overlay:hover .motionswitch,
-  .overlay:focus .motionswitch {
-    opacity: .4;
-  }
-
-  .overlay .motionswitch:hover,
-  .overlay .motionswitch:focus {
-    cursor: pointer;
-    opacity: .8;
-  }
-
   .cl-hero-caption-wrapper {
 
     position: relative;
@@ -285,12 +226,6 @@
     color: $darkgrey;
   }
 
-}
-
-@media screen and (min-width: 750px) {
-  .cl-hero .motionswitch {
-    display: block;
-  }
 }
 
 @media screen and (min-width: $break1) {

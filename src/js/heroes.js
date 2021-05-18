@@ -32,33 +32,26 @@ class CLHeroVimeo { // eslint-disable-line no-unused-vars
 		CLVimeo.determinePlayState( data );
 
 		// Add play/pause button
-		const overlay = data.parent.querySelector( '.overlay' );
-		const button = document.createElement( 'div' );
+		const motion = data.parent.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
 
-		button.className = 'motionswitch';
-		button.title = 'Pause';
-		button.addEventListener(
+		motion.addEventListener(
 			'click',
 			function() {
-				CLHeroVimeo.control( data, button );
+				CLHeroVimeo.control( data );
 			}
 		);
-
-		overlay.appendChild( button );
 	}
 
-	static control( data, button ) {
+	static control( data ) {
 		switch ( data.state ) {
 			default:
 			case 'playing':
 				data.player.pause();
 				data.parent.classList.add( 'paused' );
-				button.setAttribute( 'title', 'Play' );
 				break;
 			case 'paused':
 				data.player.play();
 				data.parent.classList.remove( 'paused' );
-				button.setAttribute( 'title', 'Pause' );
 				break;
 		}
 	}
@@ -83,7 +76,6 @@ class CLHeroVimeo { // eslint-disable-line no-unused-vars
 	 */
 	static onError( data ) {
 		data.poster.classList.remove( 'unveil' );
-		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 } // END CLHeroVimeo
 

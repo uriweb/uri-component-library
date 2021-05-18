@@ -101,19 +101,14 @@ class CLYT { // eslint-disable-line no-unused-vars
 		CLYT.determinePlayState( event, parent );
 
 		// Add play/pause button
-		const overlay = parent.querySelector( '.overlay' );
-		const button = document.createElement( 'div' );
+		const motion = parent.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
 
-		button.className = 'motionswitch';
-		button.title = 'Pause';
-		button.addEventListener(
+		motion.addEventListener(
 			'click',
 			function() {
-				CLYT.heroControl( event, parent, this );
+				CLYT.heroControl( event, parent );
 			}
 		);
-
-		overlay.appendChild( button );
 	}
 
 	/**
@@ -139,20 +134,17 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 *
 	 * @param {Object} event The player event.
 	 * @param {Object} parent The hero parent container.
-	 * @param {Object} el The .motionswitch element.
 	 */
-	static heroControl( event, parent, el ) {
+	static heroControl( event, parent ) {
 		switch ( event.target.getPlayerState() ) {
 			default:
 			case 1:
 				event.target.pauseVideo();
 				parent.classList.add( 'paused' );
-				el.setAttribute( 'title', 'Play' );
 				break;
 			case 2:
 				event.target.playVideo();
 				parent.classList.remove( 'paused' );
-				el.setAttribute( 'title', 'Pause' );
 				break;
 		}
 	}
@@ -186,7 +178,6 @@ class CLYT { // eslint-disable-line no-unused-vars
 	static onHeroError( event ) {
 		const el = event.target.getIframe();
 		el.previousSibling.classList.remove( 'unveil' );
-		el.parentNode.querySelector( '.motionswitch' ).style.display = 'none';
 	}
 
 	/**
