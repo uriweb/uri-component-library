@@ -104,7 +104,9 @@ $image .= '"></div>'; // image
 
 $output .= $image;
 
-$output .= uri_cl_get_accessibility_controls();
+if ( ! empty( $atts['vid'] ) ) {
+	$output .= uri_cl_get_accessibility_controls();
+}
 
 $output .= '</div>'; // .cl-hero-proper
 
