@@ -35,11 +35,15 @@ $output .= '<div class="cl-hero-proper">';
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 
-if ( ! empty( $atts['headline'] ) ) {
+if ( ! empty( $atts['title'] ) ) {
+	$output .= '<h1>' . $atts['title'] . '</h1>';
+} else if ( ! empty( $atts['headline'] ) ) { // Depricated in v5.1
 	$output .= '<h1>' . $atts['headline'] . '</h1>';
 }
 
-if ( ! empty( $atts['subhead'] ) ) {
+if ( ! empty( $atts['body'] ) ) {
+	$output .= '<p>' . $atts['body'] . '</p>';
+} else if ( ! empty( $atts['subhead'] ) ) { // Depricated in v5.1
 	$output .= '<p>' . $atts['subhead'] . '</p>';
 }
 

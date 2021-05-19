@@ -493,8 +493,10 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'headline' => '',
-			'subhead' => '',
+			'title' => '',
+			'body' => '',
+			'headline' => '', // Depricated in v5.1, use 'title' instead
+			'subhead' => '', // Depricated in v5.1, use 'body' instead
 			'button' => 'Explore',
 			'tooltip' => '',
 			'link' => '',

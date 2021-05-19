@@ -72,10 +72,16 @@ registerBlockType( 'uri-cl/hero', {
 	// the img and alt are for editor placeholders
 	// the mediaHeight and mediaWidth are for the focal point picker component
 	attributes: {
-		headline: {
+		title: {
 			type: 'string',
 		},
-		subhead: {
+		body: {
+			type: 'string',
+		},
+		headline: { // Depricated in v5.1, use "title" instead
+			type: 'string',
+		},
+		subhead: { // Depricated in v5.1, use "body" instead
 			type: 'string',
 		},
 		link: {
@@ -195,6 +201,14 @@ registerBlockType( 'uri-cl/hero', {
 				attributes.id = randomID();
 			}
 
+			if ( ! attributes.title && !! attributes.headline ) { // "headline" depricated in v5.1, use "title" instead
+				attributes.title = attributes.headline;
+			}
+
+			if ( ! attributes.body && !! attributes.subhead ) { // "subhead" depricated in v5.1, use "body" instead
+				attributes.body = attributes.subhead;
+			}
+
 			let classes = 'cl-hero';
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
@@ -210,7 +224,7 @@ registerBlockType( 'uri-cl/hero', {
 			} else {
 				classes += ' no-link';
 			}
-			if ( !! attributes.subhead ) {
+			if ( !! attributes.body || !! attributes.subhead ) { // "subhead" depricated in v5.1, use "body" instead
 				classes += ' has-subhead';
 			} else {
 				classes += ' no-subhead';
@@ -258,14 +272,14 @@ registerBlockType( 'uri-cl/hero', {
 							<div className="cl-hero-text overlay">
 								<div className="block">
 									<h1><PlainText
-										onChange={ ( content ) => setAttributes( { headline: content } ) }
-										value={ attributes.headline }
+										onChange={ ( content ) => setAttributes( { title: content } ) }
+										value={ attributes.title }
 										placeholder={ __( 'Your hero title' ) }
 										keepPlaceholderOnFocus={ true }
 									/></h1>
 									<p className="subhead"><RichText
-										onChange={ ( content ) => setAttributes( { subhead: content } ) }
-										value={ attributes.subhead }
+										onChange={ ( content ) => setAttributes( { body: content } ) }
+										value={ attributes.body }
 										placeholder={ __( 'Your hero subtitle' ) }
 										keepPlaceholderOnFocus={ true }
 										className="subhead"
