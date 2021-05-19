@@ -21,6 +21,7 @@
       right: 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       background: rgba(255,255,255,.5);
       border-radius: 16px;
       height: 32px;
@@ -75,16 +76,18 @@
       opacity: 0;
       transition: opacity .1s ease-in-out;
 
-      &:last-child {
-        border-left: 1px solid rgba(255,255,255,.3);
-      }
-
       &.cl-accessibility-motion-control .cl-accessibility-control-button {
         background-position: 0 -56px;
       }
 
-      &.cl-accessibility-contrast-control .cl-accessibility-control-button {
-        background-position: 0 -84px;
+      &.cl-accessibility-contrast-control {
+
+        border-left: 1px solid rgba(255,255,255,.3);
+
+        .cl-accessibility-control-button {
+          background-position: 0 -84px;
+        }
+
       }
 
     }
@@ -136,7 +139,7 @@
       }
 
       .cl-accessibility-controls {
-        height: 100px;
+        height: 120px;
         width: 160px;
       }
 
@@ -145,6 +148,41 @@
         transition: opacity .2s ease-in-out .1s;
       }
 
+    }
+
+    .cl-accessibility-system-setting {
+
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      align-items: center;
+      padding: 0 10px;
+      height: 30px;
+      border-top: 1px solid rgba(255,255,255,.3);
+
+      &:hover,
+      &:focus {
+        background: rgba(255,255,255,.1);
+        cursor: pointer;
+      }
+
+    }
+
+    .cl-accessibility-toggle {
+      width: 12px;
+      height: 12px;
+      transform: translateY(-1px);
+      border-radius: 6px;
+      background: rgba(255,255,255,.5);
+      justify-self: end;
+      box-sizing: border-box;
+    }
+
+    .cl-accessibility-toggle-label {
+      padding-left: 10px;
+      font-size: .7rem;
+      color: rgba(0,0,0,.7);
     }
 
   }
@@ -189,16 +227,18 @@
 
       .cl-accessibility-control {
 
-        &:last-child {
-          border-left: 1px solid rgba(255,255,255,.1);
-        }
-
         &.cl-accessibility-motion-control .cl-accessibility-control-button {
           background-position: -28px -56px;
         }
 
-        &.cl-accessibility-contrast-control .cl-accessibility-control-button {
-          background-position: -28px -84px;
+        &.cl-accessibility-contrast-control {
+
+          border-left: 1px solid rgba(255,255,255,.1);
+
+          .cl-accessibility-control-button {
+            background-position: -28px -84px;
+          }
+
         }
 
       }
@@ -216,6 +256,18 @@
           background-color: rgba(255,255,255,.2);
         }
 
+      }
+
+      .cl-accessibility-system-setting {
+        border-top: 1px solid rgba(255,255,255,.1);
+      }
+
+      .cl-accessibility-toggle {
+        background: rgba(255,255,255,.2);
+      }
+
+      .cl-accessibility-toggle-label {
+        color: rgba(255,255,255,.7);
       }
 
     }
@@ -241,6 +293,35 @@
     .cl-accessibility-controls {
       left: 2rem;
     }
+
+  }
+
+}
+
+body.cl-accessibility-applied-site-wide {
+
+  .cl-has-accessibility-controls {
+
+    .cl-accessibility-controls-container {
+
+      .cl-accessibility-system-setting .cl-accessibility-toggle {
+        border: 4px solid #000;
+      }
+
+    }
+
+    &.cl-dark-accessibility-controls {
+
+      .cl-accessibility-controls-container {
+
+        .cl-accessibility-system-setting .cl-accessibility-toggle {
+          border: 4px solid #fff;
+        }
+
+      }
+
+    }
+
 
   }
 

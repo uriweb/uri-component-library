@@ -15,5 +15,10 @@ $output .= '<div class="cl-accessibility-control-button" title="Increase text co
 $output .= '<div class="cl-accessibility-control-label">Contrast: <span class="cl-accessibility-syntax">Standard</span></div>';
 $output .= '</div>';
 
+$output .= '<div class="cl-accessibility-system-setting">';
+$output .= '<div class="cl-accessibility-toggle" title="Apply my preferences site-wide"></div>';
+$output .= '<div class="cl-accessibility-toggle-label">Apply site-wide</div>';
+$output .= '</div>';
+
 $output .= '</div>';
 $output .= '</div>';
