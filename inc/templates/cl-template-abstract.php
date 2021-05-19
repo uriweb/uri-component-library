@@ -11,6 +11,10 @@ if ( ! empty( $atts['class'] ) ) {
 
 $classes .= ' cl-has-accessibility-controls';
 
+if ( $atts['invert_accessibility_controls'] ) {
+	$classes .= ' cl-dark-accessibility-controls';
+}
+
 $output = '<' . $wrapper . ' class="cl-wrapper cl-abstract-wrapper">';
 $output .= '<div class="' . $classes . '"';
 

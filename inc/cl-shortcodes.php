@@ -25,6 +25,7 @@ function uri_cl_shortcode_abstract( $atts, $content = null ) {
 			'link' => '',
 			'background' => '',
 			'style' => 'bars',
+			'invert_accessibility_controls' => false,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -52,6 +53,11 @@ function uri_cl_shortcode_abstract( $atts, $content = null ) {
 				'attr' => 'style',
 				'types' => array( 'str' ),
 				'values' => array( 'bars', 'discs', 'lattice', 'honeycomb' ),
+			),
+			array(
+				'attr' => 'invert_accessibility_controls',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'abstract' )
@@ -199,6 +205,7 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 			'tooltip' => '',
 			'float' => '',
 			'reverse' => false,
+			'invert_accessibility_controls' => true,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -236,6 +243,11 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'left', 'right' ),
+			),
+			array(
+				'attr' => 'invert_accessibility_controls',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'card' )
@@ -510,6 +522,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'credit' => '',
 			'positionX' => 0.5,
 			'positionY' => 0.5,
+			'invert_accessibility_controls' => true,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -563,6 +576,11 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			array(
 				'attr' => 'positionY',
 				'types' => array( 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'invert_accessibility_controls',
+				'types' => array( 'bool' ),
 				'req' => false,
 			),
 		),

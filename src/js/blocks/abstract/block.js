@@ -100,6 +100,9 @@ registerBlockType( 'uri-cl/abstract', {
 			type: 'string',
 			default: 'bars',
 		},
+		invert_accessibility_controls: {
+			type: 'boolean',
+		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {
@@ -314,6 +317,15 @@ registerBlockType( 'uri-cl/abstract', {
 								onChange={ ( content ) => setAttributes( { bgcss: content } ) }
 								value={ attributes.bgcss }
 								help="Set a CSS value for the background color (overrides the color picker setting)."
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Invert accessibility controls"
+								help="Use white foreground on dark background."
+								checked={ attributes.invert_accessibility_controls }
+								onChange={ ( content ) => setAttributes( { invert_accessibility_controls: content } ) }
 							/>
 						</PanelRow>
 

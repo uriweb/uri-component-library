@@ -18,7 +18,12 @@ if ( ! empty( $atts['class'] ) ) {
 }
 
 if ( ! empty( $atts['vid'] ) ) {
-	$classes .= ' cl-has-accessibility-controls cl-dark-accessibility-controls';
+
+	$classes .= ' cl-has-accessibility-controls';
+
+	if ( $atts['invert_accessibility_controls'] ) {
+		$classes .= ' cl-dark-accessibility-controls';
+	}
 }
 
 $output = '<section class="cl-wrapper cl-hero-wrapper">';

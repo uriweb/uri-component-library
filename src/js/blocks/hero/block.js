@@ -129,6 +129,10 @@ registerBlockType( 'uri-cl/hero', {
 		positionY: {
 			type: 'number',
 		},
+		invert_accessibility_controls: {
+			type: 'boolean',
+			default: true,
+		},
 		format: {
 			type: 'string',
 		},
@@ -426,6 +430,15 @@ registerBlockType( 'uri-cl/hero', {
 								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
 								value={ attributes.tooltip }
 								className="meta-field"
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<ToggleControl
+								label="Invert accessibility controls"
+								help="Use white foreground on dark background. Only applies to video heroes."
+								checked={ attributes.invert_accessibility_controls }
+								onChange={ ( content ) => setAttributes( { invert_accessibility_controls: content } ) }
 							/>
 						</PanelRow>
 					</PanelBody>

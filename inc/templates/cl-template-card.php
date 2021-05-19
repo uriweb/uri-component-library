@@ -22,7 +22,10 @@ if ( $atts['reverse'] ) {
 $has_vimeo_media = false;
 if ( ! empty( $atts['img'] ) && 'vimeo' == uri_cl_get_video_platform( $atts['img'] ) ) {
 	$has_vimeo_media = true;
-	$classes .= ' cl-has-accessibility-controls cl-dark-accessibility-controls';
+	$classes .= ' cl-has-accessibility-controls';
+	if ( $atts['invert_accessibility_controls'] ) {
+		$classes .= ' cl-dark-accessibility-controls';
+	}
 }
 
 $output = '<div class="cl-wrapper cl-card-wrapper">';
