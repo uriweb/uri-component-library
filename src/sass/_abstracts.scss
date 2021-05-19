@@ -126,8 +126,17 @@
     animation-play-state: paused;
   }
 
-  &.cl-accessibility-contrast-improved .cl-abstract-backdrop-elements {
-    opacity: .2;
+  &.cl-accessibility-contrast-improved {
+
+    .cl-abstract-backdrop .cl-abstract-backdrop-elements {
+      opacity: .3;
+    }
+
+    .cl-abstract-proper {
+      background: rgba(0,0,0,.2);
+      text-shadow: 0 0 1rem rgba(0,0,0,.2);
+    }
+
   }
 
   // End Accessibility
@@ -341,6 +350,8 @@
   	overflow: hidden;
   	position: relative;
   	z-index: 1;
+    background: transparent;
+    transition: background .3s ease-in-out;
 
     &.has-img .cl-abstract-content-wrapper {
       display: grid;
