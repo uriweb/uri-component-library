@@ -21,7 +21,7 @@ if ( ! empty( $atts['vid'] ) ) {
 
 	$classes .= ' cl-has-accessibility-controls';
 
-	if ( $atts['invert_accessibility_controls'] ) {
+	if ( $atts['invert_a11y'] ) {
 		$classes .= ' cl-dark-accessibility-controls';
 	}
 }

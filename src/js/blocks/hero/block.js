@@ -129,7 +129,7 @@ registerBlockType( 'uri-cl/hero', {
 		positionY: {
 			type: 'number',
 		},
-		invert_accessibility_controls: {
+		invert_a11y: {
 			type: 'boolean',
 			default: true,
 		},
@@ -437,8 +437,8 @@ registerBlockType( 'uri-cl/hero', {
 							<ToggleControl
 								label="Invert accessibility controls"
 								help="Use white foreground on dark background. Only applies to video heroes."
-								checked={ attributes.invert_accessibility_controls }
-								onChange={ ( content ) => setAttributes( { invert_accessibility_controls: content } ) }
+								checked={ attributes.invert_a11y }
+								onChange={ ( content ) => setAttributes( { invert_a11y: content } ) }
 							/>
 						</PanelRow>
 					</PanelBody>

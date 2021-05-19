@@ -100,7 +100,7 @@ registerBlockType( 'uri-cl/abstract', {
 			type: 'string',
 			default: 'bars',
 		},
-		invert_accessibility_controls: {
+		invert_a11y: {
 			type: 'boolean',
 		},
 	},
@@ -324,8 +324,8 @@ registerBlockType( 'uri-cl/abstract', {
 							<ToggleControl
 								label="Invert accessibility controls"
 								help="Use white foreground on dark background."
-								checked={ attributes.invert_accessibility_controls }
-								onChange={ ( content ) => setAttributes( { invert_accessibility_controls: content } ) }
+								checked={ attributes.invert_a11y }
+								onChange={ ( content ) => setAttributes( { invert_a11y: content } ) }
 							/>
 						</PanelRow>
 
