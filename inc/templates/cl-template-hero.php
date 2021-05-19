@@ -17,7 +17,9 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$classes .= ' cl-has-accessibility-controls cl-dark-accessibility-controls';
+if ( ! empty( $atts['vid'] ) ) {
+	$classes .= ' cl-has-accessibility-controls cl-dark-accessibility-controls';
+}
 
 $output = '<section class="cl-wrapper cl-hero-wrapper">';
 $output .= '<div class="' . $classes . '"';
