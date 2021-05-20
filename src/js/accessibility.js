@@ -11,14 +11,21 @@
 		let i;
 		const els = document.querySelectorAll( '.cl-has-accessibility-controls' );
 		const n = els.length;
-		const body = document.getElementsByTagName( 'BODY' )[ 0 ];
+		const data = {
+			body: document.getElementsByTagName( 'BODY' )[ 0 ],
+			systemSetting: URICL.getCookie( 'uri-cl-accessibility-applied-site-wide' ),
+		};
+
+		if ( '1' === data.systemSetting ) {
+			controlSystem( data );
+		}
 
 		for ( i = 0; i < n; i++ ) {
-			setupControls( els[ i ], body );
+			setupControls( els[ i ], data );
 		}
 	}
 
-	function setupControls( el, body ) {
+	function setupControls( el, data ) {
 		const contrast = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-control-button' );
 		const contrastLabel = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-syntax' );
 
@@ -39,7 +46,7 @@
 
 		system.addEventListener( 'click', function( e ) {
 			e.preventDefault();
-			controlSystem( body );
+			controlSystem( data );
 		}, false );
 	}
 
@@ -73,8 +80,14 @@
 		}
 	}
 
-	function controlSystem( b ) {
+	function controlSystem( data ) {
+		const c = ( '1' === data.systemSetting ) ? '0' : '1';
+		URICL.setCookie( 'uri-cl-accessibility-applied-site-wide', c, 365 );
+		toggleSystemClass( data );
+	}
+
+	function toggleSystemClass( data ) {
 		const className = 'cl-accessibility-applied-site-wide';
-		b.classList.toggle( className );
+		data.body.classList.toggle( className );
 	}
 }() );
