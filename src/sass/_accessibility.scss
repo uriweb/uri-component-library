@@ -11,14 +11,14 @@
     z-index: 10;
     bottom: 0;
     right: 0;
-    height: calc( 100px + 2rem );
-    width: calc( 160px + 2rem );
+    height: calc( 100px + 1rem );
+    width: calc( 160px + 1rem );
 
     .cl-accessibility-controls {
 
       position: absolute;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 1rem;
+      right: 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
@@ -71,7 +71,7 @@
     .cl-accessibility-control {
 
       padding: 0 10px;
-      margin: 10px 0;
+      margin: 10px 0 15px;
       width: 80px;
       opacity: 0;
       transition: opacity .1s ease-in-out;
@@ -139,7 +139,7 @@
       }
 
       .cl-accessibility-controls {
-        height: 120px;
+        height: 125px;
         width: 160px;
       }
 
@@ -175,6 +175,7 @@
       transform: translateY(-1px);
       border-radius: 6px;
       background: rgba(255,255,255,.5);
+      border: 1px solid rgba(0,0,0,.3);
       justify-self: end;
       box-sizing: border-box;
     }
@@ -264,6 +265,7 @@
 
       .cl-accessibility-toggle {
         background: rgba(255,255,255,.2);
+        border: 1px solid rgba(255,255,255,.3);
       }
 
       .cl-accessibility-toggle-label {
@@ -305,7 +307,7 @@ body.cl-accessibility-applied-site-wide {
     .cl-accessibility-controls-container {
 
       .cl-accessibility-system-setting .cl-accessibility-toggle {
-        border: 4px solid #000;
+        border: 4px solid #333;
       }
 
     }
@@ -329,9 +331,18 @@ body.cl-accessibility-applied-site-wide {
 
 @media screen and (min-width: $break1) {
   .cl-has-accessibility-controls {
+
     .cl-accessibility-controls-container {
+
       height: 200px;
-      width: 260px;
+      width: 240px;
+
+      .cl-accessibility-controls {
+        bottom: 2rem;
+        right: 2rem;
+      }
+
     }
+
   }
 }
