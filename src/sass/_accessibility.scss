@@ -11,7 +11,7 @@
     z-index: 10;
     bottom: 0;
     right: 0;
-    height: calc( 100px + 1rem );
+    height: calc( 125px + 1rem );
     width: calc( 160px + 1rem );
 
     .cl-accessibility-controls {
@@ -280,20 +280,6 @@
 
     &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
       background-position: -28px -112px;
-    }
-
-  }
-
-}
-
-.cl-card.cl-has-accessibility-controls:not(.reverse) {
-
-  .cl-accessibility-controls-container {
-
-    left: 0;
-
-    .cl-accessibility-controls {
-      left: 2rem;
     }
 
   }
