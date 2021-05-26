@@ -76,16 +76,57 @@
       opacity: 0;
       transition: opacity .1s ease-in-out;
 
-      &.cl-accessibility-motion-control .cl-accessibility-control-button {
-        background-position: 0 -56px;
+      &:hover,
+      &:focus {
+        cursor: pointer;
       }
 
-      &.cl-accessibility-contrast-control {
+    }
 
-        border-left: 1px solid rgba(255,255,255,.3);
+    .cl-accessibility-motion-control {
+
+      .cl-accessibility-control-off {
+
+        display: block;
+
+        .cl-accessibility-control-button {
+          background-position: 0 -56px;
+        }
+
+      }
+
+      .cl-accessibility-control-on {
+
+        display: none;
+
+        .cl-accessibility-control-button {
+          background-position: 0 -28px;
+        }
+
+      }
+
+    }
+
+    .cl-accessibility-contrast-control {
+
+      border-left: 1px solid rgba(255,255,255,.3);
+
+      .cl-accessibility-control-off {
+
+        display: block;
 
         .cl-accessibility-control-button {
           background-position: 0 -84px;
+        }
+
+      }
+
+      .cl-accessibility-control-on {
+
+        display: none;
+
+        .cl-accessibility-control-button {
+          background-position: 0 -112px;
         }
 
       }
@@ -125,7 +166,6 @@
       &:hover,
       &:focus {
         background-color: rgba(255,255,255,.8);
-        cursor: pointer;
       }
 
     }
@@ -188,12 +228,17 @@
 
   }
 
-  &.cl-accessibility-motion-paused .cl-accessibility-control.cl-accessibility-motion-control .cl-accessibility-control-button {
-    background-position: 0 -28px;
-  }
+  &.cl-accessibility-motion-paused .cl-accessibility-motion-control,
+  &.cl-accessibility-contrast-improved .cl-accessibility-contrast-control {
 
-  &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
-    background-position: 0 -112px;
+    .cl-accessibility-control-off {
+      display: none;
+    }
+
+    .cl-accessibility-control-on {
+      display: block;
+    }
+
   }
 
   &.cl-dark-accessibility-controls {
@@ -226,20 +271,28 @@
         background-position: -32px 0;
       }
 
-      .cl-accessibility-control {
+      .cl-accessibility-motion-control {
 
-        &.cl-accessibility-motion-control .cl-accessibility-control-button {
+        .cl-accessibility-control-off .cl-accessibility-control-button {
           background-position: -28px -56px;
         }
 
-        &.cl-accessibility-contrast-control {
+        .cl-accessibility-control-on .cl-accessibility-control-button {
+          background-position: -28px -28px;
+        }
 
-          border-left: 1px solid rgba(255,255,255,.1);
+      }
 
-          .cl-accessibility-control-button {
-            background-position: -28px -84px;
-          }
+      .cl-accessibility-contrast-control {
 
+        border-left: 1px solid rgba(255,255,255,.1);
+
+        .cl-accessibility-control-off .cl-accessibility-control-button {
+          background-position: -28px -84px;
+        }
+
+        .cl-accessibility-control-on .cl-accessibility-control-button {
+          background-position: -28px -112px;
         }
 
       }
@@ -272,14 +325,6 @@
         color: rgba(255,255,255,.7);
       }
 
-    }
-
-    &.cl-accessibility-motion-paused .cl-accessibility-control.cl-accessibility-motion-control .cl-accessibility-control-button {
-      background-position: -28px -28px;
-    }
-
-    &.cl-accessibility-contrast-improved .cl-accessibility-control.cl-accessibility-contrast-control .cl-accessibility-control-button {
-      background-position: -28px -112px;
     }
 
   }

@@ -5,89 +5,110 @@
 ( function() {
 	'use strict';
 
+	let data;
+
 	window.addEventListener( 'load', init, false );
 
 	function init() {
-		let i;
-		const els = document.querySelectorAll( '.cl-has-accessibility-controls' );
-		const n = els.length;
-		const data = {
+		data = {
 			body: document.getElementsByTagName( 'BODY' )[ 0 ],
-			systemSetting: URICL.getCookie( 'uri-cl-accessibility-applied-site-wide' ),
+			els: document.querySelectorAll( '.cl-has-accessibility-controls' ),
+			settings: {
+				saved: { key: 'uri-cl-accessibility-saved' },
+				motion: { key: 'uri-cl-accessibility-motion' },
+				contrast: { key: 'uri-cl-accessibility-contrast' },
+			},
 		};
 
-		if ( '1' === data.systemSetting ) {
-			controlSystem( data );
+		data.settings.saved.value = URICL.getCookie( data.settings.saved.key );
+		data.settings.motion.value = URICL.getCookie( data.settings.motion.key );
+		data.settings.contrast.value = URICL.getCookie( data.settings.contrast.key );
+
+		if ( isSystemWide() ) {
+			toggleSystemClass();
 		}
 
+		let i;
+		const n = data.els.length;
 		for ( i = 0; i < n; i++ ) {
-			setupControls( els[ i ], data );
+			setupControls( data.els[ i ] );
 		}
 	}
 
-	function setupControls( el, data ) {
-		const contrast = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-control-button' );
-		const contrastLabel = el.querySelector( '.cl-accessibility-contrast-control .cl-accessibility-syntax' );
-
-		contrast.addEventListener( 'click', function( e ) {
-			e.preventDefault();
-			controlContrast( el, contrast, contrastLabel );
-		}, false );
-
-		const motion = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
-		const motionLabel = el.querySelector( '.cl-accessibility-motion-control .cl-accessibility-syntax' );
-
-		motion.addEventListener( 'click', function( e ) {
-			e.preventDefault();
-			controlMotion( el, motion, motionLabel );
-		}, false );
-
+	function setupControls( el ) {
 		const system = el.querySelector( '.cl-accessibility-system-setting' );
 
 		system.addEventListener( 'click', function( e ) {
 			e.preventDefault();
-			controlSystem( data );
+			controlSystem();
+		}, false );
+
+		const contrast = el.querySelector( '.cl-accessibility-contrast-control' );
+
+		if ( isSystemWide() && '1' === data.settings.contrast.value ) {
+			controlContrast( el, system );
+		}
+
+		contrast.addEventListener( 'click', function( e ) {
+			e.preventDefault();
+			controlContrast( el, system );
+		}, false );
+
+		const motion = el.querySelector( '.cl-accessibility-motion-control' );
+
+		if ( isSystemWide() && '1' === data.settings.motion.value ) {
+			controlMotion( el, system );
+		}
+
+		motion.addEventListener( 'click', function( e ) {
+			e.preventDefault();
+			controlMotion( el, system );
 		}, false );
 	}
 
-	function controlContrast( el, a, s ) {
-		const className = 'cl-accessibility-contrast-improved';
-		if ( el.classList.contains( className ) ) {
-			el.classList.remove( className );
-			a.setAttribute( 'title', 'Improve text contrast' );
-			a.innerHTML = 'Improve text contrast';
-			s.innerHTML = 'Standard';
-		} else {
-			el.classList.add( className );
-			a.setAttribute( 'title', 'Reset contrast' );
-			a.innerHTML = 'Reset contrast';
-			s.innerHTML = 'High';
+	function controlContrast( el, s ) {
+		let val = '0';
+
+		if ( el.classList.toggle( 'cl-accessibility-contrast-improved' ) ) {
+			val = '1';
+		}
+
+		s.setAttribute( 'data-contrast', val );
+
+		if ( isSystemWide() ) {
+			URICL.setCookie( data.settings.contrast.key, val, 365 );
 		}
 	}
 
-	function controlMotion( el, a, s ) {
-		const className = 'cl-accessibility-motion-paused';
-		if ( el.classList.contains( className ) ) {
-			el.classList.remove( className );
-			a.setAttribute( 'title', 'Pause motion' );
-			a.innerHTML = 'Pause motion';
-			s.innerHTML = 'On';
-		} else {
-			el.classList.add( className );
-			a.setAttribute( 'title', 'Play motion' );
-			a.innerHTML = 'Play motion';
-			s.innerHTML = 'Off';
+	function controlMotion( el, s ) {
+		let val = '0';
+
+		if ( el.classList.toggle( 'cl-accessibility-motion-paused' ) ) {
+			val = '1';
+		}
+
+		s.setAttribute( 'data-motion', val );
+
+		if ( isSystemWide() ) {
+			URICL.setCookie( data.settings.motion.key, val, 365 );
 		}
 	}
 
-	function controlSystem( data ) {
-		const c = ( '1' === data.systemSetting ) ? '0' : '1';
-		URICL.setCookie( 'uri-cl-accessibility-applied-site-wide', c, 365 );
-		toggleSystemClass( data );
+	function isSystemWide() {
+		let a = false;
+		if ( '1' === data.settings.saved.value ) {
+			a = true;
+		}
+		return a;
 	}
 
-	function toggleSystemClass( data ) {
-		const className = 'cl-accessibility-applied-site-wide';
-		data.body.classList.toggle( className );
+	function controlSystem() {
+		data.settings.saved.value = ( '1' === data.settings.saved.value ) ? '0' : '1';
+		URICL.setCookie( data.settings.saved.key, data.settings.saved.value, 365 );
+		toggleSystemClass();
+	}
+
+	function toggleSystemClass() {
+		data.body.classList.toggle( 'cl-accessibility-applied-site-wide' );
 	}
 }() );
