@@ -96,9 +96,9 @@ if ( ! empty( $atts['img'] ) ) {
 			$caption = wp_get_attachment_caption( $img_id );
 		}
 	}
-
-	$image .= ' style="background-image:url(' . $imgurl . ');';
 }
+
+$image .= ' style="background-image:url(' . $imgurl . ');';
 
 if ( 0.5 != $atts['positionX'] || 0.5 != $atts['positionY'] ) {
 	$position = $atts['positionX'] * 100 . '% ' . $atts['positionY'] * 100 . '%';
