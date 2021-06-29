@@ -25,6 +25,7 @@ rules:
 # Specify global variables to ignore
 # Some of these aren't really globals, but this is useful for ignoring no-undef for class vars etc.
 globals:
+  CLA11y: readonly
   CLCardVimeo: readonly
   CLCreateVimeoPlayers: readonly
   CLHeroVimeo: readonly

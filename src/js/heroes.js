@@ -21,18 +21,11 @@ class CLHeroVimeo { // eslint-disable-line no-unused-vars
 		CLVimeo.resizeRelative( data );
 
 		// Listen for scrolling
-		window.addEventListener(
-			'scroll',
-			function() {
-				if ( ! data.parent.classList.contains( 'paused' ) ) {
-					CLVimeo.determinePlayState( data );
-				}
-			}
-		);
+		window.addEventListener( 'scroll', CLVimeo.determinePlayState.bind( null, data ), false );
 		CLVimeo.determinePlayState( data );
 
 		// Add play/pause button
-		const motion = data.parent.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
+		const motion = data.parent.querySelector( '.cl-accessibility-motion-control' );
 
 		motion.addEventListener(
 			'click',
@@ -43,15 +36,17 @@ class CLHeroVimeo { // eslint-disable-line no-unused-vars
 	}
 
 	static control( data ) {
+		//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - control called, hero was ' + data.state + ' when call made' );
 		switch ( data.state ) {
 			default:
 			case 'playing':
 				data.player.pause();
-				data.parent.classList.add( 'paused' );
+				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now paused' );
 				break;
+			case 'loaded':
 			case 'paused':
 				data.player.play();
-				data.parent.classList.remove( 'paused' );
+				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now playing' );
 				break;
 		}
 	}

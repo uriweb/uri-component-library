@@ -17,14 +17,31 @@ class CLVimeo { // eslint-disable-line no-unused-vars
 	}
 
 	static determinePlayState( data ) {
+		if ( CLA11y.hasNoMotion() ) {
+			//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - user prefers no motion globally, pausing player' );
+			data.player.pause();
+			//data.parent.classList.add( 'paused' );
+			return false;
+		}
+
+		if ( data.parent.parentNode.classList.contains( 'cl-accessibility-motion-paused' ) ) {
+			return false;
+		}
+
 		const v = window.innerHeight,
 			p = window.pageYOffset,
 			h = data.parent.offsetHeight,
 			o = data.parent.getBoundingClientRect().top + p;
 
+		//debugging
+		//const a = ( CLA11y.arePrefsSaved() ) ? 'user has saved prefs' : 'user has not saved prefs',
+		//	b = ( CLA11y.isSystemMotionPaused() ) ? 'user prefers no motion' : 'user prefers motion';
+
 		if ( v + p < o || p > o + h ) {
+			//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - ' + a + ' | ' + b + ' | pausing based on viewport' );
 			data.player.pause();
 		} else {
+			//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - ' + a + ' | ' + b + ' | pausing based on viewport' );
 			data.player.play();
 		}
 	}

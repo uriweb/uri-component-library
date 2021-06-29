@@ -8,12 +8,12 @@ $output .= '<div class="cl-accessibility-icon" title="Accessibility controls">Ac
 // Motion Controls
 $output .= '<div class="cl-accessibility-control cl-accessibility-motion-control">';
 
-$output .= '<div class="cl-accessibility-control-off">';
+$output .= '<div class="cl-accessibility-control-default">';
 $output .= '<div class="cl-accessibility-control-button" title="Pause motion">Pause motion</div>';
 $output .= '<div class="cl-accessibility-control-label">Motion: <span class="cl-accessibility-syntax">On</span></div>';
 $output .= '</div>';
 
-$output .= '<div class="cl-accessibility-control-on">';
+$output .= '<div class="cl-accessibility-control-alternate">';
 $output .= '<div class="cl-accessibility-control-button" title="Play motion">Play motion</div>';
 $output .= '<div class="cl-accessibility-control-label">Motion: <span class="cl-accessibility-syntax">Off</span></div>';
 $output .= '</div>';
@@ -23,12 +23,12 @@ $output .= '</div>';
 // Contrast Controls
 $output .= '<div class="cl-accessibility-control cl-accessibility-contrast-control">';
 
-$output .= '<div class="cl-accessibility-control-off">';
+$output .= '<div class="cl-accessibility-control-default">';
 $output .= '<div class="cl-accessibility-control-button" title="Increase text contrast">Increase text contrast</div>';
 $output .= '<div class="cl-accessibility-control-label">Contrast: <span class="cl-accessibility-syntax">Standard</span></div>';
 $output .= '</div>';
 
-$output .= '<div class="cl-accessibility-control-on">';
+$output .= '<div class="cl-accessibility-control-alternate">';
 $output .= '<div class="cl-accessibility-control-button" title="Reset text contrast">Reset text contrast</div>';
 $output .= '<div class="cl-accessibility-control-label">Contrast: <span class="cl-accessibility-syntax">High</span></div>';
 $output .= '</div>';

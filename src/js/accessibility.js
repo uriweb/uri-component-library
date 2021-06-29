@@ -2,6 +2,44 @@
  * ACCESSIBILITY CONTROLS
  */
 
+class CLA11y { // eslint-disable-line no-unused-vars
+	static hasNoMotion() {
+		let a = false;
+		if ( CLA11y.arePrefsSaved() && CLA11y.isSystemMotionPaused() ) {
+			a = true;
+		}
+		return a;
+	}
+	static hasNoContrast() {
+		let a = false;
+		if ( CLA11y.arePrefsSaved() && CLA11y.isSystemContrastImproved() ) {
+			a = true;
+		}
+		return a;
+	}
+	static arePrefsSaved() {
+		let a = false;
+		if ( '1' === URICL.getCookie( 'uri-cl-accessibility-saved' ) ) {
+			a = true;
+		}
+		return a;
+	}
+	static isSystemMotionPaused() {
+		let a = false;
+		if ( '1' === URICL.getCookie( 'uri-cl-accessibility-motion' ) ) {
+			a = true;
+		}
+		return a;
+	}
+	static isSystemContrastImproved() {
+		let a = false;
+		if ( '1' === URICL.getCookie( 'uri-cl-accessibility-contrast' ) ) {
+			a = true;
+		}
+		return a;
+	}
+}
+
 ( function() {
 	'use strict';
 
@@ -18,14 +56,23 @@
 				motion: { key: 'uri-cl-accessibility-motion' },
 				contrast: { key: 'uri-cl-accessibility-contrast' },
 			},
+			classes: {
+				system: 'cl-accessibility-applied-site-wide',
+				motion: 'cl-accessibility-motion-paused',
+				contrast: 'cl-accessibility-contrast-improved',
+			},
 		};
 
-		data.settings.saved.value = URICL.getCookie( data.settings.saved.key );
-		data.settings.motion.value = URICL.getCookie( data.settings.motion.key );
-		data.settings.contrast.value = URICL.getCookie( data.settings.contrast.key );
+		if ( CLA11y.arePrefsSaved() ) {
+			data.body.classList.add( data.classes.system );
+		}
 
-		if ( isSystemWide() ) {
-			toggleSystemClass();
+		if ( CLA11y.isSystemMotionPaused() ) {
+			data.body.classList.add( data.classes.motion );
+		}
+
+		if ( CLA11y.isSystemContrastImproved() ) {
+			data.body.classList.add( data.classes.contrast );
 		}
 
 		let i;
@@ -40,75 +87,106 @@
 
 		system.addEventListener( 'click', function( e ) {
 			e.preventDefault();
-			controlSystem();
-		}, false );
-
-		const contrast = el.querySelector( '.cl-accessibility-contrast-control' );
-
-		if ( isSystemWide() && '1' === data.settings.contrast.value ) {
-			controlContrast( el, system );
-		}
-
-		contrast.addEventListener( 'click', function( e ) {
-			e.preventDefault();
-			controlContrast( el, system );
+			controlSystem( el );
 		}, false );
 
 		const motion = el.querySelector( '.cl-accessibility-motion-control' );
 
-		if ( isSystemWide() && '1' === data.settings.motion.value ) {
-			controlMotion( el, system );
+		if ( CLA11y.hasNoMotion() ) {
+			el.classList.toggle( data.classes.motion );
 		}
 
 		motion.addEventListener( 'click', function( e ) {
 			e.preventDefault();
-			controlMotion( el, system );
+			controlMotion( el );
+		}, false );
+
+		const contrast = el.querySelector( '.cl-accessibility-contrast-control' );
+
+		if ( CLA11y.hasNoContrast() ) {
+			el.classList.toggle( data.classes.contrast );
+		}
+
+		contrast.addEventListener( 'click', function( e ) {
+			e.preventDefault();
+			controlContrast( el );
 		}, false );
 	}
 
-	function controlContrast( el, s ) {
-		let val = '0';
+	function controlMotion( el ) {
+		let val = '0',
+			applied = false;
 
-		if ( el.classList.toggle( 'cl-accessibility-contrast-improved' ) ) {
-			val = '1';
+		el.classList.toggle( data.classes.motion );
+
+		if ( el.classList.contains( data.classes.motion ) ) {
+			applied = true;
 		}
 
-		s.setAttribute( 'data-contrast', val );
+		if ( CLA11y.arePrefsSaved() ) {
+			if ( data.body.classList.toggle( data.classes.motion ) ) {
+				val = '1';
+			}
 
-		if ( isSystemWide() ) {
-			URICL.setCookie( data.settings.contrast.key, val, 365 );
-		}
-	}
+			for ( const e of data.els ) {
+				e.classList.toggle( data.classes.motion, applied );
+			}
 
-	function controlMotion( el, s ) {
-		let val = '0';
-
-		if ( el.classList.toggle( 'cl-accessibility-motion-paused' ) ) {
-			val = '1';
-		}
-
-		s.setAttribute( 'data-motion', val );
-
-		if ( isSystemWide() ) {
 			URICL.setCookie( data.settings.motion.key, val, 365 );
+			//console.log( 'ally - global setting saved (motion, ' + val + ')' );
 		}
 	}
 
-	function isSystemWide() {
-		let a = false;
-		if ( '1' === data.settings.saved.value ) {
-			a = true;
+	function controlContrast( el ) {
+		let val = '0',
+			applied = false;
+
+		el.classList.toggle( data.classes.contrast );
+
+		if ( el.classList.contains( data.classes.contrast ) ) {
+			applied = true;
 		}
-		return a;
+
+		if ( CLA11y.arePrefsSaved() ) {
+			if ( data.body.classList.toggle( data.classes.contrast ) ) {
+				val = '1';
+			}
+
+			for ( const e of data.els ) {
+				e.classList.toggle( data.classes.contrast, applied );
+			}
+
+			URICL.setCookie( data.settings.contrast.key, val, 365 );
+			//console.log( 'ally - global setting saved (contrast, ' + val + ')' );
+		}
 	}
 
-	function controlSystem() {
-		data.settings.saved.value = ( '1' === data.settings.saved.value ) ? '0' : '1';
-		URICL.setCookie( data.settings.saved.key, data.settings.saved.value, 365 );
-		toggleSystemClass();
-	}
+	function controlSystem( el ) {
+		let val;
+		const keys = [ 'motion', 'contrast' ];
 
-	function toggleSystemClass() {
-		data.body.classList.toggle( 'cl-accessibility-applied-site-wide' );
+		if ( CLA11y.arePrefsSaved() ) {
+			URICL.setCookie( data.settings.saved.key, '0', 365 );
+			for ( const k of keys ) {
+				URICL.setCookie( data.settings[ k ].key, '0', 365 );
+			}
+			//console.log( 'ally - user turned off global settings (reset)' );
+			el.classList.toggle( data.classes.motion, data.body.classList.contains( data.classes.motion ) );
+			el.classList.toggle( data.classes.contrast, data.body.classList.contains( data.classes.contrast ) );
+		} else {
+			URICL.setCookie( data.settings.saved.key, '1', 365 );
+			for ( const k of keys ) {
+				val = ( el.classList.contains( data.classes[ k ] ) ) ? '1' : '0';
+				URICL.setCookie( data.settings[ k ].key, val, 365 );
+				//console.log( 'a11y - user saved global settings (' + k + ', ' + val + ')' );
+				if ( '1' === val ) {
+					data.body.classList.add( data.classes[ k ] );
+				} else {
+					data.body.classList.remove( data.classes[ k ] );
+				}
+			}
+		}
+
+		data.body.classList.toggle( data.classes.system );
 	}
 }() );
