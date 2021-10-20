@@ -1,5 +1,5 @@
 /**
- * YOUTUBE API
+ * YOUTUBE API AND CONTROLS
  */
 
 class CLYT { // eslint-disable-line no-unused-vars
@@ -56,6 +56,15 @@ class CLYT { // eslint-disable-line no-unused-vars
 	 * @param {Object} parent The hero parent container.
 	 */
 	static determinePlayState( event, parent ) {
+		if ( CLA11y.hasNoMotion() ) {
+			event.target.pauseVideo();
+			return false;
+		}
+
+		if ( parent.parentNode.classList.contains( 'cl-accessibility-motion-paused' ) ) {
+			return false;
+		}
+
 		const v = window.innerHeight,
 			p = window.pageYOffset,
 			h = parent.offsetHeight,
@@ -90,18 +99,11 @@ class CLYT { // eslint-disable-line no-unused-vars
 		CLYT.resizeHero( el, parent );
 
 		// Listen for scrolling
-		window.addEventListener(
-			'scroll',
-			function() {
-				if ( ! parent.classList.contains( 'paused' ) ) {
-					CLYT.determinePlayState( event, parent );
-				}
-			}
-		);
+		window.addEventListener( 'scroll', CLYT.determinePlayState.bind( null, event, parent ), false );
 		CLYT.determinePlayState( event, parent );
 
 		// Add play/pause button
-		const motion = parent.querySelector( '.cl-accessibility-motion-control .cl-accessibility-control-button' );
+		const motion = parent.querySelector( '.cl-accessibility-motion-control' );
 
 		motion.addEventListener(
 			'click',

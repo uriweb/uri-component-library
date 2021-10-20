@@ -1,5 +1,5 @@
 /**
- * VIMEO API
+ * VIMEO API AND CONTROLS
  */
 
 class CLVimeo { // eslint-disable-line no-unused-vars
@@ -79,5 +79,143 @@ class CLVimeo { // eslint-disable-line no-unused-vars
 	 */
 	static resizeProportionate( data ) {
 		data.player.element.setAttribute( 'height', data.parent.offsetWidth / data.ratio );
+	}
+}
+
+class CLHeroVimeo { // eslint-disable-line no-unused-vars
+	/**
+	 * Do things with the hero when it's loaded
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onReady( data ) {
+		// Listen for browser resizing
+		window.addEventListener(
+			'resize',
+			function() {
+				CLVimeo.resizeRelative( data );
+			}
+		);
+		CLVimeo.resizeRelative( data );
+
+		// Listen for scrolling
+		window.addEventListener( 'scroll', CLVimeo.determinePlayState.bind( null, data ), false );
+		CLVimeo.determinePlayState( data );
+
+		// Add play/pause button
+		const motion = data.parent.querySelector( '.cl-accessibility-motion-control' );
+
+		motion.addEventListener(
+			'click',
+			function() {
+				CLHeroVimeo.control( data );
+			}
+		);
+	}
+
+	static control( data ) {
+		//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - control called, hero was ' + data.state + ' when call made' );
+		switch ( data.state ) {
+			default:
+			case 'playing':
+				data.player.pause();
+				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now paused' );
+				break;
+			case 'loaded':
+			case 'paused':
+				data.player.play();
+				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now playing' );
+				break;
+		}
+	}
+
+	/**
+	 * Get hero state and decide what to do
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onStateChange( data ) {
+		switch ( data.state ) {
+			case 'playing':
+				data.poster.classList.add( 'unveil' );
+				break;
+		}
+	}
+
+	/**
+	 * Revert to poster if there's an error with the hero video
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onError( data ) {
+		data.poster.classList.remove( 'unveil' );
+	}
+}
+
+class CLVideoVimeo { // eslint-disable-line no-unused-vars
+	/**
+	 * Do things with the video when it's loaded
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onReady( data ) {
+		data.poster.querySelector( 'img' ).style.display = 'none';
+
+		// Store aspect ratio
+		data.ratio = data.player.element.width / data.player.element.height;
+
+		window.addEventListener(
+			'resize',
+			function() {
+				CLVimeo.resizeProportionate( data );
+			}
+		);
+		CLVimeo.resizeProportionate( data );
+
+		if ( data.parent.classList.contains( 'cl-card-feature-video' ) ) {
+			CLCardVimeo.theatreControl( data );
+		}
+	}
+
+	/**
+	 * Link the poster to the video on YouTube if there's an error with the video
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onError( data ) {
+		let alt;
+
+		const a = document.createElement( 'a' );
+		a.href = data.src;
+		a.title = 'Try watching this video on Vimeo';
+
+		const img = document.createElement( 'img' );
+		img.src = data.poster.getAttribute( 'src' );
+		alt = data.poster.getAttribute( 'alt' );
+		if ( ! alt ) {
+			alt = 'Poster for video';
+		}
+		img.alt = alt;
+		a.appendChild( img );
+
+		data.parent.replaceChild( a, data.player.element );
+	}
+
+	/**
+	 * Get video state and decide what to do
+	 *
+	 * @param {Object} data The player data.
+	 */
+	static onStateChange( data ) {
+		const overlay = data.parent.querySelector( '.overlay' );
+
+		switch ( data.state ) {
+			case 'playing':
+			case 'buffering':
+				overlay.classList.add( 'hidden' );
+				break;
+			default:
+				overlay.classList.remove( 'hidden' );
+		}
 	}
 }

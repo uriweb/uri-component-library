@@ -1,78 +1,8 @@
 /**
- * HEROS
+ * HEROES GENERAL FUNCTIONS
  */
 
 let CLResizeSuperheroes;
-
-class CLHeroVimeo { // eslint-disable-line no-unused-vars
-	/**
-	 * Do things with the hero when it's loaded
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onReady( data ) {
-		// Listen for browser resizing
-		window.addEventListener(
-			'resize',
-			function() {
-				CLVimeo.resizeRelative( data );
-			}
-		);
-		CLVimeo.resizeRelative( data );
-
-		// Listen for scrolling
-		window.addEventListener( 'scroll', CLVimeo.determinePlayState.bind( null, data ), false );
-		CLVimeo.determinePlayState( data );
-
-		// Add play/pause button
-		const motion = data.parent.querySelector( '.cl-accessibility-motion-control' );
-
-		motion.addEventListener(
-			'click',
-			function() {
-				CLHeroVimeo.control( data );
-			}
-		);
-	}
-
-	static control( data ) {
-		//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - control called, hero was ' + data.state + ' when call made' );
-		switch ( data.state ) {
-			default:
-			case 'playing':
-				data.player.pause();
-				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now paused' );
-				break;
-			case 'loaded':
-			case 'paused':
-				data.player.play();
-				//console.log( '"' + data.parent.textContent.slice( 0, 10 ) + '" - state altered, hero is now playing' );
-				break;
-		}
-	}
-
-	/**
-	 * Get hero state and decide what to do
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onStateChange( data ) {
-		switch ( data.state ) {
-			case 'playing':
-				data.poster.classList.add( 'unveil' );
-				break;
-		}
-	}
-
-	/**
-	 * Revert to poster if there's an error with the hero video
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onError( data ) {
-		data.poster.classList.remove( 'unveil' );
-	}
-} // END CLHeroVimeo
 
 ( function() {
 	'use strict';

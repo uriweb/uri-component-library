@@ -1,5 +1,5 @@
 /**
- * HERO VIDS / VIDEOS
+ * INIT VIDEO PLAYERS
  */
 
 // Create this in the global scope so the YouTube API can call it locally.
