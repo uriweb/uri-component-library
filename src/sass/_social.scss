@@ -1,21 +1,21 @@
 /* ======= SOCIAL ======= */
 
 .cl-social {
-    
+
 	display: inline-block;
 	list-style: none;
 	margin: 0;
-    
+
     li {
         display: inline-block;
         margin: 0;
         padding: 0;
     }
-    
+
     li:not(:first-child) {
         margin-left: 10px;
     }
-    
+
     a {
         position: relative;
         top: 0;
@@ -30,11 +30,11 @@
         background-size: 60px auto;
         transition: top .1s ease-in-out;
     }
-    
+
     a:hover {
         top: -1px;
     }
-    
+
     &.color {
         a.cl-social-facebook {
             background-position: 0 0;
@@ -54,8 +54,11 @@
         a.cl-social-snapchat {
             background-position: 0 -75px;
         }
+        a.cl-social-tiktok {
+            background-position: 0 -90px;
+        }
     }
-    
+
     &.dark {
         a.cl-social-facebook {
             background-position: -20px 0;
@@ -75,8 +78,11 @@
         a.cl-social-snapchat {
             background-position: -20px -75px;
         }
+        a.cl-social-tiktok {
+            background-position: -20px -90px;
+        }
     }
-    
+
     &.light {
         a.cl-social-facebook {
             background-position: -40px 0;
@@ -96,7 +102,10 @@
         a.cl-social-snapchat {
             background-position: -40px -75px;
         }
+        a.cl-social-tiktok {
+            background-position: -40px -90px;
+        }
     }
-    
-    
+
+
 } // .socialbar
