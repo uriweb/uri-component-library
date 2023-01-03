@@ -21,7 +21,7 @@
     "@wordpress/eslint-plugin": "^9.2.0",
     "acorn": "^8.5.0",
     "autoprefixer": "^10.3.7",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^8.3.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "eslint": "^8.0.1",
