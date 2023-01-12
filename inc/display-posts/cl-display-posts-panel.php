@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying a post as a hero
+ * The template for displaying a post as a panel
  *
  * @package uri-component-library
  */
