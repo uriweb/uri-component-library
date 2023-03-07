@@ -1,0 +1,17 @@
+{
+    "name": "uriweb/uri-component-library",
+    "type":  "wordpress-plugin",
+    "description": "The Component Library standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.",
+    "authors": [
+        {
+            "name": "URI Web Communications",
+            "email": "web-group@uri.edu",
+            "homepage": "https://github.com/uriweb"
+        }
+    ],
+    "homepage": "https://www.uri.edu",
+    "license": "GPL-3.0-only",
+    "require": {
+        "php": ">=7.4"
+    }
+}
