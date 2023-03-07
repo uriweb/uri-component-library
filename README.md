@@ -10,13 +10,11 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.0.2
+## What's new in 5.0.3
 
-CL 5.0.2 is a bug fix release.
+CL 5.0.3 is a minor release.
 
-* Fixes an issue where the Menu block options would indicate that no menus were available, even if ones existed
-* Improves WAI-ARIA keyboard interactions for components with media pickers (see [Wordpress](https://developer.wordpress.org/block-editor/components/toolbar-button/) and [W3](https://www.w3.org/TR/wai-aria-practices/#toolbar) docs for details)
-* Updates development tools
+* Adds a composer.json file
 
 For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/210/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
@@ -34,10 +32,10 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 [![CodeFactor](https://www.codefactor.io/repository/github/uriweb/uri-component-library/badge/master)](https://www.codefactor.io/repository/github/uriweb/uri-component-library/overview/master)
 [![devDependencies Status](https://david-dm.org/uriweb/uri-component-library/dev-status.svg)](https://david-dm.org/uriweb/uri-component-library?type=dev)
 
-__Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker)  
+__Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 4.0  
 __Tested up to:__ 5.5  
-__Stable tag:__ 5.0.2  
+__Stable tag:__ 5.0.3  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
