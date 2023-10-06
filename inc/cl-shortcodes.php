@@ -997,6 +997,7 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 			'facebook' => '',
 			'instagram' => '',
 			'twitter' => '',
+			'x' => '',
 			'youtube' => '',
 			'snapchat' => '',
 			'linkedin' => '',
@@ -1024,6 +1025,11 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 			),
 			array(
 				'attr' => 'twitter',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'x',
 				'types' => array( 'url' ),
 				'req' => false,
 			),
