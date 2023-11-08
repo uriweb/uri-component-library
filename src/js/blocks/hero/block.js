@@ -136,9 +136,6 @@ registerBlockType( 'uri-cl/hero', {
 		format: {
 			type: 'string',
 		},
-		animation: {
-			type: 'string',
-		},
 	},
 
 	edit( { attributes, className, setAttributes, isSelected } ) {

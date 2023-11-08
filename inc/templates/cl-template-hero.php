@@ -67,16 +67,6 @@ if ( ! empty( $atts['vid'] ) ) {
 	$id = empty( $atts['id'] ) ? $vid : $atts['id'];
 	$image = '<div id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" class="poster"';
 
-} else if ( ! empty( $atts['animation'] ) ) {
-
-	switch ( $atts['animation'] ) {
-		case 'shift':
-			$ani_method = 'shift';
-			break;
-	}
-
-	$image = '<div class="animate ' . $ani_method . '"';
-
 } else {
 
 	$image = '<div class="still"';

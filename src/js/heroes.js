@@ -10,24 +10,9 @@ let CLResizeSuperheroes;
 	window.addEventListener( 'load', initCLHeroes, false );
 
 	function initCLHeroes() {
-		animate();
 		blurHeroControl();
 		mobile();
 		superhero();
-	}
-
-	/*
-	 * Animation control for animated image heroes
-	 */
-	function animate() {
-		let i;
-
-		const heroes = document.querySelectorAll( '.cl-hero .animate.shift' );
-
-		for ( i = 0; i < heroes.length; i++ ) {
-			heroes[ i ].style.backgroundPositionX = '100%';
-			heroes[ i ].style.backgroundPositionY = 0;
-		}
 	}
 
 	/*

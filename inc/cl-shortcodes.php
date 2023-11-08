@@ -514,7 +514,6 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'link' => '',
 			'vid' => '',
 			'id' => '',
-			'animation' => '',
 			'format' => '',
 			'img' => '',
 			'use_caption' => false,
@@ -550,12 +549,6 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 				'attr' => 'link',
 				'types' => array( 'url' ),
 				'req' => false,
-			),
-			array(
-				'attr' => 'animation',
-				'types' => array( 'str' ),
-				'req' => false,
-				'values' => array( 'shift' ),
 			),
 			array(
 				'attr' => 'format',
