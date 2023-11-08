@@ -1,0 +1,13 @@
+/* ======= UNIVERSAL ======= */
+
+*[class^="cl-"] p:empty {
+    display: none;
+}
+
+*[class^="cl-"].fitted {
+    margin-bottom: 0 !important;
+}
+
+*[class^="cl-"].block-level {
+    margin-bottom: 2rem !important;
+}
