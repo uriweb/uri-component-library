@@ -1,14 +1,15 @@
 <?php
 /**
  * Plugin Name: URI Component Library
- * Plugin URI: http://www.uri.edu
- * Description: Component Library
+ * Plugin URI: http://github.com/uriweb/uri-component-library
+ * Description: Standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.
  * Version: 5.1.0
  * Author: URI Web Communications
- * Author URI: https://today.uri.edu/
+ * Author URI: https://www.uri.edu/wordpress
  *
  * @author: Brandon Fuller <bjcfuller@uri.edu>
  * @author: John Pennypacker <jpennypacker@uri.edu>
+ * @author: Alexandra Gauss <alexandra_gauss@uri.edu>
  * @package uri-component-library
  */
 
