@@ -1,0 +1,375 @@
+/* ==============================
+   ACCESSIBILITY CONTROLS
+   ============================== */
+
+
+.cl-has-accessibility-controls {
+
+  .cl-accessibility-controls-container {
+
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+    height: calc( 125px + 1rem );
+    width: calc( 160px + 1rem );
+
+    .cl-accessibility-controls {
+
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      background: rgba(255,255,255,.5);
+      border-radius: 16px;
+      height: 32px;
+      width: 32px;
+      overflow: hidden;
+      box-sizing: border-box;
+      transition:
+        background .25s ease-in-out,
+        height .15s ease-in-out,
+        width .15s ease-in-out;
+
+      &:hover,
+      &:focus {
+        cursor: default;
+        background: rgba(255,255,255,.65);
+      }
+
+      @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+        & {
+          background: rgba(255,255,255,.3);
+          backdrop-filter: blur(20px);
+        }
+        &:hover,
+        &:focus {
+          background: rgba(255,255,255,.5);
+        }
+      }
+
+    }
+
+    .cl-accessibility-icon {
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      height: 32px;
+      padding-left: 32px;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity .2s ease-in-out .2s;
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 64px auto;
+      background-position: 0 0;
+    }
+
+    .cl-accessibility-control {
+
+      padding: 0 10px;
+      margin: 10px 0 15px;
+      width: 80px;
+      opacity: 0;
+      transition: opacity .1s ease-in-out;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+
+    }
+
+    .cl-accessibility-control-default {
+      display: block;
+    }
+
+    .cl-accessibility-control-alternate {
+      display: none;
+    }
+
+    .cl-accessibility-motion-control {
+
+      .cl-accessibility-control-default .cl-accessibility-control-button {
+        background-position: 0 -56px;
+      }
+
+      .cl-accessibility-control-alternate .cl-accessibility-control-button {
+        background-position: 0 -28px;
+      }
+
+    }
+
+    .cl-accessibility-contrast-control {
+
+      border-left: 1px solid rgba(255,255,255,.3);
+
+      .cl-accessibility-control-default .cl-accessibility-control-button {
+        background-position: 0 -84px;
+      }
+
+      .cl-accessibility-control-alternate .cl-accessibility-control-button {
+        background-position: 0 -112px;
+      }
+
+    }
+
+    .cl-accessibility-control-label {
+
+      text-align: center;
+      font-size: .7rem;
+      font-weight: bold;
+      color: rgba(0,0,0,.7);
+      margin-top: 10px;
+
+      .cl-accessibility-syntax {
+        display: block;
+        font-weight: normal;
+      }
+
+    }
+
+    .cl-accessibility-control-button {
+
+      position: relative;
+      left: calc( 50% - 14px );
+      width: 0;
+      height: 28px;
+      margin-top: 10px;
+      padding-left: 28px;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: rgba(255,255,255,.3);
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 56px auto;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255,255,255,.8);
+      }
+
+    }
+
+    &:hover,
+    &:focus {
+
+      .cl-accessibility-icon {
+        opacity: 0;
+        transition: opacity .05s ease-in-out;
+      }
+
+      .cl-accessibility-controls {
+        height: 125px;
+        width: 160px;
+      }
+
+      .cl-accessibility-control {
+        opacity: 1;
+        transition: opacity .2s ease-in-out .1s;
+      }
+
+    }
+
+    .cl-accessibility-system-setting {
+
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      align-items: center;
+      padding: 0 10px;
+      height: 30px;
+      border-top: 1px solid rgba(255,255,255,.3);
+
+      &:hover,
+      &:focus {
+        background: rgba(255,255,255,.1);
+        cursor: pointer;
+      }
+
+    }
+
+    .cl-accessibility-toggle {
+      width: 12px;
+      height: 12px;
+      transform: translateY(-1px);
+      border-radius: 6px;
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(0,0,0,.3);
+      justify-self: end;
+      box-sizing: border-box;
+    }
+
+    .cl-accessibility-toggle-label {
+      padding-left: 10px;
+      font-size: .7rem;
+      color: rgba(0,0,0,.7);
+    }
+
+  }
+
+  &.cl-accessibility-motion-paused .cl-accessibility-motion-control,
+  &.cl-accessibility-contrast-improved .cl-accessibility-contrast-control {
+
+    .cl-accessibility-control-default {
+      display: none;
+    }
+
+    .cl-accessibility-control-alternate {
+      display: block;
+    }
+
+  }
+
+  &.cl-dark-accessibility-controls {
+
+    .cl-accessibility-controls-container {
+
+      .cl-accessibility-controls {
+
+        background: rgba(0,0,0,.5);
+
+        &:hover,
+        &:focus {
+          background: rgba(0,0,0,.65);
+        }
+
+        @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+          & {
+            background: rgba(0,0,0,.4);
+            backdrop-filter: blur(20px) brightness(150%) saturate(150%);
+          }
+          &:hover,
+          &:focus {
+            background: rgba(0,0,0,.3);
+          }
+        }
+
+      }
+
+      .cl-accessibility-icon {
+        background-position: -32px 0;
+      }
+
+      .cl-accessibility-motion-control {
+
+        .cl-accessibility-control-default .cl-accessibility-control-button {
+          background-position: -28px -56px;
+        }
+
+        .cl-accessibility-control-alternate .cl-accessibility-control-button {
+          background-position: -28px -28px;
+        }
+
+      }
+
+      .cl-accessibility-contrast-control {
+
+        border-left: 1px solid rgba(255,255,255,.1);
+
+        .cl-accessibility-control-default .cl-accessibility-control-button {
+          background-position: -28px -84px;
+        }
+
+        .cl-accessibility-control-alternate .cl-accessibility-control-button {
+          background-position: -28px -112px;
+        }
+
+      }
+
+      .cl-accessibility-control-label {
+        color: rgba(255,255,255,.7);
+      }
+
+      .cl-accessibility-control-button {
+
+        background-color: rgba(255,255,255,.1);
+
+        &:hover,
+        &:focus {
+          background-color: rgba(255,255,255,.2);
+        }
+
+      }
+
+      .cl-accessibility-system-setting {
+        border-top: 1px solid rgba(255,255,255,.1);
+      }
+
+      .cl-accessibility-toggle {
+        background: rgba(255,255,255,.2);
+        border: 1px solid rgba(255,255,255,.3);
+      }
+
+      .cl-accessibility-toggle-label {
+        color: rgba(255,255,255,.7);
+      }
+
+    }
+
+  }
+
+}
+
+body.cl-accessibility-applied-site-wide {
+
+  &.cl-accessibility-motion-paused .cl-accessibility-motion-control,
+  &.cl-accessibility-contrast-improved .cl-accessibility-contrast-control {
+
+    .cl-accessibility-control-default {
+      display: none !important;
+    }
+
+    .cl-accessibility-control-alternate {
+      display: block !important;
+    }
+
+  }
+
+  .cl-has-accessibility-controls {
+
+    .cl-accessibility-controls-container {
+
+      .cl-accessibility-system-setting .cl-accessibility-toggle {
+        border: 4px solid #333;
+      }
+
+    }
+
+    &.cl-dark-accessibility-controls {
+
+      .cl-accessibility-controls-container {
+
+        .cl-accessibility-system-setting .cl-accessibility-toggle {
+          border: 4px solid #fff;
+        }
+
+      }
+
+    }
+
+
+  }
+
+}
+
+@media screen and (min-width: $break1) {
+  .cl-has-accessibility-controls {
+
+    .cl-accessibility-controls-container {
+
+      height: 200px;
+      width: 240px;
+
+      .cl-accessibility-controls {
+        bottom: 2rem;
+        right: 2rem;
+      }
+
+    }
+
+  }
+}

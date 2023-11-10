@@ -4,10 +4,9 @@ var pkg = require('./package.json');
 // include plug-ins
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
-//var stripDebug = require('gulp-strip-debug');
 var terser = require('gulp-terser');
 var replace = require('gulp-replace-task');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('autoprefixer');
 var postcss = require('gulp-postcss');
@@ -20,7 +19,15 @@ var sassOptions = {
   outputStyle: 'compressed' //expanded, nested, compact, compressed
 };
 
+// watch
+const watchCSS = () => gulp.watch('./src/sass/*.scss', styles);
+const watchJS = () => gulp.watch('./src/js/*.js', scripts);
+const watchWYSIWYGJS = () => gulp.watch('./js/wysiwyg/*.js', wysiwyg);
+const watchBlocksJS = () => gulp.watch('./src/js/blocks/', webpack);
+const watchPHP = () => gulp.watch('./**/*.php', sniffs);
+const watchVersion = () => gulp.watch('./package.json', version);
 
+// CSS concat, auto-prefix and minify
 function styles(done) {
 
   var banner = ['/**',
@@ -39,7 +46,7 @@ function styles(done) {
 
 	gulp.src('./src/sass/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(sass.sync(sassOptions).on('error', sass.logError))
 		.pipe(concat('cl.built.css'))
     .pipe(postcss([ autoprefixer() ]))
     .pipe(header(banner, { pkg : pkg } ))
@@ -47,12 +54,9 @@ function styles(done) {
 		.pipe(gulp.dest('./css/'));
 
   done();
-  //console.log('styles ran');
 }
-// CSS concat, auto-prefix and minify
-gulp.task('styles', styles);
 
-
+// JS concat, strip debugging and minify
 function scripts(done) {
 
   var banner = ['/**',
@@ -70,51 +74,51 @@ function scripts(done) {
                   ''].join('\n');
 
 	// Run eslint for src js
-    gulp.src('./src/js/*.js')
-        .pipe(eslint(done))
-        .pipe(eslint.format());
-
-	// Run eslint for wysiwyg js
-	gulp.src('./js/wysiwyg/*.js')
-        .pipe(eslint(done))
-        .pipe(eslint.format());
+  //  gulp.src('./src/js/*.js')
+  //    .pipe(eslint(done))
+  //    .pipe(eslint.format());
 
 	// Compile src js
     gulp.src('./src/js/*.js')
         .pipe(concat('cl.built.js'))
-        //.pipe(stripDebug())
         .pipe(terser())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./js/'));
 
 	done();
- // console.log('scripts ran');
 }
-// JS concat, strip debugging and minify
-gulp.task('scripts', scripts);
 
+function wysiwyg(done) {
 
+  // Run eslint for wysiwyg js
+  //gulp.src('./js/wysiwyg/*.js')
+  //  .pipe(eslint(done))
+  //  .pipe(eslint.format());
 
+  done();
+}
+
+// Run codesniffer
 function sniffs(done) {
 
     return gulp.src('.', {read:false})
         .pipe(shell(['./.sniff']));
 
+    done();
+
 }
-// run codesniffer
-gulp.task('sniffs', sniffs);
 
-
+// Run webpack
 function webpack(done) {
 
     return gulp.src('.', {read:false})
         .pipe(shell(['npx webpack']));
 
+    done();
+
 }
-// run webpack
-gulp.task('webpack', webpack);
 
-
+// Update plugin version
 function version(done) {
 
 	gulp.src('./uri-component-library.php')
@@ -126,35 +130,15 @@ function version(done) {
 		}))
 		.pipe(gulp.dest('./'));
 
+    done();
 }
-// Update plugin version
-gulp.task('version', version);
 
-
-function watcher(done) {
-
-	// watch for CSS changes
-	gulp.watch('./src/sass/*.scss', styles);
-
-  // watch for JS changes
-	gulp.watch('./src/js/*.js', scripts);
-	gulp.watch('./js/wysiwyg/*.js', scripts);
-  gulp.watch('./src/js/blocks/', webpack);
-
-	// watch for PHP change
-	gulp.watch('./**/*.php', sniffs);
-
-	done();
-}
-// watch
-gulp.task('watcher', watcher);
-
-
-gulp.task( 'default',
-	gulp.parallel('styles', 'scripts', 'sniffs', 'webpack', 'version', 'watcher', function(done){
-		done();
-	})
+// Default
+const dev = gulp.series(
+    gulp.parallel(styles, scripts, wysiwyg, sniffs, webpack, version),
+    gulp.parallel(watchCSS, watchJS, watchWYSIWYGJS, watchBlocksJS, watchPHP, watchVersion)
 );
+exports.default = dev;
 
 
 function done() {

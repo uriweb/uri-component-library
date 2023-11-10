@@ -15,7 +15,6 @@ If you have a question about using or contributing to URI Component Library that
 
 Instead, get in touch outside the repository by contacting someone below on the URI Web Communications team:
 
-* __John Pennypacker__ [jpennypacker@uri.edu](mailto:jpennypacker@uri.edu)
 * __Brandon Fuller__ [bjcfuller@uri.edu](mailto:bjcfuller@uri.edu)
 * __Sarah Couch__ [scouch@uri.edu](mailto:scouch@uri.edu)
 

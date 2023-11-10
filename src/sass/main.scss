@@ -1,24 +1,17 @@
-/* ======= RESET ======= */
-
-*[class^="cl-"] p:empty {
-    display: none;
-}
-
-*[class^="cl-"].fitted {
-    margin-bottom: 0 !important;
-}
-
-*[class^="cl-"].block-level {
-    margin-bottom: 2rem !important;
-}
-
 /* ======= VARIABLES ======= */
 
 @import 'variables';
 
+/* ======= UNIVERSAL ======= */
+
+@import 'universal';
+
 /* ======= PARTIALS ======= */
 
 @import 'tiles';
+@import 'accessibility';
+@import 'abstracts';
+@import 'breakouts';
 @import 'buttons';
 @import 'boxouts';
 @import 'cards';

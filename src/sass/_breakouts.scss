@@ -1,0 +1,31 @@
+/* ======= BREAKOUTS ======= */
+
+
+.cl-breakout {
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-bottom: 2rem;
+  background: #eee;
+
+  &.use-content-width {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .content-width {
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+}
+
+@media all and (min-width: 1050px) {
+  .content-width {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}

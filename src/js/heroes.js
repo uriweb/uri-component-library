@@ -1,91 +1,8 @@
 /**
- * HEROS
+ * HEROES GENERAL FUNCTIONS
  */
 
 let CLResizeSuperheroes;
-
-class CLHeroVimeo { // eslint-disable-line no-unused-vars
-	/**
-	 * Do things with the hero when it's loaded
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onReady( data ) {
-		// Listen for browser resizing
-		window.addEventListener(
-			'resize',
-			function() {
-				CLVimeo.resizeRelative( data );
-			}
-		);
-		CLVimeo.resizeRelative( data );
-
-		// Listen for scrolling
-		window.addEventListener(
-			'scroll',
-			function() {
-				if ( ! data.parent.classList.contains( 'paused' ) ) {
-					CLVimeo.determinePlayState( data );
-				}
-			}
-		);
-		CLVimeo.determinePlayState( data );
-
-		// Add play/pause button
-		const overlay = data.parent.querySelector( '.overlay' );
-		const button = document.createElement( 'div' );
-
-		button.className = 'motionswitch';
-		button.title = 'Pause';
-		button.addEventListener(
-			'click',
-			function() {
-				CLHeroVimeo.control( data, button );
-			}
-		);
-
-		overlay.appendChild( button );
-	}
-
-	static control( data, button ) {
-		switch ( data.state ) {
-			default:
-			case 'playing':
-				data.player.pause();
-				data.parent.classList.add( 'paused' );
-				button.setAttribute( 'title', 'Play' );
-				break;
-			case 'paused':
-				data.player.play();
-				data.parent.classList.remove( 'paused' );
-				button.setAttribute( 'title', 'Pause' );
-				break;
-		}
-	}
-
-	/**
-	 * Get hero state and decide what to do
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onStateChange( data ) {
-		switch ( data.state ) {
-			case 'playing':
-				data.poster.classList.add( 'unveil' );
-				break;
-		}
-	}
-
-	/**
-	 * Revert to poster if there's an error with the hero video
-	 *
-	 * @param {Object} data The player data.
-	 */
-	static onError( data ) {
-		data.poster.classList.remove( 'unveil' );
-		data.parent.querySelector( '.motionswitch' ).style.display = 'none';
-	}
-} // END CLHeroVimeo
 
 ( function() {
 	'use strict';
@@ -93,24 +10,9 @@ class CLHeroVimeo { // eslint-disable-line no-unused-vars
 	window.addEventListener( 'load', initCLHeroes, false );
 
 	function initCLHeroes() {
-		animate();
 		blurHeroControl();
 		mobile();
 		superhero();
-	}
-
-	/*
-	 * Animation control for animated image heroes
-	 */
-	function animate() {
-		let i;
-
-		const heroes = document.querySelectorAll( '.cl-hero .animate.shift' );
-
-		for ( i = 0; i < heroes.length; i++ ) {
-			heroes[ i ].style.backgroundPositionX = '100%';
-			heroes[ i ].style.backgroundPositionY = 0;
-		}
 	}
 
 	/*

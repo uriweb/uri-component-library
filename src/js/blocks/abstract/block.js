@@ -13,6 +13,7 @@ const {
 	ButtonGroup,
 	FocalPointPicker,
 	ToggleControl,
+	ColorPicker,
 } = wp.components;
 const {
 	BlockControls,
@@ -37,34 +38,25 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/hero.svg' ) }
+			src={ ( URI_CL_URL + 'i/icons/abstract.svg' ) }
 			alt="button"
 		/>
 	);
 };
 
-const randomID = () => {
-	// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
-	const S4 = () => {
-		return ( ( ( 1 + Math.random() ) * 0x10000 ) | 0 ).toString( 16 ).substring( 1 );
-	};
-	return ( S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4() );
-};
+registerBlockType( 'uri-cl/abstract', {
 
-registerBlockType( 'uri-cl/hero', {
-
-	title: __( 'Hero' ),
+	title: __( 'Abstract' ),
 	icon: customIcon,
 	category: 'cl-blocks',
-	description: __( 'Use heroes to engage with the visitor and create the sense of desire.' ),
+	description: __( 'Use abstracts to introduce content in a visual mannor, especially when suitable photography is not available.' ),
 	example: {
 		attributes: {
-			headline: __( 'Aspirational' ),
-			subhead: __( 'Heroes always are.' ),
-			button: __( 'Be one' ),
+			title: __( 'A grand vision' ),
+			body: __( 'Set the groundwork for the story, and entice readers to explore fully.' ),
+			button: __( 'Continue' ),
 			mediaID: true,
 			img: URI_CL_URL + 'i/example.jpg',
-			format: 'super',
 		},
 	},
 
@@ -78,29 +70,11 @@ registerBlockType( 'uri-cl/hero', {
 		body: {
 			type: 'string',
 		},
-		headline: { // Depricated in v5.1, use "title" instead
-			type: 'string',
-		},
-		subhead: { // Depricated in v5.1, use "body" instead
-			type: 'string',
-		},
 		link: {
 			type: 'string',
 		},
 		mediaID: {
 			type: 'number',
-		},
-		mediaHeight: {
-			type: 'number',
-		},
-		mediaWidth: {
-			type: 'number',
-		},
-		id: {
-			type: 'string',
-		},
-		vid: {
-			type: 'string',
 		},
 		img: {
 			type: 'string',
@@ -111,30 +85,23 @@ registerBlockType( 'uri-cl/hero', {
 		button: {
 			type: 'string',
 		},
-		tooltip: {
+		background: {
+			type: 'string',
+			default: '#002147',
+		},
+		bgcolorpicker: {
+			type: 'string',
+			default: '#1b5da9',
+		},
+		bgcss: {
 			type: 'string',
 		},
-		use_caption: {
-			type: 'boolean',
-		},
-		caption: {
+		style: {
 			type: 'string',
-		},
-		credit: {
-			type: 'string',
-		},
-		positionX: {
-			type: 'number',
-		},
-		positionY: {
-			type: 'number',
+			default: 'bars',
 		},
 		invert_a11y: {
 			type: 'boolean',
-			default: true,
-		},
-		format: {
-			type: 'string',
 		},
 	},
 
@@ -163,10 +130,6 @@ registerBlockType( 'uri-cl/hero', {
 							alt: media.alt,
 							img: media.url,
 							mediaID: media.id,
-							mediaHeight: media.height,
-							mediaWidth: media.width,
-							positionX: 0.5,
-							positionY: 0.5,
 						} );
 					}
 					}
@@ -196,94 +159,59 @@ registerBlockType( 'uri-cl/hero', {
 			);
 		}
 
-		// Generate editor view of the hero itself
+		// Generate editor view of the abstract itself
 		const createContentEditForm = () => {
-			if ( ! attributes.id ) {
-				attributes.id = randomID();
-			}
-
-			if ( ! attributes.title && !! attributes.headline ) { // "headline" depricated in v5.1, use "title" instead
-				attributes.title = attributes.headline;
-			}
-
-			if ( ! attributes.body && !! attributes.subhead ) { // "subhead" depricated in v5.1, use "body" instead
-				attributes.body = attributes.subhead;
-			}
-
-			let classes = 'cl-hero';
+			let classes = 'cl-abstract';
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
 			}
 			if ( !! attributes.style ) {
 				classes += ' ' + attributes.style;
 			}
-			if ( !! attributes.format ) {
-				classes += ' ' + attributes.format;
-			}
-			if ( !! attributes.link ) {
-				classes += ' has-link';
-			} else {
-				classes += ' no-link';
-			}
-			if ( !! attributes.body || !! attributes.subhead ) { // "subhead" depricated in v5.1, use "body" instead
-				classes += ' has-subhead';
-			} else {
-				classes += ' no-subhead';
-			}
 			if ( !! isSelected ) {
 				classes += ' selected';
 			}
-			let style = {};
-			let poster = 'poster';
-			if ( !! attributes.img ) {
-				classes += ' has-image';
-				poster = 'still';
-				style = {
-					backgroundPosition: `${ attributes.positionX * 100 }% ${ attributes.positionY * 100 }%`,
-					backgroundImage: `url(${ attributes.img })`,
-				};
-			} else {
-				classes += ' no-image';
+
+			attributes.background = attributes.bgcolorpicker;
+			if ( !! attributes.bgcss ) {
+				attributes.background = attributes.bgcss;
 			}
 
-			// Set the tooltip
-			let title = '';
-			if ( !! attributes.tooltip ) {
-				title = attributes.tooltip;
-			}
 			return (
-				<div className="container cl-hero-block-form">
-					<div className={ classes } title={ title }>
-						<div className="cl-hero-proper">
-							<div className={ poster } style={ style }>
-								<MediaUpload
-									onSelect={ ( media ) => {
-										setAttributes( {
-											alt: media.alt,
-											img: media.url,
-											mediaID: media.id,
-										} );
-									}
-									}
-									type="image"
-									value={ attributes.mediaID }
-									render={ ( { open } ) => getImageButton( open ) }
-								/>
-							</div>
-							<div className="cl-hero-text overlay">
-								<div className="block">
+				<div className="container cl-abstract-block-form">
+					<div className={ classes } style={ { background: attributes.background } }>
+						<div className="cl-abstract-backdrop-preview"></div>
+						<div className="cl-abstract-proper has-img">
+							<div className="cl-abstract-content-wrapper">
+								<div className="cl-abstract-img">
+									<div className="img-wrapper">
+										<MediaUpload
+											onSelect={ ( media ) => {
+												setAttributes( {
+													alt: media.alt,
+													img: media.url,
+													mediaID: media.id,
+												} );
+											}
+											}
+											type="image"
+											value={ attributes.mediaID }
+											render={ ( { open } ) => getImageButton( open ) }
+										/>
+									</div>
+								</div>
+								<div className="cl-abstract-text">
 									<h1><PlainText
 										onChange={ ( content ) => setAttributes( { title: content } ) }
 										value={ attributes.title }
-										placeholder={ __( 'Your hero title' ) }
+										placeholder={ __( 'Your abstract title' ) }
 										keepPlaceholderOnFocus={ true }
 									/></h1>
-									<p className="subhead"><RichText
+									<p><RichText
 										onChange={ ( content ) => setAttributes( { body: content } ) }
 										value={ attributes.body }
-										placeholder={ __( 'Your hero subtitle' ) }
+										placeholder={ __( 'Your abstract text' ) }
 										keepPlaceholderOnFocus={ true }
-										className="subhead"
 									/></p>
 									<span className="cl-button">
 										<PlainText
@@ -315,10 +243,6 @@ registerBlockType( 'uri-cl/hero', {
 											alt: media.alt,
 											img: media.url,
 											mediaID: media.id,
-											mediaHeight: media.height,
-											mediaWidth: media.width,
-											positionX: 0.5,
-											positionY: 0.5,
 										} );
 									}
 									}
@@ -348,13 +272,14 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<BaseControl
 								label={ __( 'Format' ) }
-								id="hero-format"
+								help={ __( 'To increase performance, abstract previews will appear simplified in the editor window.' ) }
+								id="abstract-format"
 							>
-								<ButtonGroup aria-label={ __( 'Hero Format' ) }>
-									{ [ 'default', 'fullwidth', 'super' ].map( ( value ) => {
+								<ButtonGroup aria-label={ __( 'Abstract Format' ) }>
+									{ [ 'bars', 'discs', 'lattice', 'honeycomb' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const format = ( undefined === attributes.format ) ? '' : attributes.format;
+										const format = ( undefined === attributes.style ) ? '' : attributes.style;
 										const selected = ( key === format );
 
 										return (
@@ -363,7 +288,7 @@ registerBlockType( 'uri-cl/hero', {
 												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { format: key } ) }
+												onClick={ ( content ) => setAttributes( { style: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
@@ -374,70 +299,36 @@ registerBlockType( 'uri-cl/hero', {
 						</PanelRow>
 
 						<PanelRow>
-							<FocalPointPicker
-								url={ attributes.img }
-								dimensions={ { width: attributes.mediaWidth, height: attributes.mediaHeight } }
-								value={ { x: attributes.positionX, y: attributes.positionY } }
-								onChange={ ( focalPoint ) => setAttributes( { positionX: ( focalPoint.x * 1 ), positionY: ( focalPoint.y * 1 ) } ) }
-							/>
+							<BaseControl
+								label={ __( 'Background Color' ) }
+								id="abstract-background"
+							>
+								<ColorPicker
+									color={ attributes.bgcolorpicker }
+									onChangeComplete={ ( value ) => setAttributes( { bgcolorpicker: value.hex } ) }
+									disableAlpha
+								/>
+							</BaseControl>
 						</PanelRow>
 
 						<PanelRow>
 							<TextControl
-								label="Video URL"
-								onChange={ ( content ) => setAttributes( { vid: content } ) }
-								value={ attributes.vid }
-								className="meta-field vid"
-								help="For creating a video hero."
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<ToggleControl
-								label="Use WordPress caption"
-								help="Setting a custom caption below will override any WordPress caption."
-								checked={ attributes.use_caption }
-								onChange={ ( content ) => setAttributes( { use_caption: content } ) }
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<TextControl
-								label="Caption"
-								onChange={ ( content ) => setAttributes( { caption: content } ) }
-								value={ attributes.caption }
-								className="meta-field vid"
-								help="Set a caption for the hero."
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<TextControl
-								label="Credit"
-								onChange={ ( content ) => setAttributes( { credit: content } ) }
-								value={ attributes.credit }
-								className="meta-field vid"
-								help="Specify credit for the hero media."
-							/>
-						</PanelRow>
-
-						<PanelRow>
-							<TextControl
-								label="Tool tip"
-								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
-								value={ attributes.tooltip }
-								className="meta-field"
+								label="Custom Background CSS"
+								onChange={ ( content ) => setAttributes( { bgcss: content } ) }
+								value={ attributes.bgcss }
+								help="Set a CSS value for the background color (overrides the color picker setting)."
 							/>
 						</PanelRow>
 
 						<PanelRow>
 							<ToggleControl
 								label="Invert accessibility controls"
-								help="Use white foreground on dark background. Only applies to video heroes."
+								help="Use white foreground on dark background."
 								checked={ attributes.invert_a11y }
 								onChange={ ( content ) => setAttributes( { invert_a11y: content } ) }
 							/>
 						</PanelRow>
+
 					</PanelBody>
 				</InspectorControls>
 			);

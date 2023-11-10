@@ -1,47 +1,51 @@
 {
   "name": "uri-component-library",
   "description": "URI Component Library",
-  "version": "5.0.2",
+  "version": "5.1.0",
   "homepage": "https://www.uri.edu",
   "repository": "https://github.com/uriweb/uri-component-library",
-  "docs": "https://www.uri.edu/styleguide",
+  "docs": "https://www.uri.edu/wordpress",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "University of Rhode Island",
   "humans": [
     "Brandon Fuller <bjcfuller@uri.edu>",
-    "John Pennypacker <jpennypacker@uri.edu>"
+    "John Pennypacker <jpennypacker@uri.edu>",
+    "Alexandra Gauss <alexandra_gauss@uri.edu>"
   ],
   "license": "GPL-3.0",
   "licenseURI": "http://www.gnu.org/licenses/gpl.html",
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@wordpress/eslint-plugin": "^8.0.2",
-    "autoprefixer": "^10.1.0",
-    "babel-loader": "^8.2.2",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@wordpress/eslint-plugin": "^14.11.0",
+    "acorn": "^8.10.0",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.3",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "eslint-plugin-prettier": "^3.3.0",
+    "eslint": "^8.46.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": ">=2.6.1",
     "gulp-eslint": "^6.0.0",
     "gulp-header": "^2.0.9",
-    "gulp-postcss": "^9.0.0",
-    "gulp-replace-task": "^0.11.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-replace-task": "^2.0.1",
+    "gulp-sass": "^5.1.0",
     "gulp-shell": "^0.8.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-strip-debug": "^3.0.0",
-    "gulp-terser": "^2.0.0",
-    "lodash": ">=4.17.19",
-    "postcss": "^8.2.1",
-    "prettier": "^2.2.1",
-    "tsutils": "^3.17.1",
-    "typescript": "^4.1.3",
-    "webpack": "^5.11.0",
-    "webpack-cli": "^4.2.0"
+    "gulp-strip-debug": "^5.0.0",
+    "gulp-terser": "^2.1.0",
+    "lodash": ">=4.17.21",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.1",
+    "sass": "^1.64.2",
+    "tsutils": "^3.21.0",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "browserslist": {
     "production": [
@@ -56,5 +60,8 @@
       "Firefox >= 20",
       "iOS >=8"
     ]
+  },
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001519"
   }
 }

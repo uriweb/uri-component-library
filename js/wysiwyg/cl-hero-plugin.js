@@ -75,7 +75,6 @@
 							'tooltip',
 							'alt',
 							'format',
-							'animation',
 							'use_caption',
 							'caption',
 							'credit',
@@ -118,11 +117,6 @@
 										{ text: 'Default', value: '' },
 										{ text: 'Full Width', value: 'fullwidth' },
 										{ text: 'Super', value: 'super' },
-									],
-									},
-									{ type: 'listbox', name: 'animation', label: 'Animation', value: args.animation, values: [
-										{ text: 'None', value: '' },
-										{ text: 'Shift', value: 'shift' },
 									],
 									},
 

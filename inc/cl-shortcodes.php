@@ -10,6 +10,64 @@ include 'cl-error-checking.php';
 include 'cl-helpers.php';
 
 /**
+ * Abstract
+ */
+function uri_cl_shortcode_abstract( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => '',
+			'body' => '',
+			'img' => '',
+			'alt' => '',
+			'button' => '',
+			'link' => '',
+			'background' => '',
+			'style' => 'bars',
+			'invert_a11y' => false,
+			'class' => '',
+			'className' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	return uri_cl_validate(
+		 'Abstract',
+		$atts,
+		$content,
+		array(
+			array(
+				'attr' => 'img',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'link',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'style',
+				'types' => array( 'str' ),
+				'values' => array( 'bars', 'discs', 'lattice', 'honeycomb' ),
+			),
+			array(
+				'attr' => 'invert_a11y',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'abstract' )
+	);
+
+}
+add_shortcode( 'cl-abstract', 'uri_cl_shortcode_abstract' );
+
+
+/**
  * Boxout
  */
 function uri_cl_shortcode_boxout( $atts, $content = null ) {
@@ -47,6 +105,43 @@ function uri_cl_shortcode_boxout( $atts, $content = null ) {
 
 }
 add_shortcode( 'cl-boxout', 'uri_cl_shortcode_boxout' );
+
+
+/**
+ * Breakout
+ */
+function uri_cl_shortcode_breakout( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'use_content_width' => true,
+			'class' => '',
+			'className' => '',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	// (string $cname , array $atts , array $check_atts , string $template)
+	return uri_cl_validate(
+		 'Breakout',
+		$atts,
+		$content,
+		array(
+			// (string $attr , string $types [, bool $req [, array $values]])
+			array(
+				'attr' => 'use_content_width',
+				'types' => array( 'bool' ),
+				'req' => false,
+			),
+		),
+		uri_cl_shortcode_get_template( 'breakout' )
+	);
+
+}
+add_shortcode( 'cl-breakout', 'uri_cl_shortcode_breakout' );
 
 
 /**
@@ -110,6 +205,7 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 			'tooltip' => '',
 			'float' => '',
 			'reverse' => false,
+			'invert_a11y' => true,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -147,6 +243,11 @@ function uri_cl_shortcode_card( $atts, $content = null ) {
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'left', 'right' ),
+			),
+			array(
+				'attr' => 'invert_a11y',
+				'types' => array( 'bool' ),
+				'req' => false,
 			),
 		),
 		uri_cl_shortcode_get_template( 'card' )
@@ -404,14 +505,15 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'headline' => '',
-			'subhead' => '',
+			'title' => '',
+			'body' => '',
+			'headline' => '', // Depricated in v5.1, use 'title' instead
+			'subhead' => '', // Depricated in v5.1, use 'body' instead
 			'button' => 'Explore',
 			'tooltip' => '',
 			'link' => '',
 			'vid' => '',
 			'id' => '',
-			'animation' => '',
 			'format' => '',
 			'img' => '',
 			'use_caption' => false,
@@ -419,6 +521,7 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			'credit' => '',
 			'positionX' => 0.5,
 			'positionY' => 0.5,
+			'invert_a11y' => true,
 			'class' => '',
 			'className' => '',
 			'css' => '',
@@ -448,12 +551,6 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 				'req' => false,
 			),
 			array(
-				'attr' => 'animation',
-				'types' => array( 'str' ),
-				'req' => false,
-				'values' => array( 'shift' ),
-			),
-			array(
 				'attr' => 'format',
 				'types' => array( 'str' ),
 				'req' => false,
@@ -472,6 +569,11 @@ function uri_cl_shortcode_hero( $atts, $content = null ) {
 			array(
 				'attr' => 'positionY',
 				'types' => array( 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'invert_a11y',
+				'types' => array( 'bool' ),
 				'req' => false,
 			),
 		),

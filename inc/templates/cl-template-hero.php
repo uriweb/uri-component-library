@@ -17,6 +17,15 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
+if ( ! empty( $atts['vid'] ) ) {
+
+	$classes .= ' cl-has-accessibility-controls';
+
+	if ( $atts['invert_a11y'] ) {
+		$classes .= ' cl-dark-accessibility-controls';
+	}
+}
+
 $output = '<section class="cl-wrapper cl-hero-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
@@ -31,11 +40,15 @@ $output .= '<div class="cl-hero-proper">';
 $output .= '<div class="overlay">';
 $output .= '<div class="block">';
 
-if ( ! empty( $atts['headline'] ) ) {
+if ( ! empty( $atts['title'] ) ) {
+	$output .= '<h1>' . $atts['title'] . '</h1>';
+} else if ( ! empty( $atts['headline'] ) ) { // Depricated in v5.1
 	$output .= '<h1>' . $atts['headline'] . '</h1>';
 }
 
-if ( ! empty( $atts['subhead'] ) ) {
+if ( ! empty( $atts['body'] ) ) {
+	$output .= '<p>' . $atts['body'] . '</p>';
+} else if ( ! empty( $atts['subhead'] ) ) { // Depricated in v5.1
 	$output .= '<p>' . $atts['subhead'] . '</p>';
 }
 
@@ -53,16 +66,6 @@ if ( ! empty( $atts['vid'] ) ) {
 	$imgurl = ( 'vimeo' == $platform ) ? uri_cl_get_vimeo_thumbnail( $atts['vid'] ) : 'https://img.youtube.com/vi/' . $vid . '/maxresdefault.jpg';
 	$id = empty( $atts['id'] ) ? $vid : $atts['id'];
 	$image = '<div id="' . $id . '" data-video="' . $vid . '" data-platform="' . $platform . '" class="poster"';
-
-} else if ( ! empty( $atts['animation'] ) ) {
-
-	switch ( $atts['animation'] ) {
-		case 'shift':
-			$ani_method = 'shift';
-			break;
-	}
-
-	$image = '<div class="animate ' . $ani_method . '"';
 
 } else {
 
@@ -83,9 +86,9 @@ if ( ! empty( $atts['img'] ) ) {
 			$caption = wp_get_attachment_caption( $img_id );
 		}
 	}
-
-	$image .= ' style="background-image:url(' . $imgurl . ');';
 }
+
+$image .= ' style="background-image:url(' . $imgurl . ');';
 
 if ( 0.5 != $atts['positionX'] || 0.5 != $atts['positionY'] ) {
 	$position = $atts['positionX'] * 100 . '% ' . $atts['positionY'] * 100 . '%';
@@ -95,6 +98,10 @@ if ( 0.5 != $atts['positionX'] || 0.5 != $atts['positionY'] ) {
 $image .= '"></div>'; // image
 
 $output .= $image;
+
+if ( ! empty( $atts['vid'] ) ) {
+	$output .= uri_cl_get_accessibility_controls();
+}
 
 $output .= '</div>'; // .cl-hero-proper
 

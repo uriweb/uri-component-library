@@ -30,6 +30,18 @@ function uri_cl_shortcode_get_template( $name ) {
 
 
 /**
+ * Get accessibility controls
+ */
+function uri_cl_get_accessibility_controls() {
+
+	include 'templates/cl-template-accessibility.php';
+
+	return $output;
+
+}
+
+
+/**
  * Return img tag
  *
  * @param mixed $img the shortcode img attribute.

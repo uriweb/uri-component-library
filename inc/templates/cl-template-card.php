@@ -19,6 +19,15 @@ if ( $atts['reverse'] ) {
 	$classes .= ' reverse';
 }
 
+$has_vimeo_media = false;
+if ( ! empty( $atts['img'] ) && 'vimeo' == uri_cl_get_video_platform( $atts['img'] ) ) {
+	$has_vimeo_media = true;
+	$classes .= ' cl-has-accessibility-controls';
+	if ( $atts['invert_a11y'] ) {
+		$classes .= ' cl-dark-accessibility-controls';
+	}
+}
+
 $output = '<div class="cl-wrapper cl-card-wrapper">';
 $output .= '<a class="' . $classes . '" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '"';
 
@@ -45,7 +54,7 @@ if ( ! empty( $atts['feature'] ) ) {
 if ( ! empty( $atts['img'] ) ) {
 	$output .= '<div class="cl-card-container media';
 
-	if ( 'vimeo' == uri_cl_get_video_platform( $atts['img'] ) ) {
+	if ( $has_vimeo_media ) {
 
 		$output .= ' video">';
 		$output .= '<div class="overlay"></div>';
@@ -54,11 +63,13 @@ if ( ! empty( $atts['img'] ) ) {
 		$imgurl = uri_cl_get_vimeo_thumbnail( $atts['img'] );
 		$output .= '<div id="' . $vid . '" data-video="' . $vid . '" data-platform="vimeo" class="poster" style="background-image:url(' . $imgurl . ')"></div>';
 
+		$output .= uri_cl_get_accessibility_controls();
+		$output .= '</div>';
+
 	} else {
 		$output .= '">' . uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
+		$output .= '</div>';
 	}
-
-	$output .= '</div>';
 }
 
 $output .= '<div class="cl-card-container text">';
