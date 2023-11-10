@@ -2,7 +2,7 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/uriweb/uri-component-library)](https://github.com/uriweb/uri-component-library/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/uriweb/uri-component-library)](https://github.com/uriweb/uri-component-library/releases/latest)
-![GitHub](https://img.shields.io/github/license/uriweb/uri-component-library)
+![GitHub License](https://img.shields.io/github/license/uriweb/uri-component-library)
 [![Codacy Badge](https://img.shields.io/codacy/grade/043fca0aa28b4b2db799d5daacf2d27d/master)](https://www.codacy.com/app/uriweb/uri-component-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uriweb/uri-component-library&amp;utm_campaign=Badge_Grade)
 ![GitHub top language](https://img.shields.io/github/languages/top/uriweb/uri-component-library?color=violet&branch=master)
 
