@@ -107,7 +107,7 @@ if ( ! empty( $atts['img'] ) ) {
 	$proper_classes .= ' has-img';
 	$img .= '<div class="cl-abstract-img">';
 	$img .= '<div class="img-wrapper">';
-	$img .= '<img src="' . $atts['img'] . '">';
+	$img .= uri_cl_build_img_tag( $atts['img'], $atts['alt'] );
 	$img .= '</div>';
 	$img .= '</div>';
 }
