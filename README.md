@@ -19,8 +19,6 @@ See [this documentation](https://www.uri.edu/wordpress/components/) to learn abo
 * Updates resolution of social media icons
 * Updates development tools
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/229/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
-
 ## How do I get set up?
 
 1. Grab a copy of the [latest version](https://github.com/uriweb/uri-component-library/releases/latest)
