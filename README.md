@@ -12,7 +12,7 @@ See [this documentation](https://www.uri.edu/wordpress/components/) to learn abo
 
 ## What's new in 5.0.3
 
-> IMPORTANT: CL 5.0.3 is a supplemental update to v5.0.2 released after v5.1.0.  It contains changes not released in v5.1.0, but that will be included in later versions.  Recommendation is to either adopt v5.0.3 or wait until a successor to v5.1.0 is released.
+> IMPORTANT: CL 5.0.3 is a supplemental update to v5.0.2 released after v5.1.0.  This release was created off of v5.0.2 and will *not* be merged into `master`. It contains changes not released in v5.1.0, but that will be included in later versions.  If upgrading from v5.0.2, the recommendation is to either adopt v5.0.3 or wait until a successor to v5.1.0 is released.
 
 * Adds TikTok to the Social Bar component
 * Updates the X (formerly Twitter) logo
