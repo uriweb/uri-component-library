@@ -37,6 +37,9 @@ if ( empty( $atts['facebook'] ) && empty( $atts['instagram'] ) && empty( $atts['
 	if ( ! empty( $atts['snapchat'] ) ) {
 		$output .= '<li><a href="' . $atts['snapchat'] . '" class="cl-social-snapchat" title="Snapchat">Snapchat</a></li>';
 	}
+	if ( ! empty( $atts['tiktok'] ) ) {
+		$output .= '<li><a href="' . $atts['tiktok'] . '" class="cl-social-tiktok" title="TikTok">TikTok</a></li>';
+	}
 	if ( ! empty( $atts['linkedin'] ) ) {
 		$output .= '<li><a href="' . $atts['linkedin'] . '" class="cl-social-linkedin" title="LinkedIn">LinkedIn</a></li>';
 	}
