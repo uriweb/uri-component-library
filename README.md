@@ -10,10 +10,15 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.0.3.1
+## What's new in 5.0.3.x
 
 > IMPORTANT: CL 5.0.3.x are supplemental updates to v5.0.2 released after v5.1.0.  This release was created off of v5.0.2 and will *not* be merged into `master`. It contains changes not released in v5.1.0, but that will be included in later versions.  If upgrading from v5.0.2, the recommendation is to either adopt v5.0.3.x or wait until a successor to v5.1.0 is released.
 
+### v5.0.3.1
+
+* Busts cache on social icon sprite
+
+### v5.0.3
 * Adds TikTok to the Social Bar component
 * Updates the X (formerly Twitter) logo
 * Updates resolution of social media icons
