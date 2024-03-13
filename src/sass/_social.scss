@@ -1,21 +1,21 @@
 /* ======= SOCIAL ======= */
 
 .cl-social {
-    
+
 	display: inline-block;
 	list-style: none;
 	margin: 0;
-    
+
     li {
         display: inline-block;
         margin: 0;
         padding: 0;
     }
-    
+
     li:not(:first-child) {
         margin-left: 10px;
     }
-    
+
     a {
         position: relative;
         top: 0;
@@ -24,79 +24,88 @@
         height: 0;
         overflow: hidden;
         padding-left: 20px;
-        padding-bottom: 15px;
+        padding-bottom: 16px;
         background-image: url(../i/sprite-social.png);
         background-repeat: no-repeat;
         background-size: 60px auto;
         transition: top .1s ease-in-out;
     }
-    
+
     a:hover {
         top: -1px;
     }
-    
+
     &.color {
         a.cl-social-facebook {
             background-position: 0 0;
         }
         a.cl-social-instagram {
-            background-position: 0 -15px;
+            background-position: 0 -16px;
         }
         a.cl-social-twitter {
-            background-position: 0 -30px;
+            background-position: 0 -32px;
         }
         a.cl-social-linkedin {
-            background-position: 0 -45px;
+            background-position: 0 -48px;
         }
         a.cl-social-youtube {
-            background-position: 0 -60px;
+            background-position: 0 -64px;
         }
         a.cl-social-snapchat {
-            background-position: 0 -75px;
+            background-position: 0 -80px;
+        }
+        a.cl-social-tiktok {
+            background-position: 0 -96px;
         }
     }
-    
+
     &.dark {
         a.cl-social-facebook {
             background-position: -20px 0;
         }
         a.cl-social-instagram {
-            background-position: -20px -15px;
+            background-position: -20px -16px;
         }
         a.cl-social-twitter {
-            background-position: -20px -30px;
+            background-position: -20px -32px;
         }
         a.cl-social-linkedin {
-            background-position: -20px -45px;
+            background-position: -20px -48px;
         }
         a.cl-social-youtube {
-            background-position: -20px -60px;
+            background-position: -20px -64px;
         }
         a.cl-social-snapchat {
-            background-position: -20px -75px;
+            background-position: -20px -80px;
+        }
+        a.cl-social-tiktok {
+            background-position: -20px -96px;
         }
     }
-    
+
     &.light {
         a.cl-social-facebook {
             background-position: -40px 0;
         }
         a.cl-social-instagram {
-            background-position: -40px -15px;
+            background-position: -40px -16px;
         }
         a.cl-social-twitter {
-            background-position: -40px -30px;
+            background-position: -40px -32px;
         }
         a.cl-social-linkedin {
-            background-position: -40px -45px;
+            background-position: -40px -48px;
         }
         a.cl-social-youtube {
-            background-position: -40px -60px;
+            background-position: -40px -64px;
         }
         a.cl-social-snapchat {
-            background-position: -40px -75px;
+            background-position: -40px -80px;
+        }
+        a.cl-social-tiktok {
+            background-position: -40px -96px;
         }
     }
-    
-    
+
+
 } // .socialbar

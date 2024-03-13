@@ -990,9 +990,11 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 			'facebook' => '',
 			'instagram' => '',
 			'twitter' => '',
+			'x' => '',
 			'youtube' => '',
 			'snapchat' => '',
 			'linkedin' => '',
+			'tiktok' => '',
 			'css' => '',
 		),
 		$atts
@@ -1020,6 +1022,11 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 				'req' => false,
 			),
 			array(
+				'attr' => 'x',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
 				'attr' => 'youtube',
 				'types' => array( 'url' ),
 				'req' => false,
@@ -1031,6 +1038,11 @@ function uri_cl_shortcode_social( $atts, $content = null ) {
 			),
 			array(
 				'attr' => 'linkedin',
+				'types' => array( 'url' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'tiktok',
 				'types' => array( 'url' ),
 				'req' => false,
 			),
