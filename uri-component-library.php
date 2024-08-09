@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://www.uri.edu
  * Description: Component Library
- * Version: 5.0.3.1
+ * Version: 5.0.3.2
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
