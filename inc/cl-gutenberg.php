@@ -75,4 +75,4 @@ function uri_cl_gutenberg_add_categories( $categories ) {
 		)
 	);
 }
-add_filter( 'block_categories', 'uri_cl_gutenberg_add_categories', 10, 2 );
+add_filter( 'block_categories_all', 'uri_cl_gutenberg_add_categories', 10, 2 );
