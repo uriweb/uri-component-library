@@ -14,19 +14,9 @@ See [this documentation](https://www.uri.edu/wordpress/components/) to learn abo
 
 > IMPORTANT: CL 5.0.3.x are supplemental updates to v5.0.2 released after v5.1.0.  This release was created off of v5.0.2 and will *not* be merged into `master`. It contains changes not released in v5.1.0, but that will be included in later versions.  If upgrading from v5.0.2, the recommendation is to either adopt v5.0.3.x or wait until a successor to v5.1.0 is released.
 
-### v5.0.3.2
+### v5.0.3.3
 
-* Updates a deprecated hook.
-
-### v5.0.3.1
-
-* Busts cache on social icon sprite
-
-### v5.0.3
-* Adds TikTok to the Social Bar component
-* Updates the X (formerly Twitter) logo
-* Updates resolution of social media icons
-* Updates development tools
+* Adds jQuery as a dependency. 
 
 ## How do I get set up?
 
@@ -46,6 +36,6 @@ __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](h
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 4.0  
 __Tested up to:__ 6.1.7  
-__Stable tag:__ 5.0.3.2  
+__Stable tag:__ 5.0.3.3  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
