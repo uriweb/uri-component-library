@@ -51,7 +51,7 @@ function uri_cl_enqueues() {
 	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ), array(), uri_cl_cache_buster(), 'all' );
 	wp_enqueue_style( 'uricl-css' );
 
-	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array(), uri_cl_cache_buster(), true );
+	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array('jquery'), uri_cl_cache_buster(), true );
 	wp_enqueue_script( 'uricl-js' );
 
 }
