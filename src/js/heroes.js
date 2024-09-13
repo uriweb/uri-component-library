@@ -50,27 +50,24 @@ let CLResizeSuperheroes;
 
 	function mobile() {
 		let els;
+		els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
 
-		if ( URICL.checkSupport() ) {
-			els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
-
-			window.addEventListener(
-				'resize',
-				function() {
-					let i;
-					const w = window.innerWidth;
-					if ( w < 750 ) {
-						for ( i = 0; i < els.length; i++ ) {
-							els[ i ].classList.remove( 'unveil' );
-						}
-					} else {
-						for ( i = 0; i < els.length; i++ ) {
-							els[ i ].classList.add( 'unveil' );
-						}
+		window.addEventListener(
+			'resize',
+			function() {
+				let i;
+				const w = window.innerWidth;
+				if ( w < 750 ) {
+					for ( i = 0; i < els.length; i++ ) {
+						els[ i ].classList.remove( 'unveil' );
+					}
+				} else {
+					for ( i = 0; i < els.length; i++ ) {
+						els[ i ].classList.add( 'unveil' );
 					}
 				}
-			);
-		}
+			}
+		);
 	}
 
 	function superhero() {
