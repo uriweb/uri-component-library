@@ -166,7 +166,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					el.previousSibling.classList.add( 'unveil' );
+					el.previousSibling.previousSibling.classList.add( 'unveil' );
 				}
 				break;
 		}
