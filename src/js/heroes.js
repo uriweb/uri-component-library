@@ -48,26 +48,21 @@ let CLResizeSuperheroes;
 		}
 	}
 
+	/*
+	 * Youtube doesn't allow autoplaying on mobile.
+	 * In those cases, let's keep the poster for a nicer experience.
+	 */
 	function mobile() {
-		let els;
+		let els, i;
+		const w = window.innerWidth;
+
 		els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
 
-		window.addEventListener(
-			'resize',
-			function() {
-				let i;
-				const w = window.innerWidth;
-				if ( w < 750 ) {
-					for ( i = 0; i < els.length; i++ ) {
-						els[ i ].classList.remove( 'unveil' );
-					}
-				} else {
-					for ( i = 0; i < els.length; i++ ) {
-						els[ i ].classList.add( 'unveil' );
-					}
-				}
+		if ( w < 750 ) {
+			for ( i = 0; i < els.length; i++ ) {
+				els[ i ].classList.remove( 'unveil' );
 			}
-		);
+		}
 	}
 
 	function superhero() {
