@@ -52,7 +52,7 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)  
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 4.0  
-__Tested up to:__ 6.3  
-__Stable tag:__ 5.1.0  
+__Tested up to:__ 6.4.5  
+__Stable tag:__ 5.2.0  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
