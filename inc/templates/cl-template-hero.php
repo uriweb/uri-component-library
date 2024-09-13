@@ -17,13 +17,10 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-if ( ! empty( $atts['vid'] ) ) {
+$classes .= ' cl-has-accessibility-controls';
 
-	$classes .= ' cl-has-accessibility-controls';
-
-	if ( $atts['invert_a11y'] ) {
-		$classes .= ' cl-dark-accessibility-controls';
-	}
+if ( $atts['invert_a11y'] ) {
+	$classes .= ' cl-dark-accessibility-controls';
 }
 
 $output = '<section class="cl-wrapper cl-hero-wrapper">';
@@ -101,6 +98,12 @@ $output .= $image;
 
 if ( ! empty( $atts['vid'] ) ) {
 	$output .= uri_cl_get_accessibility_controls();
+} else {
+	$output .= uri_cl_get_accessibility_controls(
+		array(
+			'motion' => false
+		)
+	);
 }
 
 $output .= '</div>'; // .cl-hero-proper

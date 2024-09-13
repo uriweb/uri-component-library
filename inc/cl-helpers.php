@@ -32,7 +32,18 @@ function uri_cl_shortcode_get_template( $name ) {
 /**
  * Get accessibility controls
  */
-function uri_cl_get_accessibility_controls() {
+function uri_cl_get_accessibility_controls( $features = null ) {
+
+	$defaults = array(
+		'motion' => true,
+		'contrast' => true,
+	);
+
+	if ( null !== $features ) {
+		foreach ( $features as $k => $i ) {
+			$defaults[$k] = $i;
+		}
+	}
 
 	include 'templates/cl-template-accessibility.php';
 

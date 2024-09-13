@@ -80,6 +80,10 @@
         cursor: pointer;
       }
 
+      &.cl-accessibility-control-hidden {
+        display: none;
+      }
+
     }
 
     .cl-accessibility-control-default {
@@ -92,6 +96,8 @@
 
     .cl-accessibility-motion-control {
 
+      border-right: 1px solid rgba(255,255,255,.3);
+
       .cl-accessibility-control-default .cl-accessibility-control-button {
         background-position: 0 -56px;
       }
@@ -103,8 +109,6 @@
     }
 
     .cl-accessibility-contrast-control {
-
-      border-left: 1px solid rgba(255,255,255,.3);
 
       .cl-accessibility-control-default .cl-accessibility-control-button {
         background-position: 0 -84px;
@@ -256,6 +260,8 @@
 
       .cl-accessibility-motion-control {
 
+        border-right: 1px solid rgba(255,255,255,.1);
+
         .cl-accessibility-control-default .cl-accessibility-control-button {
           background-position: -28px -56px;
         }
@@ -268,7 +274,6 @@
 
       .cl-accessibility-contrast-control {
 
-        border-left: 1px solid rgba(255,255,255,.1);
 
         .cl-accessibility-control-default .cl-accessibility-control-button {
           background-position: -28px -84px;
