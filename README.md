@@ -10,21 +10,27 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.1.0
+## What's new in 5.2.0
 
-CL 5.1.0 is a minor release focused on accessibility controls and new blocks.
+> IMPORTANT: This version supersedes both v5.1.0 and the v5.0.3.x series, and includes features released as part of the latter (as noted).  The v5.0.3.x series is discontinued by this release.
 
-* Adds an __Abstract__ block, useful for hero-like presentations when sufficient artwork isn't available.  Choose from four animation styles and unlimited colorways.
-* Adds a __Breakout__ block, useful for creating a section on a page differentiated by a full-width light grey background.  Breakouts support commonly nested blocks like headings, paragraphs, and lists, as well as other components like Cards and Metrics.
-* Adds __universal accessibility controls__ for component-specific or site-wide user control of motion and contrast.  Universal accessibility controls are supported by Heroes, Cards, and Abstracts.
-* Depricates the `headline` and `subhead` Hero attributes in favor of `title` and `body`, respectively. Backward compatibility is retained.
-* Removes the animation option for static Heroes
-* Fixes certain spacing and padding issues with Cards
+CL 5.2.0 is a minor release focued on bug fixes and minor feature additions.
+
+* Fixes several issues with unified accessibility controls introduced in v5.1, including unresponsive controls and videos that did not appear to autoplay
+* Video cards now display accessibility controls in the default (lower right) location
+* Contrast control is now available for non-video heroes containing text
+* Social Bars can now include TikTok<sup>1</sup>
+* The Twitter logo has been replaced with that for X (the `twitter` attribute in Share Bars and Social Bars has been deprecated in favor of `x`, but is maintained for legacy support)<sup>1</sup>
+* Icons in Share Bars and Social Bars have been updated with high resolution versions<sup>1</sup>
+* Ensures compatibility with WordPress 6 and later<sup>2</sup>
 * Updates development tools
 
-> This plugin is now available from Packagist as [uriweb/uri-component-library](https://packagist.org/packages/uriweb/uri-component-library)
+> <sup>1</sup> First stable version: v5.0.3.1  
+> <sup>2</sup> First stable version: v5.0.3.3
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/227/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+> This plugin is available from Packagist as [uriweb/uri-component-library](https://packagist.org/packages/uriweb/uri-component-library)
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/231/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## How do I get set up?
 
