@@ -60,8 +60,5 @@
       "Firefox >= 20",
       "iOS >=8"
     ]
-  },
-  "dependencies": {
-    "caniuse-lite": "^1.0.30001594"
   }
 }
