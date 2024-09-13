@@ -19,6 +19,7 @@ CL 5.2.0 is a minor release focued on bug fixes and minor feature additions.
 * Fixes several issues with unified accessibility controls introduced in v5.1, including unresponsive controls and videos that did not appear to autoplay
 * Video cards now display accessibility controls in the default (lower right) location
 * Contrast control is now available for non-video heroes containing text
+* The default text contrast in Heroes has been reintroduced, and the difference between standard and enhanced contrast has been improved
 * Social Bars can now include TikTok<sup>1</sup>
 * The Twitter logo has been replaced with that for X (the `twitter` attribute in Share Bars and Social Bars has been deprecated in favor of `x`, but is maintained for legacy support)<sup>1</sup>
 * Icons in Share Bars and Social Bars have been updated with high resolution versions<sup>1</sup>
