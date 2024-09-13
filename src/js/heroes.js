@@ -25,7 +25,7 @@ let CLResizeSuperheroes;
 
 		if ( hero ) {
 			overlay = hero.querySelector( '.overlay' );
-			scroll = window.pageYOffset;
+			scroll = window.scrollY || window.pageYOffset;
 			offset = overlay.getBoundingClientRect().top + scroll;
 			radius = 50; // Set the desired blur radius, in pixels
 
@@ -40,7 +40,7 @@ let CLResizeSuperheroes;
 		}
 
 		function blurHero() {
-			const p = window.pageYOffset,
+			const p = window.scrollY || window.pageYOffset,
 				h = overlay.offsetHeight + offset,
 				b = Math.min( p / h * radius, radius );
 
@@ -94,7 +94,7 @@ let CLResizeSuperheroes;
 
 			const vh = window.innerHeight;
 			const vw = window.innerWidth;
-			const s = window.pageYOffset;
+			const s = window.scrollY || window.pageYOffset;
 
 			for ( i = 0; i < n; i++ ) {
 				h = H[ i ];

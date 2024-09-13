@@ -9,7 +9,7 @@
 
 	function initCLWaves() {
 		const els = document.querySelectorAll( '.cl-wave' );
-		const i = window.pageYOffset;
+		const i = window.scrollY || window.pageYOffset;
 
 		window.addEventListener(
 			'scroll',
@@ -22,7 +22,7 @@
 	function moveWaves( els, i ) {
 		let n, el;
 
-		const offset = window.pageYOffset;
+		const offset = window.scrollY || window.pageYOffset;
 		const move = offset - i;
 
 		for ( n = 0; n < els.length; n++ ) {

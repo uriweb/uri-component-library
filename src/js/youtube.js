@@ -66,7 +66,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 		}
 
 		const v = window.innerHeight,
-			p = window.pageYOffset,
+			p = window.scrollY || window.pageYOffSet,
 			h = parent.offsetHeight,
 			o = parent.getBoundingClientRect().top + p;
 
