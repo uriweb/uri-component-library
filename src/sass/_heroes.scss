@@ -128,13 +128,14 @@
     left: 0;
     right: 0;
     padding: 2rem 5% 14%;
-    text-shadow: 0 0 1rem rgba(0,0,0,.4);
+    text-shadow: 0 0 1rem rgba(0,0,0,.7);
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1) 3rem, rgba(0,0,0,0.2) 8rem);
   }
 
   &.cl-accessibility-contrast-improved {
     .block {
-      text-shadow: 0 0 1rem rgba(0,0,0,.9);
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2) 3rem, rgba(0,0,0,0.3) 7rem);
+      text-shadow: 0 0 1rem rgba(0,0,0,1);
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3) 2rem, rgba(0,0,0,0.5) 6rem);
     }
   }
 
