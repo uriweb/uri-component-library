@@ -53,11 +53,11 @@ let CLResizeSuperheroes;
 	 * In those cases, let's keep the poster for a nicer experience.
 	 */
 	function mobile() {
-		let els, i;
 		const w = window.innerWidth;
+		const els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
 
-		els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
-
+		let i;
+		
 		if ( w < 750 ) {
 			for ( i = 0; i < els.length; i++ ) {
 				els[ i ].classList.remove( 'unveil' );
