@@ -124,6 +124,7 @@ $adcards: ".cl-card, .cl-dcard";
 
   display: block;
 
+  /*
   &.cl-has-accessibility-controls .cl-accessibility-controls-container {
 
     left: initial;
@@ -135,6 +136,7 @@ $adcards: ".cl-card, .cl-dcard";
     }
 
   }
+  */
 
   .button {
     display: block;
@@ -373,6 +375,7 @@ $adcards: ".cl-card, .cl-dcard";
       "media text"
       "media button";
 
+    /*
     &.cl-has-accessibility-controls {
 
       .cl-accessibility-controls-container .cl-accessibility-controls {
@@ -396,6 +399,7 @@ $adcards: ".cl-card, .cl-dcard";
       }
 
     }
+    */
 
     &.reverse {
       grid-template-areas:
