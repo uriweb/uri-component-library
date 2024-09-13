@@ -81,7 +81,8 @@
       }
 
       &.cl-accessibility-control-hidden {
-        display: none;
+        opacity: .3 !important;
+        pointer-events: none;
       }
 
     }
