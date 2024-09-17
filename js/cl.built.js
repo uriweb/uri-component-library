@@ -3,7 +3,7 @@
  * 
  * --scripts--
  * 
- * @version v5.1.0
+ * @version v5.2.0
  * @author Brandon Fuller <bjcfuller@uri.edu>
  * @author John Pennypacker <jpennypacker@uri.edu>
  * @license GPL-3.0

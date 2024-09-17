@@ -13,12 +13,7 @@ Thanks for your interest in contributing to URI Component Library!  As a contrib
 
 If you have a question about using or contributing to URI Component Library that isn't answered here, let us know.  However, we ask that you not open issues for general questions.
 
-Instead, get in touch outside the repository by contacting someone below on the URI Web Communications team:
-
-* __Brandon Fuller__ [bjcfuller@uri.edu](mailto:bjcfuller@uri.edu)
-* __Sarah Couch__ [scouch@uri.edu](mailto:scouch@uri.edu)
-
-We will do our best to respond to your questions quickly and thoroughly.
+Instead, get in touch outside the repository by contacting us at [web-group@uri.edu](mailto:web-group@uri.edu). We will do our best to respond to your questions quickly and thoroughly.
 
 If you think something is missing, doesn't work right, or could work better, consider [reporting a bug](#find-a-bug) or [requesting a feature](#features).
 
