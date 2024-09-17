@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://github.com/uriweb/uri-component-library
  * Description: Standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.
- * Version: 5.1.0
+ * Version: 5.2.0
  * Author: URI Web Communications
  * Author URI: https://www.uri.edu/wordpress
  *
@@ -52,7 +52,7 @@ function uri_cl_enqueues() {
 	wp_register_style( 'uricl-css', plugins_url( '/css/cl.built.css', __FILE__ ), array(), uri_cl_cache_buster(), 'all' );
 	wp_enqueue_style( 'uricl-css' );
 
-	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array(), uri_cl_cache_buster(), true );
+	wp_register_script( 'uricl-js', plugins_url( '/js/cl.built.js', __FILE__ ), array('jquery'), uri_cl_cache_buster(), true );
 	wp_enqueue_script( 'uricl-js' );
 
 }

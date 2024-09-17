@@ -29,7 +29,7 @@ class CLVimeo { // eslint-disable-line no-unused-vars
 		}
 
 		const v = window.innerHeight,
-			p = window.pageYOffset,
+			p = window.scrollY || window.pageYOffset,
 			h = data.parent.offsetHeight,
 			o = data.parent.getBoundingClientRect().top + p;
 

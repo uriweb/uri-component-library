@@ -25,7 +25,7 @@ let CLResizeSuperheroes;
 
 		if ( hero ) {
 			overlay = hero.querySelector( '.overlay' );
-			scroll = window.pageYOffset;
+			scroll = window.scrollY || window.pageYOffset;
 			offset = overlay.getBoundingClientRect().top + scroll;
 			radius = 50; // Set the desired blur radius, in pixels
 
@@ -40,7 +40,7 @@ let CLResizeSuperheroes;
 		}
 
 		function blurHero() {
-			const p = window.pageYOffset,
+			const p = window.scrollY || window.pageYOffset,
 				h = overlay.offsetHeight + offset,
 				b = Math.min( p / h * radius, radius );
 
@@ -48,28 +48,20 @@ let CLResizeSuperheroes;
 		}
 	}
 
+	/*
+	 * Youtube doesn't allow autoplaying on mobile.
+	 * In those cases, let's keep the poster for a nicer experience.
+	 */
 	function mobile() {
-		let els;
+		const w = window.innerWidth;
+		const els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
 
-		if ( URICL.checkSupport() ) {
-			els = document.querySelectorAll( '.cl-hero .poster[data-platform=youtube]' );
-
-			window.addEventListener(
-				'resize',
-				function() {
-					let i;
-					const w = window.innerWidth;
-					if ( w < 750 ) {
-						for ( i = 0; i < els.length; i++ ) {
-							els[ i ].classList.remove( 'unveil' );
-						}
-					} else {
-						for ( i = 0; i < els.length; i++ ) {
-							els[ i ].classList.add( 'unveil' );
-						}
-					}
-				}
-			);
+		let i;
+		
+		if ( w < 750 ) {
+			for ( i = 0; i < els.length; i++ ) {
+				els[ i ].classList.remove( 'unveil' );
+			}
 		}
 	}
 
@@ -94,7 +86,7 @@ let CLResizeSuperheroes;
 
 			const vh = window.innerHeight;
 			const vw = window.innerWidth;
-			const s = window.pageYOffset;
+			const s = window.scrollY || window.pageYOffset;
 
 			for ( i = 0; i < n; i++ ) {
 				h = H[ i ];

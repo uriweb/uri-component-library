@@ -17,8 +17,13 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-if ( ! empty( $atts['vid'] ) ) {
+$hasContent = false;
+if ( ! empty( $atts['title'] ) || ! empty( $atts['headline'] ) || ! empty( $atts['body'] ) || ! empty( $atts['subhead'] ) || ! empty( $atts['link'] ) ) {
+	$hasContent = true;
+}
 
+// If it's a video, or if it has at least one overlay element, show accessibility controls
+if ( ! empty( $atts['vid']) || $hasContent ) {
 	$classes .= ' cl-has-accessibility-controls';
 
 	if ( $atts['invert_a11y'] ) {
@@ -38,25 +43,29 @@ $output .= '>';
 $output .= '<div class="cl-hero-proper">';
 
 $output .= '<div class="overlay">';
-$output .= '<div class="block">';
 
-if ( ! empty( $atts['title'] ) ) {
-	$output .= '<h1>' . $atts['title'] . '</h1>';
-} else if ( ! empty( $atts['headline'] ) ) { // Depricated in v5.1
-	$output .= '<h1>' . $atts['headline'] . '</h1>';
+if ( $hasContent ) {
+	$output .= '<div class="block">';
+
+	if ( ! empty( $atts['title'] ) ) {
+		$output .= '<h1>' . $atts['title'] . '</h1>';
+	} else if ( ! empty( $atts['headline'] ) ) { // Depricated in v5.1
+		$output .= '<h1>' . $atts['headline'] . '</h1>';
+	}
+
+	if ( ! empty( $atts['body'] ) ) {
+		$output .= '<p>' . $atts['body'] . '</p>';
+	} else if ( ! empty( $atts['subhead'] ) ) { // Depricated in v5.1
+		$output .= '<p>' . $atts['subhead'] . '</p>';
+	}
+
+	if ( ! empty( $atts['link'] ) ) {
+		$output .= '<a class="cl-button" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '">' . $atts['button'] . '</a>';
+	}
+
+	$output .= '</div>'; // .block
 }
 
-if ( ! empty( $atts['body'] ) ) {
-	$output .= '<p>' . $atts['body'] . '</p>';
-} else if ( ! empty( $atts['subhead'] ) ) { // Depricated in v5.1
-	$output .= '<p>' . $atts['subhead'] . '</p>';
-}
-
-if ( ! empty( $atts['link'] ) ) {
-	$output .= '<a class="cl-button" href="' . $atts['link'] . '" title="' . $atts['tooltip'] . '">' . $atts['button'] . '</a>';
-}
-
-$output .= '</div>'; // .block
 $output .= '</div>'; // .overlay
 
 if ( ! empty( $atts['vid'] ) ) {
@@ -100,7 +109,21 @@ $image .= '"></div>'; // image
 $output .= $image;
 
 if ( ! empty( $atts['vid'] ) ) {
-	$output .= uri_cl_get_accessibility_controls();
+	if ( $hasContent ) {
+		$output .= uri_cl_get_accessibility_controls();
+	} else {
+		$output .= uri_cl_get_accessibility_controls(
+			array(
+				'contrast' => false
+			)
+		);
+	}
+} else if ( $hasContent ) {
+	$output .= uri_cl_get_accessibility_controls(
+		array(
+			'motion' => false
+		)
+	);
 }
 
 $output .= '</div>'; // .cl-hero-proper

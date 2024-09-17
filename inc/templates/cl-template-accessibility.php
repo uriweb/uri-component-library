@@ -6,7 +6,14 @@ $output .= '<div class="cl-accessibility-controls">';
 $output .= '<div class="cl-accessibility-icon" title="Accessibility controls">Accessibility controls</div>';
 
 // Motion Controls
-$output .= '<div class="cl-accessibility-control cl-accessibility-motion-control">';
+
+$output .= '<div class="cl-accessibility-control cl-accessibility-motion-control';
+
+if ( ! $defaults[ 'motion' ] ) {
+    $output .= ' cl-accessibility-control-hidden';
+}
+
+$output .= '">';
 
 $output .= '<div class="cl-accessibility-control-default">';
 $output .= '<div class="cl-accessibility-control-button" title="Pause motion">Pause motion</div>';
@@ -21,7 +28,13 @@ $output .= '</div>';
 $output .= '</div>';
 
 // Contrast Controls
-$output .= '<div class="cl-accessibility-control cl-accessibility-contrast-control">';
+$output .= '<div class="cl-accessibility-control cl-accessibility-contrast-control';
+
+if ( ! $defaults[ 'contrast' ] ) {
+    $output .= ' cl-accessibility-control-hidden';
+}
+
+$output .= '">';
 
 $output .= '<div class="cl-accessibility-control-default">';
 $output .= '<div class="cl-accessibility-control-button" title="Increase text contrast">Increase text contrast</div>';

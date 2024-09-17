@@ -3,24 +3,6 @@
  */
 
 class URICL { // eslint-disable-line no-unused-vars
-	/**
-	 * Check browser support (essentially anything but IE)
-	 *
-	 * @return {boolean} Support.
-	 */
-	static checkSupport() {
-		let support = true;
-		const ua = navigator.userAgent;
-		const msie = ua.indexOf( 'MSIE ' );
-		const trident = ua.indexOf( 'Trident/' );
-
-		if ( 'Microsoft Internet Explorer' === navigator.appName || msie > 0 || trident > 0 ) {
-			support = false;
-		}
-
-		return support;
-	}
-
 	static setCookie( cname, cvalue, exdays ) {
 		const d = new Date();
 		d.setTime( d.getTime() + ( exdays * 24 * 60 * 60 * 1000 ) );

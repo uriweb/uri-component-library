@@ -433,7 +433,7 @@ registerBlockType( 'uri-cl/hero', {
 						<PanelRow>
 							<ToggleControl
 								label="Invert accessibility controls"
-								help="Use white foreground on dark background. Only applies to video heroes."
+								help="Use white foreground on dark background."
 								checked={ attributes.invert_a11y }
 								onChange={ ( content ) => setAttributes( { invert_a11y: content } ) }
 							/>

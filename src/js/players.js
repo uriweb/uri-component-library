@@ -42,41 +42,39 @@ function onYouTubePlayerAPIReady() { // eslint-disable-line no-unused-vars
 		const vids = document.querySelectorAll( '.cl-video .poster' );
 		const cards = document.querySelectorAll( '.cl-card .cl-card-container.video .poster' );
 
-		if ( URICL.checkSupport() ) {
-			for ( i = 0; i < heroes.length; i++ ) {
-				el = heroes[ i ];
-				parent = el.parentNode;
+		for ( i = 0; i < heroes.length; i++ ) {
+			el = heroes[ i ];
+			parent = el.parentNode;
 
-				atts = {
-					parent,
-					poster: el,
-					state: 'init',
-					w: parent.offsetWidth,
-					h: parent.offsetHeight,
-				};
+			atts = {
+				parent,
+				poster: el,
+				state: 'init',
+				w: parent.offsetWidth,
+				h: parent.offsetHeight,
+			};
 
-				src = el.getAttribute( 'data-video' );
-				host = el.getAttribute( 'data-platform' );
-				id = el.getAttribute( 'id' );
+			src = el.getAttribute( 'data-video' );
+			host = el.getAttribute( 'data-platform' );
+			id = el.getAttribute( 'id' );
 
-				if ( 'youtube' === host ) {
-					requireYouTube = true;
-					data.heroes.yt[ id ] = atts;
-					data.heroes.yt[ id ].src = src;
-				}
-
-				if ( 'vimeo' === host ) {
-					requireVimeo = true;
-					data.heroes.vimeo[ id ] = atts;
-					data.heroes.vimeo[ id ].src = src;
-				}
-
-				// Remove poster id and create a new placeholder for the video
-				el.removeAttribute( 'id' );
-				placeholder = document.createElement( 'div' );
-				placeholder.id = id;
-				parent.appendChild( placeholder );
+			if ( 'youtube' === host ) {
+				requireYouTube = true;
+				data.heroes.yt[ id ] = atts;
+				data.heroes.yt[ id ].src = src;
 			}
+
+			if ( 'vimeo' === host ) {
+				requireVimeo = true;
+				data.heroes.vimeo[ id ] = atts;
+				data.heroes.vimeo[ id ].src = src;
+			}
+
+			// Remove poster id and create a new placeholder for the video
+			el.removeAttribute( 'id' );
+			placeholder = document.createElement( 'div' );
+			placeholder.id = id;
+			parent.appendChild( placeholder );
 		}
 
 		for ( i = 0; i < vids.length; i++ ) {

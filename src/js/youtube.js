@@ -66,7 +66,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 		}
 
 		const v = window.innerHeight,
-			p = window.pageYOffset,
+			p = window.scrollY || window.pageYOffSet,
 			h = parent.offsetHeight,
 			o = parent.getBoundingClientRect().top + p;
 
@@ -166,7 +166,7 @@ class CLYT { // eslint-disable-line no-unused-vars
 			case -1:
 			case 1:
 				if ( window.innerWidth > 750 ) {
-					el.previousSibling.classList.add( 'unveil' );
+					el.previousSibling.previousSibling.classList.add( 'unveil' );
 				}
 				break;
 		}
