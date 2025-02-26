@@ -1,8 +1,15 @@
 /* ======= GUTENBERG ======= */
 
 @keyframes metaReveal {
-	from { transform: rotateX(90deg); 	transform-origin: top; }
-	to   { transform: rotateX(0deg); 	transform-origin: top; }
+	from {
+		transform: rotateX(90deg);
+		transform-origin: top;
+	}
+
+	to {
+		transform: rotateX(0deg);
+		transform-origin: top;
+	}
 }
 
 .wp-block-columns.equal-height {
@@ -32,7 +39,7 @@
 		}
 
 		p:empty {
-		  display: initial;
+			display: initial;
 		}
 
 	}
@@ -46,10 +53,12 @@
 		position: absolute;
 		padding: .5rem 0 .75rem;
 		z-index: 10;
+
 		.row {
 			margin-left: .5rem;
 			margin-right: .5rem;
 		}
+
 		&:before {
 			content: ' ';
 			display: block;
@@ -68,23 +77,29 @@
 			label {
 				float: left;
 				margin-right: .5em;
+
 				svg {
 					margin-left: .25em;
 					margin-top: .5em;
 				}
 			}
+
 			input {
 				width: auto;
 			}
 		}
 
 	}
+	/** PANELS */
+	.cl-panel .meta {
+        position: relative;
+    }
 
 	.cl-component-message {
 		font-size: 1rem;
 		padding: 1.25em 1em 1em 2.5em;
-		background-color: rgba(139,139,150,.1);
-		background-image: url( '../i/admin-info.png' );
+		background-color: rgba(139, 139, 150, .1);
+		background-image: url('../i/admin-info.png');
 		background-position: 1em center;
 		background-size: 1em;
 		background-repeat: no-repeat;
@@ -96,25 +111,33 @@
 	}
 
 	/** BOXOUTS **/
-	.cl-boxout.right, .cl-boxout.left, .cl-card.right, .cl-card.left {
+	.cl-boxout.right,
+	.cl-boxout.left,
+	.cl-card.right,
+	.cl-card.left {
 		position: relative;
 		z-index: 5;
 	}
 
 	/** BUTTONS **/
 	textarea.cl-button {
-	  background-color: transparent !important;
+		background-color: transparent !important;
 	}
 
 	.cl-button {
 
+		/*
 		&:not(.disabled):hover textarea:focus {
 			color: $white;
 		}
+			*/
+		&.prominent :hover textarea:focus {
+			color: white;
+		}
 
 		textarea {
-		  padding: 2px 0 0;
-		  text-align: center;
+			padding: 2px 0 0;
+			text-align: center;
 		}
 
 	}
@@ -145,6 +168,7 @@
 	.cl-card.no-image .media {
 		display: none;
 	}
+
 	.cl-card.no-image.selected .media {
 		display: block;
 	}
@@ -235,7 +259,7 @@
 				left: 0 !important;
 			}
 
-		 	.meta {
+			.meta {
 				max-width: 400px;
 			}
 
@@ -273,22 +297,30 @@
 		}
 
 	}
-	.cl-hero.no-image .poster, .cl-hero.no-image .still  {
+
+	.cl-hero.no-image .poster,
+	.cl-hero.no-image .still {
 		visibility: hidden;
 	}
-	.cl-hero.no-image.selected .poster, .cl-hero.no-image.selected .still {
+
+	.cl-hero.no-image.selected .poster,
+	.cl-hero.no-image.selected .still {
 		visibility: visible;
 	}
-	.cl-hero .block-editor-media-placeholder, .cl-hero.selected.has-image .block-editor-media-placeholder {
+
+	.cl-hero .block-editor-media-placeholder,
+	.cl-hero.selected.has-image .block-editor-media-placeholder {
 		visibility: hidden;
 	}
+
 	.cl-hero.selected .block-editor-media-placeholder {
 		visibility: visible;
 	}
-	
+
 	.cl-hero.no-subhead .subhead {
 		display: none;
 	}
+
 	.cl-hero.no-subhead.selected .subhead {
 		display: block;
 	}
@@ -296,6 +328,7 @@
 	.cl-hero.no-link .cl-button {
 		display: none;
 	}
+
 	.cl-hero.no-link.selected .cl-button {
 		display: block;
 	}
@@ -304,12 +337,12 @@
 	/** PANELS **/
 
 	.editor-styles-wrapper .cl-panel-super .cl-button textarea::placeholder {
-		color: rgba(255,255,255,.3);
+		color: rgba(255, 255, 255, .3);
 	}
 
 	// Disable superpanel blur in the editor for performance reasons
-	@supports ( filter: blur(0) ) {
-	  .editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
+	@supports (filter: blur(0)) {
+		.editor-styles-wrapper .cl-panel-super .cl-panel-super-blur {
 			background: #333;
 			filter: initial;
 		}
@@ -320,7 +353,8 @@
 
 	.editor-styles-wrapper .cl-promo {
 
-		h1, p {
+		h1,
+		p {
 
 			color: $white;
 			margin-bottom: 1rem;
@@ -332,7 +366,7 @@
 
 		}
 
-		&.micro  {
+		&.micro {
 
 			h1 textarea {
 				text-align: right;
@@ -359,7 +393,7 @@
 			textarea:focus,
 			textarea::placeholder {
 				color: #ffd453;
-	    	font-weight: bold;
+				font-weight: bold;
 			}
 
 		}
@@ -420,9 +454,11 @@
 		}
 
 	}
+
 	.cl-quote.no-image .block-editor-media-placeholder {
 		display: none;
 	}
+
 	.cl-quote.no-image.selected .block-editor-media-placeholder {
 		display: block;
 	}
@@ -438,20 +474,21 @@
 	/** METRICS **/
 	.cl-metric {
 
-    textarea, span {
-      text-align: center;
-    }
+		textarea,
+		span {
+			text-align: center;
+		}
 
-    &.right,
+		&.right,
 		&.left {
-      position: relative;
-      width: 35%;
-      z-index: 5;
-    }
+			position: relative;
+			width: 35%;
+			z-index: 5;
+		}
 
-    &.dark textarea {
-      color: #fff;
-    }
+		&.dark textarea {
+			color: #fff;
+		}
 
 	}
 
