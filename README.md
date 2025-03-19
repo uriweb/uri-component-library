@@ -14,9 +14,12 @@ See [this documentation](https://www.uri.edu/wordpress/components/) to learn abo
 
 > IMPORTANT: CL 5.0.3.x are supplemental updates to v5.0.2 released after v5.1.0.  This release was created off of v5.0.2 and will *not* be merged into `master`. It contains changes not released in v5.1.0, but that will be included in later versions.  If upgrading from v5.0.2, the recommendation is to either adopt v5.0.3.x or wait until a successor to v5.1.0 is released.
 
-### v5.0.3.3
+### v5.0.3.4
 
-* Adds jQuery as a dependency. 
+* This release makes style adjustments to the admin editor interface:
+    * Fixes meta link input on buttons from being cut off
+    * Fixes the meta link input from not showing up in the Panel block
+    * Fixes the button text disappearing on the default style button
 
 ## How do I get set up?
 
