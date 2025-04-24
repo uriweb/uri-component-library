@@ -204,7 +204,7 @@
 
 	.cl-button {
 
-		&:not(.disabled):hover textarea:focus {
+		&.prominent:hover textarea:focus {
 			color: $white;
 		}
 
