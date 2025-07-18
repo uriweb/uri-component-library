@@ -9,24 +9,9 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.2.0
+## What's new in 5.2.1 
 
-> IMPORTANT: This version supersedes both v5.1.0 and the v5.0.3.x series, and includes features released as part of the latter (as noted).  The v5.0.3.x series is discontinued by this release.
-
-CL 5.2.0 is a minor release focued on bug fixes and minor feature additions.
-
-* Fixes several issues with unified accessibility controls introduced in v5.1, including unresponsive controls and videos that did not appear to autoplay
-* Video cards now display accessibility controls in the default (lower right) location
-* Contrast control is now available for non-video heroes containing text
-* The default text contrast in Heroes has been reintroduced, and the difference between standard and enhanced contrast has been improved
-* Social Bars can now include TikTok<sup>1</sup>
-* The Twitter logo has been replaced with that for X (the `twitter` attribute in Share Bars and Social Bars has been deprecated in favor of `x`, but is maintained for legacy support)<sup>1</sup>
-* Icons in Share Bars and Social Bars have been updated with high resolution versions<sup>1</sup>
-* Ensures compatibility with WordPress 6 and later<sup>2</sup>
-* Updates development tools
-
-> <sup>1</sup> First stable version: v5.0.3.1  
-> <sup>2</sup> First stable version: v5.0.3.3
+CL 5.2.1 is a fix release for PHP 8.3 compatibility. 
 
 > This plugin is available from Packagist as [uriweb/uri-component-library](https://packagist.org/packages/uriweb/uri-component-library)
 
@@ -55,7 +40,7 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)  
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
-__Tested up to:__ 6.4.5  
-__Stable tag:__ 5.2.0  
+__Tested up to:__ 6.8.1  
+__Stable tag:__ 5.2.1  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
