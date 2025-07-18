@@ -105,9 +105,11 @@ function uri_cl_get_video_platform( $src ) {
 
 	$platform = 'youtube'; // Default platform
 
+	if ( isset($host)) {
 	if ( false !== strpos( $host, 'vimeo' ) ) {
 		$platform = 'vimeo';
 	}
+}
 
 	return $platform;
 

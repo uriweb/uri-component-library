@@ -48,8 +48,8 @@ function uri_cl_gutenberg_is_active() {
 			array( 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor' ),
 			filemtime( URI_CL_DIR_PATH . 'js/blocks.built.js' ) // cache buster
 		);
-		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', URI_CL_URL );
-		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', get_site_url() );
+		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', array( URI_CL_URL ));
+		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', array( get_site_url() ));
 	}
 
 }
