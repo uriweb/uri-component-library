@@ -3,7 +3,7 @@
  * Plugin Name: URI Component Library
  * Plugin URI: http://github.com/uriweb/uri-component-library
  * Description: Standardizes the look and feel of web elements, and makes it fast and simple to build webpages that look great and stay on-brand.
- * Version: 5.2.0
+ * Version: 5.2.1
  * Author: URI Web Communications
  * Author URI: https://www.uri.edu/wordpress
  *
