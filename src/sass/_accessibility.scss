@@ -9,7 +9,7 @@
 
     position: absolute;
     z-index: 10;
-    bottom: 0;
+    top: 0;
     right: 0;
     height: calc( 125px + 1rem );
     width: calc( 160px + 1rem );
@@ -17,7 +17,7 @@
     .cl-accessibility-controls {
 
       position: absolute;
-      bottom: 1rem;
+      top: 1rem;
       right: 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -371,11 +371,22 @@ body.cl-accessibility-applied-site-wide {
       width: 240px;
 
       .cl-accessibility-controls {
-        bottom: 2rem;
+        top: 2rem;
         right: 2rem;
       }
 
     }
 
   }
+
+  .cl-tiles,
+  .wp-block-columns {
+
+    .cl-has-accessibility-controls .cl-accessibility-controls-container .cl-accessibility-controls {
+      top: 1rem;
+      right: 1rem;
+    }
+
+  }
+
 }
