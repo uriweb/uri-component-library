@@ -9,3 +9,11 @@
 	}
 }
 
+@media screen and (max-width: $break1) {
+.wp-block-columns .wp-block-column {
+	&:not(:last-child) {
+		margin-right: 0% !important;
+	}
+}
+}
+
