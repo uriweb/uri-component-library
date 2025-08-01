@@ -5,13 +5,6 @@
 
 .cl-has-accessibility-controls {
 
-  &:hover,
-  &:focus {
-    .cl-accessibility-controls-container {
-      opacity: 1;
-    }
-  }
-
   .cl-accessibility-controls-container {
 
     position: absolute;
@@ -20,9 +13,6 @@
     right: 0;
     height: calc( 32px + 2rem );
     width: calc( 32px + 2rem );
-    opacity: 0;
-    transition:
-        opacity .2s ease-in-out;
 
     .cl-accessibility-controls {
 
