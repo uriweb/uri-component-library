@@ -9,9 +9,9 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.2.1 
+## What's new in 5.2.2 
 
-CL 5.2.1 is a fix release for PHP 8.3 compatibility. 
+CL 5.2.1 is a fix release that includes improvements the accessibility widget and margin spacing for components in columns. 
 
 > This plugin is available from Packagist as [uriweb/uri-component-library](https://packagist.org/packages/uriweb/uri-component-library)
 
@@ -41,6 +41,6 @@ __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](h
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
 __Tested up to:__ 6.8.1  
-__Stable tag:__ 5.2.1  
+__Stable tag:__ 5.2.2  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
