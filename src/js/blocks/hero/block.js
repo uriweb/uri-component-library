@@ -430,14 +430,6 @@ registerBlockType( 'uri-cl/hero', {
 							/>
 						</PanelRow>
 
-						<PanelRow>
-							<ToggleControl
-								label="Invert accessibility controls"
-								help="Use white foreground on dark background."
-								checked={ attributes.invert_a11y }
-								onChange={ ( content ) => setAttributes( { invert_a11y: content } ) }
-							/>
-						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
 			);

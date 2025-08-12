@@ -9,45 +9,35 @@
 
     position: absolute;
     z-index: 10;
-    bottom: 0;
+    top: 0;
     right: 0;
-    height: calc( 125px + 1rem );
-    width: calc( 160px + 1rem );
+    height: calc( 32px + 2rem );
+    width: calc( 32px + 2rem );
 
     .cl-accessibility-controls {
 
       position: absolute;
-      bottom: 1rem;
+      top: 1rem;
       right: 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      background: rgba(255,255,255,.5);
+      background-color: #fff;
       border-radius: 16px;
       height: 32px;
       width: 32px;
       overflow: hidden;
       box-sizing: border-box;
+      box-shadow: $level1;
       transition:
-        background .25s ease-in-out,
         height .15s ease-in-out,
-        width .15s ease-in-out;
+        width .15s ease-in-out,
+        box-shadow .15s ease-in-out;
 
       &:hover,
       &:focus {
+        box-shadow: $level2;
         cursor: default;
-        background: rgba(255,255,255,.65);
-      }
-
-      @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-        & {
-          background: rgba(255,255,255,.3);
-          backdrop-filter: blur(20px);
-        }
-        &:hover,
-        &:focus {
-          background: rgba(255,255,255,.5);
-        }
       }
 
     }
@@ -97,7 +87,7 @@
 
     .cl-accessibility-motion-control {
 
-      border-right: 1px solid rgba(255,255,255,.3);
+      border-right: 1px solid #eee;
 
       .cl-accessibility-control-default .cl-accessibility-control-button {
         background-position: 0 -56px;
@@ -126,7 +116,7 @@
       text-align: center;
       font-size: .7rem;
       font-weight: bold;
-      color: rgba(0,0,0,.7);
+      color: #333;
       margin-top: 10px;
 
       .cl-accessibility-syntax {
@@ -146,14 +136,14 @@
       padding-left: 28px;
       overflow: hidden;
       border-radius: 14px;
-      background-color: rgba(255,255,255,.3);
+      background-color: #eee;
       background-image: url('../i/controls.svg');
       background-repeat: no-repeat;
       background-size: 56px auto;
 
       &:hover,
       &:focus {
-        background-color: rgba(255,255,255,.8);
+        background-color: #ddd;
       }
 
     }
@@ -187,11 +177,11 @@
       align-items: center;
       padding: 0 10px;
       height: 30px;
-      border-top: 1px solid rgba(255,255,255,.3);
+      border-top: 1px solid #eee;
 
       &:hover,
       &:focus {
-        background: rgba(255,255,255,.1);
+        background: #eee;
         cursor: pointer;
       }
 
@@ -203,7 +193,7 @@
       transform: translateY(-1px);
       border-radius: 6px;
       background: rgba(255,255,255,.5);
-      border: 1px solid rgba(0,0,0,.3);
+      border: 1px solid #ddd;
       justify-self: end;
       box-sizing: border-box;
     }
@@ -211,7 +201,7 @@
     .cl-accessibility-toggle-label {
       padding-left: 10px;
       font-size: .7rem;
-      color: rgba(0,0,0,.7);
+      color: #333;
     }
 
   }
@@ -367,15 +357,33 @@ body.cl-accessibility-applied-site-wide {
 
     .cl-accessibility-controls-container {
 
-      height: 200px;
-      width: 240px;
+      height: calc( 32px + 4rem );
+      width: calc( 32px + 4rem );
 
       .cl-accessibility-controls {
-        bottom: 2rem;
+        top: 2rem;
         right: 2rem;
       }
 
     }
 
   }
+
+  .cl-tiles,
+  .wp-block-columns {
+
+    .cl-has-accessibility-controls .cl-accessibility-controls-container {
+
+      height: calc( 32px + 2rem );
+      width: calc( 32px + 2rem );
+    
+      .cl-accessibility-controls {
+        top: 1rem;
+        right: 1rem;
+      }
+
+    }
+
+  }
+
 }

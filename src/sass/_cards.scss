@@ -124,20 +124,6 @@ $adcards: ".cl-card, .cl-dcard";
 
   display: block;
 
-  /*
-  &.cl-has-accessibility-controls .cl-accessibility-controls-container {
-
-    left: initial;
-    right: 0;
-
-    .cl-accessibility-controls {
-      left: initial;
-      right: 1rem;
-    }
-
-  }
-  */
-
   .button {
     display: block;
     width: 100%;
@@ -374,32 +360,6 @@ $adcards: ".cl-card, .cl-dcard";
     grid-template-areas:
       "media text"
       "media button";
-
-    /*
-    &.cl-has-accessibility-controls {
-
-      .cl-accessibility-controls-container .cl-accessibility-controls {
-          right: 2rem;
-      }
-
-      &:not(.reverse) {
-
-        .cl-accessibility-controls-container {
-
-          right: initial;
-          left: 0;
-
-          .cl-accessibility-controls {
-            right: initial;
-            left: 2rem;
-          }
-
-        }
-
-      }
-
-    }
-    */
 
     &.reverse {
       grid-template-areas:
