@@ -275,8 +275,11 @@ registerBlockType( 'uri-cl/card', {
 				<InspectorControls>
 					<PanelBody title="Documentation">
 						<PanelRow>
+							<div>Tip: If using cards in columns, make sure the images have the same aspect ratio.</div>
+						</PanelRow>
+						<PanelRow>
 							<ExternalLink href="https://www.uri.edu/wordpress/components/cards/" target="_blank" rel="noopener noreferrer">
-								Tips for Using Cards
+								View Documentation
 							</ExternalLink>
 						</PanelRow>
 					</PanelBody>

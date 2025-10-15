@@ -81,7 +81,7 @@ registerBlockType( 'uri-cl/notice', {
 		},
 		dismissible: {
 			type: 'bool',
-			default: true,
+			default: false,
 		},
 		contentWrapper: {
 			type: 'string',
