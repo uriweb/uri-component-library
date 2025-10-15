@@ -10,6 +10,8 @@ const {
 	withNotices,
 	BaseControl,
 	TextControl,
+	ExternalLink,
+	Text,
 } = wp.components;
 const {
 	BlockControls,
@@ -267,6 +269,21 @@ registerBlockType( 'uri-cl/card', {
 			);
 		};
 
+		//Generate doc link in sidebar
+		const createSidebarTips = () => {
+			return (
+				<InspectorControls>
+					<PanelBody title="Documentation">
+						<PanelRow>
+							<ExternalLink href="https://www.uri.edu/wordpress/components/cards/" target="_blank" rel="noopener noreferrer">
+								Tips for Using Cards
+							</ExternalLink>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>
+			);
+		};
+
 		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
 			return (
@@ -287,6 +304,7 @@ registerBlockType( 'uri-cl/card', {
 
 		// Send the editor interfaces to the view
 		return ( [
+			createSidebarTips(),
 			createBlockControls(),
 			createInspectorControls(),
 			createContentEditForm(),
