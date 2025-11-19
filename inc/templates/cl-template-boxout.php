@@ -5,7 +5,7 @@ $wrapper = 'section';
 
 if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
-	$wrapper = 'aside';
+	$wrapper = 'div';
 }
 
 $atts['class'] = $atts['class'] . ' ' . $atts['className'];
