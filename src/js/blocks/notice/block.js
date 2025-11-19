@@ -117,12 +117,12 @@ registerBlockType( 'uri-cl/notice', {
 				<div className="container">
 					{ expirationMessage }
 					<div className={ classes }>
-						<h1><PlainText
+						<h2><PlainText
 							onChange={ ( content ) => setAttributes( { title: content } ) }
 							value={ attributes.title }
 							placeholder={ __( 'Your notice title' ) }
 							keepPlaceholderOnFocus={ true }
-						/></h1>
+						/></h2>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
@@ -166,6 +166,7 @@ registerBlockType( 'uri-cl/notice', {
 
 						<PanelRow>
 							<ToggleControl
+								__nextHasNoMarginBottom={ true }
 								label="Allow visitors to dismiss this notice"
 								checked={ attributes.dismissible }
 								onChange={ ( content ) => setAttributes( { dismissible: content } ) }
