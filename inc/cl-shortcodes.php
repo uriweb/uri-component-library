@@ -1159,6 +1159,37 @@ add_shortcode( 'cl-tiles', 'uri_cl_shortcode_tiles' );
 
 
 /**
+ * Tooltip
+ */
+function uri_cl_shortcode_tooltip( $atts, $content = null ) {
+
+		// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => 'Tip',
+			'class' => '',
+			'className' => '',
+			'contentWrapper' => 'p',
+			'css' => '',
+		),
+		$atts
+		);
+
+	// Error checking
+	// (string $cname , array $atts , array $check_atts , string $template)
+	return uri_cl_validate(
+		 'Tooltip',
+		$atts,
+		$content,
+		array(),
+		uri_cl_shortcode_get_template( 'tooltip' )
+	);
+
+}
+add_shortcode( 'cl-tooltip', 'uri_cl_shortcode_tooltip' );
+
+
+/**
  * Video
  */
 function uri_cl_shortcode_video( $atts, $content = null ) {
