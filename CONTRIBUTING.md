@@ -7,6 +7,7 @@ Thanks for your interest in contributing to URI Component Library!  As a contrib
 * [Have an idea for a feature?](#features)
 * [Submission Guidelines](#submission)
 * [Development Guidelines](#development)
+* [Adding Components](#components)
 * [Code of Conduct](#conduct)
 
 ## <a name="questions"></a>Have a question?
@@ -261,6 +262,32 @@ We don't have strict guidelines for writing commit messages.  However, we do ask
 * __Include issue numbers if applicable.__  If your commit fixes an issue, mention that somewhere in your commit.  For example, if your commit fixes issue #16, include `fixes #16`.  This will automatically close that issue in GitHub when your commit is merged into the default branch.  Use any of these keywords to close an issue via a commit message: `close, closes, closed, fixes, fixed`
 
 To learn more about writing good commit messages, check out [this article](https://chris.beams.io/posts/git-commit/).
+
+## <a name="components"></a>Adding Components
+
+Each component in the Component Library is built with a similar set of code and files. The complexity of these files largely depends on how complex the component is (e.g. how many elements are customizable, whether it will have Block Editor support).
+
+The _minimum_ code required to establish a new component is:
+
+- A PHP shortcode function in `inc/cl-shortcodes.php`
+- A PHP template file in `inc/templates/` to render the component
+
+Realistically, components also need styles, and might need JS for added functionality:
+
+- Add a SASS partial in `src/sass/` (make sure to `@include` the partial in `src/sass/main.scss`, too)
+- Add a JS file(s) in `src/js/` if needed
+
+This will ensure basic functionality and allow the component to be used via a shortcode. Beyond this, adding Block Editor support requires the following:
+
+- A PHP registration file in `inc/blocks/`
+- A directory and JS file in `src/js/blocks/`
+- An SVG icon in `i/icons/`
+
+The registration file adds the component to the block library within WordPress, and the JS (written in React) renders the editing interface for the block. The registration file also tells WordPress what to do with the input from the editor via the callback; in our case, input from the editor is passed to the shortcode function established earlier, using the template to render the component itself. Essentially, the Block Editor is just a GUI wrapper for the shortcode.
+
+> **Note 1:** Some themes filter allowable blocks (see _[allowed_block_types_all](https://developer.wordpress.org/reference/hooks/allowed_block_types_all/)_), meaning they might explicitly whitelist blocks for them to become available in the editor. Any theme with this behavior would need to be modified to enable the new Component Library block. This only impacts the Block Editor; the component would still be available through the shortcode.
+
+> **Note 2:** Some older components support TinyMCE, the extendable framework for the legacy Classic Editor. Adding TinyMCE support for new components is not recommended. The new component will still be available through the shortcode on sites built with the Classic Editor .
 
 ## <a name="conduct"></a>Code of Conduct
 
