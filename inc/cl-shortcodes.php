@@ -1166,7 +1166,7 @@ function uri_cl_shortcode_tooltip( $atts, $content = null ) {
 		// Attributes
 	$atts = shortcode_atts(
 		array(
-			'title' => 'Tip',
+			'title' => 'Tip:',
 			'class' => '',
 			'className' => '',
 			'contentWrapper' => 'p',
