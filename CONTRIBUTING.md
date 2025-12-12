@@ -283,7 +283,7 @@ This will ensure basic functionality and allow the component to be used via a sh
 - A directory and JS file in `src/js/blocks/`
 - An SVG icon in `i/icons/`
 
-The registration file adds the component to the block library within WordPress, and the JS (written in React) renders the editing interface for the block. The registration file also tells WordPress what to do with the input from the editor via the callback; in our case, input from the editor is passed to the shortcode function established earlier, using the template to render the component itself. Essentially, the Block Editor is just a GUI wrapper for the shortcode.
+The registration file lets WordPress know the block exists, and the JS (written in React) renders the editing interface for the block. The registration file also tells WordPress what to do with the input from the editor via the callback; in our case, input from the editor is passed to the shortcode function established earlier, using the template to render the component itself. Essentially, the Block Editor is just a GUI wrapper for the shortcode.
 
 > **Note 1:** Some themes filter allowable blocks (see _[allowed_block_types_all](https://developer.wordpress.org/reference/hooks/allowed_block_types_all/)_), meaning they might explicitly whitelist blocks for them to become available in the editor. Any theme with this behavior would need to be modified to enable the new Component Library block. This only impacts the Block Editor; the component would still be available through the shortcode.
 
