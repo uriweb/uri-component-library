@@ -13,3 +13,4 @@ import './promo/block';
 import './quote/block';
 import './tabs/tab';
 import './tabs/block';
+import './tooltip/block';

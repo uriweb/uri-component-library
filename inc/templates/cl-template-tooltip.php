@@ -9,7 +9,7 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$output = '<section class="cl-wrapper cl-boxout-wrapper">';
+$output = '<section class="cl-wrapper cl-tooltip-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if ( ! empty( $atts['css'] ) ) {
