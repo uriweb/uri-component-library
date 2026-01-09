@@ -280,7 +280,7 @@ Realistically, components also need styles, and might need JS for added function
 This will ensure basic functionality and allow the component to be used via a shortcode. Beyond this, adding Block Editor support requires the following:
 
 - A PHP registration file in `inc/blocks/`
-- A directory and JS file in `src/js/blocks/`
+- A directory and JS file in `src/js/blocks/` (make sure to `import` the block.js in `src/js/blocks/blocks.js`, too)
 - An SVG icon in `i/icons/`
 
 The registration file lets WordPress know the block exists, and the JS (written in React) renders the editing interface for the block. The registration file also tells WordPress what to do with the input from the editor via the callback; in our case, input from the editor is passed to the shortcode function established earlier, using the template to render the component itself. Essentially, the Block Editor is just a GUI wrapper for the shortcode.
