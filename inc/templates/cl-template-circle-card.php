@@ -12,15 +12,15 @@ if ( ! empty( $atts['float'] ) ) {
 }
 
 $output = '<div class="' . $classes . '">';
-$output .= '<a href="' . $atts['link'] . '">';
-$output .= '<div class="cl-card" id="circle">';
+$output .= '<a class="cl-card" href="' . $atts['link'] . '">';
+$output .= '<div id="circle">';
 $output .= '<div class="cl-circle-card-img" style="background-image:url(' . $atts['img'] . ')"></div>';
 
 $output .= '<div class="cl-circle-card-content">';
 $output .= '<p id="eyebrow">Impacting success</p>';
 $output .= '<hr id="liner">';
 $output .= '<h2>' . $atts['title'] . '</h2>';
-$output .= '<p>' . $atts[body] . '</p>';                  
+$output .= '<p>' . $atts['body'] . '</p>';                  
 $output .= '</div>';
 
 $output .= '</div>'; 
