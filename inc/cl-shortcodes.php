@@ -155,6 +155,7 @@ function uri_cl_shortcode_button( $atts, $content = null ) {
 			'text' => 'Explore',
 			'link' => '#',
 			'tooltip' => '',
+			'arialabel' => '',
 			'style' => '',
 			'class' => '',
 			'className' => '',
