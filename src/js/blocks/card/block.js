@@ -269,24 +269,6 @@ registerBlockType( 'uri-cl/card', {
 			);
 		};
 
-		//Generate doc link in sidebar
-		const createSidebarTips = () => {
-			return (
-				<InspectorControls>
-					<PanelBody title="Documentation">
-						<PanelRow>
-							<div>Tip: If using cards in columns, make sure the images have the same aspect ratio.</div>
-						</PanelRow>
-						<PanelRow>
-							<ExternalLink href="https://www.uri.edu/wordpress/components/cards/" target="_blank" rel="noopener noreferrer">
-								View Documentation
-							</ExternalLink>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>
-			);
-		};
-
 		// Generate sidebar inspector controls for other custom attributes
 		const createInspectorControls = () => {
 			return (
@@ -305,11 +287,29 @@ registerBlockType( 'uri-cl/card', {
 			);
 		};
 
+		//Generate doc link in sidebar
+		const createSidebarTips = () => {
+			return (
+				<InspectorControls>
+					<PanelBody title="Documentation">
+						<PanelRow>
+							<div>Tip: If using cards in columns, make sure the images have the same aspect ratio.</div>
+						</PanelRow>
+						<PanelRow>
+							<ExternalLink href="https://www.uri.edu/wordpress/components/cards/" target="_blank" rel="noopener noreferrer">
+								View Documentation
+							</ExternalLink>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>
+			);
+		};
+
 		// Send the editor interfaces to the view
 		return ( [
-			createSidebarTips(),
 			createBlockControls(),
 			createInspectorControls(),
+			createSidebarTips(),
 			createContentEditForm(),
 		] );
 	}, // End edit
