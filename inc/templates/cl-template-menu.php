@@ -23,7 +23,7 @@ if ( $atts['showtitle'] ) {
 }
 
 $output = '<section class="cl-wrapper cl-menu-wrapper">';
-$output .= '<div id="' . $atts['id'] . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $atts['showtitle'] . '"';
+$output .= '<nav id="' . $atts['id'] . '" class="' . $classes . '" data-name="' . $menuname . '" data-show-title="' . $atts['showtitle'] . '"';
 
 if ( ! empty( $atts['css'] ) ) {
 	$output .= ' style="' . $atts['css'] . '"';
@@ -55,5 +55,5 @@ if ( empty( $atts['name'] ) ) {
 		);
 }
 
-$output .= '</div>';
+$output .= '</nav>';
 $output .= '</section>';
