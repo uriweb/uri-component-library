@@ -94,12 +94,12 @@ registerBlockType( 'uri-cl/boxout', {
 			return (
 				<div className="container">
 					<div className={ classes }>
-						<h2><PlainText
+						<h1><PlainText
 							onChange={ ( content ) => setAttributes( { title: content } ) }
 							value={ attributes.title }
 							placeholder={ __( 'Title' ) }
 							keepPlaceholderOnFocus={ true }
-						/></h2>
+						/></h1>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
