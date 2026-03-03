@@ -117,12 +117,12 @@ registerBlockType( 'uri-cl/notice', {
 				<div className="container">
 					{ expirationMessage }
 					<div className={ classes }>
-						<h2><PlainText
+						<h1><PlainText
 							onChange={ ( content ) => setAttributes( { title: content } ) }
 							value={ attributes.title }
 							placeholder={ __( 'Your notice title' ) }
 							keepPlaceholderOnFocus={ true }
-						/></h2>
+						/></h1>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
