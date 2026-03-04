@@ -13,7 +13,7 @@ if ( empty( $atts['facebook'] ) && empty( $atts['instagram'] ) && empty( $atts['
 
 } else {
 
-	$output = '<aside class="cl-wrapper cl-social-wrapper">';
+	$output = '<div class="cl-wrapper cl-social-wrapper">';
 	$output .= '<ul class="' . $classes . '"';
 
 	if ( ! empty( $atts['css'] ) ) {
@@ -49,6 +49,6 @@ if ( empty( $atts['facebook'] ) && empty( $atts['instagram'] ) && empty( $atts['
 	}
 
 	$output .= '</ul>';
-	$output .= '</aside>';
+	$output .= '</div>';
 
 }

@@ -81,7 +81,7 @@ registerBlockType( 'uri-cl/notice', {
 		},
 		dismissible: {
 			type: 'bool',
-			default: true,
+			default: false,
 		},
 		contentWrapper: {
 			type: 'string',
@@ -166,6 +166,7 @@ registerBlockType( 'uri-cl/notice', {
 
 						<PanelRow>
 							<ToggleControl
+								__nextHasNoMarginBottom={ true }
 								label="Allow visitors to dismiss this notice"
 								checked={ attributes.dismissible }
 								onChange={ ( content ) => setAttributes( { dismissible: content } ) }
