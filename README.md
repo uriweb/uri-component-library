@@ -9,13 +9,21 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
-## What's new in 5.2.2 
+## What's new in 5.3.0 
 
-CL 5.2.1 is a fix release that includes improvements the accessibility widget and margin spacing for components in columns. 
+CL 5.3.0 is a minor release that focuses on functionality and accessibility improvements. 
+
+* Add bottom margin to Button component
+* Add documentation link to the editing pane on the Card component
+* Make Notices non-dismissable on default
+* Change HTML `<aside>` for `<div>` on Social Bar component, Boxout component (when floated), Share Bar component, and Date component
+* Remove columns from Breakout component
+* Add aria-label option for Button component
+* Use `<nav>` for Menu component
 
 > This plugin is available from Packagist as [uriweb/uri-component-library](https://packagist.org/packages/uriweb/uri-component-library)
 
-For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/231/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
+For complete details, see the [commit history](https://github.com/uriweb/uri-component-library/pull/240/commits) and the [issue tracker](https://github.com/uriweb/uri-component-library/issues).
 
 ## How do I get set up?
 
@@ -40,7 +48,7 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)  
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
-__Tested up to:__ 6.8.1  
-__Stable tag:__ 5.2.2  
+__Tested up to:__ 6.9.1  
+__Stable tag:__ 5.3.0  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
