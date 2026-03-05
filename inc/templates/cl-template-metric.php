@@ -19,7 +19,7 @@ switch ( $atts['style'] ) {
 
 if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
-	$output = '<aside class="cl-wrapper cl-metric-wrapper">';
+	$output = '<div class="cl-wrapper cl-metric-wrapper">';
 }
 
 $atts['class'] = $atts['class'] . ' ' . $atts['className'];
@@ -53,5 +53,5 @@ $output .= '<span>' . $atts['caption'] . '</span>';
 
 $output .= '</div>';
 if ( ! empty( $atts['float'] ) ) {
-	$output .= '</aside>';
+	$output .= '</div>';
 }

@@ -22,7 +22,7 @@ switch ( $atts['color'] ) {
 
 if ( ! empty( $atts['float'] ) ) {
 	$classes .= ' ' . $atts['float'];
-	$output = '<aside class="cl-wrapper cl-date-wrapper">';
+	$output = '<div class="cl-wrapper cl-date-wrapper">';
 }
 
 $atts['class'] = $atts['class'] . ' ' . $atts['className'];
@@ -79,5 +79,5 @@ $output .= '<div class="cl-date-download-notice">Check your downloads folder for
 
 $output .= '</div>';
 if ( ! empty( $atts['float'] ) ) {
-	$output .= '</aside>';
+	$output .= '</div>';
 }

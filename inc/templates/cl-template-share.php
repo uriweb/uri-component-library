@@ -7,7 +7,7 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-$output = '<aside class="cl-wrapper cl-share-wrapper">';
+$output = '<div class="cl-wrapper cl-share-wrapper">';
 $output .= '<div class="' . $classes . '"';
 
 if ( ! empty( $atts['css'] ) ) {
@@ -24,4 +24,4 @@ $output .= '<li><a href="https://www.facebook.com/sharer/sharer.php?u=' . esc_ur
 $output .= '</ul>';
 
 $output .= '</div>';
-$output .= '</aside>';
+$output .= '</div>';

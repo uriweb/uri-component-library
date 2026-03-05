@@ -5,6 +5,7 @@ const {
 	RichText,
 	URLInput,
 	InspectorControls,
+	InspectorAdvancedControls,
 	BlockControls,
 	Toolbar,
 	BlockAlignmentToolbar,
@@ -25,40 +26,40 @@ const customIcon = () => {
 			width="20"
 			height="20"
 			className="dashicon"
-			src={ ( URI_CL_URL + 'i/icons/button.svg' ) }
+			src={(URI_CL_URL + 'i/icons/button.svg')}
 			alt="button"
 		/>
 	);
 };
 
-const classNames = ( attributes, isSelected ) => {
+const classNames = (attributes, isSelected) => {
 	let classes = 'cl-button';
-	if ( !! attributes.className ) {
+	if (!!attributes.className) {
 		// @todo this gets automatically applied to wrapper... remove it?
 		classes += ' ' + attributes.className;
 	}
-	if ( !! attributes.alignment ) {
+	if (!!attributes.alignment) {
 		classes += ' ' + attributes.alignment;
 	}
-	if ( !! attributes.style ) {
+	if (!!attributes.style) {
 		classes += ' ' + attributes.style;
 	}
-	if ( !! isSelected ) {
+	if (!!isSelected) {
 		classes += ' selected';
 	}
 
 	return classes;
 };
 
-registerBlockType( 'uri-cl/button', {
+registerBlockType('uri-cl/button', {
 
-	title: __( 'Button' ),
+	title: __('Button'),
 	icon: customIcon,
 	category: 'cl-blocks',
-	description: __( 'Use buttons to attract attention to the primary call to action on a page.' ),
+	description: __('Use buttons to attract attention to the primary call to action on a page.'),
 	example: {
 		attributes: {
-			text: __( 'Explore' ),
+			text: __('Explore'),
 		},
 	},
 	attributes: {
@@ -74,23 +75,26 @@ registerBlockType( 'uri-cl/button', {
 		style: {
 			type: 'string',
 		},
+		arialabel: {
+			type: 'string',
+		}
 	},
 
-	edit( { attributes, className, setAttributes, isSelected } ) {
+	edit({ attributes, className, setAttributes, isSelected }) {
 		// Generate editor view of the button itself
 		const createContentEditForm = () => {
 			let meta;
-			if ( !! isSelected ) {
+			if (!!isSelected) {
 				meta = (
 					<form
 						className="meta"
-						onSubmit={ ( event ) => event.preventDefault() }
+						onSubmit={(event) => event.preventDefault()}
 					>
 						<fieldset className="row link">
 							<label title="Links to:"><Dashicon icon="admin-links" /></label>
 							<URLInput
-								value={ attributes.link }
-								onChange={ ( content ) => setAttributes( { link: content } ) }
+								value={attributes.link}
+								onChange={(content) => setAttributes({ link: content })}
 								placeholder="https://www.uri.edu/"
 								className="meta-field"
 							/>
@@ -100,25 +104,26 @@ registerBlockType( 'uri-cl/button', {
 			}
 
 			// Set the classnames
-			const classes = classNames( attributes, isSelected );
+			const classes = classNames(attributes, isSelected);
 
 			// Set the tooltip
 			let title = '';
-			if ( !! attributes.tooltip ) {
+			if (!!attributes.tooltip) {
 				title = attributes.tooltip;
 			}
+
 			return (
 				<div className="container cl-button-block-form">
-					<span className={ classes } title={ title }>
+					<span className={classes} title={title}>
 						<PlainText
-							onChange={ ( content ) => setAttributes( { text: content } ) }
-							value={ attributes.text }
-							placeholder={ __( 'Your button text' ) }
-							keepPlaceholderOnFocus={ true }
+							onChange={(content) => setAttributes({ text: content })}
+							value={attributes.text}
+							placeholder={__('Your button text')}
+							keepPlaceholderOnFocus={true}
 							className="cl-button"
 						/>
 					</span>
-					{ meta }
+					{meta}
 				</div>
 			);
 		};
@@ -129,8 +134,8 @@ registerBlockType( 'uri-cl/button', {
 			return (
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ ( content ) => setAttributes( { alignment: content } ) }
+						value={attributes.alignment}
+						onChange={(content) => setAttributes({ alignment: content })}
 					/>
 				</BlockControls>
 			);
@@ -143,28 +148,28 @@ registerBlockType( 'uri-cl/button', {
 					<PanelBody>
 						<PanelRow>
 							<BaseControl
-								label={ __( 'Button Style' ) }
+								label={__('Button Style')}
 								id="button-style"
 							>
-								<ButtonGroup aria-label={ __( 'Button Style' ) }>
-									{ [ 'default', 'prominent', 'disabled' ].map( ( value ) => {
-										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
-										const key = ( 'default' === value ) ? '' : value;
-										const style = ( undefined === attributes.style ) ? '' : attributes.style;
-										const selected = ( key === style );
+								<ButtonGroup aria-label={__('Button Style')}>
+									{['default', 'prominent', 'disabled'].map((value) => {
+										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+										const key = ('default' === value) ? '' : value;
+										const style = (undefined === attributes.style) ? '' : attributes.style;
+										const selected = (key === style);
 
 										return (
 											<Button
-												key={ key }
+												key={key}
 												isSecondary
-												isPrimary={ selected }
-												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { style: key } ) }
+												isPrimary={selected}
+												aria-pressed={selected}
+												onClick={(content) => setAttributes({ style: key })}
 											>
-												{ capitalizedValue }
+												{capitalizedValue}
 											</Button>
 										);
-									} ) }
+									})}
 								</ButtonGroup>
 							</BaseControl>
 						</PanelRow>
@@ -172,22 +177,39 @@ registerBlockType( 'uri-cl/button', {
 						<PanelRow>
 							<TextControl
 								label="Tool tip"
-								onChange={ ( content ) => setAttributes( { tooltip: content } ) }
-								value={ attributes.tooltip }
+								onChange={(content) => setAttributes({ tooltip: content })}
+								value={attributes.tooltip}
 								className="meta-field"
 							/>
 						</PanelRow>
-
 					</PanelBody>
+
 				</InspectorControls>
 			);
 		};
 
+		//create aria label field
+		const createAriaLabelField = () => {
+			return (
+				<InspectorAdvancedControls>
+					<TextControl
+						label="Aria-label"
+						onChange={(content) => setAttributes({ arialabel: content })}
+						value={attributes.arialabel}
+						help="Warning: This will override the link text for screenreader users. Use aria-label only as a last resort."
+					/>
+
+				</InspectorAdvancedControls>
+
+			);
+		};
+
 		// Send the editor interfaces to the view
-		return ( [
+		return ([
 			createInspectorControls(),
+			createAriaLabelField(),
 			createContentEditForm(),
-		] );
+		]);
 	}, // End edit
 
-} );
+});

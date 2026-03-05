@@ -31,6 +31,10 @@ if ( 'disabled' == $atts['style'] ) {
 		$output .= 'style="' . $atts['css'] . '"';
 	}
 
+	if ( ! empty( $atts['arialabel'] ) ) {
+		$output .= 'aria-label="'. $atts['arialabel'] . '"';
+	}
+
 	$output .= '>' . $atts['text'] . '</a>';
 
 }
