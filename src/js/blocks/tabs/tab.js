@@ -54,12 +54,12 @@ registerBlockType( 'uri-cl/tab', {
 	edit( { attributes, className, setAttributes } ) {
 		return (
 			<div className="cl-tab">
-				<h1><PlainText
+				<h2><PlainText
 					onChange={ ( content ) => setAttributes( { title: content } ) }
 					value={ attributes.title }
 					placeholder={ __( 'Tab Title' ) }
 					keepPlaceholderOnFocus={ true }
-				/></h1>
+				/></h2>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
