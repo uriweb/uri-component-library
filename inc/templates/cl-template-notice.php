@@ -52,7 +52,7 @@ if ( 'covid19' == $atts['style'] ) {
 }
 
 if ( ! empty( $atts['title'] ) ) {
-	$output .= '<h1>' . $atts['title'] . '</h1>';
+	$output .= '<h2>' . $atts['title'] . '</h2>';
 }
 
 if ( isset( $content ) ) {
