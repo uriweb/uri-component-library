@@ -2,6 +2,7 @@
 
 .cl-circle-card{
    display: flex!important;
+   padding-top: 4em;
 
    .cl-card {
     overflow: initial;
@@ -71,7 +72,7 @@
     .cl-circle-card{
        grid-template-columns: repeat(1,1fr);
        margin: 0 auto;
-       padding: 0 0 1em;
+       padding: 5em 0 1em;
     }  
 }
 
