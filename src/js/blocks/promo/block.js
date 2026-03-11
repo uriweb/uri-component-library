@@ -162,12 +162,12 @@ registerBlockType( 'uri-cl/promo', {
 					<div className="container cl-promo-block-form">
 						<div className={ classes }>
 							<div className="cl-promo-micro-content-wrapper">
-								<h1><PlainText
+								<h2><PlainText
 									onChange={ ( content ) => setAttributes( { title: content } ) }
 									value={ attributes.title }
 									placeholder={ __( 'Your promo title' ) }
 									keepPlaceholderOnFocus={ true }
-								/></h1>
+								/></h2>
 								<span className="cl-promo-micro-text-link"><PlainText
 									onChange={ ( content ) => setAttributes( { linktext: content } ) }
 									value={ attributes.linktext }
@@ -194,12 +194,12 @@ registerBlockType( 'uri-cl/promo', {
 						</div>
 						<div className="cl-promo-content">
 							<div className="cl-promo-text">
-								<h1><PlainText
+								<h2><PlainText
 									onChange={ ( content ) => setAttributes( { title: content } ) }
 									value={ attributes.title }
 									placeholder={ __( 'Your promo title' ) }
 									keepPlaceholderOnFocus={ true }
-								/></h1>
+								/></h2>
 								<p><PlainText
 									onChange={ ( content ) => setAttributes( { body: content } ) }
 									value={ attributes.body }

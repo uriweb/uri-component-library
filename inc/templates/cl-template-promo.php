@@ -59,7 +59,7 @@ if ( 'micro' == $atts['format'] ) {
 	$output .= '<div class="cl-promo-text">';
 
 	if ( ! empty( $atts['title'] ) ) {
-		$output .= '<h1>' . $atts['title'] . '</h1>';
+		$output .= '<h2>' . $atts['title'] . '</h2>';
 	}
 
 	if ( ! empty( $atts['body'] ) ) {
