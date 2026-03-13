@@ -318,6 +318,62 @@ function uri_cl_shortcode_circle_card( $atts, $content = null ) {
 }
 add_shortcode( 'cl-circle-card', 'uri_cl_shortcode_circle_card' );
 
+/**
+ * Display Card
+ */
+function uri_cl_shortcode_display_card( $atts, $content = null ) {
+
+    // Attributes
+    $atts = shortcode_atts(
+        array(
+            'img' => '',
+            'alt' => '',
+            'title' => '',
+            'eyebrow' => '',
+            'link' => '#',
+            'float' => '',
+            'class' => '',
+            'className' => '',
+            'css' => '',
+        ),
+        $atts
+        );
+
+    // Error checking
+    return uri_cl_validate(
+         'Display Card',
+        $atts,
+        $content,
+        array(
+            array(
+                'attr' => 'link',
+                'types' => array( 'url' ),
+            ),
+            array(
+                'attr' => 'img',
+                'types' => array( 'url', 'num' ),
+            ),
+            array(
+                'attr' => 'title',
+                'types' => array( 'str' ),
+            ),
+     
+            array(
+                'attr' => 'eyebrow',
+                'types' => array( 'str' ),
+            ),
+            array(
+                'attr' => 'float',
+                'types' => array( 'str' ),
+                'req' => false,
+                'values' => array( 'left', 'right' ),
+            ),
+        ),
+        uri_cl_shortcode_get_template( 'display-card' )
+    );
+
+}
+add_shortcode( 'cl-display-card', 'uri_cl_shortcode_display_card' );
 
 /**
  * Detail Card
