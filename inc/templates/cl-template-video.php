@@ -25,7 +25,7 @@ if ( ! empty( $atts['title'] ) || ! empty( $atts['excerpt'] ) ) {
 	$output .= '<div class="overlay">';
 
 	if ( ! empty( $atts['title'] ) ) {
-		$output .= '<h1>' . $atts['title'] . '</h1>';
+		$output .= '<h2>' . $atts['title'] . '</h2>';
 	}
 
 	if ( ! empty( $atts['excerpt'] ) ) {
