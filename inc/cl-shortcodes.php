@@ -334,6 +334,8 @@ function uri_cl_shortcode_display_card( $atts, $content = null ) {
             'float' => '',
             'class' => '',
             'className' => '',
+			'positionX' => 0.5,
+			'positionY' => 0.5,
             'css' => '',
         ),
         $atts
@@ -368,6 +370,16 @@ function uri_cl_shortcode_display_card( $atts, $content = null ) {
                 'req' => false,
                 'values' => array( 'left', 'right' ),
             ),
+			array(
+				'attr' => 'positionX',
+				'types' => array( 'num' ),
+				'req' => false,
+			),
+			array(
+				'attr' => 'positionY',
+				'types' => array( 'num' ),
+				'req' => false,
+			),
         ),
         uri_cl_shortcode_get_template( 'display-card' )
     );
