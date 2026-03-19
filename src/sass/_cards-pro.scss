@@ -65,6 +65,23 @@
         padding-top: 0;
     }
 
+    .eyebrow {
+  font-size: 0.8rem!important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem!important;
+  color: #fff;
+  font-weight: 600;
+
+  &::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  margin-top: 4px;
+}
+
 }
 
 

@@ -18,7 +18,7 @@ $output .= '<div class="cl-circle-card-img" style="background-image:url(' . $att
 
 $output .= '<div class="cl-circle-card-content">';
 $output .= '<p id="eyebrow">' . $atts['eyebrow'] . '</p>';
-$output .= '<hr id="liner">';
+/*$output .= '<hr id="liner">';*/
 $output .= '<h2>' . $atts['title'] . '</h2>';
 $output .= '<p>' . $atts['body'] . '</p>';                  
 $output .= '</div>';
