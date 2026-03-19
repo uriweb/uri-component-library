@@ -41,46 +41,30 @@
         font-family: Hind, Arial, sans-serif;
         font-size: 16px;
         color: #000;
+    }
 
-        &#eyebrow{
+    .eyebrow{
             font-family: Hind, Arial, sans-serif;
             color: #002E5F;
-            font-size: .9rem;
+            font-size: .8rem;
             text-transform: uppercase;
             font-weight:600;
             letter-spacing: 1px;
-            margin-bottom: 0;
-        }
+            margin-bottom: 1rem;
+        
+        &::after {
+        content: "";
+        display: block;
+        width: 44px;
+        height: 2px;
+        background:  #002E5F;
+        margin-top: 4px;
     }
-
+    }
     a {
         color: #000;
     }
 
-    hr#liner{
-        background-color: #002e5f;
-        width: 50px;
-        height: 2px;
-        margin-top: 0;
-        padding-top: 0;
-    }
-
-    .eyebrow {
-  font-size: 0.8rem!important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem!important;
-  color: #fff;
-  font-weight: 600;
-
-  &::after {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.85);
-  margin-top: 4px;
-}
 
 }
 
