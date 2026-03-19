@@ -81,3 +81,100 @@
        padding-top: 6em;
     }
 }
+
+
+/* Display Cards */
+
+.cl-display-card {
+  position: relative;
+  height: 350px;
+  min-height: 300px;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  transition: transform .22s ease;
+  background-image:
+  linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0));
+  background-size: cover, cover;
+  /*background-position: bottom, center 10%; gradient bottom, image position */
+  background-repeat: no-repeat, no-repeat;
+
+
+  &:hover {
+  transform: scale(1.02);
+}
+}
+
+.cl-display-card_content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0rem 1.25rem;
+  box-sizing: border-box;
+  transition: top .22s ease;
+  will-change: top;
+}
+
+.cl-display-card.wide .cl-display-card_content {
+  width: 50%;                /* only take up half of the card */
+  max-width: 600px;          /* optional: cap width on huge screens */
+  padding: 0rem 2rem;     /* room to breathe */
+}
+
+@media (max-width: 650px) {
+  .cl-display-card { height: 360px; }
+  .cl-display-card_content { padding: 1rem; }
+    /*h2 { font-size: 1.15rem; }*/
+}
+
+@media (max-width: 700px) {
+  .cl-display-card_section .display-card.wide .display-card_content {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.eyebrow {
+  font-size: 0.8rem!important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem!important;
+  color: #fff;
+  font-weight: 600;
+
+  &::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  margin-top: 4px;
+}
+}
+
+.cl-display-card-img{
+    &.n {
+        background-position: 50% 0;
+    }
+    &.ne {
+        background-position: 100% 0;
+    }
+    &.e {
+        background-position: 100% 50%;
+    }
+    &.se {
+        background-position: 100% 100%;
+    }
+    &.s  {
+        background-position: 50% 100%;
+    }
+    &.sw  {
+        background-position: 0 100%;
+    }
+    &.w {
+        background-position: 0 50%;
+    }
+    &.nw {
+        background-position: 0 0;
+    }
+
+}
