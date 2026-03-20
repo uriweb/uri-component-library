@@ -3,7 +3,7 @@
 $output = '<div class="cl-accessibility-controls-container">';
 $output .= '<div class="cl-accessibility-controls">';
 
-$output .= '<div class="cl-accessibility-icon" title="Accessibility controls">Accessibility controls</div>';
+$output .= '<button class="cl-accessibility-icon" aria-haspopup="true" aria-expanded="false" aria-controls="cl-accessibility-controls" title="Accessibility controls">Accessibility controls</button>';
 
 // Motion Controls
 
