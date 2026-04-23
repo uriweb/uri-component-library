@@ -9,6 +9,15 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
+## What's new in 5.3.1
+
+CL 5.3.1 is a patch release that continues to enhance the accessibility of components. 
+
+* Removes slideshows in favor of using the native Wordpress Gallery block
+* Edits the accessible name of social media icons on the Share component
+* Adjusts the X icon on the Share component
+* Adds columns as an allowed block within the Breakout component
+
 ## What's new in 5.3.0 
 
 CL 5.3.0 is a minor release that focuses on functionality and accessibility improvements. 
@@ -48,7 +57,7 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)  
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
-__Tested up to:__ 6.9.1  
+__Tested up to:__ 6.9.4  
 __Stable tag:__ 5.3.0  
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
