@@ -23,6 +23,7 @@ const ALLOWED_BLOCKS = [
 	'core/heading',
 	'core/paragraph',
 	'core/list',
+	'core/columns',
 	'uri-cl/button',
 	'uri-cl/boxout',
 	'uri-cl/card',
