@@ -18,7 +18,6 @@ $output .= '<div class="cl-display-card-img" style="background-image:url(' . $at
 
 $output .= '<div class="cl-display-card-content">';
 $output .= '<p class="eyebrow">' . $atts['eyebrow'] . '</p>';
-$output .= '<hr id="liner">';
 $output .= '<h2>' . $atts['title'] . '</h2>';               
 $output .= '</div>';
 

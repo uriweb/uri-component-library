@@ -3,10 +3,18 @@
 .cl-circle-card{
    display: flex!important;
    padding-top: 4em;
+   flex-wrap: wrap;
+
 
    .cl-card {
-    overflow: initial;
+    overflow: visible;
    }
+}
+
+.cl-circle-card.wp-block-column{
+     display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 .cl-card#circle{
@@ -21,8 +29,8 @@
    border: 2px solid #002E5F;
    margin: -4em auto 2em;
    background-position:center;
-	 background-repeat:no-repeat;
-	 background-size:cover;
+   background-repeat:no-repeat;
+   background-size:cover;
    overflow: hidden;
 }
 
@@ -32,15 +40,16 @@
    h2 {
         margin: 1em auto;
         justify-items: center;
-        line-height: 32px!important;
+        /*line-height: 32px!important;*/
         color: #002E5F;
-        line-height: 2rem;
+        line-height: 1.7rem!important;
     }
 
     p {
         font-family: Hind, Arial, sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         color: #000;
+        line-height: 1.5rem; 
     }
 
     .eyebrow{
@@ -96,7 +105,7 @@
   background-image:
   linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0));
   background-size: cover, cover;
-  /*background-position: bottom, center 10%; gradient bottom, image position */
+  background-position: bottom, center 10%; /*gradient bottom, image position */
   background-repeat: no-repeat, no-repeat;
 
 
@@ -113,18 +122,26 @@
   box-sizing: border-box;
   transition: top .22s ease;
   will-change: top;
+
+     h2 {
+        margin: 1em auto;
+        justify-items: center;
+        /*line-height: 32px!important;*/
+        color: #ffffff;
+        line-height: 2rem;
+    }
 }
 
 .cl-display-card.wide .cl-display-card-content {
-  width: 50%;                /* only take up half of the card */
+  width: 50%;                 /* only take up half of the card */
   max-width: 600px;          /* optional: cap width on huge screens */
-  padding: 0rem 2rem;     /* room to breathe */
+  padding: 0rem 2rem;      /* room to breathe */
 }
 
 @media (max-width: 650px) {
   .cl-display-card { height: 360px; }
   .cl-display-card-content { padding: 1rem; }
-    /*h2 { font-size: 1.15rem; }*/
+    /* h2 { font-size: 1.15rem; } */
 }
 
 @media (max-width: 700px) {
@@ -135,6 +152,7 @@
 }
 
 .eyebrow {
+  font-family: Hind, Arial, sans-serif;
   font-size: 0.8rem!important;
   text-transform: uppercase;
   letter-spacing: 1px;
