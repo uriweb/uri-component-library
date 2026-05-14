@@ -42,7 +42,7 @@
 	}
 
 	function positionAll() {
-		const rows = document.querySelectorAll( '.cl-display-card_section .wp-block-column' );
+		const rows = document.querySelectorAll( '.cl-display-card_section' );
 		rows.forEach( ( row ) => positionRowCards( row ) );
 	}
 
