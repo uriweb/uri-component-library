@@ -14,11 +14,15 @@ if ( ! empty( $atts['float'] ) ) {
 $output = '<div class="' . $classes . '">';
 $output .= '<a class="cl-display-card-link" href="' . $atts['link'] . '">';
 $output .= '<div class="display">';
-$output .= '<div class="cl-display-card-img" style="background-image:url(' . $atts['img'] . ')"></div>';
 
+$output .= '<div class="cl-display-card-img" style="background-image:linear-gradient(to top, rgba(0,0,0,' . $atts['opacity'] . '), rgba(0,0,0,0)),url(' . $atts['img'] . ');"></div>';
+
+$output .= '<div class="grid">';
+$output .= '<div class="cl-display-card-spacer"></div>';
 $output .= '<div class="cl-display-card-content">';
 $output .= '<p class="eyebrow">' . $atts['eyebrow'] . '</p>';
 $output .= '<h2>' . $atts['title'] . '</h2>';               
+$output .= '</div>';
 $output .= '</div>';
 
 $output .= '</div><!--end display -->'; 

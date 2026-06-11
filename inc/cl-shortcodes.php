@@ -330,6 +330,7 @@ function uri_cl_shortcode_display_card( $atts, $content = null ) {
             'alt' => '',
             'title' => '',
             'eyebrow' => '',
+			'opacity' => '0.62',
             'link' => '#',
             'float' => '',
             'class' => '',
@@ -363,6 +364,10 @@ function uri_cl_shortcode_display_card( $atts, $content = null ) {
             array(
                 'attr' => 'eyebrow',
                 'types' => array( 'str' ),
+            ),
+			array(
+                'attr' => 'opacity',
+                'types' => array( 'num' ),
             ),
             array(
                 'attr' => 'float',
