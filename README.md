@@ -9,6 +9,10 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
+## What's new 5.3.2 
+
+CL 5.3.2 adds two new style options to cards and adjusts the background color of breakouts for better contrast against links.
+
 ## What's new in 5.3.1
 
 CL 5.3.1 is a patch release that continues to enhance the accessibility of components. 
@@ -57,7 +61,7 @@ For help with using components, see [documentation](https://www.uri.edu/wordpres
 __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](https://github.com/johnpennypacker), [alexandragauss](https://github.com/alexandragauss)  
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
-__Tested up to:__ 6.9.4  
-__Stable tag:__ 5.3.1 
+__Tested up to:__ 6.9.5  
+__Stable tag:__ 5.3.2 
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
