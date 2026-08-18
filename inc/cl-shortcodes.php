@@ -987,6 +987,7 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			'img' => '',
 			'alt' => '',
 			'style' => '',
+			'blockStyle' => '',
 			'format' => '',
 			'class' => '',
 			'className' => '',
@@ -1012,6 +1013,12 @@ function uri_cl_shortcode_promo( $atts, $content = null ) {
 			),
 			array(
 				'attr' => 'style',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'default', 'confetti', 'brand' ),
+			),
+			array(
+				'attr' => 'blockStyle',
 				'types' => array( 'str' ),
 				'req' => false,
 				'values' => array( 'default', 'confetti', 'brand' ),

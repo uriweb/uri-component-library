@@ -82,7 +82,7 @@ registerBlockType( 'uri-cl/promo', {
 		alt: {
 			type: 'string',
 		},
-		style: {
+		blockStyle: {
 			type: 'string',
 		},
 		format: {
@@ -180,17 +180,17 @@ registerBlockType( 'uri-cl/promo', {
 				);
 			}
 
-			let style = 'style-blur';
-			if ( !! attributes.style && 'default' !== attributes.style ) {
-				style = 'style-' + attributes.style;
+			let blockStyle = 'style-blur';
+			if ( !! attributes.blockStyle && 'default' !== attributes.blockStyle ) {
+				blockStyle = 'style-' + attributes.blockStyle;
 			}
-			style = 'cl-promo-backdrop ' + style;
+			blockStyle = 'cl-promo-backdrop ' + blockStyle;
 
 			return (
 				<div className="container cl-promo-block-form">
 					<div className={ classes }>
 						<div className="cl-promo-backdrop-wrapper">
-							<div className={ style }></div>
+							<div className={ blockStyle }></div>
 						</div>
 						<div className="cl-promo-content">
 							<div className="cl-promo-text">
@@ -285,7 +285,7 @@ registerBlockType( 'uri-cl/promo', {
 							{ [ 'default', 'brand', 'confetti' ].map( ( value ) => {
 								const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 								const key = ( 'default' === value ) ? '' : value;
-								const format = ( undefined === attributes.style ) ? '' : attributes.style;
+								const format = ( undefined === attributes.blockStyle ) ? '' : attributes.blockStyle;
 								const selected = ( key === format );
 
 								return (
@@ -294,7 +294,7 @@ registerBlockType( 'uri-cl/promo', {
 										isSecondary
 										isPrimary={ selected }
 										aria-pressed={ selected }
-										onClick={ ( content ) => setAttributes( { style: key } ) }
+										onClick={ ( content ) => setAttributes( { blockStyle: key } ) }
 									>
 										{ capitalizedValue }
 									</Button>
