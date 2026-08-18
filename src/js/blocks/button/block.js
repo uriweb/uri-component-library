@@ -41,8 +41,8 @@ const classNames = (attributes, isSelected) => {
 	if (!!attributes.alignment) {
 		classes += ' ' + attributes.alignment;
 	}
-	if (!!attributes.style) {
-		classes += ' ' + attributes.style;
+	if (!!attributes.blockStyle) {
+		classes += ' ' + attributes.blockStyle;
 	}
 	if (!!isSelected) {
 		classes += ' selected';
@@ -72,7 +72,7 @@ registerBlockType('uri-cl/button', {
 		tooltip: {
 			type: 'string',
 		},
-		style: {
+		blockStyle: {
 			type: 'string',
 		},
 		arialabel: {
@@ -155,7 +155,7 @@ registerBlockType('uri-cl/button', {
 									{['default', 'prominent', 'disabled'].map((value) => {
 										const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
 										const key = ('default' === value) ? '' : value;
-										const style = (undefined === attributes.style) ? '' : attributes.style;
+										const style = (undefined === attributes.blockStyle) ? '' : attributes.blockStyle;
 										const selected = (key === style);
 
 										return (
@@ -164,7 +164,7 @@ registerBlockType('uri-cl/button', {
 												isSecondary
 												isPrimary={selected}
 												aria-pressed={selected}
-												onClick={(content) => setAttributes({ style: key })}
+												onClick={(content) => setAttributes({ blockStyle: key })}
 											>
 												{capitalizedValue}
 											</Button>
