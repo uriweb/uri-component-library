@@ -26,10 +26,10 @@ $output .= '>';
 
 // The backdrop
 $bgclasses = 'cl-abstract-backdrop';
-if ( 'lattice' == $atts['style'] ) {
+if ( 'lattice' == $atts['style'] || 'lattice' == $atts['blockStyle'] ) {
 	$bgclasses .= ' lattice';
 }
-if ( 'honeycomb' == $atts['style'] ) {
+if ( 'honeycomb' == $atts['style'] || 'honeycomb' == $atts['blockStyle'] ) {
 	$bgclasses .= ' honeycomb';
 }
 $bg = '<div class="' . $bgclasses . '"';
@@ -50,7 +50,7 @@ $directions = array(
 	'right',
 );
 
-if ( 'bars' == $atts['style'] ) {
+if ( 'bars' == $atts['style'] || 'bars' == $atts['blockStyle'] ) {
 	for ( $n = 0; $n <= 10; $n++ ) {
 		$w = rand( 2, 8 ) * 10;
 		$x = rand( 10, 90 );
@@ -60,7 +60,7 @@ if ( 'bars' == $atts['style'] ) {
 	}
 }
 
-if ( 'discs' == $atts['style'] ) {
+if ( 'discs' == $atts['style'] || 'discs' == $atts['blockStyle']) {
 	for ( $n = 0; $n <= 5; $n++ ) {
 		$w = rand( 2, 7 ) * 10;
 		$x = rand( 10, 90 );
@@ -75,7 +75,7 @@ if ( 'discs' == $atts['style'] ) {
 	}
 }
 
-if ( 'lattice' == $atts['style'] ) {
+if ( 'lattice' == $atts['style'] || 'lattice' == $atts['blockStyle'] ) {
 	for ( $n = 0; $n <= 200; $n++ ) {
 		$lattice_classes = 'triangle';
 		$t = rand( 10, 60 );
@@ -88,7 +88,7 @@ if ( 'lattice' == $atts['style'] ) {
 	}
 }
 
-if ( 'honeycomb' == $atts['style'] ) {
+if ( 'honeycomb' == $atts['style'] || 'honeycomb' == $atts['blockStyle']) {
 	for ( $n = 0; $n <= 200; $n++ ) {
 		$d = rand( 1, 29 );
 		$s = $speeds[ array_rand( $speeds, 1 ) ];

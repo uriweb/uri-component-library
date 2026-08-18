@@ -47,8 +47,8 @@ const classNames = ( attributes, isSelected ) => {
 	if ( !! isSelected ) {
 		classes += ' selected';
 	}
-	if ( !! attributes.style ) {
-		classes += ' ' + attributes.style;
+	if ( !! attributes.blockStyle ) {
+		classes += ' ' + attributes.blockStyle;
 	}
 	if ( !! attributes.float ) {
 		classes += ' ' + attributes.float;
@@ -66,7 +66,7 @@ registerBlockType( 'uri-cl/metric', {
 		attributes: {
 			metric: __( '40K' ),
 			caption: __( 'Leagues under the sea' ),
-			style: 'dark',
+			blockStyle: 'dark',
 		},
 	},
 	attributes: {
@@ -76,7 +76,7 @@ registerBlockType( 'uri-cl/metric', {
 		caption: {
 			type: 'string',
 		},
-		style: {
+		blockStyle: {
 			type: 'string',
 		},
 		float: {
@@ -152,7 +152,7 @@ registerBlockType( 'uri-cl/metric', {
 									{ [ 'standard', 'clear', 'dark', 'overlay' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const selected = key === attributes.style;
+										const selected = key === attributes.blockStyle;
 
 										return (
 											<Button
@@ -160,7 +160,7 @@ registerBlockType( 'uri-cl/metric', {
 												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { style: key } ) }
+												onClick={ ( content ) => setAttributes( { blockStyle: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>

@@ -96,7 +96,7 @@ registerBlockType( 'uri-cl/abstract', {
 		bgcss: {
 			type: 'string',
 		},
-		style: {
+		blockStyle: {
 			type: 'string',
 			default: 'bars',
 		},
@@ -165,8 +165,8 @@ registerBlockType( 'uri-cl/abstract', {
 			if ( !! attributes.className ) {
 				classes += ' ' + attributes.className;
 			}
-			if ( !! attributes.style ) {
-				classes += ' ' + attributes.style;
+			if ( !! attributes.blockStyle ) {
+				classes += ' ' + attributes.blockStyle;
 			}
 			if ( !! isSelected ) {
 				classes += ' selected';
@@ -279,7 +279,7 @@ registerBlockType( 'uri-cl/abstract', {
 									{ [ 'bars', 'discs', 'lattice', 'honeycomb' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const format = ( undefined === attributes.style ) ? '' : attributes.style;
+										const format = ( undefined === attributes.blockStyle ) ? '' : attributes.blockStyle;
 										const selected = ( key === format );
 
 										return (
@@ -288,7 +288,7 @@ registerBlockType( 'uri-cl/abstract', {
 												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { style: key } ) }
+												onClick={ ( content ) => setAttributes( { blockStyle: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>

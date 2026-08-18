@@ -2,6 +2,16 @@
 
 $classes = 'cl-notice';
 
+
+if ( 'urgent' == $atts['style'] || 'urgent' == $atts['blockStyle']) {
+	$classes .= ' urgent';
+}
+
+if ( 'covid19' == $atts['style'] || 'covid19' == $atts['blockStyle']) {
+	$classes .= ' covid19';
+}
+
+/*
 switch ( $atts['style'] ) {
 	case 'urgent':
 		$classes .= ' urgent';
@@ -10,6 +20,7 @@ switch ( $atts['style'] ) {
 		$classes .= ' covid19';
 		break;
 }
+		*/
 
 if ( ! empty( $atts['expiration'] ) ) {
 
@@ -47,7 +58,7 @@ if ( $atts['dismissible'] ) {
 	$output .= '<div class="dismiss" title="Dismiss">Dismiss message</div>';
 }
 
-if ( 'covid19' == $atts['style'] ) {
+if ( 'covid19' == $atts['style'] || 'covid19' == $atts['blockStyle'] ) {
 	$output .= '<div class="banner type-sans">COVID-19 Response</div>';
 }
 

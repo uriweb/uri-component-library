@@ -4,17 +4,13 @@ $classes = 'cl-metric';
 $override_bgcolor = false;
 $output = '';
 
-switch ( $atts['style'] ) {
-	case 'dark':
-		$classes .= ' dark';
-		break;
-	case 'clear':
-		$classes .= ' clear';
-		break;
-	case 'overlay':
-		$classes .= ' dark clear';
-		$override_bgcolor = true;
-		break;
+if ( 'dark' === $atts['style'] || 'dark' === $atts['blockStyle'] ) {
+	$classes .= ' dark';
+} elseif ( 'clear' === $atts['style'] || 'clear' === $atts['blockStyle'] ) {
+	$classes .= ' clear';
+} elseif ( 'overlay' === $atts['style'] || 'overlay' === $atts['blockStyle'] ) {
+	$classes .= ' dark clear';
+	$override_bgcolor = true;
 }
 
 if ( ! empty( $atts['float'] ) ) {
