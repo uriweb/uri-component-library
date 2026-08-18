@@ -732,6 +732,7 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 			'metric' => '',
 			'caption' => '',
 			'style' => '',
+			'blockStyle' => '',
 			'float' => '',
 			'bgcolor' => '',
 			'class' => '',
@@ -759,7 +760,13 @@ function uri_cl_shortcode_metric( $atts, $content = null ) {
 				'attr' => 'style',
 				'types' => array( 'str' ),
 				'req' => false,
-				'values' => array( 'dark', 'clear', 'overlay' ),
+				'values' => array( 'standard', 'dark', 'clear', 'overlay' ),
+			),
+			array(
+				'attr' => 'blockStyle',
+				'types' => array( 'str' ),
+				'req' => false,
+				'values' => array( 'standard', 'dark', 'clear', 'overlay' ),
 			),
 			array(
 				'attr' => 'float',
