@@ -843,6 +843,7 @@ function uri_cl_shortcode_notice( $atts, $content = null ) {
 			'expiration' => '',
 			'title' => '',
 			'style' => '',
+			'blockStyle' => '',
 			'show_expired' => false,
 			'dismissible' => false,
 			'class' => '',

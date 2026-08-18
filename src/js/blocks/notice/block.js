@@ -72,7 +72,7 @@ registerBlockType( 'uri-cl/notice', {
 		title: {
 			type: 'string',
 		},
-		style: {
+		blockStyle: {
 			type: 'string',
 		},
 		show_expired: {
@@ -95,8 +95,8 @@ registerBlockType( 'uri-cl/notice', {
 				classes += ' ' + attributes.className;
 			}
 
-			if ( !! attributes.style ) {
-				classes += ' ' + attributes.style;
+			if ( !! attributes.blockStyle ) {
+				classes += ' ' + attributes.blockStyle;
 			}
 
 			// Display a message on the admin screen if the notice is expired
@@ -145,8 +145,8 @@ registerBlockType( 'uri-cl/notice', {
 									{ [ 'default', 'urgent', 'covid19' ].map( ( value ) => {
 										const capitalizedValue = value.charAt( 0 ).toUpperCase() + value.slice( 1 );
 										const key = ( 'default' === value ) ? '' : value;
-										const style = ( undefined === attributes.style ) ? '' : attributes.style;
-										const selected = ( key === style );
+										const blockStyle = ( undefined === attributes.blockStyle ) ? '' : attributes.blockStyle;
+										const selected = ( key === blockStyle );
 
 										return (
 											<Button
@@ -154,7 +154,7 @@ registerBlockType( 'uri-cl/notice', {
 												isSecondary
 												isPrimary={ selected }
 												aria-pressed={ selected }
-												onClick={ ( content ) => setAttributes( { style: key } ) }
+												onClick={ ( content ) => setAttributes( { blockStyle: key } ) }
 											>
 												{ capitalizedValue }
 											</Button>
