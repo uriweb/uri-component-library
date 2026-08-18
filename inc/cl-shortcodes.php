@@ -25,6 +25,7 @@ function uri_cl_shortcode_abstract( $atts, $content = null ) {
 			'link' => '',
 			'background' => '',
 			'style' => 'bars',
+			'blockStyle' => 'bars',
 			'invert_a11y' => false,
 			'class' => '',
 			'className' => '',
@@ -51,6 +52,11 @@ function uri_cl_shortcode_abstract( $atts, $content = null ) {
 			),
 			array(
 				'attr' => 'style',
+				'types' => array( 'str' ),
+				'values' => array( 'bars', 'discs', 'lattice', 'honeycomb' ),
+			),
+			array(
+				'attr' => 'blockStyle',
 				'types' => array( 'str' ),
 				'values' => array( 'bars', 'discs', 'lattice', 'honeycomb' ),
 			),
