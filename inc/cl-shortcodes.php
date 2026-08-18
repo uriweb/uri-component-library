@@ -157,6 +157,7 @@ function uri_cl_shortcode_button( $atts, $content = null ) {
 			'tooltip' => '',
 			'arialabel' => '',
 			'style' => '',
+			'blockStyle' => '',
 			'class' => '',
 			'className' => '',
 			'css' => '',

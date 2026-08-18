@@ -7,7 +7,7 @@ if ( ! empty( $atts['class'] ) ) {
 	$classes .= ' ' . $atts['class'];
 }
 
-if ( 'disabled' == $atts['style'] ) {
+if ( 'disabled' == $atts['style'] || 'disabled' == $atts['blockStyle'] ) {
 
 	$classes .= ' disabled';
 
@@ -21,7 +21,7 @@ if ( 'disabled' == $atts['style'] ) {
 
 } else {
 
-	if ( 'prominent' == $atts['style'] ) {
+	if ( 'prominent' == $atts['style'] || 'prominent' == $atts['blockStyle'] ) {
 		$classes .= ' prominent';
 	}
 
