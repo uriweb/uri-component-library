@@ -37,11 +37,11 @@ if ('micro' == $atts['format']) {
 	$output .= '">';
 	$output .= '<div class="cl-promo-backdrop-wrapper">';
 
-	if ('confetti' === $atts['style'] || 'confetti' === $atts['blockStyle']) {
+	if ('confetti' == $atts['style'] || 'confetti' == $atts['blockStyle']) {
 		$background = '<div class="cl-promo-backdrop style-confetti"></div>';
-	} elseif ('brand' === $atts['style'] || 'brand' === $atts['blockStyle']) {
+	} elseif ('brand' == $atts['style'] || 'brand' == $atts['blockStyle']) {
 		$background = '<div class="cl-promo-backdrop style-brand"></div>';
-	} elseif ('' === $atts['style'] || '' === $atts['blockStyle']) {
+	} elseif ('' == $atts['style'] || '' == $atts['blockStyle']) {
 		$background = '<div class="cl-promo-backdrop style-blur" style="background-image:url(' . $atts['img'] . ')"></div>';
 	}
 
