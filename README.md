@@ -9,6 +9,10 @@ The Component Library standardizes the look and feel of web elements, and makes 
 
 See [this documentation](https://www.uri.edu/wordpress/components/) to learn about components and how to use them.
 
+## What's new 5.3.3
+
+CL 5.3.3 fixes block style attributes on the Promo, Notice, Button, Metric, and Abstract blocks.
+
 ## What's new 5.3.2 
 
 CL 5.3.2 adds two new style options to cards and adjusts the background color of breakouts for better contrast against links.
@@ -62,6 +66,6 @@ __Contributors:__ [bjcfuller](https://github.com/bjcfuller), [johnpennypacker](h
 __Tags:__ plugins, shortcodes  
 __Requires at least:__ 5.8  
 __Tested up to:__ 6.9.5  
-__Stable tag:__ 5.3.2 
+__Stable tag:__ 5.3.3 
 __License:__ GPL-3.0  
 __Licence URI:__ https://www.gnu.org/licenses/gpl-3.0.html
