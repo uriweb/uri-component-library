@@ -10,26 +10,26 @@
 
     position: absolute;
     z-index: 10;
-    top: 0;
-    right: 0;
-    background-color: #fff;
+    top: 25px;
+    right: 35px;
+    
 
     &:hover,
       &:focus {
-        box-shadow: $level2;
+        //box-shadow: $level2;
         cursor: default;
       }
 
     .cl-accessibility-control {
       position: relative;
-      padding: 0 10px;
-      margin: 10px 0 15px;
-      width: 80px;
+      //padding: 10px;
+      //margin: 15px;
+      //width: 90px;
       transition: opacity .1s ease-in-out;
-      background-image: url('../i/controls.svg');
-      background-repeat: no-repeat;
-      background-size: 64px auto;
-      
+      border: none;
+     //background-color: #5f5d5da9;
+     background-color: transparent;
+    //box-shadow: $level2;
       
 
       &:hover,
@@ -54,7 +54,7 @@
 
     .cl-accessibility-motion-control {
 
-      border-right: 1px solid #eee;
+      //border-right: 1px solid #eee;
 
       .cl-accessibility-control-default .cl-accessibility-control-button {
         background-position: 0 -56px;
@@ -63,9 +63,37 @@
       .cl-accessibility-control-alternate .cl-accessibility-control-button {
         background-position: 0 -28px;
       }
+      
+      .cl-accessibility-control-button {
+
+      position: relative;
+      left: calc( 50% - 14px );
+      width: 0;
+      height: 28px;
+      margin-top: 10px;
+      padding-left: 28px;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: #fff;
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 56px auto;
+      
+
+      &:hover,
+      &:focus {
+        background-color: #ddd;
+      }
 
     }
 
+    }
+
+
+    .cl-accessibility-control-label {
+      color: #fff;
+      padding-top: 10px;
+    }
   }
 
 }
