@@ -3,6 +3,73 @@
    ============================== */
 
 
+
+   .cl-has-accessibility-controls {
+
+  .cl-accessibility-controls-container {
+
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+
+    &:hover,
+      &:focus {
+        box-shadow: $level2;
+        cursor: default;
+      }
+
+    .cl-accessibility-control {
+      position: relative;
+      padding: 0 10px;
+      margin: 10px 0 15px;
+      width: 80px;
+      transition: opacity .1s ease-in-out;
+      background-image: url('../i/controls.svg');
+      background-repeat: no-repeat;
+      background-size: 64px auto;
+      
+      
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+
+      &.cl-accessibility-control-hidden {
+        opacity: .3 !important;
+        pointer-events: none;
+      }
+
+    }
+
+    .cl-accessibility-control-default {
+      display: block;
+    }
+
+    .cl-accessibility-control-alternate {
+      display: none;
+    }
+
+    .cl-accessibility-motion-control {
+
+      border-right: 1px solid #eee;
+
+      .cl-accessibility-control-default .cl-accessibility-control-button {
+        background-position: 0 -56px;
+      }
+
+      .cl-accessibility-control-alternate .cl-accessibility-control-button {
+        background-position: 0 -28px;
+      }
+
+    }
+
+  }
+
+}
+/*
 .cl-has-accessibility-controls {
 
   .cl-accessibility-controls-container {
@@ -13,6 +80,7 @@
     right: 0;
     height: calc( 32px + 2rem );
     width: calc( 32px + 2rem );
+    background-color: #fff;
 
     .cl-accessibility-controls {
 
@@ -388,3 +456,4 @@ body.cl-accessibility-applied-site-wide {
   }
 
 }
+  */
