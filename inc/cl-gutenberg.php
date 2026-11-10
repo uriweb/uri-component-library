@@ -1,4 +1,5 @@
 <?php
+
 /**
  * COMPONENT LIBRARY GUTENBERG IMPLEMENTATION
  *
@@ -8,8 +9,8 @@
  */
 
 // Block direct requests
-if ( ! defined( 'ABSPATH' ) ) {
-	die( '-1' );
+if (! defined('ABSPATH')) {
+	die('-1');
 }
 
 /**
@@ -33,27 +34,30 @@ include 'blocks/cl-tabs.php';
 /**
  * Include the Gutenberg block scripts and styles if active
  */
-function uri_cl_gutenberg_is_active() {
+function uri_cl_gutenberg_is_active()
+{
 
-	wp_enqueue_style(
-		'uri-cl-gutenberg-styles',
-		URI_CL_URL . '/css/cl.built.css',
-		array( 'wp-edit-blocks' )
-	);
-
-	if ( file_exists( URI_CL_DIR_PATH . 'js/blocks.built.js' ) ) {
-		wp_enqueue_script(
-			'uri-cl-gutenberg-blocks',
-			URI_CL_URL . 'js/blocks.built.js',
-			array( 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor' ),
-			filemtime( URI_CL_DIR_PATH . 'js/blocks.built.js' ) // cache buster
+	if (is_admin()) { // load only in the Editor
+		wp_enqueue_style(
+			'uri-cl-gutenberg-styles',
+			URI_CL_URL . '/css/cl.built.css',
+			array('wp-edit-blocks')
 		);
-		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_URL', array( URI_CL_URL ));
-		wp_localize_script( 'uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', array( get_site_url() ));
-	}
 
+
+		if (file_exists(URI_CL_DIR_PATH . 'js/blocks.built.js')) {
+			wp_enqueue_script(
+				'uri-cl-gutenberg-blocks',
+				URI_CL_URL . 'js/blocks.built.js',
+				array('wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor'),
+				filemtime(URI_CL_DIR_PATH . 'js/blocks.built.js') // cache buster
+			);
+			wp_localize_script('uri-cl-gutenberg-blocks', 'URI_CL_URL', array(URI_CL_URL));
+			wp_localize_script('uri-cl-gutenberg-blocks', 'URI_CL_SITE_URL', array(get_site_url()));
+		}
+	}
 }
-add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
+add_action('enqueue_block_assets', 'uri_cl_gutenberg_is_active');
 
 
 
@@ -63,16 +67,17 @@ add_action( 'enqueue_block_editor_assets', 'uri_cl_gutenberg_is_active' );
  * @param array $categories are the block editor categories
  * param obj $post is the current post type.
  */
-function uri_cl_gutenberg_add_categories( $categories ) {
+function uri_cl_gutenberg_add_categories($categories)
+{
 	return array_merge(
 		$categories,
 		array(
 			array(
 				'slug' => 'cl-blocks',
-				'title' => __( 'Component Library', 'cl-blocks' ),
+				'title' => __('Component Library', 'cl-blocks'),
 				'icon' => null,
 			),
 		)
 	);
 }
-add_filter( 'block_categories_all', 'uri_cl_gutenberg_add_categories', 10, 2 );
+add_filter('block_categories_all', 'uri_cl_gutenberg_add_categories', 10, 2);
